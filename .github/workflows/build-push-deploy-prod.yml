@@ -1,13 +1,7 @@
 name: CI/CD prod
 
 on:
-  push:
-    branches:
-      - main
-  release:
-    types:
-      - published
-
+  workflow_dispatch:
 permissions: {}
 concurrency: prod
 
