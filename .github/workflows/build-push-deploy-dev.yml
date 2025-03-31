@@ -45,7 +45,11 @@ jobs:
           NEW_TAG_V: ${{ steps.set-version-tag-output.outputs.new_tag }}
         shell: bash
         run: |
-          docker build . -t working_image:$NEW_TAG_V
+          docker build . \
+            -t working_image:$NEW_TAG_V \
+            --build-arg BUILD_NUMBER=${{ github.run_number }} \
+            --build-arg GIT_REF=${{ github.sha }} \
+            --build-arg GIT_BRANCH=${{ github.ref_name }}
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
