@@ -1,11 +1,11 @@
 # Stage: base image
-FROM node:22.14-bookworm-slim as base
+FROM node:22.14-bookworm-slim AS base
 
 ARG BUILD_NUMBER
 ARG GIT_REF
 ARG GIT_BRANCH
 
-LABEL maintainer="MOJ Strategic Service Transformation Team <TechforCOM@justice.gov.uk>"
+LABEL maintainer="MOJ Strategic Service Transformation Team <STGTransformationTeam@justice.gov.uk>"
 
 ENV TZ=Europe/London
 RUN ln -snf "/usr/share/zoneinfo/$TZ" /etc/localtime && echo "$TZ" > /etc/timezone
@@ -31,7 +31,7 @@ RUN apt-get update && \
         rm -rf /var/lib/apt/lists/*
 
 # Stage: build assets
-FROM base as build
+FROM base AS build
 
 ARG BUILD_NUMBER
 ARG GIT_REF

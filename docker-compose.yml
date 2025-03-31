@@ -6,8 +6,6 @@ services:
         BUILD_NUMBER: '1.0.0'
         GIT_REF: 'a1b2c3'
         GIT_BRANCH: main
-    networks:
-      - tcom
     ports:
       - '3000:3000'
     environment:
@@ -21,6 +19,3 @@ services:
       - VALID_OTP=123456
       - POP_LOGIN_OTP=123456
       - POP_PASSWORD=supersecure
-
-networks:
-  tcom:
