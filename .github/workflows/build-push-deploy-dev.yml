@@ -161,6 +161,11 @@ jobs:
           --set WebApp.Image.Repository=$ECR_REPO_WEBAPP \
           --set WebApp.Image.Tag=$NEW_TAG_V \
           --set WebApp.Name=$KUBE_NAMESPACE \
-          --set WebApp.AlternativeHealthCheck.enabled="false" \
-          --set WebApp.AlternativeHealthCheck.path="/health" \
+          --set WebApp.AlternativeHealthCheck.enabled="true" \
+          --set WebApp.AlternativeHealthCheck.port="3000" \
+          --set WebApp.AlternativeHealthCheck.path="/healthz" \
+          --set WebApp.SecurityContext.allowPrivilegeEscalation=false \
+          --set WebApp.SecurityContext.runAsNonRoot=true \
+          --set WebApp.SecurityContext.capabilities.drop[0]=ALL \
+          --set WebApp.SecurityContext.seccompProfile.type=RuntimeDefault \     
           $custom_variables
