@@ -10,16 +10,16 @@ app.listen(APP_PORT, '0.0.0.0', () => {
 });
 
 app.get('/', (req, res) => {
-  res.status(200).send('Hello, World! Is tehre anyone oout there?');
+  res.status(200).send('Hello, World! Is there anyone out there?');
 });
 
-const health = express();
-const HEALTH_PORT = 9999;
+// const health = express();
+// const HEALTH_PORT = 9999;
 
-health.get('/healthz', (_req, res) => {
+app.get('/health', (_req, res) => {
   res.status(200).send('OK');
 });
 
-health.listen(HEALTH_PORT, '0.0.0.0', () => {
-  console.log(`Health check running at http://localhost:${HEALTH_PORT}/healthz`);
-});
+// health.listen(HEALTH_PORT, '0.0.0.0', () => {
+//   console.log(`Health check running at http://localhost:${HEALTH_PORT}/healthz`);
+// });
