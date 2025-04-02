@@ -161,7 +161,6 @@ jobs:
           --set WebApp.Image.Repository=$ECR_REPO_WEBAPP \
           --set WebApp.Image.Tag=$NEW_TAG_V \
           --set WebApp.Name=$KUBE_NAMESPACE \
-          --set WebApp.AlternativeHealthCheck.enabled="false" \
-          --set WebApp.AlternativeHealthCheck.port=8080 \
-          --set WebApp.AlternativeHealthCheck.path="/" 
+          --set WebApp.AlternativeHealthCheck.enabled="true" \
+          --set WebApp.AlternativeHealthCheck.port=9999 \
           $custom_variables

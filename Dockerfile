@@ -1,7 +1,13 @@
-FROM bitnami/nginx:1.25.1
+FROM node:22.10-bookworm-slim
 
 WORKDIR /app
 
-COPY ./src .
+COPY package*.json ./
+RUN npm ci
 
-EXPOSE 8080
+COPY . .
+
+EXPOSE 3000
+EXPOSE 9999
+
+CMD [ "node", "server.js" ]
