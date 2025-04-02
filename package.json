@@ -84,7 +84,6 @@
     "compression": "^1.8.0",
     "concurrently": "^9.1.2",
     "connect-flash": "^0.1.1",
-    "connect-redis": "^8.0.1",
     "cookie-parser": "^1.4.7",
     "csrf-sync": "^4.0.3",
     "express": "^4.21.2",
@@ -99,7 +98,6 @@
     "nunjucks": "^3.2.4",
     "passport": "^0.7.0",
     "passport-oauth2": "^1.8.0",
-    "redis": "^4.7.0",
     "superagent": "^10.1.1",
     "uuid": "^11.1.0"
   },

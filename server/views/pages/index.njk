@@ -35,23 +35,11 @@
 
       <p>In order to get updates about a case, you will need to provide your preferred contact details.</p>
 
-      {% if (data['account'] == "true") %}
       {{ govukButton({
         text: "Start now",
-        href: "create-account",
         isStartButton: true
       }) }}
-      {% else %}
-      {{ govukButton({
-        text: "Start now",
-        href: "login",
-        isStartButton: true
-      }) }}
-      {% endif %}
-
-
-   
-
+    
       <h2 class="govuk-heading-m">
         Before you start
       </h2>

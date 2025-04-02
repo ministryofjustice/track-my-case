@@ -10,10 +10,7 @@ services:
       - '3000:3000'
     environment:
       - PRODUCT_ID=UNASSIGNED
-      - REDIS_ENABLED=false
-      - REDIS_HOST=localhost
       - SESSION_SECRET=somesecretvalue
-      - INGRESS_URL=http://localhost:3000
       - NO_HTTPS=true
       - POC_PASSWORD=supersecure
       - VALID_OTP=123456
