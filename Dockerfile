@@ -41,9 +41,6 @@ COPY --from=build --chown=appuser:appgroup \
 COPY --from=build --chown=appuser:appgroup \
     /app/server.js ./server.js
 
-COPY --from=build --chown=appuser:appgroup \
-    /app/public ./public
-
 EXPOSE 3000
 EXPOSE 9999
 
