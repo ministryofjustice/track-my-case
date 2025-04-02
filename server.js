@@ -19,6 +19,9 @@ app.get('/', (req, res) => {
 app.get('/health', (_req, res) => {
   res.status(200).send('OK');
 });
+app.get('/healthz', (_req, res) => {
+  res.status(200).send('healthz::: is OK 2');
+});
 
 // health.listen(HEALTH_PORT, '0.0.0.0', () => {
 //   console.log(`Health check running at http://localhost:${HEALTH_PORT}/healthz`);
