@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.static('public'));
 
@@ -11,6 +11,10 @@ app.get('/', (_req, res) => {
 
 app.get('/health', (_req, res) => {
   res.status(200).send('OK - health');
+});
+
+app.get('/healthz', (_req, res) => {
+  res.status(200).send('OK - healthz 🎶');
 });
 
 app.listen(PORT, '0.0.0.0', () => {

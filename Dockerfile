@@ -42,7 +42,7 @@ COPY --from=build --chown=appuser:appgroup \
     /app/server.js ./server.js
 
 # Serve on 8080 — match platform/Helm expectations
-EXPOSE 8080
+EXPOSE 3000
 EXPOSE 9999
 
 # Drop privileges
