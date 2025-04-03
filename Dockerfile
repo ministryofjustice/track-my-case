@@ -6,9 +6,9 @@ LABEL maintainer="MOJ Strategic Service Transformation Team <STGTransformationTe
 ENV TZ=Europe/London
 RUN ln -snf "/usr/share/zoneinfo/$TZ" /etc/localtime && echo "$TZ" > /etc/timezone
 
-# Create non-root user and group
-RUN addgroup --gid 2000 --system appgroup && \
-    adduser --uid 2000 --system appuser --gid 2000
+# Create non-root user and group only if not already present
+RUN addgroup --gid 1000 --system appgroup 2>/dev/null || true && \
+    adduser --uid 1000 --system appuser --gid 1000 2>/dev/null || true
 
 WORKDIR /app
 
@@ -23,7 +23,7 @@ RUN apt-get update && \
 FROM base AS build
 
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm ci --omit=dev --no-audit
 
 COPY . .
 
@@ -41,9 +41,10 @@ COPY --from=build --chown=appuser:appgroup \
 COPY --from=build --chown=appuser:appgroup \
     /app/server.js ./server.js
 
-EXPOSE 3000
-EXPOSE 9999
+# Serve on 8080 — match platform/Helm expectations
+EXPOSE 8080
 
-USER 2000
+# Drop privileges
+USER 1000:1000
 
 CMD ["node", "server.js"]
