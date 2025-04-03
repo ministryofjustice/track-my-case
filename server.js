@@ -24,7 +24,7 @@ app.listen(PORT, '0.0.0.0', () => {
 // 👉 Separate listener on port 9999 for readiness probe
 const health = express();
 
-health.get('/healthz', (_req, res) => {
+health.get('/?healthz', (_req, res) => {
   res.status(200).send('healthz proobe::: is OK 2');
 });
 
