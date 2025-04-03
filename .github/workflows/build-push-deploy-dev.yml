@@ -161,6 +161,11 @@ jobs:
           --set WebApp.Image.Repository=$ECR_REPO_WEBAPP \
           --set WebApp.Image.Tag=$NEW_TAG_V \
           --set WebApp.Name=$KUBE_NAMESPACE \
-          --set WebApp.AlternativeHealthCheck.enabled="true" \
-          --set WebApp.AlternativeHealthCheck.port=9999 \
+          --set WebApp.Image.Repository=$ECR_REPO_WEBAPP \
+          --set WebApp.Image.Tag=$NEW_TAG_V \
+          --set WebApp.Name=$KUBE_NAMESPACE \
+          --set securityContext.allowPrivilegeEscalation=false \
+          --set securityContext.capabilities.drop=["ALL"] \
+          --set securityContext.runAsNonRoot=true \
+          --set securityContext.seccompProfile.type="RuntimeDefault" \
           $custom_variables
