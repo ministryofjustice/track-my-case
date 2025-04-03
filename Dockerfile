@@ -1,5 +1,5 @@
 # Stage 1: base image with non-root user
-FROM node:22.14-bookworm-slim AS base
+FROM node:23.11-bookworm-slim AS base
 
 LABEL maintainer="MOJ Strategic Service Transformation Team <STGTransformationTeam@justice.gov.uk>"
 
