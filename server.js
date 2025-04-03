@@ -10,11 +10,7 @@ app.get('/', (_req, res) => {
 });
 
 app.get('/health', (_req, res) => {
-  res.status(200).send('OK');
-});
-
-app.get('/healthz', (_req, res) => {
-  res.status(200).send('healthz::: is OK 2');
+  res.status(200).send('OK - health');
 });
 
 app.listen(PORT, '0.0.0.0', () => {
@@ -28,7 +24,7 @@ health.get('/', (req, res) => {
   if ('healthz' in req.query) {
     return res.status(200).send('✅ Probe OK: /?healthz');
   }
-  res.status(404).send('Not found');
+  res.status(200).send('Not found - in route ');
 });
 
 health.get('/healthz', (_req, res) => {
