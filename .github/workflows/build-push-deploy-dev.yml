@@ -162,4 +162,17 @@ jobs:
           --set WebApp.Image.Tag=$NEW_TAG_V \
           --set WebApp.Name=$KUBE_NAMESPACE \
           --set WebApp.AlternativeHealthCheck.enabled="false" \
+          --set WebApp.AlternativeHealthCheck.port="3000" \
+          --set WebApp.AlternativeHealthCheck.path="/healthz" \
+          --set WebApp.SecurityContext.allowPrivilegeEscalation=false \
+
+          --set WebApp.SecurityContext.runAsNonRoot=true \
+          --set WebApp.SecurityContext.capabilities.drop[0]=ALL \
+          --set WebApp.SecurityContext.seccompProfile.type=RuntimeDefault \
+
+          # AuthProxy security context
+          --set AuthProxy.SecurityContext.allowPrivilegeEscalation=false \
+          --set AuthProxy.SecurityContext.runAsNonRoot=true \
+          --set AuthProxy.SecurityContext.capabilities.drop[0]=ALL \
+          --set AuthProxy.SecurityContext.seccompProfile.type=RuntimeDefault
           $custom_variables
