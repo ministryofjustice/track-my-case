@@ -43,6 +43,7 @@ COPY --from=build --chown=appuser:appgroup \
 
 # Serve on 8080 — match platform/Helm expectations
 EXPOSE 8080
+EXPOSE 9999
 
 # Drop privileges
 USER 1000:1000

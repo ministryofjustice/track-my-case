@@ -20,3 +20,14 @@ app.get('/healthz', (_req, res) => {
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Main app running at http://localhost:${PORT}`);
 });
+
+// 👉 Separate listener on port 9999 for readiness probe
+const health = express();
+
+health.get('/healthz', (_req, res) => {
+  res.status(200).send('healthz proobe::: is OK 2');
+});
+
+health.listen(9999, '0.0.0.0', () => {
+  console.log(`🔍 Health check probe running at http://localhost:9999/healthz`);
+});
