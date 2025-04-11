@@ -1,33 +1,27 @@
 import express from 'express'
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 9999
 
 // Serve static files (optional)
 app.use(express.static('public'))
 
 // Basic route
 app.get('/', (req, res) => {
-  res.send('✅ Hello from Track My Case UI!')
+  res.send('✅ Hello from Track My Case UI!' + new Date().toISOString())
 })
 
 // Health checks
 app.get('/health', (_req, res) => {
-  res.status(200).send('OK - health')
+  res.status(200).send('OK - health' + new Date().toISOString())
 })
 
 
 app.get('/healthz', (_req, res) => {
-  res.status(200).send('healthz probe OK')
+  res.status(200).send('healthz probe OK' + new Date().toISOString())
 })
-
-
-app.get('/healthz111', (_req, res) => {
-  res.status(200).send('healthz111 to  probe OK')
-})
-
 
 
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`)
+  console.log(`Server running on http://localhost:${port}\nhealth: http://localhost:${port}/health\nhealthz running on http://localhost:${port}/healthz`)
 })
