@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        BUILD_NUMBER: "1.0.0"
+        GIT_REF: "a1b2c3"
+        GIT_BRANCH: main
+    ports:
+      - "9999:9999"
+    environment:
+      - PRODUCT_ID=UNASSIGNED
+      - SESSION_SECRET=somesecretvalue
+      - NO_HTTPS=true
