@@ -48,4 +48,4 @@ EXPOSE 9999
 # Drop privileges
 USER 1000:1000
 
-CMD ["npm", "start:dev"]
+CMD ["npm", "run", "start:dev"]
