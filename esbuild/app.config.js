@@ -11,7 +11,7 @@ const buildApp = buildConfig => {
   return esbuild.build({
     entryPoints: glob.sync(buildConfig.app.entryPoints),
     outdir: buildConfig.app.outDir,
-    bundle: true,
+    bundle: false,
     sourcemap: true,
     platform: 'node',
     format: 'cjs',
