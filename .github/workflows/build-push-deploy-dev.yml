@@ -149,9 +149,9 @@ jobs:
             fi
           done
 
-          echo "🧪 DEBUGGING: Combined JSON"
-          echo "$combined_json" | jq
-          echo "🧪 ==================================================="
+          # echo "🧪 DEBUGGING: Combined JSON"
+          # echo "$combined_json" | jq
+          # echo "🧪 ==================================================="
           helm upgrade --install --wait --timeout 10m0s --namespace $KUBE_NAMESPACE $RELEASE_NAME mojanalytics/webapp-cp \
           --set AuthProxy.Env.Auth0Domain=$AUTH0_DOMAIN \
           --set AuthProxy.Env.Auth0Passwordless=$AUTH0_PASSWORDLESS \
