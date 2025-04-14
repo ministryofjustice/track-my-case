@@ -20,8 +20,68 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">Welcome to {{ applicationName }}</h1>
-      <p class="govuk-body">This is the home page of your application.</p>
+      <h1 class="govuk-heading-xl">
+        {{ applicationName }}
+      </h1>
+      <p class="govuk-body">Use this service to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>view updates about a case and dates for upcoming meetings</li>
+        <li>access victim support</li>
+        <li>manage your contact preferences</li>
+        <li>provide feedback</li>
+      </ul>
+      <p class="govuk-body">In order to get updates about a case, you will need to provide your preferred contact details.</p>
+
+      {{ govukButton({
+        text: "Start now",
+        href: "#",
+        isStartButton: true
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Before you start
+      </h2>
+
+      <p>
+        You can also <a href="#">get victim support</a> information and guidance, and find your nearest police station.
+      </p>
+
+      <p>
+        The online service is also <a href="#">available in Welsh (ar gael yn Gymraeg)</a>.
+      </p>
+
+      <p>
+        You can’t register for this service if you’re in the UK illegally.
+      </p>
+
       <p class="govuk-body">Timestamp: {{ currentTime }}</p>
     </div>
+    <div class="govuk-grid-column-one-third">
+    
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Related information
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="#">
+                Victim support resources
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Police services
+              </a>
+            </li>
+            <li>
+              <a href="#" class="govuk-!-font-weight-bold">
+                More <span class="govuk-visually-hidden">in Subsection</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
 {% endblock %}
