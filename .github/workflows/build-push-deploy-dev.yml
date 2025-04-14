@@ -37,9 +37,6 @@ jobs:
         id: set-version-tag-output
         run: echo "new_tag=${{ steps.bump-id.outputs.new_tag }}" >> $GITHUB_OUTPUT
 
-      # - name: Checkout
-      #   uses: actions/checkout@v4
-
       - name: Build
         env:
           NEW_TAG_V: ${{ steps.set-version-tag-output.outputs.new_tag }}
@@ -149,9 +146,6 @@ jobs:
             fi
           done
 
-          # echo "🧪 DEBUGGING: Combined JSON"
-          # echo "$combined_json" | jq
-          # echo "🧪 ==================================================="
           helm upgrade --install --wait --timeout 10m0s --namespace $KUBE_NAMESPACE $RELEASE_NAME mojanalytics/webapp-cp \
           --set AuthProxy.Env.Auth0Domain=$AUTH0_DOMAIN \
           --set AuthProxy.Env.Auth0Passwordless=$AUTH0_PASSWORDLESS \
