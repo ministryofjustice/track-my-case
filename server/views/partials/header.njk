@@ -1,16 +1,10 @@
-{%- from "moj/components/header/macro.njk" import mojHeader -%}
+{%- from "govuk/components/header/macro.njk" import govukHeader -%}
 
-{{ mojHeader({
-  organisationLabel: {
-    text: "",
-    href: "/"
-  },
-  serviceLabel: {
-    text: applicationName,
-    href: "/"
-  }
+{{ govukHeader({
+  homepageUrl: "/"
 }) }}
 
+{# TODO: Check what components we can use from 5.9.0 #}
 {# 
 ,
   navigation: {
