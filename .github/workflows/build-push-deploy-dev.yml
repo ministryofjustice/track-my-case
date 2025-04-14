@@ -119,10 +119,10 @@ jobs:
           AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
           AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
           AUTH0_DOMAIN: ${{ vars.AUTH0_DOMAIN }}
-          AUTH0_PASSWORDLESS: ${{ vars.AUTH0_PASSWORDLESS }}
+          AUTH0_PASSWORDLESS: "${{ vars.AUTH0_PASSWORDLESS }}"
           AUTH0_TOKEN_ALG: ${{ vars.AUTH0_TOKEN_ALG }}
-          AUTHENTICATION_REQUIRED: ${{ vars.AUTHENTICATION_REQUIRED }}
-          COOKIE_SECRET: ${{ secrets.XXX_COOKIE_SECRET }}
+          AUTHENTICATION_REQUIRED: "${{ vars.AUTHENTICATION_REQUIRED }}"
+          COOKIE_SECRET: "${{ secrets.XXX_COOKIE_SECRET }}"
           ECR_REPO_AUTH0: ${{ steps.login-ecr.outputs.registry }}/analytical-platform/ap-auth-proxy-prod-ecr
           ECR_REPO_WEBAPP: ${{ steps.login-ecr.outputs.registry }}/${{ vars.DEV_ECR_REPOSITORY }}
           IP_RANGES: ${{ secrets.IP_RANGES }}
@@ -165,9 +165,6 @@ jobs:
           --set Secrets.Auth0.ClientId=$AUTH0_CLIENT_ID \
           --set Secrets.Auth0.ClientSecret=$AUTH0_CLIENT_SECRET \
           --set ServiceAccount.RoleARN=$APP_ROLE_ARN \
-          --set WebApp.Image.Repository=$ECR_REPO_WEBAPP \
-          --set WebApp.Image.Tag=$NEW_TAG_V \
-          --set WebApp.Name=$KUBE_NAMESPACE \
           --set WebApp.Image.Repository=$ECR_REPO_WEBAPP \
           --set WebApp.Image.Tag=$NEW_TAG_V \
           --set WebApp.Name=$KUBE_NAMESPACE \
