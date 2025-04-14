@@ -4,7 +4,7 @@
 # Stage 1: Base image with shared setup
 # ------------------------------------------------------------------------------
 
-FROM node:22-alpine AS base
+FROM node:23-alpine AS base
 
 LABEL maintainer="MOJ Strategic Service Transformation Team <STGTransformationTeam@justice.gov.uk>"
 
