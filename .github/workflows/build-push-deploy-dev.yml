@@ -157,6 +157,7 @@ jobs:
           --set AuthProxy.Env.Auth0Passwordless=$AUTH0_PASSWORDLESS \
           --set AuthProxy.Env.Auth0TokenAlg=$AUTH0_TOKEN_ALG \
           --set AuthProxy.Env.AuthenticationRequired=$AUTHENTICATION_REQUIRED \
+          --set AuthProxy.Env.CookieSecret=some-secure-random-string \
           --set AuthProxy.Env.IPRanges=$process_ip_range \
           --set AuthProxy.Image.Repository=$ECR_REPO_AUTH0 \
           --set AuthProxy.Image.Tag="latest" \
