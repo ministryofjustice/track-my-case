@@ -10,5 +10,8 @@ services:
       - "9999:9999"
     environment:
       - PRODUCT_ID=UNASSIGNED
+      - REDIS_ENABLED=false
+      - REDIS_HOST=localhost
+      # These will need to match new creds in the seed auth service auth
       - SESSION_SECRET=somesecretvalue
       - NO_HTTPS=true
