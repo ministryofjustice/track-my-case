@@ -4,12 +4,21 @@
   "description": "[![repo standards badge](https://img.shields.io/endpoint?labelColor=231f20&color=005ea5&style=for-the-badge&label=MoJ%20Compliant&url=https%3A%2F%2Foperations-engineering-reports.cloud-platform.service.justice.gov.uk%2Fapi%2Fv1%2Fcompliant_public_repositories%2Fendpoint%2Ftemplate-repository&logo=data:image/png;base64,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)](https://operations-engineering-reports.cloud-platform.service.justice.gov.uk/public-github-repositories.html#template-repository)",
   "main": "index.js",
   "scripts": {
+    "prepare": "husky",
     "watch-ts": "tsc -w",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node $NODE_OPTIONS dist/server.js",
-    "start:dev": "concurrently -k -p \"[{name}]\" -n \"ESBuild,Node\" -c \"yellow.bold,cyan.bold\" \"node esbuild/esbuild.config.js --build --watch\" \"node esbuild/esbuild.config.js --dev-server\"",
     "build": "node esbuild/esbuild.config.js --build",
+    "start": "node $NODE_OPTIONS dist/server.js | bunyan -o short",
+    "start:dev": "concurrently -k -p \"[{name}]\" -n \"ESBuild,Node\" -c \"yellow.bold,cyan.bold\" \"node esbuild/esbuild.config.js --build --watch\" \"node esbuild/esbuild.config.js --dev-server\"",
+    "start-feature": " node $NODE_DEBUG_OPTION --env-file=feature.env dist/server.js | bunyan -o short",
+    "start-feature:dev": "concurrently -k -p \"[{name}]\" -n \"ESBuild,Node\" -c \"yellow.bold,cyan.bold\" \"node esbuild/esbuild.config.js  --build --watch \" \"node esbuild/esbuild.config.js --dev-test-server\"",
+    "lint": "eslint . --cache --max-warnings 0",
+    "lint-fix": "eslint . --cache --max-warnings 0 --fix",
     "typecheck": "tsc",
+    "test": "jest",
+    "test:ci": "jest --runInBand",
+    "security_audit": "npx audit-ci --config audit-ci.json",
+    "int-test": "cypress run --config video=false",
+    "int-test-ui": "cypress open --e2e --browser chrome",
     "clean": "rm -rf dist node_modules",
     "rebuild": "npm run clean && npm i && npm run build"
   },
@@ -17,26 +26,114 @@
     "node": "^22",
     "npm": "^10"
   },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": [
+        "ts-jest"
+      ]
+    },
+    "collectCoverageFrom": [
+      "server/**/*.{ts,js,jsx,mjs}"
+    ],
+    "testMatch": [
+      "<rootDir>/(server|job)/**/?(*.)(cy|test).{ts,js,jsx,mjs}"
+    ],
+    "testEnvironment": "node",
+    "reporters": [
+      "default",
+      [
+        "jest-junit",
+        {
+          "outputDirectory": "test_results/jest/"
+        }
+      ],
+      [
+        "./node_modules/jest-html-reporter",
+        {
+          "outputPath": "test_results/unit-test-reports.html"
+        }
+      ]
+    ],
+    "moduleFileExtensions": [
+      "web.js",
+      "js",
+      "json",
+      "node",
+      "ts"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,js,css}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
+  },
   "dependencies": {
     "@ministryofjustice/frontend": "^5.1.2",
+    "applicationinsights": "^2.9.6",
+    "body-parser": "^2.2.0",
+    "bunyan": "^1.8.15",
+    "bunyan-format": "^0.2.1",
+    "compression": "^1.8.0",
+    "connect-flash": "^0.1.1",
+    "connect-redis": "^8.0.2",
+    "csrf-sync": "^4.1.0",
     "express": "^4.21.2",
-    "govuk-frontend": "^5.9.0"
+    "express-session": "^1.18.1",
+    "govuk-frontend": "^5.9.0",
+    "helmet": "^8.1.0",
+    "http-errors": "^2.0.0",
+    "jwt-decode": "^4.0.0",
+    "nocache": "^4.0.0",
+    "nunjucks": "^3.2.4",
+    "redis": "^4.7.0",
+    "superagent": "^10.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
     "@jgoz/esbuild-plugin-typecheck": "^4.0.3",
+    "@ministryofjustice/eslint-config-hmpps": "^0.0.1-beta.2",
     "@tsconfig/node22": "^22.0.1",
-    "@types/connect-flash": "^0.0.40",
+    "@types/bunyan": "^1.8.11",
+    "@types/bunyan-format": "^0.2.9",
+    "@types/compression": "^1.7.5",
+    "@types/connect-flash": "0.0.40",
     "@types/express-session": "^1.18.1",
+    "@types/http-errors": "^2.0.4",
+    "@types/jest": "^29.5.14",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.14.0",
     "@types/nunjucks": "^3.2.6",
-    "chokidar": "^4.0.3",
+    "@types/superagent": "^8.1.9",
+    "@types/supertest": "^6.0.3",
+    "audit-ci": "^7.1.0",
+    "aws-sdk-client-mock": "^4.1.0",
+    "chokidar": "^3.6.0",
     "concurrently": "^9.1.2",
-    "esbuild": "^0.25.2",
+    "cypress": "^14.3.0",
+    "cypress-multi-reporters": "^2.0.5",
+    "esbuild": "^0.25.1",
     "esbuild-plugin-clean": "^1.0.1",
     "esbuild-plugin-copy": "^2.1.1",
     "esbuild-plugin-manifest": "^1.0.5",
     "esbuild-sass-plugin": "^3.3.1",
     "glob": "^11.0.1",
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "jest-html-reporter": "^4.1.0",
+    "jest-junit": "^16.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "lint-staged": "^15.5.0",
+    "mocha-junit-reporter": "^2.2.1",
+    "nock": "^14.0.3",
+    "prettier": "^3.5.3",
+    "prettier-plugin-jinja-template": "^2.0.0",
+    "supertest": "^7.1.0",
+    "ts-jest": "^29.3.1",
     "typescript": "^5.8.3"
   },
   "overrides": {

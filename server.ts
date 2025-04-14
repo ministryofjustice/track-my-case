@@ -1,27 +1,13 @@
-import express from 'express'
+import 'applicationinsights'
 
-const app = express()
-const port = process.env.PORT || 9999
+import app from './server/index'
+import logger from './logger'
 
-// Serve static files (optional)
-app.use(express.static('public'))
-
-// Basic route
-app.get('/', (req, res) => {
-  res.send('✅ Hello from Track My Case UI!' + new Date().toISOString())
-})
-
-// Health checks
-app.get('/health', (_req, res) => {
-  res.status(200).send('OK - health' + new Date().toISOString())
-})
-
-
-app.get('/healthz', (_req, res) => {
-  res.status(200).send('healthz probe OK' + new Date().toISOString())
-})
-
-
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}\nhealth: http://localhost:${port}/health\nhealthz running on http://localhost:${port}/healthz`)
+app.listen(app.get('port'), () => {
+  logger.info(`Server started on port ${app.get('port')}`)
+  logger.info(`/:  http://localhost:${app.get('port')}`)
+  logger.info(`Health:   http://localhost:${app.get('port')}/health`)
+  logger.info(`Healthz:  http://localhost:${app.get('port')}/healthz`)
+  logger.info(`Press Ctrl+C to stop the server`)
+  logger.info(`Environment: ${app.get('env')}`)
 })

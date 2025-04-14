@@ -37,15 +37,16 @@ jobs:
         id: set-version-tag-output
         run: echo "new_tag=${{ steps.bump-id.outputs.new_tag }}" >> $GITHUB_OUTPUT
 
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Build
         env:
           NEW_TAG_V: ${{ steps.set-version-tag-output.outputs.new_tag }}
         shell: bash
         run: |
-          docker build . -t working_image:$NEW_TAG_V
+          docker build . \
+            --build-arg BUILD_NUMBER=$NEW_TAG_V \
+            --build-arg GIT_REF=${{ github.sha }} \
+            --build-arg GIT_BRANCH=${{ github.ref_name }} \
+            -t working_image:$NEW_TAG_V
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -118,7 +119,7 @@ jobs:
           AUTH0_PASSWORDLESS: ${{ vars.AUTH0_PASSWORDLESS }}
           AUTH0_TOKEN_ALG: ${{ vars.AUTH0_TOKEN_ALG }}
           AUTHENTICATION_REQUIRED: ${{ vars.AUTHENTICATION_REQUIRED }}
-          COOKIE_SECRET: ${{ secrets.COOKIE_SECRET }}
+          COOKIE_SECRET: "${{ secrets.XXX_COOKIE_SECRET }}"
           ECR_REPO_AUTH0: ${{ steps.login-ecr.outputs.registry }}/analytical-platform/ap-auth-proxy-prod-ecr
           ECR_REPO_WEBAPP: ${{ steps.login-ecr.outputs.registry }}/${{ vars.DEV_ECR_REPOSITORY }}
           IP_RANGES: ${{ secrets.IP_RANGES }}
@@ -150,17 +151,14 @@ jobs:
           --set AuthProxy.Env.Auth0Passwordless=$AUTH0_PASSWORDLESS \
           --set AuthProxy.Env.Auth0TokenAlg=$AUTH0_TOKEN_ALG \
           --set AuthProxy.Env.AuthenticationRequired=$AUTHENTICATION_REQUIRED \
+          --set AuthProxy.Env.CookieSecret=$COOKIE_SECRET \
           --set AuthProxy.Env.IPRanges=$process_ip_range \
           --set AuthProxy.Image.Repository=$ECR_REPO_AUTH0 \
           --set AuthProxy.Image.Tag="latest" \
           --set Namespace=$KUBE_NAMESPACE \
           --set Secrets.Auth0.ClientId=$AUTH0_CLIENT_ID \
           --set Secrets.Auth0.ClientSecret=$AUTH0_CLIENT_SECRET \
-          --set Secrets.Auth0.CookieSecret=$COOKIE_SECRET \
           --set ServiceAccount.RoleARN=$APP_ROLE_ARN \
-          --set WebApp.Image.Repository=$ECR_REPO_WEBAPP \
-          --set WebApp.Image.Tag=$NEW_TAG_V \
-          --set WebApp.Name=$KUBE_NAMESPACE \
           --set WebApp.Image.Repository=$ECR_REPO_WEBAPP \
           --set WebApp.Image.Tag=$NEW_TAG_V \
           --set WebApp.Name=$KUBE_NAMESPACE \
