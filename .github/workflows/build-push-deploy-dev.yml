@@ -163,7 +163,7 @@ jobs:
           --set Namespace=$KUBE_NAMESPACE \
           --set Secrets.Auth0.ClientId=$AUTH0_CLIENT_ID \
           --set Secrets.Auth0.ClientSecret=$AUTH0_CLIENT_SECRET \
-          --set Secrets.Auth0.CookieSecret=$COOKIE_SECRET \
+          --set Secrets.Auth0.CookieSecret=$AUTH0_COOKIE_SECRET \
           --set ServiceAccount.RoleARN=$APP_ROLE_ARN \
           --set WebApp.Image.Repository=$ECR_REPO_WEBAPP \
           --set WebApp.Image.Tag=$NEW_TAG_V \
