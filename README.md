@@ -83,15 +83,15 @@ npm run lint-fix
 
 ## Environment variables
 
-| Name                         | Required | Description                                      |
-|------------------------------|----------|--------------------------------------------------|
-| `BUILD_NUMBER`               | ✅       | Build identifier (e.g. GitHub Actions run number)|
-| `GIT_REF`                    | ✅       | Git commit SHA                                   |
-| `GIT_BRANCH`                 | ✅       | Git branch name                                  |
-| `PRODUCT_ID`                 | ✅       | Internal product identifier                      |
-| `SESSION_SECRET`             | ✅       | Session encryption key                           |
-| `NO_HTTPS`                   | ❌       | Disable HTTPS redirects for dev usage            |
-| `REDIS_ENABLED`              | ❌       | Enable Redis for session storage                 |
+| Name             | Required | Description                                       |
+| ---------------- | -------- | ------------------------------------------------- |
+| `BUILD_NUMBER`   | ✅       | Build identifier (e.g. GitHub Actions run number) |
+| `GIT_REF`        | ✅       | Git commit SHA                                    |
+| `GIT_BRANCH`     | ✅       | Git branch name                                   |
+| `PRODUCT_ID`     | ✅       | Internal product identifier                       |
+| `SESSION_SECRET` | ✅       | Session encryption key                            |
+| `NO_HTTPS`       | ❌       | Disable HTTPS redirects for dev usage             |
+| `REDIS_ENABLED`  | ❌       | Enable Redis for session storage                  |
 
 For local use, you can set these in the `docker-compose.yml` environment block or export them directly into your shell.
 
