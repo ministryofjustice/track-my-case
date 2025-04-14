@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.71.0
@@ -37,8 +39,8 @@ jobs:
         id: set-version-tag-output
         run: echo "new_tag=${{ steps.bump-id.outputs.new_tag }}" >> $GITHUB_OUTPUT
 
-      - name: Checkout
-        uses: actions/checkout@v4
+      # - name: Checkout
+      #   uses: actions/checkout@v4
 
       - name: Build
         env:
