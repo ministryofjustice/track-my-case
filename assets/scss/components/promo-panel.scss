@@ -1,0 +1,41 @@
+.promo-panel {
+  border: 1px solid #b1b4b6;
+  margin-bottom: govuk-spacing(6);
+  background: govuk-colour("white");
+
+  &__header {
+    background: govuk-colour("light-grey");
+    padding: govuk-spacing(3);
+    border-bottom: 1px solid #b1b4b6;
+  }
+
+  &__body {
+    padding: govuk-spacing(4);
+  }
+
+  &__image {
+    display: flex;
+    align-items: center;
+
+    img,
+    .promo-panel__image-content {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  &__content {
+    padding-top: govuk-spacing(2);
+    min-height: 205px;
+  }
+
+  &--highlight {
+    background: govuk-colour("light-blue");
+    border-color: #1d70b8;
+
+    .promo-panel__body {
+      padding: govuk-spacing(4);
+    }
+  }
+}

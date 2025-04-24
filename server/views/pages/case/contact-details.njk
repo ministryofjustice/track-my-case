@@ -1,0 +1,116 @@
+{% extends "layout/citizen-authenticated.njk" %}
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{% set pageTitle = applicationName + " - Your details" %}
+{% set mainClasses = "app-container govuk-body" %}
+
+{# TODO: Citizen authentication layout needs breaccrumbs #}
+{# TODO: Check flow with James #}
+{% block content %}
+  
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">View your details</h1>
+  <p class="govuk-body">These are your contact details. We use them to inform you of any changes to your court dates. If they are incorrect, please contact your Witness Care Officer to update them.</p>
+    {{ govukSummaryList({
+        card: {
+            title: {
+            text: "Your contact details"
+            }
+        },
+        rows: [
+            {
+            key: { text: "Mobile" },
+            value: { html: '<p class="govuk-body">07700 900457</p>' }
+            },
+            {
+            key: { text: "Email" },
+            value: { html: '<p class="govuk-body">sarah.phillips@example.com</p>' }
+            },
+            {
+            key: { text: "Preferred contact" },
+            value: { html: '<p class="govuk-body">Mobile</p>' }
+            }
+        ]
+    }) }}
+    {{ govukSummaryList({
+    card: {
+        title: {
+        text: "Your contact details"
+        }
+    },
+    rows: [
+        {
+        key: { text: "Address" },
+        value: { html: "72 Guild Street<br>London<br>SE23 6FH" },
+        actions: {
+            items: [
+            {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "address"
+            }
+            ]
+        }
+        },
+        {
+        key: { text: "Mobile" },
+        value: { html: '<p class="govuk-body">07700 900457</p>' },
+        actions: {
+            items: [
+            {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "contact details"
+            }
+            ]
+        }
+        },
+        {
+        key: { text: "Email" },
+        value: { html: '<p class="govuk-body">sarah.phillips@example.com</p>' },
+        actions: {
+            items: [
+            {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "contact details"
+            }
+            ]
+        }
+        },
+        {
+        key: { text: "Preferred contact" },
+        value: { html: '<p class="govuk-body">Mobile</p>' },
+        actions: {
+            items: [
+            {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "contact details"
+            }
+            ]
+        }
+        },
+        {
+        key: { text: "Emergency contact" },
+        value: {
+            html: '<p class="govuk-body">Claire Wigley<br>Relation: Sister<br>Tel. 01234 567 8910</p>'
+        },
+        actions: {
+            items: [
+            {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "contact details"
+            }
+            ]
+        }
+        }
+    ]
+    }) }}
+    </div>
+<div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% macro actionCard(title, description, href, linkText, variant='default', count=null) %}
+  {% set isEmphasised = variant == 'emphasised' %}
+
+  {% if isEmphasised %}
+    {% set cardClasses = "action-card action-card--emphasised" %}
+  {% else %}
+    {% set cardClasses = "action-card" %}
+  {% endif %}
+
+  <div class="{{ cardClasses }}">
+    <div class="action-card__header">
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-0">{{ title }}</h2>
+    </div>
+    <div class="action-card__content">
+      <p class="govuk-body">{{ description }}</p>
+      <a class="govuk-link" href="{{ href }}">
+        {{ linkText }}
+        {% if count %}
+          <span class="moj-notification-badge moj-notification-badge--blue">{{ count }}</span>
+        {% endif %}
+      </a>
+    </div>
+  </div>
+{% endmacro %}
