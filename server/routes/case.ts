@@ -25,5 +25,17 @@ export default function routes(): Router {
     })
   })
 
+  // TODO: add `:id` to route - View court information
+  get('/case/court-information', async (_req, res) => {
+    res.render('pages/case/court-information')
+  })
+
+  // TODO: add `:id` to route - View contact details
+  // TODO: need to verify if contact details should be linked to a case
+  // TODO: need to determine if the contact details should be in a different module
+  get('/case/contact-details', async (_req, res) => {
+    res.render('pages/case/contact-details')
+  })
+
   return router
 }
