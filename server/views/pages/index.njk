@@ -1,4 +1,6 @@
-{% extends "partials/layout.njk" %}
+{% extends "../layout/public.njk" %}
+{%- from "govuk/components/button/macro.njk" import govukButton %}
+{% from "components/support-box/macro.njk" import supportBox %}
 
 {% set pageTitle = applicationName + " - Home" %}
 {% set mainClasses = "app-container govuk-body" %}
@@ -34,7 +36,7 @@
 
       {{ govukButton({
         text: "Start now",
-        href: "#",
+        href: "case/select",
         isStartButton: true
       }) }}
 
@@ -42,17 +44,19 @@
         Before you start
       </h2>
 
-      <p>
+      <p class="govuk-body">
         You can also <a href="#">get victim support</a> information and guidance, and find your nearest police station.
       </p>
 
-      <p>
+      <p class="govuk-body">
         The online service is also <a href="#">available in Welsh (ar gael yn Gymraeg)</a>.
       </p>
 
-      <p>
+      <p class="govuk-body">
         You can’t register for this service if you’re in the UK illegally.
       </p>
+
+      {{ supportBox() }}
 
       <p class="govuk-body">Timestamp: {{ currentTime }}</p>
     </div>

@@ -14,7 +14,8 @@ import setUpWebRequestParsing from './middleware/setupRequestParsing'
 import setUpWebSecurity from './middleware/setUpWebSecurity'
 import setUpWebSession from './middleware/setUpWebSession'
 
-import routes from './routes'
+import indexRoutes from './routes/index'
+import caseRoutes from './routes/case'
 
 export default function createApp(): express.Application {
   const app = express()
@@ -33,7 +34,8 @@ export default function createApp(): express.Application {
 
   app.use(setUpCsrf())
 
-  app.use('/', routes)
+  app.use('/', indexRoutes())
+  app.use('/', caseRoutes())
 
   app.use((req, res, next) => next(createError(404, 'Not found')))
   app.use(errorHandler(process.env.NODE_ENV === 'production'))

@@ -1,11 +1,17 @@
-import { Router } from 'express'
+import { Router, type RequestHandler } from 'express'
+import asyncMiddleware from '../middleware/asyncMiddleware'
 
-const router = Router()
+export default function routes(): Router {
+  const router = Router()
 
-router.get('/', (_req, res) => {
-  res.render('pages/index', {
-    currentTime: new Date().toISOString(),
+  // Wrap all routes in async error handler
+  const get = (path: string | string[], handler: RequestHandler) => router.get(path, asyncMiddleware(handler))
+
+  get('/', async (req, res) => {
+    res.render('pages/index', {
+      currentTime: new Date().toISOString(),
+    })
   })
-})
 
-export default router
+  return router
+}

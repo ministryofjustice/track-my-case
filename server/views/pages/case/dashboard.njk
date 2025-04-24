@@ -1,0 +1,17 @@
+{% extends "layout/citizen-authenticated.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% from "components/support-box/macro.njk" import supportBox %}
+
+{% set pageTitle = applicationName + " - Case dashboard" %}
+{% set mainClasses = "app-container govuk-body" %}
+
+
+
+{% block content %}
+  <h1 class="govuk-heading-l">Your case dashboard</h1>
+
+  <p class="govuk-body">This is where you can view the progress and support options for your case.</p>
+
+  {{ supportBox() }}
+{% endblock %}
