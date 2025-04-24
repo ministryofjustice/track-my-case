@@ -51,3 +51,35 @@ A reusable card-style block used to highlight a call to action on pages such as 
   "emphasised"
 ) }}
 ```
+
+---
+
+## 🧩 `supportBox`
+
+A reusable visual container used to display contextual support messages, typically at the bottom of a content-heavy page.
+
+### Macro Signature
+
+```nunjucks
+{% macro supportBox(title, description, linkHref, linkText) %}
+```
+
+### Parameters
+
+| Parameter      | Type     | Required | Description                                  | Example                          |
+|----------------|----------|----------|----------------------------------------------|----------------------------------|
+| `title`        | `string` | ✅        | Main heading shown in the box                | `"Need more help?"`             |
+| `description`  | `string` | ✅        | Supporting body text                         | `"You can request a callback..."`|
+| `linkHref`     | `string` | ✅        | The link URL                                 | `"/support-request"`            |
+| `linkText`     | `string` | ✅        | Text for the link or button                  | `"Request support"`             |
+
+### Example
+
+```nunjucks
+{{ supportBox(
+  "Need more help?",
+  "To request a callback or additional support, click the button below.",
+  "/support-request",
+  "Request support"
+) }}
+```
