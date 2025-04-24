@@ -16,14 +16,14 @@ A reusable card-style block used to highlight a call to action on pages such as 
 
 ### Parameters
 
-| Parameter     | Type     | Required | Description                                                                 | Example                                 |
-|---------------|----------|----------|-----------------------------------------------------------------------------|-----------------------------------------|
-| `title`       | `string` | ✅        | The heading text for the card (bold)                                       | `"Manage documents"`                    |
-| `description` | `string` | ✅        | Supporting body text                                                        | `"View documents for this case..."`     |
-| `href`        | `string` | ✅        | The destination link URL                                                    | `"/documents"`                          |
-| `linkText`    | `string` | ✅        | The visible link or button label                                            | `"Manage documents"`                    |
-| `variant`     | `string` | ❌        | Optional variant: `"default"` or `"emphasised"` (for a blue card)          | `"emphasised"`                          |
-| `count`       | `number` | ❌        | Optional number shown in a badge next to the link                          | `1`                                     |
+| Parameter     | Type     | Required | Description                                                       | Example                             |
+| ------------- | -------- | -------- | ----------------------------------------------------------------- | ----------------------------------- |
+| `title`       | `string` | ✅       | The heading text for the card (bold)                              | `"Manage documents"`                |
+| `description` | `string` | ✅       | Supporting body text                                              | `"View documents for this case..."` |
+| `href`        | `string` | ✅       | The destination link URL                                          | `"/documents"`                      |
+| `linkText`    | `string` | ✅       | The visible link or button label                                  | `"Manage documents"`                |
+| `variant`     | `string` | ❌       | Optional variant: `"default"` or `"emphasised"` (for a blue card) | `"emphasised"`                      |
+| `count`       | `number` | ❌       | Optional number shown in a badge next to the link                 | `1`                                 |
 
 ### Examples
 
@@ -66,14 +66,14 @@ The `promoPanel` component is used to display highlighted informational or promo
 
 ### Parameters
 
-| Name        | Type     | Required | Description |
-|-------------|----------|----------|-------------|
-| `title`     | `string` | ✅       | Title of the panel |
-| `description` | `string` | ✅    | Descriptive text inside the panel |
-| `href`      | `string` | ❌       | Optional link URL |
-| `linkText`  | `string` | ❌       | Optional link label |
-| `image`     | `string` | ❌       | Optional image path. If provided, image appears beside the content in a two-column layout |
-| `variant`   | `string` | ❌       | Can be `"default"` or `"highlight"`. Adds a visual emphasis if set to `"highlight"` |
+| Name          | Type     | Required | Description                                                                               |
+| ------------- | -------- | -------- | ----------------------------------------------------------------------------------------- |
+| `title`       | `string` | ✅       | Title of the panel                                                                        |
+| `description` | `string` | ✅       | Descriptive text inside the panel                                                         |
+| `href`        | `string` | ❌       | Optional link URL                                                                         |
+| `linkText`    | `string` | ❌       | Optional link label                                                                       |
+| `image`       | `string` | ❌       | Optional image path. If provided, image appears beside the content in a two-column layout |
+| `variant`     | `string` | ❌       | Can be `"default"` or `"highlight"`. Adds a visual emphasis if set to `"highlight"`       |
 
 ### Behaviour
 
@@ -108,12 +108,12 @@ A reusable visual container used to display contextual support messages, typical
 
 ### Parameters
 
-| Parameter      | Type     | Required | Description                                  | Example                          |
-|----------------|----------|----------|----------------------------------------------|----------------------------------|
-| `title`        | `string` | ✅        | Main heading shown in the box                | `"Need more help?"`             |
-| `description`  | `string` | ✅        | Supporting body text                         | `"You can request a callback..."`|
-| `linkHref`     | `string` | ✅        | The link URL                                 | `"/support-request"`            |
-| `linkText`     | `string` | ✅        | Text for the link or button                  | `"Request support"`             |
+| Parameter     | Type     | Required | Description                   | Example                           |
+| ------------- | -------- | -------- | ----------------------------- | --------------------------------- |
+| `title`       | `string` | ✅       | Main heading shown in the box | `"Need more help?"`               |
+| `description` | `string` | ✅       | Supporting body text          | `"You can request a callback..."` |
+| `linkHref`    | `string` | ✅       | The link URL                  | `"/support-request"`              |
+| `linkText`    | `string` | ✅       | Text for the link or button   | `"Request support"`               |
 
 ### Example
 
