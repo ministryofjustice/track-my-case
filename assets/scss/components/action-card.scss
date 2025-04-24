@@ -23,19 +23,44 @@
     min-height: 150px; // ✅ Ensures uniformity even if body content is short
   }
 
+  
+  
   &--emphasised {
     background-color: #1d70b8;
     color: #ffffff;
 
     .action-card__header {
       background: #1d70b8;
-      border-bottom: 1px solid #144e8c;
+      border-bottom: none;
     }
 
-    a {
+    .action-card__header h2 {
+      color: #ffffff;
+      border-bottom: 3px solid #ffffff;
+      padding-bottom: 2px;
+      display: inline-block;
+      margin-bottom: 0;
+    }
+
+    .action-card__content p,
+    .action-card__content a {
       color: #ffffff;
     }
+
+    .govuk-link {
+      color: #ffffff;
+
+      &:link,
+      &:visited {
+        color: #ffffff;
+      }
+
+      &:hover {
+        color: #d2e2f1;
+      }
+    }
   }
+
 
   a .moj-notification-badge {
     margin-left: 0.3rem;
