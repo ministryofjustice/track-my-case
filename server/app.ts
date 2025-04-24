@@ -16,6 +16,7 @@ import setUpWebSession from './middleware/setUpWebSession'
 
 import indexRoutes from './routes/index'
 import caseRoutes from './routes/case'
+import publicRoutes from './routes/public'
 
 export default function createApp(): express.Application {
   const app = express()
@@ -36,6 +37,7 @@ export default function createApp(): express.Application {
 
   app.use('/', indexRoutes())
   app.use('/', caseRoutes())
+  app.use('/', publicRoutes())
 
   app.use((req, res, next) => next(createError(404, 'Not found')))
   app.use(errorHandler(process.env.NODE_ENV === 'production'))
