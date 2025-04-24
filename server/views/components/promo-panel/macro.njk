@@ -1,0 +1,43 @@
+{% macro promoPanel(title, description, href = null, linkText = null, image = null, variant = 'default') %}
+  {% if variant == 'highlight' %}
+    {% set panelClass = 'promo-panel promo-panel--highlight' %}
+  {% else %}
+    {% set panelClass = 'promo-panel' %}
+  {% endif %}
+
+  <div class="{{ panelClass }}">
+    {% if variant != 'highlight' %}
+      <div class="promo-panel__header">
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-0">{{ title }}</h2>
+      </div>
+    {% endif %}
+
+    <div class="govuk-grid-row promo-panel__body">
+      {% if image %}
+        <div class="govuk-grid-column-one-half promo-panel__image">
+          <img src="{{ image }}" alt="" class="promo-panel__image-content" />
+        </div>
+
+        <div class="govuk-grid-column-one-half promo-panel__content">
+          {% if variant == 'highlight' %}
+            <h2 class="govuk-heading-s">{{ title }}</h2>
+          {% endif %}
+          <p class="govuk-body">{{ description }}</p>
+          {% if href and linkText %}
+            <a class="govuk-link" href="{{ href }}">{{ linkText }}</a>
+          {% endif %}
+        </div>
+      {% else %}
+        <div class="govuk-grid-column-full promo-panel__content">
+          {% if variant == 'highlight' %}
+            <h2 class="govuk-heading-s">{{ title }}</h2>
+          {% endif %}
+          <p class="govuk-body">{{ description }}</p>
+          {% if href and linkText %}
+            <a class="govuk-link" href="{{ href }}">{{ linkText }}</a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endmacro %}

@@ -54,6 +54,48 @@ A reusable card-style block used to highlight a call to action on pages such as 
 
 ---
 
+## promoPanel
+
+The `promoPanel` component is used to display highlighted informational or promotional content, optionally with an image and call-to-action link.
+
+### Macro signature
+
+```nunjucks
+{% macro promoPanel(title, description, href = null, linkText = null, image = null, variant = 'default') %}
+```
+
+### Parameters
+
+| Name        | Type     | Required | Description |
+|-------------|----------|----------|-------------|
+| `title`     | `string` | ✅       | Title of the panel |
+| `description` | `string` | ✅    | Descriptive text inside the panel |
+| `href`      | `string` | ❌       | Optional link URL |
+| `linkText`  | `string` | ❌       | Optional link label |
+| `image`     | `string` | ❌       | Optional image path. If provided, image appears beside the content in a two-column layout |
+| `variant`   | `string` | ❌       | Can be `"default"` or `"highlight"`. Adds a visual emphasis if set to `"highlight"` |
+
+### Behaviour
+
+- If an image is provided, the layout will be split into two columns using GOV.UK grid classes (`.govuk-grid-column-one-half`).
+- If no image is provided, content will span the full width.
+- The `"highlight"` variant applies a different background and style, and positions the title in the body section.
+
+### Example usage
+
+```nunjucks
+{{ promoPanel(
+  "Need help understanding the process?",
+  "Learn what to expect after a hearing or decision and what your next steps might be.",
+  "/support-guidance",
+  "View guidance",
+  "/assets/images/<image-name>",
+  "highlight"
+) }}
+```
+
+---
+
 ## 🧩 `supportBox`
 
 A reusable visual container used to display contextual support messages, typically at the bottom of a content-heavy page.
