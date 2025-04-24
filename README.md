@@ -73,16 +73,48 @@ npm run lint-fix
 
 ```text
 .
-├── server/            # All application logic
-│   ├── views/         # Nunjucks templates
-│   ├── routes/        # Route handlers
-│   ├── middleware/    # Express middleware
-│   ├── utils/         # Reusable helpers
-├── assets/            # JS, SCSS, and static frontend assets
-├── dist/              # Compiled JS and assets (not committed)
+├── server/                  # All backend logic
+│   ├── app.ts               # Express app setup
+│   ├── routes/              # Route modules (e.g. index, case)
+│   ├── middleware/          # Express middlewares (e.g. async, error handling)
+│   ├── views/               # Nunjucks templates
+│   │   ├── layout/               # Base layouts (public, citizen-authenticated, etc.)
+│   │   ├── pages/                # Page templates (e.g. dashboard, case selection)
+│   │   └── components/           # UI macro components (e.g. actionCard)
+│   └── utils/               # Utility helpers
+│
+├── assets/                 # SCSS, JS and static assets
+│   ├── scss/               # Stylesheets (GOV.UK + custom)
+│   └── js/                 # JavaScript for frontend interactions
+│
+├── docs/                   # Internal project documentation
+│   ├── views-structure.md
+│   ├── components.md
+│   ├── running-locally.md
+│   └── known-limitations.md
+│
+├── dist/                   # Compiled assets and templates (not committed)
+└── README.md
 ```
 
-➡️ See [docs/views-structure.md](docs/views-structure.md) for full views layout.
+## 📘 Documentation
+
+- [🧩 Components](docs/components.md): reusable UI macros (e.g. `actionCard`)
+- [📐 Views structure](docs/views-structure.md): Nunjucks layout and organization
+- [🚀 Running locally](docs/running-locally.md): how to start the app
+- [⚠️ Known limitations](docs/known-limitations.md): areas for future improvement
+
+---
+
+## 🧩 UI Components
+
+Reusable macro-based components live in `server/views/components`.
+
+Each macro (e.g. `actionCard`) is:
+
+- Defined in `macro.njk`
+- Accompanied by custom SCSS in `assets/scss/components/`
+- Documented in [`docs/components.md`](docs/components.md)
 
 ---
 
