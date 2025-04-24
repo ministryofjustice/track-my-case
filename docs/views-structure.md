@@ -7,7 +7,7 @@ views/
 ├── layout/
 │   ├── public.njk
 │   ├── citizen-authenticated.njk        # place holder for OneLogin style layour
-│   └── staff-authenticated.njk          # proposed - just a placeholder  
+│   └── staff-authenticated.njk          # proposed - just a placeholder
 │
 ├── partials/
 │   ├── header.njk
