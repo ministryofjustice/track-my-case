@@ -34,9 +34,11 @@
       </ul>
       <p class="govuk-body">In order to get updates about a case, you will need to provide your preferred contact details.</p>
 
+      <h1 class="govuk-heading-l">{{ serviceName | safe }}</h1>
+
       {{ govukButton({
-        text: "Start now",
-        href: "case/select",
+        text: "Make a request for authentication",
+        href: "/oidc/login",
         isStartButton: true
       }) }}
 
@@ -61,7 +63,7 @@
       <p class="govuk-body">Timestamp: {{ currentTime }}</p>
     </div>
     <div class="govuk-grid-column-one-third">
-    
+
       <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
         <h2 class="govuk-heading-m" id="subsection-title">
           Related information

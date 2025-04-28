@@ -2,17 +2,28 @@
   "extends": "@tsconfig/node22/tsconfig.json",
   "compileOnSave": true,
   "compilerOptions": {
+    "rootDir": "./server",
     "outDir": "./dist",
     "sourceMap": true,
-    "noEmit": false,
-    "allowJs": false,
-    "strict": false,
+    // Treat files as modules even if it doesn't use import/export
+    "moduleDetection": "force",
+    // Allow JSON modules to be imported
     "resolveJsonModule": true,
+    // Allow JS files to be imported from TS and vice versa
+    "allowJs": false, // ToDo: check, as I see true in example
+    // Use correct ESM import behavior
+    "esModuleInterop": true,
+    // Disallow features that require cross-file awareness
+    "isolatedModules": true,
+    "target": "ES2022",
+    "noEmit": false,
+    "strict": false,
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "experimentalDecorators": true,
-    "typeRoots": ["./server/@types", "./node_modules/@types"]
+    "typeRoots": ["@types", "node_modules/@types"],
+    "lib": ["es2020", "dom"]
   },
   "exclude": ["node_modules", "assets/**/*.js", "dist", "esbuild", "eslint.config.mjs"],
-  "include": ["**/*.js", "**/*.ts"]
+  "include": ["server/**/*.js", "server/**/*.ts"]
 }

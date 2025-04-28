@@ -23,9 +23,15 @@
         items: radioItems
         }) }}
 
-    {{ govukButton({ 
+    {{ govukButton({
         text: "Continue",
         href: "dashboard" }) }}
 
     {{ supportBox() }}
+
+  {% if resultData.userinfo %}
+    <h2 class="govuk-heading-m">User information</h2>
+    <pre><code>{{ resultData.userinfo | dump(2) }}</code></pre>
+  {% endif %}
+
 {% endblock %}

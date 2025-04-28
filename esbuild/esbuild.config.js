@@ -74,7 +74,7 @@ const main = () => {
   /** @type {string | null} */
   let serverEnv = null
   if (args.includes('--dev-server')) serverEnv = '.env'
-  if (args.includes('--dev-test-server')) serverEnv = 'feature.env'
+  if (args.includes('--dev-test-server')) serverEnv = '.env.victimpathfinder'
 
   if (serverEnv) {
     /** @type {childProcess.ChildProcess | null} */
