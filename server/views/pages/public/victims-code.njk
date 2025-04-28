@@ -1,11 +1,40 @@
 {% extends "layout/public.njk" %}
+
+{% from "components/support-box/macro.njk" import supportBox %}
+
 {% set pageTitle = applicationName + " - The Victims Code" %}
 {% set mainClasses = "app-container govuk-body" %}
 
 {% block content %}
-  <h1 class="govuk-heading-xl">The Victims Code</h1>
-  <p class="govuk-body">
-    The Victims' Code details your rights as a crime victim, including information about the criminal justice process and available support.
-  </p>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">The Victims Code</h1>
 
+    <p class="govuk-body">
+      The Victims’ Code outlines your rights as a victim of crime, including the right to be informed about the criminal justice process and the support available to you.
+    </p>
+
+    <div class="govuk-summary-card highlight">
+      <div class="govuk-summary-card__content govuk-!-padding-4">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            {% include './includes/victims-code.njk' %}
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <p class="govuk-body">
+      <a href="https://www.gov.uk/government/publications/the-code-of-practice-for-victims-of-crime/code-of-practice-for-victims-of-crime-in-england-and-wales-victims-code" target="_blank" rel="noopener noreferrer" title="VS Charity">
+        Find out more about the Victims Code (opens in a new tab)
+      </a>
+    </p>
+
+    {{ supportBox() }}
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    {# Sidebar column intentionally left blank #}
+  </div>
+</div>
 {% endblock %}
