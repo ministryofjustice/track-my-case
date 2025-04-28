@@ -1,0 +1,123 @@
+{% extends "layout/citizen-authenticated.njk" %}
+
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "components/support-box/macro.njk" import supportBox %}
+
+{% set pageTitle = applicationName + " - Your hearings" %}
+{% set mainClasses = "app-container govuk-body" %}
+
+{% block content %}
+  <div class="govuk-grid-row govuk-!-margin-top-6">
+    <div class="govuk-grid-column-two-thirds">
+      
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-2">Your hearings</h1>
+
+    <p class="govuk-body">
+        This page gives you details about your hearing dates, location, your rights &amp; responsibilities at the hearing
+        and who to contact with questions.
+    </p>
+
+      {# --- Hearing Details Card --- #}
+      <div class="govuk-summary-card govuk-!-margin-bottom-6">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Hearing details
+            <p class="govuk-body-s">
+                See details about your next hearing, when and where it will take place
+            </p>
+          </h2>
+        </div>
+
+        <div class="govuk-summary-card__content">
+
+          {{ govukWarningText({
+            text: "As a witness this is a hearing you must attend to give evidence",
+            iconFallbackText: "Warning"
+          }) }}
+
+          <div class="govuk-!-margin-top-4 govuk-!-margin-bottom-4">
+            {{ govukCheckboxes({
+              idPrefix: "confirm-attendance",
+              name: "confirm-attendance",
+              items: [
+                {
+                  value: "yes",
+                  text: "Please click in the box to confirm you can attend. If you are unable to attend, please use the contact details below to discuss with the police."
+                }
+              ]
+            }) }}
+          </div>
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: { text: "Type of hearing" },
+                value: {
+                  html: 'First Hearing<br><a class="govuk-link" href="#">More information about this hearing type</a>'
+                }
+              },
+              {
+                key: { text: "Date and time" },
+                value: { text: "01 November 2025 at 10:30am" }
+              },
+              {
+                key: { text: "Location" },
+                value: {
+                  html: "Colchester Magistrates' Court<br>Courtroom 04<br>St Botolphs Circus<br>Magdelen Street<br>Colchester<br>CO2 7EF"
+                }
+              }
+            ]
+          }) }}
+
+        </div>
+      </div>
+
+      {# --- Contact Details Card --- #}
+      <div class="govuk-summary-card govuk-!-margin-bottom-6">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Contact details</h2>
+          <span class="govuk-summary-card__actions">
+            If you have questions or need to speak to someone, please use these contact details
+          </span>
+        </div>
+
+        <div class="govuk-summary-card__content">
+
+          <p class="govuk-body">
+            <a class="govuk-link" href="#">
+              Use the local police force online contact tool
+            </a>
+          </p>
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: { text: "Who you can speak to" },
+                value: { text: "Jane Smith" }
+              },
+              {
+                key: { text: "Telephone" },
+                value: { html: "01245 491497<br>between 10am and 5pm" }
+              },
+              {
+                key: { text: "Email" },
+                value: { text: "witness.care@essex.police.uk" }
+              }
+            ]
+          }) }}
+
+        </div>
+      </div>
+
+      {{ supportBox() }}
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      {# Sidebar intentionally left blank #}
+    </div>
+  </div>
+
+{% endblock %}
