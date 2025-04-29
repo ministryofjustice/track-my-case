@@ -1,3 +1,22 @@
 .govuk-main-wrapper {
   min-height: 600px;
 }
+
+.govuk-summary-card.highlight {
+    background: #1d70b8;
+
+}
+
+.govuk-summary-card.highlight h2,
+.govuk-summary-card.highlight h3,
+.govuk-summary-card.highlight p,
+.govuk-summary-card.highlight ol,
+.govuk-summary-card.highlight li,
+.govuk-summary-card.highlight a {
+    color: #ffffff;
+}
+
+.govuk-summary-card.highlight h2 span {
+    border-bottom: solid #ffffff 5px;
+
+}
