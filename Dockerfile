@@ -130,11 +130,12 @@ ARG IDENTITY_SUPPORTED
 
 COPY package*.json ./
 
-RUN which node && which npm && node -v && npm -v
-RUN ls -l package.json && cat package.json
+RUN which node && node -v
+RUN which npm && npm -v
 
 # Prevent Cypress from installing in CI-style templates
 ENV CYPRESS_INSTALL_BINARY=0
+ENV npm_config_ignore_scripts=true
 RUN npm ci --no-audit
 
 COPY . .
@@ -182,8 +183,5 @@ ENV REQUIRE_JAR=$REQUIRE_JAR
 ENV IDENTITY_SUPPORTED=$IDENTITY_SUPPORTED
 
 USER 2000
-
-RUN echo '==>> this is env:'
-RUN echo $test
 
 CMD ["npm", "start"]
