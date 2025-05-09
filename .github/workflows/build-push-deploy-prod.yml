@@ -3,7 +3,9 @@ name: CI/CD prod
 on:
   workflow_dispatch:
 permissions: {}
-concurrency: prod
+concurrency:
+  group: prod
+  cancel-in-progress: false  # Optional — don’t cancel ongoing runs, just queue new ones
 
 jobs:
   build-push-prod:
