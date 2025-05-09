@@ -42,25 +42,25 @@ jobs:
       - name: Build
         env:
           NEW_TAG_V: ${{ steps.set-version-tag-output.outputs.new_tag }}
-          NODE_ENV: ${{ secrets.NODE_ENV }}
-          NODE_PORT: ${{ secrets.NODE_PORT }}
-          SERVICE_URL: ${{ secrets.SERVICE_URL }}
+          NODE_ENV: ${{ vars.NODE_ENV }}
+          NODE_PORT: ${{ vars.NODE_PORT }}
+          SERVICE_URL: ${{ vars.SERVICE_URL }}
           OIDC_CLIENT_ID: ${{ secrets.OIDC_CLIENT_ID }}
           OIDC_PRIVATE_KEY: ${{ secrets.OIDC_PRIVATE_KEY }}
-          OIDC_ISSUER: ${{ secrets.OIDC_ISSUER }}
-          IV_DID_URI: ${{ secrets.IV_DID_URI }}
-          IV_ISSUER: ${{ secrets.IV_ISSUER }}
-          OIDC_TOKEN_AUTH_METHOD: ${{ secrets.OIDC_TOKEN_AUTH_METHOD }}
-          OIDC_SCOPES: ${{ secrets.OIDC_SCOPES }}
-          OIDC_CLAIMS: ${{ secrets.OIDC_CLAIMS }}
-          OIDC_AUTHORIZE_REDIRECT_URL: ${{ secrets.OIDC_AUTHORIZE_REDIRECT_URL }}
-          OIDC_POST_LOGOUT_REDIRECT_URL: ${{ secrets.OIDC_POST_LOGOUT_REDIRECT_URL }}
-          AUTH_VECTOR_OF_TRUST: ${{ secrets.AUTH_VECTOR_OF_TRUST }}
-          IDENTITY_VECTOR_OF_TRUST: ${{ secrets.IDENTITY_VECTOR_OF_TRUST }}
-          UI_LOCALES: ${{ secrets.UI_LOCALES }}
-          IMMEDIATE_REDIRECT: ${{ secrets.IMMEDIATE_REDIRECT }}
-          REQUIRE_JAR: ${{ secrets.REQUIRE_JAR }}
-          IDENTITY_SUPPORTED: ${{ secrets.IDENTITY_SUPPORTED }}
+          OIDC_ISSUER: ${{ vars.OIDC_ISSUER }}
+          IV_DID_URI: ${{ vars.IV_DID_URI }}
+          IV_ISSUER: ${{ vars.IV_ISSUER }}
+          OIDC_TOKEN_AUTH_METHOD: ${{ vars.OIDC_TOKEN_AUTH_METHOD }}
+          OIDC_SCOPES: ${{ vars.OIDC_SCOPES }}
+          OIDC_CLAIMS: ${{ vars.OIDC_CLAIMS }}
+          OIDC_AUTHORIZE_REDIRECT_URL: ${{ vars.OIDC_AUTHORIZE_REDIRECT_URL }}
+          OIDC_POST_LOGOUT_REDIRECT_URL: ${{ vars.OIDC_POST_LOGOUT_REDIRECT_URL }}
+          AUTH_VECTOR_OF_TRUST: ${{ vars.AUTH_VECTOR_OF_TRUST }}
+          IDENTITY_VECTOR_OF_TRUST: ${{ vars.IDENTITY_VECTOR_OF_TRUST }}
+          UI_LOCALES: ${{ vars.UI_LOCALES }}
+          IMMEDIATE_REDIRECT: ${{ vars.IMMEDIATE_REDIRECT }}
+          REQUIRE_JAR: ${{ vars.REQUIRE_JAR }}
+          IDENTITY_SUPPORTED: ${{ vars.IDENTITY_SUPPORTED }}
         shell: bash
         run: |
           docker build . \
