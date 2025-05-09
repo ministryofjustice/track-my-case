@@ -128,41 +128,11 @@ ARG IMMEDIATE_REDIRECT
 ARG REQUIRE_JAR
 ARG IDENTITY_SUPPORTED
 
-COPY package*.json ./
-
-RUN which node && node -v
-RUN which npm && npm -v
-
-# Prevent Cypress from installing in CI-style templates
-ENV CYPRESS_INSTALL_BINARY=0
-ENV npm_config_ignore_scripts=true
-RUN npm ci --no-audit
-
-COPY . .
-RUN npm run build
-
-# Prune dev dependencies
-RUN npm prune --omit=dev --no-audit
-
-# ------------------------------------------------------------------------------
-# Stage 3: Runtime
-# ------------------------------------------------------------------------------
-
-FROM base
-
-WORKDIR /app
-
-# Copy only what's needed for runtime
-COPY --from=build --chown=appuser:appgroup /app/package*.json ./
-COPY --from=build --chown=appuser:appgroup /app/node_modules ./node_modules
-COPY --from=build --chown=appuser:appgroup /app/dist ./dist
-
-EXPOSE 9999
-
 ENV BUILD_NUMBER=$BUILD_NUMBER
 ENV GIT_REF=$GIT_REF
 ENV GIT_BRANCH=$GIT_BRANCH
-ENV NODE_ENV=$NODE_ENV
+# Setting NODE_ENV as development to get all dependency right, best practise
+ENV NODE_ENV=development
 ENV NODE_PORT=$NODE_PORT
 ENV SERVICE_URL=$SERVICE_URL
 ENV OIDC_CLIENT_ID=$OIDC_CLIENT_ID
@@ -181,6 +151,40 @@ ENV UI_LOCALES=$UI_LOCALES
 ENV IMMEDIATE_REDIRECT=$IMMEDIATE_REDIRECT
 ENV REQUIRE_JAR=$REQUIRE_JAR
 ENV IDENTITY_SUPPORTED=$IDENTITY_SUPPORTED
+
+COPY package*.json ./
+
+RUN which node && node -v
+RUN which npm && npm -v
+
+# Prevent Cypress from installing in CI-style templates
+ENV CYPRESS_INSTALL_BINARY=0
+ENV npm_config_ignore_scripts=true
+RUN npm ci --no-audit
+
+COPY . .
+RUN npm run build
+
+# Prune dev dependencies
+RUN npm prune --omit=dev --no-audit
+
+# Resetting NODE_ENV to production
+ENV NODE_ENV=production
+
+# ------------------------------------------------------------------------------
+# Stage 3: Runtime
+# ------------------------------------------------------------------------------
+
+FROM base
+
+WORKDIR /app
+
+# Copy only what's needed for runtime
+COPY --from=build --chown=appuser:appgroup /app/package*.json ./
+COPY --from=build --chown=appuser:appgroup /app/node_modules ./node_modules
+COPY --from=build --chown=appuser:appgroup /app/dist ./dist
+
+EXPOSE 9999
 
 USER 2000
 
