@@ -1,4 +1,5 @@
 dist
+docs
 kubectl_deploy*
 helm_deploy*
 README.md
@@ -6,7 +7,9 @@ node_modules
 npm-debug.log
 .*
 **/*.test.js
+**/*.test.ts
 scss-report.txt
 eslint-report.html
 test-report.html
+test_results
 docker-compose*

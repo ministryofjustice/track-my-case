@@ -130,6 +130,9 @@ ARG IDENTITY_SUPPORTED
 
 COPY package*.json ./
 
+RUN which node && which npm && node -v && npm -v
+RUN ls -l package.json && cat package.json
+
 # Prevent Cypress from installing in CI-style templates
 ENV CYPRESS_INSTALL_BINARY=0
 RUN npm ci --no-audit
