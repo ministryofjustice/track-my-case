@@ -17,13 +17,14 @@ import setUpWebSession from './middleware/setUpWebSession'
 import indexRoutes from './routes/index'
 import caseRoutes from './routes/case'
 import publicRoutes from './routes/public'
+import healthRoutes from './routes/health'
 
 export default function createApp(): express.Application {
   const app = express()
 
   app.set('json spaces', 2)
   app.set('trust proxy', true)
-  app.set('port', process.env.PORT || 9999)
+  app.set('port', process.env.HOST_PORT || 9999)
 
   // TODO: setup health checks
 
@@ -36,6 +37,7 @@ export default function createApp(): express.Application {
   app.use(setUpCsrf())
 
   app.use('/', indexRoutes())
+  app.use('/', healthRoutes())
   app.use('/', caseRoutes())
   app.use('/', publicRoutes())
 

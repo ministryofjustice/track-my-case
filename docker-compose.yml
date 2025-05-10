@@ -7,7 +7,8 @@ services:
         GIT_REF: 'a1b2c3'
         GIT_BRANCH: main
     ports:
-      - '9999:9999'
+      # Default HOST_PORT to 9999 for data-analytics platform
+      - '${HOST_PORT:-9999}:${CONTAINER_PORT}'
     environment:
       - PRODUCT_ID=UNASSIGNED
       - REDIS_ENABLED=false

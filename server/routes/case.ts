@@ -2,6 +2,8 @@
 import { Router, type RequestHandler } from 'express'
 import asyncMiddleware from '../middleware/asyncMiddleware'
 
+import courtInfoHealthCheck from '../controllers/courtInfoController'
+
 export default function routes(): Router {
   const router = Router()
 
@@ -43,5 +45,6 @@ export default function routes(): Router {
     res.render('pages/case/contact-details')
   })
 
+  get('/case/court-info-health', courtInfoHealthCheck)
   return router
 }
