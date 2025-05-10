@@ -1,5 +1,5 @@
 services:
-  app:
+  track-my-case-ui:
     build:
       context: .
       args:
@@ -8,7 +8,7 @@ services:
         GIT_BRANCH: main
     ports:
       # Default HOST_PORT to 9999 for data-analytics platform
-      - '${HOST_PORT:-9999}:${CONTAINER_PORT}'
+      - '3000:9999'
     environment:
       - PRODUCT_ID=UNASSIGNED
       - REDIS_ENABLED=false
@@ -16,3 +16,12 @@ services:
       # These will need to match new creds in the seed auth service auth
       - SESSION_SECRET=somesecretvalue
       - NO_HTTPS=true
+      - TRACK_MY_CASE_API_URL=http://track-my-case-api:9999
+      - TRACK_MY_CASE_API_ENABLED=true
+
+  track-my-case-api:
+    build:
+      context: ../stg-track-my-case-service
+    container_name: track-my-case-api
+    ports:
+      - '9999:9999'
