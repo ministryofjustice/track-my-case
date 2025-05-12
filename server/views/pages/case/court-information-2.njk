@@ -12,7 +12,7 @@
 {% block content %}
   <div class="govuk-grid-row govuk-!-margin-top-6">
     <div class="govuk-grid-column-two-thirds">
-      
+
     <h1 class="govuk-heading-l govuk-!-margin-bottom-2">Your hearings</h1>
 
     <p class="govuk-body">
@@ -20,6 +20,31 @@
         and who to contact with questions.
     </p>
 
+  {% if hearingData.length %}
+    {% for entry in hearingData %}
+      {% for hearing in entry.hearings %}
+        <div class="hearing">
+          <h2>Hearing {{ hearing.hearingId }}</h2>
+          <p><strong>Type:</strong> {{ hearing.hearingType }}</p>
+          <p><strong>Description:</strong> {{ hearing.hearingDescription }}</p>
+          <p><strong>Notes:</strong> {{ hearing.listNote }}</p>
+
+          <ul>
+            {% for sitting in hearing.courtSittings %}
+              <li>
+                <strong>Start:</strong> {{ sitting.sittingStart }}<br>
+                <strong>End:</strong> {{ sitting.sittingEnd }}<br>
+                <strong>Judiciary ID:</strong> {{ sitting.judiciaryid }}<br>
+                <strong>Court House:</strong> {{ sitting.courtHouse }}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    {% endfor %}
+  {% else %}
+    <p>No hearings scheduled.</p>
+  {% endif %}
       {# --- Hearing Details Card --- #}
       <div class="govuk-summary-card govuk-!-margin-bottom-6">
         <div class="govuk-summary-card__title-wrapper">
