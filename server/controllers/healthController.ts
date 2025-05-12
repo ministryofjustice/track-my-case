@@ -1,39 +1,23 @@
 import { Request, Response } from 'express'
-import superagent from 'superagent'
+import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
+import HealthService from '../services/healthService'
 import config from '../config'
-import getAppInfo from '../applicationInfo'
-import logger from '../../logger'
+
+const apiClient = new TrackMyCaseApiClient()
+const service = new HealthService(apiClient)
 
 const healthCheck = async (req: Request, res: Response): Promise<void> => {
-  const application = getAppInfo()
-  const { trackMyCaseApi } = config.apis
-
-  if (!trackMyCaseApi.enabled) {
+  if (!config.apis.trackMyCaseApi.enabled) {
+    const application = await service.check() // still gets appInfo
     res.status(503).json({
-      status: 'DOWN',
-      application,
+      ...application,
       reason: 'trackMyCaseApi is disabled in configuration',
     })
     return
   }
 
-  try {
-    const response = await superagent.get(`${trackMyCaseApi.url}/health`)
-    const upstream = response.body
-
-    res.status(200).json({
-      status: 'UP',
-      application,
-      upstream,
-    })
-  } catch (err) {
-    logger.error(err)
-    res.status(503).json({
-      status: 'DOWN',
-      application,
-      error: err.message || 'Unknown error contacting trackMyCaseApi',
-    })
-  }
+  const result = await service.check()
+  res.status(result.status === 'UP' ? 200 : 503).json(result)
 }
 
 export default healthCheck
