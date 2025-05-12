@@ -1,31 +1,22 @@
 import nock from 'nock'
 import TrackMyCaseApiClient from './trackMyCaseApiClient'
 import config from '../config'
-import { UpstreamHealth } from '../interfaces/upstreamHealth'
 
 describe('TrackMyCaseApiClient', () => {
-  const baseUrl = config.apis.trackMyCaseApi.url
+  const baseUrl = config.apis.trackMyCaseApi.url.replace(/\/$/, '')
   const client = new TrackMyCaseApiClient()
 
   afterEach(() => {
     nock.cleanAll()
   })
 
-  it('returns health status from upstream', async () => {
-    const mockResponse: UpstreamHealth = {
-      status: 'UP',
-      version: '1.2.3',
-    }
+  it('calls GET with object-style path and returns parsed JSON', async () => {
+    const path = '/test/endpoint'
+    const mockResponse = { message: 'hello' }
 
-    nock(baseUrl).get('/health').reply(200, mockResponse)
+    nock(baseUrl).get(path).reply(200, mockResponse)
 
-    const result = await client.getHealth()
+    const result = await client.get<typeof mockResponse>({ path })
     expect(result).toEqual(mockResponse)
-  })
-
-  it('throws an error on non-200 response', async () => {
-    nock(baseUrl).get('/health').reply(503, { status: 'DOWN' })
-
-    await expect(client.getHealth()).rejects.toThrow()
   })
 })
