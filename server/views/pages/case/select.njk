@@ -29,9 +29,9 @@
 
     {{ supportBox() }}
 
-  {% if resultData.userinfo %}
+  {% if user.userinfo %}
     <h2 class="govuk-heading-m">User information</h2>
-    <pre><code>{{ resultData.userinfo | dump(2) }}</code></pre>
+    <pre><code>{{ user.userinfo | dump(2) }}</code></pre>
   {% endif %}
 
 {% endblock %}
