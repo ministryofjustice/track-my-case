@@ -1,4 +1,6 @@
 import express from 'express'
+import session from 'express-session'
+import cookieParser from 'cookie-parser'
 
 import createError from 'http-errors'
 
@@ -8,7 +10,6 @@ import errorHandler from './errorHandler'
 import setUpCsrf from './middleware/setUpCsrf'
 
 // TODO: set up HealthCheck
-
 import setUpStaticResources from './middleware/setUpStaticResources'
 import setUpWebRequestParsing from './middleware/setupRequestParsing'
 import setUpWebSecurity from './middleware/setUpWebSecurity'
@@ -16,6 +17,7 @@ import setUpWebSession from './middleware/setUpWebSession'
 
 import indexRoutes from './routes/index'
 import caseRoutes from './routes/case'
+import oneLoginRoutes from './routes/oneLogin'
 import publicRoutes from './routes/public'
 import healthRoutes from './routes/health'
 
@@ -24,7 +26,7 @@ export default function createApp(): express.Application {
 
   app.set('json spaces', 2)
   app.set('trust proxy', true)
-  app.set('port', process.env.HOST_PORT || 9999)
+  app.set('port', process.env.NODE_PORT || 9999)
 
   // TODO: setup health checks
 
@@ -36,9 +38,33 @@ export default function createApp(): express.Application {
 
   app.use(setUpCsrf())
 
+  // Configure body-parser
+  app.use(express.json())
+  app.use(express.urlencoded({ extended: true }))
+
+  // Configure parsing cookies - required for storing nonce in authentication
+  app.use(cookieParser())
+
+  // Set up a session to track whether the user is logged in
+  app.use(
+    session({
+      name: 'simple-session',
+      secret: 'this-is-a-secret',
+      cookie: {
+        maxAge: 1000 * 120 * 60, // 2 hours
+        secure: false,
+        httpOnly: true,
+      },
+      resave: false,
+      saveUninitialized: true,
+    }),
+  )
+
   app.use('/', indexRoutes())
   app.use('/', healthRoutes())
   app.use('/', caseRoutes())
+  // app.use('/', oneLoginRoutes(app))
+  oneLoginRoutes(app)
   app.use('/', publicRoutes())
 
   app.use((req, res, next) => next(createError(404, 'Not found')))

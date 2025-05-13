@@ -1,1 +1,1 @@
-NODE_ENV=dev && node_modules/.bin/lint-staged && npm run typecheck && npm test && npm run security_audit
+NODE_ENV=development && node_modules/.bin/lint-staged && npm run typecheck && npm test && npm run security_audit

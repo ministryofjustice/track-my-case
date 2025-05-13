@@ -1,11 +1,34 @@
 {%- from "govuk/components/header/macro.njk" import govukHeader -%}
+{% from "header/service-header.njk" import govukOneLoginServiceHeader %}
 
-{{ govukHeader({
-  homepageUrl: "/"
-}) }}
+{% if authenticated %}
+  {{ govukOneLoginServiceHeader ({
+    serviceName: serviceName,
+    oneLoginLink: oneLoginLink,
+    homepageLink: homepageLink,
+    signOutLink: signOutLink,
+    navigationItems:[{
+      href: '/signed-in',
+      text: 'Home',
+      id: 'home'
+    },{
+      href: '/case/select',
+      text: 'Case selector',
+      id: 'case-selector'
+    }]
+  }) }}
+{% else %}
+  {{ govukHeader ({
+    serviceName: serviceName,
+    homepageUrl: homepageUrl,
+    serviceUrl: serviceUrl
+  }) }}
+{% endif %}
+
+{#<h3>Is authenticated [{{ authenticated }}]</h3>#}
 
 {# TODO: Check what components we can use from 5.9.0 #}
-{# 
+{#
 ,
   navigation: {
     label: "Account navigation",
