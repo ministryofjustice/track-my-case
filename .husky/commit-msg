@@ -1,1 +1,9 @@
-npx --no -- commitlint --edit "$1"
+#!/bin/sh
+FILE="${1:-.git/COMMIT_EDITMSG}"
+
+if [ ! -f "$FILE" ]; then
+  echo "❌ commitlint: file '$FILE' not found"
+  exit 1
+fi
+
+npx --no -- commitlint --edit "$FILE"

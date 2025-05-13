@@ -1,0 +1,19 @@
+{% extends "layout/citizen-authenticated.njk" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block content %}
+  <div class="govuk-width-container ">
+    <main class="govuk-main-wrapper">
+
+      <h1 class="govuk-heading-l">You are logged out from the {{ serviceName }}</h1>
+
+      {{ govukButton({
+        text: "Back to service",
+        href: "/",
+        isStartButton: false
+      }) }}
+
+    </main>
+  </div>
+{% endblock %}

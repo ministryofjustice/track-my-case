@@ -1,3 +1,5 @@
+@import "govuk-frontend/dist/govuk/helpers/index";
+
 .hmpps-header {
   @include govuk-responsive-padding(3, 'top');
   @include govuk-responsive-padding(3, 'bottom');

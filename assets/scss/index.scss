@@ -10,4 +10,7 @@ $govuk-page-width: $moj-page-width;
 @import "./components/action-card";
 @import './components/header-bar';
 @import './components/promo-panel';
+@import './components/account.css';
+@import './components/service-header.css';
 @import './overrides/local';
+
