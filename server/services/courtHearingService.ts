@@ -12,11 +12,13 @@ export default class CourtHearingService {
     return this.apiClient.get<CourtSchedule>({ path })
   }
 
-  async getCourtInformation(caseId: string = '12345'): Promise<CourtSchedule> {
-    const path = resolvePath(paths.CASES.INFO, { caseId }) // temporarily use hardcoded value
-    const response = await this.apiClient.get<CourtSchedule>({ path })
+  async getCourtInformation(caseId: string = '12345'): Promise<CourtSchedule[]> {
+    const path = resolvePath(paths.CASES.INFO, { caseId })
+    const response = await this.apiClient.get<CourtSchedule[]>({ path })
 
-    logger.debug('CourtHearingService.getCourtInformation: successful response', { courtSchedule: response })
+    logger.debug('CourtHearingService.getCourtInformation: successful response', {
+      courtSchedule: response,
+    })
 
     return response
   }

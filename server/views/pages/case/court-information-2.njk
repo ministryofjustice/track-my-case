@@ -20,30 +20,58 @@
         and who to contact with questions.
     </p>
 
-  {% if hearingData.length %}
-    {% for entry in hearingData %}
-      {% for hearing in entry.hearings %}
-        <div class="hearing">
-          <h2>Hearing {{ hearing.hearingId }}</h2>
-          <p><strong>Type:</strong> {{ hearing.hearingType }}</p>
-          <p><strong>Description:</strong> {{ hearing.hearingDescription }}</p>
-          <p><strong>Notes:</strong> {{ hearing.listNote }}</p>
+  {% if hearingData %}
+    <section>
+      <h2 class="govuk-heading-m">Court House</h2>
+      <p><strong>Name:</strong> {{ hearingData.courtHouse.courtHouseName }}</p>
+      <p><strong>Type:</strong> {{ hearingData.courtHouse.courtHouseType }}</p>
+      <p><strong>Description:</strong> {{ hearingData.courtHouse.courtHouseDescription }}</p>
+    </section>
 
-          <ul>
-            {% for sitting in hearing.courtSittings %}
-              <li>
-                <strong>Start:</strong> {{ sitting.sittingStart }}<br>
-                <strong>End:</strong> {{ sitting.sittingEnd }}<br>
-                <strong>Judiciary ID:</strong> {{ sitting.judiciaryid }}<br>
-                <strong>Court House:</strong> {{ sitting.courtHouse }}
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-      {% endfor %}
-    {% endfor %}
+    {% if hearingData.hearings.length %}
+      <section>
+        <h2 class="govuk-heading-m">Scheduled Hearings</h2>
+
+        {% for hearing in hearingData.hearings %}
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h3 class="govuk-summary-card__title">Hearing ID: {{ hearing.hearingId }}</h3>
+            </div>
+            <div class="govuk-summary-card__content">
+              <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Type</dt>
+                  <dd class="govuk-summary-list__value">{{ hearing.hearingType }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Description</dt>
+                  <dd class="govuk-summary-list__value">{{ hearing.hearingDescription }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">Notes</dt>
+                  <dd class="govuk-summary-list__value">{{ hearing.listNote }}</dd>
+                </div>
+              </dl>
+
+              <h4 class="govuk-heading-s">Court Sittings</h4>
+              <ul class="govuk-list govuk-list--bullet">
+                {% for sitting in hearing.courtSittings %}
+                  <li>
+                    <strong>Start:</strong> {{ sitting.sittingStart }}<br>
+                    <strong>End:</strong> {{ sitting.sittingEnd }}<br>
+                    <strong>Judge ID:</strong> {{ sitting.judiciaryid }}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+    {% else %}
+      <p>No hearings scheduled for this case.</p>
+    {% endif %}
   {% else %}
-    <p>No hearings scheduled.</p>
+    <p>No court information available for this case.</p>
   {% endif %}
       {# --- Hearing Details Card --- #}
       <div class="govuk-summary-card govuk-!-margin-bottom-6">

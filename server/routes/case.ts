@@ -3,7 +3,7 @@ import { Router, type RequestHandler } from 'express'
 import asyncMiddleware from '../middleware/asyncMiddleware'
 
 import courtInfoHealthCheck from '../controllers/courtInfoController'
-import { getHearingsAndRender } from '../controllers/courtHearingController'
+import renderCourtInformation from '../controllers/courtHearingController'
 
 export default function routes(): Router {
   const router = Router()
@@ -36,7 +36,7 @@ export default function routes(): Router {
 
   // INFO: This route has been added for show & tell 29-Apr-2025
   // It breaks GDS principles and requires further discussion
-  get('/case/court-information-2', getHearingsAndRender)
+  get('/case/court-information-2', renderCourtInformation())
   // TODO: add `:id` to route - View contact details
   // TODO: need to verify if contact details should be linked to a case
   // TODO: need to determine if the contact details should be in a different module

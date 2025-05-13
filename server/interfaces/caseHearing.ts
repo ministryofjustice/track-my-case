@@ -1,8 +1,8 @@
 export interface CourtSitting {
+  courtHouse: string
+  judiciaryid: string
   sittingStart: string
   sittingEnd: string
-  judiciaryid: string
-  courtHouse: string
 }
 
 export interface Hearing {
@@ -11,15 +11,6 @@ export interface Hearing {
   hearingDescription: string
   listNote: string
   courtSittings: CourtSitting[]
-}
-
-export interface CourtScheduleEntry {
-  hearings: Hearing[]
-}
-
-export interface CourtSchedule {
-  courtSchedule: CourtScheduleEntry[]
-  courtHouse: CourtHouse
 }
 
 export interface CourtHouse {
@@ -43,4 +34,9 @@ export interface VenueContact {
   venueEmail: string
   primaryContactName: string
   venueSupport: string
+}
+
+export interface CourtSchedule {
+  hearings: Hearing[]
+  courtHouse: CourtHouse
 }
