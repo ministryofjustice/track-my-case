@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import superagent from 'superagent'
-import logger from '../../logger'
 import config from '../config'
+import { logger } from '../logger'
 
 async function courtInfoHealthCheck(req: Request, res: Response) {
   try {
