@@ -30,3 +30,4 @@ export function isVerified(req: Request, res: Response): boolean {
     return false
   }
 }
+
