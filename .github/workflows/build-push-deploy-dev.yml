@@ -1,6 +1,9 @@
 name: CI/CD dev
 
 on:
+  push:
+    branches:
+      - master
   pull_request:
     branches-ignore:
       - dependabot/**
@@ -61,6 +64,8 @@ jobs:
           IMMEDIATE_REDIRECT: ${{ vars.IMMEDIATE_REDIRECT }}
           REQUIRE_JAR: ${{ vars.REQUIRE_JAR }}
           IDENTITY_SUPPORTED: ${{ vars.IDENTITY_SUPPORTED }}
+          TRACK_MY_CASE_API_ENABLED: ${{ vars.TRACK_MY_CASE_API_ENABLED }}
+          TRACK_MY_CASE_API_URL: ${{ vars.TRACK_MY_CASE_API_URL }}
         shell: bash
         run: |
           docker build . \
@@ -86,6 +91,8 @@ jobs:
             --build-arg IMMEDIATE_REDIRECT=$IMMEDIATE_REDIRECT \
             --build-arg REQUIRE_JAR=$REQUIRE_JAR \
             --build-arg IDENTITY_SUPPORTED=$IDENTITY_SUPPORTED \
+            --build-arg TRACK_MY_CASE_API_ENABLED=$TRACK_MY_CASE_API_ENABLED \
+            --build-arg TRACK_MY_CASE_API_URL=$TRACK_MY_CASE_API_URL \
             -t working_image:$NEW_TAG_V
 
       - name: Configure AWS credentials
