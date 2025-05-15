@@ -62,10 +62,13 @@ export default function createApp(): express.Application {
 
   app.use('/', indexRoutes())
   app.use('/', healthRoutes())
-  app.use('/', caseRoutes())
-  // app.use('/', oneLoginRoutes(app))
   oneLoginRoutes(app)
+  caseRoutes(app)
   app.use('/', publicRoutes())
+
+  app.use('/.well-known/appspecific', (req, res) => {
+    res.status(404).send('Not Found')
+  })
 
   app.use((req, res, next) => next(createError(404, 'Not found')))
   app.use(errorHandler(process.env.NODE_ENV === 'production'))

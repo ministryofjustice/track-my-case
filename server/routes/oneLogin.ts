@@ -9,9 +9,9 @@ import { signedInController } from '../controllers/signed-in-controller'
 export default function routes(app: express.Express): void {
   const clientConfig = OneLoginConfig.getInstance()
 
-  // const router = Router()
-
-  app.get('/oidc/login', (req, res, next) => authorizeController(req, res, next, false))
+  app.get('/oidc/login', (req: Request, res: Response, next: NextFunction) =>
+    authorizeController(req, res, next, false),
+  )
 
   app.get('/oidc/verify', (req: Request, res: Response, next: NextFunction) =>
     authorizeController(req, res, next, true),
@@ -39,16 +39,6 @@ export default function routes(app: express.Express): void {
   app.get('/signed-out', (req: Request, res: Response) => {
     res.render('pages/signed-out.njk', {
       serviceName: 'Track My Case',
-    })
-  })
-
-  app.get('/start', async (req, res) => {
-    res.render('pages/start', {
-      authenticated: isAuthenticated(req, res),
-      serviceName: 'Track My Case',
-      // GOV.UK header config
-      homepageUrl: 'https://gov.uk',
-      serviceUrl: `${clientConfig.getServiceUrl()}`,
     })
   })
 }
