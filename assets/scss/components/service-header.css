@@ -39,7 +39,7 @@
   margin-left: -15px;
 }
 .govuk-grid-row::after {
-  content: "";
+  content: '';
   display: block;
   clear: both;
 }
@@ -182,10 +182,9 @@
   }
 }
 
-
 .cross-service-header__button {
   display: none;
-  font-family: "GDS Transport", arial, sans-serif;
+  font-family: 'GDS Transport', arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 700;
@@ -212,17 +211,21 @@
 }
 /*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */ /* stylelint-disable-line scss/comment-no-loud  */
 @font-face {
-  font-family: "GDS Transport";
+  font-family: 'GDS Transport';
   font-style: normal;
   font-weight: normal;
-  src: url("/assets/fonts/light-94a07e06a1-v2.woff2") format("woff2"), url("/assets/fonts/light-f591b13f7d-v2.woff") format("woff");
+  src:
+    url('/assets/fonts/light-94a07e06a1-v2.woff2') format('woff2'),
+    url('/assets/fonts/light-f591b13f7d-v2.woff') format('woff');
   font-display: fallback;
 }
 @font-face {
-  font-family: "GDS Transport";
+  font-family: 'GDS Transport';
   font-style: normal;
   font-weight: bold;
-  src: url("/assets/fonts/bold-b542beb274-v2.woff2") format("woff2"), url("/assets/fonts/bold-affa96571d-v2.woff") format("woff");
+  src:
+    url('/assets/fonts/bold-b542beb274-v2.woff2') format('woff2'),
+    url('/assets/fonts/bold-affa96571d-v2.woff') format('woff');
   font-display: fallback;
 }
 @media print {
@@ -237,7 +240,7 @@
   }
 }
 .cross-service-header__button:before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0.15rem;
   top: 50%;
@@ -259,7 +262,9 @@
   outline: 3px solid transparent;
   color: #0b0c0c;
   background-color: #ffdd00;
-  box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+  box-shadow:
+    0 -2px #ffdd00,
+    0 4px #0b0c0c;
   text-decoration: none;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
@@ -274,7 +279,9 @@
   outline: 3px solid transparent;
   color: #0b0c0c;
   background-color: #ffdd00;
-  box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+  box-shadow:
+    0 -2px #ffdd00,
+    0 4px #0b0c0c;
   text-decoration: none;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
@@ -286,7 +293,9 @@
   outline: 3px solid transparent;
   color: #0b0c0c;
   background-color: #ffdd00;
-  box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+  box-shadow:
+    0 -2px #ffdd00,
+    0 4px #0b0c0c;
   text-decoration: none;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
@@ -301,7 +310,9 @@
   outline: 3px solid transparent;
   color: #0b0c0c;
   background-color: #ffdd00;
-  box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+  box-shadow:
+    0 -2px #ffdd00,
+    0 4px #0b0c0c;
   text-decoration: none;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
@@ -320,21 +331,25 @@
 .cross-service-header__button:focus .cross-service-header__button-icon.cross-service-header__button-icon--focus {
   display: inline;
 }
-.cross-service-header__button:focus:not(:focus-visible) .cross-service-header__button-icon.cross-service-header__button-icon--default {
+.cross-service-header__button:focus:not(:focus-visible)
+  .cross-service-header__button-icon.cross-service-header__button-icon--default {
   display: inline;
 }
-.cross-service-header__button:focus:not(:focus-visible) .cross-service-header__button-icon.cross-service-header__button-icon--focus {
+.cross-service-header__button:focus:not(:focus-visible)
+  .cross-service-header__button-icon.cross-service-header__button-icon--focus {
   display: none;
 }
-.cross-service-header__button:focus-visible .cross-service-header__button-icon.cross-service-header__button-icon--default {
+.cross-service-header__button:focus-visible
+  .cross-service-header__button-icon.cross-service-header__button-icon--default {
   display: none;
 }
-.cross-service-header__button:focus-visible .cross-service-header__button-icon.cross-service-header__button-icon--focus {
+.cross-service-header__button:focus-visible
+  .cross-service-header__button-icon.cross-service-header__button-icon--focus {
   display: inline;
 }
 
 .one-login-header {
-  font-family: "GDS Transport", arial, sans-serif;
+  font-family: 'GDS Transport', arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
@@ -378,54 +393,67 @@
   }
 }
 
-.one-login-header__link:link, .one-login-header__link:visited,
+.one-login-header__link:link,
+.one-login-header__link:visited,
 .one-login-header__nav__link:link,
 .one-login-header__nav__link:visited {
-  font-family: "GDS Transport", arial, sans-serif;
+  font-family: 'GDS Transport', arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-decoration: none;
 }
 @media print {
-  .one-login-header__link:link, .one-login-header__link:visited,
+  .one-login-header__link:link,
+  .one-login-header__link:visited,
   .one-login-header__nav__link:link,
   .one-login-header__nav__link:visited {
     font-family: sans-serif;
   }
 }
-.one-login-header__link:link:link, .one-login-header__link:link:visited, .one-login-header__link:visited:link, .one-login-header__link:visited:visited,
+.one-login-header__link:link:link,
+.one-login-header__link:link:visited,
+.one-login-header__link:visited:link,
+.one-login-header__link:visited:visited,
 .one-login-header__nav__link:link:link,
 .one-login-header__nav__link:link:visited,
 .one-login-header__nav__link:visited:link,
 .one-login-header__nav__link:visited:visited {
   color: #ffffff;
 }
-.one-login-header__link:link:hover, .one-login-header__link:link:active, .one-login-header__link:visited:hover, .one-login-header__link:visited:active,
+.one-login-header__link:link:hover,
+.one-login-header__link:link:active,
+.one-login-header__link:visited:hover,
+.one-login-header__link:visited:active,
 .one-login-header__nav__link:link:hover,
 .one-login-header__nav__link:link:active,
 .one-login-header__nav__link:visited:hover,
 .one-login-header__nav__link:visited:active {
   color: rgba(255, 255, 255, 0.99);
 }
-.one-login-header__link:link:focus, .one-login-header__link:visited:focus,
+.one-login-header__link:link:focus,
+.one-login-header__link:visited:focus,
 .one-login-header__nav__link:link:focus,
 .one-login-header__nav__link:visited:focus {
   color: #0b0c0c;
 }
-.one-login-header__link:link:hover, .one-login-header__link:visited:hover,
+.one-login-header__link:link:hover,
+.one-login-header__link:visited:hover,
 .one-login-header__nav__link:link:hover,
 .one-login-header__nav__link:visited:hover {
   text-decoration: underline;
   text-decoration-thickness: 3px;
   text-underline-offset: 0.1578em;
 }
-.one-login-header__link:link:focus, .one-login-header__link:visited:focus,
+.one-login-header__link:link:focus,
+.one-login-header__link:visited:focus,
 .one-login-header__nav__link:link:focus,
 .one-login-header__nav__link:visited:focus {
   outline: 3px solid transparent;
   color: #0b0c0c;
   background-color: #ffdd00;
-  box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+  box-shadow:
+    0 -2px #ffdd00,
+    0 4px #0b0c0c;
   text-decoration: none;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
@@ -453,13 +481,13 @@
   vertical-align: top;
 }
 
-.one-login-header__logotype-crown[width="32"] {
+.one-login-header__logotype-crown[width='32'] {
   top: -3px;
   margin-right: 2px;
 }
 
 .one-login-header__link--homepage {
-  font-family: "GDS Transport", arial, sans-serif;
+  font-family: 'GDS Transport', arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 700;
@@ -481,10 +509,12 @@
     box-shadow: 0 0 #ffdd00;
   }
 }
-.one-login-header__link--homepage:link, .one-login-header__link--homepage:visited {
+.one-login-header__link--homepage:link,
+.one-login-header__link--homepage:visited {
   text-decoration: none;
 }
-.one-login-header__link--homepage:hover, .one-login-header__link--homepage:active {
+.one-login-header__link--homepage:hover,
+.one-login-header__link--homepage:active {
   margin-bottom: -3px;
   border-bottom: 3px solid;
 }
@@ -596,7 +626,7 @@
 }
 
 .service-header__heading {
-  font-family: "GDS Transport", arial, sans-serif;
+  font-family: 'GDS Transport', arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 700;
@@ -651,7 +681,7 @@
 }
 
 .service-header__nav-list {
-  font-family: "GDS Transport", arial, sans-serif;
+  font-family: 'GDS Transport', arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 700;
@@ -674,7 +704,7 @@
 }
 @media (min-width: 40.0625em) {
   .service-header__nav-list {
-    font-family: "GDS Transport", arial, sans-serif;
+    font-family: 'GDS Transport', arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: 700;
@@ -718,11 +748,11 @@
 }
 
 .service-header__nav-list-item-link {
-  font-family: "GDS Transport", arial, sans-serif;
+  font-family: 'GDS Transport', arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-decoration: underline;
-  text-decoration-thickness: max(1px, .0625rem);
+  text-decoration-thickness: max(1px, 0.0625rem);
   text-underline-offset: 0.1578em;
 }
 @media print {
@@ -731,7 +761,7 @@
   }
 }
 .service-header__nav-list-item-link:hover {
-  text-decoration-thickness: max(3px, .1875rem, .12em);
+  text-decoration-thickness: max(3px, 0.1875rem, 0.12em);
   -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
   -webkit-text-decoration-skip: none;
@@ -741,7 +771,9 @@
   outline: 3px solid transparent;
   color: #0b0c0c;
   background-color: #ffdd00;
-  box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+  box-shadow:
+    0 -2px #ffdd00,
+    0 4px #0b0c0c;
   text-decoration: none;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
@@ -785,6 +817,8 @@
     padding: 15px 0 15px;
   }
   .service-header__nav-list-item-link:focus {
-    box-shadow: 0 -5px #ffdd00, 0 5px #0b0c0c;
+    box-shadow:
+      0 -5px #ffdd00,
+      0 5px #0b0c0c;
   }
 }

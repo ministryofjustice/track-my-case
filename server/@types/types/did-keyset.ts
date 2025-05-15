@@ -1,4 +1,4 @@
 export default interface DIDKeySet {
-  id: string;
-  publicKeyJwk: JsonWebKey;
+  id: string
+  publicKeyJwk: JsonWebKey
 }

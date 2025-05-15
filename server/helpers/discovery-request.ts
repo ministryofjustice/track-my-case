@@ -1,54 +1,53 @@
-import * as openidClient from "openid-client";
-import { OneLoginConfig } from "../one-login-config";
+import * as openidClient from 'openid-client'
+import { OneLoginConfig } from '../one-login-config'
 
 export const getDiscoveryMetadata = async (
-    clientConfig: OneLoginConfig,
-    privateKey: CryptoKey | null,
-    clientSecret: string | null,
-) : Promise<openidClient.Configuration> => {
+  clientConfig: OneLoginConfig,
+  privateKey: CryptoKey | null,
+  clientSecret: string | null,
+): Promise<openidClient.Configuration> => {
+  let openidClientConfiguration: openidClient.Configuration
 
-    let openidClientConfiguration : openidClient.Configuration;
+  if (clientConfig.getOpenidClientConfiguration !== undefined) {
+    let clientMetadata!: Partial<openidClient.ClientMetadata> | string | undefined
+    const issuer: string = clientConfig.getIssuer()
 
-    if (clientConfig.getOpenidClientConfiguration !== undefined) {
-        let clientMetadata!: Partial<openidClient.ClientMetadata> | string | undefined
-        const issuer: string = clientConfig.getIssuer()
+    if (privateKey) {
+      // Modify the audience claim in the private_key_jwt
+      let substituteAudience: openidClient.ModifyAssertionOptions = {
+        [openidClient.modifyAssertion]: (header, _payload) => {
+          _payload.aud = `${issuer}token`
+        },
+      }
 
-        if (privateKey) {
-            // Modify the audience claim in the private_key_jwt
-            let substituteAudience: openidClient.ModifyAssertionOptions = {
-                [openidClient.modifyAssertion]: (header, _payload) => {
-                    _payload.aud = `${issuer}token`
-                }
-            };
-
-            // call discovery endpoint and setup private_key_jwt
-            // use allowInsecureRequests if connecting to HTTP endpoint e.g. when running simulator locally
-            openidClientConfiguration = await openidClient.discovery(
-                new URL(issuer),
-                clientConfig.getClientId(),
-                clientMetadata,
-                openidClient.PrivateKeyJwt(privateKey, substituteAudience),
-                {
-                    execute: [openidClient.allowInsecureRequests]
-                }
-            );
-        } else {
-            // call discovery endpoint and setup private_key_jwt
-            // use allowInsecureRequests if connecting to HTTP endpoint e.g. when running simulator locally
-            openidClientConfiguration = await openidClient.discovery(
-                new URL(issuer),
-                clientConfig.getClientId(),
-                clientMetadata,
-                openidClient.ClientSecretPost(clientSecret),
-                {
-                    execute: [openidClient.allowInsecureRequests]
-                }
-            );
-        }
-        clientConfig.setOpenidClientConfiguration(openidClientConfiguration);
+      // call discovery endpoint and setup private_key_jwt
+      // use allowInsecureRequests if connecting to HTTP endpoint e.g. when running simulator locally
+      openidClientConfiguration = await openidClient.discovery(
+        new URL(issuer),
+        clientConfig.getClientId(),
+        clientMetadata,
+        openidClient.PrivateKeyJwt(privateKey, substituteAudience),
+        {
+          execute: [openidClient.allowInsecureRequests],
+        },
+      )
     } else {
-        openidClientConfiguration = clientConfig.getOpenidClientConfiguration();
+      // call discovery endpoint and setup private_key_jwt
+      // use allowInsecureRequests if connecting to HTTP endpoint e.g. when running simulator locally
+      openidClientConfiguration = await openidClient.discovery(
+        new URL(issuer),
+        clientConfig.getClientId(),
+        clientMetadata,
+        openidClient.ClientSecretPost(clientSecret),
+        {
+          execute: [openidClient.allowInsecureRequests],
+        },
+      )
     }
+    clientConfig.setOpenidClientConfiguration(openidClientConfiguration)
+  } else {
+    openidClientConfiguration = clientConfig.getOpenidClientConfiguration()
+  }
 
-    return openidClientConfiguration;
+  return openidClientConfiguration
 }

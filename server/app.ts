@@ -19,6 +19,7 @@ import indexRoutes from './routes/index'
 import caseRoutes from './routes/case'
 import oneLoginRoutes from './routes/oneLogin'
 import publicRoutes from './routes/public'
+import healthRoutes from './routes/health'
 
 export default function createApp(): express.Application {
   const app = express()
@@ -60,6 +61,7 @@ export default function createApp(): express.Application {
   )
 
   app.use('/', indexRoutes())
+  app.use('/', healthRoutes())
   app.use('/', caseRoutes())
   // app.use('/', oneLoginRoutes(app))
   oneLoginRoutes(app)

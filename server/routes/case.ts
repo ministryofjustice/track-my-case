@@ -4,6 +4,9 @@ import { caseSelectController } from '../controllers/case-select-controller'
 import { caseDashboardController } from '../controllers/case-dashboard-controller'
 import { courtInformationController } from '../controllers/court-information-controller'
 
+import courtInfoHealthCheck from '../controllers/courtInfoController'
+import { courtInformationTwoController } from '../controllers/court-information-two-controller'
+
 export default function routes(): Router {
   const router = Router()
 
@@ -28,7 +31,7 @@ export default function routes(): Router {
   // INFO: This route has been added for show & tell 29-Apr-2025
   // It breaks GDS principles and requires further discussion
   get('/case/court-information-2', async (req, res, next) => {
-    courtInformationController(req, res, next, 'pages/case/court-information-2')
+    courtInformationTwoController(req, res, next, 'pages/case/court-information-2')
   })
 
   // TODO: add `:id` to route - View contact details
@@ -38,5 +41,6 @@ export default function routes(): Router {
     courtInformationController(req, res, next, 'pages/case/contact-details')
   })
 
+  get('/case/court-info-health', courtInfoHealthCheck)
   return router
 }

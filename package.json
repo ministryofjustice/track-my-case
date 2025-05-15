@@ -17,6 +17,8 @@
     "lint-fix": "eslint . --cache --max-warnings 0 --fix",
     "typecheck": "tsc",
     "test": "jest",
+    "test:clearCache": "jest --clearCache",
+    "test:watch": "jest --watchAll",
     "test:ci": "jest --runInBand",
     "security_audit": "npx audit-ci --config audit-ci.json",
     "int-test": "cypress run --config video=false",
@@ -66,8 +68,7 @@
   },
   "lint-staged": {
     "*.{ts,js,css}": [
-      "prettier --write",
-      "eslint --fix"
+      "prettier --write"
     ],
     "*.json": [
       "prettier --write"
@@ -154,6 +155,7 @@
     "prettier-plugin-jinja-template": "^2.1.0",
     "supertest": "^7.1.0",
     "ts-jest": "^29.3.2",
+    "ts-node": "^10.9.2",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3"
   },

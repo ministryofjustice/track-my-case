@@ -1,5 +1,5 @@
 services:
-  stg-track-my-case-ui:
+  track-my-case-ui:
     env_file:
       - .env
     build:
@@ -27,7 +27,10 @@ services:
         IMMEDIATE_REDIRECT: '${IMMEDIATE_REDIRECT}'
         REQUIRE_JAR: '${REQUIRE_JAR}'
         IDENTITY_SUPPORTED: '${IDENTITY_SUPPORTED}'
+        TRACK_MY_CASE_API_ENABLED: '${TRACK_MY_CASE_API_ENABLED}'
+        TRACK_MY_CASE_API_URL: '${TRACK_MY_CASE_API_URL}'
     ports:
+      # Default HOST_PORT to 9999 for data-analytics platform
       - '${NODE_PORT}:${NODE_PORT}'
     environment:
       - PRODUCT_ID=UNASSIGNED
@@ -36,3 +39,10 @@ services:
       # These will need to match new creds in the seed auth service auth
       - SESSION_SECRET=somesecretvalue
       - NO_HTTPS=true
+
+  track-my-case-api:
+    build:
+      context: ../stg-track-my-case-service
+    container_name: track-my-case-api
+    ports:
+      - '4550:9999'
