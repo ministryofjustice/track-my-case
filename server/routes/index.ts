@@ -8,7 +8,9 @@ export default function routes(): Router {
   const get = (path: string | string[], handler: RequestHandler) => router.get(path, asyncMiddleware(handler))
 
   get('/', async (req, res) => {
-    res.render('pages/index', {
+    res.render('pages/index.njk', {
+      serviceName: 'Track My Case',
+      authenticated: false,
       currentTime: new Date().toISOString(),
     })
   })

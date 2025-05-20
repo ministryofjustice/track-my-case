@@ -1,5 +1,5 @@
 import { OneLoginConfig } from '../one-login-config'
-import { KeyLike, JWK, importJWK } from 'jose'
+import { CryptoKey, importJWK, JWK } from 'jose'
 import DIDKeySet from '../@types/types/did-keyset'
 import { DIDDocument, DIDResolutionResult, Resolver } from 'did-resolver'
 import { getResolver } from 'web-did-resolver'
@@ -33,7 +33,10 @@ export function getKidFromTokenHeader(token: string): string {
   }
 }
 
-export const getIdentitySigningPublicKey = async (clientConfig: OneLoginConfig, kid: string): Promise<KeyLike> => {
+export const getIdentitySigningPublicKey = async (
+  clientConfig: OneLoginConfig,
+  kid: string,
+): Promise<CryptoKey | Uint8Array> => {
   let publicKeys: DIDKeySet[] = clientConfig.getIvPublicKeys()
   const didUri = clientConfig.getIvDidUri()
   const issuer = clientConfig.getIvIssuer()
@@ -54,7 +57,7 @@ export const getIdentitySigningPublicKey = async (clientConfig: OneLoginConfig, 
   }
 
   try {
-    const key: KeyLike | Uint8Array = await importJWK(ivJsonWebKey as JWK, 'ES256')
+    const key: CryptoKey | Uint8Array = await importJWK(ivJsonWebKey as JWK, 'ES256')
 
     // Ensure the returned key is KeyLike
     if (key instanceof Uint8Array) {
@@ -109,7 +112,7 @@ export const getPrivateKey = async (privateKeyPem: string): Promise<CryptoKey> =
   const binaryDer = Buffer.from(privateKeyPem, 'base64')
 
   // Import the ArrayBuffer as a CryptoKey
-  let privateKey = await crypto.subtle.importKey(
+  const privateKey = await crypto.subtle.importKey(
     'pkcs8',
     binaryDer,
     {
