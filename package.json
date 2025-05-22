@@ -103,7 +103,7 @@
     "openid-client": "^6.5.0",
     "pino": "^9.7.0",
     "redis": "^5.0.1",
-    "sass": "^1.88.0",
+    "sass": "^1.89.0",
     "superagent": "^10.2.1",
     "web-did-resolver": "^2.0.30"
   },
