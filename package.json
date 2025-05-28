@@ -105,7 +105,8 @@
     "redis": "^5.0.1",
     "sass": "^1.88.0",
     "superagent": "^10.2.1",
-    "web-did-resolver": "^2.0.30"
+    "web-did-resolver": "^2.0.30",
+    "zod": "^3.25.32"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
