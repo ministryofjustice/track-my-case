@@ -14,65 +14,14 @@
     <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l govuk-!-margin-bottom-2">Your hearings</h1>
+    {# <p>{{ hearingData | dump }}</p> #}
 
     <p class="govuk-body">
         This page gives you details about your hearing dates, location, your rights &amp; responsibilities at the hearing
         and who to contact with questions.
     </p>
 
-  {% if hearingData %}
-    <section>
-      <h2 class="govuk-heading-m">Court House</h2>
-      <p><strong>Name:</strong> {{ hearingData.courtHouse.courtHouseName }}</p>
-      <p><strong>Type:</strong> {{ hearingData.courtHouse.courtHouseType }}</p>
-      <p><strong>Description:</strong> {{ hearingData.courtHouse.courtHouseDescription }}</p>
-    </section>
-
-    {% if hearingData.hearings.length %}
-      <section>
-        <h2 class="govuk-heading-m">Scheduled Hearings</h2>
-
-        {% for hearing in hearingData.hearings %}
-          <div class="govuk-summary-card">
-            <div class="govuk-summary-card__title-wrapper">
-              <h3 class="govuk-summary-card__title">Hearing ID: {{ hearing.hearingId }}</h3>
-            </div>
-            <div class="govuk-summary-card__content">
-              <dl class="govuk-summary-list">
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">Type</dt>
-                  <dd class="govuk-summary-list__value">{{ hearing.hearingType }}</dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">Description</dt>
-                  <dd class="govuk-summary-list__value">{{ hearing.hearingDescription }}</dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">Notes</dt>
-                  <dd class="govuk-summary-list__value">{{ hearing.listNote }}</dd>
-                </div>
-              </dl>
-
-              <h4 class="govuk-heading-s">Court Sittings</h4>
-              <ul class="govuk-list govuk-list--bullet">
-                {% for sitting in hearing.courtSittings %}
-                  <li>
-                    <strong>Start:</strong> {{ sitting.sittingStart }}<br>
-                    <strong>End:</strong> {{ sitting.sittingEnd }}<br>
-                    <strong>Judge ID:</strong> {{ sitting.judiciaryid }}
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
-        {% endfor %}
-      </section>
-    {% else %}
-      <p>No hearings scheduled for this case.</p>
-    {% endif %}
-  {% else %}
-    <p>No court information available for this case.</p>
-  {% endif %}
+    {% if hearingData %}
       {# --- Hearing Details Card --- #}
       <div class="govuk-summary-card govuk-!-margin-bottom-6">
         <div class="govuk-summary-card__title-wrapper">
@@ -109,17 +58,20 @@
               {
                 key: { text: "Type of hearing" },
                 value: {
-                  html: 'First Hearing<br><a class="govuk-link" href="#">More information about this hearing type</a>'
+                  html: hearingData.hearingType ~ "<br><a class='govuk-link' href=\"#\">More information about this hearing type</a>"
                 }
               },
               {
                 key: { text: "Date and time" },
-                value: { text: "01 November 2025 at 10:30am" }
+                value: { text: hearingData.dateTime }
               },
               {
                 key: { text: "Location" },
                 value: {
-                  html: "Colchester Magistrates' Court<br>Courtroom 04<br>St Botolphs Circus<br>Magdelen Street<br>Colchester<br>CO2 7EF"
+                  html: hearingData.location.courtName ~ "<br>" ~
+                        "Courtroom " ~ hearingData.location.courtroom ~ "<br>" ~
+                        hearingData.location.addressLines | join('<br>') ~ "<br>" ~
+                        hearingData.location.postcode
                 }
               }
             ]
@@ -131,10 +83,11 @@
       {# --- Contact Details Card --- #}
       <div class="govuk-summary-card govuk-!-margin-bottom-6">
         <div class="govuk-summary-card__title-wrapper">
-          <h2 class="govuk-summary-card__title">Contact details</h2>
-          <span class="govuk-summary-card__actions">
-            If you have questions or need to speak to someone, please use these contact details
-          </span>
+          <h2 class="govuk-summary-card__title">Contact details
+            <p class="govuk-body-s">
+              If you have questions or need to speak to someone, please use these contact details
+            </p>
+          </h2>
         </div>
 
         <div class="govuk-summary-card__content">
@@ -149,15 +102,15 @@
             rows: [
               {
                 key: { text: "Who you can speak to" },
-                value: { text: "Jane Smith" }
+                value: { text: hearingData.contactDetails.contactName }
               },
               {
                 key: { text: "Telephone" },
-                value: { html: "01245 491497<br>between 10am and 5pm" }
+                html: hearingData.contactDetails.telephone ~ "<br>" ~ hearingData.contactDetails.telephoneHours
               },
               {
                 key: { text: "Email" },
-                value: { text: "witness.care@essex.police.uk" }
+                value: { text: hearingData.contactDetails.email }
               }
             ]
           }) }}
@@ -165,13 +118,17 @@
         </div>
       </div>
 
-      {{ supportBox() }}
+    {% else %}
+      <p>No hearings scheduled for this case.</p>
+    {% endif %}
 
-    </div>
+    {{ supportBox() }}
 
-    <div class="govuk-grid-column-one-third">
-      {# Sidebar intentionally left blank #}
-    </div>
   </div>
 
+  <div class="govuk-grid-column-one-third">
+    {# Sidebar intentionally left blank #}
+  </div>
+
+</div>
 {% endblock %}

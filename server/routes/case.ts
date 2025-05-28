@@ -4,7 +4,8 @@ import { caseDashboardController } from '../controllers/case-dashboard-controlle
 import { courtInformationController } from '../controllers/court-information-controller'
 
 import courtInfoHealthCheck from '../controllers/courtInfoController'
-import { courtInformationTwoController } from '../controllers/court-information-two-controller'
+import courtInformationTwoController from '../controllers/court-information-two-controller'
+
 import { AuthenticatedUser } from '../helpers/user-status'
 import asyncMiddleware from '../middleware/asyncMiddleware'
 
