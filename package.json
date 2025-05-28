@@ -102,7 +102,7 @@
     "nunjucks": "^3.2.4",
     "openid-client": "^6.5.0",
     "pino": "^9.7.0",
-    "redis": "^5.0.1",
+    "redis": "^5.1.1",
     "sass": "^1.88.0",
     "superagent": "^10.2.1",
     "web-did-resolver": "^2.0.30"
