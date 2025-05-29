@@ -1,6 +1,6 @@
 export interface CourtSitting {
   courtHouse: string
-  judiciaryid: string
+  judiciaryId: string
   sittingStart: string
   sittingEnd: string
 }
