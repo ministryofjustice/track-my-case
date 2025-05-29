@@ -1,7 +1,21 @@
 import { CaseDetails } from '../interfaces/caseDetails'
 import { HearingSummary } from '../interfaces/hearingSummary'
 
-function mapCaseDetailsToHearingSummary(data: CaseDetails): HearingSummary {
+const formatDateTime = (input?: string): string => {
+  if (!input) return ''
+  const date = new Date(input)
+  return date.toLocaleString('en-GB', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+    timeZone: 'UTC',
+  })
+}
+
+const mapCaseDetailsToHearingSummary = (data: CaseDetails): HearingSummary => {
   const hearing = data.courtSchedule[0]?.hearings[0]
   const sitting = hearing?.courtSittings[0]
   const room = sitting?.courtHouse?.courtRoom[0]
@@ -27,23 +41,9 @@ function mapCaseDetailsToHearingSummary(data: CaseDetails): HearingSummary {
       email: contact?.venueEmail ?? '',
       telephoneHours: '10am–5pm',
     },
-    requiresWitnessAttendance: true, // hardcoded for now
-    confirmationRequired: true, // hardcoded for now
+    requiresWitnessAttendance: true,
+    confirmationRequired: true,
   }
-}
-
-function formatDateTime(input?: string): string {
-  if (!input) return ''
-  const date = new Date(input)
-  return date.toLocaleString('en-GB', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric',
-    hour: 'numeric',
-    minute: '2-digit',
-    hour12: true,
-    timeZone: 'UTC',
-  })
 }
 
 export default mapCaseDetailsToHearingSummary
