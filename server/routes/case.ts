@@ -1,5 +1,5 @@
 import express from 'express'
-import { caseSelectController } from '../controllers/case-select-controller'
+import caseSelectorController from '../controllers/caseSelectorController'
 import { caseDashboardController } from '../controllers/case-dashboard-controller'
 import { courtInformationController } from '../controllers/court-information-controller'
 
@@ -15,7 +15,7 @@ export default function routes(app: express.Express): void {
     '/case/select',
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
-      caseSelectController(req, res, next)
+      caseSelectorController(req, res, next)
     }),
   )
 
