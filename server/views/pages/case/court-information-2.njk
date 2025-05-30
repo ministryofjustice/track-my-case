@@ -14,6 +14,8 @@
     <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l govuk-!-margin-bottom-2">Your hearings</h1>
+
+    {# Output debug info #}
     {# <p>{{ hearingData | dump }}</p> #}
 
     <p class="govuk-body">
@@ -101,12 +103,16 @@
           {{ govukSummaryList({
             rows: [
               {
-                key: { text: "Who you can speak to" },
+                key: { text: "Who to speak to" },
                 value: { text: hearingData.contactDetails.contactName }
               },
               {
                 key: { text: "Telephone" },
-                html: hearingData.contactDetails.telephone ~ "<br>" ~ hearingData.contactDetails.telephoneHours
+                value: { text: hearingData.contactDetails.telephone }
+              },
+              {
+                key: { text: "Hours" },
+                value: { text: hearingData.contactDetails.telephoneHours }
               },
               {
                 key: { text: "Email" },
