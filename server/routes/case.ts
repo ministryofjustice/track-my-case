@@ -18,6 +18,27 @@ export default function routes(app: express.Express): void {
       caseSelectorController(req, res, next)
     }),
   )
+  app.post(
+    '/case/select',
+    AuthenticatedUser,
+    asyncMiddleware(async (req, res, next) => {
+      const { selectedCrn } = req.body
+
+      if (!selectedCrn) {
+        return res.status(400).render('pages/case/select', {
+          radioItems: [], // you’ll need to pass the same `radioItems` again
+          errorMessage: 'You must select a case',
+          csrfToken: req.csrfToken(),
+        })
+      }
+
+      // TODO: Save selection in session or do something useful with it
+      // req.session.selectedCrn = selectedCrn
+
+      // Redirect somewhere relevant
+      return res.redirect('/case/dashboard')
+    }),
+  )
 
   // Page: Case dashboard
   app.get(

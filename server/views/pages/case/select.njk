@@ -12,7 +12,7 @@
       name: "selectedCrn",
       fieldset: {
         legend: {
-          text: "Select the case you would like to view",
+          text: "What case you would like to view",
           isPageHeading: true,
           classes: "govuk-fieldset__legend--l"
         }
@@ -20,7 +20,11 @@
       hint: {
         text: "There may be other cases that are not yet linked to your details."
       },
-      items: radioItems
+      items: radioItems,
+
+      errorMessage: {
+        text: ""
+      }
     }) }}
 
     {{ govukButton({
