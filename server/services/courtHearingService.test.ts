@@ -2,7 +2,7 @@ import CourtHearingService from './courtHearingService'
 import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
 import { CourtSchedule } from '../interfaces/caseHearing'
 import paths from '../constants/paths'
-import { logger } from '../logger'
+import logger from '../logger'
 
 describe('CourtHearingService', () => {
   let mockGet: jest.Mock
@@ -67,7 +67,7 @@ describe('CourtHearingService', () => {
     const result = await service.getCourtInformation('12345')
 
     expect(mockGet).toHaveBeenCalledWith({
-      path: paths.CASES.INFO.replace(':caseId', '12345'),
+      path: paths.CASE.INFO.replace(':caseId', '12345'),
     })
     expect(result).toEqual(mockResponse)
     expect(logger.debug).toHaveBeenCalledWith('CourtHearingService.getCourtInformation: successful response', {

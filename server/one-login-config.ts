@@ -2,6 +2,7 @@ import ClientConfiguration from './@types/types/client-configuration.js'
 import { UserIdentityClaim } from './@types/types/user-info.js'
 import * as openidClient from 'openid-client'
 import DIDKeySet from './@types/types/did-keyset.js'
+import paths from './constants/paths'
 
 export class OneLoginConfig {
   private static instance: OneLoginConfig
@@ -140,16 +141,16 @@ export class OneLoginConfig {
   }
 
   public getSignOutLink(): string {
-    return this.getServiceUrl() + '/oidc/logout'
+    return this.getServiceUrl() + paths.SIGN_OUT
   }
 
-  public getOpenidClientConfiguration(): openidClient.Configuration {
-    return this.clientConfiguration.openidClientConfiguration!
-  }
+  // public getOpenidClientConfiguration(): openidClient.Configuration {
+  //   return this.clientConfiguration.openidClientConfiguration!
+  // }
 
-  public setOpenidClientConfiguration(openidClientConfiguration: openidClient.Configuration): void {
-    this.clientConfiguration.openidClientConfiguration = openidClientConfiguration
-  }
+  // public setOpenidClientConfiguration(openidClientConfiguration: openidClient.Configuration): void {
+  //   this.clientConfiguration.openidClientConfiguration = openidClientConfiguration
+  // }
 
   public getImmediateRedirect(): boolean {
     return this.clientConfiguration.immediateRedirect

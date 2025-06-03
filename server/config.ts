@@ -43,6 +43,7 @@ export default {
   https: process.env.NO_HTTPS === 'true' ? false : production,
   staticResourceCacheDuration: '1h',
   environmentName: get('ENVIRONMENT_NAME', ''),
+  domain: get('SERVICE_URL', ''),
   redis: {
     enabled: get('REDIS_ENABLED', 'false', requiredInProduction) === 'true',
     // host: get('REDIS_HOST', 'localhost', requiredInProduction),
@@ -51,6 +52,30 @@ export default {
     // tls_enabled: get('REDIS_TLS_ENABLED', 'false'),
   },
   apis: {
+    hmppsAuth: {
+      url: get('HMPPS_AUTH_URL', 'http://localhost:9091/auth', requiredInProduction),
+      healthPath: '/health/ping',
+      externalUrl: get('HMPPS_AUTH_EXTERNAL_URL', get('HMPPS_AUTH_URL', 'http://localhost:9092/auth')),
+      timeout: {
+        response: Number(get('HMPPS_AUTH_TIMEOUT_RESPONSE', 10000)),
+        deadline: Number(get('HMPPS_AUTH_TIMEOUT_DEADLINE', 10000)),
+      },
+      agent: new AgentConfig(Number(get('HMPPS_AUTH_TIMEOUT_RESPONSE', 10000))),
+      authClientId: get('AUTH_CODE_CLIENT_ID', 'clientid', requiredInProduction),
+      authClientSecret: get('AUTH_CODE_CLIENT_SECRET', 'clientsecret', requiredInProduction),
+      systemClientId: get('CLIENT_CREDS_CLIENT_ID', 'clientid', requiredInProduction),
+      systemClientSecret: get('CLIENT_CREDS_CLIENT_SECRET', 'clientsecret', requiredInProduction),
+    },
+    govukOneLogin: {
+      url: get('OIDC_ISSUER', '', requiredInProduction),
+      homeUrl: get('OIDC_ISSUER_HOME', '', requiredInProduction),
+      clientId: get('OIDC_CLIENT_ID', '', requiredInProduction),
+      privateKey: get('OIDC_PRIVATE_KEY', '', requiredInProduction),
+      timeout: 20000,
+      vtr: get('AUTH_VECTOR_OF_TRUST', '', requiredInProduction),
+      jwksUrl: get('OIDC_ISSUER', '', requiredInProduction) + '/.well-known/jwks.json',
+      strategyName: 'oidc',
+    },
     trackMyCaseApi: {
       url: get('TRACK_MY_CASE_API_URL', 'http://localhost:4550', requiredInProduction),
       timeout: {
@@ -64,5 +89,8 @@ export default {
   session: {
     secret: get('SESSION_SECRET', 'app-insecure-default-session', requiredInProduction),
     expiryMinutes: Number(get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120)),
+    inactivityMinutes: Number(get('WEB_SESSION_INACTIVITY_IN_MINUTES', 10)),
+    appointmentsCacheMinutes: Number(get('APPOINTMENTS_CACHE_IN_MINUTES', 1)),
   },
+  ingressUrl: get('INGRESS_URL', 'http://localhost:3000', requiredInProduction),
 }

@@ -1,7 +1,10 @@
 import { NextFunction, Request, Response } from 'express'
 
 export function isAuthenticated(req: Request): boolean {
-  return !!req.session.user?.userinfo?.email_verified
+  if (true) {
+    return req.isAuthenticated()
+  }
+  return !!req.session.passport.user?.email_verified
 }
 
 export function AuthenticatedUser(req: Request, res: Response, next: NextFunction) {

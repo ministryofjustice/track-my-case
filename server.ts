@@ -1,7 +1,7 @@
 import 'applicationinsights'
 
 import app from './server/index'
-import { logger } from './server/logger'
+import logger from './server/logger'
 ;(async () => {
   app.listen(app.get('port'), () => {
     const port = `${app.get('port')}`

@@ -17,9 +17,12 @@ import setUpWebSession from './middleware/setUpWebSession'
 
 import indexRoutes from './routes/index'
 import caseRoutes from './routes/case'
-import oneLoginRoutes from './routes/oneLogin'
+// import oneLoginRoutes from './routes/oneLogin'
 import publicRoutes from './routes/public'
 import healthRoutes from './routes/health'
+// import authorisationMiddleware from './middleware/authorisationMiddleware'
+// import setUpCurrentUser from './middleware/setUpCurrentUser'
+import setUpGovukOneLogin from './middleware/setupGovukOneLogin'
 
 export default function createApp(): express.Application {
   const app = express()
@@ -35,8 +38,10 @@ export default function createApp(): express.Application {
   app.use(setUpWebRequestParsing())
   app.use(setUpStaticResources())
   nunjucksSetup(app)
-
+  // app.use(authorisationMiddleware())
+  app.use(setUpGovukOneLogin())
   app.use(setUpCsrf())
+  // app.use(setUpCurrentUser())
 
   // Configure body-parser
   app.use(express.json())
@@ -62,7 +67,7 @@ export default function createApp(): express.Application {
 
   app.use('/', indexRoutes())
   app.use('/', healthRoutes())
-  oneLoginRoutes(app)
+  // oneLoginRoutes(app)
   caseRoutes(app)
   app.use('/', publicRoutes())
 

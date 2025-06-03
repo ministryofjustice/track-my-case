@@ -3,7 +3,7 @@ import { CryptoKey, importJWK, JWK } from 'jose'
 import DIDKeySet from '../@types/types/did-keyset'
 import { DIDDocument, DIDResolutionResult, Resolver } from 'did-resolver'
 import { getResolver } from 'web-did-resolver'
-import { logger } from '../logger.js'
+import logger from '../logger.js'
 import fetch from 'node-fetch'
 
 interface JWTHeader {

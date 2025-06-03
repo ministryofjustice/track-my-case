@@ -1,6 +1,8 @@
 import type { Request, Response, NextFunction } from 'express'
 import type { HTTPError } from 'superagent'
-import { logger } from './logger'
+import logger from './logger'
+import path from 'path'
+import paths from './constants/paths'
 
 export default function createErrorHandler(production: boolean) {
   return (error: HTTPError, req: Request, res: Response, next: NextFunction): void => {
@@ -8,7 +10,7 @@ export default function createErrorHandler(production: boolean) {
 
     if (error.status === 401 || error.status === 403) {
       logger.info('Logging user out')
-      return res.redirect('/sign-out')
+      return res.redirect(paths.SIGN_OUT)
     }
 
     res.locals.message = production

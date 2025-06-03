@@ -21,7 +21,7 @@ export default interface ClientConfiguration {
   identityVtr: string
   uiLocales: string
   serviceUrl?: string
-  openidClientConfiguration?: openidClient.Configuration
+  // openidClientConfiguration?: openidClient.Configuration
   immediateRedirect: boolean
   requireJAR: boolean
   identitySupported: boolean
