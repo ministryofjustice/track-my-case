@@ -19,8 +19,10 @@ export declare global {
       phone_number_verified?: boolean
       token?: string
       username: string
-      authSource: string
+      authSource: AuthSource
     }
+
+    export type AuthSource = 'external' | 'nomis' | 'delius' | 'azuread'
 
     interface Request {
       verified?: boolean

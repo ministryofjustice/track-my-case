@@ -8,7 +8,6 @@ import config from '../config'
 import { logger } from '../logger'
 import tokenStoreFactory from './tokenStore/tokenStoreFactory'
 import paths from '../constants/paths'
-import { getPrivateKey } from '../helpers/crypto'
 import { OneLoginConfig } from '../one-login-config'
 
 const clientConfig = OneLoginConfig.getInstance()
@@ -50,8 +49,6 @@ async function init(): Promise<Client> {
     format: 'der',
     type: 'pkcs8',
   }).export({ format: 'jwk' })
-
-  const privateKeyJwk2 = await getPrivateKey(privateKey)
 
   const clientId = config.apis.govukOneLogin.clientId
 

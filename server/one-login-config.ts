@@ -144,14 +144,6 @@ export class OneLoginConfig {
     return this.getServiceUrl() + paths.SIGN_OUT
   }
 
-  // public getOpenidClientConfiguration(): openidClient.Configuration {
-  //   return this.clientConfiguration.openidClientConfiguration!
-  // }
-
-  // public setOpenidClientConfiguration(openidClientConfiguration: openidClient.Configuration): void {
-  //   this.clientConfiguration.openidClientConfiguration = openidClientConfiguration
-  // }
-
   public getImmediateRedirect(): boolean {
     return this.clientConfiguration.immediateRedirect
   }

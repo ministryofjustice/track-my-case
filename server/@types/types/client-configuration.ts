@@ -1,5 +1,4 @@
 import { UserIdentityClaim } from './user-info.js'
-import * as openidClient from 'openid-client'
 import DIDKeySet from './did-keyset.js'
 
 export default interface ClientConfiguration {
@@ -21,7 +20,6 @@ export default interface ClientConfiguration {
   identityVtr: string
   uiLocales: string
   serviceUrl?: string
-  // openidClientConfiguration?: openidClient.Configuration
   immediateRedirect: boolean
   requireJAR: boolean
   identitySupported: boolean

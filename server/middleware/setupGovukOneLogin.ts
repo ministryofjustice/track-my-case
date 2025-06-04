@@ -1,8 +1,8 @@
-import type { Request, Response, NextFunction, Router } from 'express'
+import type { NextFunction, Request, Response, Router } from 'express'
 import express from 'express'
 import passport from 'passport'
 import flash from 'connect-flash'
-import { BaseClient, Client, generators } from 'openid-client'
+import { BaseClient, generators } from 'openid-client'
 import jwt from 'jsonwebtoken'
 import jwksClient from 'jwks-rsa'
 import govukOneLogin from '../authentication/govukOneLogin'
@@ -48,6 +48,16 @@ const handleLogout = (decodedToken: jwt.JwtPayload) => {
   logger.info(`Logging out user: ${userId}`)
   const tokenStore = tokenStoreFactory()
   tokenStore.removeToken(userId)
+}
+
+const createUserIfExist = (user: Express.User): Express.User | undefined => {
+  if (user) {
+    return {
+      authSource: 'external',
+      ...user,
+    }
+  }
+  return undefined
 }
 
 export default function setUpGovukOneLogin(): Router {
@@ -131,7 +141,7 @@ export default function setUpGovukOneLogin(): Router {
     })
 
     router.use((req, res, next) => {
-      res.locals.user = req.user
+      res.locals.user = createUserIfExist(req.user)
       res.locals.authUrl = config.apis.hmppsAuth.externalUrl
 
       if (res.locals.user?.token) {
