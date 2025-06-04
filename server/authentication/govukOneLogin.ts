@@ -8,9 +8,6 @@ import config from '../config'
 import { logger } from '../logger'
 import tokenStoreFactory from './tokenStore/tokenStoreFactory'
 import paths from '../constants/paths'
-import { OneLoginConfig } from '../one-login-config'
-
-const clientConfig = OneLoginConfig.getInstance()
 
 passport.serializeUser((user: Express.User, done) => {
   // Not used but required for Passport
@@ -39,20 +36,17 @@ async function init(): Promise<Client> {
   const issuer = await Issuer.discover(discoveryEndpoint)
   logger.info(`GOV.UK One Login issuer discovered: ${issuer.metadata.issuer}`)
 
-  // const idTokenStore = tokenStoreFactory('idToken') // ToDo: check this idToken
-
   // convert private key in PEM format to JWK
   const privateKey = config.apis.govukOneLogin.privateKey
 
-  let privateKeyJwk = createPrivateKey({
+  const privateKeyJwk = createPrivateKey({
     key: Buffer.from(privateKey, 'base64'),
     format: 'der',
     type: 'pkcs8',
   }).export({ format: 'jwk' })
 
   const clientId = config.apis.govukOneLogin.clientId
-
-  const serviceUrl = clientConfig.getServiceUrl()
+  const serviceUrl = config.serviceUrl
   const redirectUris = [`${serviceUrl}${paths.AUTH_CALLBACK}`]
   const client = new issuer.Client(
     {
@@ -78,14 +72,13 @@ async function init(): Promise<Client> {
     {
       client,
       params: {
-        scope: 'email,openid',
-        vtr: '["Cl.Cm"]', // config.apis.govukOneLogin.vtr, // ["Cl.Cm"], // config.apis.govukOneLogin.vtr
-        ui_locales: 'en',
+        scope: config.apis.govukOneLogin.scopes,
+        vtr: '["' + config.apis.govukOneLogin.authenticationVtr + '"]',
+        ui_locales: config.apis.govukOneLogin.uiLocales,
       },
       usePKCE: false,
       extras: {
         clientAssertionPayload: {
-          //ToDo: check this
           aud: [...new Set([issuer.issuer, issuer.token_endpoint, issuer.metadata.token_endpoint].filter(Boolean))],
         },
       },

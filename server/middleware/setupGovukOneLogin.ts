@@ -9,7 +9,6 @@ import govukOneLogin from '../authentication/govukOneLogin'
 import config from '../config'
 import { logger } from '../logger'
 import tokenStoreFactory from '../authentication/tokenStore/tokenStoreFactory'
-import { OneLoginConfig } from '../one-login-config'
 import paths from '../constants/paths'
 import { jwtDecode } from 'jwt-decode'
 import { convertToTitleCase } from '../utils/utils'
@@ -21,8 +20,6 @@ declare module 'passport' {
     nonce?: string
   }
 }
-
-const clientConfig = OneLoginConfig.getInstance()
 
 const router = express.Router()
 
@@ -101,8 +98,8 @@ export default function setUpGovukOneLogin(): Router {
     router.get(paths.AUTH_CALLBACK, (req, res, next) => {
       passport.authenticate(config.apis.govukOneLogin.strategyName, {
         nonce: generators.nonce(),
-        successRedirect: clientConfig.getServiceUrl() + paths.SIGNED_IN,
-        failureRedirect: clientConfig.getServiceUrl() + paths.AUTH_ERROR,
+        successRedirect: config.serviceUrl + paths.SIGNED_IN,
+        failureRedirect: config.serviceUrl + paths.AUTH_ERROR,
         failureFlash: true,
       })(req, res, next)
     })
@@ -131,18 +128,17 @@ export default function setUpGovukOneLogin(): Router {
     }
 
     router.use(paths.SIGN_OUT, async (req, res, next) => {
-      const serviceUrl = clientConfig.getServiceUrl()
+      const serviceUrl = config.serviceUrl
       return handleSignOut(req, res, next, serviceUrl)
     })
 
     router.use('/sign-out-timed', async (req, res, next) => {
-      const serviceUrl = clientConfig.getServiceUrl()
+      const serviceUrl = config.serviceUrl
       return handleSignOut(req, res, next, `${serviceUrl}/timed-out`)
     })
 
     router.use((req, res, next) => {
       res.locals.user = createUserIfExist(req.user)
-      res.locals.authUrl = config.apis.hmppsAuth.externalUrl
 
       if (res.locals.user?.token) {
         const {

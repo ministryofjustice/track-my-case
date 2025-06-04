@@ -1,10 +1,10 @@
-import { OneLoginConfig } from '../one-login-config'
 import { CryptoKey, importJWK, JWK } from 'jose'
 import DIDKeySet from '../@types/types/did-keyset'
 import { DIDDocument, DIDResolutionResult, Resolver } from 'did-resolver'
 import { getResolver } from 'web-did-resolver'
 import { logger } from '../logger.js'
 import fetch from 'node-fetch'
+import config from '../config'
 
 interface JWTHeader {
   kid?: string
@@ -33,21 +33,17 @@ export function getKidFromTokenHeader(token: string): string {
   }
 }
 
-export const getIdentitySigningPublicKey = async (
-  clientConfig: OneLoginConfig,
-  kid: string,
-): Promise<CryptoKey | Uint8Array> => {
-  let publicKeys: DIDKeySet[] = clientConfig.getIvPublicKeys()
-  const didUri = clientConfig.getIvDidUri()
-  const issuer = clientConfig.getIvIssuer()
+export const getIdentitySigningPublicKey = async (kid: string): Promise<CryptoKey | Uint8Array> => {
+  let publicKeys: DIDKeySet[] = config.apis.govukOneLogin.ivPublicKeys
+  const issuer = config.apis.govukOneLogin.ivIssuer
+  const didUri = config.apis.govukOneLogin.ivDidUri
 
   if (publicKeys === undefined) {
     publicKeys = await fetchPublicKeys(didUri, issuer)
-    clientConfig.setIvPublicKeys(publicKeys)
   }
 
   // check to see if we have the kid and matching key
-  const keySet = clientConfig.getIvPublicKeys().find(keyset => keyset.id === kid)
+  const keySet = publicKeys.find(keyset => keyset.id === kid)
   let ivJsonWebKey: JsonWebKey
   if (keySet) {
     ivJsonWebKey = keySet.publicKeyJwk
