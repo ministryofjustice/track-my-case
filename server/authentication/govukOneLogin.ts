@@ -5,10 +5,9 @@ import { RequestHandler } from 'express'
 import { createPrivateKey } from 'crypto'
 
 import config from '../config'
-import logger from '../logger'
+import { logger } from '../logger'
 import tokenStoreFactory from './tokenStore/tokenStoreFactory'
 import paths from '../constants/paths'
-import { setUserActivity } from './userActivityTracking'
 import { getPrivateKey } from '../helpers/crypto'
 import { OneLoginConfig } from '../one-login-config'
 
@@ -19,14 +18,13 @@ passport.serializeUser((user: Express.User, done) => {
   done(null, user)
 })
 
-passport.deserializeUser((user, done) => {
+passport.deserializeUser((user: Express.User, done) => {
   // Not used but required for Passport
-  done(null, user as Express.User)
+  done(null, user)
 })
 
 const authenticationMiddleware = (): RequestHandler => {
   return async (req, res, next) => {
-    // ToDo: this is different
     if (req.isAuthenticated()) {
       return next()
     }
@@ -76,7 +74,6 @@ async function init(): Promise<Client> {
 
     const tokenStore = tokenStoreFactory()
     tokenStore.setToken(encodeURIComponent(userInfo.sub), tokenSet.id_token, config.session.expiryMinutes * 60)
-    setUserActivity(userInfo.sub)
     return done(null, userInfo)
   }
 

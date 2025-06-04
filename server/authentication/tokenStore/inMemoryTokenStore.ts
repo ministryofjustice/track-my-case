@@ -18,7 +18,7 @@ export default class InMemoryTokenStore implements TokenStore {
       return Promise.resolve(null)
     }
     if (this.tokenMap.get(key).expiry.getTime() < Date.now()) {
-      this.removeToken(key)
+      await this.removeToken(key)
       return Promise.resolve(null)
     }
     return Promise.resolve(this.tokenMap.get(key).token)

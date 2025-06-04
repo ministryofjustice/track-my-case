@@ -22,8 +22,5 @@
     "lib": ["dom", "es2023"]
   },
   "exclude": ["node_modules", "assets/**/*.js", "dist", "esbuild", "eslint.config.mjs"],
-  "include": ["server/**/*.js", "server/**/*.ts"],
-  "module": "esnext",
-  "target": "es2022",
-  "moduleResolution": "bundler"
+  "include": ["server/**/*.js", "server/**/*.ts"]
 }

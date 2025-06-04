@@ -9,9 +9,11 @@ const paths = {
   AUTH_ERROR: '/autherror',
   SIGN_IN: '/sign-in',
   SIGN_OUT: '/sign-out',
+  SIGNED_IN: '/signed-in',
   SIGNED_OUT: '/signed-out',
 
   CASE: {
+    SELECT: '/case/select',
     DASHBOARD: '/case/dashboard',
     HEARINGS: '/cases/:caseId/hearings',
     // TODO: Replace with dynamic caseId path once API contract is finalized

@@ -13,7 +13,7 @@ import paths from '../constants/paths'
 export default function routes(app: express.Express): void {
   // Page: Select your case
   app.get(
-    '/case/select',
+    paths.CASE.SELECT,
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
       caseSelectController(req, res, next)

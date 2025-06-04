@@ -2,7 +2,7 @@ import CourtHearingService from './courtHearingService'
 import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
 import { CourtSchedule } from '../interfaces/caseHearing'
 import paths from '../constants/paths'
-import logger from '../logger'
+import { logger } from '../logger'
 
 describe('CourtHearingService', () => {
   let mockGet: jest.Mock

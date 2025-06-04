@@ -1,6 +1,6 @@
 import superagent from 'superagent'
 import config from '../config'
-import logger from '../logger'
+import { logger } from '../logger'
 
 type GetRequestOptions = {
   path: string

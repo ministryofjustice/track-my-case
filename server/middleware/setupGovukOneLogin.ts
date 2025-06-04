@@ -7,10 +7,12 @@ import jwt from 'jsonwebtoken'
 import jwksClient from 'jwks-rsa'
 import govukOneLogin from '../authentication/govukOneLogin'
 import config from '../config'
-import logger from '../logger'
+import { logger } from '../logger'
 import tokenStoreFactory from '../authentication/tokenStore/tokenStoreFactory'
 import { OneLoginConfig } from '../one-login-config'
 import paths from '../constants/paths'
+import { jwtDecode } from 'jwt-decode'
+import { convertToTitleCase } from '../utils/utils'
 
 // Add property used in 'passport.authenticate(strategy, options, callback)'
 // strategy options for 'oicd' that is missing from @types/passport
@@ -89,8 +91,8 @@ export default function setUpGovukOneLogin(): Router {
     router.get(paths.AUTH_CALLBACK, (req, res, next) => {
       passport.authenticate(config.apis.govukOneLogin.strategyName, {
         nonce: generators.nonce(),
-        successRedirect: 'http://localhost:9999' + paths.CASE.DASHBOARD,
-        failureRedirect: 'http://localhost:9999' + paths.AUTH_ERROR,
+        successRedirect: clientConfig.getServiceUrl() + paths.SIGNED_IN,
+        failureRedirect: clientConfig.getServiceUrl() + paths.AUTH_ERROR,
         failureFlash: true,
       })(req, res, next)
     })
@@ -131,6 +133,31 @@ export default function setUpGovukOneLogin(): Router {
     router.use((req, res, next) => {
       res.locals.user = req.user
       res.locals.authUrl = config.apis.hmppsAuth.externalUrl
+
+      if (res.locals.user?.token) {
+        const {
+          name,
+          user_id: userId,
+          authorities: roles = [],
+        } = jwtDecode(res.locals?.user?.token) as {
+          name?: string
+          user_id?: string
+          authorities?: string[]
+        }
+
+        res.locals.user = {
+          ...res.locals.user,
+          userId,
+          name,
+          displayName: convertToTitleCase(name),
+          userRoles: roles.map(role => role.substring(role.indexOf('_') + 1)),
+        } as Express.User
+
+        if (res.locals.user.authSource === 'nomis') {
+          // res.locals.user.staffId = parseInt(userId, 10) || undefined
+        }
+      }
+
       next()
     })
 

@@ -2,7 +2,7 @@ import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
 import { CourtSchedule } from '../interfaces/caseHearing'
 import paths from '../constants/paths'
 import resolvePath from '../utils/resolvePath'
-import logger from '../logger'
+import { logger } from '../logger'
 import { CaseDetails } from '../interfaces/caseDetails'
 
 export default class CourtHearingService {

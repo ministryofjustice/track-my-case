@@ -1,11 +1,10 @@
 export declare module 'express-session' {
   // Declare that the session will potentially contain these additional fields
   interface SessionData {
-    user: any
-    identity: any
-    landingPage?: boolean
-    email?: boolean
-    returnTo: string
+    passport?: {
+      user?: Express.User
+    }
+    returnTo?: string
     nowInMinutes: number
   }
 }

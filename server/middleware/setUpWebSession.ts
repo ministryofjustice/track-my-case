@@ -1,29 +1,28 @@
 import session, { MemoryStore, Store } from 'express-session'
-// import { RedisStore } from 'connect-redis'
 import express, { Router } from 'express'
 import { randomUUID } from 'crypto'
-// TODO Enable redis client at some point
-// import { createRedisClient } from '../data/redisClient'
 import config from '../config'
-// import logger from '../../logger'
 
 export default function setUpWebSession(): Router {
   let store: Store
   if (config.redis.enabled) {
-    // const client = createRedisClient()
-    // client.connect().catch((err: Error) => logger.error(`Error connecting to Redis`, err))
-    // store = new RedisStore({ client })
+    throw new Error('No Redis implemented yet')
   } else {
     store = new MemoryStore()
   }
 
   const router = express.Router()
+  // Set up a session to track whether the user is logged in
   router.use(
     session({
       store,
-      name: 'hmpps-template-typescript.session',
-      cookie: { secure: config.https, sameSite: 'lax', maxAge: config.session.expiryMinutes * 60 * 1000 },
+      name: config.session.name,
       secret: config.session.secret,
+      cookie: {
+        secure: config.https,
+        sameSite: 'lax',
+        maxAge: config.session.expiryMinutes * 60 * 1000
+      },
       resave: false, // redis implements touch so shouldn't need this
       saveUninitialized: false,
       rolling: true,
