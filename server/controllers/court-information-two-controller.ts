@@ -32,7 +32,7 @@ const courtInformationTwoController = async (
     const viewModel = mapCaseDetailsToHearingSummary(caseDetails)
     res.locals.hearingData = viewModel
 
-    res.render(view)
+    return res.render(view)
   } catch (error) {
     next(error)
   }
