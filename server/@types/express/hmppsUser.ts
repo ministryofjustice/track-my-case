@@ -1,3 +1,6 @@
+// This file is not used for now,
+// just a good example how to differentiate across different user authentication sources
+
 export type AuthSource = 'nomis' | 'delius' | 'external' | 'azuread'
 
 /**
