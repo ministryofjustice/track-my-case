@@ -1,7 +1,6 @@
-import type { Request, Response, NextFunction } from 'express'
+import type { NextFunction, Request, Response } from 'express'
 import type { HTTPError } from 'superagent'
 import { logger } from './logger'
-import path from 'path'
 import paths from './constants/paths'
 
 export default function createErrorHandler(production: boolean) {
