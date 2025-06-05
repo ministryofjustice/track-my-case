@@ -2,11 +2,13 @@ import { NextFunction, Request, Response } from 'express'
 import { initialiseBasicAuthentication } from '../helpers/initialise-basic-authentication'
 import CourtHearingService from '../services/courtHearingService'
 import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
+
 import mapCaseDetailsToHearingSummary from '../mappers/mapCaseDetailsToHearingSummary'
 
 const trackMyCaseApiClient = new TrackMyCaseApiClient()
 const courtHearingService = new CourtHearingService(trackMyCaseApiClient)
 
+/* eslint-disable consistent-return */
 const courtInformationTwoController = async (
   req: Request,
   res: Response,
