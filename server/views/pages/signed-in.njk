@@ -14,29 +14,11 @@
         isStartButton: true
       }) }}
 
-      <h2 class="govuk-heading-m">Access token</h2>
-      <p class="govuk-body">
-        Learn more about <a target="tech-docs" href="https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#receive-response-for-make-a-token-request" class="govuk-link">access tokens</a> in our technical documentation.
-      </p>
-      <pre>{{ user.accessToken | dump(2) }}</pre>
-
-      <h2 class="govuk-heading-m">ID token</h2>
-      <p class="govuk-body">
-        Learn more about <a target="tech-docs" href="https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#understand-your-id-token" class="govuk-link">ID tokens</a> in our technical documentation.
-      </p>
-      <pre>{{ user.idToken | dump(2) }}</pre>
-
-      <h2 class="govuk-heading-m">Subject identifier</h2>
-      <p class="govuk-body">
-        Learn more about <a target="tech-docs" href="https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/prove-users-identity/#prove-your-user-39-s-identity" class="govuk-link">subject identifiers</a> in our technical documentation.
-      </p>
-      <pre>{{ user.sub }}</pre>
-
       <h2 class="govuk-heading-m">User information</h2>
       <p class="govuk-body">
         Learn more about <a target="tech-docs" href="https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#receive-response-for-retrieve-user-information" class="govuk-link">user information</a> in our technical documentation.
       </p>
-      <pre><code>{{ user.userinfo | dump(2) }}</code></pre>
+      <pre><code>{{ user | dump(2) }}</code></pre>
 
       {% if identitySupported %}
         <h2 class="govuk-heading-m">Return codes</h2>

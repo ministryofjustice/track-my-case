@@ -20,6 +20,7 @@ import caseRoutes from './routes/case'
 import oneLoginRoutes from './routes/oneLogin'
 import publicRoutes from './routes/public'
 import healthRoutes from './routes/health'
+import setUpGovukOneLogin from './middleware/setupGovukOneLogin'
 
 export default function createApp(): express.Application {
   const app = express()
@@ -35,7 +36,7 @@ export default function createApp(): express.Application {
   app.use(setUpWebRequestParsing())
   app.use(setUpStaticResources())
   nunjucksSetup(app)
-
+  app.use(setUpGovukOneLogin())
   app.use(setUpCsrf())
 
   // Configure body-parser
@@ -44,21 +45,6 @@ export default function createApp(): express.Application {
 
   // Configure parsing cookies - required for storing nonce in authentication
   app.use(cookieParser())
-
-  // Set up a session to track whether the user is logged in
-  app.use(
-    session({
-      name: 'simple-session',
-      secret: 'this-is-a-secret',
-      cookie: {
-        maxAge: 1000 * 120 * 60, // 2 hours
-        secure: false,
-        httpOnly: true,
-      },
-      resave: false,
-      saveUninitialized: true,
-    }),
-  )
 
   app.use('/', indexRoutes())
   app.use('/', healthRoutes())
