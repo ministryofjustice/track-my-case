@@ -12,7 +12,7 @@ const paths = {
   SIGNED_IN: '/signed-in',
   SIGNED_OUT: '/signed-out',
 
-  CASE: {
+  CASES: {
     SELECT: '/case/select',
     DASHBOARD: '/case/dashboard',
     HEARINGS: '/cases/:caseId/hearings',

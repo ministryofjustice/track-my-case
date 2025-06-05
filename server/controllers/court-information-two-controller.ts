@@ -31,7 +31,6 @@ const courtInformationTwoController = async (
 
     const viewModel = mapCaseDetailsToHearingSummary(caseDetails)
     res.locals.hearingData = viewModel
-    res.locals.caseDetails = caseDetails
 
     res.render(view)
   } catch (error) {

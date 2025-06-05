@@ -67,7 +67,7 @@ describe('CourtHearingService', () => {
     const result = await service.getCourtInformation('12345')
 
     expect(mockGet).toHaveBeenCalledWith({
-      path: paths.CASE.INFO.replace(':caseId', '12345'),
+      path: paths.CASES.INFO.replace(':caseId', '12345'),
     })
     expect(result).toEqual(mockResponse)
     expect(logger.debug).toHaveBeenCalledWith('CourtHearingService.getCourtInformation: successful response', {

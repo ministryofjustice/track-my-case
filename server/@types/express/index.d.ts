@@ -22,7 +22,9 @@ export declare global {
       authSource: AuthSource
     }
 
-    export type AuthSource = 'external' | 'nomis' | 'delius' | 'azuread'
+    // a way to define different authorisation sources
+    // export type AuthSource = 'external' | 'nomis' | 'delius' | 'azuread'
+    export type AuthSource = 'onelogin'
 
     interface Request {
       verified?: boolean

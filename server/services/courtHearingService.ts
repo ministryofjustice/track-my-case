@@ -9,12 +9,12 @@ export default class CourtHearingService {
   constructor(private readonly apiClient: TrackMyCaseApiClient) {}
 
   async getHearings(caseId: string): Promise<CourtSchedule> {
-    const path = resolvePath(paths.CASE.HEARINGS, { caseId })
+    const path = resolvePath(paths.CASES.HEARINGS, { caseId })
     return this.apiClient.get<CourtSchedule>({ path })
   }
 
   async getCourtInformation(caseId: string): Promise<CourtSchedule[]> {
-    const path = resolvePath(paths.CASE.INFO, { caseId })
+    const path = resolvePath(paths.CASES.INFO, { caseId })
     const response = await this.apiClient.get<CourtSchedule[]>({ path })
 
     logger.debug('CourtHearingService.getCourtInformation: successful response', {
@@ -25,7 +25,7 @@ export default class CourtHearingService {
   }
 
   async getCaseDetailsByUrn(urn: string): Promise<CaseDetails> {
-    const path = resolvePath(paths.CASE.CASE_DETAILS, { urn })
+    const path = resolvePath(paths.CASES.CASE_DETAILS, { urn })
     const response = await this.apiClient.get<CaseDetails>({ path })
 
     logger.debug('CourtHEaringService.getCaseDetailsByUrn: successful response', {

@@ -50,7 +50,7 @@ const handleLogout = (decodedToken: jwt.JwtPayload) => {
 const createUserIfExist = (user: Express.User): Express.User | undefined => {
   if (user) {
     return {
-      authSource: 'external',
+      authSource: 'onelogin',
       ...user,
     }
   }
@@ -158,10 +158,6 @@ export default function setUpGovukOneLogin(): Router {
           displayName: convertToTitleCase(name),
           userRoles: roles.map(role => role.substring(role.indexOf('_') + 1)),
         } as Express.User
-
-        if (res.locals.user.authSource === 'nomis') {
-          // res.locals.user.staffId = parseInt(userId, 10) || undefined
-        }
       }
 
       next()
