@@ -77,7 +77,6 @@ const config = {
       url: oidcIssuer,
       jwksUrl: oidcIssuer + '/.well-known/jwks.json',
       discoveryUrl: oidcIssuer + '/.well-known/openid-configuration',
-      homeUrl: get('OIDC_ISSUER_HOME', '', requiredInProduction),
       clientId: get('OIDC_CLIENT_ID', '', requiredInProduction),
       privateKey: get('OIDC_PRIVATE_KEY', '', requiredInProduction),
       timeout: 20000,
