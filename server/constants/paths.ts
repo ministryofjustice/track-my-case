@@ -12,10 +12,11 @@ const paths = {
   },
 
   ONE_LOGIN: {
-    // OneLogin status pages
+    // OneLogin redirection URLs
     SIGNED_IN: '/signed-in',
     SIGNED_OUT: '/signed-out',
     AUTH_ERROR: '/authentication-error',
+    BACK_CHANNEL_LOGOUT_URI: '/back-channel-logout-uri',
   },
 
   CASES: {

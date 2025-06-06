@@ -82,6 +82,7 @@ const config = {
       scopes: get('OIDC_SCOPES', 'email,openid', requiredInProduction),
       authorizeRedirectUrl: replacePort(get('OIDC_AUTHORIZE_REDIRECT_URL', '', requiredInProduction), port),
       postLogoutRedirectUrl: replacePort(get('OIDC_POST_LOGOUT_REDIRECT_URL', '', requiredInProduction), port),
+      backChannelLogoutUri: replacePort(get('OIDC_BACK_CHANNEL_LOGOUT_URI', '', requiredInProduction), port),
       claims: get('OIDC_CLAIMS', 'https://vocab.account.gov.uk/v1/coreIdentityJWT', requiredInProduction).split(
         ',',
       ) as UserIdentityClaim[],

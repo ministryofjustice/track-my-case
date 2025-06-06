@@ -20,7 +20,7 @@ import caseRoutes from './routes/case'
 import oneLoginRoutes from './routes/oneLogin'
 import publicRoutes from './routes/public'
 import healthRoutes from './routes/health'
-import setUpGovukOneLogin from './middleware/setupGovukOneLogin'
+import { setUpGovukOneLogin } from './middleware/setupGovukOneLogin'
 
 export default function createApp(): express.Application {
   const app = express()

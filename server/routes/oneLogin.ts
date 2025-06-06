@@ -15,7 +15,7 @@ export default function routes(app: express.Express): void {
 
   app.get(
     paths.ONE_LOGIN.SIGNED_OUT,
-    asyncMiddleware((req: Request, res: Response, next: NextFunction) => {
+    asyncMiddleware(async (req: Request, res: Response, next: NextFunction) => {
       res.render('pages/signed-out.njk', {
         serviceName: 'Track My Case',
       })

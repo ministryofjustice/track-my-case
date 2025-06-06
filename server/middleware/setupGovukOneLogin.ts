@@ -3,7 +3,7 @@ import express from 'express'
 import passport from 'passport'
 import flash from 'connect-flash'
 import { BaseClient, EndSessionParameters, generators } from 'openid-client'
-import jwt from 'jsonwebtoken'
+import jwt, { Jwt } from 'jsonwebtoken'
 import jwksClient from 'jwks-rsa'
 import govukOneLogin from '../authentication/govukOneLogin'
 import config from '../config'
@@ -40,11 +40,12 @@ const getSigningKey = (kid: string): Promise<string> => {
   })
 }
 
-const handleLogout = (decodedToken: jwt.JwtPayload) => {
-  const userId = decodedToken.sub
+export const removeTokenOnLogout = async (userId?: string): Promise<void> => {
   logger.info(`Logging out user: ${userId}`)
-  const tokenStore = tokenStoreFactory()
-  tokenStore.removeToken(userId)
+  if (userId !== undefined) {
+    const tokenStore = tokenStoreFactory()
+    await tokenStore.removeToken(userId)
+  }
 }
 
 const createUserIfExist = (user: Express.User): Express.User | undefined => {
@@ -57,7 +58,33 @@ const createUserIfExist = (user: Express.User): Express.User | undefined => {
   return undefined
 }
 
-export default function setUpGovukOneLogin(): Router {
+export const decodeTokenAndClear = async (logoutToken: string): Promise<void> => {
+  if (!logoutToken) {
+    throw new Error('No logout_token provided')
+  }
+
+  // decode to find the signing key header (kid)
+  const decodedToken: Jwt = jwt.decode(logoutToken, { complete: true })
+  if (!decodedToken || !decodedToken.header || !decodedToken.header.kid) {
+    throw new Error('Invalid logout token ')
+  }
+
+  const oneLoginPublicKey = await getSigningKey(decodedToken.header.kid)
+  try {
+    // verify the signature
+    const verifiedPayload = jwt.verify(logoutToken, oneLoginPublicKey as jwt.Secret) as jwt.JwtPayload
+    console.info('Token verified')
+
+    await removeTokenOnLogout(verifiedPayload.sub)
+  } catch (error) {
+    console.error(`Error on token verification ${error}`)
+    await removeTokenOnLogout(decodedToken.payload.sub as string)
+  }
+
+  return Promise.resolve()
+}
+
+export const setUpGovukOneLogin = (): Router => {
   govukOneLogin.init().then((client: BaseClient) => {
     router.use(passport.initialize())
     router.use(passport.session())
@@ -73,21 +100,12 @@ export default function setUpGovukOneLogin(): Router {
     })
 
     // Endpoint to handle back-channel logout requests
-    router.post('/backchannel-logout-uri', async (req, res) => {
-      logger.info(`Backchannel logout notification received`)
-      const logoutToken = req.body.logout_token
+    router.post(paths.ONE_LOGIN.BACK_CHANNEL_LOGOUT_URI, async (req: Request, res: Response) => {
+      logger.info(`Back channel logout notification received`)
       try {
-        // decode to find the signing key header (kid)
-        const decodedToken = jwt.decode(logoutToken, { complete: true })
-        if (!decodedToken || !decodedToken.header || !decodedToken.header.kid) {
-          throw new Error('Invalid token')
-        }
+        const logoutToken = req.body?.logout_token
+        await decodeTokenAndClear(logoutToken)
 
-        // verify the signature
-        const oneLoginPublicKey = await getSigningKey(decodedToken.header.kid)
-        const verifiedPayload = jwt.verify(logoutToken, oneLoginPublicKey as jwt.Secret) as jwt.JwtPayload
-
-        handleLogout(verifiedPayload)
         res.status(200).send('Logout processed')
       } catch (error) {
         logger.error(`Invalid logout token ${JSON.stringify(req.body)}:`, error)
@@ -114,7 +132,10 @@ export default function setUpGovukOneLogin(): Router {
           const tokenStore = tokenStoreFactory()
           const tokenId = await tokenStore.getToken(req.user.sub)
           return req.logout(err => {
-            if (err) return next(err)
+            if (err) {
+              return next(err)
+            }
+            // OneLogin documentation https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/managing-your-users-sessions/#request-logout-notifications-from-gov-uk-one-login
             return req.session.destroy(() => {
               const endSessionUrl = client.endSessionUrl({
                 id_token_hint: tokenId,
@@ -133,11 +154,6 @@ export default function setUpGovukOneLogin(): Router {
     router.use(paths.PASSPORT.SIGN_OUT, async (req, res, next) => {
       const postLogoutRedirectUrl = config.apis.govukOneLogin.postLogoutRedirectUrl
       return handleSignOut(req, res, next, postLogoutRedirectUrl)
-    })
-
-    router.use('/sign-out-timed', async (req, res, next) => {
-      const postLogoutRedirectUrl = config.apis.govukOneLogin.postLogoutRedirectUrl
-      return handleSignOut(req, res, next, `${postLogoutRedirectUrl}/timed-out`)
     })
 
     router.use((req, res, next) => {
