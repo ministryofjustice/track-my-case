@@ -6,7 +6,7 @@ import paths from '../constants/paths'
 
 export default function routes(app: express.Express): void {
   app.get(
-    paths.SIGNED_IN,
+    paths.ONE_LOGIN.SIGNED_IN,
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
       signedInController(req, res, next)
@@ -14,7 +14,7 @@ export default function routes(app: express.Express): void {
   )
 
   app.get(
-    paths.SIGNED_OUT,
+    paths.ONE_LOGIN.SIGNED_OUT,
     asyncMiddleware((req: Request, res: Response, next: NextFunction) => {
       res.render('pages/signed-out.njk', {
         serviceName: 'Track My Case',

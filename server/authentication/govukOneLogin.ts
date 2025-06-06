@@ -1,5 +1,13 @@
 import passport from 'passport'
-import { Client, Issuer, Strategy, StrategyVerifyCallbackUserInfo, TokenSet, UserinfoResponse } from 'openid-client'
+import {
+  Client,
+  ClientAuthMethod,
+  Issuer,
+  Strategy,
+  StrategyVerifyCallbackUserInfo,
+  TokenSet,
+  UserinfoResponse,
+} from 'openid-client'
 
 import { NextFunction, Request, Response } from 'express'
 import { createPrivateKey } from 'crypto'
@@ -25,7 +33,7 @@ const authenticationMiddleware = async (req: Request, res: Response, next: NextF
   }
 
   req.session.returnTo = req.originalUrl === paths.START ? paths.START : req.originalUrl
-  return res.redirect(paths.SIGN_IN)
+  return res.redirect(paths.PASSPORT.SIGN_IN)
 }
 
 async function init(): Promise<Client> {
@@ -44,14 +52,14 @@ async function init(): Promise<Client> {
   }).export({ format: 'jwk' })
 
   const clientId = config.apis.govukOneLogin.clientId
-  const serviceUrl = config.serviceUrl
-  const redirectUris = [`${serviceUrl}${paths.AUTH_CALLBACK}`]
+  const authorizeRedirectUrl = config.apis.govukOneLogin.authorizeRedirectUrl
+
   const client = new issuer.Client(
     {
       client_id: clientId,
-      redirect_uris: redirectUris,
+      redirect_uris: [authorizeRedirectUrl],
       response_types: ['code'],
-      token_endpoint_auth_method: 'private_key_jwt',
+      token_endpoint_auth_method: config.apis.govukOneLogin.tokenAuthMethod as ClientAuthMethod,
       token_endpoint_auth_signing_alg: 'RS256',
       id_token_signed_response_alg: 'ES256',
     },

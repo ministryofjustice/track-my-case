@@ -44,14 +44,10 @@ const replacePort = (url: string, port: string): string => {
   return url
 }
 
-const oidcIssuer = get('OIDC_ISSUER', '', requiredInProduction)
-
 const port = get('NODE_PORT', '9999')
+const serviceUrl = replacePort(get('SERVICE_URL', ''), port)
 
-const originalServiceUrl = get('SERVICE_URL', '')
-const serviceUrl = replacePort(originalServiceUrl, port)
-
-const postLogoutRedirectUrl = replacePort(get('OIDC_POST_LOGOUT_REDIRECT_URL', '', requiredInProduction), port)
+const oidcIssuer = get('OIDC_ISSUER', '', requiredInProduction)
 
 const config = {
   buildNumber: get('BUILD_NUMBER', '1_0_0', requiredInProduction),
@@ -84,8 +80,8 @@ const config = {
       ivIssuer: get('IV_ISSUER', '', requiredInProduction),
       ivDidUri: get('IV_DID_URI', '', requiredInProduction),
       scopes: get('OIDC_SCOPES', 'email,openid', requiredInProduction),
-      authorizeRedirectUrl: get('OIDC_AUTHORIZE_REDIRECT_URL', '', requiredInProduction),
-      postLogoutRedirectUrl: postLogoutRedirectUrl,
+      authorizeRedirectUrl: replacePort(get('OIDC_AUTHORIZE_REDIRECT_URL', '', requiredInProduction), port),
+      postLogoutRedirectUrl: replacePort(get('OIDC_POST_LOGOUT_REDIRECT_URL', '', requiredInProduction), port),
       claims: get('OIDC_CLAIMS', 'https://vocab.account.gov.uk/v1/coreIdentityJWT', requiredInProduction).split(
         ',',
       ) as UserIdentityClaim[],

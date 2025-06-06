@@ -63,9 +63,13 @@ export default function setUpGovukOneLogin(): Router {
     router.use(passport.session())
     router.use(flash())
 
-    router.get(paths.AUTH_ERROR, (req: Request, res: Response) => {
+    router.get(paths.ONE_LOGIN.AUTH_ERROR, (req: Request, res: Response) => {
       res.status(401)
-      return res.render('pages/error', { user: req.user, error: 'error', error_description: 'error_description' })
+      return res.render('pages/error.njk', {
+        user: req.user,
+        error: 'error',
+        error_description: 'error_description',
+      })
     })
 
     // Endpoint to handle back-channel logout requests
@@ -91,15 +95,15 @@ export default function setUpGovukOneLogin(): Router {
       }
     })
 
-    router.get(paths.SIGN_IN, (req, res, next) => {
+    router.get(paths.PASSPORT.SIGN_IN, (req, res, next) => {
       passport.authenticate(config.apis.govukOneLogin.strategyName, { nonce: generators.nonce() })(req, res, next)
     })
 
-    router.get(paths.AUTH_CALLBACK, (req, res, next) => {
+    router.get(paths.PASSPORT.AUTH_CALLBACK, (req, res, next) => {
       passport.authenticate(config.apis.govukOneLogin.strategyName, {
         nonce: generators.nonce(),
-        successRedirect: config.serviceUrl + paths.SIGNED_IN,
-        failureRedirect: config.serviceUrl + paths.AUTH_ERROR,
+        successRedirect: config.serviceUrl + paths.ONE_LOGIN.SIGNED_IN,
+        failureRedirect: config.serviceUrl + paths.ONE_LOGIN.AUTH_ERROR,
         failureFlash: true,
       })(req, res, next)
     })
@@ -126,7 +130,7 @@ export default function setUpGovukOneLogin(): Router {
       return res.redirect(redirectUri)
     }
 
-    router.use(paths.SIGN_OUT, async (req, res, next) => {
+    router.use(paths.PASSPORT.SIGN_OUT, async (req, res, next) => {
       const postLogoutRedirectUrl = config.apis.govukOneLogin.postLogoutRedirectUrl
       return handleSignOut(req, res, next, postLogoutRedirectUrl)
     })
