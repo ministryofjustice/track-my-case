@@ -6,7 +6,7 @@ import { courtInformationController } from '../controllers/court-information-con
 import courtInfoHealthCheck from '../controllers/courtInfoController'
 import courtInformationTwoController from '../controllers/court-information-two-controller'
 
-import { AuthenticatedUser } from '../helpers/user-status'
+import { AuthenticatedUser } from '../helpers/authenticatedUser'
 import asyncMiddleware from '../middleware/asyncMiddleware'
 
 export default function routes(app: express.Express): void {

@@ -2,7 +2,7 @@ import type { NextFunction, Request, Response, Router } from 'express'
 import express from 'express'
 import passport from 'passport'
 import flash from 'connect-flash'
-import { BaseClient, generators } from 'openid-client'
+import { BaseClient, EndSessionParameters, generators } from 'openid-client'
 import jwt from 'jsonwebtoken'
 import jwksClient from 'jwks-rsa'
 import govukOneLogin from '../authentication/govukOneLogin'
@@ -108,17 +108,16 @@ export default function setUpGovukOneLogin(): Router {
       if (req.user) {
         try {
           const tokenStore = tokenStoreFactory()
-          const tokenId = await tokenStore.getToken(req.user.token)
+          const tokenId = await tokenStore.getToken(req.user.sub)
           return req.logout(err => {
             if (err) return next(err)
-            return req.session.destroy(() =>
-              res.redirect(
-                client.endSessionUrl({
-                  id_token_hint: tokenId,
-                  post_logout_redirect_uri: redirectUri,
-                }),
-              ),
-            )
+            return req.session.destroy(() => {
+              const endSessionUrl = client.endSessionUrl({
+                id_token_hint: tokenId,
+                post_logout_redirect_uri: redirectUri,
+              } as EndSessionParameters)
+              return res.redirect(endSessionUrl)
+            })
           })
         } catch (err) {
           return next(err)
@@ -128,13 +127,13 @@ export default function setUpGovukOneLogin(): Router {
     }
 
     router.use(paths.SIGN_OUT, async (req, res, next) => {
-      const serviceUrl = config.serviceUrl
-      return handleSignOut(req, res, next, serviceUrl)
+      const postLogoutRedirectUrl = config.apis.govukOneLogin.postLogoutRedirectUrl
+      return handleSignOut(req, res, next, postLogoutRedirectUrl)
     })
 
     router.use('/sign-out-timed', async (req, res, next) => {
-      const serviceUrl = config.serviceUrl
-      return handleSignOut(req, res, next, `${serviceUrl}/timed-out`)
+      const postLogoutRedirectUrl = config.apis.govukOneLogin.postLogoutRedirectUrl
+      return handleSignOut(req, res, next, `${postLogoutRedirectUrl}/timed-out`)
     })
 
     router.use((req, res, next) => {
@@ -162,8 +161,6 @@ export default function setUpGovukOneLogin(): Router {
 
       next()
     })
-
-    router.use(govukOneLogin.authenticationMiddleware())
   })
 
   return router

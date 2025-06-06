@@ -1,7 +1,7 @@
 import passport from 'passport'
-import { Client, Issuer, Strategy, StrategyVerifyCallbackUserInfo, UserinfoResponse } from 'openid-client'
+import { Client, Issuer, Strategy, StrategyVerifyCallbackUserInfo, TokenSet, UserinfoResponse } from 'openid-client'
 
-import { RequestHandler } from 'express'
+import { NextFunction, Request, Response } from 'express'
 import { createPrivateKey } from 'crypto'
 
 import config from '../config'
@@ -19,15 +19,13 @@ passport.deserializeUser((user: Express.User, done) => {
   done(null, user)
 })
 
-const authenticationMiddleware = (): RequestHandler => {
-  return async (req, res, next) => {
-    if (req.isAuthenticated()) {
-      return next()
-    }
-
-    req.session.returnTo = req.originalUrl === paths.START ? paths.HOME : req.originalUrl
-    return res.redirect(paths.SIGN_IN)
+const authenticationMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+  if (req.isAuthenticated()) {
+    return next()
   }
+
+  req.session.returnTo = req.originalUrl === paths.START ? paths.START : req.originalUrl
+  return res.redirect(paths.SIGN_IN)
 }
 
 async function init(): Promise<Client> {
@@ -60,11 +58,15 @@ async function init(): Promise<Client> {
     { keys: [privateKeyJwk] },
   )
 
-  const verify: StrategyVerifyCallbackUserInfo<UserinfoResponse> = (tokenSet, userInfo, done) => {
+  const verify: StrategyVerifyCallbackUserInfo<UserinfoResponse> = (
+    tokenSet: TokenSet,
+    userInfo: UserinfoResponse,
+    done,
+  ) => {
     logger.info(`GOV.UK One Login user verified, sub: ${userInfo.sub}`)
 
     const tokenStore = tokenStoreFactory()
-    tokenStore.setToken(encodeURIComponent(userInfo.sub), tokenSet.id_token, config.session.expiryMinutes * 60)
+    tokenStore.setToken(userInfo.sub, tokenSet.id_token, config.session.expiryMinutes * 60)
     return done(null, userInfo)
   }
 

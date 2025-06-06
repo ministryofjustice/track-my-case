@@ -37,9 +37,9 @@ export interface ApiConfig {
   agent: AgentConfig
 }
 
-const replacePort = (url: string, port: string): string =>{
+const replacePort = (url: string, port: string): string => {
   if (url.includes(':port')) {
-    return url.replace(':port', (':' + port))
+    return url.replace(':port', ':' + port)
   }
   return url
 }
@@ -50,6 +50,8 @@ const port = get('NODE_PORT', '9999')
 
 const originalServiceUrl = get('SERVICE_URL', '')
 const serviceUrl = replacePort(originalServiceUrl, port)
+
+const postLogoutRedirectUrl = replacePort(get('OIDC_POST_LOGOUT_REDIRECT_URL', '', requiredInProduction), port)
 
 const config = {
   buildNumber: get('BUILD_NUMBER', '1_0_0', requiredInProduction),
@@ -84,8 +86,10 @@ const config = {
       ivDidUri: get('IV_DID_URI', '', requiredInProduction),
       scopes: get('OIDC_SCOPES', 'email,openid', requiredInProduction),
       authorizeRedirectUrl: get('OIDC_AUTHORIZE_REDIRECT_URL', '', requiredInProduction),
-      postLogoutRedirectUrl: get('OIDC_POST_LOGOUT_REDIRECT_URL', '', requiredInProduction),
-      claims: (get('OIDC_CLAIMS', 'https://vocab.account.gov.uk/v1/coreIdentityJWT', requiredInProduction).split(',') as UserIdentityClaim[]),
+      postLogoutRedirectUrl: postLogoutRedirectUrl,
+      claims: get('OIDC_CLAIMS', 'https://vocab.account.gov.uk/v1/coreIdentityJWT', requiredInProduction).split(
+        ',',
+      ) as UserIdentityClaim[],
       tokenAuthMethod: get('OIDC_TOKEN_AUTH_METHOD', 'private_key_jwt', requiredInProduction),
       ivPublicKeys: [] as DIDKeySet[],
       authenticationVtr: get('AUTH_VECTOR_OF_TRUST', 'Cl.Cm', requiredInProduction),

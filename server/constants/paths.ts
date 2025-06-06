@@ -1,6 +1,5 @@
 const paths = {
   START: '/',
-  HOME: '/home',
   HEALTH: '/health',
 
   ACCESS_DENIED: '/access-denied',
