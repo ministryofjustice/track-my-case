@@ -1,5 +1,4 @@
 import express from 'express'
-import session from 'express-session'
 import cookieParser from 'cookie-parser'
 
 import createError from 'http-errors'
@@ -21,6 +20,7 @@ import oneLoginRoutes from './routes/oneLogin'
 import publicRoutes from './routes/public'
 import healthRoutes from './routes/health'
 import { setUpGovukOneLogin } from './middleware/setupGovukOneLogin'
+import { rateLimitSetup } from './utils/rateLimitSetUp'
 
 export default function createApp(): express.Application {
   const app = express()
@@ -45,6 +45,9 @@ export default function createApp(): express.Application {
 
   // Configure parsing cookies - required for storing nonce in authentication
   app.use(cookieParser())
+
+  // Apply the general rate limiter to all requests to prevent abuse
+  app.use(rateLimitSetup)
 
   app.use('/', indexRoutes())
   app.use('/', healthRoutes())

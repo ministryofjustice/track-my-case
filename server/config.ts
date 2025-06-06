@@ -112,6 +112,11 @@ const config = {
     inactivityMinutes: Number(get('WEB_SESSION_INACTIVITY_IN_MINUTES', 10)),
     appointmentsCacheMinutes: Number(get('APPOINTMENTS_CACHE_IN_MINUTES', 1)),
   },
+  rateLimit: {
+    limit: Number(get('RATE_LIMIT_MAX_REQUESTS', 300, requiredInProduction)),
+    windowMs: Number(get('RATE_LIMIT_WINDOW_SECS', 5 * 60, requiredInProduction)) * 1000,
+    message: 'Too many requests, please try again later.',
+  },
   ingressUrl: get('INGRESS_URL', 'http://localhost:3000', requiredInProduction),
 }
 export default config

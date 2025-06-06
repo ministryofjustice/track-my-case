@@ -114,7 +114,9 @@ export const setUpGovukOneLogin = (): Router => {
     })
 
     router.get(paths.PASSPORT.SIGN_IN, (req, res, next) => {
-      passport.authenticate(config.apis.govukOneLogin.strategyName, { nonce: generators.nonce() })(req, res, next)
+      passport.authenticate(config.apis.govukOneLogin.strategyName, {
+        nonce: generators.nonce(),
+      })(req, res, next)
     })
 
     router.get(paths.PASSPORT.AUTH_CALLBACK, (req, res, next) => {
