@@ -73,11 +73,11 @@ export const decodeTokenAndClear = async (logoutToken: string): Promise<void> =>
   try {
     // verify the signature
     const verifiedPayload = jwt.verify(logoutToken, oneLoginPublicKey as jwt.Secret) as jwt.JwtPayload
-    console.info('Token verified')
+    logger.info('Token verified')
 
     await removeTokenOnLogout(verifiedPayload.sub)
   } catch (error) {
-    console.error(`Error on token verification ${error}`)
+    logger.error(`Error on token verification ${error}`)
     await removeTokenOnLogout(decodedToken.payload.sub as string)
   }
 

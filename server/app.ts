@@ -21,9 +21,12 @@ import publicRoutes from './routes/public'
 import healthRoutes from './routes/health'
 import { setUpGovukOneLogin } from './middleware/setupGovukOneLogin'
 import { rateLimitSetup } from './utils/rateLimitSetUp'
+import { Express } from 'express-serve-static-core'
 
 export default function createApp(): express.Application {
-  const app = express()
+  const app: Express = express()
+
+  const isProduction = process.env.NODE_ENV === 'production'
 
   app.set('json spaces', 2)
   app.set('trust proxy', true)
@@ -47,7 +50,7 @@ export default function createApp(): express.Application {
   app.use(cookieParser())
 
   // Apply the general rate limiter to all requests to prevent abuse
-  app.use(rateLimitSetup)
+  rateLimitSetup(app)
 
   app.use('/', indexRoutes())
   app.use('/', healthRoutes())
@@ -60,7 +63,7 @@ export default function createApp(): express.Application {
   })
 
   app.use((req, res, next) => next(createError(404, 'Not found')))
-  app.use(errorHandler(process.env.NODE_ENV === 'production'))
+  app.use(errorHandler(isProduction))
 
   return app
 }
