@@ -106,7 +106,7 @@
     "passport-oauth2": "^1.8.0",
     "pino": "^9.7.0",
     "redis": "^5.1.1",
-    "sass": "^1.89.0",
+    "sass": "^1.89.2",
     "superagent": "^10.2.1",
     "web-did-resolver": "^2.0.30",
     "zod": "^3.25.36"
