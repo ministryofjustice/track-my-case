@@ -26,7 +26,7 @@ jobs:
         id: bump-id
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          WITH_V: true
+          WITH_V: false
 
       - name: Set Version tag output
         id: set-version-tag-output
