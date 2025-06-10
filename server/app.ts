@@ -1,5 +1,4 @@
 import express from 'express'
-import session from 'express-session'
 import cookieParser from 'cookie-parser'
 
 import createError from 'http-errors'
@@ -20,10 +19,14 @@ import caseRoutes from './routes/case'
 import oneLoginRoutes from './routes/oneLogin'
 import publicRoutes from './routes/public'
 import healthRoutes from './routes/health'
-import setUpGovukOneLogin from './middleware/setupGovukOneLogin'
+import { setUpGovukOneLogin } from './middleware/setupGovukOneLogin'
+import { rateLimitSetup } from './utils/rateLimitSetUp'
+import { Express } from 'express-serve-static-core'
 
 export default function createApp(): express.Application {
-  const app = express()
+  const app: Express = express()
+
+  const isProduction = process.env.NODE_ENV === 'production'
 
   app.set('json spaces', 2)
   app.set('trust proxy', true)
@@ -46,6 +49,9 @@ export default function createApp(): express.Application {
   // Configure parsing cookies - required for storing nonce in authentication
   app.use(cookieParser())
 
+  // Apply the general rate limiter to all requests to prevent abuse
+  rateLimitSetup(app)
+
   app.use('/', indexRoutes())
   app.use('/', healthRoutes())
   oneLoginRoutes(app)
@@ -57,7 +63,7 @@ export default function createApp(): express.Application {
   })
 
   app.use((req, res, next) => next(createError(404, 'Not found')))
-  app.use(errorHandler(process.env.NODE_ENV === 'production'))
+  app.use(errorHandler(isProduction))
 
   return app
 }

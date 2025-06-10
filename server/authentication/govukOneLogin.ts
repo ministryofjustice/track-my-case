@@ -1,7 +1,15 @@
 import passport from 'passport'
-import { Client, Issuer, Strategy, StrategyVerifyCallbackUserInfo, UserinfoResponse } from 'openid-client'
+import {
+  Client,
+  ClientAuthMethod,
+  Issuer,
+  Strategy,
+  StrategyVerifyCallbackUserInfo,
+  TokenSet,
+  UserinfoResponse,
+} from 'openid-client'
 
-import { RequestHandler } from 'express'
+import { NextFunction, Request, Response } from 'express'
 import { createPrivateKey } from 'crypto'
 
 import config from '../config'
@@ -19,15 +27,13 @@ passport.deserializeUser((user: Express.User, done) => {
   done(null, user)
 })
 
-const authenticationMiddleware = (): RequestHandler => {
-  return async (req, res, next) => {
-    if (req.isAuthenticated()) {
-      return next()
-    }
-
-    req.session.returnTo = req.originalUrl === paths.START ? paths.HOME : req.originalUrl
-    return res.redirect(paths.SIGN_IN)
+const authenticationMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+  if (req.isAuthenticated()) {
+    return next()
   }
+
+  req.session.returnTo = req.originalUrl === paths.START ? paths.START : req.originalUrl
+  return res.redirect(paths.PASSPORT.SIGN_IN)
 }
 
 async function init(): Promise<Client> {
@@ -46,25 +52,29 @@ async function init(): Promise<Client> {
   }).export({ format: 'jwk' })
 
   const clientId = config.apis.govukOneLogin.clientId
-  const serviceUrl = config.serviceUrl
-  const redirectUris = [`${serviceUrl}${paths.AUTH_CALLBACK}`]
+  const authorizeRedirectUrl = config.apis.govukOneLogin.authorizeRedirectUrl
+
   const client = new issuer.Client(
     {
       client_id: clientId,
-      redirect_uris: redirectUris,
+      redirect_uris: [authorizeRedirectUrl],
       response_types: ['code'],
-      token_endpoint_auth_method: 'private_key_jwt',
+      token_endpoint_auth_method: config.apis.govukOneLogin.tokenAuthMethod as ClientAuthMethod,
       token_endpoint_auth_signing_alg: 'RS256',
       id_token_signed_response_alg: 'ES256',
     },
     { keys: [privateKeyJwk] },
   )
 
-  const verify: StrategyVerifyCallbackUserInfo<UserinfoResponse> = (tokenSet, userInfo, done) => {
+  const verify: StrategyVerifyCallbackUserInfo<UserinfoResponse> = (
+    tokenSet: TokenSet,
+    userInfo: UserinfoResponse,
+    done,
+  ) => {
     logger.info(`GOV.UK One Login user verified, sub: ${userInfo.sub}`)
 
     const tokenStore = tokenStoreFactory()
-    tokenStore.setToken(encodeURIComponent(userInfo.sub), tokenSet.id_token, config.session.expiryMinutes * 60)
+    tokenStore.setToken(userInfo.sub, tokenSet.id_token, config.session.expiryMinutes * 60)
     return done(null, userInfo)
   }
 

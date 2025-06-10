@@ -1,16 +1,23 @@
 const paths = {
   START: '/',
-  HOME: '/home',
   HEALTH: '/health',
 
-  ACCESS_DENIED: '/access-denied',
-  AUTH_CALLBACK_OLD: '/auth/callback',
-  AUTH_CALLBACK: '/oidc/authorization-code/callback',
   AUTH_ERROR: '/autherror',
-  SIGN_IN: '/sign-in',
-  SIGN_OUT: '/sign-out',
-  SIGNED_IN: '/signed-in',
-  SIGNED_OUT: '/signed-out',
+
+  PASSPORT: {
+    // these routes are reserved for passport integration
+    SIGN_IN: '/sign-in',
+    SIGN_OUT: '/sign-out',
+    AUTH_CALLBACK: '/oidc/authorization-code/callback',
+  },
+
+  ONE_LOGIN: {
+    // OneLogin redirection URLs
+    SIGNED_IN: '/signed-in',
+    SIGNED_OUT: '/signed-out',
+    AUTH_ERROR: '/authentication-error',
+    BACK_CHANNEL_LOGOUT_URI: '/back-channel-logout-uri',
+  },
 
   CASES: {
     SELECT: '/case/select',
