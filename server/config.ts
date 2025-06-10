@@ -82,7 +82,7 @@ const config = {
       scopes: get('OIDC_SCOPES', 'email,openid', requiredInProduction),
       authorizeRedirectUrl: replacePort(get('OIDC_AUTHORIZE_REDIRECT_URL', '', requiredInProduction), port),
       postLogoutRedirectUrl: replacePort(get('OIDC_POST_LOGOUT_REDIRECT_URL', '', requiredInProduction), port),
-      backChannelLogoutUri: replacePort(get('OIDC_BACK_CHANNEL_LOGOUT_URI', '', requiredInProduction), port),
+      backChannelLogoutUri: replacePort(get('OIDC_BACK_CHANNEL_LOGOUT_URI', ''), port),
       claims: get('OIDC_CLAIMS', 'https://vocab.account.gov.uk/v1/coreIdentityJWT', requiredInProduction).split(
         ',',
       ) as UserIdentityClaim[],
@@ -106,7 +106,7 @@ const config = {
     },
   },
   session: {
-    name: get('SESSION_NAME', 'stg-track-my-case-ui-insecure-default-session', requiredInProduction),
+    name: get('SESSION_NAME', 'stg-track-my-case-ui-insecure-default-session'),
     secret: get('SESSION_SECRET', 'stg-track-my-case-ui-insecure-default-session', requiredInProduction),
     expiryMinutes: Number(get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120)),
     inactivityMinutes: Number(get('WEB_SESSION_INACTIVITY_IN_MINUTES', 10)),
@@ -117,6 +117,6 @@ const config = {
     windowMs: Number(get('RATE_LIMIT_WINDOW_SECS', 5 * 60, requiredInProduction)) * 1000,
     message: 'Too many requests, please try again later.',
   },
-  ingressUrl: get('INGRESS_URL', 'http://localhost:3000', requiredInProduction),
+  ingressUrl: get('INGRESS_URL', 'http://localhost:3000'),
 }
 export default config
