@@ -170,6 +170,8 @@
   "overrides": {
     "@jgoz/esbuild-plugin-typecheck": {
       "esbuild": "$esbuild"
-    }
+    },
+    "brace-expansion@^1.1.7": "1.1.12",
+    "brace-expansion@^2.0.1": "2.0.2"
   }
 }
