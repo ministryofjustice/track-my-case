@@ -43,7 +43,7 @@ async function init(): Promise<Client> {
   logger.info(`GOV.UK One Login issuer discovered: ${issuer.metadata.issuer}`)
 
   // convert private key in PEM format to JWK
-  const privateKey = config.apis.govukOneLogin.privateKey
+  const { privateKey } = config.apis.govukOneLogin
 
   const privateKeyJwk = createPrivateKey({
     key: Buffer.from(privateKey, 'base64'),
@@ -51,8 +51,8 @@ async function init(): Promise<Client> {
     type: 'pkcs8',
   }).export({ format: 'jwk' })
 
-  const clientId = config.apis.govukOneLogin.clientId
-  const authorizeRedirectUrl = config.apis.govukOneLogin.authorizeRedirectUrl
+  const { clientId } = config.apis.govukOneLogin
+  const { authorizeRedirectUrl } = config.apis.govukOneLogin
 
   const client = new issuer.Client(
     {
@@ -74,7 +74,7 @@ async function init(): Promise<Client> {
     logger.info(`GOV.UK One Login user verified, sub: ${userInfo.sub}`)
 
     const tokenStore = tokenStoreFactory()
-    tokenStore.setToken(userInfo.sub, tokenSet.id_token, config.session.expiryMinutes * 60)
+    tokenStore.setToken(userInfo.sub, tokenSet.id_token, config.session.expiryMinutes * 60 * 1000)
     return done(null, userInfo)
   }
 
@@ -83,7 +83,7 @@ async function init(): Promise<Client> {
       client,
       params: {
         scope: config.apis.govukOneLogin.scopes,
-        vtr: '["' + config.apis.govukOneLogin.authenticationVtr + '"]',
+        vtr: `["${config.apis.govukOneLogin.authenticationVtr}"]`,
         ui_locales: config.apis.govukOneLogin.uiLocales,
       },
       usePKCE: false,
