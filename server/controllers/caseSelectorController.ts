@@ -8,15 +8,14 @@ import { logger } from '../logger'
 const caseSelectorController = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     await initialiseBasicAuthentication(req, res, next)
+    const { user } = res.locals
 
-    // const sub = req.user?.sub
-    const sub = '2121212'
-    if (!sub) {
+    if (!user?.sub) {
       throw new Error('Missing user.sub – cannot fetch case associations')
     }
 
     const service = new CaseAssociationService(new TrackMyCaseApiClient())
-    const associations = await service.getCaseAssociations(sub)
+    const associations = await service.getCaseAssociations(user.sub)
 
     res.locals.pageTitle = 'Select your case'
     res.locals.radioItems = associations.map(association => ({

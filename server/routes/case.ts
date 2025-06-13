@@ -8,6 +8,7 @@ import courtInformationTwoController from '../controllers/court-information-two-
 
 import { AuthenticatedUser } from '../helpers/authenticatedUser'
 import asyncMiddleware from '../middleware/asyncMiddleware'
+import { logger } from '../logger'
 
 export default function routes(app: express.Express): void {
   // Page: Select your case
@@ -20,22 +21,18 @@ export default function routes(app: express.Express): void {
   )
   app.post(
     '/case/select',
-    AuthenticatedUser,
     asyncMiddleware(async (req, res, next) => {
-      const { selectedCrn } = req.body
+      const { selectedCrn } = req.body // ✅ this matches the form
 
       if (!selectedCrn) {
         return res.status(400).render('pages/case/select', {
-          radioItems: [], // you’ll need to pass the same `radioItems` again
+          radioItems: [], // ideally re-pass radioItems from service again
           errorMessage: 'You must select a case',
           csrfToken: req.csrfToken(),
         })
       }
-
-      // TODO: Save selection in session or do something useful with it
+      logger.info('selectedCrn: ', selectedCrn)
       // req.session.selectedCrn = selectedCrn
-
-      // Redirect somewhere relevant
       return res.redirect('/case/dashboard')
     }),
   )
