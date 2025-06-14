@@ -1,5 +1,6 @@
 import express from 'express'
-import caseSelectorController from '../controllers/caseSelectorController'
+
+import { getCaseSelect, postCaseSelect } from '../controllers/caseSelectorController'
 import { caseDashboardController } from '../controllers/case-dashboard-controller'
 import { courtInformationController } from '../controllers/court-information-controller'
 
@@ -12,30 +13,8 @@ import { logger } from '../logger'
 
 export default function routes(app: express.Express): void {
   // Page: Select your case
-  app.get(
-    '/case/select',
-    AuthenticatedUser,
-    asyncMiddleware((req, res, next) => {
-      caseSelectorController(req, res, next)
-    }),
-  )
-  app.post(
-    '/case/select',
-    asyncMiddleware(async (req, res, next) => {
-      const { selectedCrn } = req.body // ✅ this matches the form
-
-      if (!selectedCrn) {
-        return res.status(400).render('pages/case/select', {
-          radioItems: [], // ideally re-pass radioItems from service again
-          errorMessage: 'You must select a case',
-          csrfToken: req.csrfToken(),
-        })
-      }
-      logger.info('selectedCrn: ', selectedCrn)
-      // req.session.selectedCrn = selectedCrn
-      return res.redirect('/case/dashboard')
-    }),
-  )
+  app.get('/case/select', AuthenticatedUser, asyncMiddleware(getCaseSelect))
+  app.post('/case/select', AuthenticatedUser, asyncMiddleware(postCaseSelect))
 
   // Page: Case dashboard
   app.get(

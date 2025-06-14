@@ -1,4 +1,5 @@
 {% extends "layout/citizen-authenticated.njk" %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "components/support-box/macro.njk" import supportBox %}
@@ -7,7 +8,16 @@
 {% set mainClasses = "app-container govuk-body" %}
 
 {% block content %}
+  {% if errorList %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: errorList
+    }) }}
+  {% endif %}
+
   <form method="post" action="/case/select">
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+
     {{ govukRadios({
       name: "selectedCrn",
       fieldset: {
@@ -21,9 +31,8 @@
         text: "There may be other cases that are not yet linked to your details."
       },
       items: radioItems,
-
-      errorMessage: {
-        text: "Select a case to view"
+      errorMessage: errorList and errorList[0] and {
+        text: errorList[0].text
       }
     }) }}
 
@@ -39,3 +48,4 @@
     <pre><code>{{ user | dump(2) }}</code></pre>
   {% endif %}
 {% endblock %}
+
