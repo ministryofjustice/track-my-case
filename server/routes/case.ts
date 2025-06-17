@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getCaseSelect, postCaseSelect } from '../controllers/caseSelectorController'
+import { getCaseSelect, postCaseSelect } from '../controllers/case-selector-controller'
 import { caseDashboardController } from '../controllers/case-dashboard-controller'
 import { courtInformationController } from '../controllers/court-information-controller'
 
