@@ -140,7 +140,7 @@
     "aws-sdk-client-mock": "^4.1.0",
     "chokidar": "^3.6.0",
     "concurrently": "^9.1.2",
-    "cypress": "^14.4.1",
+    "cypress": "^14.5.0",
     "cypress-multi-reporters": "^2.0.5",
     "dotenv": "^16.5.0",
     "dotenv-cli": "^8.0.0",
