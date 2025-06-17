@@ -4,11 +4,7 @@
 {% from "components/promo-panel/macro.njk" import promoPanel %}
 {% from "components/support-box/macro.njk" import supportBox %}
 
-
-{# default the case reference number for now #}
-{% set caseReference = "1234567891011" %}
-
-{% set pageTitle = applicationName + " - Your case " %}
+{% set pageTitle = applicationName + " - Reference number: " + caseReference %}
 {% set mainClasses = "app-container govuk-body" %}
 
 {% block content %}

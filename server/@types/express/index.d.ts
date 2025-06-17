@@ -4,6 +4,11 @@ export declare module 'express-session' {
     passport?: {
       user?: Express.User
     }
+    selectedCrn?: string
+    formState?: {
+      'case-select'?: FormState<CaseSelectFormData>
+      // Add other form keys here as needed
+    }
     returnTo?: string
     nowInMinutes: number
   }
