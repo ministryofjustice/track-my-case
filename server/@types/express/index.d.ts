@@ -6,7 +6,7 @@ export declare module 'express-session' {
     }
     selectedCrn?: string
     formState?: {
-      'case-select'?: FormState<CaseSelectFormData>
+      caseSelect?: FormState<CaseSelectFormData>
       // Add other form keys here as needed
     }
     returnTo?: string

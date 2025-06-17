@@ -20,7 +20,7 @@ const getCaseSelect = async (req: Request, res: Response, next: NextFunction): P
     const service = new CaseAssociationService(new TrackMyCaseApiClient())
     const associations = await service.getCaseAssociations(user.sub)
 
-    const formState = req.session.formState?.['case-select']
+    const formState = req.session.formState?.caseSelect
     const selectedCrn = formState?.formData?.selectedCrn || req.session?.selectedCrn
     const errorList = formState?.errors
 
@@ -38,7 +38,7 @@ const getCaseSelect = async (req: Request, res: Response, next: NextFunction): P
       csrfToken: req.csrfToken(),
     })
 
-    delete req.session.formState?.['case-select']
+    delete req.session.formState?.caseSelect
   } catch (error) {
     logger.error('getCaseSelect: failed to load case associations', { error })
     next(error)
@@ -56,13 +56,12 @@ const postCaseSelect = async (req: Request, res: Response, next: NextFunction): 
       }
 
       req.session.formState = req.session.formState || {}
-      req.session.formState['case-select'] = formState
 
       res.redirect('/case/select')
     }
 
     req.session.selectedCrn = selectedCrn
-    delete req.session.formState?.['case-select']
+    delete req.session.formState?.caseSelect
     res.redirect('/case/dashboard')
   } catch (error) {
     next(error)
