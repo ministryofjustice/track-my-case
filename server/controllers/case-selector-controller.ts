@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
-import CaseAssociationService from '../services/caseAsscociationService'
+import CaseAssociationService from '../services/caseAssociationService'
 
 import { CaseSelectFormData } from '../interfaces/formSchemas'
 import { FormState } from '../interfaces/formState'

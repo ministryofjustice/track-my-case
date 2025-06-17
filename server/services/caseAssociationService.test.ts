@@ -1,6 +1,6 @@
 import paths from '../constants/paths'
 import resolvePath from '../utils/resolvePath'
-import CaseAssociationService from './caseAsscociationService'
+import CaseAssociationService from './caseAssociationService'
 import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
 import { CaseAssociation } from '../interfaces/caseAssociation'
 
@@ -15,15 +15,18 @@ describe('CaseAssociationService', () => {
 
   let apiClient: TrackMyCaseApiClient
   let service: CaseAssociationService
+  let apiClientGetMock: jest.Mock
 
   beforeEach(() => {
     jest.resetAllMocks()
     apiClient = new TrackMyCaseApiClient()
-    ;(apiClient.get as jest.Mock).mockResolvedValue(mockResponse)
+    apiClientGetMock = apiClient.get as jest.Mock
+
     service = new CaseAssociationService(apiClient)
   })
 
   it('should return validated case associations', async () => {
+    apiClientGetMock.mockResolvedValue(mockResponse)
     const result = await service.getCaseAssociations(mockSub)
 
     expect(apiClient.get).toHaveBeenCalledWith({ path: resolvePath(paths.CASES.ASSOCIATIONS, { sub: mockSub }) })
@@ -32,7 +35,7 @@ describe('CaseAssociationService', () => {
 
   it('should throw if response is invalid', async () => {
     const invalidResponse = [{ crn: 123 }]
-    ;(apiClient.get as jest.Mock).mockResolvedValue(invalidResponse)
+    apiClientGetMock.mockResolvedValue(invalidResponse)
 
     await expect(service.getCaseAssociations(mockSub)).rejects.toThrow('Invalid case associations response')
   })
