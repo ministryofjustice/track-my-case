@@ -21,10 +21,9 @@ import publicRoutes from './routes/public'
 import healthRoutes from './routes/health'
 import { setUpGovukOneLogin } from './middleware/setupGovukOneLogin'
 import { rateLimitSetup } from './utils/rateLimitSetUp'
-import { Express } from 'express-serve-static-core'
 
 export default function createApp(): express.Application {
-  const app: Express = express()
+  const app = express()
 
   const isProduction = process.env.NODE_ENV === 'production'
 
@@ -35,8 +34,8 @@ export default function createApp(): express.Application {
   // TODO: setup health checks
 
   app.use(setUpWebSecurity())
-  app.use(setUpWebSession())
   app.use(setUpWebRequestParsing())
+  app.use(setUpWebSession())
   app.use(setUpStaticResources())
   nunjucksSetup(app)
   app.use(setUpGovukOneLogin())
