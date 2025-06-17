@@ -21,7 +21,7 @@ const getCaseSelect = async (req: Request, res: Response, next: NextFunction): P
     const associations = await service.getCaseAssociations(user.sub)
 
     const formState = req.session.formState?.['case-select']
-    const selectedCrn = formState?.formData?.selectedCrn
+    const selectedCrn = formState?.formData?.selectedCrn || req.session?.selectedCrn
     const errorList = formState?.errors
 
     const radioItems = associations.map(association => ({
@@ -58,12 +58,12 @@ const postCaseSelect = async (req: Request, res: Response, next: NextFunction): 
       req.session.formState = req.session.formState || {}
       req.session.formState['case-select'] = formState
 
-      return res.redirect('/case/select')
+      res.redirect('/case/select')
     }
 
     req.session.selectedCrn = selectedCrn
     delete req.session.formState?.['case-select']
-    return res.redirect('/case/dashboard')
+    res.redirect('/case/dashboard')
   } catch (error) {
     next(error)
   }
