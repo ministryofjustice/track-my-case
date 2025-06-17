@@ -1,37 +1,51 @@
 {% extends "layout/citizen-authenticated.njk" %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
-
 {% from "components/support-box/macro.njk" import supportBox %}
 
 {% set pageTitle = applicationName + " - Choose case" %}
 {% set mainClasses = "app-container govuk-body" %}
 
 {% block content %}
+  {% if errorList %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: errorList
+    }) }}
+  {% endif %}
+
+  <form method="post" action="/case/select">
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+
     {{ govukRadios({
-        name: "choose-case",
-        fieldset: {
-            legend: {
-            text: "Select the case you would like to view",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
-            }
-        },
-        hint: {
-            text: "There may be other cases that are not yet linked to your details."
-        },
-        items: radioItems
-        }) }}
+      name: "selectedCrn",
+      fieldset: {
+        legend: {
+          text: "What case you would like to view",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        text: "There may be other cases that are not yet linked to your details."
+      },
+      items: radioItems,
+      errorMessage: errorList and errorList[0] and {
+        text: errorList[0].text
+      }
+    }) }}
 
     {{ govukButton({
-        text: "Continue",
-        href: "dashboard" }) }}
+      text: "Continue"
+    }) }}
+  </form>
 
-    {{ supportBox() }}
+  {{ supportBox() }}
 
   {% if user %}
     <h2 class="govuk-heading-m">User information</h2>
     <pre><code>{{ user | dump(2) }}</code></pre>
   {% endif %}
-
 {% endblock %}
+
