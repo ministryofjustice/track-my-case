@@ -1,8 +1,15 @@
+import { CaseSelectFormData } from '../../interfaces/formSchemas'
+
 export declare module 'express-session' {
   // Declare that the session will potentially contain these additional fields
   interface SessionData {
     passport?: {
       user?: Express.User
+    }
+    selectedCrn?: string
+    formState?: {
+      caseSelect?: FormState<CaseSelectFormData>
+      // Add other form keys here as needed
     }
     returnTo?: string
     nowInMinutes: number
