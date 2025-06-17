@@ -1,5 +1,6 @@
 import express from 'express'
-import { caseSelectController } from '../controllers/case-select-controller'
+
+import { getCaseSelect, postCaseSelect } from '../controllers/case-selector-controller'
 import { caseDashboardController } from '../controllers/case-dashboard-controller'
 import { courtInformationController } from '../controllers/court-information-controller'
 
@@ -8,16 +9,12 @@ import courtInformationTwoController from '../controllers/court-information-two-
 
 import { AuthenticatedUser } from '../helpers/authenticatedUser'
 import asyncMiddleware from '../middleware/asyncMiddleware'
+import { logger } from '../logger'
 
 export default function routes(app: express.Express): void {
   // Page: Select your case
-  app.get(
-    '/case/select',
-    AuthenticatedUser,
-    asyncMiddleware((req, res, next) => {
-      caseSelectController(req, res, next)
-    }),
-  )
+  app.get('/case/select', AuthenticatedUser, asyncMiddleware(getCaseSelect))
+  app.post('/case/select', AuthenticatedUser, asyncMiddleware(postCaseSelect))
 
   // Page: Case dashboard
   app.get(
