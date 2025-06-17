@@ -56,15 +56,17 @@ const postCaseSelect = async (req: Request, res: Response, next: NextFunction): 
       }
 
       req.session.formState = req.session.formState || {}
+      req.session.formState.caseSelect = formState
 
-      res.redirect('/case/select')
+      return res.redirect('/case/select')
     }
 
     req.session.selectedCrn = selectedCrn
     delete req.session.formState?.caseSelect
-    res.redirect('/case/dashboard')
+
+    return res.redirect('/case/dashboard')
   } catch (error) {
-    next(error)
+    return next(error)
   }
 }
 

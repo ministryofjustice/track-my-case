@@ -31,9 +31,7 @@
         text: "There may be other cases that are not yet linked to your details."
       },
       items: radioItems,
-      errorMessage: errorList and errorList[0] and {
-        text: errorList[0].text
-      }
+      errorMessage: errorList and (errorList | selectattr("href", "equalto", "#selectedCrn") | first)
     }) }}
 
     {{ govukButton({
