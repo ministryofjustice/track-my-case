@@ -36,10 +36,10 @@ export default function createApp(): express.Application {
   app.use(setUpWebSecurity())
   app.use(setUpWebRequestParsing())
   app.use(setUpWebSession())
-  app.use(setUpCsrf())
   app.use(setUpStaticResources())
   nunjucksSetup(app)
   app.use(setUpGovukOneLogin())
+  app.use(setUpCsrf())
 
   // Configure body-parser
   app.use(express.json())
