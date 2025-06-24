@@ -3,12 +3,23 @@
 {% from "components/action-card/macro.njk" import actionCard %}
 {% from "components/promo-panel/macro.njk" import promoPanel %}
 {% from "components/support-box/macro.njk" import supportBox %}
+{%- from "moj/components/alert/macro.njk" import mojAlert -%}
 
 {% set pageTitle = applicationName + " - Reference number: " + caseReference %}
 {% set mainClasses = "app-container govuk-body" %}
 
 {% block content %}
   <h1 class="govuk-heading-xl govuk-!-static-margin-bottom-1">Track my case</h1>
+
+
+  {{ mojAlert({
+    variant: "information",
+    title: "Confirm attendence",
+    dismissible: false,
+    html: "Upcoming hearing. Please confirm <a href=''>attendence</a>",
+    classes: "govuk-!-margin-top-2"
+
+  }) }}
 
   <p class="govuk-body">Crime reference number: <strong>{{ caseReference }}</strong></p>
 
