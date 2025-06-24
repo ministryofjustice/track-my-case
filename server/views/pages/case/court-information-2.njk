@@ -4,6 +4,8 @@
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "components/support-box/macro.njk" import supportBox %}
+{%- from "moj/components/alert/macro.njk" import mojAlert -%}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% set pageTitle = applicationName + " - Your hearings" %}
 {% set mainClasses = "app-container govuk-body" %}
@@ -24,7 +26,21 @@
     </p>
 
     {% if hearingData %}
+
+      {{ mojAlert({
+        variant: "information",
+        title: "Confirm attendence",
+        dismissible: false,
+        html: "You can attend the hearing. Please confirm your attendence"
+      }) }}
+
+      {{ govukButton({
+        text: "Confirm attendence",
+        preventDoubleClick: true
+      }) }}
+
       {# --- Hearing Details Card --- #}
+
       <div class="govuk-summary-card govuk-!-margin-bottom-6">
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">
@@ -36,25 +52,6 @@
         </div>
 
         <div class="govuk-summary-card__content">
-
-          {{ govukWarningText({
-            text: "As a witness this is a hearing you must attend to give evidence",
-            iconFallbackText: "Warning"
-          }) }}
-
-          <div class="govuk-!-margin-top-4 govuk-!-margin-bottom-4">
-            {{ govukCheckboxes({
-              idPrefix: "confirm-attendance",
-              name: "confirm-attendance",
-              items: [
-                {
-                  value: "yes",
-                  text: "Please click in the box to confirm you can attend. If you are unable to attend, please use the contact details below to discuss with the police."
-                }
-              ]
-            }) }}
-          </div>
-
           {{ govukSummaryList({
             rows: [
               {
