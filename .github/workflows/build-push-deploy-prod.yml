@@ -109,7 +109,7 @@ jobs:
           AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
           AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
           AUTH0_DOMAIN: ${{ vars.AUTH0_DOMAIN }}
-          AUTH0_PASSWORDLESS: "${{ vars.AUTH0_PASSWORDLESS }}"
+          AUTH0_PASSWORDLESS: ${{ vars.AUTH0_PASSWORDLESS }}
           AUTH0_TOKEN_ALG: ${{ vars.AUTH0_TOKEN_ALG }}
           AUTHENTICATION_REQUIRED: ${{ vars.AUTHENTICATION_REQUIRED }}
           COOKIE_SECRET: ${{ secrets.COOKIE_SECRET }}
@@ -122,11 +122,6 @@ jobs:
           SECRETS_CONTEXT:  ${{ toJson(secrets) }}
           VARS_CONTEXT:  ${{ toJson(vars) }}
         run: |
-          echo "AUTH0_PASSWORDLESS is: $AUTH0_PASSWORDLESS"
-          echo "AUTHENTICATION_REQUIRED is: $AUTHENTICATION_REQUIRED"
-          echo "IDENTITY_SUPPORTED is: $IDENTITY_SUPPORTED"
-          echo "IMMEDIATE_REDIRECT is: $IMMEDIATE_REDIRECT"
-          
           process_ip_range=$(echo $IP_RANGES | sed "s/,/\\\,/g")
 
           combined_json=$(jq -n \
