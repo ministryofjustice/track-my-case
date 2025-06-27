@@ -1,0 +1,222 @@
+name: CI/CD demo
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches-ignore:
+      - dependabot/**
+  workflow_dispatch:
+
+permissions: {}
+concurrency:
+  group: demo
+  cancel-in-progress: false  # Optional — don’t cancel ongoing runs, just queue new ones
+
+jobs:
+  build-push-demo:
+    name: Build & Push New Image
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # This is required for requesting the JWT
+      contents: write # This is required for actions/checkout
+    environment: demo
+    outputs:
+      new_tag: ${{ steps.set-version-tag-output.outputs.new_tag }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.71.0
+        id: bump-id
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          DEFAULT_BUMP: patch
+          PRERELEASE: true
+          PRERELEASE_SUFFIX: demo
+
+      - name: Set Version tag output
+        id: set-version-tag-output
+        run: echo "new_tag=${{ steps.bump-id.outputs.new_tag }}" >> $GITHUB_OUTPUT
+
+      - name: Build
+        env:
+          NEW_TAG_V: ${{ steps.set-version-tag-output.outputs.new_tag }}
+          NODE_ENV: ${{ vars.NODE_ENV }}
+          NODE_PORT: ${{ vars.NODE_PORT }}
+          SERVICE_URL: ${{ vars.SERVICE_URL }}
+          OIDC_CLIENT_ID: ${{ secrets.OIDC_CLIENT_ID }}
+          OIDC_PRIVATE_KEY: ${{ secrets.OIDC_PRIVATE_KEY }}
+          OIDC_ISSUER: ${{ vars.OIDC_ISSUER }}
+          IV_DID_URI: ${{ vars.IV_DID_URI }}
+          IV_ISSUER: ${{ vars.IV_ISSUER }}
+          OIDC_TOKEN_AUTH_METHOD: ${{ vars.OIDC_TOKEN_AUTH_METHOD }}
+          OIDC_SCOPES: ${{ vars.OIDC_SCOPES }}
+          OIDC_CLAIMS: ${{ vars.OIDC_CLAIMS }}
+          OIDC_AUTHORIZE_REDIRECT_URL: ${{ vars.OIDC_AUTHORIZE_REDIRECT_URL }}
+          OIDC_POST_LOGOUT_REDIRECT_URL: ${{ vars.OIDC_POST_LOGOUT_REDIRECT_URL }}
+          OIDC_BACK_CHANNEL_LOGOUT_URI: ${{ vars.OIDC_BACK_CHANNEL_LOGOUT_URI }}
+          AUTH_VECTOR_OF_TRUST: ${{ vars.AUTH_VECTOR_OF_TRUST }}
+          IDENTITY_VECTOR_OF_TRUST: ${{ vars.IDENTITY_VECTOR_OF_TRUST }}
+          UI_LOCALES: ${{ vars.UI_LOCALES }}
+          IMMEDIATE_REDIRECT: ${{ vars.IMMEDIATE_REDIRECT }}
+          REQUIRE_JAR: ${{ vars.REQUIRE_JAR }}
+          IDENTITY_SUPPORTED: ${{ vars.IDENTITY_SUPPORTED }}
+          TRACK_MY_CASE_API_ENABLED: ${{ vars.TRACK_MY_CASE_API_ENABLED }}
+          TRACK_MY_CASE_API_URL: ${{ vars.TRACK_MY_CASE_API_URL }}
+          RATE_LIMIT_MAX_REQUESTS: ${{ vars.RATE_LIMIT_MAX_REQUESTS }}
+          RATE_LIMIT_WINDOW_SECS: ${{ vars.RATE_LIMIT_WINDOW_SECS }}
+        shell: bash
+        run: |
+          docker build . \
+            --build-arg BUILD_NUMBER=$NEW_TAG_V \
+            --build-arg GIT_REF=${{ github.sha }} \
+            --build-arg GIT_BRANCH=${{ github.ref_name }} \
+            --build-arg NODE_ENV=$NODE_ENV \
+            --build-arg NODE_PORT=$NODE_PORT \
+            --build-arg SERVICE_URL=$SERVICE_URL \
+            --build-arg OIDC_CLIENT_ID=$OIDC_CLIENT_ID \
+            --build-arg OIDC_PRIVATE_KEY=$OIDC_PRIVATE_KEY \
+            --build-arg OIDC_ISSUER=$OIDC_ISSUER \
+            --build-arg IV_DID_URI=$IV_DID_URI \
+            --build-arg IV_ISSUER=$IV_ISSUER \
+            --build-arg OIDC_TOKEN_AUTH_METHOD=$OIDC_TOKEN_AUTH_METHOD \
+            --build-arg OIDC_SCOPES=$OIDC_SCOPES \
+            --build-arg OIDC_CLAIMS=$OIDC_CLAIMS \
+            --build-arg OIDC_AUTHORIZE_REDIRECT_URL=$OIDC_AUTHORIZE_REDIRECT_URL \
+            --build-arg OIDC_POST_LOGOUT_REDIRECT_URL=$OIDC_POST_LOGOUT_REDIRECT_URL \
+            --build-arg OIDC_BACK_CHANNEL_LOGOUT_URI=$OIDC_BACK_CHANNEL_LOGOUT_URI \
+            --build-arg AUTH_VECTOR_OF_TRUST=$AUTH_VECTOR_OF_TRUST \
+            --build-arg IDENTITY_VECTOR_OF_TRUST=$IDENTITY_VECTOR_OF_TRUST \
+            --build-arg UI_LOCALES=$UI_LOCALES \
+            --build-arg IMMEDIATE_REDIRECT=$IMMEDIATE_REDIRECT \
+            --build-arg REQUIRE_JAR=$REQUIRE_JAR \
+            --build-arg IDENTITY_SUPPORTED=$IDENTITY_SUPPORTED \
+            --build-arg TRACK_MY_CASE_API_ENABLED=$TRACK_MY_CASE_API_ENABLED \
+            --build-arg TRACK_MY_CASE_API_URL=$TRACK_MY_CASE_API_URL \
+            --build-arg RATE_LIMIT_MAX_REQUESTS=RATE_LIMIT_MAX_REQUESTS \
+            --build-arg RATE_LIMIT_WINDOW_SECS=RATE_LIMIT_WINDOW_SECS \
+            -t working_image:$NEW_TAG_V
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.DEMO_ECR_ROLE_TO_ASSUME }}
+          aws-region: ${{ vars.DEMO_ECR_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Tag, and push image to Amazon ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ vars.DEMO_ECR_REPOSITORY }}
+          NEW_TAG_V: ${{ steps.set-version-tag-output.outputs.new_tag }}
+        shell: bash
+        run: |
+          docker tag working_image:$NEW_TAG_V $ECR_REGISTRY/$ECR_REPOSITORY:$NEW_TAG_V
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$NEW_TAG_V
+
+  deploy-demo:
+    needs: build-push-demo
+    name: Deploy Helm Chart into Cloud Platform
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # This is required for actions/checkout
+      id-token: write # This is required for requesting the JWT
+    environment: demo
+    steps:
+      - name: Authenticate to the cluster
+        env:
+          KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
+          KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
+        run: |
+          echo "${{ secrets.KUBE_CERT }}" > ca.crt
+          kubectl config set-cluster ${KUBE_CLUSTER} --certificate-authority=./ca.crt --server=https://${KUBE_CLUSTER}
+          kubectl config set-credentials deploy-user --token=${{ secrets.KUBE_TOKEN }}
+          kubectl config set-context ${KUBE_CLUSTER} --cluster=${KUBE_CLUSTER} --user=deploy-user --namespace=${{ secrets.KUBE_NAMESPACE }}
+          kubectl config use-context ${KUBE_CLUSTER}
+
+      - name: add helm repo
+        continue-on-error: true
+        run: |
+          helm repo add mojanalytics http://moj-analytics-helm-repo.s3-website-eu-west-1.amazonaws.com/
+
+      - name: update helm repo
+        continue-on-error: true
+        run: |
+          helm repo update mojanalytics
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.DEMO_ECR_ROLE_TO_ASSUME }}
+          aws-region: ${{ vars.DEMO_ECR_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Upgrade the Helm chart
+        env:
+          APP_ROLE_ARN: ${{ secrets.APP_ROLE_ARN }}
+          AUTH0_CALLBACK_URL: ${{ vars.AUTH0_CALLBACK_URL }}
+          AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+          AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
+          AUTH0_DOMAIN: ${{ vars.AUTH0_DOMAIN }}
+          AUTH0_PASSWORDLESS: ${{ vars.AUTH0_PASSWORDLESS }}
+          AUTH0_TOKEN_ALG: ${{ vars.AUTH0_TOKEN_ALG }}
+          AUTHENTICATION_REQUIRED: ${{ vars.AUTHENTICATION_REQUIRED }}
+          COOKIE_SECRET: "${{ secrets.XXX_COOKIE_SECRET }}"
+          ECR_REPO_AUTH0: ${{ steps.login-ecr.outputs.registry }}/analytical-platform/ap-auth-proxy-prod-ecr
+          ECR_REPO_WEBAPP: ${{ steps.login-ecr.outputs.registry }}/${{ vars.DEMO_ECR_REPOSITORY }}
+          IP_RANGES: ${{ secrets.IP_RANGES }}
+          KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
+          NEW_TAG_V: ${{ needs.build-push-demo.outputs.new_tag }}
+          RELEASE_NAME: ${{ github.event.repository.name }}-demo
+          SECRETS_CONTEXT:  ${{ toJson(secrets) }}
+          VARS_CONTEXT:  ${{ toJson(vars) }}
+        run: |
+          process_ip_range=$(echo $IP_RANGES | sed "s/,/\\\,/g")
+
+          combined_json=$(jq -n \
+              --argjson secrets_json "$SECRETS_CONTEXT" \
+              --argjson vars_json "$VARS_CONTEXT" \
+              '$secrets_json + $vars_json')
+
+          custom_variables=""
+          for row in $(echo "${combined_json}" | jq -r 'to_entries[] | @base64'); do
+            key=$(echo ${row} | base64 --decode | jq -r '.key')
+            value=$(echo ${row} | base64 --decode | jq -r '.value')
+            if [[ $key == XXX* ]]; then
+                custom_key=$(echo $key | sed 's/^XXX_/Secrets.WebApp.Parameters./')
+                custom_variables="$custom_variables --set $custom_key=$value"
+            fi
+          done
+          echo "custom_variables is: $custom_variables"
+          
+          helm upgrade --install --wait --timeout 5m0s --namespace $KUBE_NAMESPACE $RELEASE_NAME mojanalytics/webapp-cp \
+          --set AuthProxy.Env.Auth0Domain=$AUTH0_DOMAIN \
+          --set AuthProxy.Env.Auth0Passwordless=$AUTH0_PASSWORDLESS \
+          --set AuthProxy.Env.Auth0TokenAlg=$AUTH0_TOKEN_ALG \
+          --set AuthProxy.Env.AuthenticationRequired=$AUTHENTICATION_REQUIRED \
+          --set AuthProxy.Env.CookieSecret=$COOKIE_SECRET \
+          --set AuthProxy.Env.IPRanges=$process_ip_range \
+          --set AuthProxy.Image.Repository=$ECR_REPO_AUTH0 \
+          --set AuthProxy.Image.Tag="latest" \
+          --set Namespace=$KUBE_NAMESPACE \
+          --set Secrets.Auth0.ClientId=$AUTH0_CLIENT_ID \
+          --set Secrets.Auth0.ClientSecret=$AUTH0_CLIENT_SECRET \
+          --set ServiceAccount.RoleARN=$APP_ROLE_ARN \
+          --set WebApp.Image.Repository=$ECR_REPO_WEBAPP \
+          --set WebApp.Image.Tag=$NEW_TAG_V \
+          --set WebApp.Name=$KUBE_NAMESPACE \
+          --set securityContext.allowPrivilegeEscalation=false \
+          --set securityContext.capabilities.drop=["ALL"] \
+          --set securityContext.runAsNonRoot=true \
+          --set securityContext.seccompProfile.type="RuntimeDefault" \
+          $custom_variables
