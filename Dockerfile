@@ -209,7 +209,7 @@ COPY --from=build --chown=appuser:appgroup /app/package*.json ./
 COPY --from=build --chown=appuser:appgroup /app/node_modules ./node_modules
 COPY --from=build --chown=appuser:appgroup /app/dist ./dist
 
-EXPOSE 9999
+EXPOSE 3000
 
 USER 2000
 

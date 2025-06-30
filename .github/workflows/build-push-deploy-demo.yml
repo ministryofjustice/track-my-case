@@ -21,7 +21,7 @@ jobs:
     permissions:
       id-token: write # This is required for requesting the JWT
       contents: write # This is required for actions/checkout
-    environment: demo
+    environment: dev
     outputs:
       new_tag: ${{ steps.set-version-tag-output.outputs.new_tag }}
     steps:
@@ -128,7 +128,7 @@ jobs:
     permissions:
       contents: write # This is required for actions/checkout
       id-token: write # This is required for requesting the JWT
-    environment: demo
+    environment: dev
     steps:
       - name: Authenticate to the cluster
         env:
@@ -217,7 +217,7 @@ jobs:
           --set WebApp.Image.Tag=$NEW_TAG_V \
           --set WebApp.Name=$KUBE_NAMESPACE \
           --set WebApp.AlternativeHealthCheck.enabled="true" \
-          --set WebApp.AlternativeHealthCheck.port=9999 \
+          --set WebApp.AlternativeHealthCheck.port=3000 \
           --set securityContext.allowPrivilegeEscalation=false \
           --set securityContext.capabilities.drop=["ALL"] \
           --set securityContext.runAsNonRoot=true \
