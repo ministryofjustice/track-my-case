@@ -29,7 +29,7 @@ export default function createApp(): express.Application {
 
   app.set('json spaces', 2)
   app.set('trust proxy', true)
-  app.set('port', process.env.NODE_PORT || 9999)
+  app.set('port', process.env.NODE_PORT || 3000)
 
   // TODO: setup health checks
 
