@@ -39,7 +39,7 @@ export interface ApiConfig {
 
 const replacePort = (url: string, port: string): string => {
   if (url.includes(':port')) {
-    return url.replace(':port', ':' + port)
+    return url.replace(':port', `:${port}`)
   }
   return url
 }
@@ -55,9 +55,9 @@ const config = {
   gitRef: get('GIT_REF', 'xxxxxxxxxxxxxxxxxxx', requiredInProduction),
   branchName: get('GIT_BRANCH', 'xxxxxxxxxxxxxxxxxxx', requiredInProduction),
   nodeEnv: get('NODE_ENV', 'development', requiredInProduction),
-  port: port,
+  port,
   production: isProduction,
-  serviceUrl: serviceUrl,
+  serviceUrl,
   https: process.env.NO_HTTPS === 'true' ? false : isProduction,
   staticResourceCacheDuration: '1h',
   environmentName: get('ENVIRONMENT_NAME', ''),
@@ -71,8 +71,8 @@ const config = {
   apis: {
     govukOneLogin: {
       url: oidcIssuer,
-      jwksUrl: oidcIssuer + '/.well-known/jwks.json',
-      discoveryUrl: oidcIssuer + '/.well-known/openid-configuration',
+      jwksUrl: `${oidcIssuer}/.well-known/jwks.json`,
+      discoveryUrl: `${oidcIssuer}/.well-known/openid-configuration`,
       clientId: get('OIDC_CLIENT_ID', '', requiredInProduction),
       privateKey: get('OIDC_PRIVATE_KEY', '', requiredInProduction),
       timeout: 20000,
@@ -117,6 +117,6 @@ const config = {
     windowMs: Number(get('RATE_LIMIT_WINDOW_SECS', 5 * 60, requiredInProduction)) * 1000,
     message: 'Too many requests, please try again later.',
   },
-  ingressUrl: get('INGRESS_URL', 'http://localhost:3000'),
+  // ingressUrl: get('INGRESS_URL', 'http://localhost:9999'),
 }
 export default config
