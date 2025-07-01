@@ -11,14 +11,14 @@ import { logger } from '../logger'
 const getCaseSelect = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     await initialiseBasicAuthentication(req, res, next)
-    const { user } = res.locals
 
-    if (!user?.sub) {
+    const userSub = res.locals.user?.sub
+    if (!userSub) {
       throw new Error('Missing user.sub – cannot fetch case associations')
     }
 
     const service = new CaseAssociationService(new TrackMyCaseApiClient())
-    const associations = await service.getCaseAssociations(user.sub)
+    const associations = await service.getCaseAssociations(userSub)
 
     const formState = req.session.formState?.caseSelect
     const selectedCrn = formState?.formData?.selectedCrn || req.session?.selectedCrn

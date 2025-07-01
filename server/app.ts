@@ -62,7 +62,7 @@ export default function createApp(): express.Application {
   })
 
   app.use((req, res, next) => next(createError(404, 'Not found')))
-  app.use(errorHandler(isProduction))
+  app.use(errorHandler(false)) // ToDo: was isProduction, not ready for that yet
 
   return app
 }
