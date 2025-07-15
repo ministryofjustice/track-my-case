@@ -2,7 +2,9 @@ import 'applicationinsights'
 
 import app from './server/index'
 import { logger } from './server/logger'
-;(async () => {
+;
+
+(async () => {
   app.listen(app.get('port'), () => {
     const port = `${app.get('port')}`
     logger.info(`🚀 Server started on port ${port}`)

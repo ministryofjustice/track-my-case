@@ -7,18 +7,19 @@ import { FormState } from '../interfaces/formState'
 
 import { initialiseBasicAuthentication } from '../helpers/initialise-basic-authentication'
 import { logger } from '../logger'
+import paths from '../constants/paths'
 
 const getCaseSelect = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     await initialiseBasicAuthentication(req, res, next)
-    const { user } = res.locals
 
-    if (!user?.sub) {
+    const userSub = res.locals.user?.sub || 'unknown'
+    if (!userSub) {
       throw new Error('Missing user.sub – cannot fetch case associations')
     }
 
     const service = new CaseAssociationService(new TrackMyCaseApiClient())
-    const associations = await service.getCaseAssociations(user.sub)
+    const associations = await service.getCaseAssociations(userSub)
 
     const formState = req.session.formState?.caseSelect
     const selectedCrn = formState?.formData?.selectedCrn || req.session?.selectedCrn
@@ -58,13 +59,13 @@ const postCaseSelect = async (req: Request, res: Response, next: NextFunction): 
       req.session.formState = req.session.formState || {}
       req.session.formState.caseSelect = formState
 
-      return res.redirect('/case/select')
+      return res.redirect(paths.CASES.SELECT)
     }
 
     req.session.selectedCrn = selectedCrn
     delete req.session.formState?.caseSelect
 
-    return res.redirect('/case/dashboard')
+    return res.redirect(paths.CASES.DASHBOARD)
   } catch (error) {
     return next(error)
   }

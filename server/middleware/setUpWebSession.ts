@@ -21,7 +21,7 @@ export default function setUpWebSession(): Router {
       cookie: {
         secure: config.https,
         sameSite: 'lax',
-        maxAge: config.session.expiryMinutes * 60 * 1000
+        maxAge: config.session.expiryMinutes * 60 * 1000,
       },
       resave: false, // redis implements touch so shouldn't need this
       saveUninitialized: false,

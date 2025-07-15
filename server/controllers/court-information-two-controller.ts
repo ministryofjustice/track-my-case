@@ -19,6 +19,7 @@ const courtInformationTwoController = async (
     await initialiseBasicAuthentication(req, res, next)
 
     res.locals.pageTitle = 'Court information'
+    res.locals.backLink = '/case/dashboard'
 
     const caseId = (req.query.caseId as string) || '12345'
     const caseDetails = await courtHearingService.getCaseDetailsByUrn(caseId)

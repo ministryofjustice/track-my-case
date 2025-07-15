@@ -6,6 +6,7 @@ export declare module 'express-session' {
     passport?: {
       user?: Express.User
     }
+    selectedUrn?: string
     selectedCrn?: string
     formState?: {
       caseSelect?: FormState<CaseSelectFormData>

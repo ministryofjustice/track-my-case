@@ -44,11 +44,11 @@ function CrossServiceHeader($module) {
    * 2. an aria-controls attribute which can be mapped to the ID of the element
    * that should be hidden on mobile
    */
-  for (var i = 0; i < this.$numberOfNavs; i++) {
-    var $nav = this.$navigation[i]
+  for (let i = 0; i < this.$numberOfNavs; i++) {
+    const $nav = this.$navigation[i]
     $nav.$menuButton = $nav.querySelector('.js-x-header-toggle')
 
-    $nav.$menu = $nav.$menuButton && $nav.querySelector('#' + $nav.$menuButton.getAttribute('aria-controls'))
+    $nav.$menu = $nav.$menuButton && $nav.querySelector(`#${$nav.$menuButton.getAttribute('aria-controls')}`)
     $nav.menuItems = $nav.$menu && $nav.$menu.querySelectorAll('li')
     if (!$nav.$menuButton || !$nav.$menu || $nav.menuItems.length < 2) {
       return
