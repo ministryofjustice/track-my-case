@@ -25,7 +25,7 @@ import { rateLimitSetup } from './utils/rateLimitSetUp'
 export default function createApp(): express.Application {
   const app = express()
 
-  const isProduction = process.env.NODE_ENV === 'production'
+  // const isProduction = process.env.NODE_ENV === 'production'
 
   app.set('json spaces', 2)
   app.set('trust proxy', true)
@@ -62,7 +62,7 @@ export default function createApp(): express.Application {
   })
 
   app.use((req, res, next) => next(createError(404, 'Not found')))
-  app.use(errorHandler(isProduction))
+  app.use(errorHandler(false)) // ToDo: was isProduction, not ready for that yet
 
   return app
 }

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import { initialiseBasicAuthentication } from '../helpers/initialise-basic-authentication'
 
-export const courtInformationController = async (
+const courtInformationController = async (
   req: Request,
   res: Response,
   next: NextFunction,
@@ -11,9 +11,12 @@ export const courtInformationController = async (
     await initialiseBasicAuthentication(req, res, next)
 
     res.locals.pageTitle = 'Court information'
+    res.locals.backLink = '/case/dashboard'
 
     res.render(view)
   } catch (error) {
     next(error)
   }
 }
+
+export default courtInformationController

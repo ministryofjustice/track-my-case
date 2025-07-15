@@ -1,5 +1,6 @@
 {#
 Component options:
+  - authenticated: Was OneLogin executed successfully
   - serviceName (string): The name of the service. The service navigation bar will not render unless serviceName is specified
   - navigationItems (array): An array of objects representing service navigation links.
     Each link object contains the following fields:
@@ -26,6 +27,7 @@ Component options:
   - homepageLink (string): Option to overwrite the default GOV.UK link. Defaults to "https://home.account.gov.uk/"
 #}
 
+{%- set authenticated = params.authenticated -%}
 {%- set oneLoginLink = params.oneLoginLink if params.oneLoginLink else "https://home.account.gov.uk/" -%}
 {%- set homepageLink = params.homepageLink if params.homepageLink else "https://www.gov.uk/" -%}
 {%- set signOutLink = params.signOutLink if params.signOutLink else "https://home.account.gov.uk/sign-out" -%}
@@ -80,25 +82,27 @@ Component options:
           {{ littlePersonIcon() }}
           {{ littlePersonIcon("focus") }}
       </button>
-      <nav aria-label="GOV.UK One Login menu" class="one-login-header__nav" data-open-class="one-login-header__nav--open" id="one-login-header__nav">
-        <ul class="one-login-header__nav__list">
-          <li class="one-login-header__nav__list-item">
-            <a class="one-login-header__nav__link one-login-header__nav__link--one-login" href="{{ oneLoginLink }}" target="_blank">
-              <span class="one-login-header__nav__link-content">
-                GOV.UK One Login
-              </span>
-              {{ littlePersonIcon() }}
-              {{ littlePersonIcon("focus") }}
-            </a>
-          </li>
-          <li class="one-login-header__nav__list-item">
-            <!-- REPLACE SIGN OUT URL PLACEHOLDER WITH SIGN OUT PAGE FOR YOUR SERVICE -->
-            <a class="one-login-header__nav__link" href="{{ signOutLink }}">
-              Sign out
-            </a>
-          </li>
-        </ul>
-      </nav>
+      {% if authenticated %}
+        <nav aria-label="GOV.UK One Login menu" class="one-login-header__nav" data-open-class="one-login-header__nav--open" id="one-login-header__nav">
+          <ul class="one-login-header__nav__list">
+            <li class="one-login-header__nav__list-item">
+              <a class="one-login-header__nav__link one-login-header__nav__link--one-login" href="{{ oneLoginLink }}" target="_blank">
+                <span class="one-login-header__nav__link-content">
+                  GOV.UK One Login
+                </span>
+                {{ littlePersonIcon() }}
+                {{ littlePersonIcon("focus") }}
+              </a>
+            </li>
+            <li class="one-login-header__nav__list-item">
+              <!-- REPLACE SIGN OUT URL PLACEHOLDER WITH SIGN OUT PAGE FOR YOUR SERVICE -->
+              <a class="one-login-header__nav__link" href="{{ signOutLink }}">
+                Sign out
+              </a>
+            </li>
+          </ul>
+        </nav>
+      {% endif %}
     </div>
   </div>
   {% if params.serviceName %}

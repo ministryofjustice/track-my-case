@@ -1,9 +1,9 @@
 import { CryptoKey, importJWK, JWK } from 'jose'
-import DIDKeySet from '../@types/types/did-keyset'
 import { DIDDocument, DIDResolutionResult, Resolver } from 'did-resolver'
 import { getResolver } from 'web-did-resolver'
-import { logger } from '../logger.js'
 import fetch from 'node-fetch'
+import { logger } from '../logger.js'
+import DIDKeySet from '../@types/types/did-keyset'
 import config from '../config'
 
 interface JWTHeader {
@@ -76,12 +76,12 @@ export const fetchPublicKeys = async (did: string, issuer: string): Promise<DIDK
   if (did.includes('localhost')) {
     // bit of a hack to get the DID document from http://localhost
     // didResolver refuses to connect to localhost and http endpoints
-    const response = await fetch(issuer + '.well-known/did.json') // local endpoint
+    const response = await fetch(`${issuer}.well-known/did.json`) // local endpoint
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
     didDocument = await response.json()
-    //return { didDocument, didResolutionMetadata: {}, didDocumentMetadata: {} };
+    // return { didDocument, didResolutionMetadata: {}, didDocumentMetadata: {} };
   } else {
     didResolutionResult = await didResolver.resolve('did:web:identity.integration.account.gov.uk')
   }

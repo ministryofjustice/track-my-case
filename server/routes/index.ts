@@ -1,5 +1,6 @@
-import { Router, type RequestHandler } from 'express'
+import { type RequestHandler, Router } from 'express'
 import asyncMiddleware from '../middleware/asyncMiddleware'
+import indexController from '../controllers/index-controller'
 
 export default function routes(): Router {
   const router = Router()
@@ -7,13 +8,12 @@ export default function routes(): Router {
   // Wrap all routes in async error handler
   const get = (path: string | string[], handler: RequestHandler) => router.get(path, asyncMiddleware(handler))
 
-  get('/', async (req, res) => {
-    res.render('pages/index.njk', {
-      serviceName: 'Track My Case',
-      authenticated: false,
-      currentTime: new Date().toISOString(),
-    })
-  })
+  get(
+    '/',
+    asyncMiddleware((req, res, next) => {
+      indexController(req, res, next)
+    }),
+  )
 
   return router
 }

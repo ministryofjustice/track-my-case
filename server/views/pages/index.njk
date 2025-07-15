@@ -36,11 +36,21 @@
 
       <h1 class="govuk-heading-l">{{ serviceName | safe }}</h1>
 
-      {{ govukButton({
-        text: "Make a request for authentication",
-        href: "/signed-in",
-        isStartButton: true
-      }) }}
+      {% if useOneLogin %}
+        {{ govukButton({
+          text: "Make a request for authentication",
+          href: "/signed-in",
+          isStartButton: true
+        }) }}
+      {% else %}
+        <div>
+          {{ govukButton({
+            text: "Continue to Case search",
+            href: "/case/search",
+            isStartButton: true
+          }) }}
+        </div>
+      {% endif %}
 
       <h2 class="govuk-heading-m">
         Before you start
