@@ -5,12 +5,12 @@ import flash from 'connect-flash'
 import { BaseClient, EndSessionParameters, generators } from 'openid-client'
 import jwt, { Jwt } from 'jsonwebtoken'
 import jwksClient from 'jwks-rsa'
+import { jwtDecode } from 'jwt-decode'
 import govukOneLogin from '../authentication/govukOneLogin'
 import config from '../config'
 import { logger } from '../logger'
 import tokenStoreFactory from '../authentication/tokenStore/tokenStoreFactory'
 import paths from '../constants/paths'
-import { jwtDecode } from 'jwt-decode'
 import { convertToTitleCase } from '../utils/utils'
 
 // Add property used in 'passport.authenticate(strategy, options, callback)'
@@ -154,7 +154,7 @@ export const setUpGovukOneLogin = (): Router => {
     }
 
     router.use(paths.PASSPORT.SIGN_OUT, async (req, res, next) => {
-      const postLogoutRedirectUrl = config.apis.govukOneLogin.postLogoutRedirectUrl
+      const { postLogoutRedirectUrl } = config.apis.govukOneLogin
       return handleSignOut(req, res, next, postLogoutRedirectUrl)
     })
 

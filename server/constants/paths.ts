@@ -20,8 +20,14 @@ const paths = {
   },
 
   CASES: {
+    SEARCH: '/case/search',
     SELECT: '/case/select',
+    CONFIRM_CASE: '/case/confirm-case',
     DASHBOARD: '/case/dashboard',
+    CONTACT_DETAILS: '/case/contact-details',
+    COURT_INFORMATION: '/case/court-information',
+    COURT_INFORMATION_2: '/case/court-information-2',
+    COURT_INFO_HEALTH: '/case/court-info-health',
     HEARINGS: '/cases/:caseId/hearings',
     // TODO: Replace with dynamic caseId path once API contract is finalized
     INFO: '/case/:caseId/courtschedule',

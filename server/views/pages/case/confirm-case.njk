@@ -1,0 +1,44 @@
+{% extends "layout/citizen-authenticated.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{% set pageTitle = applicationName + " - Reference number: " + caseReference %}
+{% set mainClasses = "app-container govuk-body" %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-l">Is this the case you are looking for?</h1>
+
+  <div class="govuk-!-static-margin-bottom-8">
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Unique Reference Number (URN)"
+          },
+          value: {
+            text: caseReference
+          }
+        },
+        {
+          key: {
+            text: "Defendant"
+          },
+          value: {
+            text: "John Snow"
+          }
+        }
+      ]
+    }) }}
+  </div>
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Continue",
+      href: "/case/dashboard"
+    }) }}
+
+    <a class="govuk-link" href="/case/search">Cancel</a>
+  </div>
+
+{% endblock %}

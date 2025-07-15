@@ -1,6 +1,6 @@
 import rateLimit from 'express-rate-limit'
-import config from '../config'
 import { Express } from 'express-serve-static-core'
+import config from '../config'
 
 export const rateLimitSetup = (app: Express): void => {
   app.set('trust proxy', true)

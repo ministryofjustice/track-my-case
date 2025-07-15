@@ -1,0 +1,51 @@
+{% extends "layout/citizen-authenticated.njk" %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+
+{% set pageTitle = applicationName + " - Enter unique reference number (URN)" %}
+{% set mainClasses = "app-container govuk-body" %}
+
+{% block content %}
+  {% if errorList %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: errorList
+    }) }}
+  {% endif %}
+
+  <form id="searchCaseReferenceNumber" name="searchCaseReferenceNumber" method="post" novalidate>
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+
+    {{ govukInput({
+      label: {
+        text: "Enter unique reference number (URN)",
+        classes: "govuk-label--l",
+        isPageHeading: true
+      },
+      hint: {
+        text: "For example, QQ123456ABC"
+      },
+      classes: "govuk-input--width-20",
+      id: "selectedUrn",
+      name: "selectedUrn",
+      pattern: "^[A-Za-z][0-9]{11}$",
+      errorMessage: errorList and (errorList | selectattr("href", "equalto", "#selectedUrn") | first),
+      value: session.selectedUrn
+    }) }}
+
+    {{ govukButton({
+      text: "Find case"
+    }) }}
+
+  </form>
+
+  {{ govukDetails({
+    summaryText: "I don't have a unique reference number (URN)",
+    text: "If you don't know the unique reference number, you should request one from The Courts and Tribunals Service by emailing ContactCrime@justice.gov.uk"
+  }) }}
+
+{% endblock %}
+
