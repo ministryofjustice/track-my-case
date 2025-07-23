@@ -16,6 +16,7 @@ import config from '../config'
 import { logger } from '../logger'
 import tokenStoreFactory from './tokenStore/tokenStoreFactory'
 import paths from '../constants/paths'
+import { isAuthenticatedRequest } from '../utils/utils'
 
 passport.serializeUser((user: Express.User, done) => {
   // Not used but required for Passport
@@ -28,7 +29,7 @@ passport.deserializeUser((user: Express.User, done) => {
 })
 
 const authenticationMiddleware = async (req: Request, res: Response, next: NextFunction) => {
-  if (req.isAuthenticated()) {
+  if (isAuthenticatedRequest(req)) {
     return next()
   }
 

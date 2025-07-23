@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import { NextFunction, Request, Response } from 'express'
 import govukOneLogin from '../authentication/govukOneLogin'
 
