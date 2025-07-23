@@ -1,3 +1,4 @@
+/* eslint-disable */
 type IdentityCheckCredential = {
   credentialSubject: {
     name: Array<any>

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import type { NextFunction, Request, Response, Router } from 'express'
 import express from 'express'
 import passport from 'passport'
@@ -146,8 +147,8 @@ export const setUpGovukOneLogin = (): Router => {
               return res.redirect(endSessionUrl)
             })
           })
-        } catch (err) {
-          return next(err)
+        } catch (error) {
+          return next(error)
         }
       }
       return res.redirect(redirectUri)

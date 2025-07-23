@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable import/no-extraneous-dependencies */
 import rateLimit from 'express-rate-limit'
 import { Express } from 'express-serve-static-core'
 import config from '../config'

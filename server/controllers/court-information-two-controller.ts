@@ -8,7 +8,6 @@ import mapCaseDetailsToHearingSummary from '../mappers/mapCaseDetailsToHearingSu
 const trackMyCaseApiClient = new TrackMyCaseApiClient()
 const courtHearingService = new CourtHearingService(trackMyCaseApiClient)
 
-/* eslint-disable consistent-return */
 const courtInformationTwoController = async (
   req: Request,
   res: Response,
@@ -21,10 +20,13 @@ const courtInformationTwoController = async (
     res.locals.pageTitle = 'Court information'
     res.locals.backLink = '/case/dashboard'
 
-    const caseId = (req.query.caseId as string) || '12345'
-    const caseDetails = await courtHearingService.getCaseDetailsByUrn(caseId)
-    const courtSchedule = caseDetails.courtSchedule[0]
+    const caseId = req.session.selectedUrn || 'wrong-case-id'
+    res.locals.selectedUrn = req.session.selectedUrn
 
+    const caseDetails = await courtHearingService.getCaseDetailsByUrn(caseId)
+    res.locals.caseDetails = caseDetails
+
+    const courtSchedule = caseDetails.courtSchedule[0]
     if (!courtSchedule) {
       return res.status(404).render('pages/case/court-information-2', {
         pageTitle: 'Court information',
@@ -37,7 +39,12 @@ const courtInformationTwoController = async (
 
     return res.render(view)
   } catch (error) {
-    next(error)
+    // next(error)
+    const reason = `Status ${error.status}, ${error.message}`
+    return res.status(404).render('pages/case/court-information-2', {
+      pageTitle: 'Court information',
+      error: `No court schedule found for this case: ${reason}`,
+    })
   }
 }
 
