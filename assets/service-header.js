@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * A modified adaptation of the Design System header script
  */

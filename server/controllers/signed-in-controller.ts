@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import { initialiseBasicAuthentication } from '../helpers/initialise-basic-authentication'
 
-export const signedInController = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+const signedInController = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     await initialiseBasicAuthentication(req, res, next)
 
@@ -10,3 +10,5 @@ export const signedInController = async (req: Request, res: Response, next: Next
     next(error)
   }
 }
+
+export default signedInController
