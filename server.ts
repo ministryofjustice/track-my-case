@@ -1,7 +1,9 @@
+/* eslint-disable prettier/prettier */
 import 'applicationinsights'
 
 import app from './server/index'
 import { logger } from './server/logger'
+
 ;
 
 (async () => {

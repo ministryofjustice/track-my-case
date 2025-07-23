@@ -28,7 +28,7 @@ export default class CourtHearingService {
     const path = resolvePath(paths.CASES.CASE_DETAILS, { urn })
     const response = await this.apiClient.get<CaseDetails>({ path })
 
-    logger.debug('CourtHEaringService.getCaseDetailsByUrn: successful response', {
+    logger.debug('CourtHearingService.getCaseDetailsByUrn: successful response', {
       caseDetails: response,
     })
 

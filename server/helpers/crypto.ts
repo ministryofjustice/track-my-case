@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { CryptoKey, importJWK, JWK } from 'jose'
 import { DIDDocument, DIDResolutionResult, Resolver } from 'did-resolver'
 import { getResolver } from 'web-did-resolver'

@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from 'express'
 import { AuthenticatedUser } from '../helpers/authenticatedUser'
-import { signedInController } from '../controllers/signed-in-controller'
+import signedInController from '../controllers/signed-in-controller'
 import asyncMiddleware from '../middleware/asyncMiddleware'
 import paths from '../constants/paths'
 

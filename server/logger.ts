@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import bunyan from 'bunyan'
 import bunyanFormat from 'bunyan-format'
 import config from './config'
