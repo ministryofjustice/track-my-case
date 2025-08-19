@@ -1,0 +1,95 @@
+{% extends "layout/citizen-authenticated.njk" %}
+
+{% from "components/support-box/macro.njk" import supportBox %}
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{% set pageTitle = applicationName + " - Court information" %}
+{% set mainClasses = "app-container govuk-body" %}
+
+{# TODO: Citizen authentication layout needs breaccrumbs #}
+{# TODO: Check flow with James #}
+
+{% block content %}
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+            Your court information
+        </h1>
+        <p class="govuk-body ">
+            This page gives you important details about your court dates, the court location,
+            and what you need to do as a victim attending court.
+        </p>
+        {{ govukSummaryList({
+            card: {
+            title: {
+                text: "Court details"
+            },
+            content: {
+                html: "See details about your court dates and the court location"
+            }
+            },
+            rows: [
+            {
+                key: { text: "Date of hearing" },
+                value: { text: "15 February 2025 at 10:00 AM" }
+            },
+            {
+                key: { text: "Court name" },
+                value: { text: "Sheffield Combined Court Centre" }
+            },
+            {
+                key: { text: "Court address" },
+                value: { text: "The Law Courts, 50 West Bar, Sheffield S3 8PH" }
+            },
+            {
+                key: { text: "Phone number" },
+                value: { text: "0114 281 2400" }
+            },
+            {
+                key: { text: "Email" },
+                value: { text: "enquiries.sheffield.countycourt@justice.gov.uk" }
+            }
+            ]
+        }) }}
+
+        {{ govukSummaryList({
+            card: {
+            title: {
+                text: "Your responsibilities in court"
+            },
+            content: {
+                html: "See details about your responsibilities as a victim"
+            }
+            },
+            rows: [
+            {
+                key: { text: "Role in court" },
+                value: { text: "As a witness you will be needed to give evidence" }
+            }
+            ]
+        }) }}
+
+        {{ govukSummaryList({
+            card: {
+            title: {
+                text: "Case Outcome"
+            },
+            content: {
+                html: "See details about the outcome of the case"
+            }
+            },
+            rows: [
+            {
+                key: { text: "Outcome" },
+                value: { text: "No outcome from the court case yet." }
+            }
+            ]
+        }) }}
+
+        {{ supportBox() }}
+    </div>
+  </div>
+
+{% endblock %}
