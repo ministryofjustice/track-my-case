@@ -18,6 +18,7 @@ const getEnterUniqueReferenceNumber = async (req: Request, res: Response, next: 
     const errorList = formState?.errors
 
     res.locals.pageTitle = 'Enter unique reference number (URN)'
+    res.locals.backLink = '/case/dashboard'
 
     res.render('pages/case/enter-unique-reference-number.njk', {
       errorList,
