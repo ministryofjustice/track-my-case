@@ -16,7 +16,7 @@ async function courtInfoHealthCheck(req: Request, res: Response, next: NextFunct
     const data = response.body
     const isHealthy = data.status === 'UP'
 
-    res.send(isHealthy ? 'API OK' : 'API DOWN')
+    res.send(isHealthy ? data : 'API DOWN')
   } catch (error) {
     logger.error(error)
     res.status(500).send('API ERROR')
