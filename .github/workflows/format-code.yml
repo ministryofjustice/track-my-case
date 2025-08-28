@@ -8,9 +8,9 @@ jobs:
   format-code:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ministryofjustice/github-actions/code-formatter@v14
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

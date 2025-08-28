@@ -1,5 +1,12 @@
 import { NextFunction, Request, Response } from 'express'
 import { initialiseBasicAuthentication } from '../helpers/initialise-basic-authentication'
+import CourtHearingService from '../services/courtHearingService'
+import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
+
+import mapCaseDetailsToHearingSummary from '../mappers/mapCaseDetailsToHearingSummary'
+
+const trackMyCaseApiClient = new TrackMyCaseApiClient()
+const courtHearingService = new CourtHearingService(trackMyCaseApiClient)
 
 const courtInformationController = async (
   req: Request,
@@ -13,9 +20,31 @@ const courtInformationController = async (
     res.locals.pageTitle = 'Court information'
     res.locals.backLink = '/case/dashboard'
 
-    res.render(view)
+    const caseId = req.session.selectedUrn || 'wrong-case-id'
+    res.locals.selectedUrn = req.session.selectedUrn
+
+    const caseDetails = await courtHearingService.getCaseDetailsByUrn(caseId)
+    res.locals.caseDetails = caseDetails
+
+    const courtSchedule = caseDetails.courtSchedule[0]
+    if (!courtSchedule) {
+      return res.status(404).render('pages/case/court-information', {
+        pageTitle: 'Court information',
+        error: 'No court schedule found for this case.',
+      })
+    }
+
+    const viewModel = mapCaseDetailsToHearingSummary(caseDetails)
+    res.locals.hearingData = viewModel
+
+    return res.render(view)
   } catch (error) {
-    next(error)
+    // next(error)
+    const reason = `Status ${error.status}, ${error.message}`
+    return res.status(404).render('pages/case/court-information', {
+      pageTitle: 'Court information',
+      error: `No court schedule found for this case: ${reason}`,
+    })
   }
 }
 

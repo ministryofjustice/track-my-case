@@ -2,10 +2,10 @@ import express from 'express'
 
 import { getCaseSelect, postCaseSelect } from '../controllers/case-selector-controller'
 import caseDashboardController from '../controllers/case-dashboard-controller'
-import courtInformationController from '../controllers/court-information-controller'
+import courtInformationControllerOld from '../controllers/court-information-controller-old'
 
 import courtInfoHealthCheck from '../controllers/court-info-controller'
-import courtInformationTwoController from '../controllers/court-information-two-controller'
+import courtInformationController from '../controllers/court-information-controller'
 
 import asyncMiddleware from '../middleware/asyncMiddleware'
 import paths from '../constants/paths'
@@ -14,20 +14,27 @@ import {
   postEnterUniqueReferenceNumber,
 } from '../controllers/enter-unique-reference-number-controller'
 import confirmCaseController from '../controllers/confirm-case-controller'
+import { AuthenticatedUser } from '../helpers/authenticatedUser'
+import supportGuidanceController from '../controllers/support-guidance-controller'
+import understandingTheProcessController from '../controllers/understanding-the-process-controller'
+import victimsCodeController from '../controllers/victims-code-controller'
+import returnOfPropertyController from '../controllers/return-of-property-controller'
+import understandCompensationController from '../controllers/understand-compensation-controller'
 
 export default function routes(app: express.Express): void {
   // Page: Enter unique reference number (URN)
   // https://www.gov.uk/government/publications/common-platform-unique-reference-number-urn/purpose-of-the-urn-and-how-to-obtain-it
-  app.get(paths.CASES.SEARCH, asyncMiddleware(getEnterUniqueReferenceNumber))
-  app.post(paths.CASES.SEARCH, asyncMiddleware(postEnterUniqueReferenceNumber))
+  app.get(paths.CASES.SEARCH, AuthenticatedUser, asyncMiddleware(getEnterUniqueReferenceNumber))
+  app.post(paths.CASES.SEARCH, AuthenticatedUser, asyncMiddleware(postEnterUniqueReferenceNumber))
 
   // Page: Select your case
-  app.get(paths.CASES.SELECT, asyncMiddleware(getCaseSelect))
-  app.post(paths.CASES.SELECT, asyncMiddleware(postCaseSelect))
+  app.get(paths.CASES.SELECT, AuthenticatedUser, asyncMiddleware(getCaseSelect))
+  app.post(paths.CASES.SELECT, AuthenticatedUser, asyncMiddleware(postCaseSelect))
 
   // Page: Case dashboard
   app.get(
     paths.CASES.CONFIRM_CASE,
+    AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
       confirmCaseController(req, res, next)
     }),
@@ -36,6 +43,7 @@ export default function routes(app: express.Express): void {
   // Page: Case dashboard
   app.get(
     paths.CASES.DASHBOARD,
+    AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
       caseDashboardController(req, res, next)
     }),
@@ -44,18 +52,20 @@ export default function routes(app: express.Express): void {
   // TODO: add `:id` to route - View court information
   // INFO: This route is still to be used for prototype purposes
   app.get(
-    paths.CASES.COURT_INFORMATION,
+    paths.CASES.COURT_INFORMATION_OLD,
+    AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
-      courtInformationController(req, res, next, 'pages/case/court-information')
+      courtInformationControllerOld(req, res, next, 'pages/case/court-information-old')
     }),
   )
 
   // INFO: This route has been added for show & tell 29-Apr-2025
   // It breaks GDS principles and requires further discussion
   app.get(
-    paths.CASES.COURT_INFORMATION_2,
+    paths.CASES.COURT_INFORMATION,
+    AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
-      courtInformationTwoController(req, res, next, 'pages/case/court-information-2')
+      courtInformationController(req, res, next, 'pages/case/court-information')
     }),
   )
 
@@ -64,15 +74,57 @@ export default function routes(app: express.Express): void {
   // TODO: need to determine if the contact details should be in a different module
   app.get(
     paths.CASES.CONTACT_DETAILS,
+    AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
-      courtInformationController(req, res, next, 'pages/case/contact-details')
+      courtInformationControllerOld(req, res, next, 'pages/case/contact-details')
     }),
   )
 
   app.get(
     paths.CASES.COURT_INFO_HEALTH,
+    AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
       courtInfoHealthCheck(req, res, next)
+    }),
+  )
+
+  app.get(
+    paths.CASES.SUPPORT_GUIDANCE,
+    AuthenticatedUser,
+    asyncMiddleware((req, res, next) => {
+      supportGuidanceController(req, res, next)
+    }),
+  )
+
+  app.get(
+    paths.CASES.UNDERSTANDING_THE_PROCESS,
+    AuthenticatedUser,
+    asyncMiddleware((req, res, next) => {
+      understandingTheProcessController(req, res, next)
+    }),
+  )
+
+  app.get(
+    paths.CASES.VICTIMS_CODE,
+    AuthenticatedUser,
+    asyncMiddleware((req, res, next) => {
+      victimsCodeController(req, res, next)
+    }),
+  )
+
+  app.get(
+    paths.CASES.RETURN_OF_PROPERTY,
+    AuthenticatedUser,
+    asyncMiddleware((req, res, next) => {
+      returnOfPropertyController(req, res, next)
+    }),
+  )
+
+  app.get(
+    paths.CASES.UNDERSTAND_COMPENSATION,
+    AuthenticatedUser,
+    asyncMiddleware((req, res, next) => {
+      understandCompensationController(req, res, next)
     }),
   )
 }

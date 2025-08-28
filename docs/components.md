@@ -46,7 +46,7 @@ A reusable card-style block used to highlight a call to action on pages such as 
 {{ actionCard(
   "The Victims Code",
   "Learn about your rights as a crime victim, including available support.",
-  "/victims-code",
+  "/case/victims-code",
   "Read about the Victims Code",
   "emphasised"
 ) }}
@@ -87,7 +87,7 @@ The `promoPanel` component is used to display highlighted informational or promo
 {{ promoPanel(
   "Need help understanding the process?",
   "Learn what to expect after a hearing or decision and what your next steps might be.",
-  "/support-guidance",
+  "/cases/support-guidance",
   "View guidance",
   "/assets/images/<image-name>",
   "highlight"

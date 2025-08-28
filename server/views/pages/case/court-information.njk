@@ -1,95 +1,135 @@
 {% extends "layout/citizen-authenticated.njk" %}
 
-{% from "components/support-box/macro.njk" import supportBox %}
-
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% from "components/support-box/macro.njk" import supportBox %}
+{%- from "moj/components/alert/macro.njk" import mojAlert -%}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 
-{% set pageTitle = applicationName + " - Court information" %}
+{% set pageTitle = applicationName + " - Your hearings" %}
 {% set mainClasses = "app-container govuk-body" %}
-
-{# TODO: Citizen authentication layout needs breaccrumbs #}
-{# TODO: Check flow with James #}
-
 {% block content %}
-
-  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
-            Your court information
-        </h1>
-        <p class="govuk-body ">
-            This page gives you important details about your court dates, the court location,
-            and what you need to do as a victim attending court.
-        </p>
-        {{ govukSummaryList({
-            card: {
-            title: {
-                text: "Court details"
-            },
-            content: {
-                html: "See details about your court dates and the court location"
-            }
-            },
+
+      {% if error %}
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">There is a problem</h2>
+          <div class="govuk-error-summary__body">
+            {{ error }}
+          </div>
+        </div>
+      {% endif %}
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-5">Court information</h1>
+
+      {{ govukWarningText({
+        html: "<span>This is information from the court system and can change. "+
+        "You will receive an accurate court location for your hearing 24 hours before from a Witness Care Officer. "+
+        "This will only happen if you are required to attend court.</span>"+
+        "<br/><br/>"+"<span>If you require additional information contact your Witness Care Officer during normal "+
+        "business hours, by email or telephone, or contact your local force’s Witness Care Unit if you are unable "+
+        "to speak to your Witness Care Officer. Alternatively, speak to the officer in charge of the investigation.</span>",
+        iconFallbackText: "Warning"
+      }) }}
+
+    {% if hearingData %}
+
+      <div class="govuk-summary-card govuk-!-margin-bottom-6">
+{#        <div class="govuk-summary-card__title-wrapper">#}
+{#          <h2 class="govuk-summary-card__title">#}
+{#            Hearing details for {{ selectedUrn }}#}
+{#            <p class="govuk-body-s">#}
+{#                See details about your next hearing, when and where it will take place#}
+{#            </p>#}
+{#          </h2>#}
+{#        </div>#}
+
+        <div class="govuk-summary-card__content">
+          {{ govukSummaryList({
             rows: [
-            {
-                key: { text: "Date of hearing" },
-                value: { text: "15 February 2025 at 10:00 AM" }
-            },
-            {
+              {
                 key: { text: "Court name" },
-                value: { text: "Sheffield Combined Court Centre" }
-            },
-            {
+                value: {
+                  html: hearingData.location.courtName ~ "<br><br><span>This is the court as it has been listed. The court location will be confirmed by a Witness Care Officer up to 24 hours before the hearing.</span>"
+                }
+              },
+              {
                 key: { text: "Court address" },
-                value: { text: "The Law Courts, 50 West Bar, Sheffield S3 8PH" }
-            },
-            {
-                key: { text: "Phone number" },
-                value: { text: "0114 281 2400" }
-            },
-            {
-                key: { text: "Email" },
-                value: { text: "enquiries.sheffield.countycourt@justice.gov.uk" }
-            }
+                value: {
+                  html: "Courtroom " ~ hearingData.location.courtroom ~ "<br>" ~
+                        hearingData.location.addressLines | join('<br>') ~ "<br>" ~
+                        hearingData.location.postcode
+                }
+              },
+              {
+                key: { text: "Additional information" },
+                value: {
+                  html: '<a href="https://www.find-court-tribunal.service.gov.uk/courts/central-london-county-court" target="_blank">https://www.find-court-tribunal.service.gov.uk/courts/central-london-county-court</a>'
+                }
+              }
             ]
-        }) }}
+          }) }}
+        </div>
+      </div>
 
-        {{ govukSummaryList({
-            card: {
-            title: {
-                text: "Your responsibilities in court"
-            },
-            content: {
-                html: "See details about your responsibilities as a victim"
-            }
-            },
-            rows: [
-            {
-                key: { text: "Role in court" },
-                value: { text: "As a witness you will be needed to give evidence" }
-            }
-            ]
-        }) }}
+{#      <div class="govuk-summary-card govuk-!-margin-bottom-6">#}
+{#        <div class="govuk-summary-card__title-wrapper">#}
+{#          <h2 class="govuk-summary-card__title">Contact details#}
+{#            <p class="govuk-body-s">#}
+{#              If you have questions or need to speak to someone, please use these contact details#}
+{#            </p>#}
+{#          </h2>#}
+{#        </div>#}
 
-        {{ govukSummaryList({
-            card: {
-            title: {
-                text: "Case Outcome"
-            },
-            content: {
-                html: "See details about the outcome of the case"
-            }
-            },
-            rows: [
-            {
-                key: { text: "Outcome" },
-                value: { text: "No outcome from the court case yet." }
-            }
-            ]
-        }) }}
+{#        <div class="govuk-summary-card__content">#}
 
-        {{ supportBox() }}
+{#          <p class="govuk-body">#}
+{#            <a class="govuk-link" href="#">#}
+{#              Use the local police force online contact tool#}
+{#            </a>#}
+{#          </p>#}
+
+{#          {{ govukSummaryList({#}
+{#            rows: [#}
+{#              {#}
+{#                key: { text: "Who to speak to" },#}
+{#                value: { text: hearingData.contactDetails.contactName }#}
+{#              },#}
+{#              {#}
+{#                key: { text: "Telephone" },#}
+{#                value: { text: hearingData.contactDetails.telephone }#}
+{#              },#}
+{#              {#}
+{#                key: { text: "Hours" },#}
+{#                value: { text: hearingData.contactDetails.telephoneHours }#}
+{#              },#}
+{#              {#}
+{#                key: { text: "Email" },#}
+{#                value: { text: hearingData.contactDetails.email }#}
+{#              }#}
+{#            ]#}
+{#          }) }}#}
+
+{#        </div>#}
+{#      </div>#}
+
+      <div>
+        <a href="https://www.find-court-tribunal.service.gov.uk/" target="_blank">Find information about other courts (opens in new tab)</a>
+      </div>
+
+    {% else %}
+      <p>No court information for this case.</p>
+    {% endif %}
+
+    {{ supportBox() }}
+
     </div>
   </div>
-
+  <div class="govuk-grid-row govuk-!-margin-top-8">
+    <div><a href="/case/court-info-health" target="_blank">MOJ API SERVICE health check</a> </div>
+    <pre><code>{{ caseDetails | dump(2) }}</code></pre>
+  </div>
 {% endblock %}

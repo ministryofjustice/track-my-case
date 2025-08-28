@@ -1,13 +1,4 @@
 {
   "peer": true,
-  "reject": [
-    "@types/express",
-    "@types/jest",
-    "@types/node",
-    "chokidar",
-    "express",
-    "express-rate-limit",
-    "jest",
-    "openid-client"
-  ]
+  "reject": ["@types/express", "@types/jest", "@types/node", "chokidar", "cypress", "express", "express-rate-limit", "jest", "openid-client"]
 }
