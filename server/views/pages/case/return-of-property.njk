@@ -1,0 +1,24 @@
+{% extends "layout/citizen-authenticated.njk" %}
+
+{% set pageTitle = applicationName + " - Return of property" %}
+{% set mainClasses = "app-container govuk-body" %}
+
+{% block content %}
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Return of property</h1>
+      <p class="govuk-body">
+        Sometimes property is kept as evidence by the police for the investigation. You are able to have property returned, usually at the conclusion of the case.
+      </p>
+      <p class="govuk-body">
+        Speak to the Officer In Charge via the police website, 101, or email address, and you will be asked to bring ID to your local police station to retrieve it.
+      </p>
+      <p class="govuk-body">
+        If the defendant appeals conviction then the property might need to be kept.
+      </p>
+      <p class="govuk-body">
+        For further information speak to your local police.
+      </p>
+    </div>
+  </div>
+{% endblock %}

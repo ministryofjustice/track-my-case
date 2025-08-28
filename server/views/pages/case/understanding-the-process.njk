@@ -1,0 +1,60 @@
+{% extends "layout/citizen-authenticated.njk" %}
+
+{% set pageTitle = applicationName + " - Understanding the process" %}
+{% set mainClasses = "app-container govuk-body" %}
+
+{% block content %}
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Understanding key roles in the criminal justice community</h1>
+      <div class="promo-panel__image govuk-!-margin-bottom-6">
+        <img src="/assets/images/cjc-banner.jpg" alt="" class="promo-panel__image-content" />
+      </div>
+      <p class="govuk-body">To better support you, we've provided information on the various roles and responsibilities within the criminal justice community.</p>
+
+      <h2 class="govuk-heading-m" id="police-officers">Police Officers</h2>
+      <p class="govuk-body">They investigate crimes, make arrests, and ensure public safety.</p>
+
+      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">Crown Prosecution Service (CPS) Prosecutors</h2>
+      <p class="govuk-body">They decide whether to bring cases to court and prosecute criminal cases on behalf of the state.</p>
+
+      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">Defence Solicitors and Barristers</h2>
+      <p class="govuk-body">They represent the accused, ensuring their legal rights are protected and providing a defence in court.</p>
+
+      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">Judges and Magistrates</h2>
+      <p class="govuk-body">They oversee court proceedings, make rulings on legal matters, and ensure trials are conducted fairly.</p>
+
+      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">Witness Care Officers</h2>
+      <p class="govuk-body">They provide key updates about the progress of the case after somebody is charged through to a court outcome.</p>
+
+      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">Probation Officers</h2>
+      <p class="govuk-body">They supervise people serving their sentence in the community when they have a non-custodial sentence.</p>
+
+      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">Witness Service Volunteer</h2>
+      <p class="govuk-body">They give practical help to someone when going to court to give evidence.</p>
+
+      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">Victim Support Caseworker</h2>
+      <p class="govuk-body">These professionals provide support and assistance to victims of crime, helping them navigate the criminal justice process.</p>
+    </div>
+    <div class="govuk-grid-column-one-third govuk-!-padding-left-7">
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Related information
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="/case/victims-code">Victims’ Code</a>
+            </li>
+            <li>
+              <a href="/case/return-of-property">Return of property</a>
+            </li>
+            <li>
+              <a href="/case/understand-compensation">Understand compensation</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+{% endblock %}
