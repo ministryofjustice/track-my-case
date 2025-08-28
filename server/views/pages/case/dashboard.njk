@@ -9,17 +9,16 @@
 {% set mainClasses = "app-container govuk-body" %}
 
 {% block content %}
-  <h1 class="govuk-heading-l govuk-!-static-margin-bottom-1">Track My Case</h1>
+  <h1 class="govuk-heading-l govuk-!-static-margin-bottom-8">Track My Case</h1>
 
+{#  {{ mojAlert({#}
+{#    variant: "information",#}
+{#    title: "Confirm attendence",#}
+{#    dismissible: false,#}
+{#    html: "Upcoming hearing. Please confirm <a href=''>attendence</a>",#}
+{#    classes: "govuk-!-margin-top-2"#}
 
-  {{ mojAlert({
-    variant: "information",
-    title: "Confirm attendence",
-    dismissible: false,
-    html: "Upcoming hearing. Please confirm <a href=''>attendence</a>",
-    classes: "govuk-!-margin-top-2"
-
-  }) }}
+{#  }) }}#}
 
 {#  <p class="govuk-body">Crime reference number: <strong>{{ caseReference }}</strong></p>#}
 
@@ -56,7 +55,7 @@
         {{ actionCard(
           "Support and guidance",
           "Access victim guidance, including the Victims Code information and links to support.",
-          "/support-guidance",
+          "/case/support-guidance",
           "View support and guidance"
         ) }}
       </div>
@@ -67,7 +66,7 @@
       {{ promoPanel(
         "Need help understanding the process?",
         "Access victim support, including the Victims Code, case information, and court expectations.",
-        "/understanding-the-process",
+        "/case/understanding-the-process",
         "View victim support and information",
         "/assets/images/vsc2.jpg",
         "default"
@@ -80,7 +79,7 @@
         {{ actionCard(
           "The Victims' Code",
           "The Victims' Code details your rights as a crime victim, including being informed about the criminal justice process and the support available.",
-          "/victims-code",
+          "/case/victims-code",
           "Read about the Victims Code",
           "emphasised"
         ) }}

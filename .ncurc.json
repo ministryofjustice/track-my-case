@@ -5,6 +5,7 @@
     "@types/jest",
     "@types/node",
     "chokidar",
+    "cypress",
     "express",
     "express-rate-limit",
     "jest",
