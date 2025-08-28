@@ -15,6 +15,11 @@ import {
 } from '../controllers/enter-unique-reference-number-controller'
 import confirmCaseController from '../controllers/confirm-case-controller'
 import { AuthenticatedUser } from '../helpers/authenticatedUser'
+import supportGuidanceController from '../controllers/support-guidance-controller'
+import understandingTheProcessController from '../controllers/understanding-the-process-controller'
+import victimsCodeController from '../controllers/victims-code-controller'
+import returnOfPropertyController from '../controllers/return-of-property-controller'
+import understandCompensationController from '../controllers/understand-compensation-controller'
 
 export default function routes(app: express.Express): void {
   // Page: Enter unique reference number (URN)
@@ -80,6 +85,46 @@ export default function routes(app: express.Express): void {
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
       courtInfoHealthCheck(req, res, next)
+    }),
+  )
+
+  app.get(
+    paths.CASES.SUPPORT_GUIDANCE,
+    AuthenticatedUser,
+    asyncMiddleware((req, res, next) => {
+      supportGuidanceController(req, res, next)
+    }),
+  )
+
+  app.get(
+    paths.CASES.UNDERSTANDING_THE_PROCESS,
+    AuthenticatedUser,
+    asyncMiddleware((req, res, next) => {
+      understandingTheProcessController(req, res, next)
+    }),
+  )
+
+  app.get(
+    paths.CASES.VICTIMS_CODE,
+    AuthenticatedUser,
+    asyncMiddleware((req, res, next) => {
+      victimsCodeController(req, res, next)
+    }),
+  )
+
+  app.get(
+    paths.CASES.RETURN_OF_PROPERTY,
+    AuthenticatedUser,
+    asyncMiddleware((req, res, next) => {
+      returnOfPropertyController(req, res, next)
+    }),
+  )
+
+  app.get(
+    paths.CASES.UNDERSTAND_COMPENSATION,
+    AuthenticatedUser,
+    asyncMiddleware((req, res, next) => {
+      understandCompensationController(req, res, next)
     }),
   )
 }
