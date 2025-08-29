@@ -20,6 +20,8 @@ import understandingTheProcessController from '../controllers/understanding-the-
 import victimsCodeController from '../controllers/victims-code-controller'
 import returnOfPropertyController from '../controllers/return-of-property-controller'
 import understandCompensationController from '../controllers/understand-compensation-controller'
+import victimsJourneyController from '../controllers/victims-journey-controller'
+import victimPersonalStatementController from '../controllers/victim-personal-statement-controller'
 
 export default function routes(app: express.Express): void {
   // Page: Enter unique reference number (URN)
@@ -105,6 +107,14 @@ export default function routes(app: express.Express): void {
   )
 
   app.get(
+    paths.CASES.VICTIMS_JOURNEY,
+    AuthenticatedUser,
+    asyncMiddleware((req, res, next) => {
+      victimsJourneyController(req, res, next)
+    }),
+  )
+
+  app.get(
     paths.CASES.VICTIMS_CODE,
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
@@ -125,6 +135,14 @@ export default function routes(app: express.Express): void {
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
       understandCompensationController(req, res, next)
+    }),
+  )
+
+  app.get(
+    paths.CASES.VICTIM_PERSONAL_STATEMENT,
+    AuthenticatedUser,
+    asyncMiddleware((req, res, next) => {
+      victimPersonalStatementController(req, res, next)
     }),
   )
 }

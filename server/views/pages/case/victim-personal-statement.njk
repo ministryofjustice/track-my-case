@@ -1,6 +1,6 @@
 {% extends "layout/citizen-authenticated.njk" %}
 
-{% set pageTitle = applicationName + " - Return of property" %}
+{% set pageTitle = applicationName + " - Understand compensation" %}
 {% set mainClasses = "app-container govuk-body" %}
 
 {% block content %}
@@ -21,17 +21,17 @@
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
               <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victims-code">Victims’ Code</a>
             </li>
-            <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
+            <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              Return of property
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/return-of-property">Return of property</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
               <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/understand-compensation">Understand compensation</a>
             </li>
-            <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victim-personal-statement">Victim Personal Statement</a>
+              Victim Personal Statement
             </li>
           </ol>
         </nav>
@@ -40,19 +40,14 @@
   </div>
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
     <div class="govuk-grid-column-two-thirds">
-      <h2 class="govuk-heading-l">Return of property</h2>
-      <p class="govuk-body">
-        Sometimes property is kept as evidence by the police for the investigation. You are able to have property returned, usually at the conclusion of the case.
-      </p>
-      <p class="govuk-body">
-        Speak to the Officer In Charge via the police website, 101, or email address, and you will be asked to bring ID to your local police station to retrieve it.
-      </p>
-      <p class="govuk-body">
-        If the defendant appeals conviction then the property might need to be kept.
-      </p>
-      <p class="govuk-body">
-        For further information speak to your local police.
-      </p>
+      <h2 class="govuk-heading-l">Victim Personal Statement</h2>
+      <p class="govuk-body">A <a class="govuk-link" href="#">Victim Personal Statement (opens in a new tab)</a> is your opportunity to explain how a crime has affected you, in your own words.</p>
+      <p class="govuk-body">In England and Wales, you can give a Victim Personal Statement when reporting the crime or later in the process.</p>
+      <p class="govuk-body">It's separate from your witness statement and helps the court, police, and prosecutors understand the emotional, physical, and financial impact the crime has had on your life.</p>
+      <p class="govuk-body">The judge may consider your Victim Personal Statement when deciding a sentence. You can also say if you'd like to read it aloud in court.</p>
+      <p class="govuk-body">Giving a Victim Personal Statement is your choice, and support is available to help you.</p>
+      <p class="govuk-body">A Victim Personal Statement is sometimes called a Victim Impact Statement.</p>
+      <p class="govuk-body">For more information contact your local Police Force.</p>
     </div>
   </div>
 {% endblock %}

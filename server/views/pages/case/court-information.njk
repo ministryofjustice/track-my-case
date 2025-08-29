@@ -37,42 +37,31 @@
 
     {% if hearingData %}
 
-      <div class="govuk-summary-card govuk-!-margin-bottom-6">
-{#        <div class="govuk-summary-card__title-wrapper">#}
-{#          <h2 class="govuk-summary-card__title">#}
-{#            Hearing details for {{ selectedUrn }}#}
-{#            <p class="govuk-body-s">#}
-{#                See details about your next hearing, when and where it will take place#}
-{#            </p>#}
-{#          </h2>#}
-{#        </div>#}
-
-        <div class="govuk-summary-card__content">
-          {{ govukSummaryList({
-            rows: [
-              {
-                key: { text: "Court name" },
-                value: {
-                  html: hearingData.location.courtName ~ "<br><br><span>This is the court as it has been listed. The court location will be confirmed by a Witness Care Officer up to 24 hours before the hearing.</span>"
-                }
-              },
-              {
-                key: { text: "Court address" },
-                value: {
-                  html: "Courtroom " ~ hearingData.location.courtroom ~ "<br>" ~
-                        hearingData.location.addressLines | join('<br>') ~ "<br>" ~
-                        hearingData.location.postcode
-                }
-              },
-              {
-                key: { text: "Additional information" },
-                value: {
-                  html: '<a href="https://www.find-court-tribunal.service.gov.uk/courts/central-london-county-court" target="_blank">https://www.find-court-tribunal.service.gov.uk/courts/central-london-county-court</a>'
-                }
+      <div class="govuk-!-margin-bottom-6">
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: { text: "Court name" },
+              value: {
+                html: hearingData.location.courtName ~ "<br><br><span>This is the court as it has been listed. The court location will be confirmed by a Witness Care Officer up to 24 hours before the hearing.</span>"
               }
-            ]
-          }) }}
-        </div>
+            },
+            {
+              key: { text: "Court address" },
+              value: {
+                html: "Courtroom " ~ hearingData.location.courtroom ~ "<br>" ~
+                      hearingData.location.addressLines | join('<br>') ~ "<br>" ~
+                      hearingData.location.postcode
+              }
+            },
+            {
+              key: { text: "Additional information" },
+              value: {
+                html: '<a href="https://www.find-court-tribunal.service.gov.uk/courts/central-london-county-court" target="_blank">https://www.find-court-tribunal.service.gov.uk/courts/central-london-county-court</a>'
+              }
+            }
+          ]
+        }) }}
       </div>
 
 {#      <div class="govuk-summary-card govuk-!-margin-bottom-6">#}
