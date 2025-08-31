@@ -1,11 +1,19 @@
 {% extends "layout/citizen-authenticated.njk" %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-{% set pageTitle = applicationName + " - Reference number: " + caseReference %}
+{% set pageTitle = applicationName + " - URN number: " + caseReference %}
 {% set mainClasses = "app-container govuk-body" %}
 
 {% block content %}
+  {% if errorList %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: errorList
+    }) }}
+  {% endif %}
 
   <h1 class="govuk-heading-l">Is this the case you are looking for?</h1>
 
@@ -25,20 +33,26 @@
             text: "Defendant"
           },
           value: {
-            text: "John Snow"
+            text: "First Name Last Name"
           }
         }
       ]
     }) }}
   </div>
 
-  <div class="govuk-button-group">
-    {{ govukButton({
-      text: "Continue",
-      href: "/case/court-information"
+  <form method="post" action="/case/confirm-case">
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+
+    {{ govukRadios({
+      classes: "govuk-radios--inline",
+      name: "caseConfirmed",
+      items: radioItems,
+      errorMessage: errorList and (errorList | selectattr("href", "equalto", "#caseConfirmed") | first)
     }) }}
 
-    <a class="govuk-link" href="/case/search">Cancel</a>
-  </div>
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </form>
 
 {% endblock %}

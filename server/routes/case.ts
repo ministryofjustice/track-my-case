@@ -13,13 +13,15 @@ import {
   getEnterUniqueReferenceNumber,
   postEnterUniqueReferenceNumber,
 } from '../controllers/enter-unique-reference-number-controller'
-import confirmCaseController from '../controllers/confirm-case-controller'
 import { AuthenticatedUser } from '../helpers/authenticatedUser'
 import supportGuidanceController from '../controllers/support-guidance-controller'
 import understandingTheProcessController from '../controllers/understanding-the-process-controller'
 import victimsCodeController from '../controllers/victims-code-controller'
 import returnOfPropertyController from '../controllers/return-of-property-controller'
 import understandCompensationController from '../controllers/understand-compensation-controller'
+import victimsJourneyController from '../controllers/victims-journey-controller'
+import victimPersonalStatementController from '../controllers/victim-personal-statement-controller'
+import { confirmCaseController, postConfirmCase } from '../controllers/confirm-case-controller'
 
 export default function routes(app: express.Express): void {
   // Page: Enter unique reference number (URN)
@@ -33,6 +35,14 @@ export default function routes(app: express.Express): void {
 
   // Page: Case dashboard
   app.get(
+    paths.CASES.DASHBOARD,
+    AuthenticatedUser,
+    asyncMiddleware((req, res, next) => {
+      caseDashboardController(req, res, next)
+    }),
+  )
+
+  app.get(
     paths.CASES.CONFIRM_CASE,
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
@@ -40,12 +50,11 @@ export default function routes(app: express.Express): void {
     }),
   )
 
-  // Page: Case dashboard
-  app.get(
-    paths.CASES.DASHBOARD,
+  app.post(
+    paths.CASES.CONFIRM_CASE,
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
-      caseDashboardController(req, res, next)
+      postConfirmCase(req, res, next)
     }),
   )
 
@@ -55,7 +64,7 @@ export default function routes(app: express.Express): void {
     paths.CASES.COURT_INFORMATION_OLD,
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
-      courtInformationControllerOld(req, res, next, 'pages/case/court-information-old')
+      courtInformationControllerOld(req, res, next)
     }),
   )
 
@@ -65,7 +74,7 @@ export default function routes(app: express.Express): void {
     paths.CASES.COURT_INFORMATION,
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
-      courtInformationController(req, res, next, 'pages/case/court-information')
+      courtInformationController(req, res, next)
     }),
   )
 
@@ -76,7 +85,7 @@ export default function routes(app: express.Express): void {
     paths.CASES.CONTACT_DETAILS,
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
-      courtInformationControllerOld(req, res, next, 'pages/case/contact-details')
+      courtInformationControllerOld(req, res, next)
     }),
   )
 
@@ -105,6 +114,14 @@ export default function routes(app: express.Express): void {
   )
 
   app.get(
+    paths.CASES.VICTIMS_JOURNEY,
+    AuthenticatedUser,
+    asyncMiddleware((req, res, next) => {
+      victimsJourneyController(req, res, next)
+    }),
+  )
+
+  app.get(
     paths.CASES.VICTIMS_CODE,
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
@@ -125,6 +142,14 @@ export default function routes(app: express.Express): void {
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
       understandCompensationController(req, res, next)
+    }),
+  )
+
+  app.get(
+    paths.CASES.VICTIM_PERSONAL_STATEMENT,
+    AuthenticatedUser,
+    asyncMiddleware((req, res, next) => {
+      victimPersonalStatementController(req, res, next)
     }),
   )
 }

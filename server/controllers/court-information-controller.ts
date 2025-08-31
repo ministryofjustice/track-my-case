@@ -4,16 +4,12 @@ import CourtHearingService from '../services/courtHearingService'
 import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
 
 import mapCaseDetailsToHearingSummary from '../mappers/mapCaseDetailsToHearingSummary'
+import paths from '../constants/paths'
 
 const trackMyCaseApiClient = new TrackMyCaseApiClient()
 const courtHearingService = new CourtHearingService(trackMyCaseApiClient)
 
-const courtInformationController = async (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-  view: string,
-): Promise<void> => {
+const courtInformationController = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     await initialiseBasicAuthentication(req, res, next)
 
@@ -22,6 +18,11 @@ const courtInformationController = async (
 
     const caseId = req.session.selectedUrn || 'wrong-case-id'
     res.locals.selectedUrn = req.session.selectedUrn
+
+    res.locals.caseConfirmed = req.session.caseConfirmed
+    if (!res.locals.caseConfirmed) {
+      res.redirect(paths.CASES.SEARCH)
+    }
 
     const caseDetails = await courtHearingService.getCaseDetailsByUrn(caseId)
     res.locals.caseDetails = caseDetails
@@ -37,7 +38,7 @@ const courtInformationController = async (
     const viewModel = mapCaseDetailsToHearingSummary(caseDetails)
     res.locals.hearingData = viewModel
 
-    return res.render(view)
+    return res.render('pages/case/court-information')
   } catch (error) {
     // next(error)
     const reason = `Status ${error.status}, ${error.message}`

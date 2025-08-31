@@ -78,7 +78,7 @@ export default class CourtHearingService {
                 ],
                 hearingId: 'HRG-123456',
                 hearingType: 'Preliminary',
-                hearingDescription: 'Initial appearance for case 456789',
+                hearingDescription: 'Initial appearance for case 456789, mocked data',
                 listNote: 'Judge prefers afternoon start',
               },
             ],

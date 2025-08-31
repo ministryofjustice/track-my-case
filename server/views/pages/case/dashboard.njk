@@ -2,7 +2,6 @@
 
 {% from "components/action-card/macro.njk" import actionCard %}
 {% from "components/promo-panel/macro.njk" import promoPanel %}
-{% from "components/support-box/macro.njk" import supportBox %}
 {%- from "moj/components/alert/macro.njk" import mojAlert -%}
 
 {% set pageTitle = applicationName + " - Reference number: " + caseReference %}
@@ -10,24 +9,9 @@
 
 {% block content %}
   <h1 class="govuk-heading-l govuk-!-static-margin-bottom-8">Track My Case</h1>
-
-{#  {{ mojAlert({#}
-{#    variant: "information",#}
-{#    title: "Confirm attendence",#}
-{#    dismissible: false,#}
-{#    html: "Upcoming hearing. Please confirm <a href=''>attendence</a>",#}
-{#    classes: "govuk-!-margin-top-2"#}
-
-{#  }) }}#}
-
-{#  <p class="govuk-body">Crime reference number: <strong>{{ caseReference }}</strong></p>#}
-
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
     <div class="govuk-grid-column-one-third">
       <div class="action-card-wrapper">
-        {# // INFO: This route is still to be used for prototype purposes #}
-        {# // INFO: This route has been added for show & tell 29-Apr-2025 #}
-        {# TODO: actionCard parameters should be a constant #}
         {{ actionCard(
           "View court information",
           "See information about the court case, including date, location, your requirements and verdicts.",
@@ -38,25 +22,23 @@
         ) }}
       </div>
     </div>
-
     <div class="govuk-grid-column-one-third">
       <div class="action-card-wrapper">
         {{ actionCard(
-          "View your contact details",
-          "View your contact details, and how you will be kept up to date with changes to case details.",
-          "/case/contact-details",
-          "View details"
+          "Understand the process",
+          "See information about stages of a criminal case journey, and staff victins interact with.",
+          "/case/understanding-the-process",
+          "View"
         ) }}
       </div>
     </div>
-
     <div class="govuk-grid-column-one-third">
       <div class="action-card-wrapper">
         {{ actionCard(
-          "Support and guidance",
-          "Access victim guidance, including the Victims Code information and links to support.",
-          "/case/support-guidance",
-          "View support and guidance"
+          "Understand your rights",
+          "See information about the victims’ code of practice, and your rights as a victim.",
+          "/case/victims-code",
+          "View"
         ) }}
       </div>
     </div>
@@ -71,19 +53,6 @@
         "/assets/images/vsc2.jpg",
         "default"
       ) }}
-
-      {{ supportBox() }}
-    </div>
-    <div class="govuk-grid-column-one-third">
-      <div class="action-card-wrapper">
-        {{ actionCard(
-          "The Victims' Code",
-          "The Victims' Code details your rights as a crime victim, including being informed about the criminal justice process and the support available.",
-          "/case/victims-code",
-          "Read about the Victims Code",
-          "emphasised"
-        ) }}
-      </div>
     </div>
   </div>
 

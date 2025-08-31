@@ -30,9 +30,11 @@ const paths = {
     COURT_INFO_HEALTH: '/case/court-info-health',
     SUPPORT_GUIDANCE: '/case/support-guidance',
     UNDERSTANDING_THE_PROCESS: '/case/understanding-the-process',
+    VICTIMS_JOURNEY: '/case/victims-journey',
     VICTIMS_CODE: '/case/victims-code',
     RETURN_OF_PROPERTY: '/case/return-of-property',
     UNDERSTAND_COMPENSATION: '/case/understand-compensation',
+    VICTIM_PERSONAL_STATEMENT: '/case/victim-personal-statement',
     HEARINGS: '/cases/:caseId/hearings',
     // TODO: Replace with dynamic caseId path once API contract is finalized
     INFO: '/case/:caseId/courtschedule',
