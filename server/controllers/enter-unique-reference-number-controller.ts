@@ -14,18 +14,18 @@ const getEnterUniqueReferenceNumber = async (req: Request, res: Response, next: 
       throw new Error('Missing user.sub – cannot fetch case associations')
     }
 
+    delete req.session.selectedUrn
+    delete req.session.caseConfirmed
+
     const formState = req.session.formState?.caseSelect
-    const errorList = formState?.errors
+    res.locals.errorList = formState?.errors
+    delete req.session.formState?.caseSelect
 
     res.locals.pageTitle = 'Enter unique reference number (URN)'
     res.locals.backLink = '/case/dashboard'
+    res.locals.csrfToken = req.csrfToken()
 
-    res.render('pages/case/enter-unique-reference-number.njk', {
-      errorList,
-      csrfToken: req.csrfToken(),
-    })
-
-    delete req.session.formState?.caseSelect
+    res.render('pages/case/enter-unique-reference-number.njk')
   } catch (error) {
     logger.error('getCaseSelect: failed to load case associations', { error })
     next(error)
