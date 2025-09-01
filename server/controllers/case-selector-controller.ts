@@ -52,7 +52,7 @@ const postCaseSelect = async (req: Request, res: Response, next: NextFunction): 
 
     if (!selectedCrn) {
       const formState: FormState<CaseSelectFormData> = {
-        errors: [{ text: 'Select a case to view', href: '#selectedCrn' }],
+        errors: [{ text: 'Select yes if this is your case', href: '#selectedCrn' }],
         formData: { selectedCrn },
       }
 
