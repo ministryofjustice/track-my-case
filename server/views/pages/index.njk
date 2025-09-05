@@ -29,10 +29,34 @@
       <ul class="govuk-list govuk-list--bullet">
         <li>view information about the court including accessibility information</li>
         <li>understand the process a criminal case can follow</li>
+        <li>view links to support services and other information</li>
         <li>understand the key roles in the criminal justice community</li>
-        <li>view the defendants(s)'s remand status</li>
-        <li>view the Victims' Code</li>
+        <li>view the Victims’ Code</li>
       </ul>
+
+      <h2 class="govuk-heading-m">
+        Before you start
+      </h2>
+
+      <p class="govuk-body">
+        This is a service for people who have been a victim of crime in England and Wales. The case must have had a charging decision, and a defendant must have attended court once for this to be suitable for you to use.
+      </p>
+
+      <p class="govuk-body">
+        You will need the Unique Reference Number (URN) for the case. This will be on your charging decision letter or communications from your Witness Care Officer.
+      </p>
+
+      <p class="govuk-body">
+        You will need a <a href="#">GOV.UK One Login account (opens in a new tab).</a>.
+      </p>
+
+      <p class="govuk-body">
+        Warning: You will see the defendant’s name, unless they are under 18, every time you log into this service. This is on the charging decision letter.
+      </p>
+
+      <p class="govuk-body">
+        You can also <a href="#">get victim support</a> information and guidance.
+      </p>
 
       {% if useOneLogin %}
         {{ govukButton({
@@ -49,16 +73,6 @@
           }) }}
         </div>
       {% endif %}
-
-      <h2 class="govuk-heading-m">
-        Before you start
-      </h2>
-
-      <p class="govuk-body">
-        You can also <a href="#">get victim support</a> information and guidance.
-      </p>
-
-      {{ supportBox() }}
 
     </div>
     <div class="govuk-grid-column-one-third">
