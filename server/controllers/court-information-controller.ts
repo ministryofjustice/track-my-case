@@ -27,7 +27,7 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
     const caseDetails = await courtHearingService.getCaseDetailsByUrn(caseId)
     res.locals.caseDetails = caseDetails
 
-    const courtSchedule = caseDetails.courtSchedule[0]
+    const courtSchedule = res.locals.caseDetails?.courtSchedule[0]
     if (!courtSchedule) {
       return res.status(404).render('pages/case/court-information', {
         pageTitle: 'Court information',
@@ -35,7 +35,7 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
       })
     }
 
-    const viewModel = mapCaseDetailsToHearingSummary(caseDetails)
+    const viewModel = mapCaseDetailsToHearingSummary(res.locals.caseDetails)
     res.locals.hearingData = viewModel
 
     return res.render('pages/case/court-information')

@@ -21,7 +21,7 @@ const getEnterUniqueReferenceNumber = async (req: Request, res: Response, next: 
     res.locals.errorList = formState?.errors
     delete req.session.formState?.caseSelect
 
-    res.locals.pageTitle = 'Enter unique reference number (URN)'
+    res.locals.pageTitle = 'Enter Unique Reference Number (URN)'
     res.locals.backLink = '/case/dashboard'
     res.locals.csrfToken = req.csrfToken()
 
@@ -38,7 +38,7 @@ const postEnterUniqueReferenceNumber = async (req: Request, res: Response, next:
 
     if (!selectedUrn) {
       const formState: FormState<CaseReferenceNumberFormData> = {
-        errors: [{ text: 'Enter unique reference number (URN)', href: '#selectedUrn' }],
+        errors: [{ text: 'Enter Unique Reference Number (URN)', href: '#selectedUrn' }],
         formData: { selectedUrn },
       }
 

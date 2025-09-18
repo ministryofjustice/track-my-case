@@ -9,28 +9,19 @@ export const addressSchema = z.object({
   country: z.string(),
 })
 
-export const venueContactSchema = z.object({
-  venueTelephone: z.string(),
-  venueEmail: z.string(),
-  primaryContactName: z.string(),
-  venueSupport: z.string(),
-})
-
 export const courtRoomSchema = z.object({
-  courtRoomNumber: z.number(),
   courtRoomId: z.number(),
   courtRoomName: z.string(),
-  venueContact: venueContactSchema,
-  address: addressSchema,
 })
 
 export const courtHouseSchema = z.object({
+  address: addressSchema,
+  courtRoom: z.array(courtRoomSchema),
   courtHouseId: z.string(),
+  courtRoomId: z.string(),
   courtHouseType: z.string(),
   courtHouseCode: z.string(),
   courtHouseName: z.string(),
-  courtHouseDescription: z.string(),
-  courtRoom: z.array(courtRoomSchema),
 })
 
 export const courtSittingSchema = z.object({
