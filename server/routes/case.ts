@@ -15,13 +15,15 @@ import {
 } from '../controllers/enter-unique-reference-number-controller'
 import { AuthenticatedUser } from '../helpers/authenticatedUser'
 import supportGuidanceController from '../controllers/support-guidance-controller'
-import understandingTheProcessController from '../controllers/understanding-the-process-controller'
+import supportRolesController from '../controllers/support-roles-controller'
 import victimsCodeController from '../controllers/victims-code-controller'
-import returnOfPropertyController from '../controllers/return-of-property-controller'
+import returnPropertyController from '../controllers/return-property-controller'
 import understandCompensationController from '../controllers/understand-compensation-controller'
 import victimsJourneyController from '../controllers/victims-journey-controller'
 import victimPersonalStatementController from '../controllers/victim-personal-statement-controller'
 import { confirmCaseController, postConfirmCase } from '../controllers/confirm-case-controller'
+import victimSupportLinksController from '../controllers/victim-support-links-controller'
+import witnessServiceController from '../controllers/witness-service-controller'
 
 export default function routes(app: express.Express): void {
   // Page: Enter unique reference number (URN)
@@ -106,10 +108,10 @@ export default function routes(app: express.Express): void {
   )
 
   app.get(
-    paths.CASES.UNDERSTANDING_THE_PROCESS,
+    paths.CASES.SUPPORT_ROLES,
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
-      understandingTheProcessController(req, res, next)
+      supportRolesController(req, res, next)
     }),
   )
 
@@ -130,10 +132,10 @@ export default function routes(app: express.Express): void {
   )
 
   app.get(
-    paths.CASES.RETURN_OF_PROPERTY,
+    paths.CASES.RETURN_PROPERTY,
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
-      returnOfPropertyController(req, res, next)
+      returnPropertyController(req, res, next)
     }),
   )
 
@@ -150,6 +152,22 @@ export default function routes(app: express.Express): void {
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
       victimPersonalStatementController(req, res, next)
+    }),
+  )
+
+  app.get(
+    paths.CASES.VICTIM_SUPPORT_LINKS,
+    AuthenticatedUser,
+    asyncMiddleware((req, res, next) => {
+      victimSupportLinksController(req, res, next)
+    }),
+  )
+
+  app.get(
+    paths.CASES.WITNESS_SERVICE,
+    AuthenticatedUser,
+    asyncMiddleware((req, res, next) => {
+      witnessServiceController(req, res, next)
     }),
   )
 }

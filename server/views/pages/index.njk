@@ -30,7 +30,7 @@
         <li>view information about the court including accessibility information</li>
         <li>understand the process a criminal case can follow</li>
         <li>view links to support services and other information</li>
-        <li>understand the key roles in the criminal justice community</li>
+        <li>understand the key roles in the criminal justice system</li>
         <li>view the Victims’ Code</li>
       </ul>
 
@@ -39,23 +39,23 @@
       </h2>
 
       <p class="govuk-body">
-        This is a service for people who have been a victim of crime in England and Wales. The case must have had a charging decision, and a defendant must have attended court once for this to be suitable for you to use.
+        This is a service for people who have been a victim of crime in England and Wales. The case must have had a charging decision, and a defendant must have attended court at least once for this to be suitable for you to use.
       </p>
 
       <p class="govuk-body">
-        You will need the Unique Reference Number (URN) for the case. This will be on your charging decision letter or communications from your Witness Care Officer.
+        You will need the Unique Reference Number (URN) for the case to access certain information. This may be on any correspondence you will have received, or on communications from your Police Witness Care Officer.
       </p>
 
       <p class="govuk-body">
-        You will need a <a href="#">GOV.UK One Login account (opens in a new tab).</a>.
+        You will need a <a href="{{ oneLoginLink }}">GOV.UK One Login account.</a>.
       </p>
 
       <p class="govuk-body">
-        Warning: You will see the defendant’s name, unless they are under 18, every time you log into this service. This is on the charging decision letter.
+        Warning: You will see the defendant’s name for accessing certain information, unless they are under 18.
       </p>
 
       <p class="govuk-body">
-        You can also <a href="#">get victim support</a> information and guidance.
+        You can also <a href="https://www.victimsupport.org.uk">get victim support</a> information and guidance.
       </p>
 
       {% if useOneLogin %}
@@ -68,7 +68,7 @@
         <div>
           {{ govukButton({
             text: "Start now",
-            href: "/case/search",
+            href: "/case/dashboard",
             isStartButton: true
           }) }}
         </div>
@@ -84,18 +84,13 @@
         <nav role="navigation" aria-labelledby="subsection-title">
           <ul class="govuk-list govuk-!-font-size-16">
             <li>
-              <a href="#">
-                Victim support resources
+              <a href="https://www.cps.gov.uk/information-and-support-victims-witnesses" target="_blank">
+                Information and support for victims and witnesses
               </a>
             </li>
             <li>
-              <a href="#">
-                Police services
-              </a>
-            </li>
-            <li>
-              <a href="#" class="govuk-!-font-weight-bold">
-                More <span class="govuk-visually-hidden">in Subsection</span>
+              <a href="https://www.gov.uk/browse/justice" target="_blank">
+                Legal processes, courts and the police
               </a>
             </li>
           </ul>

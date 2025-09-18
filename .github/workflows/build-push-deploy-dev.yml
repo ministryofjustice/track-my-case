@@ -51,6 +51,7 @@ jobs:
           OIDC_CLIENT_ID: ${{ secrets.OIDC_CLIENT_ID }}
           OIDC_PRIVATE_KEY: ${{ secrets.OIDC_PRIVATE_KEY }}
           OIDC_ISSUER: ${{ vars.OIDC_ISSUER }}
+          ONE_LOGIN_LINK: ${{ vars.ONE_LOGIN_LINK }}
           IV_DID_URI: ${{ vars.IV_DID_URI }}
           IV_ISSUER: ${{ vars.IV_ISSUER }}
           OIDC_TOKEN_AUTH_METHOD: ${{ vars.OIDC_TOKEN_AUTH_METHOD }}
@@ -81,6 +82,7 @@ jobs:
             --build-arg OIDC_CLIENT_ID=$OIDC_CLIENT_ID \
             --build-arg OIDC_PRIVATE_KEY=$OIDC_PRIVATE_KEY \
             --build-arg OIDC_ISSUER=$OIDC_ISSUER \
+            --build-arg ONE_LOGIN_LINK=$ONE_LOGIN_LINK \
             --build-arg IV_DID_URI=$IV_DID_URI \
             --build-arg IV_ISSUER=$IV_ISSUER \
             --build-arg OIDC_TOKEN_AUTH_METHOD=$OIDC_TOKEN_AUTH_METHOD \

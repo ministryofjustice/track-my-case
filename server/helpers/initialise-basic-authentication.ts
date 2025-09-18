@@ -9,8 +9,7 @@ const initialiseBasicAuthentication = async (req: Request, res: Response, next: 
   res.locals.user = req.session.passport?.user
   res.locals.authenticated = isAuthenticatedRequest(req)
   res.locals.identitySupported = config.apis.govukOneLogin.identitySupported
-  res.locals.oneLoginLink =
-    config.nodeEnv === 'development' ? 'https://home.integration.account.gov.uk/' : 'https://home.account.gov.uk/'
+  res.locals.oneLoginLink = config.apis.govukOneLogin.oneLoginLink
   res.locals.signOutLink = config.serviceUrl + paths.PASSPORT.SIGN_OUT
   res.locals.serviceUrl = config.serviceUrl
   res.locals.homepageLink = config.serviceUrl
