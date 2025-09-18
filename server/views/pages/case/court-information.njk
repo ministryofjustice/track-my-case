@@ -8,7 +8,7 @@
 {%- from "moj/components/alert/macro.njk" import mojAlert -%}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
-{% set pageTitle = applicationName + " - Your hearings" %}
+{% set pageTitle = applicationName + " - Court information" %}
 {% set mainClasses = "app-container govuk-body" %}
 {% block content %}
   <div class="govuk-grid-row">
@@ -43,70 +43,28 @@
             {
               key: { text: "Court name" },
               value: {
-                html: hearingData.location.courtName ~ "<br><br><span>This is the court as it has been listed. The court location will be confirmed by a Witness Care Officer up to 24 hours before the hearing.</span>"
+                html: hearingData.location.courtHouseName ~ "<br><br><span>This is the court as it has been listed. The court location will be confirmed by a Witness Care Officer up to 24 hours before the hearing.</span>"
               }
             },
             {
               key: { text: "Court address" },
               value: {
-                html: "Courtroom " ~ hearingData.location.courtroom ~ "<br>" ~
-                      hearingData.location.addressLines | join('<br>') ~ "<br>" ~
-                      hearingData.location.postcode
+                html: hearingData.location.courtRoomName ~ "<br>" ~
+                      hearingData.location.addressLines | join(', ') ~
+                      ", " ~ hearingData.location.postcode ~ ", " ~ hearingData.location.country
               }
             },
             {
               key: { text: "Additional information" },
               value: {
-                html: '<a href="https://www.find-court-tribunal.service.gov.uk/courts/central-london-county-court" target="_blank">https://www.find-court-tribunal.service.gov.uk/courts/central-london-county-court</a>'
+                html: '<a href="https://www.find-court-tribunal.service.gov.uk/courts/central-london-county-court">See information about facilities, opening times, and enquiries for this court</a>'
               }
             }
           ]
         }) }}
       </div>
-
-{#      <div class="govuk-summary-card govuk-!-margin-bottom-6">#}
-{#        <div class="govuk-summary-card__title-wrapper">#}
-{#          <h2 class="govuk-summary-card__title">Contact details#}
-{#            <p class="govuk-body-s">#}
-{#              If you have questions or need to speak to someone, please use these contact details#}
-{#            </p>#}
-{#          </h2>#}
-{#        </div>#}
-
-{#        <div class="govuk-summary-card__content">#}
-
-{#          <p class="govuk-body">#}
-{#            <a class="govuk-link" href="#">#}
-{#              Use the local police force online contact tool#}
-{#            </a>#}
-{#          </p>#}
-
-{#          {{ govukSummaryList({#}
-{#            rows: [#}
-{#              {#}
-{#                key: { text: "Who to speak to" },#}
-{#                value: { text: hearingData.contactDetails.contactName }#}
-{#              },#}
-{#              {#}
-{#                key: { text: "Telephone" },#}
-{#                value: { text: hearingData.contactDetails.telephone }#}
-{#              },#}
-{#              {#}
-{#                key: { text: "Hours" },#}
-{#                value: { text: hearingData.contactDetails.telephoneHours }#}
-{#              },#}
-{#              {#}
-{#                key: { text: "Email" },#}
-{#                value: { text: hearingData.contactDetails.email }#}
-{#              }#}
-{#            ]#}
-{#          }) }}#}
-
-{#        </div>#}
-{#      </div>#}
-
       <div>
-        <a href="https://www.find-court-tribunal.service.gov.uk/" target="_blank">Find information about other courts (opens in new tab)</a>
+        <a href="https://www.find-court-tribunal.service.gov.uk">Find information about other courts</a>
       </div>
 
     {% else %}
