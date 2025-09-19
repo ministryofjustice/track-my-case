@@ -16,6 +16,11 @@ concurrency:
 jobs:
   build-push-test:
     name: Build & Push New Image
+    if: >
+      github.event_name == 'workflow_run' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'main'
     runs-on: ubuntu-latest
     permissions:
       id-token: write # This is required for requesting the JWT
