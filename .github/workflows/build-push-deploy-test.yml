@@ -1,27 +1,31 @@
-name: CI/CD dev
+name: CI/CD test
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches-ignore:
-      - dependabot/**
   workflow_dispatch:
+  workflow_run:
+    workflows:
+      - CI/CD dev
+    types:
+      - completed
 
 permissions: {}
 concurrency:
-  group: dev
+  group: test
   cancel-in-progress: false  # Optional — don’t cancel ongoing runs, just queue new ones
 
 jobs:
-  build-push-dev:
+  build-push-test:
     name: Build & Push New Image
+    if: >
+      github.event_name == 'workflow_run' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'main'
     runs-on: ubuntu-latest
     permissions:
       id-token: write # This is required for requesting the JWT
       contents: write # This is required for actions/checkout
-    environment: dev
+    environment: test
     outputs:
       new_tag: ${{ steps.set-version-tag-output.outputs.new_tag }}
     steps:
@@ -36,7 +40,7 @@ jobs:
           WITH_V: true
           DEFAULT_BUMP: patch
           PRERELEASE: true
-          PRERELEASE_SUFFIX: dev
+          PRERELEASE_SUFFIX: test
 
       - name: Set Version tag output
         id: set-version-tag-output
@@ -106,8 +110,8 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.DEV_ECR_ROLE_TO_ASSUME }}
-          aws-region: ${{ vars.DEV_ECR_REGION }}
+          role-to-assume: ${{ secrets.TEST_ECR_ROLE_TO_ASSUME }}
+          aws-region: ${{ vars.TEST_ECR_REGION }}
 
       - name: Login to Amazon ECR
         id: login-ecr
@@ -116,21 +120,21 @@ jobs:
       - name: Tag, and push image to Amazon ECR
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ vars.DEV_ECR_REPOSITORY }}
+          ECR_REPOSITORY: ${{ vars.TEST_ECR_REPOSITORY }}
           NEW_TAG_V: ${{ steps.set-version-tag-output.outputs.new_tag }}
         shell: bash
         run: |
           docker tag working_image:$NEW_TAG_V $ECR_REGISTRY/$ECR_REPOSITORY:$NEW_TAG_V
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$NEW_TAG_V
 
-  deploy-dev:
-    needs: build-push-dev
+  deploy-test:
+    needs: build-push-test
     name: Deploy Helm Chart into Cloud Platform
     runs-on: ubuntu-latest
     permissions:
       contents: write # This is required for actions/checkout
       id-token: write # This is required for requesting the JWT
-    environment: dev
+    environment: test
     steps:
       - name: Authenticate to the cluster
         env:
@@ -156,8 +160,8 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.DEV_ECR_ROLE_TO_ASSUME }}
-          aws-region: ${{ vars.DEV_ECR_REGION }}
+          role-to-assume: ${{ secrets.TEST_ECR_ROLE_TO_ASSUME }}
+          aws-region: ${{ vars.TEST_ECR_REGION }}
 
       - name: Login to Amazon ECR
         id: login-ecr
@@ -175,11 +179,11 @@ jobs:
           AUTHENTICATION_REQUIRED: ${{ vars.AUTHENTICATION_REQUIRED }}
           COOKIE_SECRET: "${{ secrets.XXX_COOKIE_SECRET }}"
           ECR_REPO_AUTH0: ${{ steps.login-ecr.outputs.registry }}/analytical-platform/ap-auth-proxy-prod-ecr
-          ECR_REPO_WEBAPP: ${{ steps.login-ecr.outputs.registry }}/${{ vars.DEV_ECR_REPOSITORY }}
+          ECR_REPO_WEBAPP: ${{ steps.login-ecr.outputs.registry }}/${{ vars.TEST_ECR_REPOSITORY }}
           IP_RANGES: ${{ secrets.IP_RANGES }}
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
-          NEW_TAG_V: ${{ needs.build-push-dev.outputs.new_tag }}
-          RELEASE_NAME: ${{ github.event.repository.name }}-dev
+          NEW_TAG_V: ${{ needs.build-push-test.outputs.new_tag }}
+          RELEASE_NAME: ${{ github.event.repository.name }}-test
           SECRETS_CONTEXT:  ${{ toJson(secrets) }}
           VARS_CONTEXT:  ${{ toJson(vars) }}
         run: |
