@@ -108,7 +108,7 @@ jobs:
             -t working_image:$NEW_TAG_V
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: ${{ secrets.TEST_ECR_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.TEST_ECR_REGION }}
@@ -158,7 +158,7 @@ jobs:
           helm repo update mojanalytics
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: ${{ secrets.TEST_ECR_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.TEST_ECR_REGION }}
