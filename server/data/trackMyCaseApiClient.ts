@@ -11,7 +11,7 @@ export default class TrackMyCaseApiClient {
 
   async get<T>({ path }: GetRequestOptions): Promise<T> {
     const url = `${this.baseUrl}${path}`
-    logger.debug('[TrackMyCaseApiClient] GET:', url)
+    // logger.debug('[TrackMyCaseApiClient] GET:', url)
     const { body } = await superagent.get(`${this.baseUrl}${path}`)
     return body as T
   }
