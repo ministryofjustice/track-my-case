@@ -52,8 +52,8 @@ const oidcIssuer = get('OIDC_ISSUER', '', requiredInProduction)
 const config = {
   buildNumber: get('BUILD_NUMBER', '1_0_0', requiredInProduction),
   productId: get('PRODUCT_ID', 'UNASSIGNED', requiredInProduction),
-  gitRef: get('GIT_REF', 'xxxxxxxxxxxxxxxxxxx', requiredInProduction),
-  branchName: get('GIT_BRANCH', 'xxxxxxxxxxxxxxxxxxx', requiredInProduction),
+  branchName: get('GIT_BRANCH', 'main', requiredInProduction),
+  gitRef: get('GIT_REF', 'HEAD', requiredInProduction),
   nodeEnv: get('NODE_ENV', 'development', requiredInProduction),
   port,
   production: isProduction,
