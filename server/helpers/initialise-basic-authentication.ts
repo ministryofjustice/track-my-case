@@ -13,6 +13,7 @@ const initialiseBasicAuthentication = async (req: Request, res: Response, next: 
   res.locals.signOutLink = config.serviceUrl + paths.PASSPORT.SIGN_OUT
   res.locals.serviceUrl = config.serviceUrl
   res.locals.homepageLink = config.serviceUrl
+  res.locals.allowDebug = config.session.allowDebug && Boolean(req.query?.debug === 'true')
 }
 
 export { initialiseBasicAuthentication }

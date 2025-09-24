@@ -2,9 +2,17 @@ import { NextFunction, Request, Response } from 'express'
 import superagent from 'superagent'
 import config from '../config'
 import { logger } from '../logger'
+import { initialiseBasicAuthentication } from '../helpers/initialise-basic-authentication'
+import paths from '../constants/paths'
 
-async function courtInfoHealthCheck(req: Request, res: Response, next: NextFunction) {
+async function backEndApiHealth(req: Request, res: Response, next: NextFunction) {
   try {
+    await initialiseBasicAuthentication(req, res, next)
+
+    if (!res.locals.allowDebug) {
+      res.redirect(paths.CASES.DASHBOARD)
+    }
+
     const { url } = config.apis.trackMyCaseApi
 
     if (!config.apis.trackMyCaseApi.enabled) {
@@ -23,4 +31,4 @@ async function courtInfoHealthCheck(req: Request, res: Response, next: NextFunct
   }
 }
 
-export default courtInfoHealthCheck
+export default backEndApiHealth

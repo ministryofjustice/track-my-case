@@ -56,7 +56,7 @@
     </div>
   </div>
 
-  {% if user %}
+  {% if allowDebug and user %}
     <h2 class="govuk-heading-m">User information</h2>
     <pre><code>{{ user | dump(2) }}</code></pre>
   {% endif %}

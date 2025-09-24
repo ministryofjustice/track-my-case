@@ -1,10 +1,8 @@
 import express from 'express'
 
-import { getCaseSelect, postCaseSelect } from '../controllers/case-selector-controller'
 import caseDashboardController from '../controllers/case-dashboard-controller'
-import courtInformationControllerOld from '../controllers/court-information-controller-old'
 
-import courtInfoHealthCheck from '../controllers/court-info-controller'
+import backEndApiHealth from '../controllers/back-end-api-health-controller'
 import courtInformationController from '../controllers/court-information-controller'
 
 import asyncMiddleware from '../middleware/asyncMiddleware'
@@ -31,10 +29,6 @@ export default function routes(app: express.Express): void {
   app.get(paths.CASES.SEARCH, AuthenticatedUser, asyncMiddleware(getEnterUniqueReferenceNumber))
   app.post(paths.CASES.SEARCH, AuthenticatedUser, asyncMiddleware(postEnterUniqueReferenceNumber))
 
-  // Page: Select your case
-  app.get(paths.CASES.SELECT, AuthenticatedUser, asyncMiddleware(getCaseSelect))
-  app.post(paths.CASES.SELECT, AuthenticatedUser, asyncMiddleware(postCaseSelect))
-
   // Page: Case dashboard
   app.get(
     paths.CASES.DASHBOARD,
@@ -60,18 +54,6 @@ export default function routes(app: express.Express): void {
     }),
   )
 
-  // TODO: add `:id` to route - View court information
-  // INFO: This route is still to be used for prototype purposes
-  app.get(
-    paths.CASES.COURT_INFORMATION_OLD,
-    AuthenticatedUser,
-    asyncMiddleware((req, res, next) => {
-      courtInformationControllerOld(req, res, next)
-    }),
-  )
-
-  // INFO: This route has been added for show & tell 29-Apr-2025
-  // It breaks GDS principles and requires further discussion
   app.get(
     paths.CASES.COURT_INFORMATION,
     AuthenticatedUser,
@@ -80,22 +62,11 @@ export default function routes(app: express.Express): void {
     }),
   )
 
-  // TODO: add `:id` to route - View contact details
-  // TODO: need to verify if contact details should be linked to a case
-  // TODO: need to determine if the contact details should be in a different module
   app.get(
-    paths.CASES.CONTACT_DETAILS,
+    paths.CASES.BACK_END_API_HEALTH,
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
-      courtInformationControllerOld(req, res, next)
-    }),
-  )
-
-  app.get(
-    paths.CASES.COURT_INFO_HEALTH,
-    AuthenticatedUser,
-    asyncMiddleware((req, res, next) => {
-      courtInfoHealthCheck(req, res, next)
+      backEndApiHealth(req, res, next)
     }),
   )
 

@@ -33,6 +33,7 @@ services:
         TRACK_MY_CASE_API_URL: '${TRACK_MY_CASE_API_URL}'
         RATE_LIMIT_MAX_REQUESTS: '${RATE_LIMIT_MAX_REQUESTS}'
         RATE_LIMIT_WINDOW_SECS: '${RATE_LIMIT_WINDOW_SECS}'
+        ALLOW_DEBUG: '${ALLOW_DEBUG}'
     ports:
       # Default HOST_PORT to 9999 for data-analytics platform
       - '${NODE_PORT}:${NODE_PORT}'

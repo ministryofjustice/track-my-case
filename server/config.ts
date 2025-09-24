@@ -113,6 +113,7 @@ const config = {
     expiryMinutes: Number(get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120)),
     inactivityMinutes: Number(get('WEB_SESSION_INACTIVITY_IN_MINUTES', 10)),
     appointmentsCacheMinutes: Number(get('APPOINTMENTS_CACHE_IN_MINUTES', 1)),
+    allowDebug: Boolean(get('ALLOW_DEBUG', false)),
   },
   rateLimit: {
     limit: Number(get('RATE_LIMIT_MAX_REQUESTS', 300, requiredInProduction)),

@@ -21,13 +21,11 @@ const paths = {
 
   CASES: {
     SEARCH: '/case/search',
-    SELECT: '/case/select',
     CONFIRM_CASE: '/case/confirm-case',
     DASHBOARD: '/case/dashboard',
     CONTACT_DETAILS: '/case/contact-details',
     COURT_INFORMATION: '/case/court-information',
-    COURT_INFORMATION_OLD: '/case/court-information-old',
-    COURT_INFO_HEALTH: '/case/court-info-health',
+    BACK_END_API_HEALTH: '/case/back-end-api-health',
     SUPPORT_GUIDANCE: '/case/support-guidance',
     SUPPORT_ROLES: '/case/support-roles',
     VICTIMS_JOURNEY: '/case/victims-journey',

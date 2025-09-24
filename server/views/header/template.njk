@@ -90,12 +90,13 @@ Component options:
                 <span class="one-login-header__nav__link-content">
                   GOV.UK One Login
                 </span>
-                {{ littlePersonIcon() }}
-                {{ littlePersonIcon("focus") }}
+                <span title="{{ params.email }}">
+                  {{ littlePersonIcon() }}
+                  {{ littlePersonIcon("focus") }}
+                </span>
               </a>
             </li>
             <li class="one-login-header__nav__list-item">
-              <!-- REPLACE SIGN OUT URL PLACEHOLDER WITH SIGN OUT PAGE FOR YOUR SERVICE -->
               <a class="one-login-header__nav__link" href="{{ signOutLink }}">
                 Sign out
               </a>
