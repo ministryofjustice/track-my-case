@@ -12,7 +12,7 @@ import { logger } from './server/logger'
     logger.info(`🚀 Server started on port ${port}`)
     logger.info(`  🔗 Track My Case:  http://localhost:${port}`)
     logger.info(`  🏥 Health check:   http://localhost:${port}/health`)
-    logger.info(`  🧪 Test service: http://localhost:${port}/case/court-info-health`)
+    logger.info(`  🧪 Test service: http://localhost:${port}/case/back-end-api-health`)
 
     logger.info(`Press Ctrl+C to stop the server`)
     logger.info(`Environment: ${app.get('env')}`)

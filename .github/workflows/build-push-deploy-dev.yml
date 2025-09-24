@@ -70,6 +70,7 @@ jobs:
           TRACK_MY_CASE_API_URL: ${{ vars.TRACK_MY_CASE_API_URL }}
           RATE_LIMIT_MAX_REQUESTS: ${{ vars.RATE_LIMIT_MAX_REQUESTS }}
           RATE_LIMIT_WINDOW_SECS: ${{ vars.RATE_LIMIT_WINDOW_SECS }}
+          ALLOW_DEBUG: ${{ vars.ALLOW_DEBUG }}
         shell: bash
         run: |
           docker build . \
@@ -101,6 +102,7 @@ jobs:
             --build-arg TRACK_MY_CASE_API_URL=$TRACK_MY_CASE_API_URL \
             --build-arg RATE_LIMIT_MAX_REQUESTS=RATE_LIMIT_MAX_REQUESTS \
             --build-arg RATE_LIMIT_WINDOW_SECS=RATE_LIMIT_WINDOW_SECS \
+            --build-arg ALLOW_DEBUG=ALLOW_DEBUG \
             -t working_image:$NEW_TAG_V
 
       - name: Configure AWS credentials
