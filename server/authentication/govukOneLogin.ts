@@ -73,7 +73,7 @@ async function init(): Promise<Client> {
     userInfo: UserinfoResponse,
     done,
   ) => {
-    logger.info(`GOV.UK One Login user verified, sub: ${userInfo.sub}`)
+    logger.info(`GOV.UK One Login user verified, sub: ${userInfo.email}`)
 
     const tokenStore = tokenStoreFactory()
     tokenStore.setToken(userInfo.sub, tokenSet.id_token, config.session.expiryMinutes * 60 * 1000)

@@ -13,13 +13,12 @@ async function backEndApiHealth(req: Request, res: Response, next: NextFunction)
       res.redirect(paths.CASES.DASHBOARD)
     }
 
-    const { url } = config.apis.trackMyCaseApi
-
     if (!config.apis.trackMyCaseApi.enabled) {
       res.status(503).send('API DISABLED')
       return
     }
 
+    const { url } = config.apis.trackMyCaseApi
     const response = await superagent.get(`${url}/health`)
     const data = response.body
     const isHealthy = data.status === 'UP'

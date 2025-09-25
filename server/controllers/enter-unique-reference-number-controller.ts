@@ -2,17 +2,17 @@ import { NextFunction, Request, Response } from 'express'
 import { CaseReferenceNumberFormData } from '../interfaces/formSchemas'
 import { FormState } from '../interfaces/formState'
 import { initialiseBasicAuthentication } from '../helpers/initialise-basic-authentication'
-import { logger } from '../logger'
 import paths from '../constants/paths'
+import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
+import CourtHearingService from '../services/courtHearingService'
+import { ServiceHealth } from '../interfaces/caseDetails'
+
+const trackMyCaseApiClient = new TrackMyCaseApiClient()
+const courtHearingService = new CourtHearingService(trackMyCaseApiClient)
 
 const getEnterUniqueReferenceNumber = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     await initialiseBasicAuthentication(req, res, next)
-
-    const userSub = res.locals.user?.sub || 'unknown'
-    if (!userSub) {
-      throw new Error('Missing user.sub – cannot fetch case associations')
-    }
 
     delete req.session.selectedUrn
     delete req.session.caseConfirmed
@@ -25,10 +25,14 @@ const getEnterUniqueReferenceNumber = async (req: Request, res: Response, next: 
     res.locals.backLink = '/case/dashboard'
     res.locals.csrfToken = req.csrfToken()
 
-    res.render('pages/case/enter-unique-reference-number.njk')
+    const serviceHealth: ServiceHealth = await courtHearingService.getServiceHealth()
+    if (serviceHealth?.status?.toUpperCase() === 'UP') {
+      res.render('pages/case/enter-unique-reference-number.njk')
+    } else {
+      res.render('pages/case/service-error.njk')
+    }
   } catch (error) {
-    logger.error('getCaseSelect: failed to load case associations', { error })
-    next(error)
+    res.render('pages/case/service-error.njk')
   }
 }
 
