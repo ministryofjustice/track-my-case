@@ -29,9 +29,9 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
 
     const courtSchedule = res.locals.caseDetails?.courtSchedule[0]
     if (!courtSchedule) {
-      return res.status(404).render('pages/case/court-information', {
+      return res.status(404).render('pages/case/court-information-not-found', {
         pageTitle: 'Court information',
-        error: 'No court schedule found for this case.',
+        error: 'Case could not be found',
       })
     }
 
@@ -40,11 +40,10 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
 
     return res.render('pages/case/court-information')
   } catch (error) {
-    // next(error)
     const reason = `Status ${error.status}, ${error.message}`
-    return res.status(404).render('pages/case/court-information', {
+    return res.status(404).render('pages/case/court-information-not-found', {
       pageTitle: 'Court information',
-      error: `No court schedule found for this case: ${reason}`,
+      error: `Case could not be found`,
     })
   }
 }

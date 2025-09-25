@@ -48,3 +48,9 @@ export const caseDetailsSchema = z.object({
 })
 
 export type CaseDetails = z.infer<typeof caseDetailsSchema>
+
+export const serviceHealthSchema = z.object({
+  status: z.string(),
+})
+
+export type ServiceHealth = z.infer<typeof serviceHealthSchema>

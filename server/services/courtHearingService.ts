@@ -3,7 +3,7 @@ import { CourtSchedule } from '../interfaces/caseHearing'
 import paths from '../constants/paths'
 import resolvePath from '../utils/resolvePath'
 import { logger } from '../logger'
-import { CaseDetails } from '../interfaces/caseDetails'
+import { CaseDetails, ServiceHealth } from '../interfaces/caseDetails'
 
 export default class CourtHearingService {
   constructor(private readonly apiClient: TrackMyCaseApiClient) {}
@@ -28,14 +28,20 @@ export default class CourtHearingService {
     try {
       const path = resolvePath(paths.CASES.CASE_DETAILS, { urn })
       const response = await this.apiClient.get<CaseDetails>({ path })
-
-      logger.debug('CourtHearingService.getCaseDetailsByUrn: successful response', {
-        caseDetails: response,
-      })
-
+      logger.info(`CourtHearingService.getCaseDetailsByUrn: successful response by urn:${urn}`)
       return response
     } catch (e) {
-      logger.debug('CourtHearingService.getCaseDetailsByUrn: unsuccessful response', e)
+      logger.error(`CourtHearingService.getCaseDetailsByUrn: unsuccessful response by urn:${urn}`, e)
+      return null
+    }
+  }
+
+  async getServiceHealth(): Promise<ServiceHealth> {
+    try {
+      const path = '/health'
+      return await this.apiClient.get<ServiceHealth>({ path })
+    } catch (e) {
+      logger.error('CourtHearingService.getServiceHealth: unsuccessful response', e)
       return null
     }
   }
