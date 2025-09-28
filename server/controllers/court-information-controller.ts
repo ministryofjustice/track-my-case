@@ -5,6 +5,7 @@ import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
 
 import mapCaseDetailsToHearingSummary from '../mappers/mapCaseDetailsToHearingSummary'
 import paths from '../constants/paths'
+import courts from '../constants/courts'
 
 const trackMyCaseApiClient = new TrackMyCaseApiClient()
 const courtHearingService = new CourtHearingService(trackMyCaseApiClient)
@@ -35,12 +36,14 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
       })
     }
 
-    const viewModel = mapCaseDetailsToHearingSummary(res.locals.caseDetails)
-    res.locals.hearingData = viewModel
+    res.locals.hearingData = mapCaseDetailsToHearingSummary(res.locals.caseDetails)
+    const courtUrl = courts.getCourtUrl(res.locals.hearingData.location.courtHouseName)
+    res.locals.courtUrl = courtUrl ?? 'https://www.find-court-tribunal.service.gov.uk/'
 
     return res.render('pages/case/court-information')
   } catch (error) {
-    const reason = `Status ${error.status}, ${error.message}`
+    // eslint-disable-next-line no-console
+    console.error(`Status ${error.status}, ${error.message}`)
     return res.status(404).render('pages/case/court-information-not-found', {
       pageTitle: 'Court information',
       error: `Case could not be found`,
