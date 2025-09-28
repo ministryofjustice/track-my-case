@@ -16,7 +16,7 @@ const formatDateTime = (input?: string): string => {
 }
 
 const mapCaseDetailsToHearingSummary = (data: CaseDetails): HearingSummary => {
-  const hearing = data.courtSchedule[0]?.hearings[0]
+  const hearing = data?.courtSchedule[0]?.hearings[0]
   const sitting = hearing?.courtSittings[0]
   const room = sitting?.courtHouse?.courtRoom[0]
   const address = sitting?.courtHouse?.address
