@@ -5,7 +5,7 @@ on:
 permissions: {}
 concurrency:
   group: prod
-  cancel-in-progress: false  # Optional — don’t cancel ongoing runs, just queue new ones
+  cancel-in-progress: true
 
 jobs:
   build-push-prod:
@@ -27,20 +27,76 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
+          DEFAULT_BUMP: patch
+          PRERELEASE: true
+          PRERELEASE_SUFFIX: prod
 
       - name: Set Version tag output
         id: set-version-tag-output
         run: echo "new_tag=${{ steps.bump-id.outputs.new_tag }}" >> $GITHUB_OUTPUT
 
-      - name: Checkout
-        uses: actions/checkout@v5
-
       - name: Build
         env:
           NEW_TAG_V: ${{ steps.set-version-tag-output.outputs.new_tag }}
+          NODE_ENV: ${{ vars.NODE_ENV }}
+          NODE_PORT: ${{ vars.NODE_PORT }}
+          SERVICE_URL: ${{ vars.SERVICE_URL }}
+          OIDC_CLIENT_ID: ${{ secrets.XXX_OIDC_CLIENT_ID }}
+          OIDC_PRIVATE_KEY: ${{ secrets.XXX_OIDC_PRIVATE_KEY }}
+          OIDC_ISSUER: ${{ vars.OIDC_ISSUER }}
+          ONE_LOGIN_LINK: ${{ vars.ONE_LOGIN_LINK }}
+          IV_DID_URI: ${{ vars.IV_DID_URI }}
+          IV_ISSUER: ${{ vars.IV_ISSUER }}
+          OIDC_TOKEN_AUTH_METHOD: ${{ vars.OIDC_TOKEN_AUTH_METHOD }}
+          OIDC_SCOPES: ${{ vars.OIDC_SCOPES }}
+          OIDC_CLAIMS: ${{ vars.OIDC_CLAIMS }}
+          OIDC_AUTHORIZE_REDIRECT_URL: ${{ vars.OIDC_AUTHORIZE_REDIRECT_URL }}
+          OIDC_POST_LOGOUT_REDIRECT_URL: ${{ vars.OIDC_POST_LOGOUT_REDIRECT_URL }}
+          OIDC_BACK_CHANNEL_LOGOUT_URI: ${{ vars.OIDC_BACK_CHANNEL_LOGOUT_URI }}
+          AUTH_VECTOR_OF_TRUST: ${{ vars.AUTH_VECTOR_OF_TRUST }}
+          IDENTITY_VECTOR_OF_TRUST: ${{ vars.IDENTITY_VECTOR_OF_TRUST }}
+          UI_LOCALES: ${{ vars.UI_LOCALES }}
+          IMMEDIATE_REDIRECT: ${{ vars.IMMEDIATE_REDIRECT }}
+          REQUIRE_JAR: ${{ vars.REQUIRE_JAR }}
+          IDENTITY_SUPPORTED: ${{ vars.IDENTITY_SUPPORTED }}
+          TRACK_MY_CASE_API_ENABLED: ${{ vars.TRACK_MY_CASE_API_ENABLED }}
+          TRACK_MY_CASE_API_URL: ${{ vars.TRACK_MY_CASE_API_URL }}
+          RATE_LIMIT_MAX_REQUESTS: ${{ vars.RATE_LIMIT_MAX_REQUESTS }}
+          RATE_LIMIT_WINDOW_SECS: ${{ vars.RATE_LIMIT_WINDOW_SECS }}
+          ALLOW_DEBUG: ${{ vars.ALLOW_DEBUG }}
         shell: bash
         run: |
-          docker build . -t working_image:$NEW_TAG_V
+          docker build . \
+            --build-arg BUILD_NUMBER=$NEW_TAG_V \
+            --build-arg GIT_REF=${{ github.sha }} \
+            --build-arg GIT_BRANCH=${{ github.ref_name }} \
+            --build-arg NODE_ENV=$NODE_ENV \
+            --build-arg NODE_PORT=$NODE_PORT \
+            --build-arg SERVICE_URL=$SERVICE_URL \
+            --build-arg OIDC_CLIENT_ID=$OIDC_CLIENT_ID \
+            --build-arg OIDC_PRIVATE_KEY=$OIDC_PRIVATE_KEY \
+            --build-arg OIDC_ISSUER=$OIDC_ISSUER \
+            --build-arg ONE_LOGIN_LINK=$ONE_LOGIN_LINK \
+            --build-arg IV_DID_URI=$IV_DID_URI \
+            --build-arg IV_ISSUER=$IV_ISSUER \
+            --build-arg OIDC_TOKEN_AUTH_METHOD=$OIDC_TOKEN_AUTH_METHOD \
+            --build-arg OIDC_SCOPES=$OIDC_SCOPES \
+            --build-arg OIDC_CLAIMS=$OIDC_CLAIMS \
+            --build-arg OIDC_AUTHORIZE_REDIRECT_URL=$OIDC_AUTHORIZE_REDIRECT_URL \
+            --build-arg OIDC_POST_LOGOUT_REDIRECT_URL=$OIDC_POST_LOGOUT_REDIRECT_URL \
+            --build-arg OIDC_BACK_CHANNEL_LOGOUT_URI=$OIDC_BACK_CHANNEL_LOGOUT_URI \
+            --build-arg AUTH_VECTOR_OF_TRUST=$AUTH_VECTOR_OF_TRUST \
+            --build-arg IDENTITY_VECTOR_OF_TRUST=$IDENTITY_VECTOR_OF_TRUST \
+            --build-arg UI_LOCALES=$UI_LOCALES \
+            --build-arg IMMEDIATE_REDIRECT=$IMMEDIATE_REDIRECT \
+            --build-arg REQUIRE_JAR=$REQUIRE_JAR \
+            --build-arg IDENTITY_SUPPORTED=$IDENTITY_SUPPORTED \
+            --build-arg TRACK_MY_CASE_API_ENABLED=$TRACK_MY_CASE_API_ENABLED \
+            --build-arg TRACK_MY_CASE_API_URL=$TRACK_MY_CASE_API_URL \
+            --build-arg RATE_LIMIT_MAX_REQUESTS=RATE_LIMIT_MAX_REQUESTS \
+            --build-arg RATE_LIMIT_WINDOW_SECS=RATE_LIMIT_WINDOW_SECS \
+            --build-arg ALLOW_DEBUG=ALLOW_DEBUG \
+            -t working_image:$NEW_TAG_V
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -112,7 +168,7 @@ jobs:
           AUTH0_PASSWORDLESS: ${{ vars.AUTH0_PASSWORDLESS }}
           AUTH0_TOKEN_ALG: ${{ vars.AUTH0_TOKEN_ALG }}
           AUTHENTICATION_REQUIRED: ${{ vars.AUTHENTICATION_REQUIRED }}
-          COOKIE_SECRET: ${{ secrets.COOKIE_SECRET }}
+          COOKIE_SECRET: "${{ secrets.XXX_COOKIE_SECRET }}"
           ECR_REPO_AUTH0: ${{ steps.login-ecr.outputs.registry }}/analytical-platform/ap-auth-proxy-prod-ecr
           ECR_REPO_WEBAPP: ${{ steps.login-ecr.outputs.registry }}/${{ vars.PROD_ECR_REPOSITORY }}
           IP_RANGES: ${{ secrets.IP_RANGES }}
@@ -139,22 +195,24 @@ jobs:
             fi
           done
 
-          helm upgrade --install --wait --timeout 10m0s --namespace $KUBE_NAMESPACE $RELEASE_NAME mojanalytics/webapp-cp \
+          helm upgrade --install --wait --timeout 5m0s --namespace $KUBE_NAMESPACE $RELEASE_NAME mojanalytics/webapp-cp \
           --set AuthProxy.Env.Auth0Domain=$AUTH0_DOMAIN \
           --set AuthProxy.Env.Auth0Passwordless=$AUTH0_PASSWORDLESS \
           --set AuthProxy.Env.Auth0TokenAlg=$AUTH0_TOKEN_ALG \
           --set AuthProxy.Env.AuthenticationRequired=$AUTHENTICATION_REQUIRED \
+          --set AuthProxy.Env.CookieSecret=$COOKIE_SECRET \
           --set AuthProxy.Env.IPRanges=$process_ip_range \
           --set AuthProxy.Image.Repository=$ECR_REPO_AUTH0 \
           --set AuthProxy.Image.Tag="latest" \
           --set Namespace=$KUBE_NAMESPACE \
           --set Secrets.Auth0.ClientId=$AUTH0_CLIENT_ID \
           --set Secrets.Auth0.ClientSecret=$AUTH0_CLIENT_SECRET \
-          --set Secrets.Auth0.CookieSecret=$COOKIE_SECRET \
           --set ServiceAccount.RoleARN=$APP_ROLE_ARN \
           --set WebApp.Image.Repository=$ECR_REPO_WEBAPP \
           --set WebApp.Image.Tag=$NEW_TAG_V \
           --set WebApp.Name=$KUBE_NAMESPACE \
-          --set WebApp.AlternativeHealthCheck.enabled="true" \
-          --set WebApp.AlternativeHealthCheck.port=9999 \
+          --set securityContext.allowPrivilegeEscalation=false \
+          --set securityContext.capabilities.drop=["ALL"] \
+          --set securityContext.runAsNonRoot=true \
+          --set securityContext.seccompProfile.type="RuntimeDefault" \
           $custom_variables
