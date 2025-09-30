@@ -1,4 +1,4 @@
-import { convertToTitleCase, initialiseName } from './utils'
+import { convertToTitleCase, initialiseName, toBoolean } from './utils'
 
 describe('convert to title case', () => {
   it.each([
@@ -26,5 +26,33 @@ describe('initialise name', () => {
     ['Double barrelled', 'Robert-John Smith-Jones-Wilson', 'R. Smith-Jones-Wilson'],
   ])('%s initialiseName(%s, %s)', (_: string, a: string, expected: string) => {
     expect(initialiseName(a)).toEqual(expected)
+  })
+})
+
+describe('toBoolean', () => {
+  it('to be true', async () => {
+    expect(toBoolean(true)).toBe(true)
+    expect(toBoolean('true')).toBe(true)
+    expect(toBoolean('True')).toBe(true)
+    expect(toBoolean('TRUE')).toBe(true)
+    expect(toBoolean('"TRUE"')).toBe(true)
+    expect(toBoolean('1')).toBe(true)
+    expect(toBoolean(1)).toBe(true)
+    expect(toBoolean(1.0)).toBe(true)
+  })
+
+  it('to be false', async () => {
+    expect(toBoolean(undefined)).toBe(false)
+    expect(toBoolean(null)).toBe(false)
+    expect(toBoolean('')).toBe(false)
+    expect(toBoolean(false)).toBe(false)
+    expect(toBoolean('false')).toBe(false)
+    expect(toBoolean('False')).toBe(false)
+    expect(toBoolean('FALSE')).toBe(false)
+    expect(toBoolean('"FALSE"')).toBe(false)
+    expect(toBoolean(0)).toBe(false)
+    expect(toBoolean('0')).toBe(false)
+    expect(toBoolean('yes')).toBe(false)
+    expect(toBoolean('no')).toBe(false)
   })
 })

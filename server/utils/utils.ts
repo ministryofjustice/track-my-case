@@ -25,3 +25,18 @@ export const initialiseName = (fullName?: string): string | null => {
 }
 
 export const isAuthenticatedRequest = (req: Request) => req.isAuthenticated && req.isAuthenticated()
+
+export const toBoolean = (value: string | boolean | number | undefined | null): boolean => {
+  const falseValues = [undefined, 'undefined', null, 'null', '', 0, '0', false, 'false']
+  if (falseValues.includes(value)) {
+    return false
+  }
+  const trueValues = [true, 'true', '"true"', 1, '1']
+  if (trueValues.includes(value)) {
+    return true
+  }
+  if (typeof value === 'string' && trueValues.includes(value.toLowerCase())) {
+    return true
+  }
+  return false
+}

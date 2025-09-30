@@ -1,5 +1,6 @@
 import { UserIdentityClaim } from './@types/types/user-info'
 import DIDKeySet from './@types/types/did-keyset'
+import { toBoolean } from './utils/utils'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -113,7 +114,7 @@ const config = {
     expiryMinutes: Number(get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120)),
     inactivityMinutes: Number(get('WEB_SESSION_INACTIVITY_IN_MINUTES', 10)),
     appointmentsCacheMinutes: Number(get('APPOINTMENTS_CACHE_IN_MINUTES', 1)),
-    allowDebug: Boolean(get('ALLOW_DEBUG', false)),
+    allowDebug: toBoolean(get('ALLOW_DEBUG', false)),
   },
   rateLimit: {
     limit: Number(get('RATE_LIMIT_MAX_REQUESTS', 300, requiredInProduction)),
