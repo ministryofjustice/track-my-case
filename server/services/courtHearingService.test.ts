@@ -1,15 +1,17 @@
 import CourtHearingService from './courtHearingService'
 import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
-import { CourtSchedule } from '../interfaces/caseHearing'
-import paths from '../constants/paths'
 import { logger } from '../logger'
+import { CaseDetails, ServiceHealth } from '../interfaces/caseDetails'
 
 describe('CourtHearingService', () => {
-  let mockGet: jest.Mock
+  let mockGetHealth: jest.Mock
+  let mockGetCaseDetailsByUrn: jest.Mock
   let service: CourtHearingService
 
-  class MockTrackMyCaseApiClient {
-    get = jest.fn()
+  class MockTrackMyCaseApiClient extends TrackMyCaseApiClient {
+    getHealth = jest.fn()
+
+    getCaseDetailsByUrn = jest.fn()
   }
 
   beforeAll(() => {
@@ -19,59 +21,84 @@ describe('CourtHearingService', () => {
   beforeEach(() => {
     jest.clearAllMocks()
     const mockClient = new MockTrackMyCaseApiClient()
-    mockGet = mockClient.get
+    mockGetHealth = mockClient.getHealth
+    mockGetCaseDetailsByUrn = mockClient.getCaseDetailsByUrn
     service = new CourtHearingService(mockClient as unknown as TrackMyCaseApiClient)
   })
 
-  it('calls getHearings with resolved path', async () => {
-    const caseId = 'CASE123'
-    const mockResponse: CourtSchedule = {
-      hearings: [],
-      courtHouse: {
-        courtHouse: '1',
-        courtHouseType: 'Magistrates',
-        courtHouseCode: 'MAG1',
-        courtHouseName: 'Test Court',
-        courtHouseDescription: 'A court for testing.',
-        courtRoom: [],
-      },
+  it('calls getServiceHealth', async () => {
+    const mockResponse: ServiceHealth = {
+      status: 'UP',
     }
+    mockGetHealth.mockResolvedValue(mockResponse)
 
-    mockGet.mockResolvedValue(mockResponse)
+    const result = await service.getServiceHealth()
 
-    const result = await service.getHearings(caseId)
-
-    expect(mockGet).toHaveBeenCalledWith({
-      path: `/cases/${caseId}/hearings`,
+    expect(mockGetHealth).toHaveBeenCalledWith({
+      path: '/health',
     })
     expect(result).toEqual(mockResponse)
   })
 
-  it('calls getCourtInformation with default caseId and logs the response', async () => {
-    const mockResponse: CourtSchedule[] = [
-      {
-        hearings: [],
-        courtHouse: {
-          courtHouse: '1',
-          courtHouseType: 'Crown',
-          courtHouseCode: 'CRN1',
-          courtHouseName: 'Default Court',
-          courtHouseDescription: 'Default case court.',
-          courtRoom: [],
+  it('calls getCaseDetailsByUrn', async () => {
+    const urn = 'CASE123'
+    const userEmail = 'example@email.com'
+
+    const mockResponse: CaseDetails = {
+      courtSchedule: [
+        {
+          hearings: [
+            {
+              hearingId: 'H123456789',
+              hearingType: 'Preliminary Hearing',
+              hearingDescription: 'Case management hearing for scheduling and directions',
+              listNote: 'To review plea and disclosure timelines.',
+              courtSittings: [
+                {
+                  judiciaryid: 'JUD001',
+                  sittingStart: '2025-10-15T09:30:00Z',
+                  sittingEnd: '2025-10-15T11:00:00Z',
+                  courtHouse: {
+                    courtHouseId: 'CH001',
+                    courtRoomId: 'CR01',
+                    courtHouseType: 'Crown Court',
+                    courtHouseCode: 'CC-100',
+                    courtHouseName: 'Southwark Crown Court',
+                    address: {
+                      address1: '1 English Grounds',
+                      address2: 'Southwark',
+                      address3: 'London',
+                      address4: '',
+                      postalCode: 'SE1 2HU',
+                      country: 'UK',
+                    },
+                    courtRoom: [
+                      {
+                        courtRoomId: 1,
+                        courtRoomName: 'Courtroom A',
+                      },
+                      {
+                        courtRoomId: 2,
+                        courtRoomName: 'Courtroom B',
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          ],
         },
-      },
-    ]
+      ],
+    }
 
-    mockGet.mockResolvedValue(mockResponse)
+    mockGetCaseDetailsByUrn.mockResolvedValue(mockResponse)
 
-    const result = await service.getCourtInformation('12345')
+    const result = await service.getCaseDetailsByUrn(urn, userEmail)
 
-    expect(mockGet).toHaveBeenCalledWith({
-      path: paths.CASES.INFO.replace(':caseId', '12345'),
+    expect(mockGetCaseDetailsByUrn).toHaveBeenCalledWith({
+      path: `/case/${urn}/casedetails`,
+      userEmail,
     })
     expect(result).toEqual(mockResponse)
-    expect(logger.debug).toHaveBeenCalledWith('CourtHearingService.getCourtInformation: successful response', {
-      courtSchedule: mockResponse,
-    })
   })
 })

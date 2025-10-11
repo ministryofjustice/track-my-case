@@ -25,7 +25,8 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
       res.redirect(paths.CASES.SEARCH)
     }
 
-    res.locals.caseDetails = await courtHearingService.getCaseDetailsByUrn(caseId)
+    const userEmail = res.locals.user.email
+    res.locals.caseDetails = await courtHearingService.getCaseDetailsByUrn(caseId, userEmail)
 
     const courtSchedule = res.locals.caseDetails?.courtSchedule[0]
     if (!courtSchedule) {
