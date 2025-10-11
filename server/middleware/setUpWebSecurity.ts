@@ -2,7 +2,7 @@ import crypto from 'crypto'
 import express, { Router, Request, Response, NextFunction } from 'express'
 import helmet from 'helmet'
 
-export default function setupWebSecurity(): Router {
+export default function setUpWebSecurity(): Router {
   const router = express.Router()
 
   // Secure code best practice - see:

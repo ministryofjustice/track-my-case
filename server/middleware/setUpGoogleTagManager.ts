@@ -1,7 +1,7 @@
 import express, { NextFunction, Request, Response, Router } from 'express'
 import config from '../config'
 
-export default function setupGoogleTagManager(): Router {
+export default function setUpGoogleTagManager(): Router {
   const router = express.Router()
 
   router.use((req: Request, res: Response, next: NextFunction) => {

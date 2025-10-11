@@ -3,7 +3,7 @@ import { csrfSync } from 'csrf-sync'
 
 const testMode = process.env.NODE_ENV === 'test'
 
-export default function setupCsrf(): Router {
+export default function setUpCsrf(): Router {
   const router = Router({ mergeParams: true })
 
   // CSRF protection

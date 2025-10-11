@@ -109,7 +109,7 @@ const config = {
     },
   },
   session: {
-    name: get('SESSION_NAME', 'track-my-case-insecure-default-session'),
+    name: get('SESSION_NAME', 'track-my-case.session'),
     secret: get('SESSION_SECRET', 'track-my-case-insecure-default-session', requiredInProduction),
     expiryMinutes: Number(get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120)),
     inactivityMinutes: Number(get('WEB_SESSION_INACTIVITY_IN_MINUTES', 10)),

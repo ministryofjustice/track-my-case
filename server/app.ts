@@ -6,21 +6,21 @@ import createError from 'http-errors'
 import nunjucksSetup from './utils/nunjucksSetup'
 import errorHandler from './errorHandler'
 
-import setupCsrf from './middleware/setupCsrf'
+import setUpCsrf from './middleware/setUpCsrf'
 
-import setupStaticResources from './middleware/setupStaticResources'
-import setUpWebRequestParsing from './middleware/setupRequestParsing'
-import setupWebSecurity from './middleware/setupWebSecurity'
-import setupWebSession from './middleware/setupWebSession'
+import setUpStaticResources from './middleware/setUpStaticResources'
+import setUpWebRequestParsing from './middleware/setUpRequestParsing'
+import setUpWebSecurity from './middleware/setUpWebSecurity'
+import setUpWebSession from './middleware/setUpWebSession'
 
 import indexRoutes from './routes/indexRoutes'
 import caseRoutes from './routes/caseRoutes'
 import oneLoginRoutes from './routes/oneLoginRoutes'
 import cookiesRoutes from './routes/cookiesRoutes'
 import healthRoutes from './routes/healthRoutes'
-import { setUpGovukOneLogin } from './middleware/setupGovukOneLogin'
+import { setUpGovukOneLogin } from './middleware/setUpGovukOneLogin'
 import { rateLimitSetup } from './utils/rateLimitSetUp'
-import setupGoogleTagManager from './middleware/setupGoogleTagManager'
+import setUpGoogleTagManager from './middleware/setUpGoogleTagManager'
 
 export default function createApp(): express.Application {
   const app = express()
@@ -33,14 +33,14 @@ export default function createApp(): express.Application {
 
   // TODO: setup health checks
 
-  app.use(setupWebSecurity())
+  app.use(setUpWebSecurity())
   app.use(setUpWebRequestParsing())
-  app.use(setupWebSession())
-  app.use(setupStaticResources())
+  app.use(setUpWebSession())
+  app.use(setUpStaticResources())
   nunjucksSetup(app)
   app.use(setUpGovukOneLogin())
-  app.use(setupCsrf())
-  app.use(setupGoogleTagManager())
+  app.use(setUpCsrf())
+  app.use(setUpGoogleTagManager())
 
   // Configure body-parser
   app.use(express.json())
