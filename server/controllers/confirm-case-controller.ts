@@ -8,7 +8,7 @@ const confirmCaseController = async (req: Request, res: Response, next: NextFunc
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Confirm case'
+    res.locals.pageTitle = 'Confirm Case URN'
     res.locals.backLink = '/case/search'
     res.locals.selectedUrn = req.session.selectedUrn
 

@@ -79,6 +79,7 @@ jobs:
           RATE_LIMIT_MAX_REQUESTS: ${{ vars.RATE_LIMIT_MAX_REQUESTS }}
           RATE_LIMIT_WINDOW_SECS: ${{ vars.RATE_LIMIT_WINDOW_SECS }}
           ALLOW_DEBUG: ${{ vars.ALLOW_DEBUG }}
+          GOOGLE_TAG_MANAGER_ID: ${{ vars.GOOGLE_TAG_MANAGER_ID }}
         shell: bash
         run: |
           docker build . \
@@ -108,9 +109,10 @@ jobs:
             --build-arg IDENTITY_SUPPORTED=$IDENTITY_SUPPORTED \
             --build-arg TRACK_MY_CASE_API_ENABLED=$TRACK_MY_CASE_API_ENABLED \
             --build-arg TRACK_MY_CASE_API_URL=$TRACK_MY_CASE_API_URL \
-            --build-arg RATE_LIMIT_MAX_REQUESTS=RATE_LIMIT_MAX_REQUESTS \
-            --build-arg RATE_LIMIT_WINDOW_SECS=RATE_LIMIT_WINDOW_SECS \
-            --build-arg ALLOW_DEBUG=ALLOW_DEBUG \
+            --build-arg RATE_LIMIT_MAX_REQUESTS=$RATE_LIMIT_MAX_REQUESTS \
+            --build-arg RATE_LIMIT_WINDOW_SECS=$RATE_LIMIT_WINDOW_SECS \
+            --build-arg ALLOW_DEBUG=$ALLOW_DEBUG \
+            --build-arg GOOGLE_TAG_MANAGER_ID=$GOOGLE_TAG_MANAGER_ID \
             -t working_image:$NEW_TAG_V
 
       - name: Configure AWS credentials

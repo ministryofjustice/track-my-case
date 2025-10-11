@@ -5,7 +5,7 @@ import paths from '../constants/paths'
 import signedInController from '../controllers/signed-in-controller'
 import signedOutController from '../controllers/signed-out-controller'
 
-export default function routes(app: express.Express): void {
+export default function oneLoginRoutes(app: express.Express): void {
   app.get(
     paths.ONE_LOGIN.SIGNED_IN,
     AuthenticatedUser,

@@ -1,7 +1,7 @@
 {#
 Component options:
   - authenticated: Was OneLogin executed successfully
-  - serviceName (string): The name of the service. The service navigation bar will not render unless serviceName is specified
+  - applicationName (string): The name of the service. The service navigation bar will not render unless applicationName is specified
   - navigationItems (array): An array of objects representing service navigation links.
     Each link object contains the following fields:
       - href (string – indicates the link destination),
@@ -106,13 +106,13 @@ Component options:
       {% endif %}
     </div>
   </div>
-  {% if params.serviceName %}
+  {% if params.applicationName %}
   <!-- Start of service navigation -->
   <div class="service-header" data-one-login-header-nav>
     <div class="govuk-width-container">
       <div class="service-header__container">
         <!-- The name of your service goes here -->
-        <h2 class="service-header__heading">{{ params.serviceName }}</h2>
+        <h2 class="service-header__heading">{{ params.applicationName }}</h2>
         {%- if params.navigationItems %}
         <div>
           <!-- Label the toggle button appropriately (you might want to use the name of your service) to provide support for screen reader users -->
@@ -129,7 +129,7 @@ Component options:
             <span class="service-header__button-content">Menu</span>
           </button>
           <!-- Important! Label your navigation appropriately! When there are multiple navigation landmarks on a page, additional labelling is required to provide support for screen reader users -->
-          <nav aria-label="{{ params.serviceName }} menu">
+          <nav aria-label="{{ params.applicationName }} menu">
             <ul class="service-header__nav-list service-header__nav" id="service-header__nav" data-open-class="service-header__nav--open">
               {%- for item in params.navigationItems %}
               <!-- Use the "service-header__nav-list-item--active" modifier class on the li to visually highlight the page the user is currently viewing -->

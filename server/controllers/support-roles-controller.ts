@@ -5,7 +5,7 @@ const supportRolesController = async (req: Request, res: Response, next: NextFun
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Key roles in the criminal justice system'
+    res.locals.pageTitle = 'Key Roles In The Criminal Justice System'
     res.locals.backLink = '/case/dashboard'
 
     res.render('pages/case/support-roles')

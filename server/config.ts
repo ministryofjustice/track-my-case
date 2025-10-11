@@ -121,6 +121,9 @@ const config = {
     windowMs: Number(get('RATE_LIMIT_WINDOW_SECS', 5 * 60, requiredInProduction)) * 1000,
     message: 'Too many requests, please try again later.',
   },
+  analytics: {
+    gtmId: get('GOOGLE_TAG_MANAGER_ID', 'GTM-WRN68MWZ', requiredInProduction),
+  },
   // ingressUrl: get('INGRESS_URL', 'http://localhost:9999'),
 }
 export default config

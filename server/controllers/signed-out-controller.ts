@@ -5,6 +5,8 @@ const signedOutController = async (req: Request, res: Response, next: NextFuncti
   try {
     await initialiseBasicAuthentication(req, res, next)
 
+    res.locals.pageTitle = 'Signed Out'
+
     res.render('pages/signed-out.njk')
   } catch (error) {
     next(error)

@@ -6,21 +6,21 @@ import createError from 'http-errors'
 import nunjucksSetup from './utils/nunjucksSetup'
 import errorHandler from './errorHandler'
 
-import setUpCsrf from './middleware/setUpCsrf'
+import setupCsrf from './middleware/setupCsrf'
 
-// TODO: set up HealthCheck
-import setUpStaticResources from './middleware/setUpStaticResources'
+import setupStaticResources from './middleware/setupStaticResources'
 import setUpWebRequestParsing from './middleware/setupRequestParsing'
-import setUpWebSecurity from './middleware/setUpWebSecurity'
-import setUpWebSession from './middleware/setUpWebSession'
+import setupWebSecurity from './middleware/setupWebSecurity'
+import setupWebSession from './middleware/setupWebSession'
 
-import indexRoutes from './routes/index'
-import caseRoutes from './routes/case'
-import oneLoginRoutes from './routes/oneLogin'
-import publicRoutes from './routes/public'
-import healthRoutes from './routes/health'
+import indexRoutes from './routes/indexRoutes'
+import caseRoutes from './routes/caseRoutes'
+import oneLoginRoutes from './routes/oneLoginRoutes'
+import cookiesRoutes from './routes/cookiesRoutes'
+import healthRoutes from './routes/healthRoutes'
 import { setUpGovukOneLogin } from './middleware/setupGovukOneLogin'
 import { rateLimitSetup } from './utils/rateLimitSetUp'
+import setupGoogleTagManager from './middleware/setupGoogleTagManager'
 
 export default function createApp(): express.Application {
   const app = express()
@@ -33,13 +33,14 @@ export default function createApp(): express.Application {
 
   // TODO: setup health checks
 
-  app.use(setUpWebSecurity())
+  app.use(setupWebSecurity())
   app.use(setUpWebRequestParsing())
-  app.use(setUpWebSession())
-  app.use(setUpStaticResources())
+  app.use(setupWebSession())
+  app.use(setupStaticResources())
   nunjucksSetup(app)
   app.use(setUpGovukOneLogin())
-  app.use(setUpCsrf())
+  app.use(setupCsrf())
+  app.use(setupGoogleTagManager())
 
   // Configure body-parser
   app.use(express.json())
@@ -51,11 +52,11 @@ export default function createApp(): express.Application {
   // Apply the general rate limiter to all requests to prevent abuse
   rateLimitSetup(app)
 
-  app.use('/', indexRoutes())
-  app.use('/', healthRoutes())
+  indexRoutes(app)
+  healthRoutes(app)
+  cookiesRoutes(app)
   oneLoginRoutes(app)
   caseRoutes(app)
-  app.use('/', publicRoutes())
 
   app.use('/.well-known/appspecific', (req, res) => {
     res.status(404).send('Not Found')

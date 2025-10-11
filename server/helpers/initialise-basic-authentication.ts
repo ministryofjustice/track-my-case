@@ -5,7 +5,6 @@ import { isAuthenticatedRequest } from '../utils/utils'
 import paths from '../constants/paths'
 
 const initialiseBasicAuthentication = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-  res.locals.serviceName = 'Track My Case'
   res.locals.user = req.session.passport?.user
   res.locals.authenticated = isAuthenticatedRequest(req)
   res.locals.identitySupported = config.apis.govukOneLogin.identitySupported

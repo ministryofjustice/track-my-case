@@ -14,7 +14,7 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Court information'
+    res.locals.pageTitle = 'Court Information'
     res.locals.backLink = '/case/dashboard'
 
     const caseId = req.session.selectedUrn || 'wrong-case-id'
@@ -25,13 +25,12 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
       res.redirect(paths.CASES.SEARCH)
     }
 
-    const caseDetails = await courtHearingService.getCaseDetailsByUrn(caseId)
-    res.locals.caseDetails = caseDetails
+    res.locals.caseDetails = await courtHearingService.getCaseDetailsByUrn(caseId)
 
     const courtSchedule = res.locals.caseDetails?.courtSchedule[0]
     if (!courtSchedule) {
+      res.locals.pageTitle = 'Court Information - Not Found'
       return res.status(404).render('pages/case/court-information-not-found', {
-        pageTitle: 'Court information',
         error: 'Case could not be found',
       })
     }
@@ -44,8 +43,8 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(`Status ${error.status}, ${error.message}`)
+    res.locals.pageTitle = 'Court Information - Not Found'
     return res.status(404).render('pages/case/court-information-not-found', {
-      pageTitle: 'Court information',
       error: `Case could not be found`,
     })
   }

@@ -5,7 +5,7 @@ import noCache from 'nocache'
 
 import config from '../config'
 
-export default function setUpStaticResources(): Router {
+export default function setupStaticResources(): Router {
   const router = express.Router()
 
   router.use(compression())

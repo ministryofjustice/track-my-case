@@ -29,9 +29,11 @@ const getEnterUniqueReferenceNumber = async (req: Request, res: Response, next: 
     if (serviceHealth?.status?.toUpperCase() === 'UP') {
       res.render('pages/case/enter-unique-reference-number.njk')
     } else {
+      res.locals.pageTitle = 'Enter Unique Reference Number (URN) - Service Error'
       res.render('pages/case/service-error.njk')
     }
   } catch (error) {
+    res.locals.pageTitle = 'Enter Unique Reference Number (URN) - Service Error'
     res.render('pages/case/service-error.njk')
   }
 }

@@ -23,7 +23,7 @@ import { confirmCaseController, postConfirmCase } from '../controllers/confirm-c
 import victimSupportLinksController from '../controllers/victim-support-links-controller'
 import witnessServiceController from '../controllers/witness-service-controller'
 
-export default function routes(app: express.Express): void {
+export default function caseRoutes(app: express.Express): void {
   // Page: Enter unique reference number (URN)
   // https://www.gov.uk/government/publications/common-platform-unique-reference-number-urn/purpose-of-the-urn-and-how-to-obtain-it
   app.get(paths.CASES.SEARCH, AuthenticatedUser, asyncMiddleware(getEnterUniqueReferenceNumber))
