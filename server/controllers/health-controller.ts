@@ -6,18 +6,16 @@ import config from '../config'
 const apiClient = new TrackMyCaseApiClient()
 const service = new HealthService(apiClient)
 
-const healthCheck = async (req: Request, res: Response): Promise<void> => {
+const healthCheckController = async (req: Request, res: Response): Promise<void> => {
+  const healthCheckResult = await service.check() // still gets appInfo
   if (!config.apis.trackMyCaseApi.enabled) {
-    const application = await service.check() // still gets appInfo
     res.status(503).json({
-      ...application,
+      ...healthCheckResult,
       reason: 'trackMyCaseApi is disabled in configuration',
     })
     return
   }
-
-  const result = await service.check()
-  res.status(result.status === 'UP' ? 200 : 503).json(result)
+  res.status(healthCheckResult.status === 'UP' ? 200 : 503).json(healthCheckResult)
 }
 
-export default healthCheck
+export default healthCheckController

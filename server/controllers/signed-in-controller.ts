@@ -5,6 +5,8 @@ const signedInController = async (req: Request, res: Response, next: NextFunctio
   try {
     await initialiseBasicAuthentication(req, res, next)
 
+    res.locals.pageTitle = 'Signed In'
+
     res.render('pages/signed-in.njk')
   } catch (error) {
     next(error)

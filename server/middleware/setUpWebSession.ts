@@ -19,7 +19,8 @@ export default function setUpWebSession(): Router {
       name: config.session.name,
       secret: config.session.secret,
       cookie: {
-        secure: config.https,
+        secure: !!config.https,
+        httpOnly: true,
         sameSite: 'lax',
         maxAge: config.session.expiryMinutes * 60 * 1000,
       },

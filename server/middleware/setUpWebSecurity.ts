@@ -1,7 +1,6 @@
 import crypto from 'crypto'
 import express, { Router, Request, Response, NextFunction } from 'express'
 import helmet from 'helmet'
-// import config from '../config'
 
 export default function setUpWebSecurity(): Router {
   const router = express.Router()
@@ -16,21 +15,78 @@ export default function setUpWebSecurity(): Router {
   router.use(
     helmet({
       contentSecurityPolicy: {
+        useDefaults: true,
         directives: {
           defaultSrc: ["'self'"],
-          // This nonce allows us to use scripts with the use of the `cspNonce` local, e.g (in a Nunjucks template):
-          // <script nonce="{{ cspNonce }}">
-          // or
-          // <link href="http://example.com/" rel="stylesheet" nonce="{{ cspNonce }}">
-          // This ensures only scripts we trust are loaded, and not anything injected into the
-          // page by an attacker.
-          scriptSrc: ["'self'", (_req: Request, res: Response) => `'nonce-${res.locals.cspNonce}'`],
-          styleSrc: ["'self'", (_req: Request, res: Response) => `'nonce-${res.locals.cspNonce}'`],
-          fontSrc: ["'self'"],
+
+          // prevent <base> tag abuse
+          baseUri: ["'self'"],
+
+          // block plugins/Flash-like embeds
+          objectSrc: ["'none'"],
+
+          // CSP way to forbid framing (prefer over X-Frame-Options)
+          frameAncestors: ["'none'"],
+
+          scriptSrc: [
+            "'self'",
+            "'strict-dynamic'",
+            'https://www.googletagmanager.com',
+            'https://www.google-analytics.com',
+            (_req: Request, res: Response) => `'nonce-${res.locals.cspNonce}'`,
+          ],
+
+          // Styles: prefer nonce; include Google Fonts
+          styleSrc: [
+            "'self'",
+            'https://fonts.googleapis.com',
+            (_req: Request, res: Response) => `'nonce-${res.locals.cspNonce}'`,
+          ],
+
+          // Fonts for Google Fonts
+          fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+
+          // Images
+          imgSrc: [
+            "'self'",
+            'https://www.google-analytics.com',
+            'https://www.googletagmanager.com',
+            'https://*.google-analytics.com',
+            'https://*.g.doubleclick.net',
+            'data:',
+          ],
+
+          // XHR/fetch
+          connectSrc: [
+            "'self'",
+            'https://www.googletagmanager.com',
+            'https://www.google-analytics.com',
+            'https://*.google-analytics.com',
+            'https://*.g.doubleclick.net',
+            'https://js.monitor.azure.com',
+            'https://dc.services.visualstudio.com',
+          ],
+
+          // For GTM noscript iframe
+          frameSrc: ["'self'", 'https://www.googletagmanager.com'],
           formAction: [`'self'`],
         },
       },
-      crossOriginEmbedderPolicy: true,
+
+      // COEP often breaks 3rd-party iframes/analytics; leave disabled unless needed
+      crossOriginEmbedderPolicy: false,
+
+      referrerPolicy: { policy: 'strict-origin-when-cross-origin' },
+
+      // Deny being framed (anti-clickjacking); OK with GTM since GTM is framed by us, not vice versa
+      frameguard: { action: 'deny' },
+
+      // HSTS: only if served via HTTPS (typical for prod)
+      hsts: {
+        maxAge: 31536000,
+        includeSubDomains: true,
+        preload: true,
+      },
     }),
   )
   return router

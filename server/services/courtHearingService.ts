@@ -1,5 +1,4 @@
-import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
-import { CourtSchedule } from '../interfaces/caseHearing'
+import TrackMyCaseApiClient, { GetHealthRequestOptions, GetRequestOptions } from '../data/trackMyCaseApiClient'
 import paths from '../constants/paths'
 import resolvePath from '../utils/resolvePath'
 import { logger } from '../logger'
@@ -8,40 +7,25 @@ import { CaseDetails, ServiceHealth } from '../interfaces/caseDetails'
 export default class CourtHearingService {
   constructor(private readonly apiClient: TrackMyCaseApiClient) {}
 
-  async getHearings(caseId: string): Promise<CourtSchedule> {
-    const path = resolvePath(paths.CASES.HEARINGS, { caseId })
-    return this.apiClient.get<CourtSchedule>({ path })
-  }
-
-  async getCourtInformation(caseId: string): Promise<CourtSchedule[]> {
-    const path = resolvePath(paths.CASES.INFO, { caseId })
-    const response = await this.apiClient.get<CourtSchedule[]>({ path })
-
-    logger.debug('CourtHearingService.getCourtInformation: successful response', {
-      courtSchedule: response,
-    })
-
-    return response
-  }
-
-  async getCaseDetailsByUrn(urn: string): Promise<CaseDetails> {
+  async getServiceHealth(): Promise<ServiceHealth> {
     try {
-      const path = resolvePath(paths.CASES.CASE_DETAILS, { urn })
-      const response = await this.apiClient.get<CaseDetails>({ path })
-      logger.info(`CourtHearingService.getCaseDetailsByUrn: successful response by urn:${urn}`)
-      return response
+      const path = '/health'
+      const request: GetHealthRequestOptions = { path }
+      return await this.apiClient.getHealth<ServiceHealth>(request)
     } catch (e) {
-      logger.error(`CourtHearingService.getCaseDetailsByUrn: unsuccessful response by urn:${urn}`, e)
+      logger.error('courtHearingService.getServiceHealth: unsuccessful response', e.status, e.message)
       return null
     }
   }
 
-  async getServiceHealth(): Promise<ServiceHealth> {
+  async getCaseDetailsByUrn(urn: string, userEmail: string): Promise<CaseDetails> {
     try {
-      const path = '/health'
-      return await this.apiClient.get<ServiceHealth>({ path })
+      const path = resolvePath(paths.CASES.CASE_DETAILS, { urn })
+      const request: GetRequestOptions = { path, userEmail }
+      const response = await this.apiClient.getCaseDetailsByUrn<CaseDetails>(request)
+      return response
     } catch (e) {
-      logger.error('CourtHearingService.getServiceHealth: unsuccessful response', e)
+      logger.error(`courtHearingService.getCaseDetailsByUrn: unsuccessful response by urn: ${urn}`, e.status, e.message)
       return null
     }
   }
