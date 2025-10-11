@@ -1,0 +1,53 @@
+{% extends "layout/citizen-authenticated.njk" %}
+
+{% set mainClasses = "app-container govuk-body" %}
+
+{% block content %}
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="gem-c-heading govuk-!-margin-bottom-8">
+        <h1 class="gem-c-heading__text govuk-heading-xl">
+          Find help and support
+        </h1>
+      </div>
+      <aside class="part-navigation-container" role="complementary">
+        <nav data-module="ga4-link-tracker" aria-label="Pages in this guide" class="gem-c-contents-list govuk-!-margin-bottom-4" data-ga4-link-tracker-module-started="true">
+          <h2 class="gem-c-contents-list__title">
+            Contents
+          </h2>
+          <ol class="gem-c-contents-list__list">
+            <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+              <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victim-support-links">Links to victim support information</a>
+            </li>
+            <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
+              <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+              Witness service
+            </li>
+          </ol>
+        </nav>
+      </aside>
+    </div>
+  </div>
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">Witness service</h2>
+      <p class="govuk-body">Giving evidence as a witness can be daunting and the court process can be complicated and difficult to understand.</p>
+      <p class="govuk-body">The Citizens Advice Witness Service provides free and independent  support for both prosecution and defence witnesses in every criminal  court in England and Wales.</p>
+      <p class="govuk-body">Their trained volunteers provide practical information about the court  process. They can also give emotional support to help witnesses feel  more confident when giving evidence.</p>
+      <p class="govuk-body">They can:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>provide information about the court process</li>
+        <li>show witnesses the courtroom before the trial</li>
+        <li>be there to talk to in confidence</li>
+        <li>accompany witnesses when they give their evidence</li>
+        <li>give support on the day of the trial - at verdict and sentencing</li>
+        <li>help prepare witnesses who need extra support - at their home or another safe place</li>
+        <li>help witnesses claim expenses</li>
+        <li>work with other agencies to make sure the right support is provided</li>
+        <li>refer witnesses to partner organisations - including local Citizens  Advice, for support with other issues before, during or after the trial</li>
+      </ul>
+      <p class="govuk-body"><a href="https://www.citizensadvice.org.uk/law-and-courts/legal-system/going-to-court-as-a-witness1/get-help-and-support-being-a-witness/witness-referral" class="govuk-link">Self-referrals can be made online</a> on the Citizens Advice website.</p>
+      <p class="govuk-body">Citizens Advice have more information about what happens <a href="https://www.citizensadvice.org.uk/law-and-courts/legal-system/going-to-court-as-a-witness1/what-happens-after-the-trial/what-happens-after-the-trial-if-youre-a-witness/" class="govuk-link">after you’ve given evidence</a>.</p>    </div>
+  </div>
+{% endblock %}

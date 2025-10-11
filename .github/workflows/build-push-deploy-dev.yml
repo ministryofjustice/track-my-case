@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches-ignore:
-      - dependabot/**
   workflow_dispatch:
 
 permissions: {}
@@ -48,9 +45,10 @@ jobs:
           NODE_ENV: ${{ vars.NODE_ENV }}
           NODE_PORT: ${{ vars.NODE_PORT }}
           SERVICE_URL: ${{ vars.SERVICE_URL }}
-          OIDC_CLIENT_ID: ${{ secrets.OIDC_CLIENT_ID }}
-          OIDC_PRIVATE_KEY: ${{ secrets.OIDC_PRIVATE_KEY }}
+          OIDC_CLIENT_ID: ${{ secrets.XXX_OIDC_CLIENT_ID }}
+          OIDC_PRIVATE_KEY: ${{ secrets.XXX_OIDC_PRIVATE_KEY }}
           OIDC_ISSUER: ${{ vars.OIDC_ISSUER }}
+          ONE_LOGIN_LINK: ${{ vars.ONE_LOGIN_LINK }}
           IV_DID_URI: ${{ vars.IV_DID_URI }}
           IV_ISSUER: ${{ vars.IV_ISSUER }}
           OIDC_TOKEN_AUTH_METHOD: ${{ vars.OIDC_TOKEN_AUTH_METHOD }}
@@ -69,6 +67,8 @@ jobs:
           TRACK_MY_CASE_API_URL: ${{ vars.TRACK_MY_CASE_API_URL }}
           RATE_LIMIT_MAX_REQUESTS: ${{ vars.RATE_LIMIT_MAX_REQUESTS }}
           RATE_LIMIT_WINDOW_SECS: ${{ vars.RATE_LIMIT_WINDOW_SECS }}
+          ALLOW_DEBUG: ${{ vars.ALLOW_DEBUG }}
+          GOOGLE_TAG_MANAGER_ID: ${{ vars.GOOGLE_TAG_MANAGER_ID }}
         shell: bash
         run: |
           docker build . \
@@ -81,6 +81,7 @@ jobs:
             --build-arg OIDC_CLIENT_ID=$OIDC_CLIENT_ID \
             --build-arg OIDC_PRIVATE_KEY=$OIDC_PRIVATE_KEY \
             --build-arg OIDC_ISSUER=$OIDC_ISSUER \
+            --build-arg ONE_LOGIN_LINK=$ONE_LOGIN_LINK \
             --build-arg IV_DID_URI=$IV_DID_URI \
             --build-arg IV_ISSUER=$IV_ISSUER \
             --build-arg OIDC_TOKEN_AUTH_METHOD=$OIDC_TOKEN_AUTH_METHOD \
@@ -97,8 +98,10 @@ jobs:
             --build-arg IDENTITY_SUPPORTED=$IDENTITY_SUPPORTED \
             --build-arg TRACK_MY_CASE_API_ENABLED=$TRACK_MY_CASE_API_ENABLED \
             --build-arg TRACK_MY_CASE_API_URL=$TRACK_MY_CASE_API_URL \
-            --build-arg RATE_LIMIT_MAX_REQUESTS=RATE_LIMIT_MAX_REQUESTS \
-            --build-arg RATE_LIMIT_WINDOW_SECS=RATE_LIMIT_WINDOW_SECS \
+            --build-arg RATE_LIMIT_MAX_REQUESTS=$RATE_LIMIT_MAX_REQUESTS \
+            --build-arg RATE_LIMIT_WINDOW_SECS=$RATE_LIMIT_WINDOW_SECS \
+            --build-arg ALLOW_DEBUG=$ALLOW_DEBUG \
+            --build-arg GOOGLE_TAG_MANAGER_ID=$GOOGLE_TAG_MANAGER_ID \
             -t working_image:$NEW_TAG_V
 
       - name: Configure AWS credentials

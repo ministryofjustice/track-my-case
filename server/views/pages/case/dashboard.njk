@@ -4,7 +4,6 @@
 {% from "components/promo-panel/macro.njk" import promoPanel %}
 {%- from "moj/components/alert/macro.njk" import mojAlert -%}
 
-{% set pageTitle = applicationName + " - Reference number: " + caseReference %}
 {% set mainClasses = "app-container govuk-body" %}
 
 {% block content %}
@@ -14,7 +13,7 @@
       <div class="action-card-wrapper">
         {{ actionCard(
           "View court information",
-          "See information about the court case, including date, location, your requirements and verdicts.",
+          "See information about the court location.",
           "/case/search",
           "View court information",
           "default",
@@ -26,9 +25,9 @@
       <div class="action-card-wrapper">
         {{ actionCard(
           "Understand the process",
-          "See information about stages of a criminal case journey, and staff victins interact with.",
-          "/case/understanding-the-process",
-          "View"
+          "See information about stages of a criminal case, and staff victims interact with.",
+          "/case/support-roles",
+          "View information about the process"
         ) }}
       </div>
     </div>
@@ -38,7 +37,7 @@
           "Understand your rights",
           "See information about the victims’ code of practice, and your rights as a victim.",
           "/case/victims-code",
-          "View"
+          "View information about your rights"
         ) }}
       </div>
     </div>
@@ -46,17 +45,17 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ promoPanel(
-        "Need help understanding the process?",
-        "Access victim support, including the Victims Code, case information, and court expectations.",
-        "/case/understanding-the-process",
-        "View victim support and information",
+        "Find help and support",
+        "Access information for victim support charities and guidance if you are required to attend court as witness.",
+        "/case/victim-support-links",
+        "View support and guidance",
         "/assets/images/vsc2.jpg",
         "default"
       ) }}
     </div>
   </div>
 
-  {% if user %}
+  {% if allowDebug and user %}
     <h2 class="govuk-heading-m">User information</h2>
     <pre><code>{{ user | dump(2) }}</code></pre>
   {% endif %}

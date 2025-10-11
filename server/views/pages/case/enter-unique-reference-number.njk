@@ -4,8 +4,6 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 
-
-{% set pageTitle = applicationName + " - Enter unique reference number (URN)" %}
 {% set mainClasses = "app-container govuk-body" %}
 
 {% block content %}
@@ -16,36 +14,46 @@
     }) }}
   {% endif %}
 
-  <form id="searchCaseReferenceNumber" name="searchCaseReferenceNumber" method="post" novalidate>
-    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-two-thirds">
 
-    {{ govukInput({
-      label: {
-        text: "Enter unique reference number (URN)",
-        classes: "govuk-label--l",
-        isPageHeading: true
-      },
-      hint: {
-        text: "For example, CIK2JQKECS"
-      },
-      classes: "govuk-input--width-20",
-      id: "selectedUrn",
-      name: "selectedUrn",
-      pattern: "^[A-Za-z][0-9]{11}$",
-      errorMessage: errorList and (errorList | selectattr("href", "equalto", "#selectedUrn") | first),
-      value: session.selectedUrn
-    }) }}
+      <form id="searchCaseReferenceNumber" name="searchCaseReferenceNumber" method="post" novalidate>
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
 
-    {{ govukButton({
-      text: "Find case"
-    }) }}
+        {{ govukInput({
+          label: {
+            text: "Enter Unique Reference Number (URN)",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "It will be on your charging decision letter or any communication from your Witness Care Officer – for example, '12QQ3456789'"
+          },
+          classes: "govuk-input--width-20",
+          id: "selectedUrn",
+          name: "selectedUrn",
+          pattern: "^[A-Za-z][0-9]{11}$",
+          errorMessage: errorList and (errorList | selectattr("href", "equalto", "#selectedUrn") | first),
+          value: session.selectedUrn
+        }) }}
 
-  </form>
+        {{ govukButton({
+          text: "Find case"
+        }) }}
 
-  {{ govukDetails({
-    summaryText: "I don't have a unique reference number (URN)",
-    text: "If you don't know the unique reference number, you should request one from The Courts and Tribunals Service by emailing ContactCrime@justice.gov.uk"
-  }) }}
+      </form>
+
+      {{ govukDetails({
+        summaryText: "Help with Unique Reference Number (URN)",
+        html: '
+        <p class="govuk-body">The <strong>URN (Unique Reference Number)</strong> is a case ID used by the police, CPS, courts, and Witness Care Unit to track your case.</p>
+        <p class="govuk-body">You’ll find it on letters or emails about your case.</p>
+        <p class="govuk-body">If you’re unsure, you can contact your Witness Care Officer during normal business hours, by email or telephone, or contact your local force’s Witness Care Unit if you are unavailable to speak to your Witness Care Officer.</p>
+        '
+      }) }}
+
+    </div>
+  </div>
 
 {% endblock %}
 

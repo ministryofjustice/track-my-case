@@ -1,5 +1,6 @@
 import { UserIdentityClaim } from './@types/types/user-info'
 import DIDKeySet from './@types/types/did-keyset'
+import { toBoolean } from './utils/utils'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -52,8 +53,8 @@ const oidcIssuer = get('OIDC_ISSUER', '', requiredInProduction)
 const config = {
   buildNumber: get('BUILD_NUMBER', '1_0_0', requiredInProduction),
   productId: get('PRODUCT_ID', 'UNASSIGNED', requiredInProduction),
-  gitRef: get('GIT_REF', 'xxxxxxxxxxxxxxxxxxx', requiredInProduction),
-  branchName: get('GIT_BRANCH', 'xxxxxxxxxxxxxxxxxxx', requiredInProduction),
+  branchName: get('GIT_BRANCH', 'main', requiredInProduction),
+  gitRef: get('GIT_REF', 'HEAD', requiredInProduction),
   nodeEnv: get('NODE_ENV', 'development', requiredInProduction),
   port,
   production: isProduction,
@@ -75,8 +76,10 @@ const config = {
       discoveryUrl: `${oidcIssuer}/.well-known/openid-configuration`,
       clientId: get('OIDC_CLIENT_ID', '', requiredInProduction),
       privateKey: get('OIDC_PRIVATE_KEY', '', requiredInProduction),
+      idTokenSigningAlgorithm: 'ES256',
       timeout: 20000,
       strategyName: 'oidc',
+      oneLoginLink: get('ONE_LOGIN_LINK', 'https://home.account.gov.uk', requiredInProduction),
       ivIssuer: get('IV_ISSUER', '', requiredInProduction),
       ivDidUri: get('IV_DID_URI', '', requiredInProduction),
       scopes: get('OIDC_SCOPES', 'email,openid', requiredInProduction),
@@ -106,16 +109,20 @@ const config = {
     },
   },
   session: {
-    name: get('SESSION_NAME', 'stg-track-my-case-ui-insecure-default-session'),
-    secret: get('SESSION_SECRET', 'stg-track-my-case-ui-insecure-default-session', requiredInProduction),
+    name: get('SESSION_NAME', 'track-my-case.session'),
+    secret: get('SESSION_SECRET', 'track-my-case-insecure-default-session', requiredInProduction),
     expiryMinutes: Number(get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120)),
     inactivityMinutes: Number(get('WEB_SESSION_INACTIVITY_IN_MINUTES', 10)),
     appointmentsCacheMinutes: Number(get('APPOINTMENTS_CACHE_IN_MINUTES', 1)),
+    allowDebug: toBoolean(get('ALLOW_DEBUG', false)),
   },
   rateLimit: {
     limit: Number(get('RATE_LIMIT_MAX_REQUESTS', 300, requiredInProduction)),
     windowMs: Number(get('RATE_LIMIT_WINDOW_SECS', 5 * 60, requiredInProduction)) * 1000,
     message: 'Too many requests, please try again later.',
+  },
+  analytics: {
+    gtmId: get('GOOGLE_TAG_MANAGER_ID', 'GTM-WRN68MWZ', requiredInProduction),
   },
   // ingressUrl: get('INGRESS_URL', 'http://localhost:9999'),
 }

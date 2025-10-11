@@ -1,0 +1,52 @@
+{% extends "layout/citizen-authenticated.njk" %}
+
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% from "components/support-box/macro.njk" import supportBox %}
+{%- from "moj/components/alert/macro.njk" import mojAlert -%}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set mainClasses = "app-container govuk-body" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if error %}
+        <div class="court-information-not-found-error govuk-!-margin-bottom-7">
+          {{ error }}
+        </div>
+      {% endif %}
+
+      <div class="govuk-!-static-margin-bottom-8">
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Unique Reference Number (URN)",
+                classes: "govuk-!-width-one-half"
+              },
+              value: {
+                text: selectedUrn
+              }
+            }
+          ]
+        }) }}
+      </div>
+
+      <p class="govuk-body">There was a problem retrieving information from the court system. Try again later.</p>
+      <p class="govuk-body">In the meantime, you can contact the Police Officer in Charge or Witness Care Unit for updates to your case. They  will contact you if there is anything you must know about.</p>
+      <p class="govuk-body">If you want information about a specific court use the <a class="govuk-link" href="https://www.gov.uk/find-court-tribunal">Find a Court or Tribunal service</a>. This has specific guidance for the court including the address, facilities, and accessibility information.</p>
+    </div>
+  </div>
+
+  {% if allowDebug %}
+    <div class="govuk-grid-row govuk-!-margin-top-8">
+      <div><a href="/case/back-end-api-health?debug=true">MOJ API SERVICE health check</a> </div>
+      <pre><code>{{ caseDetails | dump(2) }}</code></pre>
+    </div>
+  {% endif %}
+
+{% endblock %}

@@ -4,7 +4,6 @@
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-{% set pageTitle = applicationName + " - URN number: " + caseReference %}
 {% set mainClasses = "app-container govuk-body" %}
 
 {% block content %}
@@ -25,7 +24,7 @@
             text: "Unique Reference Number (URN)"
           },
           value: {
-            text: caseReference
+            text: selectedUrn
           }
         },
         {

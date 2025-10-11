@@ -1,26 +1,23 @@
 {%- from "govuk/components/header/macro.njk" import govukHeader -%}
 {% from "header/service-header.njk" import govukOneLoginServiceHeader %}
 
-{% if authenticated or true %}
+{% if authenticated %}
   {{ govukOneLoginServiceHeader ({
     authenticated: authenticated,
-    serviceName: serviceName,
+    applicationName: applicationName,
     oneLoginLink: oneLoginLink,
     homepageLink: homepageLink,
     signOutLink: signOutLink,
+    email: user.email,
     navigationItems:[{
       href: '/',
       text: 'Home',
       id: 'home'
-    },{
-      href: '/case/dashboard',
-      text: 'Dashboard',
-      id: 'case-dashboard'
     }]
   }) }}
 {% else %}
   {{ govukHeader ({
-    serviceName: serviceName,
+    applicationName: applicationName,
     homepageUrl: homepageUrl,
     serviceUrl: serviceUrl
   }) }}

@@ -1,0 +1,17 @@
+import { NextFunction, Request, Response } from 'express'
+import { initialiseBasicAuthentication } from '../helpers/initialise-basic-authentication'
+
+const victimSupportLinksController = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    await initialiseBasicAuthentication(req, res, next)
+
+    res.locals.pageTitle = 'Links To Victim Support Information'
+    res.locals.backLink = '/case/dashboard'
+
+    res.render('pages/case/victim-support-links')
+  } catch (error) {
+    next(error)
+  }
+}
+
+export default victimSupportLinksController

@@ -1,0 +1,51 @@
+{% extends "layout/citizen-authenticated.njk" %}
+
+{% set mainClasses = "app-container govuk-body" %}
+
+{% block content %}
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="gem-c-heading govuk-!-margin-bottom-8">
+        <h1 class="gem-c-heading__text govuk-heading-xl">
+          Find help and support
+        </h1>
+      </div>
+      <aside class="part-navigation-container" role="complementary">
+        <nav data-module="ga4-link-tracker" aria-label="Pages in this guide" class="gem-c-contents-list govuk-!-margin-bottom-4" data-ga4-link-tracker-module-started="true">
+          <h2 class="gem-c-contents-list__title">
+            Contents
+          </h2>
+          <ol class="gem-c-contents-list__list">
+            <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
+              <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+              Links to victim support information
+            </li>
+            <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+              <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/witness-service">Witness service</a>
+            </li>
+          </ol>
+        </nav>
+      </aside>
+    </div>
+  </div>
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">Links to victim support information</h2>
+      <p class="govuk-body">Here are some helpful resources from government agencies for victims of crime. These links provide information and support on various topics:</p>
+
+      <ul class="govuk-list">
+        <li><a href="https://www.cps.gov.uk/information-and-support-victims-witnesses/easy-read" class="govuk-link">Easy Read Victims' Guides</a></li>
+        <li><a href="https://www.gov.uk/guidance/support-for-victims-of-sexual-violence-and-abuse" class="govuk-link" title="Support for victims of sexual violence and abuse">Support for victims of sexual violence and abuse</a></li>
+        <li><a href="https://www.victimandwitnessinformation.org.uk" class="govuk-link" title="Victim and witness services">Victim and witness information</a></li>
+        <li><a href="https://www.gov.uk/browse/justice/compensation-victim-support" class="govuk-link" title="Compensation and victim support">Compensation and victim support</a></li>
+        <li><a href="https://www.gov.uk/get-support-as-a-victim-of-crime" class="govuk-link" title="Get support as a victim of crime">Get support as a victim of crime</a></li>
+        <li><a href="https://www.gov.uk/guidance/domestic-abuse-how-to-get-help" class="govuk-link" title="Domestic abuse: how to get help">Domestic abuse: how to get help</a></li>
+        <li><a href="https://www.modernslavery.gov.uk/start" title="Modern slavery: how to get help">Modern slavery: how to get help</a></li>
+      </ul>
+
+      <h2 class="govuk-heading-m" id="charities">Links to support services and charities in your local area</h2>
+      <p class="govuk-body">Visit <a href="https://victimandwitnessinformation.org.uk/find-support" class="govuk-link" title="Victim Support">www.victimandwitnessinformation.org.uk/find-support</a> to find links to online support, and details of specialist charities and support groups in your local area.</p>
+    </div>
+  </div>
+{% endblock %}

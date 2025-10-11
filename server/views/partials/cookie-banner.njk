@@ -1,0 +1,143 @@
+<script nonce="{{ cspNonce }}" type="module">
+  function hide(elem) {
+    elem.style.display = 'none'
+  }
+
+  async function updateCookiePreferences(value) {
+    const csrf = document.querySelector('input[name="_csrf"]').value
+    const payload = {
+      cookieAccepted: value,
+      _csrf: csrf,
+    }
+    const response = await fetch('/cookies/decision', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-csrf-token': csrf,
+      },
+      body: JSON.stringify(payload),
+      credentials: 'same-origin',
+    })
+    if (response.ok) {
+      // document.getElementById('cookie-banner')?.classList.add('hidden');
+      window.location.reload();
+    } else {
+      console.warn('Cookie decision failed', response.status);
+    }
+  }
+
+  function initCookieBanner(cookieBanner) {
+    const acceptButton = document.getElementById('accept-cookie-button')
+    if (!acceptButton?.getAttribute('listener')) {
+      acceptButton?.addEventListener('click', (e) => {
+        e.preventDefault()
+        updateCookiePreferences('accepted')
+      })
+    }
+    const rejectButton = document.getElementById('reject-cookie-button')
+    if (!rejectButton?.getAttribute('listener')) {
+      rejectButton?.addEventListener('click', (e) => {
+        e.preventDefault()
+        updateCookiePreferences('rejected')
+      })
+    }
+    const acceptedCookieButton = document.getElementById('hide-accepted-cookie-button')
+    if (!acceptedCookieButton?.getAttribute('listener')) {
+      acceptedCookieButton?.addEventListener('click', (e) => {
+        e.preventDefault()
+        cookieBanner.style.display = 'none'
+      })
+    }
+    const rejectedCookieButton = document.getElementById('hide-rejected-cookie-button')
+    if (!rejectedCookieButton?.getAttribute('listener')) {
+      rejectedCookieButton?.addEventListener('click', (e) => {
+        e.preventDefault()
+        cookieBanner.style.display = 'none'
+      })
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', (e) => {
+    const cookieBanner = document.querySelector('.govuk-cookie-banner')
+    if (cookieBanner) {
+      initCookieBanner(cookieBanner)
+    }
+  })
+</script>
+
+<div id="cookie-banner" class="govuk-cookie-banner" data-nosnippet role="region"
+     aria-label="Cookies on Track My Case" data-module="govuk-cookie-banner">
+
+    {% if not cookieAccepted %}
+        <div class="govuk-cookie-banner__message govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <h2 class="govuk-cookie-banner__heading govuk-heading-m">
+                        Cookies on Reuse Library
+                    </h2>
+                    <div class="govuk-cookie-banner__content">
+                        <p class="govuk-body">We use some essential cookies to make this service work.</p>
+                        <p class="govuk-body">We'd also like to use analytics cookies so we can understand how you use the
+                            service
+                            and make improvements.</p>
+                    </div>
+                    <div class="govuk-button-group">
+                        <button type="button" class="govuk-button" data-module="govuk-button" data-accept-cookies="true"
+                                id="accept-cookie-button">
+                            Accept analytics cookies
+                        </button>
+                        <button type="button" class="govuk-button" data-module="govuk-button" data-reject-cookies="true"
+                                id="reject-cookie-button">
+                            Reject analytics cookies
+                        </button>
+                        <a class="govuk-link" href="/cookies">View cookies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if cookieAccepted === 'accepted' %}
+        <div class="govuk-cookie-banner__message govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <div class="govuk-cookie-banner__content">
+                        <p class="govuk-body">
+                            You've accepted analytics cookies. You can
+                            <a class="govuk-link" href="/cookies">change your cookie settings</a> at any time.
+                        </p>
+                    </div>
+                    <div class="govuk-button-group">
+                        <button class="govuk-button" data-module="govuk-button" data-hide-cookie-banner="true"
+                                id="hide-accepted-cookie-button">
+                            Hide cookie message
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if cookieAccepted === 'rejected' %}
+        <div class="govuk-cookie-banner__message govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <div class="govuk-cookie-banner__content">
+                        <p class="govuk-body">
+                            You've rejected analytics cookies. You can
+                            <a class="govuk-link" href="/cookies">change your cookie settings</a> at any time.
+                        </p>
+                    </div>
+                    <div class="govuk-button-group">
+                        <button class="govuk-button" data-module="govuk-button" data-hide-cookie-banner="true"
+                                id="hide-rejected-cookie-button">
+                            Hide cookie message
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+</div>
+<input type="hidden" name="_csrf" value="{{ csrfToken }}">

@@ -54,6 +54,7 @@ async function init(): Promise<Client> {
 
   const { clientId } = config.apis.govukOneLogin
   const { authorizeRedirectUrl } = config.apis.govukOneLogin
+  const { idTokenSigningAlgorithm } = config.apis.govukOneLogin
 
   const client = new issuer.Client(
     {
@@ -62,7 +63,7 @@ async function init(): Promise<Client> {
       response_types: ['code'],
       token_endpoint_auth_method: config.apis.govukOneLogin.tokenAuthMethod as ClientAuthMethod,
       token_endpoint_auth_signing_alg: 'RS256',
-      id_token_signed_response_alg: 'ES256',
+      id_token_signed_response_alg: idTokenSigningAlgorithm,
     },
     { keys: [privateKeyJwk] },
   )
@@ -72,7 +73,7 @@ async function init(): Promise<Client> {
     userInfo: UserinfoResponse,
     done,
   ) => {
-    logger.info(`GOV.UK One Login user verified, sub: ${userInfo.sub}`)
+    logger.info(`GOV.UK One Login user verified, sub: ${userInfo.email}`)
 
     const tokenStore = tokenStoreFactory()
     tokenStore.setToken(userInfo.sub, tokenSet.id_token, config.session.expiryMinutes * 60 * 1000)

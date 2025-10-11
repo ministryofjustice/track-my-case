@@ -5,6 +5,7 @@ import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
 
 import mapCaseDetailsToHearingSummary from '../mappers/mapCaseDetailsToHearingSummary'
 import paths from '../constants/paths'
+import courts from '../constants/courts'
 
 const trackMyCaseApiClient = new TrackMyCaseApiClient()
 const courtHearingService = new CourtHearingService(trackMyCaseApiClient)
@@ -13,7 +14,7 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Court information'
+    res.locals.pageTitle = 'Court Information'
     res.locals.backLink = '/case/dashboard'
 
     const caseId = req.session.selectedUrn || 'wrong-case-id'
@@ -24,27 +25,28 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
       res.redirect(paths.CASES.SEARCH)
     }
 
-    const caseDetails = await courtHearingService.getCaseDetailsByUrn(caseId)
-    res.locals.caseDetails = caseDetails
+    const userEmail = res.locals.user.email
+    res.locals.caseDetails = await courtHearingService.getCaseDetailsByUrn(caseId, userEmail)
 
-    const courtSchedule = caseDetails.courtSchedule[0]
+    const courtSchedule = res.locals.caseDetails?.courtSchedule[0]
     if (!courtSchedule) {
-      return res.status(404).render('pages/case/court-information', {
-        pageTitle: 'Court information',
-        error: 'No court schedule found for this case.',
+      res.locals.pageTitle = 'Court Information - Not Found'
+      return res.status(404).render('pages/case/court-information-not-found', {
+        error: 'Case could not be found',
       })
     }
 
-    const viewModel = mapCaseDetailsToHearingSummary(caseDetails)
-    res.locals.hearingData = viewModel
+    res.locals.hearingData = mapCaseDetailsToHearingSummary(res.locals.caseDetails)
+    const courtUrl = courts.getCourtUrl(res.locals.hearingData.location.courtHouseName)
+    res.locals.courtUrl = courtUrl ?? 'https://www.find-court-tribunal.service.gov.uk/'
 
     return res.render('pages/case/court-information')
   } catch (error) {
-    // next(error)
-    const reason = `Status ${error.status}, ${error.message}`
-    return res.status(404).render('pages/case/court-information', {
-      pageTitle: 'Court information',
-      error: `No court schedule found for this case: ${reason}`,
+    // eslint-disable-next-line no-console
+    console.error(`Status ${error.status}, ${error.message}`)
+    res.locals.pageTitle = 'Court Information - Not Found'
+    return res.status(404).render('pages/case/court-information-not-found', {
+      error: `Case could not be found`,
     })
   }
 }

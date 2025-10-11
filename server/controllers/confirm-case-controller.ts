@@ -8,10 +8,9 @@ const confirmCaseController = async (req: Request, res: Response, next: NextFunc
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Confirm case'
+    res.locals.pageTitle = 'Confirm Case URN'
     res.locals.backLink = '/case/search'
-    res.locals.caseReference = req.session.selectedUrn
-    res.locals.pageTitleCaseReference = ` - Reference number: ${res.locals.caseReference}`
+    res.locals.selectedUrn = req.session.selectedUrn
 
     res.locals.radioItems = [
       {
@@ -31,7 +30,7 @@ const confirmCaseController = async (req: Request, res: Response, next: NextFunc
     res.locals.errorList = formState?.errors
     res.locals.csrfToken = req.csrfToken()
 
-    if (res.locals.caseReference) {
+    if (res.locals.selectedUrn) {
       res.render('pages/case/confirm-case.njk')
     } else {
       res.redirect(paths.CASES.SEARCH)

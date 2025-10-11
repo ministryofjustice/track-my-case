@@ -2,17 +2,10 @@ export interface HearingSummary {
   hearingType: string
   dateTime: string
   location: {
-    courtName: string
-    courtroom: string
+    courtHouseName: string
+    courtRoomName: string
     addressLines: string[]
     postcode: string
+    country: string
   }
-  contactDetails: {
-    contactName: string
-    telephone: string
-    telephoneHours?: string
-    email: string
-  }
-  requiresWitnessAttendance: boolean
-  confirmationRequired: boolean
 }
