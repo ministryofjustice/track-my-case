@@ -14,13 +14,13 @@ export type GetRequestOptions = {
 export default class TrackMyCaseApiClient {
   constructor(private readonly baseUrl = config.apis.trackMyCaseApi.url) {}
 
-  async getHealth<T>({ path }: GetHealthRequestOptions): Promise<ServiceHealth> {
+  async getHealth({ path }: GetHealthRequestOptions): Promise<ServiceHealth> {
     const url = `${this.baseUrl}${path}`
     const { body } = await superagent.get(url)
     return body as ServiceHealth
   }
 
-  async getCaseDetailsByUrn<T>({ path, userEmail }: GetRequestOptions): Promise<CaseDetails> {
+  async getCaseDetailsByUrn({ path, userEmail }: GetRequestOptions): Promise<CaseDetails> {
     const url = `${this.baseUrl}${path}`
     const request = superagent.get(url)
     const encoded = Buffer.from(userEmail).toString('base64')

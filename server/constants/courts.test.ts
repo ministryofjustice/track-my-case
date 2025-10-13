@@ -2,6 +2,7 @@ import courts from './courts'
 
 describe('courts', () => {
   it('test all courts has URL', async () => {
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => undefined)
     const found = new Map<string, string>()
     const notFound = new Set<string>()
     const singleCityMatch = new Map<string, string>()
@@ -54,6 +55,12 @@ describe('courts', () => {
     expect(notFound.has('Blackfriars Crown Court')).toBeTruthy() // Permanently closed
     expect(notFound.has('Maidenhead Courthouse')).toBeTruthy() // Permanently closed
 
+    // verify console.error calls match not-found courts
+    expect(consoleErrorSpy).toHaveBeenCalledTimes(notFoundNumber)
+    expect(consoleErrorSpy).toHaveBeenCalledWith("Court not found: [Banbury Magistrates' Court]")
+    expect(consoleErrorSpy).toHaveBeenCalledWith('Court not found: [Blackfriars Crown Court]')
+    expect(consoleErrorSpy).toHaveBeenCalledWith('Court not found: [Maidenhead Courthouse]')
+
     expect(found.size).toBe(233 - notFoundNumber)
     expect(found.size).toBe(allCourts.size - notFoundNumber)
 
@@ -65,5 +72,7 @@ describe('courts', () => {
         expect(!!courts.getCourtUrl(court)).toBeTruthy()
       }
     })
+
+    consoleErrorSpy.mockRestore()
   })
 })

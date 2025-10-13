@@ -32,7 +32,8 @@ const getEnterUniqueReferenceNumber = async (req: Request, res: Response, next: 
       res.locals.pageTitle = 'Enter Unique Reference Number (URN) - Service Error'
       res.render('pages/case/service-error.njk')
     }
-  } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (e) {
     res.locals.pageTitle = 'Enter Unique Reference Number (URN) - Service Error'
     res.render('pages/case/service-error.njk')
   }
