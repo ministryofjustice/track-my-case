@@ -19,8 +19,7 @@
       credentials: 'same-origin',
     })
     if (response.ok) {
-      // document.getElementById('cookie-banner')?.classList.add('hidden');
-      window.location.reload();
+      document.getElementById('cookie-banner-options')?.remove()
     } else {
       console.warn('Cookie decision failed', response.status);
     }
@@ -69,7 +68,7 @@
      aria-label="Cookies on Track My Case" data-module="govuk-cookie-banner">
 
     {% if not cookieAccepted %}
-        <div class="govuk-cookie-banner__message govuk-width-container">
+        <div class="govuk-cookie-banner__message govuk-width-container" id="cookie-banner-options">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
                     <h2 class="govuk-cookie-banner__heading govuk-heading-m">
