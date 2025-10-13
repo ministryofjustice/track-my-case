@@ -10,7 +10,7 @@ export default class HealthService {
     const application = getAppInfo()
 
     try {
-      const serviceHealth: ServiceHealth = await this.apiClient.getHealth<ServiceHealth>({
+      const serviceHealth: ServiceHealth = await this.apiClient.getHealth({
         path: '/health',
       })
       return {

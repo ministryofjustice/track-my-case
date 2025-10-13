@@ -6,10 +6,11 @@ const cookiesAcceptRejectController = async (req: Request, res: Response, next: 
     const cookieAcceptedOptions = ['accepted', 'rejected']
     if (cookieAcceptedOptions.includes(cookieAccepted)) {
       req.session.cookieAccepted = cookieAccepted
-      res.status(204).end()
+      res.sendStatus(204)
     } else {
+      // eslint-disable-next-line no-console
       console.error('Unsupported cookie banner action', cookieAccepted)
-      res.status(404).end()
+      res.sendStatus(404)
     }
   } catch (error) {
     next(error)

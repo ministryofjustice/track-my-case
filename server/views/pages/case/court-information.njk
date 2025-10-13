@@ -23,7 +23,7 @@
         </div>
       {% endif %}
 
-      <h1 class="govuk-heading-l govuk-!-margin-bottom-5">Court information</h1>
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-5" title="{{ selectedUrn }}">Court information</h1>
 
       {{ govukWarningText({
         html: "<span>This is information from the court system and can change. "+
@@ -49,8 +49,7 @@
             {
               key: { text: "Court address" },
               value: {
-                html: hearingData.location.courtRoomName ~ "<br>" ~
-                      hearingData.location.addressLines | join(', ') ~
+                html: hearingData.location.addressLines | join(', ') ~
                       ", " ~ hearingData.location.postcode ~ ", " ~ hearingData.location.country
               }
             },

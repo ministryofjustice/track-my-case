@@ -11,9 +11,9 @@ export default class CourtHearingService {
     try {
       const path = '/health'
       const request: GetHealthRequestOptions = { path }
-      return await this.apiClient.getHealth<ServiceHealth>(request)
+      return await this.apiClient.getHealth(request)
     } catch (e) {
-      logger.error('courtHearingService.getServiceHealth: unsuccessful response', e.status, e.message)
+      logger.error('courtHearingService.getServiceHealth: Unsuccessful response', e.status, e.message)
       return null
     }
   }
@@ -22,10 +22,14 @@ export default class CourtHearingService {
     try {
       const path = resolvePath(paths.CASES.CASE_DETAILS, { urn })
       const request: GetRequestOptions = { path, userEmail }
-      const response = await this.apiClient.getCaseDetailsByUrn<CaseDetails>(request)
-      return response
+      return await this.apiClient.getCaseDetailsByUrn(request)
     } catch (e) {
-      logger.error(`courtHearingService.getCaseDetailsByUrn: unsuccessful response by urn: ${urn}`, e.status, e.message)
+      if (e?.status === 403) {
+        logger.error(`courtHearingService.getCaseDetailsByUrn: Access forbidden`, e.status, e.message)
+        return null
+      }
+
+      logger.error(`courtHearingService.getCaseDetailsByUrn: Unsuccessful response by urn: ${urn}`, e.status, e.message)
       return null
     }
   }

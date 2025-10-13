@@ -27,3 +27,8 @@
     font-weight: bold;
     background-color: gainsboro;
 }
+
+.govuk-input:invalid {
+    border-color: #d4351c;
+    outline-color: #f499be;
+}

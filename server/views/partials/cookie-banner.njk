@@ -19,8 +19,13 @@
       credentials: 'same-origin',
     })
     if (response.ok) {
-      // document.getElementById('cookie-banner')?.classList.add('hidden');
-      window.location.reload();
+      document.getElementById('cookie-banner-options')?.remove()
+      if (value === 'accepted') {
+        document.getElementById('cookie-banner-accepted-confirmation')?.classList.remove('govuk-!-display-none')
+      }
+      if (value === 'rejected') {
+        document.getElementById('cookie-banner-rejected-confirmation')?.classList.remove('govuk-!-display-none')
+      }
     } else {
       console.warn('Cookie decision failed', response.status);
     }
@@ -45,14 +50,14 @@
     if (!acceptedCookieButton?.getAttribute('listener')) {
       acceptedCookieButton?.addEventListener('click', (e) => {
         e.preventDefault()
-        cookieBanner.style.display = 'none'
+        document.getElementById('cookie-banner')?.remove()
       })
     }
     const rejectedCookieButton = document.getElementById('hide-rejected-cookie-button')
     if (!rejectedCookieButton?.getAttribute('listener')) {
       rejectedCookieButton?.addEventListener('click', (e) => {
         e.preventDefault()
-        cookieBanner.style.display = 'none'
+        document.getElementById('cookie-banner')?.remove()
       })
     }
   }
@@ -69,7 +74,7 @@
      aria-label="Cookies on Track My Case" data-module="govuk-cookie-banner">
 
     {% if not cookieAccepted %}
-        <div class="govuk-cookie-banner__message govuk-width-container">
+        <div class="govuk-cookie-banner__message govuk-width-container" id="cookie-banner-options">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
                     <h2 class="govuk-cookie-banner__heading govuk-heading-m">
@@ -97,47 +102,43 @@
         </div>
     {% endif %}
 
-    {% if cookieAccepted === 'accepted' %}
-        <div class="govuk-cookie-banner__message govuk-width-container">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds">
-                    <div class="govuk-cookie-banner__content">
-                        <p class="govuk-body">
-                            You've accepted analytics cookies. You can
-                            <a class="govuk-link" href="/cookies">change your cookie settings</a> at any time.
-                        </p>
-                    </div>
-                    <div class="govuk-button-group">
-                        <button class="govuk-button" data-module="govuk-button" data-hide-cookie-banner="true"
-                                id="hide-accepted-cookie-button">
-                            Hide cookie message
-                        </button>
-                    </div>
+    <div class="govuk-cookie-banner__message govuk-width-container govuk-!-display-none" id="cookie-banner-accepted-confirmation">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <div class="govuk-cookie-banner__content">
+                    <p class="govuk-body">
+                        You've accepted analytics cookies. You can
+                        <a class="govuk-link" href="/cookies">change your cookie settings</a> at any time.
+                    </p>
+                </div>
+                <div class="govuk-button-group">
+                    <button class="govuk-button" data-module="govuk-button" data-hide-cookie-banner="true"
+                            id="hide-accepted-cookie-button">
+                        Hide cookie message
+                    </button>
                 </div>
             </div>
         </div>
-    {% endif %}
+    </div>
 
-    {% if cookieAccepted === 'rejected' %}
-        <div class="govuk-cookie-banner__message govuk-width-container">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds">
-                    <div class="govuk-cookie-banner__content">
-                        <p class="govuk-body">
-                            You've rejected analytics cookies. You can
-                            <a class="govuk-link" href="/cookies">change your cookie settings</a> at any time.
-                        </p>
-                    </div>
-                    <div class="govuk-button-group">
-                        <button class="govuk-button" data-module="govuk-button" data-hide-cookie-banner="true"
-                                id="hide-rejected-cookie-button">
-                            Hide cookie message
-                        </button>
-                    </div>
+    <div class="govuk-cookie-banner__message govuk-width-container govuk-!-display-none" id="cookie-banner-rejected-confirmation">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <div class="govuk-cookie-banner__content">
+                    <p class="govuk-body">
+                        You've rejected analytics cookies. You can
+                        <a class="govuk-link" href="/cookies">change your cookie settings</a> at any time.
+                    </p>
+                </div>
+                <div class="govuk-button-group">
+                    <button class="govuk-button" data-module="govuk-button" data-hide-cookie-banner="true"
+                            id="hide-rejected-cookie-button">
+                        Hide cookie message
+                    </button>
                 </div>
             </div>
         </div>
-    {% endif %}
+    </div>
 
 </div>
 <input type="hidden" name="_csrf" value="{{ csrfToken }}">
