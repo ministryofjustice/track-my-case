@@ -1,8 +1,8 @@
 import CourtHearingService from './courtHearingService'
 import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
 import { logger } from '../logger'
-import { CaseDetails, ServiceHealth } from '../interfaces/caseDetails'
-import { getMockCaseDetails } from './mock/mock-response'
+import { CaseDetailsResponse, ServiceHealth } from '../interfaces/caseDetails'
+import { getMockCaseDetailsResponse } from './mock/mock-response'
 
 describe('CourtHearingService', () => {
   let mockGetHealth: jest.Mock
@@ -44,9 +44,9 @@ describe('CourtHearingService', () => {
   it('calls getCaseDetailsByUrn', async () => {
     const urn = 'CASE123'
     const userEmail = 'example@email.com'
-    const caseDetails: CaseDetails = getMockCaseDetails()
+    const caseDetailsResponse: CaseDetailsResponse = getMockCaseDetailsResponse()
 
-    mockGetCaseDetailsByUrn.mockResolvedValue(caseDetails)
+    mockGetCaseDetailsByUrn.mockResolvedValue(caseDetailsResponse.caseDetails)
 
     const result = await service.getCaseDetailsByUrn(urn, userEmail)
 
@@ -54,6 +54,6 @@ describe('CourtHearingService', () => {
       path: `/case/${urn}/casedetails`,
       userEmail,
     })
-    expect(result).toEqual(caseDetails)
+    expect(result).toEqual(caseDetailsResponse)
   })
 })

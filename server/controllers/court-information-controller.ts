@@ -26,22 +26,38 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
     }
 
     const userEmail = res.locals.user.email
-    res.locals.caseDetails = await courtHearingService.getCaseDetailsByUrn(caseId, userEmail)
-    if (res.locals.caseDetails?.courtSchedule?.length > 0) {
-      const courtSchedule = res.locals.caseDetails?.courtSchedule[0]
-
-      if (courtSchedule?.hearings?.length > 0) {
-        res.locals.hearingData = mapCaseDetailsToHearingSummary(res.locals.caseDetails)
-        const courtUrl = courts.getCourtUrl(res.locals.hearingData.location.courtHouseName)
-        res.locals.courtUrl = courtUrl ?? 'https://www.find-court-tribunal.service.gov.uk/'
-
-        return res.render('pages/case/court-information')
-      }
-
+    const caseDetailsResponse = await courtHearingService.getCaseDetailsByUrn(caseId, userEmail)
+    const { statusCode } = caseDetailsResponse
+    if (statusCode === 404) {
       res.locals.pageTitle = 'Court Information - Not Found'
-      return res.status(404).render('pages/case/court-information-no-hearings-allocated', {
-        error: `No hearings allocated for this case`,
+      return res.status(404).render('pages/case/court-information-not-found', {
+        error: 'Case could not be found',
       })
+    }
+    if (statusCode === 403) {
+      res.locals.pageTitle = 'Court Information - Access Denied'
+      return res.status(403).render('pages/case/court-information-access-denied', {
+        error: 'You are not authorized to access',
+      })
+    }
+    if (statusCode === 200) {
+      res.locals.caseDetails = caseDetailsResponse.caseDetails
+      if (res.locals.caseDetails?.courtSchedule?.length > 0) {
+        const courtSchedule = res.locals.caseDetails?.courtSchedule[0]
+
+        if (courtSchedule?.hearings?.length > 0) {
+          res.locals.hearingData = mapCaseDetailsToHearingSummary(res.locals.caseDetails)
+          const courtUrl = courts.getCourtUrl(res.locals.hearingData.location.courtHouseName)
+          res.locals.courtUrl = courtUrl ?? 'https://www.find-court-tribunal.service.gov.uk/'
+
+          return res.render('pages/case/court-information')
+        }
+
+        res.locals.pageTitle = 'Court Information - Not Found'
+        return res.status(404).render('pages/case/court-information-no-hearings-allocated', {
+          error: `No hearings allocated for this case`,
+        })
+      }
     }
     res.locals.pageTitle = 'Court Information - Not Found'
     return res.status(404).render('pages/case/court-information-not-found', {
