@@ -1,5 +1,11 @@
-import { CaseDetails } from '../../interfaces/caseDetails'
+import { CaseDetails, CaseDetailsResponse } from '../../interfaces/caseDetails'
 
+export const getMockCaseDetailsResponse = (): CaseDetailsResponse => {
+  return {
+    caseDetails: getMockCaseDetails(),
+    statusCode: 200,
+  }
+}
 export const getMockCaseDetails = (): CaseDetails => {
   return {
     courtSchedule: [

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import paths from '../constants/paths'
-import { CaseDetails } from '../interfaces/caseDetails'
-import { getMockCaseDetails } from '../services/mock/mock-response'
+import { CaseDetailsResponse } from '../interfaces/caseDetails'
+import { getMockCaseDetailsResponse } from '../services/mock/mock-response'
 import courtInformationController from './court-information-controller'
 
 // Mocks that must be set up BEFORE importing the controller under test
@@ -71,14 +71,14 @@ describe('court-information-controller', () => {
   it('renders court information when case has hearings and court URL is found', async () => {
     const { req, res, next } = createReqRes()
 
-    const caseDetails: CaseDetails = getMockCaseDetails()
+    const caseDetailsResponse: CaseDetailsResponse = getMockCaseDetailsResponse()
     const hearingSummary = {
       hearingType: 'Trial',
       dateTime: '01 January 2025, 10:00',
       location: { courtHouseName: 'Southwark Crown Court' },
     }
 
-    mockGetCaseDetailsByUrn.mockResolvedValue(caseDetails)
+    mockGetCaseDetailsByUrn.mockResolvedValue(caseDetailsResponse)
     mockMapCaseDetailsToHearingSummary.mockReturnValue(hearingSummary)
     mockGetCourtUrl.mockReturnValue('https://example/court')
 
@@ -86,7 +86,7 @@ describe('court-information-controller', () => {
 
     expect(mockInitialiseBasicAuthentication).toHaveBeenCalled()
     expect(mockGetCaseDetailsByUrn).toHaveBeenCalledWith('CASE123', defaultUserEmail)
-    expect(mockMapCaseDetailsToHearingSummary).toHaveBeenCalledWith(caseDetails)
+    expect(mockMapCaseDetailsToHearingSummary).toHaveBeenCalledWith(caseDetailsResponse.caseDetails)
     expect(mockGetCourtUrl).toHaveBeenCalledWith('Southwark Crown Court')
     expect(res.locals.courtUrl).toBe('https://example/court')
     expect(res.render).toHaveBeenCalledWith('pages/case/court-information')
@@ -95,13 +95,14 @@ describe('court-information-controller', () => {
   it('falls back to default court finder URL when court is not found', async () => {
     const { req, res, next } = createReqRes()
 
-    const caseDetails: CaseDetails = getMockCaseDetails()
+    const caseDetailsResponse: CaseDetailsResponse = getMockCaseDetailsResponse()
+    const { caseDetails } = caseDetailsResponse
     const courtSitting = caseDetails.courtSchedule[0].hearings[0].courtSittings[0]
     courtSitting.courtHouse.courtHouseName = 'Unknown Court'
     courtSitting.courtHouse.courtRoom = []
     courtSitting.courtHouse.address = undefined
 
-    mockGetCaseDetailsByUrn.mockResolvedValue(caseDetails)
+    mockGetCaseDetailsByUrn.mockResolvedValue(caseDetailsResponse)
     mockMapCaseDetailsToHearingSummary.mockReturnValue({
       location: { courtHouseName: 'Unknown Court' },
     })
@@ -116,15 +117,18 @@ describe('court-information-controller', () => {
   it('returns 404 with specific view when there are no hearings allocated', async () => {
     const { req, res, next } = createReqRes()
 
-    const caseDetails: CaseDetails = {
-      courtSchedule: [
-        {
-          hearings: [],
-        },
-      ],
+    const caseDetailsResponse: CaseDetailsResponse = {
+      caseDetails: {
+        courtSchedule: [
+          {
+            hearings: [],
+          },
+        ],
+      },
+      statusCode: 200,
     }
 
-    mockGetCaseDetailsByUrn.mockResolvedValue(caseDetails)
+    mockGetCaseDetailsByUrn.mockResolvedValue(caseDetailsResponse)
 
     await courtInformationController(req, res, next)
 
