@@ -51,6 +51,7 @@
       acceptedCookieButton?.addEventListener('click', (e) => {
         e.preventDefault()
         document.getElementById('cookie-banner')?.remove()
+        window.location.reload()
       })
     }
     const rejectedCookieButton = document.getElementById('hide-rejected-cookie-button')
@@ -58,6 +59,7 @@
       rejectedCookieButton?.addEventListener('click', (e) => {
         e.preventDefault()
         document.getElementById('cookie-banner')?.remove()
+        window.location.reload()
       })
     }
   }
