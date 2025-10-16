@@ -1,4 +1,4 @@
-import session, { MemoryStore, Store } from 'express-session'
+import session, { CookieOptions, MemoryStore, SessionOptions, Store } from 'express-session'
 import express, { Router } from 'express'
 import { randomUUID } from 'crypto'
 import config from '../config'
@@ -20,14 +20,15 @@ export default function setUpWebSession(): Router {
       secret: config.session.secret,
       cookie: {
         secure: !!config.https,
+        signed: !!config.https,
         httpOnly: true,
         sameSite: 'lax',
         maxAge: config.session.expiryMinutes * 60 * 1000,
-      },
+      } as CookieOptions,
       resave: false, // redis implements touch so shouldn't need this
       saveUninitialized: false,
       rolling: true,
-    }),
+    } as SessionOptions),
   )
 
   // Update a value in the cookie so that the set-cookie will be sent.

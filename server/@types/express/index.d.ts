@@ -6,7 +6,6 @@ export declare module 'express-session' {
     passport?: {
       user?: Express.User
     }
-    cookieAccepted?: 'accepted' | 'rejected'
     selectedUrn?: string
     selectedCrn?: string
     caseConfirmed?: boolean

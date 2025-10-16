@@ -6,7 +6,7 @@ export default function setUpGoogleTagManager(): Router {
 
   router.use((req: Request, res: Response, next: NextFunction) => {
     res.locals.gtmId = config.analytics.gtmId
-    res.locals.cookieAccepted = req.session.cookieAccepted
+    res.locals.cookieAccepted = req.signedCookies?.cookies_preferences_set
     next()
   })
 
