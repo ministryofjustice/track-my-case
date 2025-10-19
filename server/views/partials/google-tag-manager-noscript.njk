@@ -8,6 +8,14 @@
 {% endif %}
 
 {% if gtmId and cookieAccepted === 'accepted' %}
+
+    <!-- Google Tag Manager Internal Variable -->
+    {% if userId %}
+        <script nonce="{{ cspNonce }}">
+          window.userId = '{{ userId }}';
+        </script>
+    {% endif %}
+
     <!-- Google Tag Manager -->
     <script nonce="{{ cspNonce }}">
       (function(w, d, s, l, i) {
@@ -26,11 +34,11 @@
     <!-- End Google Tag Manager -->
 
     <!-- Google tag (gtag.js) -->
-    <script nonce="{{ cspNonce }}" async src='https://www.googletagmanager.com/gtag/js?id={{ gtagId }}'></script>
+    <script nonce="{{ cspNonce }}" async src="https://www.googletagmanager.com/gtag/js?id={{ gtagId }}"></script>
     <script nonce="{{ cspNonce }}">
       window.dataLayer = window.dataLayer || [];
       function gtag(){
-        window.dataLayer.push(arguments);
+        dataLayer.push(arguments);
       }
       gtag('js', new Date());
       gtag('config', '{{ gtagId }}');
