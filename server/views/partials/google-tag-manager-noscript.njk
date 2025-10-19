@@ -7,12 +7,6 @@
     <!-- End Google Tag Manager (noscript) -->
 {% endif %}
 
-<!-- Google Tag Manager -->
-<script nonce="{{ cspNonce }}">
-  window.dataLayer = window.dataLayer || []
-</script>
-
-
 {% if gtmId and cookieAccepted === 'accepted' %}
     <!-- Google Tag Manager -->
     <script nonce="{{ cspNonce }}">
@@ -30,4 +24,15 @@
       })(window, document, 'script', 'dataLayer', '{{ gtmId }}')
     </script>
     <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script nonce="{{ cspNonce }}" async src='https://www.googletagmanager.com/gtag/js?id={{ gtagId }}'></script>
+    <script nonce="{{ cspNonce }}">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){
+        window.dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', '{{ gtagId }}');
+    </script>
 {% endif %}

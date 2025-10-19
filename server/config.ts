@@ -123,6 +123,7 @@ const config = {
   },
   analytics: {
     gtmId: get('GOOGLE_TAG_MANAGER_ID', 'GTM-WRN68MWZ', requiredInProduction),
+    gtagId: get('GOOGLE_ANALYTICS_ID', 'G-S6PRFF6HCW', requiredInProduction),
   },
   // ingressUrl: get('INGRESS_URL', 'http://localhost:9999'),
 }
