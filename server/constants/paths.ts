@@ -3,6 +3,7 @@ const paths = {
   HEALTH: '/health',
 
   AUTH_ERROR: '/autherror',
+  ACCESS_DENIED: '/access-denied',
 
   PASSPORT: {
     // these routes are reserved for passport integration
