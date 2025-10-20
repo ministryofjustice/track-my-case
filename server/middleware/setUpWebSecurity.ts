@@ -1,5 +1,5 @@
 import crypto from 'crypto'
-import express, { Router, Request, Response, NextFunction } from 'express'
+import express, { NextFunction, Request, Response, Router } from 'express'
 import helmet from 'helmet'
 
 export default function setUpWebSecurity(): Router {
@@ -40,20 +40,22 @@ export default function setUpWebSecurity(): Router {
           styleSrc: [
             "'self'",
             'https://fonts.googleapis.com',
+            'https://www.googletagmanager.com',
             (_req: Request, res: Response) => `'nonce-${res.locals.cspNonce}'`,
           ],
 
           // Fonts for Google Fonts
-          fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+          fontSrc: ["'self'", 'data:', 'https://fonts.gstatic.com'],
 
           // Images
           imgSrc: [
             "'self'",
+            'data:',
             'https://www.google-analytics.com',
             'https://www.googletagmanager.com',
             'https://*.google-analytics.com',
             'https://*.g.doubleclick.net',
-            'data:',
+            'https://fonts.gstatic.com',
           ],
 
           // XHR/fetch
