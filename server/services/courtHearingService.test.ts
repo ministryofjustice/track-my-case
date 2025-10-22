@@ -51,7 +51,7 @@ describe('CourtHearingService', () => {
     const result = await service.getCaseDetailsByUrn(urn, userEmail)
 
     expect(mockGetCaseDetailsByUrn).toHaveBeenCalledWith({
-      path: `/case/${urn}/casedetails`,
+      path: `/api/cases/${urn}/casedetails`,
       userEmail,
     })
     expect(result).toEqual(caseDetailsResponse)
