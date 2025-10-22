@@ -54,3 +54,16 @@ export const encryptValue = (data: string, secret: string): string => {
   }
   return undefined
 }
+
+/**
+ * Replace colon-prefixed path parameters with actual values.
+ *
+ * Example:
+ *   resolvePath('/case/:urn/casedetails', { urn: '12345' })
+ *   → ''/case/12345/casedetails''
+ */
+export const resolvePath = (template: string, params: Record<string, string | number>): string =>
+  Object.entries(params).reduce(
+    (path, [key, value]) => path.replace(`:${key}`, encodeURIComponent(String(value))),
+    template,
+  )

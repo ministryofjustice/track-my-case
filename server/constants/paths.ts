@@ -36,11 +36,6 @@ const paths = {
     VICTIM_PERSONAL_STATEMENT: '/case/victim-personal-statement',
     VICTIM_SUPPORT_LINKS: '/case/victim-support-links',
     WITNESS_SERVICE: '/case/witness-service',
-    HEARINGS: '/cases/:caseId/hearings',
-    // TODO: Replace with dynamic caseId path once API contract is finalized
-    INFO: '/case/:caseId/courtschedule',
-    CASE_DETAILS: '/case/:urn/casedetails',
-    ASSOCIATIONS: '/cases/:sub',
   },
 
   COURT_HOUSE: {

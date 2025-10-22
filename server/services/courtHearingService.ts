@@ -1,8 +1,10 @@
-import TrackMyCaseApiClient, { GetHealthRequestOptions, GetRequestOptions } from '../data/trackMyCaseApiClient'
-import paths from '../constants/paths'
-import resolvePath from '../utils/resolvePath'
+import TrackMyCaseApiClient, {
+  GetHealthRequestOptions,
+  GetPathAndEmailRequestOptions,
+} from '../data/trackMyCaseApiClient'
 import { logger } from '../logger'
 import { CaseDetailsResponse, ServiceHealth } from '../interfaces/caseDetails'
+import { resolvePath } from '../utils/utils'
 
 export default class CourtHearingService {
   constructor(private readonly apiClient: TrackMyCaseApiClient) {}
@@ -20,8 +22,8 @@ export default class CourtHearingService {
 
   async getCaseDetailsByUrn(urn: string, userEmail: string): Promise<CaseDetailsResponse> {
     try {
-      const path = resolvePath(paths.CASES.CASE_DETAILS, { urn })
-      const request: GetRequestOptions = { path, userEmail }
+      const path = resolvePath('/api/cases/:urn/casedetails', { urn })
+      const request: GetPathAndEmailRequestOptions = { path, userEmail }
       const caseDetails = await this.apiClient.getCaseDetailsByUrn(request)
       return {
         statusCode: 200,
