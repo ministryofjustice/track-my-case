@@ -5,3 +5,7 @@ export interface CaseSelectFormData {
 export interface CaseReferenceNumberFormData {
   selectedUrn: string
 }
+
+export interface CookiesSelecteFormData {
+  cookiePreferenceAnalytics?: string
+}

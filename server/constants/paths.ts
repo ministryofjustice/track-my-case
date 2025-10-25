@@ -2,6 +2,8 @@ const paths = {
   START: '/',
   HEALTH: '/health',
   ABOUT_THE_SERVICE: '/about-the-service',
+  COOKIES: '/cookies',
+  COOKIES_DECISION: '/cookies/decision',
 
   AUTH_ERROR: '/autherror',
   ACCESS_DENIED: '/access-denied',
