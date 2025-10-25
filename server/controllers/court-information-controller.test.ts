@@ -43,7 +43,6 @@ describe('court-information-controller', () => {
     const req = {
       session: {
         selectedUrn: 'CASE123',
-        caseConfirmed: true,
       },
       csrfToken: jest.fn().mockReturnValue('csrf-token'),
       ...overrides?.req,
@@ -52,6 +51,7 @@ describe('court-information-controller', () => {
     const res = {
       locals: {
         user: { email: defaultUserEmail },
+        selectedUrn: 'CASE123',
       },
       redirect: jest.fn(),
       render: jest.fn(),
@@ -140,7 +140,7 @@ describe('court-information-controller', () => {
 
   it('returns 404 not found view when caseDetails is null', async () => {
     const { req, res, next } = createReqRes()
-    mockGetCaseDetailsByUrn.mockResolvedValue(null)
+    mockGetCaseDetailsByUrn.mockResolvedValue({ statusCode: 404 })
 
     await courtInformationController(req, res, next)
 
@@ -152,7 +152,10 @@ describe('court-information-controller', () => {
 
   it('returns 404 not found view when courtSchedule is empty', async () => {
     const { req, res, next } = createReqRes()
-    mockGetCaseDetailsByUrn.mockResolvedValue({ courtSchedule: [] })
+    mockGetCaseDetailsByUrn.mockResolvedValue({
+      caseDetails: { courtSchedule: [] },
+      statusCode: 200,
+    })
 
     await courtInformationController(req, res, next)
 
@@ -184,11 +187,11 @@ describe('court-information-controller', () => {
 
   it('redirects to search when case not confirmed', async () => {
     const { req, res, next } = createReqRes({
-      req: { session: { selectedUrn: 'CASE123', caseConfirmed: false } } as Request,
+      res: { locals: { user: { email: defaultUserEmail } } } as Response,
     })
 
-    // Even though controller does not return after redirect, we only assert the redirect here
-    mockGetCaseDetailsByUrn.mockResolvedValue(null)
+    // Remove selectedUrn from res.locals to trigger redirect
+    res.locals.selectedUrn = undefined
 
     await courtInformationController(req, res, next)
 

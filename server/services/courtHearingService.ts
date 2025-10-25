@@ -11,7 +11,7 @@ export default class CourtHearingService {
 
   async getServiceHealth(): Promise<ServiceHealth> {
     try {
-      const path = '/health'
+      const path = '/'
       const request: GetHealthRequestOptions = { path }
       return await this.apiClient.getHealth(request)
     } catch (e) {
@@ -22,7 +22,7 @@ export default class CourtHearingService {
 
   async getCaseDetailsByUrn(urn: string, userEmail: string): Promise<CaseDetailsResponse> {
     try {
-      const path = resolvePath('/api/cases/:urn/casedetails', { urn })
+      const path = resolvePath('/api/cases/:case_urn/casedetails', { case_urn: urn })
       const request: GetPathAndEmailRequestOptions = { path, userEmail }
       const caseDetails = await this.apiClient.getCaseDetailsByUrn(request)
       return {

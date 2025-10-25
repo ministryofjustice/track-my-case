@@ -1,0 +1,45 @@
+{% extends "layout/citizen-authenticated.njk" %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% set mainClasses = "app-container govuk-body" %}
+
+{% block content %}
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">About the Track my case service</h2>
+
+      {{ govukInsetText({
+        html: '<strong>If you need help with your case</strong><br>
+        Contact your police witness care officer if you have any questions about your case.'
+      }) }}
+
+      <p class="govuk-body">You are seeing a very early version ('private beta') of the Track my case service.</p>
+      <p class="govuk-body">This service is designed for people who have experienced a crime that has gone to court. It aims to help you to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>find all the information you need to go through the justice process</li>
+        <li>know what you need to do</li>
+        <li>know what your rights are</li>
+      </ul>
+
+      <p class="govuk-body">We're still adding new features to the service, and you can help shape it.</p>
+      <p class="govuk-body">By completing our feedback form or joining our research panel, you can give us your opinions and help us understand how the service can better help you.</p>
+
+      <h2 class="govuk-heading-m">Complete the feedback form</h2>
+      <p class="govuk-body">Tell us what you think about the service so far. <a href="https://www.smartsurvey.co.uk/s/TMCVS1/" class="govuk-link" target="_blank">Complete the Track my case feedback form (opens in new tab)</a>.</p>
+
+      <h2 class="govuk-heading-m">Join the Track my case research panel</h2>
+      <p class="govuk-body">When you join our panel, you can be one of the first to try out our new features and help us shape the service.</p>
+      <p class="govuk-body">You may also be invited by our researchers to take part in:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>surveys</li>
+        <li>phone calls</li>
+        <li>online testing</li>
+      </ul>
+      <p class="govuk-body">You can take part as you wish, and opt out any time. You do not need to be good with computers or the internet to take part.</p>
+
+      <p class="govuk-body"><a href="#" class="govuk-link" target="_blank">Join the Track my case research panel (opens in new tab)</a>.</p>
+
+    </div>
+  </div>
+{% endblock %}

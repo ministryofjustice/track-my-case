@@ -17,25 +17,22 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
     res.locals.pageTitle = 'Court Information'
     res.locals.backLink = '/case/dashboard'
 
-    const caseId = req.session.selectedUrn || 'wrong-case-id'
-    res.locals.selectedUrn = req.session.selectedUrn
-
-    res.locals.caseConfirmed = req.session.caseConfirmed
-    if (!res.locals.caseConfirmed) {
-      res.redirect(paths.CASES.SEARCH)
+    if (!res.locals.selectedUrn) {
+      return res.redirect(paths.CASES.SEARCH)
     }
 
-    const userEmail = res.locals.user.email
-    const caseDetailsResponse = await courtHearingService.getCaseDetailsByUrn(caseId, userEmail)
+    const caseUrn: string = res.locals.selectedUrn
+    const userEmail: string = res.locals.user.email
+    const caseDetailsResponse = await courtHearingService.getCaseDetailsByUrn(caseUrn, userEmail)
     const { statusCode } = caseDetailsResponse
     if (statusCode === 404) {
-      res.locals.pageTitle = 'Court Information - Not Found'
+      res.locals.pageTitle = 'Court Information - Not found'
       return res.status(404).render('pages/case/court-information-not-found', {
         error: 'Case could not be found',
       })
     }
     if (statusCode === 403) {
-      res.locals.pageTitle = 'Court Information - Access Denied'
+      res.locals.pageTitle = 'Court Information - Access denied'
       return res.status(403).render('pages/case/court-information-access-denied', {
         error: 'You are not authorized to access',
       })
@@ -53,20 +50,20 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
           return res.render('pages/case/court-information')
         }
 
-        res.locals.pageTitle = 'Court Information - Not Found'
+        res.locals.pageTitle = 'Court Information - Not found'
         return res.status(404).render('pages/case/court-information-no-hearings-allocated', {
           error: `No hearings allocated for this case`,
         })
       }
     }
-    res.locals.pageTitle = 'Court Information - Not Found'
+    res.locals.pageTitle = 'Court Information - Not found'
     return res.status(404).render('pages/case/court-information-not-found', {
       error: 'Case could not be found',
     })
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(`Status ${error.status}, ${error.message}`)
-    res.locals.pageTitle = 'Court Information - Not Found'
+    res.locals.pageTitle = 'Court Information - Not found'
     return res.status(404).render('pages/case/court-information-not-found', {
       error: `Case could not be found`,
     })

@@ -1,6 +1,5 @@
 {% extends "layout/public.njk" %}
 {%- from "govuk/components/button/macro.njk" import govukButton %}
-{% from "components/support-box/macro.njk" import supportBox %}
 
 {% set mainClasses = "app-container govuk-body" %}
 
@@ -8,59 +7,61 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        {{ applicationName }}
+        Sign in to {{ applicationName }}
       </h1>
       <p class="govuk-body">Use this service to:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>view information about the court including accessibility information</li>
-        <li>understand the process a criminal case can follow</li>
-        <li>view links to support services and other information</li>
-        <li>understand the key roles in the criminal justice system</li>
-        <li>view the Victims’ Code</li>
+        <li>get to know who’s who in the criminal justice system</li>
+        <li>find out who you can get support from</li>
+        <li>see which court your case is going to
+        <li>get information about the court, including parking and accessibility</li>
+        <li>find out what you need to do to prepare if you’re giving evidence at a court hearing</li>
+        <li>see at what stage you’re at in the process</li>
+        <li>get to know more about your rights</li>
       </ul>
 
       <h2 class="govuk-heading-m">
-        Before you start
+        Who this service is for
       </h2>
 
       <p class="govuk-body">
-        This is a service for people who have been a victim of crime in England and Wales. The case must have had a charging decision, and a defendant must have attended court at least once for this to be suitable for you to use.
+        This service is for people who have been a victim of crime in England and Wales and where:
       </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>the person or people accused of the crime have been charged by the police or the Crown Prosecution Service</li>
+        <li>at least one of the people accused of the crime have been to a court hearing about the case at least once</li>
+      </ul>
 
       <p class="govuk-body">
-        You will need the Unique Reference Number (URN) for the case to access certain information. This may be on any correspondence you will have received, or on communications from your Police Witness Care Officer.
+        To sign in to this service you will need a <a href="{{ oneLoginLink }}" target="_blank">GOV.UK OneLogin</a>. This is so you can use the service securely.
       </p>
 
-      <p class="govuk-body">
-        You will need a <a href="{{ oneLoginLink }}">GOV.UK One Login account.</a>.
-      </p>
-
-      <p class="govuk-body">
-        Warning: You will see the defendant’s name for accessing certain information, unless they are under 18.
-      </p>
-
-      <p class="govuk-body">
-        You can also <a href="https://www.victimsupport.org.uk">get victim support</a> information and guidance.
-      </p>
-
-      {% if useOneLogin %}
-        {{ govukButton({
-          text: "Start now",
-          href: "/case/dashboard",
-          isStartButton: true
-        }) }}
-      {% else %}
-        <div>
-          {{ govukButton({
-            text: "Start now",
-            href: "/case/dashboard",
-            isStartButton: true
-          }) }}
-        </div>
-      {% endif %}
+      {{ govukButton({
+        text: "Start now",
+        href: "/case/dashboard",
+        isStartButton: true
+      }) }}
 
     </div>
+
     <div class="govuk-grid-column-one-third">
+
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">Related information</h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li><a href="https://www.cps.gov.uk/information-and-support-victims-witnesses" class="govuk-link" target="_blank">Information and support for victims and witnesses</a></li>
+            <li><a href="https://www.gov.uk/browse/justice" class="govuk-link" target="_blank">Legal processes, courts and the police</a></li>
+            <!--
+            <li><a href="#" class="govuk-link govuk-!-font-weight-bold">More <span class="govuk-visually-hidden">in Subsection</span></a></li>
+            -->
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third govuk-!-display-none">
 
       <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
         <h2 class="govuk-heading-m" id="subsection-title">
@@ -69,12 +70,12 @@
         <nav role="navigation" aria-labelledby="subsection-title">
           <ul class="govuk-list govuk-!-font-size-16">
             <li>
-              <a href="https://www.cps.gov.uk/information-and-support-victims-witnesses">
+              <a href="https://www.cps.gov.uk/information-and-support-victims-witnesses" target="_blank">
                 Information and support for victims and witnesses
               </a>
             </li>
             <li>
-              <a href="https://www.gov.uk/browse/justice">
+              <a href="https://www.gov.uk/browse/justice" target="_blank">
                 Legal processes, courts and the police
               </a>
             </li>

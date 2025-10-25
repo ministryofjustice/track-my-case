@@ -5,7 +5,7 @@ const accessDeniedController = async (req: Request, res: Response, next: NextFun
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Access Denied'
+    res.locals.pageTitle = 'Access denied'
 
     res.render('pages/access-denied.njk')
   } catch (error) {

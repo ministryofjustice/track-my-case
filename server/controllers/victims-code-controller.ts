@@ -5,7 +5,7 @@ const victimsCodeController = async (req: Request, res: Response, next: NextFunc
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'The Victims Code'
+    res.locals.pageTitle = 'The victims code'
     res.locals.backLink = '/case/dashboard'
 
     res.render('pages/case/victims-code')

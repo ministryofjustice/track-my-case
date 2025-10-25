@@ -4,9 +4,9 @@
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
-{% from "components/support-box/macro.njk" import supportBox %}
 {%- from "moj/components/alert/macro.njk" import mojAlert -%}
 {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
 {% set mainClasses = "app-container govuk-body" %}
 
@@ -23,16 +23,16 @@
         </div>
       {% endif %}
 
-      <h1 class="govuk-heading-l govuk-!-margin-bottom-5" title="{{ selectedUrn }}">Court information</h1>
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-2" title="{{ selectedUrn }}">Court information</h1>
 
-      {{ govukWarningText({
-        html: "<span>This is information from the court system and can change. "+
-        "You will receive an accurate court location for your hearing 24 hours before from a Witness Care Officer. "+
-        "This will only happen if you are required to attend court.</span>"+
-        "<br/><br/>"+"<span>If you require additional information contact your Witness Care Officer during normal "+
-        "business hours, by email or telephone, or contact your local force’s Witness Care Unit if you are unable "+
-        "to speak to your Witness Care Officer. Alternatively, speak to the officer in charge of the investigation.</span>",
-        iconFallbackText: "Warning"
+      <p class="govuk-body">Case unique reference number (URN):
+        <strong>{{ selectedUrn }}</strong>
+      </p>
+      {{ govukInsetText({
+        html: '<strong>If you’re going to the court</strong><br>
+        The exact court location might not be confirmed until the day of the trial.
+        Your police witness care officer will tell you by phone call or text.
+        Be aware the number they call from might not show on your phone.'
       }) }}
 
     {% if hearingData %}
@@ -54,23 +54,39 @@
               }
             },
             {
-              key: { text: "Additional information" },
+              key: { text: "Court information" },
               value: {
-                html: '<a href="' + courtUrl + '">See information about facilities, opening times, and enquiries for this court</a>'
+                html: '<a href="' + courtUrl + '" target="_blank">Information including directions, parking, and access (opens in new tab)</a>'
+              }
+            },
+            {
+              key: { text: "Contacts" },
+              value: {
+                html: 'You can phone or text your police witness care officer.<br><br>You can also contact the police officer in charge of the investigation.'
               }
             }
           ]
         }) }}
       </div>
-      <div>
-        <a href="https://www.find-court-tribunal.service.gov.uk">Find information about other courts</a>
-      </div>
+
+      <p class="govuk-body">
+        <a href="https://www.find-court-tribunal.service.gov.uk" target="_blank">Find information about other courts</a>
+      </p>
+
+      <h2 class="govuk-heading-m">Prepare for going to court to give evidence</h2>
+      <p class="govuk-body">If you're going to court to give evidence, find out:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="https://www.gov.uk/going-to-court-victim-witness" class="govuk-link" target="_blank">how to prepare (opens in new tab)</a></li>
+        <li><a href="https://www.gov.uk/guidance/what-to-expect-coming-to-a-court-or-tribunal" class="govuk-link" target="_blank">what to expect, including what to bring and what to wear (opens in new tab)</a></li>
+      </ul>
+
+      <h2 class="govuk-heading-m">Get free support through the court process</h2>
+      <p class="govuk-body">You can get free support from the Witness Service, provided by Citizens Advice volunteers. They can help you prepare if you need to go to court and support you throughout the day.</p>
+      <p class="govuk-body">Find out more about the service or refer yourself straight away - <a href="https://www.citizensadvice.org.uk/about-us/browse/the-citizens-advice-witness-service" class="govuk-link" target="_blank">contact the Witness Service through the Citizen’s Advice website (opens in new tab)</a>.</p>
 
     {% else %}
       <p>No court information for this case.</p>
     {% endif %}
-
-    {{ supportBox() }}
 
     </div>
   </div>

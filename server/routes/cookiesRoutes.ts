@@ -1,20 +1,15 @@
 import express from 'express'
 import asyncMiddleware from '../middleware/asyncMiddleware'
-import cookiesController from '../controllers/cookies-controller'
-import cookiesAcceptRejectController from '../controllers/cookies-accept-reject-controller'
+import {
+  cookiesAcceptRejectController,
+  getCookiesController,
+  postCookiesController,
+} from '../controllers/cookies-controller'
+import paths from '../constants/paths'
 
 export default function cookiesRoutes(app: express.Express): void {
-  app.get(
-    '/cookies',
-    asyncMiddleware((req, res, next) => {
-      cookiesController(req, res, next)
-    }),
-  )
+  app.get(paths.COOKIES, asyncMiddleware(getCookiesController))
+  app.post(paths.COOKIES, asyncMiddleware(postCookiesController))
 
-  app.post(
-    '/cookies/decision',
-    asyncMiddleware((req, res, next) => {
-      cookiesAcceptRejectController(req, res, next)
-    }),
-  )
+  app.post(paths.COOKIES_DECISION, asyncMiddleware(cookiesAcceptRejectController))
 }
