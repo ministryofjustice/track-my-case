@@ -28,7 +28,6 @@ const paths = {
     DASHBOARD: '/case/dashboard',
     CONTACT_DETAILS: '/case/contact-details',
     COURT_INFORMATION: '/case/court-information',
-    BACK_END_API_HEALTH: '/case/back-end-api-health',
     SUPPORT_GUIDANCE: '/case/support-guidance',
     SUPPORT_ROLES: '/case/support-roles',
     VICTIMS_JOURNEY: '/case/victims-journey',

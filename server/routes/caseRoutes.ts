@@ -1,8 +1,6 @@
 import express from 'express'
 
 import caseDashboardController from '../controllers/case-dashboard-controller'
-
-import backEndApiHealth from '../controllers/back-end-api-health-controller'
 import courtInformationController from '../controllers/court-information-controller'
 
 import asyncMiddleware from '../middleware/asyncMiddleware'
@@ -42,14 +40,6 @@ export default function caseRoutes(app: express.Express): void {
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
       courtInformationController(req, res, next)
-    }),
-  )
-
-  app.get(
-    paths.CASES.BACK_END_API_HEALTH,
-    AuthenticatedUser,
-    asyncMiddleware((req, res, next) => {
-      backEndApiHealth(req, res, next)
     }),
   )
 

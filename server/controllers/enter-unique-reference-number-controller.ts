@@ -23,7 +23,7 @@ const getEnterUniqueReferenceNumber = async (req: Request, res: Response, next: 
     }
 
     res.locals.pageTitle = 'Find your court'
-    res.locals.backLink = '/case/dashboard'
+    res.locals.backLink = paths.CASES.DASHBOARD
     res.locals.csrfToken = req.csrfToken()
 
     const serviceHealth: ServiceHealth = await courtHearingService.getServiceHealth()
