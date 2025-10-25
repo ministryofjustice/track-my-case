@@ -8,7 +8,7 @@ export default function setUpWebSecurity(): Router {
   // Secure code best practice - see:
   // 1. https://expressjs.com/en/advanced/best-practice-security.html,
   // 2. https://www.npmjs.com/package/helmet
-  router.use((_req: Request, res: Response, next: NextFunction) => {
+  router.use((req: Request, res: Response, next: NextFunction) => {
     res.locals.cspNonce = crypto.randomBytes(16).toString('hex')
     next()
   })
@@ -33,7 +33,7 @@ export default function setUpWebSecurity(): Router {
             "'strict-dynamic'",
             'https://www.googletagmanager.com',
             'https://www.google-analytics.com',
-            (_req: Request, res: Response) => `'nonce-${res.locals.cspNonce}'`,
+            (_req: Request, _res: Response) => `'nonce-${_res.locals.cspNonce}'`,
           ],
 
           // Styles: prefer nonce; include Google Fonts
@@ -41,7 +41,7 @@ export default function setUpWebSecurity(): Router {
             "'self'",
             'https://fonts.googleapis.com',
             'https://www.googletagmanager.com',
-            (_req: Request, res: Response) => `'nonce-${res.locals.cspNonce}'`,
+            (_req: Request, _res: Response) => `'nonce-${_res.locals.cspNonce}'`,
           ],
 
           // Fonts for Google Fonts

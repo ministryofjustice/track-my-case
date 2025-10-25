@@ -1,6 +1,7 @@
 const paths = {
   START: '/',
   HEALTH: '/health',
+  ABOUT_THE_SERVICE: '/about-the-service',
 
   AUTH_ERROR: '/autherror',
   ACCESS_DENIED: '/access-denied',
@@ -22,7 +23,6 @@ const paths = {
 
   CASES: {
     SEARCH: '/case/search',
-    CONFIRM_CASE: '/case/confirm-case',
     DASHBOARD: '/case/dashboard',
     CONTACT_DETAILS: '/case/contact-details',
     COURT_INFORMATION: '/case/court-information',

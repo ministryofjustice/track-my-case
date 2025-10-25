@@ -19,12 +19,11 @@ import returnPropertyController from '../controllers/return-property-controller'
 import understandCompensationController from '../controllers/understand-compensation-controller'
 import victimsJourneyController from '../controllers/victims-journey-controller'
 import victimPersonalStatementController from '../controllers/victim-personal-statement-controller'
-import { confirmCaseController, postConfirmCase } from '../controllers/confirm-case-controller'
 import victimSupportLinksController from '../controllers/victim-support-links-controller'
 import witnessServiceController from '../controllers/witness-service-controller'
 
 export default function caseRoutes(app: express.Express): void {
-  // Page: Enter unique reference number (URN)
+  // Page: Enter your unique reference number
   // https://www.gov.uk/government/publications/common-platform-unique-reference-number-urn/purpose-of-the-urn-and-how-to-obtain-it
   app.get(paths.CASES.SEARCH, AuthenticatedUser, asyncMiddleware(getEnterUniqueReferenceNumber))
   app.post(paths.CASES.SEARCH, AuthenticatedUser, asyncMiddleware(postEnterUniqueReferenceNumber))
@@ -35,22 +34,6 @@ export default function caseRoutes(app: express.Express): void {
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
       caseDashboardController(req, res, next)
-    }),
-  )
-
-  app.get(
-    paths.CASES.CONFIRM_CASE,
-    AuthenticatedUser,
-    asyncMiddleware((req, res, next) => {
-      confirmCaseController(req, res, next)
-    }),
-  )
-
-  app.post(
-    paths.CASES.CONFIRM_CASE,
-    AuthenticatedUser,
-    asyncMiddleware((req, res, next) => {
-      postConfirmCase(req, res, next)
     }),
   )
 

@@ -17,16 +17,13 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
     res.locals.pageTitle = 'Court Information'
     res.locals.backLink = '/case/dashboard'
 
-    const caseId = req.session.selectedUrn || 'wrong-case-id'
-    res.locals.selectedUrn = req.session.selectedUrn
-
-    res.locals.caseConfirmed = req.session.caseConfirmed
-    if (!res.locals.caseConfirmed) {
-      res.redirect(paths.CASES.SEARCH)
+    if (!res.locals.selectedUrn) {
+      return res.redirect(paths.CASES.SEARCH)
     }
 
-    const userEmail = res.locals.user.email
-    const caseDetailsResponse = await courtHearingService.getCaseDetailsByUrn(caseId, userEmail)
+    const caseUrn: string = res.locals.selectedUrn
+    const userEmail: string = res.locals.user.email
+    const caseDetailsResponse = await courtHearingService.getCaseDetailsByUrn(caseUrn, userEmail)
     const { statusCode } = caseDetailsResponse
     if (statusCode === 404) {
       res.locals.pageTitle = 'Court Information - Not Found'

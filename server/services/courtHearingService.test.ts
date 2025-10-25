@@ -36,7 +36,7 @@ describe('CourtHearingService', () => {
     const result = await service.getServiceHealth()
 
     expect(mockGetHealth).toHaveBeenCalledWith({
-      path: '/health',
+      path: '/',
     })
     expect(result).toEqual(mockResponse)
   })
