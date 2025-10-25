@@ -15,7 +15,7 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
     await initialiseBasicAuthentication(req, res, next)
 
     res.locals.pageTitle = 'Court Information'
-    res.locals.backLink = '/case/dashboard'
+    res.locals.backLink = paths.CASES.DASHBOARD
 
     if (!res.locals.selectedUrn) {
       return res.redirect(paths.CASES.SEARCH)

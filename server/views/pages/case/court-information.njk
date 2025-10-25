@@ -91,11 +91,4 @@
     </div>
   </div>
 
-  {% if allowDebug %}
-    <div class="govuk-grid-row govuk-!-margin-top-8">
-      <div><a href="/case/back-end-api-health?debug=true">MOJ API SERVICE health check</a> </div>
-      <pre><code>{{ caseDetails | dump(2) }}</code></pre>
-    </div>
-  {% endif %}
-
 {% endblock %}
