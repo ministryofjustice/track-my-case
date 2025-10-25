@@ -48,7 +48,16 @@ export const getCookiesController = async (req: Request, res: Response, next: Ne
     await initialiseBasicAuthentication(req, res, next)
 
     res.locals.pageTitle = 'Cookies'
-    res.locals.backLink = '/'
+
+    if (res.locals.authenticated) {
+      if (req.headers?.referer && new URL(req.headers?.referer)?.pathname === paths.START) {
+        res.locals.backLink = paths.START
+      } else {
+        res.locals.backLink = paths.CASES.DASHBOARD
+      }
+    } else {
+      res.locals.backLink = paths.START
+    }
 
     res.locals.errorList = req.session.formState?.cookiesSelect?.errors
 
