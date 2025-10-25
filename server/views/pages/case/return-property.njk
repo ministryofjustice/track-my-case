@@ -1,6 +1,5 @@
 {% extends "layout/citizen-authenticated.njk" %}
 
-{% set pageTitle = applicationName + " - Return of property" %}
 {% set mainClasses = "app-container govuk-body" %}
 
 {% block content %}
@@ -19,7 +18,11 @@
           <ol class="gem-c-contents-list__list">
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victims-code">Victims’ Code</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victim-personal-statement">Victim Personal Statement</a>
+            </li>
+            <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+              <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/understand-compensation">Understand compensation</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
@@ -27,11 +30,7 @@
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/understand-compensation">Understand compensation</a>
-            </li>
-            <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
-              <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victim-personal-statement">Victim Personal Statement</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victims-code">Victims’ Code</a>
             </li>
           </ol>
         </nav>

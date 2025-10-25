@@ -1,7 +1,7 @@
 import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
-import { UpstreamHealth } from '../interfaces/upstreamHealth'
 import { HealthCheckResult } from '../types/HealthCheckResult'
 import getAppInfo from '../applicationInfo'
+import { ServiceHealth } from '../interfaces/caseDetails'
 
 export default class HealthService {
   constructor(private readonly apiClient: TrackMyCaseApiClient) {}
@@ -10,11 +10,13 @@ export default class HealthService {
     const application = getAppInfo()
 
     try {
-      const upstream: UpstreamHealth = await this.apiClient.get<UpstreamHealth>({
+      const serviceHealth: ServiceHealth = await this.apiClient.getHealth({
         path: '/health',
       })
-
-      return { status: 'UP', application, upstream }
+      return {
+        status: serviceHealth.status,
+        application,
+      }
     } catch (error: unknown) {
       const reason = error instanceof Error ? error.message : 'Unknown error contacting trackMyCaseApi'
       return { status: 'DOWN', application, reason }

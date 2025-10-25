@@ -1,6 +1,5 @@
 {% extends "layout/citizen-authenticated.njk" %}
 
-{% set pageTitle = applicationName + " - Links to victim support information" %}
 {% set mainClasses = "app-container govuk-body" %}
 
 {% block content %}
@@ -23,7 +22,7 @@
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/witness-service">Witness service</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/witness-service">Get support if you are a witness</a>
             </li>
           </ol>
         </nav>
@@ -36,17 +35,18 @@
       <p class="govuk-body">Here are some helpful resources from government agencies for victims of crime. These links provide information and support on various topics:</p>
 
       <ul class="govuk-list">
-        <li><a href="https://www.cps.gov.uk/information-and-support-victims-witnesses/easy-read" class="govuk-link">Easy Read Victims' Guides</a></li>
-        <li><a href="https://www.gov.uk/guidance/support-for-victims-of-sexual-violence-and-abuse" class="govuk-link" title="Support for victims of sexual violence and abuse">Support for victims of sexual violence and abuse</a></li>
-        <li><a href="https://www.victimandwitnessinformation.org.uk" class="govuk-link" title="Victim and witness services">Victim and witness information</a></li>
-        <li><a href="https://www.gov.uk/browse/justice/compensation-victim-support" class="govuk-link" title="Compensation and victim support">Compensation and victim support</a></li>
-        <li><a href="https://www.gov.uk/get-support-as-a-victim-of-crime" class="govuk-link" title="Get support as a victim of crime">Get support as a victim of crime</a></li>
-        <li><a href="https://www.gov.uk/guidance/domestic-abuse-how-to-get-help" class="govuk-link" title="Domestic abuse: how to get help">Domestic abuse: how to get help</a></li>
-        <li><a href="https://www.modernslavery.gov.uk/start" title="Modern slavery: how to get help">Modern slavery: how to get help</a></li>
+        <li><a href="https://www.cps.gov.uk/information-and-support-victims-witnesses/easy-read" class="govuk-link" target="_blank" title="Easy Read Victims' Guides">Easy Read Victims' Guides (opens in new tab)</a></li>
+        <li><a href="https://www.cps.gov.uk/victims-guide/victims-guide-support-give-your-evidence-special-measures" class="govuk-link" target="_blank" title="Support to give your evidence">Support to give your evidence (opens in new tab)</a></li>
+        <li><a href="https://www.gov.uk/guidance/support-for-victims-of-sexual-violence-and-abuse" class="govuk-link" target="_blank" title="Support for victims of sexual violence and abuse">Support for victims of sexual violence and abuse (opens in new tab)</a></li>
+        <li><a href="https://www.victimandwitnessinformation.org.uk" class="govuk-link" target="_blank" title="Victim and witness services">Victim and witness information (opens in new tab)</a></li>
+        <li><a href="https://www.gov.uk/browse/justice/compensation-victim-support" class="govuk-link" target="_blank" title="Compensation and victim support">Compensation and victim support (opens in new tab)</a></li>
+        <li><a href="https://www.gov.uk/get-support-as-a-victim-of-crime" class="govuk-link" target="_blank" title="Get support as a victim of crime">Get support as a victim of crime (opens in new tab)</a></li>
+        <li><a href="https://www.gov.uk/guidance/domestic-abuse-how-to-get-help" class="govuk-link" target="_blank" title="Domestic abuse: how to get help">Domestic abuse: how to get help (opens in new tab)</a></li>
+        <li><a href="https://www.modernslavery.gov.uk/start" target="_blank" title="Modern slavery: how to get help">Modern slavery: how to get help (opens in new tab)</a></li>
       </ul>
 
       <h2 class="govuk-heading-m" id="charities">Links to support services and charities in your local area</h2>
-      <p class="govuk-body">Visit <a href="https://victimandwitnessinformation.org.uk/find-support" class="govuk-link" title="Victim Support">www.victimandwitnessinformation.org.uk/find-support</a> to find links to online support, and details of specialist charities and support groups in your local area.</p>
+      <p class="govuk-body">Visit <a href="https://victimandwitnessinformation.org.uk/find-support" class="govuk-link" target="_blank" title="Victim Support">www.victimandwitnessinformation.org.uk/find-support (opens in new tab)</a> to find links to online support, and details of specialist charities and support groups in your local area.</p>
     </div>
   </div>
 {% endblock %}

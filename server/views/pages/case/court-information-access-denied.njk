@@ -1,0 +1,38 @@
+{% extends "layout/citizen-authenticated.njk" %}
+
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{%- from "moj/components/alert/macro.njk" import mojAlert -%}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set mainClasses = "app-container govuk-body" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if error %}
+        <div class="court-information-not-found-error govuk-!-margin-bottom-7">
+          {{ error }}
+        </div>
+      {% endif %}
+
+      <p class="govuk-body">
+        If you need an update on your case, you can contact your police witness care officer or police officer in charge.
+      </p>
+      <p class="govuk-body">
+        If you need information about a court, use the <a class="govuk-link" href="https://www.gov.uk/find-court-tribunal" target="_blank">Find a court or tribunal service (opens in new tab)</a>.
+      </p>
+    </div>
+  </div>
+
+  {% if allowDebug %}
+    <div class="govuk-grid-row govuk-!-margin-top-8">
+      <div><a href="/case/back-end-api-health?debug=true">MOJ API SERVICE health check</a> </div>
+      <pre><code>{{ caseDetails | dump(2) }}</code></pre>
+    </div>
+  {% endif %}
+
+{% endblock %}

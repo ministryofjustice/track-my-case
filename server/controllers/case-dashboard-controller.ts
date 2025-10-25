@@ -5,7 +5,7 @@ const caseDashboardController = async (req: Request, res: Response, next: NextFu
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Your case dashboard'
+    res.locals.pageTitle = 'Dashboard'
     res.locals.backLink = '/'
     res.render('pages/case/dashboard.njk')
   } catch (error) {

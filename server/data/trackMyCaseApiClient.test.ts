@@ -12,11 +12,12 @@ describe('TrackMyCaseApiClient', () => {
 
   it('calls GET with object-style path and returns parsed JSON', async () => {
     const path = '/test/endpoint'
+    const userEmail = 'example@user.com'
     const mockResponse = { message: 'hello' }
 
     nock(baseUrl).get(path).reply(200, mockResponse)
 
-    const result = await client.get<typeof mockResponse>({ path })
+    const result = await client.getCaseDetailsByUrn({ path, userEmail })
     expect(result).toEqual(mockResponse)
   })
 })

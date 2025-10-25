@@ -64,6 +64,8 @@ jobs:
           RATE_LIMIT_MAX_REQUESTS: ${{ vars.RATE_LIMIT_MAX_REQUESTS }}
           RATE_LIMIT_WINDOW_SECS: ${{ vars.RATE_LIMIT_WINDOW_SECS }}
           ALLOW_DEBUG: ${{ vars.ALLOW_DEBUG }}
+          GOOGLE_TAG_MANAGER_ID: ${{ vars.GOOGLE_TAG_MANAGER_ID }}
+          GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
         shell: bash
         run: |
           docker build . \
@@ -93,9 +95,11 @@ jobs:
             --build-arg IDENTITY_SUPPORTED=$IDENTITY_SUPPORTED \
             --build-arg TRACK_MY_CASE_API_ENABLED=$TRACK_MY_CASE_API_ENABLED \
             --build-arg TRACK_MY_CASE_API_URL=$TRACK_MY_CASE_API_URL \
-            --build-arg RATE_LIMIT_MAX_REQUESTS=RATE_LIMIT_MAX_REQUESTS \
-            --build-arg RATE_LIMIT_WINDOW_SECS=RATE_LIMIT_WINDOW_SECS \
-            --build-arg ALLOW_DEBUG=ALLOW_DEBUG \
+            --build-arg RATE_LIMIT_MAX_REQUESTS=$RATE_LIMIT_MAX_REQUESTS \
+            --build-arg RATE_LIMIT_WINDOW_SECS=$RATE_LIMIT_WINDOW_SECS \
+            --build-arg ALLOW_DEBUG=$ALLOW_DEBUG \
+            --build-arg GOOGLE_TAG_MANAGER_ID=$GOOGLE_TAG_MANAGER_ID \
+            --build-arg GOOGLE_ANALYTICS_ID=$GOOGLE_ANALYTICS_ID \
             -t working_image:$NEW_TAG_V
 
       - name: Configure AWS credentials
@@ -168,7 +172,6 @@ jobs:
           AUTH0_PASSWORDLESS: ${{ vars.AUTH0_PASSWORDLESS }}
           AUTH0_TOKEN_ALG: ${{ vars.AUTH0_TOKEN_ALG }}
           AUTHENTICATION_REQUIRED: ${{ vars.AUTHENTICATION_REQUIRED }}
-          COOKIE_SECRET: "${{ secrets.XXX_COOKIE_SECRET }}"
           ECR_REPO_AUTH0: ${{ steps.login-ecr.outputs.registry }}/analytical-platform/ap-auth-proxy-prod-ecr
           ECR_REPO_WEBAPP: ${{ steps.login-ecr.outputs.registry }}/${{ vars.PROD_ECR_REPOSITORY }}
           IP_RANGES: ${{ secrets.IP_RANGES }}
@@ -200,7 +203,6 @@ jobs:
           --set AuthProxy.Env.Auth0Passwordless=$AUTH0_PASSWORDLESS \
           --set AuthProxy.Env.Auth0TokenAlg=$AUTH0_TOKEN_ALG \
           --set AuthProxy.Env.AuthenticationRequired=$AUTHENTICATION_REQUIRED \
-          --set AuthProxy.Env.CookieSecret=$COOKIE_SECRET \
           --set AuthProxy.Env.IPRanges=$process_ip_range \
           --set AuthProxy.Image.Repository=$ECR_REPO_AUTH0 \
           --set AuthProxy.Image.Tag="latest" \

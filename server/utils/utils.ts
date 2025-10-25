@@ -1,4 +1,5 @@
 import { Request } from 'express'
+import crypto from 'crypto'
 
 const properCase = (word: string): string =>
   word.length >= 1 ? word[0].toUpperCase() + word.toLowerCase().slice(1) : word
@@ -40,3 +41,29 @@ export const toBoolean = (value: string | boolean | number | undefined | null): 
   }
   return false
 }
+
+export const encryptValue = (data: string, secret: string): string => {
+  if (data) {
+    return crypto
+      .createHmac('sha256', Buffer.from(secret, 'utf8'))
+      .update('tmc:v1', 'utf8')
+      .update('\x1f')
+      .update(data, 'utf8')
+      .digest()
+      .toString('base64url')
+  }
+  return undefined
+}
+
+/**
+ * Replace colon-prefixed path parameters with actual values.
+ *
+ * Example:
+ *   resolvePath('/case/:urn/casedetails', { urn: '12345' })
+ *   → ''/case/12345/casedetails''
+ */
+export const resolvePath = (template: string, params: Record<string, string | number>): string =>
+  Object.entries(params).reduce(
+    (path, [key, value]) => path.replace(`:${key}`, encodeURIComponent(String(value))),
+    template,
+  )

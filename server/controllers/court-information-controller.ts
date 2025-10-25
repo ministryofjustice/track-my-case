@@ -14,38 +14,57 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Court information'
+    res.locals.pageTitle = 'Court Information'
     res.locals.backLink = '/case/dashboard'
 
-    const caseId = req.session.selectedUrn || 'wrong-case-id'
-    res.locals.selectedUrn = req.session.selectedUrn
-
-    res.locals.caseConfirmed = req.session.caseConfirmed
-    if (!res.locals.caseConfirmed) {
-      res.redirect(paths.CASES.SEARCH)
+    if (!res.locals.selectedUrn) {
+      return res.redirect(paths.CASES.SEARCH)
     }
 
-    const caseDetails = await courtHearingService.getCaseDetailsByUrn(caseId)
-    res.locals.caseDetails = caseDetails
-
-    const courtSchedule = res.locals.caseDetails?.courtSchedule[0]
-    if (!courtSchedule) {
+    const caseUrn: string = res.locals.selectedUrn
+    const userEmail: string = res.locals.user.email
+    const caseDetailsResponse = await courtHearingService.getCaseDetailsByUrn(caseUrn, userEmail)
+    const { statusCode } = caseDetailsResponse
+    if (statusCode === 404) {
+      res.locals.pageTitle = 'Court Information - Not found'
       return res.status(404).render('pages/case/court-information-not-found', {
-        pageTitle: 'Court information',
         error: 'Case could not be found',
       })
     }
+    if (statusCode === 403) {
+      res.locals.pageTitle = 'Court Information - Access denied'
+      return res.status(403).render('pages/case/court-information-access-denied', {
+        error: 'You are not authorized to access',
+      })
+    }
+    if (statusCode === 200) {
+      res.locals.caseDetails = caseDetailsResponse.caseDetails
+      if (res.locals.caseDetails?.courtSchedule?.length > 0) {
+        const courtSchedule = res.locals.caseDetails?.courtSchedule[0]
 
-    res.locals.hearingData = mapCaseDetailsToHearingSummary(res.locals.caseDetails)
-    const courtUrl = courts.getCourtUrl(res.locals.hearingData.location.courtHouseName)
-    res.locals.courtUrl = courtUrl ?? 'https://www.find-court-tribunal.service.gov.uk/'
+        if (courtSchedule?.hearings?.length > 0) {
+          res.locals.hearingData = mapCaseDetailsToHearingSummary(res.locals.caseDetails)
+          const courtUrl = courts.getCourtUrl(res.locals.hearingData.location.courtHouseName)
+          res.locals.courtUrl = courtUrl ?? 'https://www.find-court-tribunal.service.gov.uk/'
 
-    return res.render('pages/case/court-information')
+          return res.render('pages/case/court-information')
+        }
+
+        res.locals.pageTitle = 'Court Information - Not found'
+        return res.status(404).render('pages/case/court-information-no-hearings-allocated', {
+          error: `No hearings allocated for this case`,
+        })
+      }
+    }
+    res.locals.pageTitle = 'Court Information - Not found'
+    return res.status(404).render('pages/case/court-information-not-found', {
+      error: 'Case could not be found',
+    })
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(`Status ${error.status}, ${error.message}`)
+    res.locals.pageTitle = 'Court Information - Not found'
     return res.status(404).render('pages/case/court-information-not-found', {
-      pageTitle: 'Court information',
       error: `Case could not be found`,
     })
   }

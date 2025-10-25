@@ -1,6 +1,5 @@
 {% extends "layout/citizen-authenticated.njk" %}
 
-{% set pageTitle = applicationName + " - Understand compensation" %}
 {% set mainClasses = "app-container govuk-body" %}
 
 {% block content %}
@@ -19,11 +18,7 @@
           <ol class="gem-c-contents-list__list">
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victims-code">Victims’ Code</a>
-            </li>
-            <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
-              <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/return-property">Return of property</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victim-personal-statement">Victim Personal Statement</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
@@ -31,7 +26,11 @@
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victim-personal-statement">Victim Personal Statement</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/return-property">Return of property</a>
+            </li>
+            <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+              <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victims-code">Victims’ Code</a>
             </li>
           </ol>
         </nav>
@@ -50,7 +49,7 @@
         <li>are a close relative of someone who has died because of a crime</li>
         <li>witnessed a serious crime, were involved or seriously injured</li>
       </ul>
-      <p class="govuk-body">There are <a href="https://www.gov.uk/guidance/compensation-in-the-justice-system">3 ways you can potentially receive compensation</a></p>
+      <p class="govuk-body">There are <a href="https://www.gov.uk/guidance/compensation-in-the-justice-system" target="_blank">3 ways you can potentially receive compensation (opens in new tab).</a></p>
 
       <h2 class="govuk-heading-m" id="police-officers">1. Criminal compensation orders</h2>
       <p class="govuk-body">If someone is convicted of a crime, the court can order them to pay you compensation. This could be for:</p>
@@ -68,8 +67,8 @@
       <p class="govuk-body">There’s no limit on the value of a single compensation order. However, courts have to strike a balance between fairly compensating the victim and not imposing debts on the offender that are unrealistic or unenforceable.</p>
 
       <h2 class="govuk-heading-m" id="police-officers">2. Criminal injuries compensation scheme</h2>
-      <p class="govuk-body">If you’ve been seriously injured or bereaved by a violent crime, you can apply for compensation from the <a href="https://www.gov.uk/guidance/criminal-injuries-compensation-a-guide">Criminal Injuries Compensation Scheme</a>. You usually have to claim within 2 years of the crime, and the crime must be reported to the police before you apply.</p>
-      <p class="govuk-body"><a href="https://www.gov.uk/claim-compensation-criminal-injury">Find out if you’re eligible and how to apply to the scheme.</a></p>
+      <p class="govuk-body">If you’ve been seriously injured or bereaved by a violent crime, you can apply for compensation from the <a href="https://www.gov.uk/guidance/criminal-injuries-compensation-a-guide" target="_blank">Criminal Injuries Compensation Scheme (opens in new tab)</a>. You usually have to claim within 2 years of the crime, and the crime must be reported to the police before you apply.</p>
+      <p class="govuk-body"><a href="https://www.gov.uk/claim-compensation-criminal-injury" target="_blank">Find out if you’re eligible and how to apply to the scheme (opens in new tab).</a></p>
 
       <h2 class="govuk-heading-m" id="police-officers">3. Civil compensation</h2>
       <p class="govuk-body">It’s also possible to make a claim through the  civil courts, which are non-criminal courts that deal with private disputes between individuals or companies. For example, you could claim  compensation for personal injury, assault or damage to property.</p>
@@ -77,8 +76,8 @@
 
       <h2 class="govuk-heading-m" id="police-officers">Benefits</h2>
       <p class="govuk-body">Depending on your circumstances, there might be benefits you can claim.</p>
-      <p class="govuk-body">If a close relative has died, you may be entitled to <a href="https://www.gov.uk/browse/benefits/bereavement">bereavement benefits</a>.</p>
-      <p class="govuk-body">If you disagree with a benefits decision, you can apply to the <a href="https://www.gov.uk/courts-tribunals/first-tier-tribunal-social-security-and-child-support">Social Security and Child Support Tribunal</a>.</p>
+      <p class="govuk-body">If a close relative has died, you may be entitled to <a href="https://www.gov.uk/browse/benefits/bereavement" target="_blank">bereavement benefits (opens in new tab)</a>.</p>
+      <p class="govuk-body">If you disagree with a benefits decision, you can apply to the <a href="https://www.gov.uk/courts-tribunals/first-tier-tribunal-social-security-and-child-support" target="_blank">Social Security and Child Support Tribunal (opens in new tab)</a>.</p>
 
       <h2 class="govuk-heading-m" id="police-officers">Insurance</h2>
       <p class="govuk-body">You might be able to make an insurance claim if:</p>
@@ -87,8 +86,8 @@
         <li>your employer has insurance to cover injury or death at work</li>
         <li>you know who committed the crime – you might be able to make a claim against their insurance policy</li>
       </ul>
-      <p class="govuk-body">If you disagree with an insurer’s decision, you can apply to the <a href="https://www.financial-ombudsman.org.uk/">Financial Ombudsman Service</a>.</p>
-      <p class="govuk-body">If you disagree with an employer’s decision, you can speak to <a href="https://www.acas.org.uk/raising-and-dealing-with-problems-at-work">Acas</a>.</p>
+      <p class="govuk-body">If you disagree with an insurer’s decision, you can apply to the <a href="https://www.financial-ombudsman.org.uk" target="_blank">Financial Ombudsman Service (opens in new tab)</a>.</p>
+      <p class="govuk-body">If you disagree with an employer’s decision, you can speak to <a href="https://www.acas.org.uk/raising-and-dealing-with-problems-at-work" target="_blank">Acas (opens in new tab)</a>.</p>
 
     </div>
   </div>

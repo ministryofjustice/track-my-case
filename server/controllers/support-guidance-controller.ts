@@ -5,7 +5,7 @@ const supportGuidanceController = async (req: Request, res: Response, next: Next
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Support and guidance XXX'
+    res.locals.pageTitle = 'Support and guidance'
     res.locals.backLink = '/case/dashboard'
 
     res.render('pages/case/support-guidance')

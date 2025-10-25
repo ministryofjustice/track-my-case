@@ -3,17 +3,14 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block content %}
-  <div class="govuk-width-container ">
-    <main class="govuk-main-wrapper">
-
-      <h1 class="govuk-heading-l">You are logged out from the {{ serviceName }}</h1>
-
-      {{ govukButton({
-        text: "Back to service",
-        href: "/",
-        isStartButton: false
-      }) }}
-
-    </main>
+<h1 class="govuk-heading-l govuk-!-static-margin-bottom-8">You are logged out from the {{ applicationName }}</h1>
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukButton({
+      text: "Back to service Home page",
+      href: "/",
+      isStartButton: false
+    }) }}
   </div>
+</div>
 {% endblock %}

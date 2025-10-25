@@ -4,7 +4,7 @@
 {% if authenticated %}
   {{ govukOneLoginServiceHeader ({
     authenticated: authenticated,
-    serviceName: serviceName,
+    applicationName: applicationName,
     oneLoginLink: oneLoginLink,
     homepageLink: homepageLink,
     signOutLink: signOutLink,
@@ -13,15 +13,11 @@
       href: '/',
       text: 'Home',
       id: 'home'
-    },{
-      href: '/case/dashboard',
-      text: 'Dashboard',
-      id: 'case-dashboard'
     }]
   }) }}
 {% else %}
   {{ govukHeader ({
-    serviceName: serviceName,
+    applicationName: applicationName,
     homepageUrl: homepageUrl,
     serviceUrl: serviceUrl
   }) }}

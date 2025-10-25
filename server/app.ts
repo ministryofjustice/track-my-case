@@ -8,19 +8,20 @@ import errorHandler from './errorHandler'
 
 import setUpCsrf from './middleware/setUpCsrf'
 
-// TODO: set up HealthCheck
 import setUpStaticResources from './middleware/setUpStaticResources'
-import setUpWebRequestParsing from './middleware/setupRequestParsing'
+import setUpWebRequestParsing from './middleware/setUpRequestParsing'
 import setUpWebSecurity from './middleware/setUpWebSecurity'
 import setUpWebSession from './middleware/setUpWebSession'
 
-import indexRoutes from './routes/index'
-import caseRoutes from './routes/case'
-import oneLoginRoutes from './routes/oneLogin'
-import publicRoutes from './routes/public'
-import healthRoutes from './routes/health'
-import { setUpGovukOneLogin } from './middleware/setupGovukOneLogin'
+import indexRoutes from './routes/indexRoutes'
+import caseRoutes from './routes/caseRoutes'
+import oneLoginRoutes from './routes/oneLoginRoutes'
+import cookiesRoutes from './routes/cookiesRoutes'
+import healthRoutes from './routes/healthRoutes'
+import { setUpGovukOneLogin } from './middleware/setUpGovukOneLogin'
 import { rateLimitSetup } from './utils/rateLimitSetUp'
+import setUpGoogleTagManager from './middleware/setUpGoogleTagManager'
+import config from './config'
 
 export default function createApp(): express.Application {
   const app = express()
@@ -46,16 +47,17 @@ export default function createApp(): express.Application {
   app.use(express.urlencoded({ extended: true }))
 
   // Configure parsing cookies - required for storing nonce in authentication
-  app.use(cookieParser())
+  app.use(cookieParser(config.session.secret))
+  app.use(setUpGoogleTagManager())
 
   // Apply the general rate limiter to all requests to prevent abuse
   rateLimitSetup(app)
 
-  app.use('/', indexRoutes())
-  app.use('/', healthRoutes())
+  indexRoutes(app)
+  healthRoutes(app)
+  cookiesRoutes(app)
   oneLoginRoutes(app)
   caseRoutes(app)
-  app.use('/', publicRoutes())
 
   app.use('/.well-known/appspecific', (req, res) => {
     res.status(404).send('Not Found')

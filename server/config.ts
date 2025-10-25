@@ -109,8 +109,8 @@ const config = {
     },
   },
   session: {
-    name: get('SESSION_NAME', 'track-my-case-insecure-default-session'),
-    secret: get('SESSION_SECRET', 'track-my-case-insecure-default-session', requiredInProduction),
+    name: get('SESSION_NAME', 'track-my-case.session'),
+    secret: get('SESSION_SECRET', 'track-my-case-session-secret-default', requiredInProduction),
     expiryMinutes: Number(get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120)),
     inactivityMinutes: Number(get('WEB_SESSION_INACTIVITY_IN_MINUTES', 10)),
     appointmentsCacheMinutes: Number(get('APPOINTMENTS_CACHE_IN_MINUTES', 1)),
@@ -120,6 +120,10 @@ const config = {
     limit: Number(get('RATE_LIMIT_MAX_REQUESTS', 300, requiredInProduction)),
     windowMs: Number(get('RATE_LIMIT_WINDOW_SECS', 5 * 60, requiredInProduction)) * 1000,
     message: 'Too many requests, please try again later.',
+  },
+  analytics: {
+    gtmId: get('GOOGLE_TAG_MANAGER_ID', 'GTM-WRN68MWZ', requiredInProduction),
+    gtagId: get('GOOGLE_ANALYTICS_ID', 'G-KFL1P57QRY', requiredInProduction),
   },
   // ingressUrl: get('INGRESS_URL', 'http://localhost:9999'),
 }
