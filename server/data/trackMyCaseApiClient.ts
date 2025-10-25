@@ -41,6 +41,7 @@ export default class TrackMyCaseApiClient {
       request.set('Authorization', `Basic ${encoded}`)
       await request
       return true
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {
       return false
     }

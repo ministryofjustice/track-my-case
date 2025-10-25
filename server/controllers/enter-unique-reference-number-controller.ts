@@ -30,12 +30,12 @@ const getEnterUniqueReferenceNumber = async (req: Request, res: Response, next: 
     if (serviceHealth !== undefined) {
       res.render('pages/case/enter-unique-reference-number.njk')
     } else {
-      res.locals.pageTitle = 'Enter your unique reference number - Service Error'
+      res.locals.pageTitle = 'Enter your unique reference number - Service error'
       res.render('pages/case/service-error.njk')
     }
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
-    res.locals.pageTitle = 'Enter your unique reference number - Service Error'
+    res.locals.pageTitle = 'Enter your unique reference number - Service error'
     res.render('pages/case/service-error.njk')
   }
 }
