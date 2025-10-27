@@ -59,7 +59,11 @@ export const getCookiesController = async (req: Request, res: Response, next: Ne
       res.locals.backLink = paths.START
     }
 
-    res.locals.errorList = req.session.formState?.cookiesSelect?.errors
+    if (res.locals.cookieAccepted) {
+      delete req.session.formState?.cookiesSelect
+    } else if (req.session.formState?.cookiesSelect) {
+      res.locals.errorList = req.session.formState?.cookiesSelect?.errors
+    }
 
     res.render('pages/cookies.njk')
   } catch (error) {
