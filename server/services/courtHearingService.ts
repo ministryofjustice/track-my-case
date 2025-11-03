@@ -15,7 +15,7 @@ export default class CourtHearingService {
       const request: GetHealthRequestOptions = { path }
       return await this.apiClient.getHealth(request)
     } catch (e) {
-      logger.error('courtHearingService.getServiceHealth: Unsuccessful response', e.status, e.message)
+      logger.error('Unsuccessful response on service health', e.status, e.message)
       return null
     }
   }
@@ -31,14 +31,14 @@ export default class CourtHearingService {
       }
     } catch (e) {
       if (e?.status === 403) {
-        logger.error(`courtHearingService.getCaseDetailsByUrn: Access forbidden`, e.status, e.message)
+        logger.error('User access forbidden', e.status, e.message)
         return {
           statusCode: 403,
           message: 'Access forbidden',
         }
       }
 
-      logger.error(`courtHearingService.getCaseDetailsByUrn: Unsuccessful response by urn: ${urn}`, e.status, e.message)
+      logger.error('Unsuccessful response by urn', e.status, e.message)
       return {
         statusCode: 404,
         message: `Unsuccessful response by urn: ${urn}`,

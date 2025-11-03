@@ -9,7 +9,7 @@ export default function setUpGoogleTagManager(): Router {
     res.locals.gtmId = config.analytics.gtmId
     res.locals.gtagId = config.analytics.gtagId
     res.locals.cookieAccepted = req.signedCookies?.cookies_preferences_set
-    res.locals.userId = encryptValue(req.session.passport?.user?.email, config.session.secret)
+    res.locals.userId = encryptValue(req.session.passport?.user?.sub, config.session.secret)
     next()
   })
 

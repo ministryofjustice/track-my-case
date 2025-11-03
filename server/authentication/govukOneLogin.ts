@@ -16,7 +16,7 @@ import config from '../config'
 import { logger } from '../logger'
 import tokenStoreFactory from './tokenStore/tokenStoreFactory'
 import paths from '../constants/paths'
-import { isAuthenticatedRequest } from '../utils/utils'
+import { encryptValue, isAuthenticatedRequest } from '../utils/utils'
 import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
 
 const trackMyCaseApiClient = new TrackMyCaseApiClient()
@@ -51,9 +51,8 @@ async function init(): Promise<Client> {
   const discoveryEndpoint = `${config.apis.govukOneLogin.url}/.well-known/openid-configuration`
 
   const issuer = await Issuer.discover(discoveryEndpoint)
-  logger.info(`GOV.UK One Login issuer discovered: ${issuer.metadata.issuer}`)
+  logger.info(`GOV.UK One Login issuer discovered`)
 
-  // convert private key in PEM format to JWK
   const { privateKey } = config.apis.govukOneLogin
 
   const privateKeyJwk = createPrivateKey({
@@ -83,7 +82,8 @@ async function init(): Promise<Client> {
     userInfo: UserinfoResponse,
     done,
   ) => {
-    logger.info(`GOV.UK One Login user verified, sub: ${userInfo.email}`)
+    const encryptedUserSub = encryptValue(userInfo.sub, config.session.secret)
+    logger.info(`GOV.UK One Login user verified: ${encryptedUserSub}`)
 
     const tokenStore = tokenStoreFactory()
     tokenStore.setToken(userInfo.sub, tokenSet.id_token, config.session.expiryMinutes * 60 * 1000)
