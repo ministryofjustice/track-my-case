@@ -27,15 +27,11 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
     const { statusCode } = caseDetailsResponse
     if (statusCode === 404) {
       res.locals.pageTitle = 'Court Information - Not found'
-      return res.status(404).render('pages/case/court-information-not-found', {
-        error: 'Case could not be found',
-      })
+      return res.status(404).render('pages/case/court-information-not-found')
     }
     if (statusCode === 403) {
       res.locals.pageTitle = 'Court Information - Access denied'
-      return res.status(403).render('pages/case/court-information-access-denied', {
-        error: 'You are not authorized to access',
-      })
+      return res.status(403).render('pages/case/court-information-access-denied')
     }
     if (statusCode === 200) {
       res.locals.caseDetails = caseDetailsResponse.caseDetails
@@ -57,16 +53,12 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
       }
     }
     res.locals.pageTitle = 'Court Information - Not found'
-    return res.status(404).render('pages/case/court-information-not-found', {
-      error: 'Case could not be found',
-    })
+    return res.status(404).render('pages/case/court-information-not-found')
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(`Status ${error.status}, ${error.message}`)
     res.locals.pageTitle = 'Court Information - Not found'
-    return res.status(404).render('pages/case/court-information-not-found', {
-      error: `Case could not be found`,
-    })
+    return res.status(404).render('pages/case/court-information-not-found')
   }
 }
 
