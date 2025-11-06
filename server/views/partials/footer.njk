@@ -1,6 +1,9 @@
 {%- from "govuk/components/footer/macro.njk" import govukFooter -%}
 
+{% include "partials/quick-exit.njk" %}
+
 {{ govukFooter({
+  rebrand: true,
   meta: {
     items: [
       {
