@@ -145,9 +145,7 @@ describe('court-information-controller', () => {
     await courtInformationController(req, res, next)
 
     expect(res.status).toHaveBeenCalledWith(404)
-    expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found', {
-      error: 'Case could not be found',
-    })
+    expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found')
   })
 
   it('returns 404 not found view when courtSchedule is empty', async () => {
@@ -160,9 +158,7 @@ describe('court-information-controller', () => {
     await courtInformationController(req, res, next)
 
     expect(res.status).toHaveBeenCalledWith(404)
-    expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found', {
-      error: 'Case could not be found',
-    })
+    expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found')
   })
 
   it('handles exceptions from service by rendering 404 not found', async () => {
@@ -177,9 +173,7 @@ describe('court-information-controller', () => {
 
     expect(consoleErrorSpy).toHaveBeenCalledWith('Status 500, mocked message')
     expect(res.status).toHaveBeenCalledWith(404)
-    expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found', {
-      error: 'Case could not be found',
-    })
+    expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found')
 
     consoleErrorSpy.mockRestore()
     consoleLogSpy.mockRestore()

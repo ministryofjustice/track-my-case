@@ -1,23 +1,12 @@
 {% extends "layout/citizen-authenticated.njk" %}
 
-{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
-{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
-{%- from "moj/components/alert/macro.njk" import mojAlert -%}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-
 {% set mainClasses = "app-container govuk-body" %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% if error %}
-        <div class="court-information-not-found-error govuk-!-margin-bottom-7">
-          {{ error }}
-        </div>
-      {% endif %}
+      <h2 class="govuk-heading-l">You are not authorized to access</h2>
 
       <p class="govuk-body">
         If you need an update on your case, you can contact your police witness care officer or police officer in charge.

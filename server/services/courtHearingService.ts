@@ -11,7 +11,7 @@ export default class CourtHearingService {
 
   async getServiceHealth(): Promise<ServiceHealth> {
     try {
-      const path = '/'
+      const path = '/api/health'
       const request: GetHealthRequestOptions = { path }
       return await this.apiClient.getHealth(request)
     } catch (e) {
