@@ -38,8 +38,12 @@
 
       {{ govukButton({
         text: "Start now",
-        href: "/case/dashboard",
-        isStartButton: true
+        type: "button",
+        isStartButton: true,
+        attributes: {
+          id: "start-now-button",
+          "data-url": "/case/dashboard"
+        }
       }) }}
 
     </div>
