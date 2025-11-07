@@ -46,20 +46,21 @@
     justify-content: flex-end;
 }
 
-.govuk-exit-this-page {
+.govuk-exit-this-page-wrapper {
     position: sticky;
     bottom: 12px;
     height: 38px;
 }
 
+/* Optional: only apply on wide screens */
 @media (min-width: 40.0625em) {
-    .govuk-exit-this-page {
+    .govuk-exit-this-page-wrapper {
         padding-right: 10px;
     }
 }
 
 @media only print {
-    .govuk-exit-this-page {
+    .govuk-exit-this-page-wrapper {
         display: none;
     }
 }
