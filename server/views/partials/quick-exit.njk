@@ -79,17 +79,15 @@
 </script>
 
 
-<div class="govuk-width-container">
-  <div class="govuk-main-wrapper govuk-exit-this-page-wrapper">
-    <div class="govuk-exit-this-page down">
-      {{ govukButton({
-        text: "Quick exit",
-        type: "button",
-        classes: "govuk-button--warning",
-        attributes: {
-          id: "quick-exit-button"
-        }
-      }) }}
-    </div>
+<div class="govuk-width-container govuk-exit-this-page">
+  <div class="govuk-exit-this-page-button-wrapper">
+    {{ govukButton({
+      text: "Quick exit",
+      type: "button",
+      classes: "govuk-button--warning",
+      attributes: {
+        id: "quick-exit-button"
+      }
+    }) }}
   </div>
 </div>
