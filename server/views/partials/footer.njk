@@ -1,6 +1,8 @@
 {%- from "govuk/components/footer/macro.njk" import govukFooter -%}
 
-{% include "partials/quick-exit.njk" %}
+{% if authenticated %}
+  {% include "partials/quick-exit.njk" %}
+{% endif %}
 
 {{ govukFooter({
   rebrand: true,

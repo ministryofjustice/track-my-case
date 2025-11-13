@@ -60,6 +60,11 @@
         padding-right: 10px;
         float: initial;
         display: block;
+        pointer-events: none;
+
+        button {
+            pointer-events: auto;
+        }
     }
 }
 

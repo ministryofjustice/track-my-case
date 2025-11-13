@@ -6,6 +6,8 @@
     const currentTabAddress = 'https://www.bbc.co.uk/'
     const newTab = 'https://www.bbc.co.uk/weather'
 
+    // ToDo: we should push custom event to dataLayer when quick-exit button was pressed
+
     // Open safe/neutral site in a new tab
     let newWin = null
     try {
@@ -14,7 +16,7 @@
       if (newWin) {
         try {
           newWin.opener = null
-        } catch (_) {
+        } catch (e) {
           // not required
         }
       }
@@ -55,29 +57,6 @@
   )
 
 </script>
-
-<script nonce="{{ cspNonce }}" type="module">
-
-  function openNewTabWithDashboard(url) {
-    return function() {
-      const dash = window.open(url, '_blank', 'noopener,noreferrer')
-
-      window.location.replace('https://www.bbc.co.uk')
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-      const buttonElement = document.getElementById('start-now-button')
-      if (buttonElement) {
-        const url = buttonElement.dataset.url || '/case/dashboard'
-        buttonElement.removeEventListener('click', openNewTabWithDashboard(url))
-        buttonElement.addEventListener('click', openNewTabWithDashboard(url))
-      }
-    },
-  )
-
-</script>
-
 
 <div class="govuk-width-container govuk-exit-this-page">
   <div class="govuk-exit-this-page-button-wrapper">
