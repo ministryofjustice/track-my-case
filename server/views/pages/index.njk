@@ -4,6 +4,37 @@
 {% set mainClasses = "app-container govuk-body" %}
 
 {% block content %}
+
+  <script nonce="{{ cspNonce }}" type="module">
+
+    function openNewTabWithDashboard(url, authenticated) {
+      return function() {
+        if (authenticated) {
+          window.location.href = url;
+        } else {
+          const dash = window.open(url, '_blank', 'noopener,noreferrer')
+          if (window.history?.length > 1) {
+            window.location.replace('about:blank')
+          } else {
+            window.location.replace('about:blank')
+          }
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const buttonElement = document.getElementById('start-now-button')
+        if (buttonElement) {
+          const url = buttonElement.dataset.url || '/case/dashboard'
+          const authenticated = buttonElement.dataset.authenticated === "true"
+          buttonElement.removeEventListener('click', openNewTabWithDashboard(url, authenticated))
+          buttonElement.addEventListener('click', openNewTabWithDashboard(url, authenticated))
+        }
+      },
+    )
+
+  </script>
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
@@ -42,7 +73,8 @@
         isStartButton: true,
         attributes: {
           id: "start-now-button",
-          "data-url": "/case/dashboard"
+          "data-url": "/case/dashboard",
+          "data-authenticated": authenticated
         }
       }) }}
 

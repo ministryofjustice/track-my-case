@@ -73,8 +73,12 @@ const main = () => {
 
   /** @type {string | null} */
   let serverEnv = null
-  if (args.includes('--dev-server')) serverEnv = '.env'
-  if (args.includes('--dev-server-production')) serverEnv = '.env.production'
+  if (args.includes('--dev-server-production')) {
+    serverEnv = '.env.production'
+  }
+  if (args.includes('--dev-server')) {
+    serverEnv = '.env'
+  }
 
   if (serverEnv) {
     /** @type {childProcess.ChildProcess | null} */
@@ -82,7 +86,9 @@ const main = () => {
     chokidar.watch(['dist']).on(
       'all',
       debounce(() => {
-        if (serverProcess) serverProcess.kill()
+        if (serverProcess) {
+          serverProcess.kill()
+        }
         process.stderr.write('Restarting server...\n')
         serverProcess = childProcess.spawn('node', [`--env-file=${serverEnv}`, 'dist/server.js'], { stdio: 'inherit' })
       }),
