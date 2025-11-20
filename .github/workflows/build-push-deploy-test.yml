@@ -5,13 +5,7 @@ on:
     inputs:
       ref:
         description: 'Git ref (sha/tag/branch) to build/deploy; empty = current HEAD'
-        required: false
-  workflow_run:
-    workflows:
-      - CI/CD dev
-    types:
-      - completed
-
+        required: true
 permissions: {}
 concurrency:
   group: test
