@@ -8,5 +8,5 @@ spec:
     matchLabels:
       app: {{ .Values.serviceName }}
   endpoints:
-    - port: {{ .Values.targetPort }}
+    - port: {{ .Values.servicePort }}
       interval: 15s
