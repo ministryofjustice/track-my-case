@@ -1,5 +1,5 @@
-apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
 metadata:
   name: allow-prometheus-scraping
   namespace: { { .Values.namespace } }
@@ -15,5 +15,5 @@ spec:
             matchLabels:
               component: monitoring
       ports:
-        - port: { { .Values.targetPort } }
-          protocol: TCP
+        - protocol: TCP
+          port: { { .Values.servicePort } }
