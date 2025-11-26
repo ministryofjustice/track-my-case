@@ -16,4 +16,4 @@ spec:
           component: monitoring
     ports:
       - protocol: TCP
-        port: http
+        port: {{ .Values.servicePort }}
