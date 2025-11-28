@@ -3,6 +3,10 @@ name: code-formatter
 on:
   pull_request:
     types: [opened, edited, reopened, synchronize]
+  push:
+    branches:
+      - develop
+      - main
 
 jobs:
   format-code:
