@@ -5,13 +5,7 @@ on:
     inputs:
       ref:
         description: 'Git ref (sha/tag/branch) to build/deploy; empty = current HEAD'
-        required: false
-  workflow_run:
-    workflows:
-      - CI/CD dev
-    types:
-      - completed
-
+        required: true
 permissions: {}
 concurrency:
   group: test
@@ -101,7 +95,7 @@ jobs:
             --build-arg IV_DID_URI=$IV_DID_URI \
             --build-arg IV_ISSUER=$IV_ISSUER \
             --build-arg OIDC_TOKEN_AUTH_METHOD=$OIDC_TOKEN_AUTH_METHOD \
-            --build-arg OIDC_SCOPES=$OIDC_SCOPES \
+            --build-arg OIDC_SCOPES="$OIDC_SCOPES" \
             --build-arg OIDC_CLAIMS=$OIDC_CLAIMS \
             --build-arg OIDC_AUTHORIZE_REDIRECT_URL=$OIDC_AUTHORIZE_REDIRECT_URL \
             --build-arg OIDC_POST_LOGOUT_REDIRECT_URL=$OIDC_POST_LOGOUT_REDIRECT_URL \

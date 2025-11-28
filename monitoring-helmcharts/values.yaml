@@ -1,0 +1,7 @@
+serviceName: track-my-case-dev
+namespace: track-my-case-dev
+
+servicePort: http
+
+monitoring:
+  interval: 15s

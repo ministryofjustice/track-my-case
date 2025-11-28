@@ -82,7 +82,7 @@ const config = {
       oneLoginLink: get('ONE_LOGIN_LINK', 'https://home.account.gov.uk', requiredInProduction),
       ivIssuer: get('IV_ISSUER', '', requiredInProduction),
       ivDidUri: get('IV_DID_URI', '', requiredInProduction),
-      scopes: get('OIDC_SCOPES', 'email,openid', requiredInProduction),
+      scopes: get('OIDC_SCOPES', 'openid email', requiredInProduction),
       authorizeRedirectUrl: replacePort(get('OIDC_AUTHORIZE_REDIRECT_URL', '', requiredInProduction), port),
       postLogoutRedirectUrl: replacePort(get('OIDC_POST_LOGOUT_REDIRECT_URL', '', requiredInProduction), port),
       backChannelLogoutUri: replacePort(get('OIDC_BACK_CHANNEL_LOGOUT_URI', ''), port),
