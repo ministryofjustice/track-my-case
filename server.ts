@@ -10,9 +10,8 @@ import { logger } from './server/logger'
   app.listen(app.get('port'), () => {
     const port = `${app.get('port')}`
     logger.info(`🚀 Server started on port ${port}`)
-    logger.info(`  🔗 Track My Case:  http://localhost:${port}`)
-    logger.info(`  🏥 Health check:   http://localhost:${port}/health`)
-    logger.info(`  🧪 Test service: http://localhost:${port}/case/back-end-api-health`)
+    logger.info(`  🔗 Track my case:  http://localhost:${port}`)
+    logger.info(`  🏥 Health check:   http://localhost:${port}/healthz`)
 
     logger.info(`Press Ctrl+C to stop the server`)
     logger.info(`Environment: ${app.get('env')}`)

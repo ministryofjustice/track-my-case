@@ -1,8 +1,12 @@
 const paths = {
   START: '/',
   HEALTH: '/health',
+  ABOUT_THE_SERVICE: '/about-the-service',
+  COOKIES: '/cookies',
+  COOKIES_DECISION: '/cookies/decision',
 
   AUTH_ERROR: '/autherror',
+  ACCESS_DENIED: '/access-denied',
 
   PASSPORT: {
     // these routes are reserved for passport integration
@@ -21,11 +25,9 @@ const paths = {
 
   CASES: {
     SEARCH: '/case/search',
-    CONFIRM_CASE: '/case/confirm-case',
     DASHBOARD: '/case/dashboard',
     CONTACT_DETAILS: '/case/contact-details',
     COURT_INFORMATION: '/case/court-information',
-    BACK_END_API_HEALTH: '/case/back-end-api-health',
     SUPPORT_GUIDANCE: '/case/support-guidance',
     SUPPORT_ROLES: '/case/support-roles',
     VICTIMS_JOURNEY: '/case/victims-journey',
@@ -35,11 +37,6 @@ const paths = {
     VICTIM_PERSONAL_STATEMENT: '/case/victim-personal-statement',
     VICTIM_SUPPORT_LINKS: '/case/victim-support-links',
     WITNESS_SERVICE: '/case/witness-service',
-    HEARINGS: '/cases/:caseId/hearings',
-    // TODO: Replace with dynamic caseId path once API contract is finalized
-    INFO: '/case/:caseId/courtschedule',
-    CASE_DETAILS: '/case/:urn/casedetails',
-    ASSOCIATIONS: '/cases/:sub',
   },
 
   COURT_HOUSE: {

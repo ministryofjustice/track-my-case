@@ -3,45 +3,14 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block content %}
-  <div class="govuk-width-container ">
-    <main class="govuk-main-wrapper">
-
-      <h1 class="govuk-heading-l">You are logged in to the {{ applicationName }}</h1>
-
-      {{ govukButton({
-        text: "Continue to Case search",
-        href: "case/search",
-        isStartButton: true
-      }) }}
-
-      <h2 class="govuk-heading-m">User information</h2>
-      <p class="govuk-body">
-        Learn more about <a target="tech-docs" href="https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#receive-response-for-retrieve-user-information" class="govuk-link">user information</a> in our technical documentation.
-      </p>
-      <pre><code>{{ user | dump(2) }}</code></pre>
-
-      {% if identitySupported %}
-        <h2 class="govuk-heading-m">Return codes</h2>
-        <p class="govuk-body">
-          Learn more about <a target="tech-docs" href="https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/prove-users-identity/#understand-your-user-s-return-code-claim" class="govuk-link">return codes</a> in our technical documentation.
-        </p>
-
-        {% if user.returnCode %}
-          <pre>{{ user.returnCode | dump(2) }}</pre>
-        {% else %}
-          <p class="govuk-body-m">None</p>
-        {% endif %}
-
-        <h2 class="govuk-heading-m">Core identity claims</h2>
-        <p class="govuk-body">
-          Learn more about <a target="tech-docs" href="https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/prove-users-identity/#prove-your-user-39-s-identity" class="govuk-link">core identity claims</a> in our technical documentation.
-        </p>
-        {% if user.coreIdentity %}
-          <pre>{{ user.coreIdentity | dump(2) }}</pre>
-          {% else %}
-          <p class="govuk-body-m">None</p>
-        {% endif %}
-      {% endif %}
-  </main>
+<h1 class="govuk-heading-l govuk-!-static-margin-bottom-8">You are logged in to the {{ applicationName }} service</h1>
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukButton({
+      text: "Continue to Dashboard",
+      href: "/case/dashboard",
+      isStartButton: true
+    }) }}
+  </div>
 </div>
 {% endblock %}

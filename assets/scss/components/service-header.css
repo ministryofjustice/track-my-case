@@ -188,8 +188,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 700;
-  font-size: 1.1875rem;
-  line-height: 1.3157894737;
+  font-size: 1rem;
+  line-height: 1;
   position: relative;
   align-items: center;
   cursor: pointer;
@@ -235,8 +235,8 @@
 }
 @media print {
   .cross-service-header__button {
-    font-size: 14pt;
-    line-height: 1.15;
+    font-size: 1rem;
+    line-height: 1;
   }
 }
 .cross-service-header__button:before {
@@ -354,10 +354,10 @@
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
   font-size: 1.1875rem;
-  line-height: 1.3157894737;
+  line-height: 1;
   color: #ffffff;
-  background: #0b0c0c;
-  border-bottom: 10px solid #1d70b8;
+  border-bottom: 1px solid transparent;
+  background: #1d70b8;
   position: relative;
 }
 @media print {
@@ -631,7 +631,7 @@
   -moz-osx-font-smoothing: grayscale;
   font-weight: 700;
   font-size: 1.3125rem;
-  line-height: 1.1904761905;
+  line-height: 1;
   color: #0b0c0c;
   padding: 15px 0;
   margin: 0;
@@ -698,8 +698,8 @@
 }
 @media print {
   .service-header__nav-list {
-    font-size: 14pt;
-    line-height: 1.15;
+    font-size: 1rem;
+    line-height: 1;
   }
 }
 @media (min-width: 40.0625em) {
@@ -708,8 +708,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: 700;
-    font-size: 1.1875rem;
-    line-height: 1.3157894737;
+    font-size: 1rem;
+    line-height: 1;
   }
 }
 @media print and (min-width: 40.0625em) {
@@ -719,8 +719,8 @@
 }
 @media print and (min-width: 40.0625em) {
   .service-header__nav-list {
-    font-size: 14pt;
-    line-height: 1.15;
+    font-size: 1rem;
+    line-height: 1;
   }
 }
 

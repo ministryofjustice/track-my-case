@@ -1,5 +1,5 @@
 import crypto from 'crypto'
-import express, { Router, Request, Response, NextFunction } from 'express'
+import express, { NextFunction, Request, Response, Router } from 'express'
 import helmet from 'helmet'
 
 export default function setUpWebSecurity(): Router {
@@ -8,7 +8,7 @@ export default function setUpWebSecurity(): Router {
   // Secure code best practice - see:
   // 1. https://expressjs.com/en/advanced/best-practice-security.html,
   // 2. https://www.npmjs.com/package/helmet
-  router.use((_req: Request, res: Response, next: NextFunction) => {
+  router.use((req: Request, res: Response, next: NextFunction) => {
     res.locals.cspNonce = crypto.randomBytes(16).toString('hex')
     next()
   })
@@ -33,27 +33,29 @@ export default function setUpWebSecurity(): Router {
             "'strict-dynamic'",
             'https://www.googletagmanager.com',
             'https://www.google-analytics.com',
-            (_req: Request, res: Response) => `'nonce-${res.locals.cspNonce}'`,
+            (_req: Request, _res: Response) => `'nonce-${_res.locals.cspNonce}'`,
           ],
 
           // Styles: prefer nonce; include Google Fonts
           styleSrc: [
             "'self'",
             'https://fonts.googleapis.com',
-            (_req: Request, res: Response) => `'nonce-${res.locals.cspNonce}'`,
+            'https://www.googletagmanager.com',
+            (_req: Request, _res: Response) => `'nonce-${_res.locals.cspNonce}'`,
           ],
 
           // Fonts for Google Fonts
-          fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+          fontSrc: ["'self'", 'data:', 'https://fonts.gstatic.com'],
 
           // Images
           imgSrc: [
             "'self'",
+            'data:',
             'https://www.google-analytics.com',
             'https://www.googletagmanager.com',
             'https://*.google-analytics.com',
             'https://*.g.doubleclick.net',
-            'data:',
+            'https://fonts.gstatic.com',
           ],
 
           // XHR/fetch

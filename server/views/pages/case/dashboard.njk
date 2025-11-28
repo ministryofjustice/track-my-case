@@ -2,20 +2,19 @@
 
 {% from "components/action-card/macro.njk" import actionCard %}
 {% from "components/promo-panel/macro.njk" import promoPanel %}
-{%- from "moj/components/alert/macro.njk" import mojAlert -%}
 
 {% set mainClasses = "app-container govuk-body" %}
 
 {% block content %}
-  <h1 class="govuk-heading-l govuk-!-static-margin-bottom-8">Track My Case</h1>
+  <h1 class="govuk-heading-xl govuk-!-static-margin-bottom-8">Track my case</h1>
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
     <div class="govuk-grid-column-one-third">
       <div class="action-card-wrapper">
         {{ actionCard(
-          "View court information",
-          "See information about the court location.",
+          "Find your court information",
+          "Look up the court where the next hearing or trial for your case is being held. You need your unique reference number.",
           "/case/search",
-          "View court information",
+          "Find your court",
           "default",
           0
         ) }}
@@ -25,19 +24,19 @@
       <div class="action-card-wrapper">
         {{ actionCard(
           "Understand the process",
-          "See information about stages of a criminal case, and staff victims interact with.",
+          "See what stage you’re at in the process and get to know who’s who in the criminal justice system.",
           "/case/support-roles",
-          "View information about the process"
+          "Find out about the process"
         ) }}
       </div>
     </div>
     <div class="govuk-grid-column-one-third">
       <div class="action-card-wrapper">
         {{ actionCard(
-          "Understand your rights",
-          "See information about the victims’ code of practice, and your rights as a victim.",
-          "/case/victims-code",
-          "View information about your rights"
+          "Get to know your rights",
+          "Including making a victim personal statement, compensation, and your property.",
+          "/case/victim-personal-statement",
+          "Find out about your rights"
         ) }}
       </div>
     </div>
@@ -46,9 +45,9 @@
     <div class="govuk-grid-column-two-thirds">
       {{ promoPanel(
         "Find help and support",
-        "Access information for victim support charities and guidance if you are required to attend court as witness.",
+        "Find charities and organisations that can give you further support and advice.",
         "/case/victim-support-links",
-        "View support and guidance",
+        "Find support",
         "/assets/images/vsc2.jpg",
         "default"
       ) }}

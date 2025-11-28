@@ -27,3 +27,51 @@
     font-weight: bold;
     background-color: gainsboro;
 }
+
+.govuk-input:invalid {
+    border-color: #d4351c;
+    outline-color: #f499be;
+}
+
+.govuk-prototype-kit-common-templates-related-items {
+    border-top: 2px solid #1d70b8;
+    padding-top: 10px;
+}
+
+
+// Quick exit button, START
+
+.govuk-exit-this-page-button-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.govuk-exit-this-page {
+    position: sticky;
+    bottom: 12px;
+    height: 40px;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+/* Optional: only apply on wide screens */
+@media (min-width: 40.0625em) {
+    .govuk-exit-this-page {
+        padding-right: 10px;
+        float: initial;
+        display: block;
+        pointer-events: none;
+
+        button {
+            pointer-events: auto;
+        }
+    }
+}
+
+@media only print {
+    .govuk-exit-this-page {
+        display: none;
+    }
+}
+
+// Quick exit button, END

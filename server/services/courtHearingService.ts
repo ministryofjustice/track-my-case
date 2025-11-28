@@ -1,32 +1,48 @@
-import TrackMyCaseApiClient, { GetHealthRequestOptions, GetRequestOptions } from '../data/trackMyCaseApiClient'
-import paths from '../constants/paths'
-import resolvePath from '../utils/resolvePath'
+import TrackMyCaseApiClient, {
+  GetHealthRequestOptions,
+  GetPathAndEmailRequestOptions,
+} from '../data/trackMyCaseApiClient'
 import { logger } from '../logger'
-import { CaseDetails, ServiceHealth } from '../interfaces/caseDetails'
+import { CaseDetailsResponse, ServiceHealth } from '../interfaces/caseDetails'
+import { resolvePath } from '../utils/utils'
 
 export default class CourtHearingService {
   constructor(private readonly apiClient: TrackMyCaseApiClient) {}
 
   async getServiceHealth(): Promise<ServiceHealth> {
     try {
-      const path = '/health'
+      const path = '/api/health'
       const request: GetHealthRequestOptions = { path }
-      return await this.apiClient.getHealth<ServiceHealth>(request)
+      return await this.apiClient.getHealth(request)
     } catch (e) {
-      logger.error('courtHearingService.getServiceHealth: unsuccessful response', e.status, e.message)
+      logger.error('Unsuccessful response on service health', e.status, e.message)
       return null
     }
   }
 
-  async getCaseDetailsByUrn(urn: string, userEmail: string): Promise<CaseDetails> {
+  async getCaseDetailsByUrn(urn: string, userEmail: string): Promise<CaseDetailsResponse> {
     try {
-      const path = resolvePath(paths.CASES.CASE_DETAILS, { urn })
-      const request: GetRequestOptions = { path, userEmail }
-      const response = await this.apiClient.getCaseDetailsByUrn<CaseDetails>(request)
-      return response
+      const path = resolvePath('/api/cases/:case_urn/casedetails', { case_urn: urn })
+      const request: GetPathAndEmailRequestOptions = { path, userEmail }
+      const caseDetails = await this.apiClient.getCaseDetailsByUrn(request)
+      return {
+        statusCode: 200,
+        caseDetails,
+      }
     } catch (e) {
-      logger.error(`courtHearingService.getCaseDetailsByUrn: unsuccessful response by urn: ${urn}`, e.status, e.message)
-      return null
+      if (e?.status === 403) {
+        logger.error('User access forbidden', e.status, e.message)
+        return {
+          statusCode: 403,
+          message: 'Access forbidden',
+        }
+      }
+
+      logger.error('Unsuccessful response by urn', e.status, e.message)
+      return {
+        statusCode: 404,
+        message: `Unsuccessful response by urn: ${urn}`,
+      }
     }
   }
 }

@@ -1,0 +1,72 @@
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+<script nonce="{{ cspNonce }}" type="module">
+
+  async function quickExit() {
+    const currentTabAddress = 'https://www.bbc.co.uk/'
+    const newTab = 'https://www.bbc.co.uk/weather'
+
+    // ToDo: we should push custom event to dataLayer when quick-exit button was pressed
+
+    // Open safe/neutral site in a new tab
+    let newWin = null
+    try {
+      newWin = window.open(newTab, '_blank', 'noopener,noreferrer')
+      // Belt & braces
+      if (newWin) {
+        try {
+          newWin.opener = null
+        } catch (e) {
+          // not required
+        }
+      }
+    } catch (e) {
+      // not required
+    }
+
+    // Try to close this tab (only certain contexts allow this)
+    try {
+      // Safari helper: open self first
+      window.open('', '_self')
+      window.close()
+    } catch (e) {
+      // not required
+    }
+
+    // If closing fails, blank fast and replace history entry
+    try {
+      // Hide content immediately
+      document.documentElement.innerHTML = ''
+      document.documentElement.style.background = '#fff'
+
+      // Replace current history entry so “Back” won’t return here
+      // (You can swap about:blank for the BBC URL if you prefer)
+      location.replace(currentTabAddress)
+    } catch (e) {
+      // Fallback: standard navigation (adds an entry, but still leaves)
+      location.href = currentTabAddress
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+      const el2 = document.getElementById('quick-exit-button')
+      if (el2) {
+        el2.addEventListener('click', quickExit)
+      }
+    },
+  )
+
+</script>
+
+<div class="govuk-width-container govuk-exit-this-page">
+  <div class="govuk-exit-this-page-button-wrapper">
+    {{ govukButton({
+      text: "Quick exit",
+      type: "button",
+      classes: "govuk-button--warning",
+      attributes: {
+        id: "quick-exit-button"
+      }
+    }) }}
+  </div>
+</div>

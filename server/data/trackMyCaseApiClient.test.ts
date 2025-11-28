@@ -17,7 +17,7 @@ describe('TrackMyCaseApiClient', () => {
 
     nock(baseUrl).get(path).reply(200, mockResponse)
 
-    const result = await client.getCaseDetailsByUrn<typeof mockResponse>({ path, userEmail })
+    const result = await client.getCaseDetailsByUrn({ path, userEmail })
     expect(result).toEqual(mockResponse)
   })
 })

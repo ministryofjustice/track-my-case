@@ -1,4 +1,4 @@
-import { convertToTitleCase, initialiseName, toBoolean } from './utils'
+import { convertToTitleCase, initialiseName, resolvePath, toBoolean } from './utils'
 
 describe('convert to title case', () => {
   it.each([
@@ -54,5 +54,25 @@ describe('toBoolean', () => {
     expect(toBoolean('0')).toBe(false)
     expect(toBoolean('yes')).toBe(false)
     expect(toBoolean('no')).toBe(false)
+  })
+})
+
+describe('resolvePath', () => {
+  it('replaces a single path param', () => {
+    const result = resolvePath('/api/cases/:urn/casedetails', { urn: 'abc123' })
+    expect(result).toBe('/api/cases/abc123/casedetails')
+  })
+
+  it('replaces multiple params', () => {
+    const result = resolvePath('/users/:userId/orders/:orderId', {
+      userId: 'u1',
+      orderId: 'o2',
+    })
+    expect(result).toBe('/users/u1/orders/o2')
+  })
+
+  it('encodes values safely', () => {
+    const result = resolvePath('/search/:query', { query: 'A&B/C' })
+    expect(result).toBe('/search/A%26B%2FC')
   })
 })

@@ -6,26 +6,44 @@ export type GetHealthRequestOptions = {
   path: string
 }
 
-export type GetRequestOptions = {
+export type GetPathAndEmailRequestOptions = {
   path: string
+  userEmail: string
+}
+
+export type GetEmailRequestOptions = {
   userEmail: string
 }
 
 export default class TrackMyCaseApiClient {
   constructor(private readonly baseUrl = config.apis.trackMyCaseApi.url) {}
 
-  async getHealth<T>({ path }: GetHealthRequestOptions): Promise<ServiceHealth> {
+  async getHealth({ path }: GetHealthRequestOptions): Promise<ServiceHealth> {
     const url = `${this.baseUrl}${path}`
     const { body } = await superagent.get(url)
     return body as ServiceHealth
   }
 
-  async getCaseDetailsByUrn<T>({ path, userEmail }: GetRequestOptions): Promise<CaseDetails> {
+  async getCaseDetailsByUrn({ path, userEmail }: GetPathAndEmailRequestOptions): Promise<CaseDetails> {
     const url = `${this.baseUrl}${path}`
     const request = superagent.get(url)
     const encoded = Buffer.from(userEmail).toString('base64')
     request.set('Authorization', `Basic ${encoded}`)
     const { body } = await request
     return body as CaseDetails
+  }
+
+  async isActiveUser({ userEmail }: GetEmailRequestOptions): Promise<boolean> {
+    try {
+      const url = `${this.baseUrl}/api/cases/active-user`
+      const request = superagent.get(url)
+      const encoded = Buffer.from(userEmail).toString('base64')
+      request.set('Authorization', `Basic ${encoded}`)
+      await request
+      return true
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (e) {
+      return false
+    }
   }
 }

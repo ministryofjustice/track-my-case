@@ -21,6 +21,7 @@ import healthRoutes from './routes/healthRoutes'
 import { setUpGovukOneLogin } from './middleware/setUpGovukOneLogin'
 import { rateLimitSetup } from './utils/rateLimitSetUp'
 import setUpGoogleTagManager from './middleware/setUpGoogleTagManager'
+import config from './config'
 
 export default function createApp(): express.Application {
   const app = express()
@@ -40,14 +41,14 @@ export default function createApp(): express.Application {
   nunjucksSetup(app)
   app.use(setUpGovukOneLogin())
   app.use(setUpCsrf())
-  app.use(setUpGoogleTagManager())
 
   // Configure body-parser
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
 
   // Configure parsing cookies - required for storing nonce in authentication
-  app.use(cookieParser())
+  app.use(cookieParser(config.session.secret))
+  app.use(setUpGoogleTagManager())
 
   // Apply the general rate limiter to all requests to prevent abuse
   rateLimitSetup(app)

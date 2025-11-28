@@ -3,8 +3,8 @@ import { TokenStore } from './tokenStore'
 export default class InMemoryTokenStore implements TokenStore {
   tokenMap = new Map<string, { token: string; expiry: Date }>()
 
-  public async setToken(key: string, token: string, durationSeconds: number = 60 * 10): Promise<void> {
-    this.tokenMap.set(key, { token, expiry: new Date(Date.now() + durationSeconds * 1000) })
+  public async setToken(key: string, token: string, durationMilliSeconds: number = 60 * 10 * 1000): Promise<void> {
+    this.tokenMap.set(key, { token, expiry: new Date(Date.now() + durationMilliSeconds) })
     return Promise.resolve()
   }
 

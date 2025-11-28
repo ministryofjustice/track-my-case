@@ -12,7 +12,7 @@ import config from '../config'
 import { logger } from '../logger'
 import tokenStoreFactory from '../authentication/tokenStore/tokenStoreFactory'
 import paths from '../constants/paths'
-import { convertToTitleCase } from '../utils/utils'
+import { convertToTitleCase, encryptValue } from '../utils/utils'
 
 // Add property used in 'passport.authenticate(strategy, options, callback)'
 // strategy options for 'oicd' that is missing from @types/passport
@@ -41,11 +41,12 @@ const getSigningKey = (kid: string): Promise<string> => {
   })
 }
 
-export const removeTokenOnLogout = async (userId?: string): Promise<void> => {
-  logger.info(`Logging out user: ${userId}`)
-  if (userId !== undefined) {
+export const removeTokenOnLogout = async (sub?: string): Promise<void> => {
+  const encryptedUserSub = encryptValue(sub, config.session.secret)
+  logger.info(`Logging out user: ${encryptedUserSub}`)
+  if (sub !== undefined) {
     const tokenStore = tokenStoreFactory()
-    await tokenStore.removeToken(userId)
+    await tokenStore.removeToken(sub)
   }
 }
 
@@ -74,8 +75,6 @@ export const decodeTokenAndClear = async (logoutToken: string): Promise<void> =>
   try {
     // verify the signature
     const verifiedPayload = jwt.verify(logoutToken, oneLoginPublicKey as jwt.Secret) as jwt.JwtPayload
-    logger.info('Token verified')
-
     await removeTokenOnLogout(verifiedPayload.sub)
   } catch (error) {
     logger.error(`Error on token verification ${error}`)
@@ -109,7 +108,7 @@ export const setUpGovukOneLogin = (): Router => {
 
         res.status(200).send('Logout processed')
       } catch (error) {
-        logger.error(`Invalid logout token ${JSON.stringify(req.body)}:`, error)
+        logger.error(`Invalid logout response body, logout_token is missing`, error)
         res.status(400).send('Invalid logout token')
       }
     })

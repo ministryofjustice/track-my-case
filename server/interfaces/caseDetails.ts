@@ -47,7 +47,14 @@ export const caseDetailsSchema = z.object({
   courtSchedule: z.array(courtScheduleSchema),
 })
 
+export const caseDetailsResponseSchema = z.object({
+  caseDetails: caseDetailsSchema.optional(),
+  statusCode: z.number(),
+  message: z.string().optional().nullable(),
+})
+
 export type CaseDetails = z.infer<typeof caseDetailsSchema>
+export type CaseDetailsResponse = z.infer<typeof caseDetailsResponseSchema>
 
 export const serviceHealthSchema = z.object({
   status: z.string(),
