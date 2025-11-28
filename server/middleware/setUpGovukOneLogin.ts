@@ -4,7 +4,7 @@ import express from 'express'
 import passport from 'passport'
 import flash from 'connect-flash'
 import { BaseClient, EndSessionParameters, generators } from 'openid-client'
-import jwt, { Jwt } from 'jsonwebtoken'
+import { decode, Jwt, JwtPayload, Secret, verify } from 'jsonwebtoken'
 import jwksClient from 'jwks-rsa'
 import { jwtDecode } from 'jwt-decode'
 import govukOneLogin from '../authentication/govukOneLogin'
@@ -66,7 +66,7 @@ export const decodeTokenAndClear = async (logoutToken: string): Promise<void> =>
   }
 
   // decode to find the signing key header (kid)
-  const decodedToken: Jwt = jwt.decode(logoutToken, { complete: true })
+  const decodedToken: Jwt = decode(logoutToken, { complete: true })
   if (!decodedToken || !decodedToken.header || !decodedToken.header.kid) {
     throw new Error('Invalid logout token ')
   }
@@ -74,7 +74,7 @@ export const decodeTokenAndClear = async (logoutToken: string): Promise<void> =>
   const oneLoginPublicKey = await getSigningKey(decodedToken.header.kid)
   try {
     // verify the signature
-    const verifiedPayload = jwt.verify(logoutToken, oneLoginPublicKey as jwt.Secret) as jwt.JwtPayload
+    const verifiedPayload = verify(logoutToken, oneLoginPublicKey as Secret) as JwtPayload
     await removeTokenOnLogout(verifiedPayload.sub)
   } catch (error) {
     logger.error(`Error on token verification ${error}`)
@@ -120,12 +120,34 @@ export const setUpGovukOneLogin = (): Router => {
     })
 
     router.get(paths.PASSPORT.AUTH_CALLBACK, (req, res, next) => {
-      passport.authenticate(config.apis.govukOneLogin.strategyName, {
-        nonce: generators.nonce(),
-        successRedirect: config.serviceUrl + paths.CASES.DASHBOARD,
-        failureRedirect: config.serviceUrl + paths.ONE_LOGIN.AUTH_ERROR,
-        failureFlash: true,
-      })(req, res, next)
+      try {
+        return passport.authenticate(config.apis.govukOneLogin.strategyName, {
+          nonce: generators.nonce(),
+          successRedirect: config.serviceUrl + paths.CASES.DASHBOARD,
+          failureRedirect: config.serviceUrl + paths.ONE_LOGIN.AUTH_ERROR,
+          failureFlash: true,
+        })(req, res, (err: Error) => {
+          // Handle the specific error when session is lost (e.g., after redeployment)
+          if (err?.message?.includes('did not find expected authorization request details in session')) {
+            logger.warn(
+              `OIDC callback failed: session lost (likely due to server restart). Redirecting to sign-in. Request ID: ${req.id}`,
+            )
+            return res.redirect(config.serviceUrl + paths.PASSPORT.SIGN_IN)
+          }
+          // Pass other errors to the error handler
+          return next(err)
+        })
+      } catch (err) {
+        // Catch synchronous errors (e.g., when session is missing)
+        const error = err as Error
+        if (error?.message?.includes('did not find expected authorization request details in session')) {
+          logger.warn(
+            `OIDC callback failed: session lost (likely due to server restart). Redirecting to sign-in. Request ID: ${req.id}`,
+          )
+          return res.redirect(config.serviceUrl + paths.PASSPORT.SIGN_IN)
+        }
+        return next(err)
+      }
     })
 
     async function handleSignOut(req: Request, res: Response, next: NextFunction, redirectUri: string) {
