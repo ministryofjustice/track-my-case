@@ -32,7 +32,7 @@ jobs:
       new_tag: ${{ steps.set-version-tag-output.outputs.new_tag }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.75.0
@@ -95,7 +95,7 @@ jobs:
             --build-arg IV_DID_URI=$IV_DID_URI \
             --build-arg IV_ISSUER=$IV_ISSUER \
             --build-arg OIDC_TOKEN_AUTH_METHOD=$OIDC_TOKEN_AUTH_METHOD \
-            --build-arg OIDC_SCOPES=$OIDC_SCOPES \
+            --build-arg OIDC_SCOPES="$OIDC_SCOPES" \
             --build-arg OIDC_CLAIMS=$OIDC_CLAIMS \
             --build-arg OIDC_AUTHORIZE_REDIRECT_URL=$OIDC_AUTHORIZE_REDIRECT_URL \
             --build-arg OIDC_POST_LOGOUT_REDIRECT_URL=$OIDC_POST_LOGOUT_REDIRECT_URL \
