@@ -214,6 +214,7 @@ jobs:
           --set WebApp.Image.Tag=$NEW_TAG_V \
           --set WebApp.Name=$KUBE_NAMESPACE \
           --set Ingress.ModSec.Enabled=true \
+          --set Ingress.Paths="{/api,/courthouses,/case,/urnmapper}" \
           --set securityContext.allowPrivilegeEscalation=false \
           --set securityContext.capabilities.drop=["ALL"] \
           --set securityContext.runAsNonRoot=true \
