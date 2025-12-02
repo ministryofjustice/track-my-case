@@ -157,7 +157,7 @@
     "prettier-plugin-jinja-template": "^2.1.0",
     "supertest": "^7.1.4",
     "ts-jest": "^29.4.6",
-    "tsx": "^4.20.6",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },
   "overrides": {
