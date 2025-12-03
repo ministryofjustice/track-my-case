@@ -90,7 +90,7 @@
     "cookie-parser": "^1.4.7",
     "csrf-sync": "^4.2.1",
     "did-resolver": "^4.1.0",
-    "express": "^5.1.0",
+    "express": "^5.2.1",
     "express-rate-limit": "^8.2.1",
     "express-session": "^1.18.2",
     "govuk-frontend": "^5.13.0",
