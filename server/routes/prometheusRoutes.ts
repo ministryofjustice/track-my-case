@@ -9,8 +9,8 @@ export default function prometheusRoutes(app: express.Express): void {
       res.set('Content-Type', register.contentType)
       const metrics = await register.metrics()
       res.end(metrics)
-    } catch (error) {
-      res.status(500).end(error instanceof Error ? error.message : String(error))
+    } catch (e) {
+      res.status(500).end('Error calling /prometheus')
     }
   })
 }
