@@ -4,11 +4,12 @@ import { FormError, FormState } from '../interfaces/formState'
 import { initialiseBasicAuthentication } from '../helpers/initialise-basic-authentication'
 import paths from '../constants/paths'
 import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
-import CourtHearingService from '../services/courtHearingService'
 import { ServiceHealth } from '../interfaces/caseDetails'
+import HealthService from '../services/healthService'
+import { UP } from '../constants/healthStatus'
 
 const trackMyCaseApiClient = new TrackMyCaseApiClient()
-const courtHearingService = new CourtHearingService(trackMyCaseApiClient)
+const healthService = new HealthService(trackMyCaseApiClient)
 
 const getEnterUniqueReferenceNumber = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
@@ -25,8 +26,8 @@ const getEnterUniqueReferenceNumber = async (req: Request, res: Response, next: 
     res.locals.pageTitle = 'Find your court'
     res.locals.backLink = paths.CASES.DASHBOARD
 
-    const serviceHealth: ServiceHealth = await courtHearingService.getServiceHealth()
-    if (serviceHealth !== undefined) {
+    const serviceHealth: ServiceHealth = await healthService.getServiceHealth()
+    if (serviceHealth.status === UP) {
       res.render('pages/case/enter-unique-reference-number.njk')
     } else {
       res.locals.pageTitle = 'Enter your unique reference number - Service error'

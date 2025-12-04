@@ -51,8 +51,8 @@ const serviceUrl = replacePort(get('SERVICE_URL', ''), port)
 const oidcIssuer = get('OIDC_ISSUER', '', requiredInProduction)
 
 const config = {
+  productId: get('PRODUCT_ID', 'track-my-case', requiredInProduction),
   buildNumber: get('BUILD_NUMBER', '1_0_0', requiredInProduction),
-  productId: get('PRODUCT_ID', 'UNASSIGNED', requiredInProduction),
   branchName: get('GIT_BRANCH', 'main', requiredInProduction),
   gitRef: get('GIT_REF', 'HEAD', requiredInProduction),
   nodeEnv: get('NODE_ENV', 'development', requiredInProduction),
@@ -105,7 +105,6 @@ const config = {
         deadline: Number(get('TRACK_MY_CASE_API_TIMEOUT_DEADLINE', 30000)),
       },
       agent: new AgentConfig(Number(get('TRACK_MY_CASE_API_TIMEOUT_RESPONSE', 15000))),
-      enabled: get('TRACK_MY_CASE_API_ENABLED', 'false') === 'true',
     },
   },
   session: {
