@@ -1,8 +1,8 @@
 import superagent from 'superagent'
 import config from '../config'
-import { CaseDetails, ServiceHealth } from '../interfaces/caseDetails'
+import { ApiServiceHealth, CaseDetails } from '../interfaces/caseDetails'
 
-export type GetHealthRequestOptions = {
+export type GetRequestOptions = {
   path: string
 }
 
@@ -18,10 +18,12 @@ export type GetEmailRequestOptions = {
 export default class TrackMyCaseApiClient {
   constructor(private readonly baseUrl = config.apis.trackMyCaseApi.url) {}
 
-  async getHealth({ path }: GetHealthRequestOptions): Promise<ServiceHealth> {
-    const url = `${this.baseUrl}${path}`
-    const { body } = await superagent.get(url)
-    return body as ServiceHealth
+  async getHealth(): Promise<ApiServiceHealth> {
+    const url = `${this.baseUrl}/health`
+    const response = await superagent.get(url)
+    return {
+      status: response?.body?.status,
+    }
   }
 
   async getCaseDetailsByUrn({ path, userEmail }: GetPathAndEmailRequestOptions): Promise<CaseDetails> {

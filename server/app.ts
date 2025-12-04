@@ -18,10 +18,12 @@ import caseRoutes from './routes/caseRoutes'
 import oneLoginRoutes from './routes/oneLoginRoutes'
 import cookiesRoutes from './routes/cookiesRoutes'
 import healthRoutes from './routes/healthRoutes'
+import prometheusRoutes from './routes/prometheusRoutes'
 import { setUpGovukOneLogin } from './middleware/setUpGovukOneLogin'
 import { rateLimitSetup } from './utils/rateLimitSetUp'
 import setUpGoogleTagManager from './middleware/setUpGoogleTagManager'
 import config from './config'
+import { initializePrometheusMetrics } from './services/prometheusService'
 
 export default function createApp(): express.Application {
   const app = express()
@@ -31,8 +33,6 @@ export default function createApp(): express.Application {
   app.set('json spaces', 2)
   app.set('trust proxy', true)
   app.set('port', process.env.NODE_PORT || 9999)
-
-  // TODO: setup health checks
 
   app.use(setUpWebSecurity())
   app.use(setUpWebRequestParsing())
@@ -53,11 +53,15 @@ export default function createApp(): express.Application {
   // Apply the general rate limiter to all requests to prevent abuse
   rateLimitSetup(app)
 
+  // Initialize Prometheus metrics collection
+  initializePrometheusMetrics()
+
   indexRoutes(app)
   healthRoutes(app)
   cookiesRoutes(app)
   oneLoginRoutes(app)
   caseRoutes(app)
+  prometheusRoutes(app)
 
   app.use('/.well-known/appspecific', (req, res) => {
     res.status(404).send('Not Found')
