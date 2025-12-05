@@ -113,7 +113,7 @@
     "zod": "^4.1.13"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.1.0",
+    "@commitlint/cli": "^20.2.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@jgoz/esbuild-plugin-typecheck": "^4.0.4",
     "@ministryofjustice/eslint-config-hmpps": "^1.0.1",
