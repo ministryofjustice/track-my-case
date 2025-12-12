@@ -3,6 +3,7 @@ import asyncMiddleware from '../middleware/asyncMiddleware'
 import indexController from '../controllers/index-controller'
 import paths from '../constants/paths'
 import aboutTheServiceController from '../controllers/about-the-service-controller'
+import privacyNoticeController from '../controllers/privacy-notice-controller'
 
 export default function indexRoutes(app: express.Express): void {
   app.get(
@@ -16,6 +17,13 @@ export default function indexRoutes(app: express.Express): void {
     paths.ABOUT_THE_SERVICE,
     asyncMiddleware((req, res, next) => {
       aboutTheServiceController(req, res, next)
+    }),
+  )
+
+  app.get(
+    paths.PRIVACY_NOTICE,
+    asyncMiddleware((req, res, next) => {
+      privacyNoticeController(req, res, next)
     }),
   )
 }

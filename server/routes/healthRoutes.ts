@@ -10,4 +10,10 @@ export default function healthRoutes(app: express.Express): void {
       healthCheckController(req, res, next)
     }),
   )
+  app.get(
+    '/healthzz',
+    asyncMiddleware((req: Request, res: Response, next: NextFunction): void => {
+      healthCheckController(req, res, next)
+    }),
+  )
 }
