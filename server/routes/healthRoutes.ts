@@ -5,13 +5,7 @@ import healthCheckController from '../controllers/health-controller'
 
 export default function healthRoutes(app: express.Express): void {
   app.get(
-    paths.HEALTHZ,
-    asyncMiddleware((req: Request, res: Response, next: NextFunction): void => {
-      healthCheckController(req, res, next)
-    }),
-  )
-  app.get(
-    '/healthzz',
+    paths.HEALTH,
     asyncMiddleware((req: Request, res: Response, next: NextFunction): void => {
       healthCheckController(req, res, next)
     }),

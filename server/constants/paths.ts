@@ -1,5 +1,6 @@
 const paths = {
   START: '/',
+  HEALTH: '/health',
   HEALTHZ: '/healthz',
   ABOUT_THE_SERVICE: '/about-the-service',
   PRIVACY_NOTICE: '/privacy-notice',
