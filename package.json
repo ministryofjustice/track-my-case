@@ -110,7 +110,7 @@
     "sass": "^1.96.0",
     "superagent": "^10.2.3",
     "web-did-resolver": "^2.0.32",
-    "zod": "^4.1.13"
+    "zod": "^4.2.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.2.0",
