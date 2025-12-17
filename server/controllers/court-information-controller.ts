@@ -22,6 +22,11 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
     }
 
     const caseUrn: string = res.locals.selectedUrn
+    if (caseUrn.toUpperCase() === 'SERVICEDOWN') {
+      res.locals.pageTitle = 'Service unavailable'
+      return res.status(404).render('pages/case/service-error')
+    }
+
     const userEmail: string = res.locals.user.email
     const caseDetailsResponse = await courtHearingService.getCaseDetailsByUrn(caseUrn, userEmail)
     const { statusCode } = caseDetailsResponse
@@ -46,7 +51,7 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
           return res.render('pages/case/court-information')
         }
 
-        res.locals.pageTitle = 'Court Information - Not found'
+        res.locals.pageTitle = 'Court Information - No hearings allocated'
         return res.status(404).render('pages/case/court-information-no-hearings-allocated', {
           error: `No hearings allocated for this case`,
         })
