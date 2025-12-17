@@ -44,11 +44,10 @@ A reusable card-style block used to highlight a call to action on pages such as 
 
 ```nunjucks
 {{ actionCard(
-  "The Victims Code",
-  "Learn about your rights as a crime victim, including available support.",
-  "/case/victims-code",
-  "Read about the Victims Code",
-  "emphasised"
+  "Get to know your rights",
+  "Including making a victim personal statement, compensation, and your property.",
+  "/case/victim-personal-statement",
+  "Find out about your rights"
 ) }}
 ```
 

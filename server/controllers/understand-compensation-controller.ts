@@ -6,7 +6,7 @@ const understandCompensationController = async (req: Request, res: Response, nex
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Understand compensation'
+    res.locals.pageTitle = 'When you can claim compensation'
     res.locals.backLink = paths.CASES.DASHBOARD
 
     res.render('pages/case/understand-compensation')

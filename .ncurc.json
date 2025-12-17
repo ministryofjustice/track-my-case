@@ -1,4 +1,4 @@
 {
   "peer": true,
-  "reject": ["chokidar", "openid-client"]
+  "reject": ["@types/node", "chokidar", "cypress", "openid-client"]
 }
