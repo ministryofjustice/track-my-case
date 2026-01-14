@@ -14,7 +14,7 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Court Information'
+    res.locals.pageTitle = 'Court information'
     res.locals.backLink = paths.CASES.DASHBOARD
 
     if (!res.locals.selectedUrn) {
@@ -31,11 +31,11 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
     const caseDetailsResponse = await courtHearingService.getCaseDetailsByUrn(caseUrn, userEmail)
     const { statusCode } = caseDetailsResponse
     if (statusCode === 404) {
-      res.locals.pageTitle = 'Court Information - Not found'
+      res.locals.pageTitle = 'Court information - Not found'
       return res.status(404).render('pages/case/court-information-not-found')
     }
     if (statusCode === 403) {
-      res.locals.pageTitle = 'Court Information - Access denied'
+      res.locals.pageTitle = 'Court information - Access denied'
       return res.status(403).render('pages/case/court-information-access-denied')
     }
     if (statusCode === 200) {
@@ -51,18 +51,18 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
           return res.render('pages/case/court-information')
         }
 
-        res.locals.pageTitle = 'Court Information - No hearings allocated'
+        res.locals.pageTitle = 'Court information - No hearings allocated'
         return res.status(404).render('pages/case/court-information-no-hearings-allocated', {
           error: `No hearings allocated for this case`,
         })
       }
     }
-    res.locals.pageTitle = 'Court Information - Not found'
+    res.locals.pageTitle = 'Court information - Not found'
     return res.status(404).render('pages/case/court-information-not-found')
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(`Status ${error.status}, ${error.message}`)
-    res.locals.pageTitle = 'Court Information - Not found'
+    res.locals.pageTitle = 'Court information - Not found'
     return res.status(404).render('pages/case/court-information-not-found')
   }
 }
