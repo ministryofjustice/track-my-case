@@ -50,8 +50,8 @@ jobs:
           NODE_ENV: ${{ vars.NODE_ENV }}
           NODE_PORT: ${{ vars.NODE_PORT }}
           SERVICE_URL: ${{ vars.SERVICE_URL }}
-          OIDC_CLIENT_ID: ${{ secrets.XXX_OIDC_CLIENT_ID }}
-          OIDC_PRIVATE_KEY: ${{ secrets.XXX_OIDC_PRIVATE_KEY }}
+          OIDC_CLIENT_ID: ${{ secrets.OIDC_CLIENT_ID }}
+          OIDC_PRIVATE_KEY: ${{ secrets.OIDC_PRIVATE_KEY }}
           OIDC_ISSUER: ${{ vars.OIDC_ISSUER }}
           ONE_LOGIN_LINK: ${{ vars.ONE_LOGIN_LINK }}
           IV_DID_URI: ${{ vars.IV_DID_URI }}
@@ -138,6 +138,9 @@ jobs:
       id-token: write # This is required for requesting the JWT
     environment: preprod
     steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
       - name: Authenticate to the cluster
         env:
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
@@ -173,8 +176,6 @@ jobs:
           SECRETS_CONTEXT:  ${{ toJson(secrets) }}
           VARS_CONTEXT:  ${{ toJson(vars) }}
         run: |
-          process_ip_range=$(echo $IP_RANGES | sed "s/,/\\\,/g")
-
           combined_json=$(jq -n \
               --argjson secrets_json "$SECRETS_CONTEXT" \
               --argjson vars_json "$VARS_CONTEXT" \
