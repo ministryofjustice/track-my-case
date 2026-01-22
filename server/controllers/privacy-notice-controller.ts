@@ -2,11 +2,11 @@ import { NextFunction, Request, Response } from 'express'
 import { initialiseBasicAuthentication } from '../helpers/initialise-basic-authentication'
 import paths from '../constants/paths'
 
-const aboutTheServiceController = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+const privacyNoticeController = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'About the Track my case service'
+    res.locals.pageTitle = 'Privacy notice'
 
     if (res.locals.authenticated) {
       if (req.headers?.referer && new URL(req.headers?.referer)?.pathname === paths.START) {
@@ -18,10 +18,10 @@ const aboutTheServiceController = async (req: Request, res: Response, next: Next
       res.locals.backLink = paths.START
     }
 
-    res.render('pages/about-the-service')
+    res.render('pages/privacy-notice')
   } catch (error) {
     next(error)
   }
 }
 
-export default aboutTheServiceController
+export default privacyNoticeController

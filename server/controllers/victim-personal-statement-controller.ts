@@ -6,7 +6,7 @@ const victimPersonalStatementController = async (req: Request, res: Response, ne
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Victim personal statement'
+    res.locals.pageTitle = 'Giving a Victim Personal Statement'
     res.locals.backLink = paths.CASES.DASHBOARD
 
     res.render('pages/case/victim-personal-statement')

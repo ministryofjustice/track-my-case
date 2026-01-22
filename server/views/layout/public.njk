@@ -6,7 +6,8 @@
 {% set govukRebrand = true %}
 
 {% block head %}
-  <link href="{{ '/assets/css/index.css' | assetMap }}" rel="stylesheet"/>
+  <link href="{{ '/assets/css/index.css' | assetMap }}" rel="stylesheet" />
+  <meta name="google-site-verification" content="ThvYU2V6sfjD-kyyj2zaZ8lZUxn-8qnsoiQCaFZHccQ" />
   {% include "partials/google-tag-manager-noscript.njk" %}
 {% endblock %}
 
@@ -25,7 +26,7 @@
   {% include "partials/header.njk" %}
   {{ govukPhaseBanner({
     tag: {
-      text: "Alpha"
+      text: "Beta"
     },
     html: 'This is a new service. <a href="/about-the-service" class="govuk-link" id="about-the-service">Find out more and help us improve it</a>.'
   }) }}

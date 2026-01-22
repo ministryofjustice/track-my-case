@@ -15,8 +15,6 @@ views/
 │   └── footer.njk
 │
 ├── components/
-│   └── support-box/
-│       └── macro.njk
 │   └── (planned) case-summary-card/
 │
 ├── pages/

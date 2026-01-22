@@ -56,8 +56,22 @@ export const caseDetailsResponseSchema = z.object({
 export type CaseDetails = z.infer<typeof caseDetailsSchema>
 export type CaseDetailsResponse = z.infer<typeof caseDetailsResponseSchema>
 
+export const applicationInfoSchema = z.object({
+  productId: z.string(),
+})
+
+export type ApplicationInfo = z.infer<typeof applicationInfoSchema>
+
+export const apiServiceHealthSchema = z.object({
+  status: z.string(),
+})
+
+export type ApiServiceHealth = z.infer<typeof apiServiceHealthSchema>
+
 export const serviceHealthSchema = z.object({
   status: z.string(),
+  reason: z.string().optional().nullable(),
+  application: applicationInfoSchema.optional().nullable(),
 })
 
 export type ServiceHealth = z.infer<typeof serviceHealthSchema>
