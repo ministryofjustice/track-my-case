@@ -129,25 +129,25 @@
   "schemaVersion": 40,
   "tags": [
     "VP",
-    "track-my-case-dev",
-    "monitoring-helmcharts"
+    "{{ .Release.Namespace }}",
+    "{{ .Release.Name }}"    
   ],
   "templating": {
     "list": [
       {
         "current": {
-          "text": "track-my-case-dev",
-          "value": "track-my-case-dev"
+          "text": "{{ .Release.Namespace }}",
+          "value": "{{ .Release.Namespace }}"
         },
         "name": "service",
         "options": [
           {
             "selected": true,
-            "text": "track-my-case-dev",
-            "value": "track-my-case-dev"
+            "text": "{{ .Release.Namespace }}",
+            "value": "{{ .Release.Namespace }}"
           }
         ],
-        "query": "track-my-case-dev",
+        "query": "{{ .Release.Namespace }}",
         "type": "custom"
       }
     ]
