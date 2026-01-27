@@ -24,6 +24,7 @@ import { rateLimitSetup } from './utils/rateLimitSetUp'
 import setUpGoogleTagManager from './middleware/setUpGoogleTagManager'
 import config from './config'
 import { initializePrometheusMetrics } from './services/prometheusService'
+import setUpReqUrlParser from './middleware/setUpReqUrlParser'
 
 export default function createApp(): express.Application {
   const app = express()
@@ -55,6 +56,8 @@ export default function createApp(): express.Application {
 
   // Initialize Prometheus metrics collection
   initializePrometheusMetrics()
+
+  app.use(setUpReqUrlParser())
 
   indexRoutes(app)
   healthRoutes(app)
