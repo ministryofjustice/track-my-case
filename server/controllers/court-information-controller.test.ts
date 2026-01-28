@@ -72,9 +72,10 @@ describe('court-information-controller', () => {
     const { req, res, next } = createReqRes()
 
     const caseDetailsResponse: CaseDetailsResponse = getMockCaseDetailsResponse()
+    const hearing = caseDetailsResponse.caseDetails.courtSchedule[0].hearings[0]
     const hearingSummary = {
       hearingType: 'Trial',
-      dateTime: '01 January 2025, 10:00',
+      sittingStart: '01 January 2025, 10:00',
       location: { courtHouseName: 'Southwark Crown Court' },
     }
 
@@ -86,7 +87,7 @@ describe('court-information-controller', () => {
 
     expect(mockInitialiseBasicAuthentication).toHaveBeenCalled()
     expect(mockGetCaseDetailsByUrn).toHaveBeenCalledWith('CASE123', defaultUserEmail)
-    expect(mockMapCaseDetailsToHearingSummary).toHaveBeenCalledWith(caseDetailsResponse.caseDetails)
+    expect(mockMapCaseDetailsToHearingSummary).toHaveBeenCalledWith(hearing)
     expect(mockGetCourtUrl).toHaveBeenCalledWith('Southwark Crown Court')
     expect(res.locals.courtUrl).toBe('https://example/court')
     expect(res.render).toHaveBeenCalledWith('pages/case/court-information')

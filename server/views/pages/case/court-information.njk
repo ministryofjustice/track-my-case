@@ -32,29 +32,50 @@
 
     {% if hearingData %}
 
+      {% set rows = [] %}
+
+      {% if displayHearing %}
+        {% set rows = rows.concat([
+          {
+            key: { text: "Hearing type" },
+            value: { html: hearingData.hearingType + "<br><br><span>This service will only show trial or sentencing hearings.</span>" }
+          },
+          {
+            key: { text: "Expected start date" },
+            value: { html: hearingData.sittingStart }
+          },
+          {
+            key: { text: "Expected to last" },
+            value: { html: '<span title="' + hearingData.sittingEnd + '">' + hearingData.sittingPeriod + '</span>' }
+          }
+        ]) %}
+      {% endif %}
+
+      {% set rows = rows.concat([
+        {
+          key: { text: "Court name" },
+          value: {
+            html: hearingData.location.courtHouseName ~ "<br><br><span>This is the court as it has been listed. The court location will be confirmed by a Witness Care Officer up to 24 hours before the hearing.</span>"
+          }
+        },
+        {
+          key: { text: "Court address" },
+          value: {
+            html: hearingData.location.addressLines | join(', ') ~
+            ", " ~ hearingData.location.postcode ~ ", " ~ hearingData.location.country
+          }
+        },
+        {
+          key: { text: "Court information" },
+          value: {
+            html: '<a href="' + courtUrl + '" target="_blank">Information including directions, parking, and access (opens in new tab)</a>'
+          }
+        }
+      ]) %}
+
       <div class="govuk-!-margin-bottom-6">
         {{ govukSummaryList({
-          rows: [
-            {
-              key: { text: "Court name" },
-              value: {
-                html: hearingData.location.courtHouseName ~ "<br><br><span>This is the court as it has been listed. The court location will be confirmed by a Witness Care Officer up to 24 hours before the hearing.</span>"
-              }
-            },
-            {
-              key: { text: "Court address" },
-              value: {
-                html: hearingData.location.addressLines | join(', ') ~
-                      ", " ~ hearingData.location.postcode ~ ", " ~ hearingData.location.country
-              }
-            },
-            {
-              key: { text: "Court information" },
-              value: {
-                html: '<a href="' + courtUrl + '" target="_blank">Information including directions, parking, and access (opens in new tab)</a>'
-              }
-            }
-          ]
+          rows: rows
         }) }}
       </div>
 

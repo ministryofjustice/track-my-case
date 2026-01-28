@@ -38,6 +38,7 @@ export const hearingSchema = z.object({
   listNote: z.string(),
   courtSittings: z.array(courtSittingSchema),
 })
+export type HearingDetails = z.infer<typeof hearingSchema>
 
 export const courtScheduleSchema = z.object({
   hearings: z.array(hearingSchema),

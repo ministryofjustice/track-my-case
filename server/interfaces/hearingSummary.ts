@@ -1,6 +1,8 @@
 export interface HearingSummary {
   hearingType: string
-  dateTime: string
+  sittingStart: string
+  sittingEnd: string
+  sittingPeriod: string
   location: {
     courtHouseName: string
     courtRoomName: string

@@ -54,6 +54,9 @@ describe('toBoolean', () => {
     expect(toBoolean('0')).toBe(false)
     expect(toBoolean('yes')).toBe(false)
     expect(toBoolean('no')).toBe(false)
+    expect(toBoolean('1.0')).toBe(false)
+    expect(toBoolean('2')).toBe(false)
+    expect(toBoolean(2)).toBe(false)
   })
 })
 
