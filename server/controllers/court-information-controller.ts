@@ -6,6 +6,8 @@ import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
 import mapCaseDetailsToHearingSummary from '../mappers/mapCaseDetailsToHearingSummary'
 import paths from '../constants/paths'
 import courts from '../constants/courts'
+import config from '../config'
+import { HearingDetails } from '../interfaces/caseDetails'
 
 const trackMyCaseApiClient = new TrackMyCaseApiClient()
 const courtHearingService = new CourtHearingService(trackMyCaseApiClient)
@@ -16,6 +18,8 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
 
     res.locals.pageTitle = 'Court information'
     res.locals.backLink = paths.CASES.DASHBOARD
+
+    res.locals.displayHearing = config.featureFlags.displayHearing
 
     if (!res.locals.selectedUrn) {
       return res.redirect(paths.CASES.SEARCH)
@@ -44,7 +48,8 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
         const courtSchedule = res.locals.caseDetails?.courtSchedule[0]
 
         if (courtSchedule?.hearings?.length > 0) {
-          res.locals.hearingData = mapCaseDetailsToHearingSummary(res.locals.caseDetails)
+          const hearing: HearingDetails = courtSchedule.hearings[0]
+          res.locals.hearingData = mapCaseDetailsToHearingSummary(hearing)
           const courtUrl = courts.getCourtUrl(res.locals.hearingData.location.courtHouseName)
           res.locals.courtUrl = courtUrl ?? 'https://www.find-court-tribunal.service.gov.uk/'
 
