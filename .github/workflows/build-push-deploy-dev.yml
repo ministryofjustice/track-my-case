@@ -1,9 +1,6 @@
 name: CI/CD dev
 
 on:
-  push:
-    branches:
-      - develop
   workflow_dispatch:
 
 permissions: {}
