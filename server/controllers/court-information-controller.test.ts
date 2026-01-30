@@ -76,6 +76,7 @@ describe('court-information-controller', () => {
     const hearingSummary = {
       hearingType: 'Trial',
       sittingStart: '01 January 2025, 10:00',
+      trialStartInMonthsAndDays: '2 months and 22 days',
       location: { courtHouseName: 'Southwark Crown Court' },
     }
 
