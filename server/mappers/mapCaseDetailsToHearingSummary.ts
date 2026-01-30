@@ -87,14 +87,14 @@ export const monthsAndDaysUntil = (sittingStart?: string): string => {
 
 const mapCaseDetailsToHearingSummary = (hearing: HearingDetails): HearingSummary => {
   const sitting = hearing.courtSittings[0]
-  // const room = sitting?.courtHouse?.courtRoom[0]
+  const numberOfSittings = hearing.courtSittings?.length || 0
   const address = sitting?.courtHouse?.address
 
   return {
     hearingType: hearing?.hearingType ?? 'Unknown',
     sittingStart: formatDateTime(sitting?.sittingStart),
     sittingEnd: formatDateTime(sitting?.sittingEnd),
-    sittingPeriod: calculateSittingPeriod(sitting?.sittingStart, sitting?.sittingEnd),
+    sittingPeriod: `${numberOfSittings} day${numberOfSittings > 1 ? 's' : ''}`,
     trialStartInMonthsAndDays: monthsAndDaysUntil(sitting?.sittingStart),
     location: {
       courtHouseName: sitting?.courtHouse?.courtHouseName ?? '',
