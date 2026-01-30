@@ -3,6 +3,7 @@ export interface HearingSummary {
   sittingStart: string
   sittingEnd: string
   sittingPeriod: string
+  trialStartInMonthsAndDays: string
   location: {
     courtHouseName: string
     courtRoomName: string
