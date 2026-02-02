@@ -126,4 +126,4 @@ integration_tests/screenshots/
 **/Chart.lock
 **/.DS_Store
 
-.github/copilot-instructions.md
+.github/*-instructions.md
