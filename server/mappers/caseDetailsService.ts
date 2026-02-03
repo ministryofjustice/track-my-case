@@ -169,7 +169,8 @@ export const getHearingMessage8daysTo1month = (
     return {
       title: `The expected trial start date is in ${monthsWeeksDays}`,
       description:
-        'If you’re going to court to give evidence, you can get support to help you prepare. Find out about the Witness Service.',
+        'If you’re going to court to give evidence, you can get support to help you prepare. ' +
+        '<a href="https://www.citizensadvice.org.uk/about-us/information/about-the-witness-service/" target="_blank">Find out about the Witness Service (opens in new tab)</a>.',
     }
   }
   if (hearingType.startsWith(HEARING_TYPE.SENTENCE)) {
