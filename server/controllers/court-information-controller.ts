@@ -3,11 +3,11 @@ import { initialiseBasicAuthentication } from '../helpers/initialise-basic-authe
 import CourtHearingService from '../services/courtHearingService'
 import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
 
-import mapCaseDetailsToHearingSummary from '../mappers/mapCaseDetailsToHearingSummary'
 import paths from '../constants/paths'
 import courts from '../constants/courts'
 import config from '../config'
 import { HearingDetails } from '../interfaces/caseDetails'
+import { mapCaseDetailsToHearingSummary } from '../mappers/caseDetailsService'
 
 const trackMyCaseApiClient = new TrackMyCaseApiClient()
 const courtHearingService = new CourtHearingService(trackMyCaseApiClient)

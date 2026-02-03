@@ -2,10 +2,6 @@ name: CI/CD test
 
 on:
   workflow_dispatch:
-    inputs:
-      ref:
-        description: 'Git ref (sha/tag/branch) to build/deploy; empty = current HEAD'
-        required: true
 permissions: {}
 concurrency:
   group: test
