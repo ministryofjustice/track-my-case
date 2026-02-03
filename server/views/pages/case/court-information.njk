@@ -23,8 +23,8 @@
     {% if hearingData %}
 
       {{ govukInsetText({
-        html: "<strong>The expected trial start date " + (hearingData.trialStartInMonthsAndDays) + "</strong>" +
-        '<p class="govuk-hint govuk-!-margin-top-2">' + "If you're going to court to give evidence, speak with your police witness care unit if you have any additional needs. They can make sure you get the right support.</p>"
+        html: "<strong>" + (hearingData.hearingStartDateMessage.title) + "</strong>" +
+        '<p class="govuk-hint govuk-!-margin-top-2">' + hearingData.hearingStartDateMessage.description + '</p>'
       }) }}
 
       {% set rows = [{
@@ -46,7 +46,7 @@
           },
           {
             key: { text: "Expected to last" },
-            value: { html: '<span title="' + hearingData.sittingEnd + '">' + hearingData.sittingPeriod + '</span>' }
+            value: { html: '<span title="' + hearingData.sittingPeriodTooltip + '">' + hearingData.sittingPeriod + '</span>' }
           }
         ]) %}
       {% endif %}
@@ -56,7 +56,7 @@
           key: { text: "Court name" },
           value: {
             html: hearingData.location.courtHouseName ~
-            '<p class="govuk-hint govuk-!-margin-top-3">The court location may be subject to change. It will be confirmed by the police witness care unit or officer in charge of the investigation.</p>'
+            '<p class="govuk-hint govuk-!-margin-top-3">The court location can change. Your police witness care unit or officer in charge of the investigation will update you.</p>'
           }
         },
         {

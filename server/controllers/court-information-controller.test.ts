@@ -3,6 +3,7 @@ import paths from '../constants/paths'
 import { CaseDetailsResponse } from '../interfaces/caseDetails'
 import { getMockCaseDetailsResponse } from '../services/mock/mock-response'
 import courtInformationController from './court-information-controller'
+import { HEARING_TYPE, HearingSummary } from '../interfaces/hearingSummary'
 
 // Mocks that must be set up BEFORE importing the controller under test
 const mockInitialiseBasicAuthentication = jest.fn().mockResolvedValue(undefined)
@@ -11,9 +12,9 @@ jest.mock('../helpers/initialise-basic-authentication', () => ({
 }))
 
 const mockMapCaseDetailsToHearingSummary = jest.fn()
-jest.mock('../mappers/mapCaseDetailsToHearingSummary', () => ({
+jest.mock('../mappers/caseDetailsService', () => ({
   __esModule: true,
-  default: (...args: unknown[]) => mockMapCaseDetailsToHearingSummary(...args),
+  mapCaseDetailsToHearingSummary: (...args: unknown[]) => mockMapCaseDetailsToHearingSummary(...args),
 }))
 
 const mockGetCourtUrl = jest.fn()
@@ -73,11 +74,22 @@ describe('court-information-controller', () => {
 
     const caseDetailsResponse: CaseDetailsResponse = getMockCaseDetailsResponse()
     const hearing = caseDetailsResponse.caseDetails.courtSchedule[0].hearings[0]
-    const hearingSummary = {
-      hearingType: 'Trial',
+    const hearingSummary: HearingSummary = {
+      hearingType: HEARING_TYPE.TRIAL,
       sittingStart: '01 January 2025, 10:00',
-      trialStartInMonthsAndDays: '2 months and 22 days',
-      location: { courtHouseName: 'Southwark Crown Court' },
+      hearingStartDateMessage: {
+        title: '2 months and 22 days',
+        description: 'some description',
+      },
+      sittingEnd: '',
+      sittingPeriod: '',
+      location: {
+        courtHouseName: 'Southwark Crown Court',
+        courtRoomName: '',
+        addressLines: [],
+        postcode: '',
+        country: '',
+      },
     }
 
     mockGetCaseDetailsByUrn.mockResolvedValue(caseDetailsResponse)
@@ -112,7 +124,7 @@ describe('court-information-controller', () => {
 
     await courtInformationController(req, res, next)
 
-    expect(res.locals.courtUrl).toBe('https://www.find-court-tribunal.service.gov.uk/')
+    expect(res.locals.courtUrl).toEqual('https://www.find-court-tribunal.service.gov.uk/')
     expect(res.render).toHaveBeenCalledWith('pages/case/court-information')
   })
 
