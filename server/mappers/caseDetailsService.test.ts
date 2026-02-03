@@ -292,7 +292,8 @@ describe('getHearingStartDateMessageFromDate', () => {
     const message1 = getHearingStartDateMessageFromDate(HEARING_TYPE.TRIAL, '2026-02-01T14:00', '2026-01-01')
     expect(message1.title).toBe('The expected trial start date is in 1 month')
     expect(message1.description).toBe(
-      'If you’re going to court to give evidence, you can get support to help you prepare. Find out about the Witness Service.',
+      'If you’re going to court to give evidence, you can get support to help you prepare. ' +
+        '<a href="https://www.citizensadvice.org.uk/about-us/information/about-the-witness-service/" target="_blank">Find out about the Witness Service (opens in new tab)</a>.',
     )
 
     const message2 = getHearingStartDateMessageFromDate(HEARING_TYPE.SENTENCE, '2026-02-01T14:00', '2026-01-01')
