@@ -27,7 +27,7 @@ export const healthCheckStatusGauge = new Gauge({
 })
 
 // HTTP request counter
-export const httpRequestCounter = new Counter({
+export const httpRequestsTotal = new Counter({
   name: 'tmc_ui_http_requests_total',
   help: 'Total number of HTTP requests',
   labelNames: ['method', 'route', 'status_code'],
