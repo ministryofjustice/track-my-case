@@ -25,6 +25,7 @@ import setUpGoogleTagManager from './middleware/setUpGoogleTagManager'
 import config from './config'
 import { initializePrometheusMetrics } from './services/prometheusService'
 import setUpReqUrlParser from './middleware/setUpReqUrlParser'
+import setUpPrometheusMetrics from './middleware/setUpPrometheusMetrics'
 
 export default function createApp(): express.Application {
   const app = express()
@@ -58,6 +59,8 @@ export default function createApp(): express.Application {
   initializePrometheusMetrics()
 
   app.use(setUpReqUrlParser())
+
+  app.use(setUpPrometheusMetrics())
 
   indexRoutes(app)
   healthRoutes(app)
