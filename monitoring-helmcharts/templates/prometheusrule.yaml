@@ -7,10 +7,10 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  namespace: {{ .Values.namespace }}
+  namespace: "{{ .Values.namespace }}"
   labels:
     role: alert-rules
-  name: alerting-rules-{{ .Values.serviceName }}
+  name: "alerting-rules-{{ .Values.serviceName }}"
 spec:
   groups:
     - name: kubernetes-apps
