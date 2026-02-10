@@ -76,9 +76,7 @@ spec:
             severity: {{ .Values.alertLabels.severity }}
         - alert: KubeDeploymentGenerationMismatch # ‼️ Critical alert
           annotations:
-            message: Deployment generation for {{ "{{" }} $labels.namespace {{ "}}" }}/{{ "{{" }} $labels.deployment
-              {{ "}}" }} does not match, this indicates that the Deployment has failed but has
-              not been rolled back.
+            message: Deployment generation for {{ "{{" }} $labels.namespace {{ "}}" }}/{{ "{{" }} $labels.deployment {{ "}}" }} does not match, this indicates that the Deployment has failed but has not been rolled back.
             runbook_url: https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook.md#alert-name-kubedeploymentgenerationmismatch
           expr: |-
             kube_deployment_status_observed_generation{job="kube-state-metrics", namespace="{{ .Values.namespace }}"}
@@ -89,7 +87,8 @@ spec:
             severity: {{ .Values.alertLabels.severity }}
         - alert: TrackMyCaseServiceDown
           annotations:
-            message: "{{ .Values.serviceName }} service is completely DOWN in {{ "{{" }} $labels.namespace {{ "}}" }}"
+            message: >-
+              {{ .Values.serviceName }} service is completely DOWN in {{ "{{" }} $labels.namespace {{ "}}" }}
             runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeservicedown
           expr: |-
             (max(up{namespace="{{ .Values.namespace }}", service="{{ .Values.serviceName }}"}) or vector(0)) == 0
@@ -98,7 +97,8 @@ spec:
             severity: {{ .Values.alertLabels.severity }}
         - alert: HighPodMemoryUsage
           annotations:
-            message: "Pod {{ "{{" }} $labels.pod {{ "}}" }} memory usage > 90%"
+            message: >-
+              Pod {{ "{{" }} $labels.pod {{ "}}" }} memory usage is greater than 90%
           expr: |-
             (container_memory_working_set_bytes{namespace="{{ .Values.namespace }}", pod=~"{{ .Values.serviceName }}-.*"} 
             / container_spec_memory_limit_bytes{namespace="{{ .Values.namespace }}", pod=~"{{ .Values.serviceName }}-.*"}) 
