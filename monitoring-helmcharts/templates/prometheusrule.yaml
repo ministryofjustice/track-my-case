@@ -1,13 +1,13 @@
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # This file contains Prometheus alerting rules for {{ .Values.namespace }} namespace.
 # The alert severity labels determine which alertmanager receiver the alerts are sent to.
 # ‼️ Critical alert - send to {{ .Values.serviceName }}
 # ⚠️ Warning alert - send to {{ .Values.serviceName }}
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  namespace: {{ .Values.namespace }}
+  namespace: { { .Values.namespace } }
   labels:
     role: alert-rules
   name: alerting-rules-{{ .Values.serviceName }}
@@ -27,7 +27,7 @@ spec:
               > 0.9 < 1
           for: 15m
           labels:
-            severity: {{ .Values.alertLabels.severity }}
+            severity: { { .Values.alertLabels.severity } }
         - alert: KubeQuota-Exceeded # ‼️ Critical alert
           annotations:
             message: Namespace {{ "{{" }} $labels.namespace {{ "}}" }} is using {{ "{{" }} printf "%0.0f" $value
@@ -40,7 +40,7 @@ spec:
             > 90
           for: 15m
           labels:
-            severity: {{ .Values.alertLabels.severity }}
+            severity: { { .Values.alertLabels.severity } }
         - alert: KubePodCrashLooping # ‼️ Critical alert
           # pint file/disable alerts/template
           annotations:
@@ -51,7 +51,7 @@ spec:
             rate(kube_pod_container_status_restarts_total{job="kube-state-metrics", namespace="{{ .Values.namespace }}"}[5m]) * 60 > 0
           for: 5m
           labels:
-            severity: {{ .Values.alertLabels.severity }}
+            severity: { { .Values.alertLabels.severity } }
         - alert: KubePodNotReady
           annotations:
             message: A single pod {{ "{{" }} $labels.namespace {{ "}}" }}/{{ "{{" }} $labels.pod {{ "}}" }} has been in a non-ready
@@ -62,7 +62,7 @@ spec:
             > 0
           for: 15m
           labels:
-            severity: {{ .Values.alertLabels.severity }}
+            severity: { { .Values.alertLabels.severity } }
         - alert: KubePodsMultipleNotReady # ‼️ Critical alert
           annotations:
             message: 2 or more pods in {{ "{{" }} $labels.namespace {{ "}}" }} have been in a non-ready
@@ -73,7 +73,7 @@ spec:
             >= 2
           for: 5m
           labels:
-            severity: {{ .Values.alertLabels.severity }}
+            severity: { { .Values.alertLabels.severity } }
         - alert: KubeDeploymentGenerationMismatch # ‼️ Critical alert
           annotations:
             message: Deployment generation for {{ "{{" }} $labels.namespace {{ "}}" }}/{{ "{{" }} $labels.deployment
@@ -86,4 +86,4 @@ spec:
             kube_deployment_metadata_generation{job="kube-state-metrics", namespace="{{ .Values.namespace }}"}
           for: 15m
           labels:
-            severity: {{ .Values.alertLabels.severity }}
+            severity: { { .Values.alertLabels.severity } }
