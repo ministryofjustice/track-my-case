@@ -7,10 +7,10 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  namespace: "{{ .Values.namespace }}"
+  namespace: '{{ .Values.namespace }}'
   labels:
     role: alert-rules
-  name: "alerting-rules-{{ .Values.serviceName }}"
+  name: 'alerting-rules-{{ .Values.serviceName }}'
 spec:
   groups:
     - name: kubernetes-apps
@@ -27,7 +27,7 @@ spec:
               > 0.9 < 1
           for: 15m
           labels:
-            severity: {{ .Values.alertLabels.severity }}
+            severity: { { .Values.alertLabels.severity } }
         - alert: KubeQuota-Exceeded # ‼️ Critical alert
           annotations:
             message: Namespace {{ "{{" }} $labels.namespace {{ "}}" }} is using {{ "{{" }} printf "%0.0f" $value
@@ -40,7 +40,7 @@ spec:
             > 90
           for: 15m
           labels:
-            severity: {{ .Values.alertLabels.severity }}
+            severity: { { .Values.alertLabels.severity } }
         - alert: KubePodCrashLooping # ‼️ Critical alert
           # pint file/disable alerts/template
           annotations:
@@ -51,7 +51,7 @@ spec:
             rate(kube_pod_container_status_restarts_total{job="kube-state-metrics", namespace="{{ .Values.namespace }}"}[5m]) * 60 > 0
           for: 5m
           labels:
-            severity: {{ .Values.alertLabels.severity }}
+            severity: { { .Values.alertLabels.severity } }
         - alert: KubePodNotReady
           annotations:
             message: A single pod {{ "{{" }} $labels.namespace {{ "}}" }}/{{ "{{" }} $labels.pod {{ "}}" }} has been in a non-ready
@@ -62,7 +62,7 @@ spec:
             > 0
           for: 5m
           labels:
-            severity: {{ .Values.alertLabels.severity }}
+            severity: { { .Values.alertLabels.severity } }
         - alert: KubePodsMultipleNotReady # ‼️ Critical alert
           annotations:
             message: 2 or more pods in {{ "{{" }} $labels.namespace {{ "}}" }} have been in a non-ready
@@ -73,7 +73,7 @@ spec:
             >= 2
           for: 5m
           labels:
-            severity: {{ .Values.alertLabels.severity }}
+            severity: { { .Values.alertLabels.severity } }
         - alert: KubeDeploymentGenerationMismatch # ‼️ Critical alert
           annotations:
             message: Deployment generation for {{ "{{" }} $labels.namespace {{ "}}" }}/{{ "{{" }} $labels.deployment {{ "}}" }} does not match, this indicates that the Deployment has failed but has not been rolled back.
@@ -84,7 +84,7 @@ spec:
             kube_deployment_metadata_generation{job="kube-state-metrics", namespace="{{ .Values.namespace }}"}
           for: 15m
           labels:
-            severity: {{ .Values.alertLabels.severity }}
+            severity: { { .Values.alertLabels.severity } }
         - alert: TrackMyCaseServiceDown
           annotations:
             message: >-
@@ -94,7 +94,7 @@ spec:
             (max(up{namespace="{{ .Values.namespace }}", service="{{ .Values.serviceName }}"}) or vector(0)) == 0
           for: 2m
           labels:
-            severity: {{ .Values.alertLabels.severity }}
+            severity: { { .Values.alertLabels.severity } }
         - alert: HighPodMemoryUsage
           annotations:
             message: >-
@@ -105,4 +105,4 @@ spec:
             > 0.9
           for: 5m
           labels:
-            severity: {{ .Values.alertLabels.severity }}
+            severity: { { .Values.alertLabels.severity } }
