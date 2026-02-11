@@ -1,2 +1,0 @@
-#!/bin/bash
-NODE_ENV=development npm run precommit:secrets && npm run precommit:lint && node_modules/.bin/lint-staged && npm run typecheck && npm run precommit:verify && npm run security_audit

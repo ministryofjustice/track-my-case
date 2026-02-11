@@ -1,3 +1,13 @@
+/* Optional: only apply on wide screens */
+@media (min-width: 40.0625em) {
+  .action-card-list__row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 170px;
+  }
+}
+
 .action-card {
   border: 1px solid #b1b4b6;
   background: #ffffff;
@@ -68,8 +78,3 @@
   }
 }
 
-// Custom colour modifier for the notification badge
-.moj-notification-badge--blue {
-  background-color: #1d70b8;
-  color: #ffffff;
-}
