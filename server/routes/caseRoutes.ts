@@ -19,13 +19,9 @@ import victimsJourneyController from '../controllers/victims-journey-controller'
 import victimPersonalStatementController from '../controllers/victim-personal-statement-controller'
 import victimSupportLinksController from '../controllers/victim-support-links-controller'
 import witnessServiceController from '../controllers/witness-service-controller'
+import keyRolesController from '../controllers/key-roles-controller'
 
 export default function caseRoutes(app: express.Express): void {
-  // Page: Enter your unique reference number
-  // https://www.gov.uk/government/publications/common-platform-unique-reference-number-urn/purpose-of-the-urn-and-how-to-obtain-it
-  app.get(paths.CASES.SEARCH, AuthenticatedUser, asyncMiddleware(getEnterUniqueReferenceNumber))
-  app.post(paths.CASES.SEARCH, AuthenticatedUser, asyncMiddleware(postEnterUniqueReferenceNumber))
-
   // Page: Case dashboard
   app.get(
     paths.CASES.DASHBOARD,
@@ -35,6 +31,7 @@ export default function caseRoutes(app: express.Express): void {
     }),
   )
 
+  // Card: Find your court information
   app.get(
     paths.CASES.COURT_INFORMATION,
     AuthenticatedUser,
@@ -43,6 +40,12 @@ export default function caseRoutes(app: express.Express): void {
     }),
   )
 
+  // Page: Enter your unique reference number
+  // https://www.gov.uk/government/publications/common-platform-unique-reference-number-urn/purpose-of-the-urn-and-how-to-obtain-it
+  app.get(paths.CASES.SEARCH, AuthenticatedUser, asyncMiddleware(getEnterUniqueReferenceNumber))
+  app.post(paths.CASES.SEARCH, AuthenticatedUser, asyncMiddleware(postEnterUniqueReferenceNumber))
+
+  // Unknown: ToDo should be removed
   app.get(
     paths.CASES.SUPPORT_GUIDANCE,
     AuthenticatedUser,
@@ -51,6 +54,7 @@ export default function caseRoutes(app: express.Express): void {
     }),
   )
 
+  // Card: Understand the process
   app.get(
     paths.CASES.SUPPORT_ROLES,
     AuthenticatedUser,
@@ -67,19 +71,21 @@ export default function caseRoutes(app: express.Express): void {
     }),
   )
 
+  // Card: Understand key roles
   app.get(
-    paths.CASES.VICTIMS_CODE,
+    paths.CASES.KEY_ROLES,
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
-      victimsCodeController(req, res, next)
+      keyRolesController(req, res, next)
     }),
   )
 
+  // Card: Get to know your rights
   app.get(
-    paths.CASES.RETURN_PROPERTY,
+    paths.CASES.VICTIM_PERSONAL_STATEMENT,
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
-      returnPropertyController(req, res, next)
+      victimPersonalStatementController(req, res, next)
     }),
   )
 
@@ -92,13 +98,22 @@ export default function caseRoutes(app: express.Express): void {
   )
 
   app.get(
-    paths.CASES.VICTIM_PERSONAL_STATEMENT,
+    paths.CASES.RETURN_PROPERTY,
     AuthenticatedUser,
     asyncMiddleware((req, res, next) => {
-      victimPersonalStatementController(req, res, next)
+      returnPropertyController(req, res, next)
     }),
   )
 
+  app.get(
+    paths.CASES.VICTIMS_CODE,
+    AuthenticatedUser,
+    asyncMiddleware((req, res, next) => {
+      victimsCodeController(req, res, next)
+    }),
+  )
+
+  // Card: Find help and support
   app.get(
     paths.CASES.VICTIM_SUPPORT_LINKS,
     AuthenticatedUser,

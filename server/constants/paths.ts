@@ -36,6 +36,7 @@ const paths = {
     VICTIMS_CODE: '/case/victims-code',
     RETURN_PROPERTY: '/case/return-property',
     UNDERSTAND_COMPENSATION: '/case/understand-compensation',
+    KEY_ROLES: '/case/key-roles',
     VICTIM_PERSONAL_STATEMENT: '/case/victim-personal-statement',
     VICTIM_SUPPORT_LINKS: '/case/victim-support-links',
     WITNESS_SERVICE: '/case/witness-service',
