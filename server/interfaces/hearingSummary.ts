@@ -9,10 +9,10 @@ export interface HearingSummary {
   sittingEnd: string
   sittingPeriod: string
   sittingPeriodTooltip?: string
-  hearingStartDateMessage: HearingStartDateMessage
+  hearingStartDateMessage?: HearingStartDateMessage
   location: {
     courtHouseName: string
-    courtRoomName: string
+    courtRoomName?: string
     addressLines: string[]
     postcode: string
     country: string

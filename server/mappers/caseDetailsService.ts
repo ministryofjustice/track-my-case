@@ -67,7 +67,7 @@ export const getHearingMessageOngoing = (hearingType: string): HearingStartDateM
       title: 'The trial is ongoing',
       description:
         'You do not need to go to the court unless you have been asked to give evidence. ' +
-        'Your police witness care unit will keep you updated on the trial outcome.<br>' +
+        'Your police contact will keep you updated on the trial outcome.<br>' +
         'Be aware that trials can continue for more days than planned.',
     }
   }
@@ -76,7 +76,7 @@ export const getHearingMessageOngoing = (hearingType: string): HearingStartDateM
       title: 'The sentence hearing is ongoing',
       description:
         'You do not need to go to the court unless you have been asked to give evidence. ' +
-        'Your police witness care unit will keep you updated on the trial outcome.<br>' +
+        'Your police contact will keep you updated on the sentencing outcome.<br>' +
         'Be aware that trials can continue for more days than planned.',
     }
   }
@@ -94,7 +94,7 @@ export const getHearingMessageToday = (hearingType: string): HearingStartDateMes
       title: 'The trial is due to start today',
       description:
         'You do not need to go to the court unless you have been asked to give evidence.<br>' +
-        'Your police witness care unit will update you on the trial outcome. ' +
+        'Your police contact will update you on the trial outcome. ' +
         'Be aware that trials can continue for more days than planned.',
     }
   }
@@ -117,17 +117,15 @@ export const getHearingMessageTomorrow = (hearingType: string): HearingStartDate
     return {
       title: 'The expected trial start date is tomorrow',
       description:
-        'If you’re going to give evidence at the court, your police witness care unit will tell you ' +
-        'where and when you need to be at the court. Remember if you are waiting for a call from them, ' +
-        'their number might not show on your phone.',
+        'If you’re going to give evidence, your police contact will tell you where and when you need to be at the court. ' +
+        'Remember, if you are waiting for a call from them, their number might not show on your phone.',
     }
   }
   if (hearingType.startsWith(HEARING_TYPE.SENTENCE)) {
     return {
       title: 'The expected sentencing hearing date is tomorrow',
       description:
-        'If you have said you want to hear the outcome, your police witness care unit should tell you ' +
-        'within 5 working days of the sentencing.',
+        'If you have said you want to hear the outcome, the police must tell you within 5 working days of the sentencing.',
     }
   }
   return {
@@ -144,8 +142,8 @@ export const getHearingMessage2daysTo7days = (
     return {
       title: `The expected trial start date is in ${monthsWeeksDays}`,
       description:
-        'You do not need to go to the court unless you have been asked to give evidence. ' +
-        'Make sure you have arranged time off work and childcare if needed.',
+        'If you’re going to court to give evidence, ' +
+        'make sure you have arranged time off work and childcare if needed.',
     }
   }
   if (hearingType.startsWith(HEARING_TYPE.SENTENCE)) {
@@ -194,7 +192,7 @@ export const getHearingMessage1month1DayTo3months = (
     return {
       title: `The expected trial start date is in ${monthsWeeksDays}`,
       description:
-        "If you're going to court to give evidence, tell your police witness care unit if you have any additional needs. " +
+        "If you're going to court to give evidence, tell your police contact if you have any additional needs. " +
         'They can make sure you get the right support.',
     }
   }
@@ -221,8 +219,8 @@ export const getHearingMessage3months1dayAndMore = (
       title: 'If you’re going to court',
       description:
         'You do not need to go to the court unless you have been asked to give evidence.<br>' +
-        'The exact court location might not be confirmed until the day of the trial. ' +
-        'Your police witness care unit will tell you by phone call or text. ' +
+        'The court location might not be confirmed until the day of the trial. ' +
+        'The police will tell you by phone call or text. ' +
         'Be aware the number they call from might not show on your phone, for example the number might be withheld.',
     }
   }
@@ -230,11 +228,11 @@ export const getHearingMessage3months1dayAndMore = (
     return {
       title: `The expected sentencing hearing date is in ${monthsWeeksDays}`,
       description:
-        'You do not need to attend. You can tell your police witness care unit if and how you want to be told of the sentencing outcome.',
+        'You do not need to go to the hearing but can if you want to. You can tell the police if and how you want to be told of the sentencing outcome.',
     }
   }
   return {
-    title: `The expected ${hearingType.toLowerCase()} hearing date is in ${monthsWeeksDays}`,
+    title: `The expected ${hearingType.toLowerCase()} hearing start date is in ${monthsWeeksDays}`,
     description: '',
   }
 }
@@ -343,28 +341,75 @@ const courtSittingsTimes = (courtSittings: CourtSitting[]) =>
     .join(', ')
 
 export const mapCaseDetailsToHearingSummary = (hearing: HearingDetails): HearingSummary => {
-  const sitting = hearing.courtSittings[0]
-  const numberOfSittings = hearing.courtSittings?.length || 0
-  const address = sitting?.courtHouse?.address
+  if (hearing.courtSittings?.length > 0) {
+    const sitting = hearing.courtSittings[0]
+    const numberOfSittings = hearing.courtSittings?.length || 0
+    const address = sitting?.courtHouse?.address
 
+    return {
+      hearingType: getHearingTypeMessage(hearing?.hearingType) ?? 'Unknown',
+      sittingStart: formatDate(sitting?.sittingStart),
+      sittingEnd: formatDate(sitting?.sittingEnd),
+      sittingPeriod: `${numberOfSittings} day${numberOfSittings > 1 ? 's' : ''}`,
+      sittingPeriodTooltip: courtSittingsTimes(hearing.courtSittings),
+      hearingStartDateMessage: getHearingStartDateMessage(hearing?.hearingType, sitting?.sittingStart),
+      location: {
+        courtHouseName: sitting?.courtHouse?.courtHouseName ?? '',
+        courtRoomName: undefined,
+        addressLines: [
+          address?.address1 ?? '',
+          address?.address2 ?? '',
+          address?.address3 ?? '',
+          address?.address4 ?? '',
+        ].filter(Boolean),
+        postcode: address?.postalCode ?? '',
+        country: address?.country ?? 'UK',
+      },
+    }
+  }
+  if (hearing.weekCommencing) {
+    const { weekCommencing } = hearing
+    const durationInWeeks = weekCommencing.durationInWeeks || 0
+    const address = weekCommencing?.courtHouse?.address
+
+    return {
+      hearingType: getHearingTypeMessage(hearing?.hearingType) ?? 'Unknown',
+      sittingStart: `In the week of ${formatDate(weekCommencing.startDate)}`,
+      sittingEnd: formatDate(weekCommencing.endDate),
+      sittingPeriod: `${durationInWeeks} week${durationInWeeks > 1 ? 's' : ''}`,
+      sittingPeriodTooltip: `${weekCommencing.startDate} - ${weekCommencing.endDate}`,
+      hearingStartDateMessage: {
+        title: 'If you’re going to the court',
+        description:
+          'The exact court location might not be confirmed until the day of the trial. ' +
+          'Your police witness care officer will tell you by phone call or text. ' +
+          'Be aware the number they call from might not show on your phone.',
+      },
+      location: {
+        courtHouseName: weekCommencing?.courtHouse?.courtHouseName ?? '',
+        courtRoomName: undefined,
+        addressLines: [
+          address?.address1 ?? '',
+          address?.address2 ?? '',
+          address?.address3 ?? '',
+          address?.address4 ?? '',
+        ].filter(Boolean),
+        postcode: address?.postalCode ?? '',
+        country: address?.country ?? 'UK',
+      },
+    }
+  }
   return {
     hearingType: getHearingTypeMessage(hearing?.hearingType) ?? 'Unknown',
-    sittingStart: formatDate(sitting?.sittingStart),
-    sittingEnd: formatDate(sitting?.sittingEnd),
-    sittingPeriod: `${numberOfSittings} day${numberOfSittings > 1 ? 's' : ''}`,
-    sittingPeriodTooltip: courtSittingsTimes(hearing.courtSittings),
-    hearingStartDateMessage: getHearingStartDateMessage(hearing?.hearingType, sitting?.sittingStart),
+    sittingStart: '',
+    sittingEnd: '',
+    sittingPeriod: '',
     location: {
-      courtHouseName: sitting?.courtHouse?.courtHouseName ?? '',
-      courtRoomName: undefined,
-      addressLines: [
-        address?.address1 ?? '',
-        address?.address2 ?? '',
-        address?.address3 ?? '',
-        address?.address4 ?? '',
-      ].filter(Boolean),
-      postcode: address?.postalCode ?? '',
-      country: address?.country ?? 'UK',
+      courtHouseName: '',
+      courtRoomName: '',
+      addressLines: [],
+      postcode: '',
+      country: '',
     },
   }
 }

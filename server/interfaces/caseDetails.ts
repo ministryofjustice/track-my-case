@@ -2,9 +2,9 @@ import { z } from 'zod'
 
 export const addressSchema = z.object({
   address1: z.string(),
-  address2: z.string(),
-  address3: z.string(),
-  address4: z.string(),
+  address2: z.string().optional(),
+  address3: z.string().optional(),
+  address4: z.string().optional(),
   postalCode: z.string(),
   country: z.string(),
 })
@@ -14,29 +14,40 @@ export const courtRoomSchema = z.object({
   courtRoomName: z.string(),
 })
 
-export const courtHouseSchema = z.object({
+export const courtHouseBasicSchema = z.object({
   address: addressSchema,
-  courtRoom: z.array(courtRoomSchema),
   courtHouseId: z.string(),
-  courtRoomId: z.string(),
   courtHouseType: z.string(),
   courtHouseCode: z.string(),
   courtHouseName: z.string(),
 })
 
+export const courtHouseWithCourtRoomSchema = courtHouseBasicSchema.extend({
+  courtRoom: z.array(courtRoomSchema),
+  courtRoomId: z.string(),
+})
+
 export const courtSittingSchema = z.object({
-  judiciaryid: z.string(),
+  judiciaryId: z.string(),
   sittingStart: z.string(),
   sittingEnd: z.string(),
-  courtHouse: courtHouseSchema,
+  courtHouse: courtHouseWithCourtRoomSchema,
+})
+
+export const weekCommencingSchema = z.object({
+  startDate: z.string(),
+  endDate: z.string(),
+  durationInWeeks: z.number(),
+  courtHouse: courtHouseBasicSchema,
 })
 
 export const hearingSchema = z.object({
   hearingId: z.string(),
   hearingType: z.string(),
   hearingDescription: z.string(),
-  listNote: z.string(),
-  courtSittings: z.array(courtSittingSchema),
+  listNote: z.string().optional(),
+  weekCommencing: weekCommencingSchema.optional(),
+  courtSittings: z.array(courtSittingSchema).optional(),
 })
 export type HearingDetails = z.infer<typeof hearingSchema>
 export type CourtSitting = z.infer<typeof courtSittingSchema>
@@ -46,6 +57,7 @@ export const courtScheduleSchema = z.object({
 })
 
 export const caseDetailsSchema = z.object({
+  caseUrn: z.string(),
   courtSchedule: z.array(courtScheduleSchema),
 })
 
