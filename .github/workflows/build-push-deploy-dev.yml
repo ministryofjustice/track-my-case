@@ -198,6 +198,7 @@ jobs:
           --set securityContext.capabilities.drop=["ALL"] \
           --set securityContext.runAsNonRoot=true \
           --set securityContext.seccompProfile.type="RuntimeDefault" \
+          --set Ingress.Enabled=true \
           $custom_variables
 
           echo "Labeling the service"
