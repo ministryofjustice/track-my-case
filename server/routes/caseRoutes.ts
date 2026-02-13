@@ -10,8 +10,6 @@ import {
   postEnterUniqueReferenceNumber,
 } from '../controllers/enter-unique-reference-number-controller'
 import { AuthenticatedUser } from '../helpers/authenticatedUser'
-import supportGuidanceController from '../controllers/support-guidance-controller'
-import supportRolesController from '../controllers/support-roles-controller'
 import victimsCodeController from '../controllers/victims-code-controller'
 import returnPropertyController from '../controllers/return-property-controller'
 import understandCompensationController from '../controllers/understand-compensation-controller'
@@ -45,24 +43,7 @@ export default function caseRoutes(app: express.Express): void {
   app.get(paths.CASES.SEARCH, AuthenticatedUser, asyncMiddleware(getEnterUniqueReferenceNumber))
   app.post(paths.CASES.SEARCH, AuthenticatedUser, asyncMiddleware(postEnterUniqueReferenceNumber))
 
-  // Unknown: ToDo should be removed
-  app.get(
-    paths.CASES.SUPPORT_GUIDANCE,
-    AuthenticatedUser,
-    asyncMiddleware((req, res, next) => {
-      supportGuidanceController(req, res, next)
-    }),
-  )
-
   // Card: Understand the process
-  app.get(
-    paths.CASES.SUPPORT_ROLES,
-    AuthenticatedUser,
-    asyncMiddleware((req, res, next) => {
-      supportRolesController(req, res, next)
-    }),
-  )
-
   app.get(
     paths.CASES.VICTIMS_JOURNEY,
     AuthenticatedUser,

@@ -37,10 +37,10 @@ describe('setUpReqUrlParser', () => {
 
   describe('URL normalization', () => {
     it('normalizes URLs with multiple consecutive slashes', async () => {
-      const response = await request(server).get('///case///support-roles')
+      const response = await request(server).get('///case///victims-journey')
 
       expect(response.status).toBe(200)
-      expect(response.body.url).toBe('/case/support-roles')
+      expect(response.body.url).toBe('/case/victims-journey')
     })
 
     it('normalizes URLs with many consecutive slashes', async () => {
@@ -58,10 +58,10 @@ describe('setUpReqUrlParser', () => {
     })
 
     it('preserves query strings when normalizing URLs', async () => {
-      const response = await request(server).get('///case///support-roles?redirect=http://www.example.com/authorise')
+      const response = await request(server).get('///case///victims-journey?redirect=http://www.example.com/authorise')
 
       expect(response.status).toBe(200)
-      expect(response.body.url).toBe('/case/support-roles?redirect=http://www.example.com/authorise')
+      expect(response.body.url).toBe('/case/victims-journey?redirect=http://www.example.com/authorise')
     })
 
     it('preserves multiple query parameters', async () => {
@@ -76,10 +76,10 @@ describe('setUpReqUrlParser', () => {
     })
 
     it('does not modify URLs without multiple slashes', async () => {
-      const response = await request(server).get('/case/support-roles')
+      const response = await request(server).get('/case/victims-journey')
 
       expect(response.status).toBe(200)
-      expect(response.body.url).toBe('/case/support-roles')
+      expect(response.body.url).toBe('/case/victims-journey')
     })
 
     it('does not modify URLs with query strings when no normalization needed', async () => {
@@ -131,23 +131,27 @@ describe('setUpReqUrlParser', () => {
 
   describe('logging', () => {
     it('logs the original URL', async () => {
-      await request(server).get('///case///support-roles')
-
-      expect(logger.info).toHaveBeenCalledWith('Request URL parsed', '///case///support-roles', '/case/support-roles')
-    })
-
-    it('logs URL normalization when multiple slashes are found', async () => {
-      await request(server).get('///case///support-roles?redirect=http://www.example.com')
+      await request(server).get('///case///victims-journey')
 
       expect(logger.info).toHaveBeenCalledWith(
         'Request URL parsed',
-        '///case///support-roles?redirect=http://www.example.com',
-        '/case/support-roles?redirect=http://www.example.com',
+        '///case///victims-journey',
+        '/case/victims-journey',
+      )
+    })
+
+    it('logs URL normalization when multiple slashes are found', async () => {
+      await request(server).get('///case///victims-journey?redirect=http://www.example.com')
+
+      expect(logger.info).toHaveBeenCalledWith(
+        'Request URL parsed',
+        '///case///victims-journey?redirect=http://www.example.com',
+        '/case/victims-journey?redirect=http://www.example.com',
       )
     })
 
     it('does not log normalization when URL does not need normalization', async () => {
-      await request(server).get('/case/support-roles')
+      await request(server).get('/case/victims-journey')
 
       expect(logger.info).not.toHaveBeenCalledWith('Request URL parsed', expect.any(String), expect.any(String))
     })

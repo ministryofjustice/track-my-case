@@ -6,7 +6,7 @@ import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
 import paths from '../constants/paths'
 import courts from '../constants/courts'
 import config from '../config'
-import { HearingDetails } from '../interfaces/caseDetails'
+import { CaseDetails, CaseDetailsResponse, HearingDetails } from '../interfaces/caseDetails'
 import { mapCaseDetailsToHearingSummary } from '../mappers/caseDetailsService'
 
 const trackMyCaseApiClient = new TrackMyCaseApiClient()
@@ -32,7 +32,7 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
     }
 
     const userEmail: string = res.locals.user.email
-    const caseDetailsResponse = await courtHearingService.getCaseDetailsByUrn(caseUrn, userEmail)
+    const caseDetailsResponse: CaseDetailsResponse = await courtHearingService.getCaseDetailsByUrn(caseUrn, userEmail)
     const { statusCode } = caseDetailsResponse
     if (statusCode === 404) {
       res.locals.pageTitle = 'Court information - Not found'
@@ -43,7 +43,7 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
       return res.status(403).render('pages/case/court-information-access-denied')
     }
     if (statusCode === 200) {
-      res.locals.caseDetails = caseDetailsResponse.caseDetails
+      res.locals.caseDetails = caseDetailsResponse.caseDetails as CaseDetails
       if (res.locals.caseDetails?.courtSchedule?.length > 0) {
         const courtSchedule = res.locals.caseDetails?.courtSchedule[0]
 

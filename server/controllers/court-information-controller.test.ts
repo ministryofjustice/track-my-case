@@ -40,10 +40,12 @@ jest.mock('../services/courtHearingService', () => {
 describe('court-information-controller', () => {
   const defaultUserEmail = 'user@example.com'
 
+  const caseUrn = 'CASE123'
+
   const createReqRes = (overrides?: { req?: Request; res?: Response }) => {
     const req = {
       session: {
-        selectedUrn: 'CASE123',
+        selectedUrn: caseUrn,
       },
       csrfToken: jest.fn().mockReturnValue('csrf-token'),
       ...overrides?.req,
@@ -52,7 +54,7 @@ describe('court-information-controller', () => {
     const res = {
       locals: {
         user: { email: defaultUserEmail },
-        selectedUrn: 'CASE123',
+        selectedUrn: caseUrn,
       },
       redirect: jest.fn(),
       render: jest.fn(),
@@ -72,7 +74,7 @@ describe('court-information-controller', () => {
   it('renders court information when case has hearings and court URL is found', async () => {
     const { req, res, next } = createReqRes()
 
-    const caseDetailsResponse: CaseDetailsResponse = getMockCaseDetailsResponse()
+    const caseDetailsResponse: CaseDetailsResponse = getMockCaseDetailsResponse(caseUrn)
     const hearing = caseDetailsResponse.caseDetails.courtSchedule[0].hearings[0]
     const hearingSummary: HearingSummary = {
       hearingType: HEARING_TYPE.TRIAL,
@@ -99,7 +101,7 @@ describe('court-information-controller', () => {
     await courtInformationController(req, res, next)
 
     expect(mockInitialiseBasicAuthentication).toHaveBeenCalled()
-    expect(mockGetCaseDetailsByUrn).toHaveBeenCalledWith('CASE123', defaultUserEmail)
+    expect(mockGetCaseDetailsByUrn).toHaveBeenCalledWith(caseUrn, defaultUserEmail)
     expect(mockMapCaseDetailsToHearingSummary).toHaveBeenCalledWith(hearing)
     expect(mockGetCourtUrl).toHaveBeenCalledWith('Southwark Crown Court')
     expect(res.locals.courtUrl).toBe('https://example/court')
@@ -109,7 +111,7 @@ describe('court-information-controller', () => {
   it('falls back to default court finder URL when court is not found', async () => {
     const { req, res, next } = createReqRes()
 
-    const caseDetailsResponse: CaseDetailsResponse = getMockCaseDetailsResponse()
+    const caseDetailsResponse: CaseDetailsResponse = getMockCaseDetailsResponse(caseUrn)
     const { caseDetails } = caseDetailsResponse
     const courtSitting = caseDetails.courtSchedule[0].hearings[0].courtSittings[0]
     courtSitting.courtHouse.courtHouseName = 'Unknown Court'
@@ -133,6 +135,7 @@ describe('court-information-controller', () => {
 
     const caseDetailsResponse: CaseDetailsResponse = {
       caseDetails: {
+        caseUrn: 'CASEURN3',
         courtSchedule: [
           {
             hearings: [],

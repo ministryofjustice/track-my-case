@@ -5,9 +5,11 @@ import {
   getHearingStartDateMessage,
   getHearingStartDateMessageFromDate,
   getHearingTypeMessage,
+  mapCaseDetailsToHearingSummary,
 } from './caseDetailsService'
 
-import { HEARING_TYPE } from '../interfaces/hearingSummary'
+import { HEARING_TYPE, HearingSummary } from '../interfaces/hearingSummary'
+import { CaseDetails, HearingDetails } from '../interfaces/caseDetails'
 
 describe('formatDateTime', () => {
   describe('valid input', () => {
@@ -53,6 +55,171 @@ describe('formatDateTime', () => {
     it('accepts date-only string (interprets as UTC midnight)', () => {
       expect(formatDateTime('2025-10-15')).toBe('15 October 2025 at 12:00 am')
     })
+  })
+})
+
+describe('mapCaseDetailsToHearingSummary', () => {
+  it('courtSittings response', () => {
+    const date = new Date()
+    date.setDate(date.getDate() + 20)
+    const dateInFuture = date.toISOString()
+    const dateInFutureFormatted = formatDate(dateInFuture)
+
+    date.setDate(date.getDate() + 7)
+    const dateInFuture2 = date.toISOString()
+
+    const caseDetails: CaseDetails = {
+      caseUrn: 'CASEURN1',
+      courtSchedule: [
+        {
+          hearings: [
+            {
+              hearingId: 'fdb25fdb-702c-46cb-a395-ea2c43385742',
+              hearingType: 'Trial',
+              hearingDescription: 'Trial',
+              listNote: '',
+              courtSittings: [
+                {
+                  judiciaryId: '',
+                  sittingStart: dateInFuture,
+                  sittingEnd: dateInFuture,
+                  courtHouse: {
+                    address: {
+                      address1: '12 St Andrews Street',
+                      address2: 'Cambridge',
+                      address3: 'Cambridgeshire',
+                      postalCode: 'CB2 3AX',
+                      country: 'UK',
+                    },
+                    courtRoom: [
+                      {
+                        courtRoomId: 515,
+                        courtRoomName: 'Courtroom 01',
+                      },
+                    ],
+                    courtHouseId: '210bf1ba-e253-3516-96df-949be917b383',
+                    courtRoomId: 'f048a0f8-aa9c-3636-a3cb-5d185a7db71a',
+                    courtHouseType: 'magistrate',
+                    courtHouseCode: 'B35CZ00',
+                    courtHouseName: "Cambridge Magistrates' Court",
+                  },
+                },
+                {
+                  judiciaryId: '',
+                  sittingStart: dateInFuture2,
+                  sittingEnd: dateInFuture2,
+                  courtHouse: {
+                    address: {
+                      address1: '12 St Andrews Street',
+                      address2: 'Cambridge',
+                      address3: 'Cambridgeshire',
+                      postalCode: 'CB2 3AX',
+                      country: 'UK',
+                    },
+                    courtRoom: [
+                      {
+                        courtRoomId: 515,
+                        courtRoomName: 'Courtroom 01',
+                      },
+                    ],
+                    courtHouseId: '210bf1ba-e253-3516-96df-949be917b383',
+                    courtRoomId: 'f048a0f8-aa9c-3636-a3cb-5d185a7db71a',
+                    courtHouseType: 'magistrate',
+                    courtHouseCode: 'B35CZ00',
+                    courtHouseName: "Cambridge Magistrates' Court",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    }
+    const hearingSummary: HearingSummary = {
+      hearingStartDateMessage: {
+        description:
+          'If you’re going to court to give evidence, you can get support to help you prepare. <a href="/case/witness-service" target="_blank">Find out about the Witness Service (opens in new tab)</a>.',
+        title: 'The expected trial start date is in 2 weeks and 6 days',
+      },
+      hearingType: 'Trial',
+      location: {
+        addressLines: ['12 St Andrews Street', 'Cambridge', 'Cambridgeshire'],
+        country: 'UK',
+        courtHouseName: "Cambridge Magistrates' Court",
+        courtRoomName: undefined,
+        postcode: 'CB2 3AX',
+      },
+      sittingStart: dateInFutureFormatted,
+      sittingEnd: dateInFutureFormatted,
+      sittingPeriod: '2 days',
+      sittingPeriodTooltip: `${dateInFuture} - ${dateInFuture}, ${dateInFuture2} - ${dateInFuture2}`,
+    }
+    const hearing: HearingDetails = caseDetails.courtSchedule[0].hearings[0]
+    expect(mapCaseDetailsToHearingSummary(hearing)).toStrictEqual(hearingSummary)
+  })
+  it('weekCommencing response', () => {
+    const date = new Date()
+    date.setDate(date.getDate() + 20)
+    const dateInFuture = date.toISOString()
+    const dateInFutureFormatted = formatDate(dateInFuture)
+
+    const caseDetails: CaseDetails = {
+      caseUrn: 'CASEURN2',
+      courtSchedule: [
+        {
+          hearings: [
+            {
+              hearingId: 'fdb25fdb-702c-46cb-a395-ea2c43385742',
+              hearingType: 'Trial',
+              hearingDescription: 'Trial',
+              listNote: '',
+              weekCommencing: {
+                startDate: dateInFuture,
+                endDate: dateInFuture,
+                durationInWeeks: 3,
+                courtHouse: {
+                  address: {
+                    address1: '12 St Andrews Street',
+                    address2: 'Cambridge',
+                    address3: 'Cambridgeshire',
+                    postalCode: 'CB2 3AX',
+                    country: 'UK',
+                  },
+                  courtHouseId: 'B35CZ00',
+                  courtHouseType: 'magistrate',
+                  courtHouseCode: 'B35CZ00',
+                  courtHouseName: "Cambridge Magistrates' Court",
+                },
+              },
+            },
+          ],
+        },
+      ],
+    }
+    const hearingSummary: HearingSummary = {
+      hearingStartDateMessage: {
+        description:
+          'You do not need to go to the court unless you have been asked to give evidence.<br>' +
+          'The court location might not be confirmed until the day of the trial. ' +
+          'The police will tell you by phone call or text. ' +
+          'Be aware the number they call from might not show on your phone, for example the number might be withheld.',
+        title: 'If you’re going to court',
+      },
+      hearingType: 'Trial',
+      location: {
+        addressLines: ['12 St Andrews Street', 'Cambridge', 'Cambridgeshire'],
+        country: 'UK',
+        courtHouseName: "Cambridge Magistrates' Court",
+        courtRoomName: undefined,
+        postcode: 'CB2 3AX',
+      },
+      sittingStart: `In the week of ${dateInFutureFormatted}`,
+      sittingEnd: dateInFutureFormatted,
+      sittingPeriod: '3 weeks',
+      sittingPeriodTooltip: `${dateInFuture} - ${dateInFuture}`,
+    }
+    const hearing: HearingDetails = caseDetails.courtSchedule[0].hearings[0]
+    expect(mapCaseDetailsToHearingSummary(hearing)).toStrictEqual(hearingSummary)
   })
 })
 
@@ -218,13 +385,13 @@ describe('getHearingStartDateMessageFromDate', () => {
     const message1 = getHearingStartDateMessageFromDate(HEARING_TYPE.TRIAL, '2026-01-01T14:00', '2026-01-02')
     expect(message1.title).toBe('The trial is ongoing')
     expect(message1.description).toBe(
-      'You do not need to go to the court unless you have been asked to give evidence. Your police witness care unit will keep you updated on the trial outcome.<br>Be aware that trials can continue for more days than planned.',
+      'You do not need to go to the court unless you have been asked to give evidence. Your police contact will keep you updated on the trial outcome.<br>Be aware that trials can continue for more days than planned.',
     )
 
     const message2 = getHearingStartDateMessageFromDate(HEARING_TYPE.SENTENCE, '2026-01-01T14:00', '2026-01-02')
     expect(message2.title).toBe('The sentence hearing is ongoing')
     expect(message2.description).toBe(
-      'You do not need to go to the court unless you have been asked to give evidence. Your police witness care unit will keep you updated on the trial outcome.<br>Be aware that trials can continue for more days than planned.',
+      'You do not need to go to the court unless you have been asked to give evidence. Your police contact will keep you updated on the sentencing outcome.<br>Be aware that trials can continue for more days than planned.',
     )
 
     const message3 = getHearingStartDateMessageFromDate('Unknown', '2026-01-01T14:00', '2026-01-02')
@@ -238,7 +405,7 @@ describe('getHearingStartDateMessageFromDate', () => {
     const message1 = getHearingStartDateMessageFromDate(HEARING_TYPE.TRIAL, '2026-01-01T14:00', '2026-01-01')
     expect(message1.title).toBe('The trial is due to start today')
     expect(message1.description).toBe(
-      'You do not need to go to the court unless you have been asked to give evidence.<br>Your police witness care unit will update you on the trial outcome. Be aware that trials can continue for more days than planned.',
+      'You do not need to go to the court unless you have been asked to give evidence.<br>Your police contact will update you on the trial outcome. Be aware that trials can continue for more days than planned.',
     )
 
     const message2 = getHearingStartDateMessageFromDate(HEARING_TYPE.SENTENCE, '2026-01-01T14:00', '2026-01-01')
@@ -256,13 +423,13 @@ describe('getHearingStartDateMessageFromDate', () => {
     const message1 = getHearingStartDateMessageFromDate(HEARING_TYPE.TRIAL, '2026-01-02T14:00', '2026-01-01')
     expect(message1.title).toBe('The expected trial start date is tomorrow')
     expect(message1.description).toBe(
-      'If you’re going to give evidence at the court, your police witness care unit will tell you where and when you need to be at the court. Remember if you are waiting for a call from them, their number might not show on your phone.',
+      'If you’re going to give evidence, your police contact will tell you where and when you need to be at the court. Remember, if you are waiting for a call from them, their number might not show on your phone.',
     )
 
     const message2 = getHearingStartDateMessageFromDate(HEARING_TYPE.SENTENCE, '2026-01-02T14:00', '2026-01-01')
     expect(message2.title).toBe('The expected sentencing hearing date is tomorrow')
     expect(message2.description).toBe(
-      'If you have said you want to hear the outcome, your police witness care unit should tell you within 5 working days of the sentencing.',
+      'If you have said you want to hear the outcome, the police must tell you within 5 working days of the sentencing.',
     )
 
     const message3 = getHearingStartDateMessageFromDate('Unknown', '2026-01-02T14:00', '2026-01-01')
@@ -274,7 +441,7 @@ describe('getHearingStartDateMessageFromDate', () => {
     const message1 = getHearingStartDateMessageFromDate(HEARING_TYPE.TRIAL, '2026-01-03T14:00', '2026-01-01')
     expect(message1.title).toBe('The expected trial start date is in 2 days')
     expect(message1.description).toBe(
-      'You do not need to go to the court unless you have been asked to give evidence. Make sure you have arranged time off work and childcare if needed.',
+      'If you’re going to court to give evidence, make sure you have arranged time off work and childcare if needed.',
     )
 
     const message2 = getHearingStartDateMessageFromDate(HEARING_TYPE.SENTENCE, '2026-01-03T14:00', '2026-01-01')
@@ -311,7 +478,7 @@ describe('getHearingStartDateMessageFromDate', () => {
     const message1 = getHearingStartDateMessageFromDate(HEARING_TYPE.TRIAL, '2026-04-01T14:00', '2026-01-01')
     expect(message1.title).toBe('The expected trial start date is in 3 months')
     expect(message1.description).toBe(
-      "If you're going to court to give evidence, tell your police witness care unit if you have any additional needs. They can make sure you get the right support.",
+      "If you're going to court to give evidence, tell your police contact if you have any additional needs. They can make sure you get the right support.",
     )
 
     const message2 = getHearingStartDateMessageFromDate(HEARING_TYPE.SENTENCE, '2026-04-01T14:00', '2026-01-01')
@@ -329,17 +496,17 @@ describe('getHearingStartDateMessageFromDate', () => {
     const message1 = getHearingStartDateMessageFromDate(HEARING_TYPE.TRIAL, '2026-12-31T14:00', '2026-01-01')
     expect(message1.title).toBe('If you’re going to court')
     expect(message1.description).toBe(
-      'You do not need to go to the court unless you have been asked to give evidence.<br>The exact court location might not be confirmed until the day of the trial. Your police witness care unit will tell you by phone call or text. Be aware the number they call from might not show on your phone, for example the number might be withheld.',
+      'You do not need to go to the court unless you have been asked to give evidence.<br>The court location might not be confirmed until the day of the trial. The police will tell you by phone call or text. Be aware the number they call from might not show on your phone, for example the number might be withheld.',
     )
 
     const message2 = getHearingStartDateMessageFromDate(HEARING_TYPE.SENTENCE, '2026-12-31T14:00', '2026-01-01')
     expect(message2.title).toBe('The expected sentencing hearing date is in 11 months and 30 days')
     expect(message2.description).toBe(
-      'You do not need to attend. You can tell your police witness care unit if and how you want to be told of the sentencing outcome.',
+      'You do not need to go to the hearing but can if you want to. You can tell the police if and how you want to be told of the sentencing outcome.',
     )
 
     const message3 = getHearingStartDateMessageFromDate('Unknown', '2026-12-31T14:00', '2026-01-01')
-    expect(message3.title).toBe('The expected unknown hearing date is in 11 months and 30 days')
+    expect(message3.title).toBe('The expected unknown hearing start date is in 11 months and 30 days')
     expect(message3.description).toBe('')
   })
 
