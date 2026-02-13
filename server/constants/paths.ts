@@ -30,8 +30,6 @@ const paths = {
     DASHBOARD: '/case/dashboard',
     CONTACT_DETAILS: '/case/contact-details',
     COURT_INFORMATION: '/case/court-information',
-    SUPPORT_GUIDANCE: '/case/support-guidance',
-    SUPPORT_ROLES: '/case/support-roles',
     VICTIMS_JOURNEY: '/case/victims-journey',
     VICTIMS_CODE: '/case/victims-code',
     RETURN_PROPERTY: '/case/return-property',
