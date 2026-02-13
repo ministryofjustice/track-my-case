@@ -199,10 +199,11 @@ describe('mapCaseDetailsToHearingSummary', () => {
     const hearingSummary: HearingSummary = {
       hearingStartDateMessage: {
         description:
-          'The exact court location might not be confirmed until the day of the trial. ' +
-          'Your police witness care officer will tell you by phone call or text. ' +
-          'Be aware the number they call from might not show on your phone.',
-        title: 'If you’re going to the court',
+          'You do not need to go to the court unless you have been asked to give evidence.<br>' +
+          'The court location might not be confirmed until the day of the trial. ' +
+          'The police will tell you by phone call or text. ' +
+          'Be aware the number they call from might not show on your phone, for example the number might be withheld.',
+        title: 'If you’re going to court',
       },
       hearingType: 'Trial',
       location: {

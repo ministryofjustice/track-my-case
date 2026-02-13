@@ -379,11 +379,12 @@ export const mapCaseDetailsToHearingSummary = (hearing: HearingDetails): Hearing
       sittingPeriod: `${durationInWeeks} week${durationInWeeks > 1 ? 's' : ''}`,
       sittingPeriodTooltip: `${weekCommencing.startDate} - ${weekCommencing.endDate}`,
       hearingStartDateMessage: {
-        title: 'If you’re going to the court',
+        title: 'If you’re going to court',
         description:
-          'The exact court location might not be confirmed until the day of the trial. ' +
-          'Your police witness care officer will tell you by phone call or text. ' +
-          'Be aware the number they call from might not show on your phone.',
+          'You do not need to go to the court unless you have been asked to give evidence.<br>' +
+          'The court location might not be confirmed until the day of the trial. ' +
+          'The police will tell you by phone call or text. ' +
+          'Be aware the number they call from might not show on your phone, for example the number might be withheld.',
       },
       location: {
         courtHouseName: weekCommencing?.courtHouse?.courtHouseName ?? '',
