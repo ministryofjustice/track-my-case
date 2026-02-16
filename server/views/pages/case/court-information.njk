@@ -22,10 +22,12 @@
 
     {% if hearingData %}
 
-      {{ govukInsetText({
-        html: "<strong>" + (hearingData.hearingStartDateMessage.title) + "</strong>" +
-        '<p class="govuk-hint govuk-!-margin-top-2">' + hearingData.hearingStartDateMessage.description + '</p>'
-      }) }}
+      {% if displayHearing %}
+        {{ govukInsetText({
+          html: "<strong>" + (hearingData.hearingStartDateMessage.title) + "</strong>" +
+          '<p class="govuk-hint govuk-!-margin-top-2">' + hearingData.hearingStartDateMessage.description + '</p>'
+        }) }}
+      {% endif %}
 
       {% set rows = [{
         key: { text: "Unique reference number (URN)" },
