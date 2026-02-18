@@ -91,7 +91,7 @@ spec:
               {{ .Values.serviceName }} service is completely DOWN in {{ "{{" }} $labels.namespace {{ "}}" }}
             runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeservicedown
           expr: |-
-            (max by (namespace) (up{namespace="{{ .Values.namespace }}", service="{{ .Values.serviceName }}"}) or vector(0)) == 0
+            absent(up{namespace="{{ .Values.namespace }}", service="{{ .Values.serviceName }}"} == 1)
           for: 2m
           labels:
             severity: {{ .Values.alertLabels.severity }}
