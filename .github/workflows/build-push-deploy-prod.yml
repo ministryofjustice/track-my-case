@@ -222,4 +222,5 @@ jobs:
             --namespace $KUBE_NAMESPACE \
             --set serviceName=${{ steps.extract-values.outputs.service_name }} \
             --set namespace=$KUBE_NAMESPACE \
-            --set monitoring.interval="15s"         
+            --set monitoring.interval="15s" \
+            --set alertLabels.severity="track-my-case-prod"       
