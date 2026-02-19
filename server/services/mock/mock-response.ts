@@ -1,13 +1,14 @@
 import { CaseDetails, CaseDetailsResponse } from '../../interfaces/caseDetails'
 
-export const getMockCaseDetailsResponse = (): CaseDetailsResponse => {
+export const getMockCaseDetailsResponse = (caseUrn: string): CaseDetailsResponse => {
   return {
-    caseDetails: getMockCaseDetails(),
+    caseDetails: getMockCaseDetails(caseUrn),
     statusCode: 200,
   }
 }
-export const getMockCaseDetails = (): CaseDetails => {
+export const getMockCaseDetails = (caseUrn: string): CaseDetails => {
   return {
+    caseUrn,
     courtSchedule: [
       {
         hearings: [
@@ -18,7 +19,7 @@ export const getMockCaseDetails = (): CaseDetails => {
             listNote: 'To review plea and disclosure timelines.',
             courtSittings: [
               {
-                judiciaryid: 'JUD001',
+                judiciaryId: 'JUD001',
                 sittingStart: '2025-10-15T09:30:00Z',
                 sittingEnd: '2025-10-15T11:00:00Z',
                 courtHouse: {

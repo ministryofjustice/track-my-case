@@ -24,16 +24,16 @@ describe('CourtHearingService', () => {
   })
 
   it('calls getCaseDetailsByUrn', async () => {
-    const urn = 'CASE123'
+    const caseUrn = 'CASE123'
     const userEmail = 'example@email.com'
-    const caseDetailsResponse: CaseDetailsResponse = getMockCaseDetailsResponse()
+    const caseDetailsResponse: CaseDetailsResponse = getMockCaseDetailsResponse(caseUrn)
 
     mockGetCaseDetailsByUrn.mockResolvedValue(caseDetailsResponse.caseDetails)
 
-    const result = await service.getCaseDetailsByUrn(urn, userEmail)
+    const result = await service.getCaseDetailsByUrn(caseUrn, userEmail)
 
     expect(mockGetCaseDetailsByUrn).toHaveBeenCalledWith({
-      path: `/api/cases/${urn}/casedetails`,
+      path: `/api/cases/${caseUrn}/casedetails`,
       userEmail,
     })
     expect(result).toEqual(caseDetailsResponse)

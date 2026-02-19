@@ -74,6 +74,7 @@ jobs:
           ALLOW_DEBUG: ${{ vars.ALLOW_DEBUG }}
           GOOGLE_TAG_MANAGER_ID: ${{ vars.GOOGLE_TAG_MANAGER_ID }}
           GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
+          DISPLAY_HEARING_DATE_TYPE: ${{ vars.DISPLAY_HEARING_DATE_TYPE }}
         shell: bash
         run: |
           docker build . \
@@ -107,6 +108,7 @@ jobs:
             --build-arg ALLOW_DEBUG=$ALLOW_DEBUG \
             --build-arg GOOGLE_TAG_MANAGER_ID=$GOOGLE_TAG_MANAGER_ID \
             --build-arg GOOGLE_ANALYTICS_ID=$GOOGLE_ANALYTICS_ID \
+            --build-arg DISPLAY_HEARING_DATE_TYPE=$DISPLAY_HEARING_DATE_TYPE \
             -t working_image:$NEW_TAG_V
 
       - name: Configure AWS credentials
@@ -200,6 +202,7 @@ jobs:
           --set securityContext.capabilities.drop=["ALL"] \
           --set securityContext.runAsNonRoot=true \
           --set securityContext.seccompProfile.type="RuntimeDefault" \
+          --set Ingress.Enabled=true \
           $custom_variables
 
           echo "Labeling the service"
@@ -212,12 +215,8 @@ jobs:
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
         run: |
           echo "Extracting deployed Helm values..."
-
           SERVICE_NAME=$(helm get values "$RELEASE_NAME" -n "$KUBE_NAMESPACE" -o json | jq -r '.WebApp.Name')
-
           echo "ServiceName=$SERVICE_NAME"
-
-          # Export them to the next step
           echo "service_name=$SERVICE_NAME" >> $GITHUB_OUTPUT
 
       - name: Deploy Monitoring Helm chart
@@ -228,4 +227,5 @@ jobs:
             --namespace $KUBE_NAMESPACE \
             --set serviceName=${{ steps.extract-values.outputs.service_name }} \
             --set namespace=$KUBE_NAMESPACE \
-            --set monitoring.interval="15s"         
+            --set monitoring.interval="15s" \
+            --set alertLabels.severity="victims-pathfinder-preprod"         

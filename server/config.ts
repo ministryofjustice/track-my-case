@@ -124,6 +124,8 @@ const config = {
     gtmId: get('GOOGLE_TAG_MANAGER_ID', 'GTM-WRN68MWZ', requiredInProduction),
     gtagId: get('GOOGLE_ANALYTICS_ID', 'G-ERL8BYW4KX', requiredInProduction),
   },
-  // ingressUrl: get('INGRESS_URL', 'http://localhost:9999'),
+  featureFlags: {
+    displayHearing: toBoolean(get('DISPLAY_HEARING_DATE_TYPE', false, requiredInProduction)),
+  },
 }
 export default config

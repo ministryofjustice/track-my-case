@@ -1,6 +1,6 @@
 import TrackMyCaseApiClient, { GetPathAndEmailRequestOptions } from '../data/trackMyCaseApiClient'
 import { logger } from '../logger'
-import { CaseDetailsResponse } from '../interfaces/caseDetails'
+import { CaseDetails, CaseDetailsResponse } from '../interfaces/caseDetails'
 import { resolvePath } from '../utils/utils'
 
 export default class CourtHearingService {
@@ -10,7 +10,7 @@ export default class CourtHearingService {
     try {
       const path = resolvePath('/api/cases/:case_urn/casedetails', { case_urn: urn })
       const request: GetPathAndEmailRequestOptions = { path, userEmail }
-      const caseDetails = await this.apiClient.getCaseDetailsByUrn(request)
+      const caseDetails: CaseDetails = await this.apiClient.getCaseDetailsByUrn(request)
       return {
         statusCode: 200,
         caseDetails,

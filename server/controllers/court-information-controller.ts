@@ -3,9 +3,11 @@ import { initialiseBasicAuthentication } from '../helpers/initialise-basic-authe
 import CourtHearingService from '../services/courtHearingService'
 import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
 
-import mapCaseDetailsToHearingSummary from '../mappers/mapCaseDetailsToHearingSummary'
 import paths from '../constants/paths'
 import courts from '../constants/courts'
+import config from '../config'
+import { CaseDetails, CaseDetailsResponse, HearingDetails } from '../interfaces/caseDetails'
+import { mapCaseDetailsToHearingSummary } from '../mappers/caseDetailsService'
 
 const trackMyCaseApiClient = new TrackMyCaseApiClient()
 const courtHearingService = new CourtHearingService(trackMyCaseApiClient)
@@ -16,6 +18,8 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
 
     res.locals.pageTitle = 'Court information'
     res.locals.backLink = paths.CASES.DASHBOARD
+
+    res.locals.displayHearing = config.featureFlags.displayHearing
 
     if (!res.locals.selectedUrn) {
       return res.redirect(paths.CASES.SEARCH)
@@ -28,7 +32,7 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
     }
 
     const userEmail: string = res.locals.user.email
-    const caseDetailsResponse = await courtHearingService.getCaseDetailsByUrn(caseUrn, userEmail)
+    const caseDetailsResponse: CaseDetailsResponse = await courtHearingService.getCaseDetailsByUrn(caseUrn, userEmail)
     const { statusCode } = caseDetailsResponse
     if (statusCode === 404) {
       res.locals.pageTitle = 'Court information - Not found'
@@ -39,12 +43,13 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
       return res.status(403).render('pages/case/court-information-access-denied')
     }
     if (statusCode === 200) {
-      res.locals.caseDetails = caseDetailsResponse.caseDetails
+      res.locals.caseDetails = caseDetailsResponse.caseDetails as CaseDetails
       if (res.locals.caseDetails?.courtSchedule?.length > 0) {
         const courtSchedule = res.locals.caseDetails?.courtSchedule[0]
 
         if (courtSchedule?.hearings?.length > 0) {
-          res.locals.hearingData = mapCaseDetailsToHearingSummary(res.locals.caseDetails)
+          const hearing: HearingDetails = courtSchedule.hearings[0]
+          res.locals.hearingData = mapCaseDetailsToHearingSummary(hearing)
           const courtUrl = courts.getCourtUrl(res.locals.hearingData.location.courtHouseName)
           res.locals.courtUrl = courtUrl ?? 'https://www.find-court-tribunal.service.gov.uk/'
 

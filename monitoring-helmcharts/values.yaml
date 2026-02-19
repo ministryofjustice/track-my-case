@@ -12,3 +12,6 @@ metrics:
   grafana_dashboard:
     enabled: true
     name: Track My Case UI
+
+alertLabels:
+  severity: victims-pathfinder-dev
