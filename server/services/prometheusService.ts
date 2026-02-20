@@ -43,6 +43,14 @@ export const httpRequestDuration = new Histogram({
   registers: [register],
 })
 
+// Page feedback ("Is this page useful?") counter – labels: page (title + url), useful (Yes/No)
+export const pageFeedbackTotal = new Counter({
+  name: 'tmc_ui_page_feedback_total',
+  help: 'Total "Is this page useful?" feedback submissions by page and answer',
+  labelNames: ['page', 'useful'],
+  registers: [register],
+})
+
 let healthService: HealthService | null = null
 let healthCheckInterval: NodeJS.Timeout | null = null
 

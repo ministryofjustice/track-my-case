@@ -43,16 +43,16 @@
   }
 
   async function initFeedbackForm() {
-    const acceptButton = document.getElementById('page-is-useful-yes-button')
-    if (!acceptButton?.getAttribute('listener')) {
-      acceptButton?.addEventListener('click', async (e) => {
+    const yesButton = document.getElementById('page-is-useful-yes-button')
+    if (!yesButton?.getAttribute('listener')) {
+      yesButton?.addEventListener('click', async (e) => {
         e.preventDefault()
         await submitPageIsUseful('yes')
       })
     }
-    const rejectButton = document.getElementById('page-is-useful-no-button')
-    if (!rejectButton?.getAttribute('listener')) {
-      rejectButton?.addEventListener('click', async (e) => {
+    const noButton = document.getElementById('page-is-useful-no-button')
+    if (!noButton?.getAttribute('listener')) {
+      noButton?.addEventListener('click', async (e) => {
         e.preventDefault()
         await submitPageIsUseful('no')
       })
