@@ -77,6 +77,7 @@ describe('court-information-controller', () => {
     const caseDetailsResponse: CaseDetailsResponse = getMockCaseDetailsResponse(caseUrn)
     const hearing = caseDetailsResponse.caseDetails.courtSchedule[0].hearings[0]
     const hearingSummary: HearingSummary = {
+      hearingOption: 'COURT_SITTINGS',
       hearingType: HEARING_TYPE.TRIAL,
       sittingStart: '01 January 2025, 10:00',
       hearingStartDateMessage: {

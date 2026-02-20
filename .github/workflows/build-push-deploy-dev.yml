@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - develop
+      - main
   workflow_dispatch:
 
 permissions: {}
@@ -203,7 +204,7 @@ jobs:
 
           echo "Labeling the service"
           kubectl label service --overwrite=true $KUBE_NAMESPACE app=$KUBE_NAMESPACE
-          
+
       - name: Extract deployed service values for monitoring
         id: extract-values
         env:
@@ -228,4 +229,4 @@ jobs:
             --set serviceName=${{ steps.extract-values.outputs.service_name }} \
             --set namespace=$KUBE_NAMESPACE \
             --set monitoring.interval="15s" \
-            --set alertLabels.severity="victims-pathfinder-dev"         
+            --set alertLabels.severity="victims-pathfinder-dev"

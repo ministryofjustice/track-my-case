@@ -6,6 +6,7 @@ const paths = {
   PRIVACY_NOTICE: '/privacy-notice',
   COOKIES: '/cookies',
   COOKIES_DECISION: '/cookies/decision',
+  FEEDBACK_DECISION: '/feedback/decision',
 
   AUTH_ERROR: '/autherror',
   ACCESS_DENIED: '/access-denied',

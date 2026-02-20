@@ -347,6 +347,7 @@ export const mapCaseDetailsToHearingSummary = (hearing: HearingDetails): Hearing
     const address = sitting?.courtHouse?.address
 
     return {
+      hearingOption: 'COURT_SITTINGS',
       hearingType: getHearingTypeMessage(hearing?.hearingType) ?? 'Unknown',
       sittingStart: formatDate(sitting?.sittingStart),
       sittingEnd: formatDate(sitting?.sittingEnd),
@@ -373,6 +374,7 @@ export const mapCaseDetailsToHearingSummary = (hearing: HearingDetails): Hearing
     const address = weekCommencing?.courtHouse?.address
 
     return {
+      hearingOption: 'WEEK_COMMENCING',
       hearingType: getHearingTypeMessage(hearing?.hearingType) ?? 'Unknown',
       sittingStart: `In the week of ${formatDate(weekCommencing.startDate)}`,
       sittingEnd: formatDate(weekCommencing.endDate),
@@ -401,6 +403,7 @@ export const mapCaseDetailsToHearingSummary = (hearing: HearingDetails): Hearing
     }
   }
   return {
+    hearingOption: 'UNKNOWN',
     hearingType: getHearingTypeMessage(hearing?.hearingType) ?? 'Unknown',
     sittingStart: '',
     sittingEnd: '',

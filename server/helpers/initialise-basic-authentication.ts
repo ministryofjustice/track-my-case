@@ -25,6 +25,7 @@ const initialiseBasicAuthentication = async (req: Request, res: Response, next: 
   res.locals.serviceUrl = config.serviceUrl
   res.locals.homepageLink = config.serviceUrl
   res.locals.allowDebug = config.session.allowDebug && Boolean(req.query?.debug === 'true')
+  res.locals.pageUrl = req.url
 
   manageSelectedUrn(req, res)
 }

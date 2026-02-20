@@ -1,0 +1,132 @@
+
+<script nonce="{{ cspNonce }}" type="module">
+  async function submitPageIsUseful(value) {
+    const csrf = document.querySelector('input[name="_csrf"]').value
+    const pageUrl = document.querySelector('input[name="_pageUrl"]').value
+    const pageTitle = document.querySelector('input[name="_pageTitle"]').value
+    const payload = {
+      pageUseful: value,
+      pageUrl: pageUrl,
+      pageTitle: pageTitle,
+      _csrf: csrf,
+    }
+    const response = await fetch('/feedback/decision', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-csrf-token': csrf,
+      },
+      body: JSON.stringify(payload),
+      credentials: 'same-origin',
+    })
+    if (response.ok) {
+      document.getElementById('feedback-form-options')?.classList.add('govuk-!-display-none')
+      if (value === 'yes') {
+        document.getElementById('feedback-form-is-page-useful-yes-confirmation')?.classList.remove('govuk-!-display-none')
+      }
+      if (value === 'no') {
+        document.getElementById('feedback-form-is-page-useful-no-confirmation')?.classList.remove('govuk-!-display-none')
+
+        const cancelFeedbakcDecisionNoButton = document.getElementById('feedback-form-is-page-useful-no-confirmation-cancel-button')
+        if (!cancelFeedbakcDecisionNoButton?.getAttribute('listener')) {
+          cancelFeedbakcDecisionNoButton.addEventListener('click', async (e) => {
+            e.preventDefault()
+            document.getElementById('feedback-form-is-page-useful-no-confirmation')?.classList.add('govuk-!-display-none')
+            document.getElementById('feedback-form-options')?.classList.remove('govuk-!-display-none')
+          })
+        }
+
+      }
+    } else {
+      console.warn('Feedback decision failed', response.status)
+    }
+  }
+
+  async function initFeedbackForm() {
+    const acceptButton = document.getElementById('page-is-useful-yes-button')
+    if (!acceptButton?.getAttribute('listener')) {
+      acceptButton?.addEventListener('click', async (e) => {
+        e.preventDefault()
+        await submitPageIsUseful('yes')
+      })
+    }
+    const rejectButton = document.getElementById('page-is-useful-no-button')
+    if (!rejectButton?.getAttribute('listener')) {
+      rejectButton?.addEventListener('click', async (e) => {
+        e.preventDefault()
+        await submitPageIsUseful('no')
+      })
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const feedbackForm = document.getElementById('feedback-form')
+    await initFeedbackForm(feedbackForm)
+  })
+</script>
+
+<div class="govuk-width-container">
+  <div id="feedback-form" data-module="feedback ga4-event-tracker"
+       class="gem-c-feedback govuk-!-display-none-print"
+       data-feedback-module-started="true">
+    <div class="gem-c-feedback__prompt" tabindex="-1">
+      <div class="gem-c-feedback__prompt-content">
+        <div class="gem-c-feedback__prompt-questions" id="feedback-form-options">
+          <div class="gem-c-feedback__prompt-question-answer">
+            <h2 class="gem-c-feedback__prompt-question">Is this page useful?</h2>
+            <ul class="gem-c-feedback__option-list">
+              <li class="gem-c-feedback__option-list-item">
+                <button class="govuk-button gem-c-feedback__prompt-link"
+                        data-is-this-page-is-useful="true"
+                        id="page-is-useful-yes-button"
+                        data-ga4-event='{ "event_name": "form_submit", "type": "feedback", "text": "Yes", "section": "Is this page useful?", "tool_name": "Is this page useful?", "page_location": "{{ pageUrl }}", "page_title": "{{ pageTitle }}" }'>
+                  Yes <span class="govuk-visually-hidden">this page is useful</span>
+                </button>
+              </li>
+              <li class="gem-c-feedback__option-list-item">
+                <button class="govuk-button gem-c-feedback__prompt-link"
+                        aria-controls="page-is-not-useful"
+                        data-is-this-page-is-useful="false"
+                        id="page-is-useful-no-button"
+                        data-ga4-event='{ "event_name": "form_submit", "type": "feedback", "text": "No", "section": "Is this page useful?", "tool_name": "Is this page useful?", "page_location": "{{ pageUrl }}", "page_title": "{{ pageTitle }}" }'>
+                  No <span class="govuk-visually-hidden">this page is not useful</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="feedback-form-is-page-useful-yes-confirmation"
+            class="govuk-!-display-none gem-c-feedback__prompt-questions gem-c-feedback__prompt-success"
+             role="alert">
+          Thank you for your feedback.
+        </div>
+
+        <div id="feedback-form-is-page-useful-no-confirmation" class="govuk-!-display-none">
+          <div class="gem-c-feedback__prompt-failure">
+            <h2 class="gem-c-feedback__form-heading">Help us improve {{ applicationName }}</h2>
+            <p id="feedback_explanation" class="gem-c-feedback__form-paragraph">
+              We are sorry you did not find the page useful.<br>
+              <a href="{{ "https://www.smartsurvey.co.uk/s/TMCVS1?url=" + pageUrl }}" target="_blank">
+                Tell us what you think (opens in a new tab).
+              </a>
+            </p>
+            <ul class="gem-c-feedback__option-list">
+              <li class="gem-c-feedback__option-list-item govuk-!-margin-left-0">
+                <button class="govuk-button gem-c-feedback__prompt-link gem-c-feedback__close"
+                        data-is-this-page-is-useful="true"
+                        id="feedback-form-is-page-useful-no-confirmation-cancel-button">
+                  Cancel
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+<input type="hidden" name="_pageUrl" value="{{ pageUrl }}">
+<input type="hidden" name="_pageTitle" value="{{ pageTitle }}">
