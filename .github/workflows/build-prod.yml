@@ -1,26 +1,35 @@
-name: CI/CD prod
+name: Build (prod)
+
+# NOTE: This app bakes environment-specific config (OIDC, URLs, GTM) into the
+# Docker image at build time, so a separate image must be built per environment.
+# Full build-once/promote-everywhere cannot be achieved until the app is refactored
+# to read all config from runtime environment variables.
+# See strategy.md § "Tech Debt: Per-Environment Image Tags" for details.
 
 on:
   workflow_dispatch:
+
 permissions: {}
 concurrency:
-  group: prod
+  group: build-prod
   cancel-in-progress: true
 
 jobs:
-  build-push-prod:
-    name: Build & Push New Image
+  build:
+    name: Build & Push prod image
     runs-on: ubuntu-latest
     permissions:
-      id-token: write # This is required for requesting the JWT
-      contents: write # This is required for actions/checkout
+      id-token: write
+      contents: write
     environment: prod
     outputs:
       new_tag: ${{ steps.set-version-tag-output.outputs.new_tag }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v6
 
+      # Prod uses a clean semver tag (no PRERELEASE suffix)
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.75.0
         id: bump-id
@@ -28,14 +37,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
           DEFAULT_BUMP: patch
-          PRERELEASE: true
-          PRERELEASE_SUFFIX: prod
 
-      - name: Set Version tag output
+      - name: Set version tag output
         id: set-version-tag-output
         run: echo "new_tag=${{ steps.bump-id.outputs.new_tag }}" >> $GITHUB_OUTPUT
 
-      - name: Build
+      - name: Build Docker image
         env:
           NEW_TAG_V: ${{ steps.set-version-tag-output.outputs.new_tag }}
           NODE_ENV: ${{ vars.NODE_ENV }}
@@ -102,7 +109,7 @@ jobs:
             --build-arg DISPLAY_HEARING_DATE_TYPE=$DISPLAY_HEARING_DATE_TYPE \
             -t working_image:$NEW_TAG_V
 
-      - name: Configure AWS credentials
+      - name: Configure AWS credentials (prod ECR)
         uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: ${{ secrets.PROD_ECR_ROLE_TO_ASSUME }}
@@ -112,7 +119,7 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Tag, and push image to Amazon ECR
+      - name: Push image to prod ECR
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: ${{ vars.PROD_ECR_REPOSITORY }}
@@ -123,105 +130,8 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$NEW_TAG_V
 
   deploy-prod:
-    needs: build-push-prod
-    name: Deploy Helm Chart into Cloud Platform
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write # This is required for actions/checkout
-      id-token: write # This is required for requesting the JWT
-    environment: prod
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Authenticate to the cluster
-        env:
-          KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
-          KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
-        run: |
-          echo "${{ secrets.KUBE_CERT }}" > ca.crt
-          kubectl config set-cluster ${KUBE_CLUSTER} --certificate-authority=./ca.crt --server=https://${KUBE_CLUSTER}
-          kubectl config set-credentials deploy-user --token=${{ secrets.KUBE_TOKEN }}
-          kubectl config set-context ${KUBE_CLUSTER} --cluster=${KUBE_CLUSTER} --user=deploy-user --namespace=${{ secrets.KUBE_NAMESPACE }}
-          kubectl config use-context ${KUBE_CLUSTER}
-
-      - name: Clone Helm chart repo
-        run: |
-          git clone https://github.com/ministryofjustice/track-my-case-cloud-platform.git
-          git -C track-my-case-cloud-platform checkout main
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v5
-        with:
-          role-to-assume: ${{ secrets.PROD_ECR_ROLE_TO_ASSUME }}
-          aws-region: ${{ vars.PROD_ECR_REGION }}
-
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
-
-      - name: Upgrade the Helm chart
-        env:
-          ECR_REPO_WEBAPP: ${{ steps.login-ecr.outputs.registry }}/${{ vars.PROD_ECR_REPOSITORY }}
-          KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
-          NEW_TAG_V: ${{ needs.build-push-prod.outputs.new_tag }}
-          RELEASE_NAME: ${{ github.event.repository.name }}-prod
-          SECRETS_CONTEXT:  ${{ toJson(secrets) }}
-          VARS_CONTEXT:  ${{ toJson(vars) }}
-        run: |
-          combined_json=$(jq -n \
-              --argjson secrets_json "$SECRETS_CONTEXT" \
-              --argjson vars_json "$VARS_CONTEXT" \
-              '$secrets_json + $vars_json')
-
-          custom_variables=""
-          for row in $(echo "${combined_json}" | jq -r 'to_entries[] | @base64'); do
-            key=$(echo ${row} | base64 --decode | jq -r '.key')
-            value=$(echo ${row} | base64 --decode | jq -r '.value')
-            if [[ $key == XXX* ]]; then
-                custom_key=$(echo $key | sed 's/^XXX_/Secrets.WebApp.Parameters./')
-                custom_variables="$custom_variables --set $custom_key=$value"
-            fi
-          done
-
-          helm upgrade --install --atomic --wait --timeout 5m0s --namespace $KUBE_NAMESPACE $RELEASE_NAME ./track-my-case-cloud-platform/charts/webapp-cp \
-          --set Namespace=$KUBE_NAMESPACE \
-          --set WebApp.Image.Repository=$ECR_REPO_WEBAPP \
-          --set WebApp.Image.Tag=$NEW_TAG_V \
-          --set WebApp.Name=$KUBE_NAMESPACE \
-          --set securityContext.allowPrivilegeEscalation=false \
-          --set securityContext.capabilities.drop=["ALL"] \
-          --set securityContext.runAsNonRoot=true \
-          --set securityContext.seccompProfile.type="RuntimeDefault" \
-          --set Ingress.Enabled=true \
-          $custom_variables
-
-
-          echo "Labeling the service"
-          kubectl label service --overwrite=true $KUBE_NAMESPACE app=$KUBE_NAMESPACE
-
-      - name: Extract deployed service values for monitoring
-        id: extract-values
-        env:
-          RELEASE_NAME: ${{ github.event.repository.name }}-prod
-          KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
-        run: |
-          echo "Extracting deployed Helm values..."
-
-          SERVICE_NAME=$(helm get values "$RELEASE_NAME" -n "$KUBE_NAMESPACE" -o json | jq -r '.WebApp.Name')
-
-          echo "ServiceName=$SERVICE_NAME"
-
-          # Export them to the next step
-          echo "service_name=$SERVICE_NAME" >> $GITHUB_OUTPUT
-
-      - name: Deploy Monitoring Helm chart
-        env:
-          KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
-        run: |
-          helm upgrade --install monitoring-helmcharts ./monitoring-helmcharts \
-            --namespace $KUBE_NAMESPACE \
-            --set serviceName=${{ steps.extract-values.outputs.service_name }} \
-            --set namespace=$KUBE_NAMESPACE \
-            --set monitoring.interval="15s" \
-            --set alertLabels.severity="track-my-case-prod"       
+    needs: build
+    uses: ./.github/workflows/deploy-prod.yml
+    with:
+      image_tag: ${{ needs.build.outputs.new_tag }}
+    secrets: inherit
