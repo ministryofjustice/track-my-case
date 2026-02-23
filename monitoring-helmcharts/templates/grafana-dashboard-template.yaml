@@ -1211,8 +1211,7 @@
             "custom": {
               "align": "auto",
               "cellOptions": {
-                "type": "color-background",
-                "mode": "gradient"
+                "type": "auto"
               },
               "inspect": false
             },
