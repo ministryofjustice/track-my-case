@@ -1293,12 +1293,8 @@
           "showHeader": true,
           "sortBy": [
             {
-              "desc": false,
-              "displayName": "page"
-            },
-            {
-              "desc": false,
-              "displayName": "useful"
+              "desc": true,
+              "displayName": "Value"
             }
           ]
         },
@@ -1310,7 +1306,7 @@
               "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "sum by (page, useful) (floor(increase(tmc_ui_page_feedback_total{namespace='{{ .Release.Namespace }}',service='$service'}[$__range])))",
+            "expr": "sum by (page, useful) (tmc_ui_page_feedback_total{namespace='{{ .Release.Namespace }}',service='$service'})",
             "format": "table",
             "instant": true,
             "legendFormat": "",
@@ -1378,7 +1374,7 @@
               "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "sum(floor(increase(tmc_ui_page_feedback_total{namespace='{{ .Release.Namespace }}',service='$service',useful=\"Yes\"}[$__range]))) or vector(0)",
+            "expr": "sum(tmc_ui_page_feedback_total{namespace='{{ .Release.Namespace }}',service='$service',useful=\"Yes\"}) or vector(0)",
             "instant": true,
             "legendFormat": "Yes",
             "range": false,
@@ -1445,7 +1441,7 @@
               "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "sum(floor(increase(tmc_ui_page_feedback_total{namespace='{{ .Release.Namespace }}',service='$service',useful=\"No\"}[$__range]))) or vector(0)",
+            "expr": "sum(tmc_ui_page_feedback_total{namespace='{{ .Release.Namespace }}',service='$service',useful=\"No\"}) or vector(0)",
             "instant": true,
             "legendFormat": "No",
             "range": false,
