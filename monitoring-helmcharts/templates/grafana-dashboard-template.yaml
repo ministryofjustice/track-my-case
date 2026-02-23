@@ -1233,7 +1233,7 @@
           "displayMode": "basic",
           "minVizHeight": 10,
           "minVizWidth": 0,
-          "namePlacement": "auto",
+          "namePlacement": "left",
           "orientation": "horizontal",
           "reduceOptions": {
             "calcs": [
