@@ -1231,6 +1231,18 @@
             {
               "matcher": {
                 "id": "byName",
+                "options": "Time"
+              },
+              "properties": [
+                {
+                  "id": "custom.hidden",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
                 "options": "useful"
               },
               "properties": [
