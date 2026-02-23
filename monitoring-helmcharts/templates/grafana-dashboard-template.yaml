@@ -1206,10 +1206,17 @@
         "fieldConfig": {
           "defaults": {
             "color": {
-              "mode": "palette-classic"
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "color-background",
+                "mode": "gradient"
+              },
+              "inspect": false
             },
             "mappings": [],
-            "min": 0,
             "thresholds": {
               "mode": "absolute",
               "steps": [
@@ -1220,7 +1227,42 @@
               ]
             }
           },
-          "overrides": []
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "useful"
+              },
+              "properties": [
+                {
+                  "id": "custom.cellOptions",
+                  "value": {
+                    "type": "color-text"
+                  }
+                },
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "Yes": {
+                          "color": "green",
+                          "index": 0,
+                          "text": "Yes"
+                        },
+                        "No": {
+                          "color": "red",
+                          "index": 1,
+                          "text": "No"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         "gridPos": {
           "h": 10,
@@ -1230,21 +1272,20 @@
         },
         "id": 56,
         "options": {
-          "displayMode": "basic",
-          "minVizHeight": 10,
-          "minVizWidth": 0,
-          "namePlacement": "left",
-          "orientation": "horizontal",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
             "fields": "",
-            "values": false
+            "reducer": ["sum"],
+            "show": false
           },
-          "showUnfilled": true,
-          "sizing": "auto",
-          "valueMode": "color"
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Value"
+            }
+          ]
         },
         "pluginVersion": "11.5.6+security-01",
         "targets": [
@@ -1255,14 +1296,15 @@
             },
             "editorMode": "code",
             "expr": "sum by (page, useful) (tmc_ui_page_feedback_total{namespace='{{ .Release.Namespace }}',service='$service'})",
+            "format": "table",
             "instant": true,
-            "legendFormat": "{{`{{page}}`}} - {{`{{useful}}`}}",
+            "legendFormat": "",
             "range": false,
             "refId": "A"
           }
         ],
         "title": "Page Feedback by Page (Yes / No)",
-        "type": "bargauge"
+        "type": "table"
       },
       {
         "datasource": {
