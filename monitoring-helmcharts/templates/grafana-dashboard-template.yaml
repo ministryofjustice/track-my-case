@@ -1322,7 +1322,7 @@
           "type": "prometheus",
           "uid": "prometheus"
         },
-        "description": "Total number of \"Yes\" responses across all pages",
+        "description": "Total num of \"Yes\" responses across all pages",
         "fieldConfig": {
           "defaults": {
             "color": {
