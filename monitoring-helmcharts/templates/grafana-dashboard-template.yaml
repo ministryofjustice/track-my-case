@@ -1310,7 +1310,7 @@
               "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "sum by (page, useful) (floor(increase(tmc_ui_page_feedback_total{namespace='{{ .Release.Namespace }}',service='$service'}[$__range])))",
+            "expr": "sum by (page, useful) (floor(increase(tmc_ui_page_feedback_total{namespace='{{ .Release.Namespace }}',service='$service'}[$__range]))) > 0",
             "format": "table",
             "instant": true,
             "legendFormat": "",
