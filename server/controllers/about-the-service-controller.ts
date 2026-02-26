@@ -6,7 +6,7 @@ const aboutTheServiceController = async (req: Request, res: Response, next: Next
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'About the Track my case service'
+    res.locals.pageTitle = 'About the Track a case service'
 
     if (res.locals.authenticated) {
       if (req.headers?.referer && new URL(req.headers?.referer)?.pathname === paths.START) {
