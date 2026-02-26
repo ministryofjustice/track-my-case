@@ -505,7 +505,7 @@
               "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "sum by(route) (increase(tmc_ui_http_requests_total{namespace='{{ .Release.Namespace }}',service='$service', route!~'.*healthz.*|.*metrics.*', status_code='200'}[$__rate_interval])) or vector(0)",
+            "expr": "sum by(route) (increase(tmc_ui_http_requests_total{namespace='{{ .Release.Namespace }}',service='$service', route!~'.*health.*|.*healthz.*|.*metrics.*', status_code='200'}[$__rate_interval])) or vector(0)",
             "legendFormat": "{{`{{route}}`}}",
             "range": true,
             "refId": "A"

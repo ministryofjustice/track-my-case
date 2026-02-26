@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - Initial project setup based on `hmpps-template-typescript`
 - Nunjucks setup with GDS and MoJ frontend components
-- Healthcheck endpoints (`/health`, `/healthz`)
+- Healthcheck endpoints (`/health`)
 - Basic layout and `index.njk` page
 - Docker build with multi-stage production config
 
