@@ -45,12 +45,16 @@
           {
             key: { text: "Expected start date" },
             value: { html: hearingData.sittingStart }
-          },
-          {
-            key: { text: "Expected to last" },
-            value: { html: '<span title="' + hearingData.sittingPeriodTooltip + '">' + hearingData.sittingPeriod + '</span>' }
           }
         ]) %}
+        {% if hearingData.hearingOption === 'COURT_SITTINGS' %}
+          {% set rows = rows.concat([
+            {
+              key: { text: "Expected to last" },
+              value: { html: '<span title="' + hearingData.sittingPeriodTooltip + '">' + hearingData.sittingPeriod + '</span>' }
+            }
+          ]) %}
+        {% endif %}
       {% endif %}
 
       {% set rows = rows.concat([

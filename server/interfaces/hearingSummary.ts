@@ -4,6 +4,7 @@ export interface HearingStartDateMessage {
 }
 
 export interface HearingSummary {
+  hearingOption: 'COURT_SITTINGS' | 'WEEK_COMMENCING' | 'UNKNOWN'
   hearingType: string
   sittingStart: string
   sittingEnd: string

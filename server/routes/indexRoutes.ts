@@ -4,6 +4,7 @@ import indexController from '../controllers/index-controller'
 import paths from '../constants/paths'
 import aboutTheServiceController from '../controllers/about-the-service-controller'
 import privacyNoticeController from '../controllers/privacy-notice-controller'
+import feedbackDecisionController from '../controllers/feedback-decision-controller'
 
 export default function indexRoutes(app: express.Express): void {
   app.get(
@@ -26,4 +27,6 @@ export default function indexRoutes(app: express.Express): void {
       privacyNoticeController(req, res, next)
     }),
   )
+
+  app.post(paths.FEEDBACK_DECISION, asyncMiddleware(feedbackDecisionController))
 }

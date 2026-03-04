@@ -136,6 +136,7 @@ describe('mapCaseDetailsToHearingSummary', () => {
       ],
     }
     const hearingSummary: HearingSummary = {
+      hearingOption: 'COURT_SITTINGS',
       hearingStartDateMessage: {
         description:
           'If you’re going to court to give evidence, you can get support to help you prepare. <a href="/case/witness-service" target="_blank">Find out about the Witness Service (opens in new tab)</a>.',
@@ -197,6 +198,7 @@ describe('mapCaseDetailsToHearingSummary', () => {
       ],
     }
     const hearingSummary: HearingSummary = {
+      hearingOption: 'WEEK_COMMENCING',
       hearingStartDateMessage: {
         description:
           'You do not need to go to the court unless you have been asked to give evidence.<br>' +

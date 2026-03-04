@@ -1,11 +1,11 @@
 const paths = {
   START: '/',
   HEALTH: '/health',
-  HEALTHZ: '/healthz',
   ABOUT_THE_SERVICE: '/about-the-service',
   PRIVACY_NOTICE: '/privacy-notice',
   COOKIES: '/cookies',
   COOKIES_DECISION: '/cookies/decision',
+  FEEDBACK_DECISION: '/feedback/decision',
 
   AUTH_ERROR: '/autherror',
   ACCESS_DENIED: '/access-denied',
