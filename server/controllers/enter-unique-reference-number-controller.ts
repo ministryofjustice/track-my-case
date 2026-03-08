@@ -8,6 +8,52 @@ import { ServiceHealth } from '../interfaces/caseDetails'
 import HealthService from '../services/healthService'
 import { UP } from '../constants/healthStatus'
 
+const parseNowQueryParam = (value: string | undefined): Date | undefined => {
+  /** Parse optional ?now= query param for testing; returns undefined if missing or invalid. */
+  if (value == null || typeof value !== 'string' || !value.trim()) {
+    return undefined
+  }
+  const trimmed = value.trim()
+  try {
+    const parsedDate = new Date(trimmed)
+    if (Number.isNaN(parsedDate.getTime())) {
+      // eslint-disable-next-line no-console
+      console.error('Invalid date time format', trimmed)
+    } else {
+      return parsedDate
+    }
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.error('Invalid date time format', trimmed, e.message)
+  }
+  return undefined
+}
+
+const isWithinUpcomingMaintenanceWindow = (date: Date): boolean => {
+  /**
+   * True only when current time is in the maintenance window: Friday 12:00 - Saturday 18:00 (UK).
+   * End time is exclusive (Saturday 18:00:00 is no longer in the window).
+   */
+
+  const day = date.getDay()
+  const hours = date.getHours()
+  const minutes = date.getMinutes()
+
+  const time = hours + minutes / 60
+
+  if (day === 5) {
+    // 5 = Friday
+    return time >= 12
+  }
+
+  if (day === 6) {
+    // 6 = Saturday
+    return time < 18
+  }
+
+  return false
+}
+
 const trackMyCaseApiClient = new TrackMyCaseApiClient()
 const healthService = new HealthService(trackMyCaseApiClient)
 
@@ -25,6 +71,9 @@ const getEnterUniqueReferenceNumber = async (req: Request, res: Response, next: 
 
     res.locals.pageTitle = 'Find your court'
     res.locals.backLink = paths.CASES.DASHBOARD
+
+    const dateTimeNow = parseNowQueryParam(req.query?.now as string | undefined) ?? new Date()
+    res.locals.upcomingMaintenance = isWithinUpcomingMaintenanceWindow(dateTimeNow)
 
     const serviceHealth: ServiceHealth = await healthService.getServiceHealth()
     if (serviceHealth.status === UP) {
@@ -81,4 +130,10 @@ const postEnterUniqueReferenceNumber = async (req: Request, res: Response, next:
   }
 }
 
-export { getEnterUniqueReferenceNumber, postEnterUniqueReferenceNumber, SELECTED_URN_PATTERN }
+export {
+  getEnterUniqueReferenceNumber,
+  isWithinUpcomingMaintenanceWindow,
+  parseNowQueryParam,
+  postEnterUniqueReferenceNumber,
+  SELECTED_URN_PATTERN,
+}
