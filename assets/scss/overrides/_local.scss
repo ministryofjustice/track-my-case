@@ -22,6 +22,11 @@
     padding-top: 10px;
 }
 
+#searchCaseReferenceNumber {
+    .govuk-notification-banner:focus {
+        outline-width: 0;
+    }
+}
 
 // Quick exit button, START
 
