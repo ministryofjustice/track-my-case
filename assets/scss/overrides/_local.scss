@@ -64,3 +64,38 @@
 }
 
 // Quick exit button, END
+
+.govuk-summary-card.highlight {
+    // Dashboard govuk-summary-card with extra highlight class
+
+    background: #1d70b8;
+
+    .govuk-summary-card__title-wrapper {
+        background: #1d70b8;
+        padding-bottom: 14px;
+        border-bottom: 2px solid white;
+    }
+
+    @media (min-width: 40.0625em) {
+        .govuk-summary-card__content {
+            padding-bottom: 20px;
+        }
+    }
+
+    h2,
+    h3,
+    p,
+    ol,
+    li,
+    a {
+        color: #ffffff;
+    }
+
+    h2 span {
+        border-bottom: solid #ffffff 5px;
+    }
+
+    a {
+        word-wrap: break-word;
+    }
+}

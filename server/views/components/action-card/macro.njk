@@ -15,11 +15,13 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row action-card-list__row">
           <p class="govuk-body">{{ description }}</p>
-          <p class="govuk-body">
-            <a class="govuk-link" href="{{ href }}">
-              {{ linkText }}
-            </a>
-          </p>
+          {% if href %}
+            <p class="govuk-body">
+              <a class="govuk-link" href="{{ href }}">
+                {{ linkText or href}}
+              </a>
+            </p>
+          {% endif %}
         </div>
       </dl>
     </div>
