@@ -54,6 +54,31 @@ const isWithinUpcomingMaintenanceWindow = (date: Date): boolean => {
   return false
 }
 
+const isWithinOngoingMaintenanceWindow = (date: Date): boolean => {
+  /**
+   * True only when current time is in the maintenance window: Saturday 18:00 - Sunday 13:00 (UK).
+   * End time is exclusive (Sunday 13:00:00 is no longer in the window).
+   */
+
+  const day = date.getDay()
+  const hours = date.getHours()
+  const minutes = date.getMinutes()
+
+  const time = hours + minutes / 60
+
+  if (day === 6) {
+    // 6 = Saturday
+    return time >= 18
+  }
+
+  if (day === 0) {
+    // 0 = Sunday
+    return time < 13
+  }
+
+  return false
+}
+
 const trackMyCaseApiClient = new TrackMyCaseApiClient()
 const healthService = new HealthService(trackMyCaseApiClient)
 
@@ -73,7 +98,8 @@ const getEnterUniqueReferenceNumber = async (req: Request, res: Response, next: 
     res.locals.backLink = paths.CASES.DASHBOARD
 
     const dateTimeNow = parseNowQueryParam(req.query?.now as string | undefined) ?? new Date()
-    res.locals.upcomingMaintenance = isWithinUpcomingMaintenanceWindow(dateTimeNow)
+    res.locals.ongoingMaintenance = isWithinOngoingMaintenanceWindow(dateTimeNow)
+    res.locals.upcomingMaintenance = !res.locals.ongoingMaintenance && isWithinUpcomingMaintenanceWindow(dateTimeNow)
 
     const serviceHealth: ServiceHealth = await healthService.getServiceHealth()
     if (serviceHealth.status === UP) {
@@ -133,6 +159,7 @@ const postEnterUniqueReferenceNumber = async (req: Request, res: Response, next:
 export {
   getEnterUniqueReferenceNumber,
   isWithinUpcomingMaintenanceWindow,
+  isWithinOngoingMaintenanceWindow,
   parseNowQueryParam,
   postEnterUniqueReferenceNumber,
   SELECTED_URN_PATTERN,

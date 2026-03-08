@@ -19,7 +19,7 @@
       <form id="searchCaseReferenceNumber" name="searchCaseReferenceNumber" method="post" novalidate>
         <input type="hidden" name="_csrf" value="{{ csrfToken }}">
 
-        {% if upcomingMaintenance %}
+        {% if upcomingMaintenance or ongoingMaintenance %}
           <div class="govuk-notification-banner" role="alert" aria-labelledby="govuk-notification-banner-title"
                data-module="govuk-notification-banner">
             <div class="govuk-notification-banner__header">
@@ -27,11 +27,20 @@
                 Important
               </h2>
             </div>
+
             <div class="govuk-notification-banner__content">
-              <h3 class="govuk-notification-banner__heading">
-                Upcoming maintenance
-              </h3>
-              <p class="govuk-body">Find your court will be unavailable between 6pm Saturday and 1pm Sunday.</p>
+              {% if upcomingMaintenance %}
+                <h3 class="govuk-notification-banner__heading">
+                  Upcoming maintenance
+                </h3>
+                <p class="govuk-body">Find your court will be unavailable between 6pm Saturday and 1pm Sunday.</p>
+              {% endif %}
+              {% if ongoingMaintenance %}
+                <h3 class="govuk-notification-banner__heading">
+                  Ongoing maintenance
+                </h3>
+                <p class="govuk-body">The service might not be available between 6pm Saturday and 1pm Sunday.</p>
+              {% endif %}
             </div>
           </div>
         {% endif %}
