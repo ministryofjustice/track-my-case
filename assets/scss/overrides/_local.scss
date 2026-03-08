@@ -99,3 +99,15 @@
         word-wrap: break-word;
     }
 }
+
+@media (min-width: 40.0625em) {
+    .govuk-summary-card__title-wrapper {
+        min-height: 60px;
+    }
+}
+
+@media (max-width: 40.0625em) {
+    .govuk-summary-card__title-wrapper {
+        padding-bottom: 10px;
+    }
+}
