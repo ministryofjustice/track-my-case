@@ -46,10 +46,10 @@ jobs:
 
 
           echo "Creating configmap for environment variables "
-          kubectl create configmap github-environment-variables-after-cleanup --from-file=github-variables -n $KUBE_NAMESPACE
+          kubectl create configmap github-environment-variables-after-cleanup --from-file=github-variables2 -n $KUBE_NAMESPACE
 
           echo "Creating secret for secret variables "
-          kubectl create secret generic github-secret-variables-after-cleanup --from-file=github-secrets -n $KUBE_NAMESPACE
+          kubectl create secret generic github-secret-variables-after-cleanup --from-file=github-secrets2 -n $KUBE_NAMESPACE
 
           echo "cleaning up"
           rm -f github-variables2 github-secrets2
