@@ -41,8 +41,8 @@ jobs:
               --argjson secrets_json "$SECRETS_CONTEXT" \
               '$secrets_json')
 
-          echo "$gh_vars_json" > "github-variables"
-          echo "$gh_secrets_json" > "github-secrets"
+          echo "$gh_vars_json" > "github-variables2"
+          echo "$gh_secrets_json" > "github-secrets2"
 
 
           echo "Creating configmap for environment variables "
@@ -52,5 +52,5 @@ jobs:
           kubectl create secret generic github-secret-variables-after-cleanup --from-file=github-secrets -n $KUBE_NAMESPACE
 
           echo "cleaning up"
-          rm -f github-variables github-secrets
+          rm -f github-variables2 github-secrets2
 
