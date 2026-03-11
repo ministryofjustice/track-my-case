@@ -6,6 +6,15 @@ on:
       - develop
       - main
   workflow_dispatch:
+    inputs:
+      deploy_monitoring:
+        description: 'Deploy monitoring Helm chart'
+        type: boolean
+        default: true
+      deploy_monitoring_only:
+        description: 'Deploy monitoring Helm chart only (skips build, push and app deploy)'
+        type: boolean
+        default: false
 
 permissions: {}
 concurrency:
@@ -15,6 +24,7 @@ concurrency:
 jobs:
   build-push-dev:
     name: Build & Push New Image
+    if: ${{ github.event.inputs.deploy_monitoring_only != 'true' }}
     runs-on: ubuntu-latest
     permissions:
       id-token: write # This is required for requesting the JWT
@@ -130,6 +140,7 @@ jobs:
   deploy-dev:
     needs: build-push-dev
     name: Deploy Helm Chart into Cloud Platform
+    if: ${{ always() && (needs.build-push-dev.result == 'success' || needs.build-push-dev.result == 'skipped') }}
     runs-on: ubuntu-latest
     permissions:
       contents: write # This is required for actions/checkout
@@ -156,16 +167,19 @@ jobs:
           git -C track-my-case-cloud-platform checkout main
 
       - name: Configure AWS credentials
+        if: ${{ github.event.inputs.deploy_monitoring_only != 'true' }}
         uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: ${{ secrets.DEV_ECR_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.DEV_ECR_REGION }}
 
       - name: Login to Amazon ECR
+        if: ${{ github.event.inputs.deploy_monitoring_only != 'true' }}
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
       - name: Upgrade the Helm chart
+        if: ${{ github.event.inputs.deploy_monitoring_only != 'true' }}
         env:
           ECR_REPO_WEBAPP: ${{ steps.login-ecr.outputs.registry }}/${{ vars.DEV_ECR_REPOSITORY }}
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
@@ -206,6 +220,7 @@ jobs:
           kubectl label service --overwrite=true $KUBE_NAMESPACE app=$KUBE_NAMESPACE
 
       - name: Extract deployed service values for monitoring
+        if: ${{ github.event.inputs.deploy_monitoring_only == 'true' || github.event.inputs.deploy_monitoring != 'false' }}
         id: extract-values
         env:
           RELEASE_NAME: ${{ github.event.repository.name }}-dev
@@ -221,6 +236,7 @@ jobs:
           echo "service_name=$SERVICE_NAME" >> $GITHUB_OUTPUT
 
       - name: Deploy Monitoring Helm chart
+        if: ${{ github.event.inputs.deploy_monitoring_only == 'true' || github.event.inputs.deploy_monitoring != 'false' }}
         env:
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
         run: |
