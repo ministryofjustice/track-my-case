@@ -2,7 +2,7 @@ name: CI/CD sit
 
 on:
   workflow_dispatch:
-permissions: {}
+permissions: { }
 concurrency:
   group: sit
   cancel-in-progress: false  # Optional — don’t cancel ongoing runs, just queue new ones
@@ -52,10 +52,7 @@ jobs:
           SERVICE_URL: ${{ vars.SERVICE_URL }}
           OIDC_CLIENT_ID: ${{ secrets.OIDC_CLIENT_ID }}
           OIDC_PRIVATE_KEY: ${{ secrets.OIDC_PRIVATE_KEY }}
-          OIDC_ISSUER: ${{ vars.OIDC_ISSUER }}
-          ONE_LOGIN_LINK: ${{ vars.ONE_LOGIN_LINK }}
-          IV_DID_URI: ${{ vars.IV_DID_URI }}
-          IV_ISSUER: ${{ vars.IV_ISSUER }}
+          ONE_LOGIN_ACCOUNT: ${{ vars.ONE_LOGIN_ACCOUNT }}
           OIDC_TOKEN_AUTH_METHOD: ${{ vars.OIDC_TOKEN_AUTH_METHOD }}
           OIDC_SCOPES: ${{ vars.OIDC_SCOPES }}
           OIDC_CLAIMS: ${{ vars.OIDC_CLAIMS }}
@@ -86,10 +83,7 @@ jobs:
             --build-arg SERVICE_URL=$SERVICE_URL \
             --build-arg OIDC_CLIENT_ID=$OIDC_CLIENT_ID \
             --build-arg OIDC_PRIVATE_KEY=$OIDC_PRIVATE_KEY \
-            --build-arg OIDC_ISSUER=$OIDC_ISSUER \
-            --build-arg ONE_LOGIN_LINK=$ONE_LOGIN_LINK \
-            --build-arg IV_DID_URI=$IV_DID_URI \
-            --build-arg IV_ISSUER=$IV_ISSUER \
+            --build-arg ONE_LOGIN_ACCOUNT=$ONE_LOGIN_ACCOUNT \
             --build-arg OIDC_TOKEN_AUTH_METHOD=$OIDC_TOKEN_AUTH_METHOD \
             --build-arg OIDC_SCOPES="$OIDC_SCOPES" \
             --build-arg OIDC_CLAIMS=$OIDC_CLAIMS \
@@ -175,8 +169,8 @@ jobs:
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
           NEW_TAG_V: ${{ needs.build-push-sit.outputs.new_tag }}
           RELEASE_NAME: ${{ github.event.repository.name }}-sit
-          SECRETS_CONTEXT:  ${{ toJson(secrets) }}
-          VARS_CONTEXT:  ${{ toJson(vars) }}
+          SECRETS_CONTEXT: ${{ toJson(secrets) }}
+          VARS_CONTEXT: ${{ toJson(vars) }}
         run: |
           combined_json=$(jq -n \
               --argjson secrets_json "$SECRETS_CONTEXT" \
@@ -207,7 +201,7 @@ jobs:
 
           echo "Labeling the service"
           kubectl label service --overwrite=true $KUBE_NAMESPACE app=$KUBE_NAMESPACE
-          
+
       - name: Extract deployed service values for monitoring
         id: extract-values
         env:
@@ -228,4 +222,4 @@ jobs:
             --set serviceName=${{ steps.extract-values.outputs.service_name }} \
             --set namespace=$KUBE_NAMESPACE \
             --set monitoring.interval="15s" \
-            --set alertLabels.severity="victims-pathfinder-sit"         
+            --set alertLabels.severity="victims-pathfinder-sit"
