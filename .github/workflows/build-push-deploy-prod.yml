@@ -37,6 +37,9 @@ jobs:
 
       - name: Build
         env:
+          PRODUCT_ID: ${{ vars.PRODUCT_ID }}
+          REDIS_ENABLED: ${{ vars.REDIS_ENABLED }}
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
           NEW_TAG_V: ${{ steps.set-version-tag-output.outputs.new_tag }}
           NODE_ENV: ${{ vars.NODE_ENV }}
           NODE_PORT: ${{ vars.NODE_PORT }}
@@ -66,6 +69,9 @@ jobs:
         shell: bash
         run: |
           docker build . \
+            --build-arg PRODUCT_ID=$PRODUCT_ID \
+            --build-arg REDIS_ENABLED=$REDIS_ENABLED \
+            --build-arg SESSION_SECRET=$SESSION_SECRET \
             --build-arg BUILD_NUMBER=$NEW_TAG_V \
             --build-arg GIT_REF=${{ github.sha }} \
             --build-arg GIT_BRANCH=${{ github.ref_name }} \
@@ -160,24 +166,7 @@ jobs:
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
           NEW_TAG_V: ${{ needs.build-push-prod.outputs.new_tag }}
           RELEASE_NAME: ${{ github.event.repository.name }}-prod
-          SECRETS_CONTEXT:  ${{ toJson(secrets) }}
-          VARS_CONTEXT:  ${{ toJson(vars) }}
         run: |
-          combined_json=$(jq -n \
-              --argjson secrets_json "$SECRETS_CONTEXT" \
-              --argjson vars_json "$VARS_CONTEXT" \
-              '$secrets_json + $vars_json')
-
-          custom_variables=""
-          for row in $(echo "${combined_json}" | jq -r 'to_entries[] | @base64'); do
-            key=$(echo ${row} | base64 --decode | jq -r '.key')
-            value=$(echo ${row} | base64 --decode | jq -r '.value')
-            if [[ $key == XXX* ]]; then
-                custom_key=$(echo $key | sed 's/^XXX_/Secrets.WebApp.Parameters./')
-                custom_variables="$custom_variables --set $custom_key=$value"
-            fi
-          done
-
           helm upgrade --install --atomic --wait --timeout 5m0s --namespace $KUBE_NAMESPACE $RELEASE_NAME ./track-my-case-cloud-platform/charts/webapp-cp \
           --set Namespace=$KUBE_NAMESPACE \
           --set WebApp.Image.Repository=$ECR_REPO_WEBAPP \
@@ -187,9 +176,7 @@ jobs:
           --set securityContext.capabilities.drop=["ALL"] \
           --set securityContext.runAsNonRoot=true \
           --set securityContext.seccompProfile.type="RuntimeDefault" \
-          --set Ingress.Enabled=true \
-          $custom_variables
-
+          --set Ingress.Enabled=true
 
           echo "Labeling the service"
           kubectl label service --overwrite=true $KUBE_NAMESPACE app=$KUBE_NAMESPACE
