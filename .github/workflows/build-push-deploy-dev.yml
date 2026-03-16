@@ -44,7 +44,7 @@ jobs:
         env:
           PRODUCT_ID: ${{ vars.PRODUCT_ID }}
           REDIS_ENABLED: ${{ vars.REDIS_ENABLED }}
-          SESSION_SECRET: ${{ vars.SESSION_SECRET }}
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
           NEW_TAG_V: ${{ steps.set-version-tag-output.outputs.new_tag }}
           NODE_ENV: ${{ vars.NODE_ENV }}
           NODE_PORT: ${{ vars.NODE_PORT }}
