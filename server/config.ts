@@ -130,7 +130,7 @@ const config = {
     displayHearing: toBoolean(get('DISPLAY_HEARING_DATE_TYPE', false, requiredInProduction)),
   },
   settings: {
-    maintenanceWindow: get('MAINTENANCE_WINDOW', '5@12:00-6@18:00;6@18:00-0@13:00', requiredInProduction),
+    maintenanceWindow: get('MAINTENANCE_WINDOW', '5@12:00-6@18:00;6@18:00-0@13:00'),
   },
 }
 export default config
