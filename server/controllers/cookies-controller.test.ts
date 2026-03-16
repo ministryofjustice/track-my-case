@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
 import paths from '../constants/paths'
+import { FormError } from '../interfaces/formState'
 import { cookiesAcceptRejectController, getCookiesController, postCookiesController } from './cookies-controller'
 
 const mockInitialiseBasicAuthentication = jest.fn().mockResolvedValue(undefined)
@@ -134,16 +135,16 @@ describe('cookies-controller', () => {
     })
 
     it('deletes session formState.cookiesSelect when cookieAccepted is set', async () => {
-      const session = { formState: { cookiesSelect: { errors: [] } } }
+      const session = { formState: { cookiesSelect: { errors: [] as FormError[] } } } as Request['session']
       const { req, res, next } = createReqRes({ cookieAccepted: 'accepted', session })
       await getCookiesController(req, res, next)
       expect(req.session.formState?.cookiesSelect).toBeUndefined()
     })
 
     it('sets errorList from session when cookieAccepted not set and formState exists', async () => {
-      const errors = [{ text: 'Enter accept or reject', href: '#cookiePreferenceAnalytics' }]
+      const errors: FormError[] = [{ text: 'Enter accept or reject', href: '#cookiePreferenceAnalytics' }]
       const { req, res, next } = createReqRes({
-        session: { formState: { cookiesSelect: { errors } } },
+        session: { formState: { cookiesSelect: { errors } } } as Request['session'],
       })
       await getCookiesController(req, res, next)
       expect(res.locals.errorList).toEqual(errors)

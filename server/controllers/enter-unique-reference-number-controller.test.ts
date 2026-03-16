@@ -227,7 +227,7 @@ describe('getEnterUniqueReferenceNumber', () => {
             formData: { selectedUrn: 'CASE123' },
           },
         },
-      },
+      } as Request['session'],
     })
     mockGetServiceHealth.mockResolvedValue({ status: UP })
 
@@ -247,7 +247,7 @@ describe('getEnterUniqueReferenceNumber', () => {
             formData: {},
           },
         },
-      },
+      } as Request['session'],
     })
     res.locals.selectedUrn = 'existing'
     mockGetServiceHealth.mockResolvedValue({ status: UP })
@@ -364,6 +364,6 @@ describe('postEnterUniqueReferenceNumber', () => {
     await postEnterUniqueReferenceNumber(req, res, next)
 
     expect(next).toHaveBeenCalled()
-    expect(next.mock.calls[0][0]).toBeInstanceOf(Error)
+    expect((next as jest.Mock).mock.calls[0][0]).toBeInstanceOf(Error)
   })
 })
