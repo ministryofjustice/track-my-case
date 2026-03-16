@@ -68,9 +68,13 @@ jobs:
           GOOGLE_TAG_MANAGER_ID: ${{ vars.GOOGLE_TAG_MANAGER_ID }}
           GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
           DISPLAY_HEARING_DATE_TYPE: ${{ vars.DISPLAY_HEARING_DATE_TYPE }}
+          PRODUCT_ID: ${{ vars.PRODUCT_ID }}
+          REDIS_ENABLED: ${{ vars.REDIS_ENABLED }}
         shell: bash
         run: |
           docker build . \
+            --build-arg PRODUCT_ID=$PRODUCT_ID \
+            --build-arg REDIS_ENABLED=$REDIS_ENABLED \
             --build-arg BUILD_NUMBER=$NEW_TAG_V \
             --build-arg GIT_REF=${{ github.sha }} \
             --build-arg GIT_BRANCH=${{ github.ref_name }} \
@@ -165,7 +169,6 @@ jobs:
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
           NEW_TAG_V: ${{ needs.build-push-dev.outputs.new_tag }}
           RELEASE_NAME: ${{ github.event.repository.name }}-dev
-          PRODUCT_ID: ${{ vars.PRODUCT_ID }}
         run: |
           helm upgrade --install --atomic --wait --timeout 5m0s --namespace $KUBE_NAMESPACE $RELEASE_NAME ./track-my-case-cloud-platform/charts/webapp-cp \
           --set Namespace=$KUBE_NAMESPACE \
@@ -177,8 +180,7 @@ jobs:
           --set securityContext.capabilities.drop=["ALL"] \
           --set securityContext.runAsNonRoot=true \
           --set securityContext.seccompProfile.type="RuntimeDefault" \
-          --set Ingress.Enabled=true \
-          --set Secrets.WebApp.Parameters.PRODUCT_ID=$PRODUCT_ID
+          --set Ingress.Enabled=true
 
           echo "Labeling the service"
           kubectl label service --overwrite=true $KUBE_NAMESPACE app=$KUBE_NAMESPACE
