@@ -42,6 +42,9 @@ jobs:
 
       - name: Build
         env:
+          PRODUCT_ID: ${{ vars.PRODUCT_ID }}
+          REDIS_ENABLED: ${{ vars.REDIS_ENABLED }}
+          SESSION_SECRET: ${{ vars.SESSION_SECRET }}
           NEW_TAG_V: ${{ steps.set-version-tag-output.outputs.new_tag }}
           NODE_ENV: ${{ vars.NODE_ENV }}
           NODE_PORT: ${{ vars.NODE_PORT }}
@@ -68,13 +71,12 @@ jobs:
           GOOGLE_TAG_MANAGER_ID: ${{ vars.GOOGLE_TAG_MANAGER_ID }}
           GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
           DISPLAY_HEARING_DATE_TYPE: ${{ vars.DISPLAY_HEARING_DATE_TYPE }}
-          PRODUCT_ID: ${{ vars.PRODUCT_ID }}
-          REDIS_ENABLED: ${{ vars.REDIS_ENABLED }}
         shell: bash
         run: |
           docker build . \
             --build-arg PRODUCT_ID=$PRODUCT_ID \
             --build-arg REDIS_ENABLED=$REDIS_ENABLED \
+            --build-arg SESSION_SECRET=$SESSION_SECRET \
             --build-arg BUILD_NUMBER=$NEW_TAG_V \
             --build-arg GIT_REF=${{ github.sha }} \
             --build-arg GIT_BRANCH=${{ github.ref_name }} \
