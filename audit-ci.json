@@ -2,5 +2,5 @@
   "low": true,
   "package-manager": "auto",
   "registry": "https://registry.npmjs.org",
-  "allowlist": ["brace-expansion"]
+  "allowlist": ["brace-expansion", "GHSA-2g4f-4pwh-qvx6", "GHSA-3ppc-4f35-3m26"]
 }

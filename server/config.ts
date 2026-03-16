@@ -48,7 +48,8 @@ const replacePort = (url: string, port: string): string => {
 const port = get('NODE_PORT', '9999')
 const serviceUrl = replacePort(get('SERVICE_URL', ''), port)
 
-const oidcIssuer = get('OIDC_ISSUER', '', requiredInProduction)
+const oneLoginAccount = get('ONE_LOGIN_ACCOUNT', 'account.gov.uk', requiredInProduction)
+const ivIssuer = `https://oidc.${oneLoginAccount}`
 
 const config = {
   productId: get('PRODUCT_ID', 'track-my-case', requiredInProduction),
@@ -71,17 +72,18 @@ const config = {
   },
   apis: {
     govukOneLogin: {
-      url: oidcIssuer,
-      jwksUrl: `${oidcIssuer}/.well-known/jwks.json`,
-      discoveryUrl: `${oidcIssuer}/.well-known/openid-configuration`,
+      url: ivIssuer,
+      jwksUrl: `${ivIssuer}/.well-known/jwks.json`,
+      discoveryUrl: `${ivIssuer}/.well-known/openid-configuration`,
       clientId: get('OIDC_CLIENT_ID', '', requiredInProduction),
       privateKey: get('OIDC_PRIVATE_KEY', '', requiredInProduction),
+      signInUrl: `https://signin.${oneLoginAccount}/enter-email`,
+      createAccountUrl: `https://signin.${oneLoginAccount}/enter-email-create`,
       idTokenSigningAlgorithm: 'ES256',
       timeout: 20000,
       strategyName: 'oidc',
-      oneLoginLink: get('ONE_LOGIN_LINK', 'https://home.account.gov.uk', requiredInProduction),
-      ivIssuer: get('IV_ISSUER', '', requiredInProduction),
-      ivDidUri: get('IV_DID_URI', '', requiredInProduction),
+      oneLoginLink: `https://home.${oneLoginAccount}`,
+      ivDidUri: `did:web:oidc.${oneLoginAccount}`,
       scopes: get('OIDC_SCOPES', 'openid email', requiredInProduction),
       authorizeRedirectUrl: replacePort(get('OIDC_AUTHORIZE_REDIRECT_URL', '', requiredInProduction), port),
       postLogoutRedirectUrl: replacePort(get('OIDC_POST_LOGOUT_REDIRECT_URL', '', requiredInProduction), port),
@@ -124,6 +126,11 @@ const config = {
     gtmId: get('GOOGLE_TAG_MANAGER_ID', 'GTM-WRN68MWZ', requiredInProduction),
     gtagId: get('GOOGLE_ANALYTICS_ID', 'G-ERL8BYW4KX', requiredInProduction),
   },
-  // ingressUrl: get('INGRESS_URL', 'http://localhost:9999'),
+  featureFlags: {
+    displayHearing: toBoolean(get('DISPLAY_HEARING_DATE_TYPE', false, requiredInProduction)),
+  },
+  settings: {
+    maintenanceWindow: get('MAINTENANCE_WINDOW', '5@12:00-6@18:00;6@18:00-0@13:00'),
+  },
 }
 export default config

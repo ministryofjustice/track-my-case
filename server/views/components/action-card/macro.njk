@@ -1,24 +1,27 @@
-{% macro actionCard(title, description, href, linkText, variant='default', count=null) %}
-  {% set isEmphasised = variant == 'emphasised' %}
+{% macro actionCard(title, description, href, linkText, variant='default') %}
 
-  {% if isEmphasised %}
-    {% set cardClasses = "action-card action-card--emphasised" %}
-  {% else %}
-    {% set cardClasses = "action-card" %}
+  {% set cardClasses = "track-a-case-govuk-summary-card govuk-summary-card" %}
+  {% if variant == 'emphasised' %}
+    {% set cardClasses = cardClasses + " action-card--emphasised" %}
   {% endif %}
 
   <div class="{{ cardClasses }}">
-    <div class="action-card__header">
-      <h2 class="govuk-heading-s govuk-!-margin-bottom-0">{{ title }}</h2>
+    <div class="govuk-summary-card__title-wrapper">
+      <h2 class="govuk-summary-card__title">{{ title | safe }}</h2>
     </div>
-    <div class="action-card__content">
-      <p class="govuk-body">{{ description }}</p>
-      <a class="govuk-link" href="{{ href }}">
-        {{ linkText }}
-        {% if count %}
-          <span class="moj-notification-badge moj-notification-badge--blue">{{ count }}</span>
-        {% endif %}
-      </a>
+    <div class="govuk-summary-card__content">
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row action-card-list__row">
+          <p class="govuk-body">{{ description | safe }}</p>
+          {% if href %}
+            <p class="govuk-body">
+              <a class="govuk-link" href="{{ href }}">
+                {{ linkText or href}}
+              </a>
+            </p>
+          {% endif %}
+        </div>
+      </dl>
     </div>
   </div>
 {% endmacro %}

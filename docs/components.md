@@ -86,7 +86,7 @@ The `promoPanel` component is used to display highlighted informational or promo
 {{ promoPanel(
   "Need help understanding the process?",
   "Learn what to expect after a hearing or decision and what your next steps might be.",
-  "/cases/support-guidance",
+  "/cases/some-url",
   "View guidance",
   "/assets/images/<image-name>",
   "highlight"

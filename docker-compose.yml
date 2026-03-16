@@ -13,10 +13,7 @@ services:
         SERVICE_URL: '${SERVICE_URL}'
         OIDC_CLIENT_ID: '${OIDC_CLIENT_ID}'
         OIDC_PRIVATE_KEY: '${OIDC_PRIVATE_KEY}'
-        OIDC_ISSUER: '${OIDC_ISSUER}'
-        ONE_LOGIN_LINK: '${ONE_LOGIN_LINK}'
-        IV_DID_URI: '${IV_DID_URI}'
-        IV_ISSUER: '${IV_ISSUER}'
+        ONE_LOGIN_ACCOUNT: '${ONE_LOGIN_ACCOUNT}'
         OIDC_TOKEN_AUTH_METHOD: '${OIDC_TOKEN_AUTH_METHOD}'
         OIDC_SCOPES: '${OIDC_SCOPES}'
         OIDC_CLAIMS: '${OIDC_CLAIMS}'
@@ -35,6 +32,7 @@ services:
         ALLOW_DEBUG: '${ALLOW_DEBUG}'
         GOOGLE_TAG_MANAGER_ID: '${GOOGLE_TAG_MANAGER_ID}'
         GOOGLE_ANALYTICS_ID: '${GOOGLE_ANALYTICS_ID}'
+        DISPLAY_HEARING_DATE_TYPE: '${DISPLAY_HEARING_DATE_TYPE}'
     ports:
       # Default HOST_PORT to 9999 for data-analytics platform
       - '${NODE_PORT}:${NODE_PORT}'

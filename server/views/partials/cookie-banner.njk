@@ -79,14 +79,14 @@
 </script>
 
 <div id="cookie-banner" class="govuk-cookie-banner" data-nosnippet role="region"
-     aria-label="Cookies on Track my case" data-module="govuk-cookie-banner">
+     aria-label="Cookies on {{ applicationName }}" data-module="govuk-cookie-banner">
 
   {% if not cookieAccepted %}
     <div class="govuk-cookie-banner__message govuk-width-container" id="cookie-banner-options">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
           <h2 class="govuk-cookie-banner__heading govuk-heading-m">
-            Cookies on Track my case
+            Cookies on {{ applicationName }}
           </h2>
           <div class="govuk-cookie-banner__content">
             <p class="govuk-body">We use essential small files (known as ‘cookies’) to make this service work. </p>

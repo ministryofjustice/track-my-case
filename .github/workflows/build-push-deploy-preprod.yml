@@ -46,16 +46,16 @@ jobs:
 
       - name: Build
         env:
+          PRODUCT_ID: ${{ vars.PRODUCT_ID }}
+          REDIS_ENABLED: ${{ vars.REDIS_ENABLED }}
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
           NEW_TAG_V: ${{ steps.set-version-tag-output.outputs.new_tag }}
           NODE_ENV: ${{ vars.NODE_ENV }}
           NODE_PORT: ${{ vars.NODE_PORT }}
           SERVICE_URL: ${{ vars.SERVICE_URL }}
           OIDC_CLIENT_ID: ${{ secrets.OIDC_CLIENT_ID }}
           OIDC_PRIVATE_KEY: ${{ secrets.OIDC_PRIVATE_KEY }}
-          OIDC_ISSUER: ${{ vars.OIDC_ISSUER }}
-          ONE_LOGIN_LINK: ${{ vars.ONE_LOGIN_LINK }}
-          IV_DID_URI: ${{ vars.IV_DID_URI }}
-          IV_ISSUER: ${{ vars.IV_ISSUER }}
+          ONE_LOGIN_ACCOUNT: ${{ vars.ONE_LOGIN_ACCOUNT }}
           OIDC_TOKEN_AUTH_METHOD: ${{ vars.OIDC_TOKEN_AUTH_METHOD }}
           OIDC_SCOPES: ${{ vars.OIDC_SCOPES }}
           OIDC_CLAIMS: ${{ vars.OIDC_CLAIMS }}
@@ -74,9 +74,13 @@ jobs:
           ALLOW_DEBUG: ${{ vars.ALLOW_DEBUG }}
           GOOGLE_TAG_MANAGER_ID: ${{ vars.GOOGLE_TAG_MANAGER_ID }}
           GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
+          DISPLAY_HEARING_DATE_TYPE: ${{ vars.DISPLAY_HEARING_DATE_TYPE }}
         shell: bash
         run: |
           docker build . \
+            --build-arg PRODUCT_ID=$PRODUCT_ID \
+            --build-arg REDIS_ENABLED=$REDIS_ENABLED \
+            --build-arg SESSION_SECRET=$SESSION_SECRET \
             --build-arg BUILD_NUMBER=$NEW_TAG_V \
             --build-arg GIT_REF=${{ github.sha }} \
             --build-arg GIT_BRANCH=${{ github.ref_name }} \
@@ -85,10 +89,7 @@ jobs:
             --build-arg SERVICE_URL=$SERVICE_URL \
             --build-arg OIDC_CLIENT_ID=$OIDC_CLIENT_ID \
             --build-arg OIDC_PRIVATE_KEY=$OIDC_PRIVATE_KEY \
-            --build-arg OIDC_ISSUER=$OIDC_ISSUER \
-            --build-arg ONE_LOGIN_LINK=$ONE_LOGIN_LINK \
-            --build-arg IV_DID_URI=$IV_DID_URI \
-            --build-arg IV_ISSUER=$IV_ISSUER \
+            --build-arg ONE_LOGIN_ACCOUNT=$ONE_LOGIN_ACCOUNT \
             --build-arg OIDC_TOKEN_AUTH_METHOD=$OIDC_TOKEN_AUTH_METHOD \
             --build-arg OIDC_SCOPES="$OIDC_SCOPES" \
             --build-arg OIDC_CLAIMS=$OIDC_CLAIMS \
@@ -107,6 +108,7 @@ jobs:
             --build-arg ALLOW_DEBUG=$ALLOW_DEBUG \
             --build-arg GOOGLE_TAG_MANAGER_ID=$GOOGLE_TAG_MANAGER_ID \
             --build-arg GOOGLE_ANALYTICS_ID=$GOOGLE_ANALYTICS_ID \
+            --build-arg DISPLAY_HEARING_DATE_TYPE=$DISPLAY_HEARING_DATE_TYPE \
             -t working_image:$NEW_TAG_V
 
       - name: Configure AWS credentials
@@ -173,24 +175,7 @@ jobs:
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
           NEW_TAG_V: ${{ needs.build-push-preprod.outputs.new_tag }}
           RELEASE_NAME: ${{ github.event.repository.name }}-preprod
-          SECRETS_CONTEXT:  ${{ toJson(secrets) }}
-          VARS_CONTEXT:  ${{ toJson(vars) }}
         run: |
-          combined_json=$(jq -n \
-              --argjson secrets_json "$SECRETS_CONTEXT" \
-              --argjson vars_json "$VARS_CONTEXT" \
-              '$secrets_json + $vars_json')
-
-          custom_variables=""
-          for row in $(echo "${combined_json}" | jq -r 'to_entries[] | @base64'); do
-            key=$(echo ${row} | base64 --decode | jq -r '.key')
-            value=$(echo ${row} | base64 --decode | jq -r '.value')
-            if [[ $key == XXX* ]]; then
-                custom_key=$(echo $key | sed 's/^XXX_/Secrets.WebApp.Parameters./')
-                custom_variables="$custom_variables --set $custom_key=$value"
-            fi
-          done
-
           helm upgrade --install --atomic --wait --timeout 5m0s --namespace $KUBE_NAMESPACE $RELEASE_NAME ./track-my-case-cloud-platform/charts/webapp-cp \
           --set Namespace=$KUBE_NAMESPACE \
           --set WebApp.Image.Repository=$ECR_REPO_WEBAPP \
@@ -201,11 +186,11 @@ jobs:
           --set securityContext.capabilities.drop=["ALL"] \
           --set securityContext.runAsNonRoot=true \
           --set securityContext.seccompProfile.type="RuntimeDefault" \
-          $custom_variables
+          --set Ingress.Enabled=true
 
           echo "Labeling the service"
           kubectl label service --overwrite=true $KUBE_NAMESPACE app=$KUBE_NAMESPACE
-          
+
       - name: Extract deployed service values for monitoring
         id: extract-values
         env:
@@ -213,12 +198,8 @@ jobs:
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
         run: |
           echo "Extracting deployed Helm values..."
-
           SERVICE_NAME=$(helm get values "$RELEASE_NAME" -n "$KUBE_NAMESPACE" -o json | jq -r '.WebApp.Name')
-
           echo "ServiceName=$SERVICE_NAME"
-
-          # Export them to the next step
           echo "service_name=$SERVICE_NAME" >> $GITHUB_OUTPUT
 
       - name: Deploy Monitoring Helm chart
@@ -229,4 +210,5 @@ jobs:
             --namespace $KUBE_NAMESPACE \
             --set serviceName=${{ steps.extract-values.outputs.service_name }} \
             --set namespace=$KUBE_NAMESPACE \
-            --set monitoring.interval="15s"         
+            --set monitoring.interval="15s" \
+            --set alertLabels.severity="victims-pathfinder-preprod"

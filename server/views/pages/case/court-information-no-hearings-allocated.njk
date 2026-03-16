@@ -6,17 +6,30 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h2 class="govuk-heading-l">Court information</h2>
+      <h1 class="govuk-heading-l">Court information</h1>
+      <div class="govuk-notification-banner govuk-!-margin-bottom-6" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <h3 class="govuk-notification-banner__heading">There is no court information</h3>
+          <p class="govuk-body">There is no court information because the next trial or sentencing hearing has not been set.</p>
+          <p class="govuk-body">This service only shows trial and sentencing hearing details.</p>
+          <p class="govuk-body">The police will tell you if there are any updates.</p>
+          <p class="govuk-body">Find their contact details on any letter they have sent you, or <a href="https://www.police.uk/pu/find-a-police-force/" class="govuk-link" target="_blank">find your local police force (opens in new tab)</a>.</p>
+        </div>
+      </div>
+
+      <h2 class="govuk-heading-l">Hearing date has not been set</h2>
 
       <p class="govuk-body">
         There is no court information because the next hearing has not been set.
       </p>
-      <p class="govuk-body">
-        You can contact the police officer in charge of your case or the police witness care unit for any updates.
-      </p>
-      <p class="govuk-body">
-        You can also <a class="govuk-link" href="https://www.find-court-tribunal.service.gov.uk" target="_blank">search all courts (opens in new tab)</a>.
-      </p>
+
+      <p>court-information-generic-summary.njk from</p>
+      {% include "pages/case/court-information-generic-summary.njk" %}
+      <p>court-information-generic-summary.njk to</p>
+
     </div>
   </div>
 

@@ -17,7 +17,7 @@
       <h1 class="govuk-heading-xl">Cookies</h1>
 
       <p class="govuk-body">Cookies are small files saved on your phone, tablet or computer when you visit a website or use an online service.</p>
-      <p class="govuk-body">We use cookies to store information about how you use the 'Track my case' service, such as the pages you visit.</p>
+      <p class="govuk-body">We use cookies to store information about how you use the '{{ applicationName }}' service, such as the pages you visit.</p>
 
       <form id="cookie-preferences" method="post">
         <input type="hidden" name="_csrf" value="{{ csrfToken }}">
@@ -39,7 +39,7 @@
               <li>what you click on while you're visiting the service</li>
             </ul>
 
-            <h3 class="govuk-heading-m govuk-!-margin-top-5">Your 'Track my case' cookie preferences</h3>
+            <h3 class="govuk-heading-m govuk-!-margin-top-5">Your '{{ applicationName }}' cookie preferences</h3>
 
             {{ govukRadios({
               idPrefix: "cookiePreferenceAnalytics",
@@ -74,7 +74,7 @@
       </form>
 
       <h3 class="govuk-heading-m">Essential cookies</h3>
-      <p class="govuk-body">These cookies need to be on to allow you to use the 'Track my case' service.</p>
+      <p class="govuk-body">These cookies need to be on to allow you to use the '{{ applicationName }}' service.</p>
 
       <h3 class="govuk-heading-m">Your progress when using the service</h3>
       <p class="govuk-body">When you use the service, we'll set a cookie to remember your progress through this site. This cookie does not store your personal data and is deleted when you close this website.</p>

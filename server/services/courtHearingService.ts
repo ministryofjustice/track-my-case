@@ -1,6 +1,6 @@
 import TrackMyCaseApiClient, { GetPathAndEmailRequestOptions } from '../data/trackMyCaseApiClient'
 import { logger } from '../logger'
-import { CaseDetailsResponse } from '../interfaces/caseDetails'
+import { CaseDetails, CaseDetailsResponse } from '../interfaces/caseDetails'
 import { resolvePath } from '../utils/utils'
 
 export default class CourtHearingService {
@@ -10,21 +10,19 @@ export default class CourtHearingService {
     try {
       const path = resolvePath('/api/cases/:case_urn/casedetails', { case_urn: urn })
       const request: GetPathAndEmailRequestOptions = { path, userEmail }
-      const caseDetails = await this.apiClient.getCaseDetailsByUrn(request)
+      const caseDetails: CaseDetails = await this.apiClient.getCaseDetailsByUrn(request)
       return {
         statusCode: 200,
         caseDetails,
       }
     } catch (e) {
-      if (e?.status === 403) {
-        logger.error('User access forbidden', e.status, e.message)
+      if (e?.status && e?.message) {
+        logger.error('Case details API error', e.status, e.message)
         return {
-          statusCode: 403,
-          message: 'Access forbidden',
+          statusCode: e.status,
+          message: e.message,
         }
       }
-
-      logger.error('Unsuccessful response by urn', e.status, e.message)
       return {
         statusCode: 404,
         message: `Unsuccessful response by urn: ${urn}`,

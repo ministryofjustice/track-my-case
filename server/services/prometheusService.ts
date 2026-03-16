@@ -27,7 +27,7 @@ export const healthCheckStatusGauge = new Gauge({
 })
 
 // HTTP request counter
-export const httpRequestCounter = new Counter({
+export const httpRequestsTotal = new Counter({
   name: 'tmc_ui_http_requests_total',
   help: 'Total number of HTTP requests',
   labelNames: ['method', 'route', 'status_code'],
@@ -40,6 +40,14 @@ export const httpRequestDuration = new Histogram({
   help: 'Duration of HTTP requests in seconds',
   labelNames: ['method', 'route', 'status_code'],
   buckets: [0.1, 0.5, 1, 2, 5, 10],
+  registers: [register],
+})
+
+// Page feedback ("Is this page useful?") counter – labels: page (title + url), useful (Yes/No)
+export const pageFeedbackTotal = new Counter({
+  name: 'tmc_ui_page_feedback_total',
+  help: 'Total "Is this page useful?" feedback submissions by page and answer',
+  labelNames: ['page', 'useful'],
   registers: [register],
 })
 
