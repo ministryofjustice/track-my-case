@@ -16,15 +16,13 @@ export default class CourtHearingService {
         caseDetails,
       }
     } catch (e) {
-      if (e?.status === 403) {
-        logger.error('User access forbidden', e.status, e.message)
+      if (e?.status && e?.message) {
+        logger.error('Case details API error', e.status, e.message)
         return {
-          statusCode: 403,
-          message: 'Access forbidden',
+          statusCode: e.status,
+          message: e.message,
         }
       }
-
-      logger.error('Unsuccessful response by urn', e.status, e.message)
       return {
         statusCode: 404,
         message: `Unsuccessful response by urn: ${urn}`,
