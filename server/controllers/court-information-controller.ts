@@ -89,23 +89,23 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
       res.locals.message = `Status code: ${statusCode}. ${message}`
       if (statusCode === 404) {
         res.locals.pageTitle = 'Court information - Not found'
-        return res.status(statusCode).render('pages/case/court-information-not-found')
+        return res.status(404).render('pages/case/court-information-not-found')
       }
       if (statusCode === 400) {
         res.locals.pageTitle = 'Court information - Bad request'
-        return res.status(statusCode).render('pages/case/court-information-not-found')
+        return res.status(404).render('pages/case/court-information-not-found')
       }
       if (statusCode === 403) {
         res.locals.pageTitle = 'Court information - Access denied'
-        return res.status(statusCode).render('pages/case/court-information-access-denied')
+        return res.status(404).render('pages/case/court-information-access-denied')
       }
       if (statusCode === 429) {
         res.locals.pageTitle = 'Court information - Too many requests'
-        return res.status(statusCode).render('pages/case/court-information-common-platform-unavailable')
+        return res.status(404).render('pages/case/court-information-common-platform-unavailable')
       }
       if (statusCode === 503) {
         res.locals.pageTitle = 'Court information - Common platform unavailable'
-        return res.status(statusCode).render('pages/case/court-information-common-platform-unavailable')
+        return res.status(404).render('pages/case/court-information-common-platform-unavailable')
       }
 
       res.locals.pageTitle = 'Court information - Not found'

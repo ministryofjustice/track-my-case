@@ -230,7 +230,7 @@ describe('court-information-controller', () => {
       await courtInformationController(req, res, next)
 
       expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
-      expect(res.status).toHaveBeenCalledWith(400)
+      expect(res.status).toHaveBeenCalledWith(404)
       expect(res.locals.pageTitle).toBe('Court information - Bad request')
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found')
     })
@@ -242,7 +242,7 @@ describe('court-information-controller', () => {
       await courtInformationController(req, res, next)
 
       expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
-      expect(res.status).toHaveBeenCalledWith(403)
+      expect(res.status).toHaveBeenCalledWith(404)
       expect(res.locals.pageTitle).toBe('Court information - Access denied')
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-access-denied')
     })
@@ -254,7 +254,7 @@ describe('court-information-controller', () => {
       await courtInformationController(req, res, next)
 
       expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
-      expect(res.status).toHaveBeenCalledWith(429)
+      expect(res.status).toHaveBeenCalledWith(404)
       expect(res.locals.pageTitle).toBe('Court information - Too many requests')
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-common-platform-unavailable')
     })
@@ -266,7 +266,7 @@ describe('court-information-controller', () => {
       await courtInformationController(req, res, next)
 
       expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
-      expect(res.status).toHaveBeenCalledWith(503)
+      expect(res.status).toHaveBeenCalledWith(404)
       expect(res.locals.pageTitle).toBe('Court information - Common platform unavailable')
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-common-platform-unavailable')
     })
@@ -278,7 +278,7 @@ describe('court-information-controller', () => {
       await courtInformationController(req, res, next)
 
       expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
-      expect(res.status).toHaveBeenCalledWith(403)
+      expect(res.status).toHaveBeenCalledWith(404)
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-access-denied')
     })
   })
@@ -293,7 +293,7 @@ describe('court-information-controller', () => {
 
       await courtInformationController(req, res, next)
 
-      expect(res.status).toHaveBeenCalledWith(403)
+      expect(res.status).toHaveBeenCalledWith(404)
       expect(res.locals.pageTitle).toBe('Court information - Access denied')
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-access-denied')
     })
@@ -307,7 +307,7 @@ describe('court-information-controller', () => {
 
       await courtInformationController(req, res, next)
 
-      expect(res.status).toHaveBeenCalledWith(429)
+      expect(res.status).toHaveBeenCalledWith(404)
       expect(res.locals.pageTitle).toBe('Court information - Too many requests')
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-common-platform-unavailable')
     })
@@ -321,7 +321,7 @@ describe('court-information-controller', () => {
 
       await courtInformationController(req, res, next)
 
-      expect(res.status).toHaveBeenCalledWith(503)
+      expect(res.status).toHaveBeenCalledWith(404)
       expect(res.locals.pageTitle).toBe('Court information - Common platform unavailable')
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-common-platform-unavailable')
     })
@@ -335,7 +335,7 @@ describe('court-information-controller', () => {
 
       await courtInformationController(req, res, next)
 
-      expect(res.status).toHaveBeenCalledWith(400)
+      expect(res.status).toHaveBeenCalledWith(404)
       expect(res.locals.pageTitle).toBe('Court information - Bad request')
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found')
     })
