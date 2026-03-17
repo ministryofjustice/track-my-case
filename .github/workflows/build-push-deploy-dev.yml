@@ -118,7 +118,7 @@ jobs:
             -t working_image:$NEW_TAG_V
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v5
+        uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: ${{ secrets.DEV_ECR_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.DEV_ECR_REGION }}
@@ -225,17 +225,12 @@ jobs:
         env:
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
         run: |
-          NEW_RELEASE="stg-track-my-case-monitoring"
-          PATCH='{"metadata":{"annotations":{"meta.helm.sh/release-name":"'"$NEW_RELEASE"'","meta.helm.sh/release-namespace":"'"$KUBE_NAMESPACE"'"}}}'
+          NEW_RELEASE="track-my-case-monitoring"
+          PATCH='{"metadata":{"annotations":{"meta.helm.sh/release-name":"'"$NEW_RELEASE"'","meta.helm.sh/release-namespace":"'"$KUBE_NAMESPACE"'"}}}'  
 
           for resource in \
             "prometheusrule/alerting-rules-$KUBE_NAMESPACE" \
-            "configmap/${NEW_RELEASE}-dashboard" ; do
-            if kubectl get $resource -n $KUBE_NAMESPACE >/dev/null 2>&1; then
-              echo "Patching $resource..."
-              kubectl patch $resource -n $KUBE_NAMESPACE --type=merge -p "$PATCH"
-            else
-              echo "$resource not found — skipping"
+            "configmap/monitoring-helmcharts-monitoring-addon-dashboard" ; do
             fi
           done
 
@@ -244,22 +239,7 @@ jobs:
         env:
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
         run: |
-          helm upgrade --install stg-track-my-case-monitoring \
-            ./track-my-case-cloud-platform/charts/stg-track-my-case-monitoring \
-            -f ./track-my-case-cloud-platform/charts/stg-track-my-case-monitoring/values-dev.yaml \
+          helm upgrade --install track-my-case-monitoring \
+            ./track-my-case-cloud-platform/charts/track-my-case-monitoring \
+            -f ./track-my-case-cloud-platform/charts/track-my-case-monitoring/values-dev.yaml \
             --namespace $KUBE_NAMESPACE --wait
-
-
-
-
-      # - name: Deploy Monitoring Helm chart
-      #   if: ${{ github.event.inputs.deploy_monitoring_only == 'true' || github.event.inputs.deploy_monitoring != 'false' }}
-      #   env:
-      #     KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
-      #   run: |
-      #     helm upgrade --install monitoring-helmcharts ./monitoring-helmcharts \
-      #       --namespace $KUBE_NAMESPACE \
-      #       --set serviceName=${{ steps.extract-values.outputs.service_name }} \
-      #       --set namespace=$KUBE_NAMESPACE \
-      #       --set monitoring.interval="15s" \
-      #       --set alertLabels.severity="victims-pathfinder-dev"

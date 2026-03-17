@@ -200,9 +200,7 @@ jobs:
         env:
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
         run: |
-          helm upgrade --install monitoring-helmcharts ./monitoring-helmcharts \
-            --namespace $KUBE_NAMESPACE \
-            --set serviceName=${{ steps.extract-values.outputs.service_name }} \
-            --set namespace=$KUBE_NAMESPACE \
-            --set monitoring.interval="15s" \
-            --set alertLabels.severity="track-my-case-prod"
+          helm upgrade --install track-my-case-monitoring \
+            ./track-my-case-cloud-platform/charts/track-my-case-monitoring \
+            -f ./track-my-case-cloud-platform/charts/track-my-case-monitoring/values-prod.yaml \
+            --namespace $KUBE_NAMESPACE --wait       
