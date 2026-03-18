@@ -13,13 +13,39 @@
     }) }}
   {% endif %}
 
-  <form id="searchCaseReferenceNumber" name="searchCaseReferenceNumber" method="post" novalidate>
-    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">Find your court</h1>
+      <form id="searchCaseReferenceNumber" name="searchCaseReferenceNumber" method="post" novalidate>
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
 
-    <div class="govuk-grid-row govuk-!-margin-bottom-6">
-      <div class="govuk-grid-column-two-thirds">
+        {% if upcomingMaintenance or ongoingMaintenance %}
+          <div class="govuk-notification-banner" role="alert" aria-labelledby="govuk-notification-banner-title"
+               data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__header">
+              <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                Important
+              </h2>
+            </div>
+
+            <div class="govuk-notification-banner__content">
+              {% if upcomingMaintenance %}
+                <h3 class="govuk-notification-banner__heading">
+                  Upcoming maintenance
+                </h3>
+                <p class="govuk-body">Find your court will be unavailable between 6pm Saturday and 1pm Sunday.</p>
+              {% endif %}
+              {% if ongoingMaintenance %}
+                <h3 class="govuk-notification-banner__heading">
+                  Ongoing maintenance
+                </h3>
+                <p class="govuk-body">The service might not be available between 6pm Saturday and 1pm Sunday.</p>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+
+        <h1 class="govuk-heading-l">Find your court</h1>
 
         <p class="govuk-body">To find the court where the next hearing or trial for your case is, you need your
           unique reference number (URN). You can find it on any letter or email from the police or Crown
@@ -53,10 +79,12 @@
           You can also <a href="https://www.find-court-tribunal.service.gov.uk/" class="govuk-link"
                           target="_blank">search all courts (opens in new tab)</a>.</p>
 
-        <p class="govuk-body">This service is not available from 6pm Saturday to 1pm Sunday each week for regular maintenance.</p>
-      </div>
+        <p class="govuk-body">
+          This service is not available from 6pm Saturday to 1pm Sunday each week for regular maintenance.
+        </p>
+      </form>
+
     </div>
-  </form>
+  </div>
 
 {% endblock %}
-

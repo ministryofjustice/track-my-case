@@ -6,6 +6,15 @@ on:
       - develop
       - main
   workflow_dispatch:
+    inputs:
+      deploy_monitoring:
+        description: 'Deploy monitoring Helm chart'
+        type: boolean
+        default: true
+      deploy_monitoring_only:
+        description: 'Deploy monitoring Helm chart only (skips build, push and app deploy)'
+        type: boolean
+        default: false
 
 permissions: {}
 concurrency:
@@ -15,6 +24,7 @@ concurrency:
 jobs:
   build-push-dev:
     name: Build & Push New Image
+    if: ${{ github.event.inputs.deploy_monitoring_only != 'true' }}
     runs-on: ubuntu-latest
     permissions:
       id-token: write # This is required for requesting the JWT
@@ -42,16 +52,16 @@ jobs:
 
       - name: Build
         env:
+          PRODUCT_ID: ${{ vars.PRODUCT_ID }}
+          REDIS_ENABLED: ${{ vars.REDIS_ENABLED }}
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
           NEW_TAG_V: ${{ steps.set-version-tag-output.outputs.new_tag }}
           NODE_ENV: ${{ vars.NODE_ENV }}
           NODE_PORT: ${{ vars.NODE_PORT }}
           SERVICE_URL: ${{ vars.SERVICE_URL }}
           OIDC_CLIENT_ID: ${{ secrets.OIDC_CLIENT_ID }}
           OIDC_PRIVATE_KEY: ${{ secrets.OIDC_PRIVATE_KEY }}
-          OIDC_ISSUER: ${{ vars.OIDC_ISSUER }}
-          ONE_LOGIN_LINK: ${{ vars.ONE_LOGIN_LINK }}
-          IV_DID_URI: ${{ vars.IV_DID_URI }}
-          IV_ISSUER: ${{ vars.IV_ISSUER }}
+          ONE_LOGIN_ACCOUNT: ${{ vars.ONE_LOGIN_ACCOUNT }}
           OIDC_TOKEN_AUTH_METHOD: ${{ vars.OIDC_TOKEN_AUTH_METHOD }}
           OIDC_SCOPES: ${{ vars.OIDC_SCOPES }}
           OIDC_CLAIMS: ${{ vars.OIDC_CLAIMS }}
@@ -74,6 +84,9 @@ jobs:
         shell: bash
         run: |
           docker build . \
+            --build-arg PRODUCT_ID=$PRODUCT_ID \
+            --build-arg REDIS_ENABLED=$REDIS_ENABLED \
+            --build-arg SESSION_SECRET=$SESSION_SECRET \
             --build-arg BUILD_NUMBER=$NEW_TAG_V \
             --build-arg GIT_REF=${{ github.sha }} \
             --build-arg GIT_BRANCH=${{ github.ref_name }} \
@@ -82,10 +95,7 @@ jobs:
             --build-arg SERVICE_URL=$SERVICE_URL \
             --build-arg OIDC_CLIENT_ID=$OIDC_CLIENT_ID \
             --build-arg OIDC_PRIVATE_KEY=$OIDC_PRIVATE_KEY \
-            --build-arg OIDC_ISSUER=$OIDC_ISSUER \
-            --build-arg ONE_LOGIN_LINK=$ONE_LOGIN_LINK \
-            --build-arg IV_DID_URI=$IV_DID_URI \
-            --build-arg IV_ISSUER=$IV_ISSUER \
+            --build-arg ONE_LOGIN_ACCOUNT=$ONE_LOGIN_ACCOUNT \
             --build-arg OIDC_TOKEN_AUTH_METHOD=$OIDC_TOKEN_AUTH_METHOD \
             --build-arg OIDC_SCOPES="$OIDC_SCOPES" \
             --build-arg OIDC_CLAIMS=$OIDC_CLAIMS \
@@ -108,7 +118,7 @@ jobs:
             -t working_image:$NEW_TAG_V
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v5
+        uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: ${{ secrets.DEV_ECR_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.DEV_ECR_REGION }}
@@ -130,6 +140,7 @@ jobs:
   deploy-dev:
     needs: build-push-dev
     name: Deploy Helm Chart into Cloud Platform
+    if: ${{ always() && (needs.build-push-dev.result == 'success' || needs.build-push-dev.result == 'skipped') }}
     runs-on: ubuntu-latest
     permissions:
       contents: write # This is required for actions/checkout
@@ -156,39 +167,43 @@ jobs:
           git -C track-my-case-cloud-platform checkout main
 
       - name: Configure AWS credentials
+        if: ${{ github.event.inputs.deploy_monitoring_only != 'true' }}
         uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: ${{ secrets.DEV_ECR_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.DEV_ECR_REGION }}
 
       - name: Login to Amazon ECR
+        if: ${{ github.event.inputs.deploy_monitoring_only != 'true' }}
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
+      - name: Adopt webapp-cp resources into app release
+        if: ${{ github.event.inputs.deploy_monitoring_only != 'true' }}
+        env:
+          KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
+          RELEASE_NAME: ${{ github.event.repository.name }}-dev
+        run: |
+          PATCH='{"metadata":{"annotations":{"meta.helm.sh/release-name":"'"$RELEASE_NAME"'","meta.helm.sh/release-namespace":"'"$KUBE_NAMESPACE"'"}}}'
+          for resource in \
+            "networkpolicy/allow-prometheus-scraping" \
+            "servicemonitor/$KUBE_NAMESPACE" ; do
+            if kubectl get $resource -n $KUBE_NAMESPACE >/dev/null 2>&1; then
+              echo "Patching $resource..."
+              kubectl patch $resource -n $KUBE_NAMESPACE --type=merge -p "$PATCH"
+            else
+              echo "$resource not found — skipping"
+            fi
+          done
+
       - name: Upgrade the Helm chart
+        if: ${{ github.event.inputs.deploy_monitoring_only != 'true' }}
         env:
           ECR_REPO_WEBAPP: ${{ steps.login-ecr.outputs.registry }}/${{ vars.DEV_ECR_REPOSITORY }}
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
           NEW_TAG_V: ${{ needs.build-push-dev.outputs.new_tag }}
           RELEASE_NAME: ${{ github.event.repository.name }}-dev
-          SECRETS_CONTEXT:  ${{ toJson(secrets) }}
-          VARS_CONTEXT:  ${{ toJson(vars) }}
         run: |
-          combined_json=$(jq -n \
-              --argjson secrets_json "$SECRETS_CONTEXT" \
-              --argjson vars_json "$VARS_CONTEXT" \
-              '$secrets_json + $vars_json')
-
-          custom_variables=""
-          for row in $(echo "${combined_json}" | jq -r 'to_entries[] | @base64'); do
-            key=$(echo ${row} | base64 --decode | jq -r '.key')
-            value=$(echo ${row} | base64 --decode | jq -r '.value')
-            if [[ $key == XXX* ]]; then
-                custom_key=$(echo $key | sed 's/^XXX_/Secrets.WebApp.Parameters./')
-                custom_variables="$custom_variables --set $custom_key=$value"
-            fi
-          done
-
           helm upgrade --install --atomic --wait --timeout 5m0s --namespace $KUBE_NAMESPACE $RELEASE_NAME ./track-my-case-cloud-platform/charts/webapp-cp \
           --set Namespace=$KUBE_NAMESPACE \
           --set WebApp.Image.Repository=$ECR_REPO_WEBAPP \
@@ -199,13 +214,13 @@ jobs:
           --set securityContext.capabilities.drop=["ALL"] \
           --set securityContext.runAsNonRoot=true \
           --set securityContext.seccompProfile.type="RuntimeDefault" \
-          --set Ingress.Enabled=true \
-          $custom_variables
+          --set Ingress.Enabled=true
 
           echo "Labeling the service"
           kubectl label service --overwrite=true $KUBE_NAMESPACE app=$KUBE_NAMESPACE
 
       - name: Extract deployed service values for monitoring
+        if: ${{ github.event.inputs.deploy_monitoring_only == 'true' || github.event.inputs.deploy_monitoring != 'false' }}
         id: extract-values
         env:
           RELEASE_NAME: ${{ github.event.repository.name }}-dev
@@ -220,13 +235,34 @@ jobs:
           # Export them to the next step
           echo "service_name=$SERVICE_NAME" >> $GITHUB_OUTPUT
 
-      - name: Deploy Monitoring Helm chart
+
+
+
+      - name: Adopt existing monitoring resources into new Helm release
+        if: ${{ github.event.inputs.deploy_monitoring_only == 'true' || github.event.inputs.deploy_monitoring != 'false' }}
         env:
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
         run: |
-          helm upgrade --install monitoring-helmcharts ./monitoring-helmcharts \
-            --namespace $KUBE_NAMESPACE \
-            --set serviceName=${{ steps.extract-values.outputs.service_name }} \
-            --set namespace=$KUBE_NAMESPACE \
-            --set monitoring.interval="15s" \
-            --set alertLabels.severity="victims-pathfinder-dev"
+          NEW_RELEASE="track-my-case-monitoring"
+          PATCH='{"metadata":{"annotations":{"meta.helm.sh/release-name":"'"$NEW_RELEASE"'","meta.helm.sh/release-namespace":"'"$KUBE_NAMESPACE"'"}}}'  
+
+          for resource in \
+            "prometheusrule/alerting-rules-$KUBE_NAMESPACE" \
+            "configmap/monitoring-helmcharts-monitoring-addon-dashboard" ; do
+            if kubectl get $resource -n $KUBE_NAMESPACE >/dev/null 2>&1; then
+              echo "Patching $resource..."
+              kubectl patch $resource -n $KUBE_NAMESPACE --type=merge -p "$PATCH"
+            else
+              echo "$resource not found — skipping"
+            fi
+          done
+
+      - name: Deploy Monitoring Helm chart
+        if: ${{ github.event.inputs.deploy_monitoring_only == 'true' || github.event.inputs.deploy_monitoring != 'false' }}
+        env:
+          KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
+        run: |
+          helm upgrade --install track-my-case-monitoring \
+            ./track-my-case-cloud-platform/charts/track-my-case-monitoring \
+            -f ./track-my-case-cloud-platform/charts/track-my-case-monitoring/values-dev.yaml \
+            --namespace $KUBE_NAMESPACE --wait

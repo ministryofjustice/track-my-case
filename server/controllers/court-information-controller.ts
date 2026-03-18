@@ -12,6 +12,41 @@ import { mapCaseDetailsToHearingSummary } from '../mappers/caseDetailsService'
 const trackMyCaseApiClient = new TrackMyCaseApiClient()
 const courtHearingService = new CourtHearingService(trackMyCaseApiClient)
 
+const mapOfReservedServiceErrors: { [key: string]: { statusCode: number; message: string } } = {
+  NOTFOUND: {
+    statusCode: 404,
+    message: 'Not found',
+  },
+  BADREQUEST: {
+    statusCode: 400,
+    message: 'Bad request',
+  },
+  DENIED: {
+    statusCode: 403,
+    message: 'Access denied',
+  },
+  TOOMANY: {
+    statusCode: 429,
+    message: 'Too many requests',
+  },
+  SERVICEDOWN: {
+    statusCode: 503,
+    message: 'Service down',
+  },
+}
+
+const getCaseDetailsResponse = async (caseUrn: string, userEmail: string): Promise<CaseDetailsResponse> => {
+  const serviceError: { statusCode: number; message: string } = mapOfReservedServiceErrors[caseUrn.toUpperCase()]
+  if (serviceError) {
+    return {
+      caseDetails: undefined,
+      statusCode: serviceError.statusCode,
+      message: serviceError.message,
+    }
+  }
+  return courtHearingService.getCaseDetailsByUrn(caseUrn, userEmail)
+}
+
 const courtInformationController = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     await initialiseBasicAuthentication(req, res, next)
@@ -26,22 +61,9 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
     }
 
     const caseUrn: string = res.locals.selectedUrn
-    if (caseUrn.toUpperCase() === 'SERVICEDOWN') {
-      res.locals.pageTitle = 'Service unavailable'
-      return res.status(404).render('pages/case/service-error')
-    }
-
     const userEmail: string = res.locals.user.email
-    const caseDetailsResponse: CaseDetailsResponse = await courtHearingService.getCaseDetailsByUrn(caseUrn, userEmail)
+    const caseDetailsResponse: CaseDetailsResponse = await getCaseDetailsResponse(caseUrn, userEmail)
     const { statusCode } = caseDetailsResponse
-    if (statusCode === 404) {
-      res.locals.pageTitle = 'Court information - Not found'
-      return res.status(404).render('pages/case/court-information-not-found')
-    }
-    if (statusCode === 403) {
-      res.locals.pageTitle = 'Court information - Access denied'
-      return res.status(403).render('pages/case/court-information-access-denied')
-    }
     if (statusCode === 200) {
       res.locals.caseDetails = caseDetailsResponse.caseDetails as CaseDetails
       if (res.locals.caseDetails?.courtSchedule?.length > 0) {
@@ -56,13 +78,45 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
           return res.render('pages/case/court-information')
         }
 
+        res.locals.message = `Status code: ${statusCode}. No hearings allocated`
         res.locals.pageTitle = 'Court information - No hearings allocated'
         return res.status(404).render('pages/case/court-information-no-hearings-allocated', {
           error: `No hearings allocated for this case`,
         })
       }
+    } else {
+      const { message } = caseDetailsResponse
+      res.locals.message = `Status code: ${statusCode}. ${message}`
+      if (statusCode === 404) {
+        res.locals.pageTitle = 'Court information - Not found'
+        return res.status(404).render('pages/case/court-information-not-found')
+      }
+      if (statusCode === 400) {
+        res.locals.pageTitle = 'Court information - Bad request'
+        return res.status(404).render('pages/case/court-information-not-found')
+      }
+      if (statusCode === 403) {
+        res.locals.pageTitle = 'Court information - Access denied'
+        return res.status(404).render('pages/case/court-information-access-denied')
+      }
+      if (statusCode === 429) {
+        res.locals.pageTitle = 'Court information - Too many requests'
+        return res.status(404).render('pages/case/court-information-common-platform-unavailable')
+      }
+      if (statusCode === 503) {
+        res.locals.pageTitle = 'Court information - Common platform unavailable'
+        return res.status(404).render('pages/case/court-information-common-platform-unavailable')
+      }
+
+      res.locals.pageTitle = 'Court information - Not found'
+      res.locals.message = `${res.locals.message} (unexpected status code)`
+
+      return res.status(404).render('pages/case/court-information-not-found')
     }
-    res.locals.pageTitle = 'Court information - Not found'
+
+    res.locals.pageTitle = 'Court information - No hearings allocated'
+    res.locals.message = `Status code: ${statusCode}. No hearings allocated`
+
     return res.status(404).render('pages/case/court-information-not-found')
   } catch (error) {
     // eslint-disable-next-line no-console

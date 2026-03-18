@@ -209,4 +209,150 @@ describe('court-information-controller', () => {
 
     expect(res.redirect).toHaveBeenCalledWith(paths.CASES.SEARCH)
   })
+
+  describe('reserved service error constants (mapOfReservedServiceErrors)', () => {
+    it('returns 404 and renders court-information-not-found when URN is NOTFOUND', async () => {
+      const { req, res, next } = createReqRes()
+      res.locals.selectedUrn = 'NOTFOUND'
+
+      await courtInformationController(req, res, next)
+
+      expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
+      expect(res.status).toHaveBeenCalledWith(404)
+      expect(res.locals.pageTitle).toBe('Court information - Not found')
+      expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found')
+    })
+
+    it('returns 404 and renders court-information-not-found when URN is BADREQUEST (400)', async () => {
+      const { req, res, next } = createReqRes()
+      res.locals.selectedUrn = 'BADREQUEST'
+
+      await courtInformationController(req, res, next)
+
+      expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
+      expect(res.status).toHaveBeenCalledWith(404)
+      expect(res.locals.pageTitle).toBe('Court information - Bad request')
+      expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found')
+    })
+
+    it('returns 403 and renders court-information-access-denied when URN is DENIED', async () => {
+      const { req, res, next } = createReqRes()
+      res.locals.selectedUrn = 'DENIED'
+
+      await courtInformationController(req, res, next)
+
+      expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
+      expect(res.status).toHaveBeenCalledWith(404)
+      expect(res.locals.pageTitle).toBe('Court information - Access denied')
+      expect(res.render).toHaveBeenCalledWith('pages/case/court-information-access-denied')
+    })
+
+    it('returns 429 and renders court-information-common-platform-unavailable when URN is TOOMANY', async () => {
+      const { req, res, next } = createReqRes()
+      res.locals.selectedUrn = 'TOOMANY'
+
+      await courtInformationController(req, res, next)
+
+      expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
+      expect(res.status).toHaveBeenCalledWith(404)
+      expect(res.locals.pageTitle).toBe('Court information - Too many requests')
+      expect(res.render).toHaveBeenCalledWith('pages/case/court-information-common-platform-unavailable')
+    })
+
+    it('returns 503 and renders court-information-common-platform-unavailable when URN is SERVICEDOWN', async () => {
+      const { req, res, next } = createReqRes()
+      res.locals.selectedUrn = 'SERVICEDOWN'
+
+      await courtInformationController(req, res, next)
+
+      expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
+      expect(res.status).toHaveBeenCalledWith(404)
+      expect(res.locals.pageTitle).toBe('Court information - Common platform unavailable')
+      expect(res.render).toHaveBeenCalledWith('pages/case/court-information-common-platform-unavailable')
+    })
+
+    it('treats reserved error URNs case-insensitively (e.g. denied -> DENIED)', async () => {
+      const { req, res, next } = createReqRes()
+      res.locals.selectedUrn = 'denied'
+
+      await courtInformationController(req, res, next)
+
+      expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
+      expect(res.status).toHaveBeenCalledWith(404)
+      expect(res.render).toHaveBeenCalledWith('pages/case/court-information-access-denied')
+    })
+  })
+
+  describe('API response error status codes', () => {
+    it('returns 403 and renders court-information-access-denied when API returns 403', async () => {
+      const { req, res, next } = createReqRes()
+      mockGetCaseDetailsByUrn.mockResolvedValue({
+        statusCode: 403,
+        message: 'Access denied',
+      })
+
+      await courtInformationController(req, res, next)
+
+      expect(res.status).toHaveBeenCalledWith(404)
+      expect(res.locals.pageTitle).toBe('Court information - Access denied')
+      expect(res.render).toHaveBeenCalledWith('pages/case/court-information-access-denied')
+    })
+
+    it('returns 429 and renders court-information-common-platform-unavailable when API returns 429', async () => {
+      const { req, res, next } = createReqRes()
+      mockGetCaseDetailsByUrn.mockResolvedValue({
+        statusCode: 429,
+        message: 'Too many requests',
+      })
+
+      await courtInformationController(req, res, next)
+
+      expect(res.status).toHaveBeenCalledWith(404)
+      expect(res.locals.pageTitle).toBe('Court information - Too many requests')
+      expect(res.render).toHaveBeenCalledWith('pages/case/court-information-common-platform-unavailable')
+    })
+
+    it('returns 503 and renders court-information-common-platform-unavailable when API returns 503', async () => {
+      const { req, res, next } = createReqRes()
+      mockGetCaseDetailsByUrn.mockResolvedValue({
+        statusCode: 503,
+        message: 'Service down',
+      })
+
+      await courtInformationController(req, res, next)
+
+      expect(res.status).toHaveBeenCalledWith(404)
+      expect(res.locals.pageTitle).toBe('Court information - Common platform unavailable')
+      expect(res.render).toHaveBeenCalledWith('pages/case/court-information-common-platform-unavailable')
+    })
+
+    it('returns 400 and renders court-information-not-found when API returns 400', async () => {
+      const { req, res, next } = createReqRes()
+      mockGetCaseDetailsByUrn.mockResolvedValue({
+        statusCode: 400,
+        message: 'Bad request',
+      })
+
+      await courtInformationController(req, res, next)
+
+      expect(res.status).toHaveBeenCalledWith(404)
+      expect(res.locals.pageTitle).toBe('Court information - Bad request')
+      expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found')
+    })
+
+    it('returns 404 and renders court-information-not-found for unexpected status code (e.g. 500)', async () => {
+      const { req, res, next } = createReqRes()
+      mockGetCaseDetailsByUrn.mockResolvedValue({
+        statusCode: 500,
+        message: 'Internal Server Error',
+      })
+
+      await courtInformationController(req, res, next)
+
+      expect(res.status).toHaveBeenCalledWith(404)
+      expect(res.locals.pageTitle).toBe('Court information - Not found')
+      expect(res.locals.message).toContain('unexpected status code')
+      expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found')
+    })
+  })
 })

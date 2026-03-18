@@ -91,12 +91,7 @@ export const setUpGovukOneLogin = (): Router => {
     router.use(flash())
 
     router.get(paths.ONE_LOGIN.AUTH_ERROR, (req: Request, res: Response) => {
-      res.status(401)
-      return res.render('pages/error.njk', {
-        user: req.user,
-        error: 'error',
-        error_description: 'error_description',
-      })
+      return res.redirect(paths.ACCESS_DENIED)
     })
 
     // Endpoint to handle back-channel logout requests
