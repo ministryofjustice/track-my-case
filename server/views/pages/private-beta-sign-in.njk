@@ -1,6 +1,6 @@
 {% extends "layout/citizen-authenticated.njk" %}
 
-{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/password-input/macro.njk" import govukPasswordInput %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
@@ -9,6 +9,13 @@
 {% block content %}
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
     <div class="govuk-grid-column-two-thirds">
+      {% if errorList %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errorList
+        }) }}
+      {% endif %}
+
       <form method="post" action="{{ privateBetaSignInApi }}" novalidate>
         <input type="hidden" name="_csrf" value="{{ csrfToken }}">
 
@@ -25,7 +32,8 @@
             id: "password",
             name: "password",
             type: "password",
-            autocomplete: "current-password"
+            autocomplete: "current-password",
+            errorMessage: errorList and (errorList | selectattr("href", "equalto", "#password") | first)
           }) }}
         </div>
 
