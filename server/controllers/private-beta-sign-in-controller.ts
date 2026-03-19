@@ -4,6 +4,7 @@ import paths from '../constants/paths'
 import { PASSWORD_CORRECT, PASSWORD_EXPIRATION } from '../constants/cookiesUtils'
 import config from '../config'
 import { clearPasswordCookies } from '../utils/utils'
+import { getSafeReturnPath } from '../utils/safeReturnPath'
 import { PrivateBetaSignInFormData } from '../interfaces/formSchemas'
 import { FormError, FormState } from '../interfaces/formState'
 
@@ -66,10 +67,10 @@ const postPrivateBetaSignInController = async (req: Request, res: Response, next
 
       const { passwordExpirationInMinutes } = config.settings
       const passwordExpiration: number = Date.now() + passwordExpirationInMinutes * 60 * 1000
-      res.cookie(PASSWORD_CORRECT, passwordCorrect, { signed: true })
+      res.cookie(PASSWORD_CORRECT, true, { signed: true })
       res.cookie(PASSWORD_EXPIRATION, passwordExpiration, { signed: true })
 
-      const redirectTo = req.session.returnTo || paths.CASES.DASHBOARD
+      const redirectTo = getSafeReturnPath(req.session.returnTo, paths.CASES.DASHBOARD)
       delete req.session.returnTo
       return res.redirect(redirectTo)
     }

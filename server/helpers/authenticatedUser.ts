@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express'
 import govukOneLogin from '../authentication/govukOneLogin'
 import paths from '../constants/paths'
 import { hasCorrectPasswordAndNotExpired } from '../utils/utils'
+import { getSafeReturnPath } from '../utils/safeReturnPath'
 
 export const AuthenticatedUser = (req: Request, res: Response, next: NextFunction) => {
   return govukOneLogin.authenticationMiddleware(req, res, next)
@@ -16,6 +17,6 @@ export const PasswordAuthenticated = (req: Request, res: Response, next: NextFun
   if (hasCorrectPasswordAndNotExpired(req, res)) {
     return next()
   }
-  req.session.returnTo = req.originalUrl
+  req.session.returnTo = getSafeReturnPath(req.originalUrl, paths.CASES.DASHBOARD)
   return res.redirect(paths.PRIVATE_BETA_SIGN_IN)
 }

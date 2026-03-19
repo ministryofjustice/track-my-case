@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 import crypto from 'crypto'
 import { PASSWORD_CORRECT, PASSWORD_EXPIRATION } from '../constants/cookiesUtils'
+import paths from '../constants/paths'
 
 const properCase = (word: string): string =>
   word.length >= 1 ? word[0].toUpperCase() + word.toLowerCase().slice(1) : word
@@ -86,3 +87,38 @@ export const resolvePath = (template: string, params: Record<string, string | nu
     (path, [key, value]) => path.replace(`:${key}`, encodeURIComponent(String(value))),
     template,
   )
+
+const collectStaticPaths = (value: unknown, acc: Set<string>): void => {
+  if (typeof value === 'string' && value.startsWith('/')) {
+    if (!value.includes(':')) {
+      acc.add(value)
+    }
+  } else if (value && typeof value === 'object') {
+    for (const v of Object.values(value as Record<string, unknown>)) {
+      collectStaticPaths(v, acc)
+    }
+  }
+}
+
+const TRUSTED_PATHS: ReadonlySet<string> = (() => {
+  const set = new Set<string>()
+  collectStaticPaths(paths, set)
+  return set
+})()
+
+/**
+ * Returns a safe same-origin path for redirects.
+ * Only allows paths listed in paths
+ * defaultPath param for default redirect
+ */
+export const getSafeReturnPath = (returnTo: string | undefined | null, defaultPath: string): string => {
+  if (!returnTo) {
+    return defaultPath
+  }
+
+  if (TRUSTED_PATHS.has(returnTo)) {
+    return returnTo
+  }
+
+  return defaultPath
+}

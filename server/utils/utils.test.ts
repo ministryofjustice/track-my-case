@@ -1,4 +1,5 @@
-import { convertToTitleCase, initialiseName, resolvePath, toBoolean } from './utils'
+import { convertToTitleCase, getSafeReturnPath, initialiseName, resolvePath, toBoolean } from './utils'
+import paths from '../constants/paths'
 
 describe('convert to title case', () => {
   it.each([
@@ -77,5 +78,50 @@ describe('resolvePath', () => {
   it('encodes values safely', () => {
     const result = resolvePath('/search/:query', { query: 'A&B/C' })
     expect(result).toBe('/search/A%26B%2FC')
+  })
+})
+
+describe('getSafeReturnPath', () => {
+  const fallback = paths.CASES.DASHBOARD
+
+  it('returns fallback for undefined, null, empty', () => {
+    expect(getSafeReturnPath(undefined, fallback)).toBe(fallback)
+    expect(getSafeReturnPath(null, fallback)).toBe(fallback)
+    expect(getSafeReturnPath('', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('   ', fallback)).toBe(fallback)
+  })
+
+  it('allows trusted paths from paths constant', () => {
+    expect(getSafeReturnPath(paths.CASES.DASHBOARD, fallback)).toBe(paths.CASES.DASHBOARD)
+    expect(getSafeReturnPath(paths.START, fallback)).toBe(paths.START)
+    expect(getSafeReturnPath(paths.CASES.SEARCH, fallback)).toBe(paths.CASES.SEARCH)
+    expect(getSafeReturnPath(paths.PRIVATE_BETA_SIGN_IN, fallback)).toBe(paths.PRIVATE_BETA_SIGN_IN)
+  })
+
+  it('strips query and hash; path must still be trusted', () => {
+    expect(getSafeReturnPath(`${paths.CASES.DASHBOARD}?x=1`, fallback)).toBe(paths.CASES.DASHBOARD)
+    expect(getSafeReturnPath(`${paths.CASES.DASHBOARD}#frag`, fallback)).toBe(paths.CASES.DASHBOARD)
+  })
+
+  it('do not allows /courthouses/:id pattern', () => {
+    expect(getSafeReturnPath('/courthouses/birmingham-01', fallback)).toBe(paths.CASES.DASHBOARD)
+  })
+
+  it('rejects open redirects and traversal', () => {
+    expect(getSafeReturnPath('//evil.com', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('/\\evil.com', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('https://evil.com', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('//evil.com/path', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('/case/../admin', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('/case/./dashboard', fallback)).toBe(fallback)
+    // eslint-disable-next-line no-script-url
+    expect(getSafeReturnPath('javascript:alert(1)', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('/not-a-real-app-route', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('@evil', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('/user@evil.com', fallback)).toBe(fallback)
+  })
+
+  it('rejects encoded traversal', () => {
+    expect(getSafeReturnPath('/case/%2e%2e%2fetc', fallback)).toBe(fallback)
   })
 })
