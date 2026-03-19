@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import { NextFunction, Request, Response } from 'express'
 import config from '../config'
-import { isAuthenticatedRequest } from '../utils/utils'
+import { hasCorrectPasswordAndNotExpired, isAuthenticatedRequest } from '../utils/utils'
 import paths from '../constants/paths'
 
 const manageSelectedUrn = (req: Request, res: Response) => {
@@ -18,6 +18,7 @@ const manageSelectedUrn = (req: Request, res: Response) => {
 
 const initialiseBasicAuthentication = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   res.locals.user = req.session.passport?.user
+  res.locals.correctPasswordAndNotExpired = hasCorrectPasswordAndNotExpired(req, res)
   res.locals.authenticated = isAuthenticatedRequest(req)
   res.locals.identitySupported = config.apis.govukOneLogin.identitySupported
   res.locals.oneLoginLink = config.apis.govukOneLogin.oneLoginLink

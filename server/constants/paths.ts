@@ -10,6 +10,8 @@ const paths = {
   AUTH_ERROR: '/autherror',
   ACCESS_DENIED: '/access-denied',
 
+  PRIVATE_BETA_SIGN_IN: '/private-beta-sign-in',
+
   PASSPORT: {
     // these routes are reserved for passport integration
     SIGN_IN: '/sign-in',

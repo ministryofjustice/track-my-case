@@ -81,6 +81,8 @@ jobs:
           GOOGLE_TAG_MANAGER_ID: ${{ vars.GOOGLE_TAG_MANAGER_ID }}
           GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
           DISPLAY_HEARING_DATE_TYPE: ${{ vars.DISPLAY_HEARING_DATE_TYPE }}
+          TMC_PASSWORD: ${{ vars.TMC_PASSWORD }}
+          TMC_PASSWORD_EXPIRATION_IN_MINUTES: ${{ vars.TMC_PASSWORD_EXPIRATION_IN_MINUTES }}
         shell: bash
         run: |
           docker build . \
@@ -115,6 +117,8 @@ jobs:
             --build-arg GOOGLE_TAG_MANAGER_ID=$GOOGLE_TAG_MANAGER_ID \
             --build-arg GOOGLE_ANALYTICS_ID=$GOOGLE_ANALYTICS_ID \
             --build-arg DISPLAY_HEARING_DATE_TYPE=$DISPLAY_HEARING_DATE_TYPE \
+            --build-arg TMC_PASSWORD=$TMC_PASSWORD \
+            --build-arg TMC_PASSWORD_EXPIRATION_IN_MINUTES=$TMC_PASSWORD_EXPIRATION_IN_MINUTES \
             -t working_image:$NEW_TAG_V
 
       - name: Configure AWS credentials
@@ -244,7 +248,7 @@ jobs:
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
         run: |
           NEW_RELEASE="track-my-case-monitoring"
-          PATCH='{"metadata":{"annotations":{"meta.helm.sh/release-name":"'"$NEW_RELEASE"'","meta.helm.sh/release-namespace":"'"$KUBE_NAMESPACE"'"}}}'  
+          PATCH='{"metadata":{"annotations":{"meta.helm.sh/release-name":"'"$NEW_RELEASE"'","meta.helm.sh/release-namespace":"'"$KUBE_NAMESPACE"'"}}}'
 
           for resource in \
             "prometheusrule/alerting-rules-$KUBE_NAMESPACE" \

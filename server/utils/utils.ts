@@ -1,5 +1,6 @@
-import { Request } from 'express'
+import { Request, Response } from 'express'
 import crypto from 'crypto'
+import { PASSWORD_CORRECT, PASSWORD_EXPIRATION } from '../constants/cookiesUtils'
 
 const properCase = (word: string): string =>
   word.length >= 1 ? word[0].toUpperCase() + word.toLowerCase().slice(1) : word
@@ -25,7 +26,25 @@ export const initialiseName = (fullName?: string): string | null => {
   return `${array[0][0]}. ${array.reverse()[0]}`
 }
 
+export const clearPasswordCookies = (res: Response) => {
+  res.clearCookie(PASSWORD_CORRECT)
+  res.clearCookie(PASSWORD_EXPIRATION)
+}
+
 export const isAuthenticatedRequest = (req: Request) => req.isAuthenticated && req.isAuthenticated()
+
+export const hasCorrectPasswordAndNotExpired = (req: Request, res: Response) => {
+  if (Boolean(req.signedCookies?.[PASSWORD_CORRECT]) === true) {
+    const passwordDate: number = Number(req.signedCookies?.[PASSWORD_EXPIRATION] ?? 0)
+    const currentTime: number = Date.now()
+    if (currentTime < passwordDate) {
+      return true
+    }
+    clearPasswordCookies(res)
+  }
+
+  return false
+}
 
 export const toBoolean = (value: string | boolean | number | undefined | null): boolean => {
   const falseValues = [undefined, 'undefined', null, 'null', '', 0, '0', false, 'false']

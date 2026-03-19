@@ -12,6 +12,7 @@ describe('signed-out-controller', () => {
     const req = {} as Request
     const res = {
       locals: {} as Record<string, unknown>,
+      clearCookie: jest.fn(),
       redirect: jest.fn(),
     } as unknown as Response
     const next = jest.fn() as NextFunction
