@@ -20,7 +20,7 @@ const privateBetaSignInController = async (req: Request, res: Response, next: Ne
     res.locals.pageTitle = 'Enter service password'
     res.locals.backLink = paths.START
     res.locals.privateBetaSignInApi = paths.PRIVATE_BETA_SIGN_IN
-    res.render('pages/private-beta-sign-in.njk')
+    return res.render('pages/private-beta-sign-in.njk')
   } catch (error) {
     return next(error)
   }
