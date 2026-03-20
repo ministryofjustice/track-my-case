@@ -16,8 +16,7 @@ import config from '../config'
 import { logger } from '../logger'
 import tokenStoreFactory from './tokenStore/tokenStoreFactory'
 import paths from '../constants/paths'
-import { encryptValue, isAuthenticatedRequest } from '../utils/utils'
-import { getSafeReturnPath } from '../utils/safeReturnPath'
+import { encryptValue, getSafeReturnPath, isAuthenticatedRequest } from '../utils/utils'
 
 passport.serializeUser((user: Express.User, done) => {
   // Not used but required for Passport

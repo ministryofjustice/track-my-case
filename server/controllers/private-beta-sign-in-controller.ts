@@ -1,10 +1,9 @@
 import { NextFunction, Request, Response } from 'express'
 import { initialiseBasicAuthentication } from '../helpers/initialise-basic-authentication'
 import paths from '../constants/paths'
-import { PASSWORD_CORRECT, PASSWORD_EXPIRATION } from '../constants/cookiesUtils'
+import { PASSWORD_CORRECT } from '../constants/cookiesUtils'
 import config from '../config'
-import { clearPasswordCookies } from '../utils/utils'
-import { getSafeReturnPath } from '../utils/safeReturnPath'
+import { clearPasswordCookie, getSafeReturnPath } from '../utils/utils'
 import { PrivateBetaSignInFormData } from '../interfaces/formSchemas'
 import { FormError, FormState } from '../interfaces/formState'
 
@@ -66,16 +65,22 @@ const postPrivateBetaSignInController = async (req: Request, res: Response, next
       delete req.session.formState?.privateBetaSignIn
 
       const { passwordExpirationInMinutes } = config.settings
-      const passwordExpiration: number = Date.now() + passwordExpirationInMinutes * 60 * 1000
-      res.cookie(PASSWORD_CORRECT, true, { signed: true })
-      res.cookie(PASSWORD_EXPIRATION, passwordExpiration, { signed: true })
+      const maxAgeMs = passwordExpirationInMinutes * 60 * 1000
+      // Expiry via maxAge only — do not store timestamps in cookie values (CodeQL / sensitive cleartext).
+      res.cookie(PASSWORD_CORRECT, true, {
+        signed: true,
+        maxAge: maxAgeMs,
+        httpOnly: true,
+        sameSite: 'lax',
+        secure: Boolean(config.https),
+      })
 
       const redirectTo = getSafeReturnPath(req.session.returnTo, paths.CASES.DASHBOARD)
       delete req.session.returnTo
       return res.redirect(redirectTo)
     }
 
-    clearPasswordCookies(res)
+    clearPasswordCookie(res)
 
     const formState: FormState<PrivateBetaSignInFormData> = {
       errors: [WRONG_PASSWORD_ERROR],

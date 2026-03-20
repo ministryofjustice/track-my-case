@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import crypto from 'crypto'
-import { PASSWORD_CORRECT, PASSWORD_EXPIRATION } from '../constants/cookiesUtils'
+import { PASSWORD_CORRECT } from '../constants/cookiesUtils'
 import paths from '../constants/paths'
 
 const properCase = (word: string): string =>
@@ -27,23 +27,17 @@ export const initialiseName = (fullName?: string): string | null => {
   return `${array[0][0]}. ${array.reverse()[0]}`
 }
 
-export const clearPasswordCookies = (res: Response) => {
+export const clearPasswordCookie = (res: Response) => {
   res.clearCookie(PASSWORD_CORRECT)
-  res.clearCookie(PASSWORD_EXPIRATION)
 }
 
 export const isAuthenticatedRequest = (req: Request) => req.isAuthenticated && req.isAuthenticated()
 
-export const hasCorrectPasswordAndNotExpired = (req: Request, res: Response) => {
-  if (Boolean(req.signedCookies?.[PASSWORD_CORRECT]) === true) {
-    const passwordDate: number = Number(req.signedCookies?.[PASSWORD_EXPIRATION] ?? 0)
-    const currentTime: number = Date.now()
-    if (currentTime < passwordDate) {
-      return true
-    }
-    clearPasswordCookies(res)
+export const hasCorrectPasswordAndNotExpired = (req: Request) => {
+  // PASSWORD_CORRECT uses cookie maxAge for expiry (no separate expiration value in the client).
+  if (req.signedCookies?.[PASSWORD_CORRECT]) {
+    return true
   }
-
   return false
 }
 

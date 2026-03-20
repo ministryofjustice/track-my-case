@@ -18,7 +18,7 @@ const manageSelectedUrn = (req: Request, res: Response) => {
 
 const initialiseBasicAuthentication = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   res.locals.user = req.session.passport?.user
-  res.locals.correctPasswordAndNotExpired = hasCorrectPasswordAndNotExpired(req, res)
+  res.locals.correctPasswordAndNotExpired = hasCorrectPasswordAndNotExpired(req)
   res.locals.authenticated = isAuthenticatedRequest(req)
   res.locals.identitySupported = config.apis.govukOneLogin.identitySupported
   res.locals.oneLoginLink = config.apis.govukOneLogin.oneLoginLink
