@@ -36,7 +36,7 @@ const validationRules = (password?: string): FormError[] => {
   const value = password ?? ''
 
   if (!value.trim().length) {
-    errors.push({ text: 'Enter private beta password', href: '#password' })
+    errors.push({ text: 'Enter a password', href: '#password' })
   }
 
   return errors
