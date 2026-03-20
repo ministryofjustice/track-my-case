@@ -19,7 +19,7 @@ repos:
         name: linting code
         language: system
         entry: ./node_modules/.bin/lint-staged
-        types_or: [ts,javascript,css]
+        types_or: [ts, javascript, css]
         require_serial: true
         pass_filenames: false
       - id: typecheck
