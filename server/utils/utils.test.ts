@@ -1,5 +1,15 @@
-import { convertToTitleCase, getSafeReturnPath, initialiseName, resolvePath, toBoolean } from './utils'
+import { Request, Response } from 'express'
+import {
+  convertToTitleCase,
+  getSafeReturnPath,
+  hasCorrectPasswordAndNotExpired,
+  initialiseName,
+  resolvePath,
+  toBoolean,
+  clearPasswordCookie,
+} from './utils'
 import paths from '../constants/paths'
+import { PASSWORD_CORRECT } from '../constants/cookiesUtils'
 
 describe('convert to title case', () => {
   it.each([
@@ -123,5 +133,33 @@ describe('getSafeReturnPath', () => {
 
   it('rejects encoded traversal', () => {
     expect(getSafeReturnPath('/case/%2e%2e%2fetc', fallback)).toBe(fallback)
+  })
+})
+
+describe('hasCorrectPasswordAndNotExpired', () => {
+  it('returns true when signed PASSWORD_CORRECT cookie exists', () => {
+    const req = {
+      signedCookies: { [PASSWORD_CORRECT]: '1' },
+    } as unknown as Request
+    expect(hasCorrectPasswordAndNotExpired(req)).toBe(true)
+  })
+
+  it('returns false when cookie is missing', () => {
+    const req = { signedCookies: {} } as unknown as Request
+    expect(hasCorrectPasswordAndNotExpired(req)).toBe(false)
+  })
+
+  it('returns false when signedCookies is undefined', () => {
+    const req = {} as Request
+    expect(hasCorrectPasswordAndNotExpired(req)).toBe(false)
+  })
+})
+
+describe('clearPasswordCookie', () => {
+  it('clears the PASSWORD_CORRECT cookie', () => {
+    const clearCookie = jest.fn()
+    const res = { clearCookie } as unknown as Response
+    clearPasswordCookie(res)
+    expect(clearCookie).toHaveBeenCalledWith(PASSWORD_CORRECT)
   })
 })
