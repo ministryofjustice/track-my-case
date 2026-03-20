@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
 import paths from '../constants/paths'
+import { PASSWORD_CORRECT } from '../constants/cookiesUtils'
 import signedOutController from './signed-out-controller'
 
 const mockInitialiseBasicAuthentication = jest.fn().mockResolvedValue(undefined)
@@ -29,10 +30,11 @@ describe('signed-out-controller', () => {
     expect(mockInitialiseBasicAuthentication).toHaveBeenCalledWith(req, res, next)
   })
 
-  it('sets pageTitle and redirects to START', async () => {
+  it('sets pageTitle, clears password cookie, and redirects to START', async () => {
     const { req, res, next } = createReqRes()
     await signedOutController(req, res, next)
     expect(res.locals.pageTitle).toBe('Signed out')
+    expect(res.clearCookie).toHaveBeenCalledWith(PASSWORD_CORRECT)
     expect(res.redirect).toHaveBeenCalledWith(paths.START)
   })
 
