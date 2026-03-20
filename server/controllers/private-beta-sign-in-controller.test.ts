@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import paths from '../constants/paths'
 import { PASSWORD_CORRECT } from '../constants/cookiesUtils'
-import { privateBetaSignInController, postPrivateBetaSignInController } from './private-beta-sign-in-controller'
+import { postPrivateBetaSignInController, privateBetaSignInController } from './private-beta-sign-in-controller'
 
 const mockInitialiseBasicAuthentication = jest.fn().mockResolvedValue(undefined)
 jest.mock('../helpers/initialise-basic-authentication', () => ({
