@@ -80,6 +80,7 @@ export const initializePrometheusMetrics = (): void => {
           { status: health.status.toLowerCase(), reason: health.reason || 'none' },
           isAvailable,
         )
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         // If health check fails, mark as unavailable
         applicationAvailabilityGauge.set({ status: 'down' }, 0)

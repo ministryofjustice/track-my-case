@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express'
 import paths from '../constants/paths'
 import { FormError } from '../interfaces/formState'
 import { cookiesAcceptRejectController, getCookiesController, postCookiesController } from './cookies-controller'
+import { COOKIES_POLICY, COOKIES_PREFERENCES_SET } from '../constants/cookiesUtils'
 
 const mockInitialiseBasicAuthentication = jest.fn().mockResolvedValue(undefined)
 jest.mock('../helpers/initialise-basic-authentication', () => ({
@@ -35,8 +36,8 @@ describe('cookies-controller', () => {
       const { req, res, next } = createReqRes({ cookieAccepted: 'accepted' })
       await cookiesAcceptRejectController(req, res, next)
       expect(res.locals.cookieAccepted).toBe('accepted')
-      expect(res.cookie).toHaveBeenCalledWith('cookies_preferences_set', 'accepted', { signed: true })
-      expect(res.cookie).toHaveBeenCalledWith('cookies_policy', JSON.stringify({ essential: true }), {
+      expect(res.cookie).toHaveBeenCalledWith(COOKIES_PREFERENCES_SET, 'accepted', { signed: true })
+      expect(res.cookie).toHaveBeenCalledWith(COOKIES_POLICY, JSON.stringify({ essential: true }), {
         signed: true,
       })
       expect(res.sendStatus).toHaveBeenCalledWith(204)
@@ -46,7 +47,7 @@ describe('cookies-controller', () => {
       const { req, res, next } = createReqRes({ cookieAccepted: 'rejected' })
       await cookiesAcceptRejectController(req, res, next)
       expect(res.locals.cookieAccepted).toBe('rejected')
-      expect(res.cookie).toHaveBeenCalledWith('cookies_policy', JSON.stringify({ essential: false }), {
+      expect(res.cookie).toHaveBeenCalledWith(COOKIES_POLICY, JSON.stringify({ essential: false }), {
         signed: true,
       })
       expect(res.sendStatus).toHaveBeenCalledWith(204)

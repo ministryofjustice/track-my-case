@@ -1,4 +1,9 @@
-import { CaseSelectFormData, CookiesSelecteFormData } from '../../interfaces/formSchemas'
+import {
+  CaseReferenceNumberFormData,
+  CookiesSelecteFormData,
+  PrivateBetaSignInFormData,
+} from '../../interfaces/formSchemas'
+import { FormState } from '../../interfaces/formState'
 
 export declare module 'express-session' {
   // Declare that the session will potentially contain these additional fields
@@ -9,8 +14,9 @@ export declare module 'express-session' {
     selectedUrn?: string
     selectedCrn?: string
     formState?: {
-      caseSelect?: FormState<CaseSelectFormData>
+      caseSelect?: FormState<CaseReferenceNumberFormData>
       cookiesSelect?: FormState<CookiesSelecteFormData>
+      privateBetaSignIn?: FormState<PrivateBetaSignInFormData>
       // Add other form keys here as needed
     }
     returnTo?: string

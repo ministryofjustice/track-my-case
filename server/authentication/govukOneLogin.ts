@@ -16,10 +16,7 @@ import config from '../config'
 import { logger } from '../logger'
 import tokenStoreFactory from './tokenStore/tokenStoreFactory'
 import paths from '../constants/paths'
-import { encryptValue, isAuthenticatedRequest } from '../utils/utils'
-import TrackMyCaseApiClient from '../data/trackMyCaseApiClient'
-
-const trackMyCaseApiClient = new TrackMyCaseApiClient()
+import { encryptValue, getSafeReturnPath, isAuthenticatedRequest } from '../utils/utils'
 
 passport.serializeUser((user: Express.User, done) => {
   // Not used but required for Passport
@@ -34,16 +31,11 @@ passport.deserializeUser((user: Express.User, done) => {
 const authenticationMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   const authenticatedRequest = isAuthenticatedRequest(req)
   if (authenticatedRequest) {
-    const { email } = req.session.passport.user
-    const isActiveUser = await trackMyCaseApiClient.isActiveUser({ userEmail: email })
-    if (isActiveUser) {
-      return next()
-    }
-    req.session.returnTo = paths.START
-    return res.redirect(paths.ACCESS_DENIED)
+    return next()
   }
 
-  req.session.returnTo = req.originalUrl === paths.START ? paths.START : req.originalUrl
+  const candidate = req.originalUrl === paths.START ? paths.START : req.originalUrl
+  req.session.returnTo = getSafeReturnPath(candidate, paths.START)
   return res.redirect(paths.PASSPORT.SIGN_IN)
 }
 

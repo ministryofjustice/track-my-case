@@ -227,7 +227,7 @@ describe('getEnterUniqueReferenceNumber', () => {
             formData: { selectedUrn: 'CASE123' },
           },
         },
-      } as Request['session'],
+      } as unknown as Request['session'],
     })
     mockGetServiceHealth.mockResolvedValue({ status: UP })
 
@@ -244,10 +244,10 @@ describe('getEnterUniqueReferenceNumber', () => {
         formState: {
           caseSelect: {
             errors: [],
-            formData: {},
+            formData: { selectedUrn: '' },
           },
         },
-      } as Request['session'],
+      } as unknown as Request['session'],
     })
     res.locals.selectedUrn = 'existing'
     mockGetServiceHealth.mockResolvedValue({ status: UP })

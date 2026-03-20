@@ -9,3 +9,7 @@ export interface CaseReferenceNumberFormData {
 export interface CookiesSelecteFormData {
   cookiePreferenceAnalytics?: string
 }
+
+export interface PrivateBetaSignInFormData {
+  password: string
+}

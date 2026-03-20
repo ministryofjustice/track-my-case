@@ -3,6 +3,7 @@ import { initialiseBasicAuthentication } from '../helpers/initialise-basic-authe
 import { CookiesSelecteFormData } from '../interfaces/formSchemas'
 import { FormError, FormState } from '../interfaces/formState'
 import paths from '../constants/paths'
+import { COOKIES_POLICY, COOKIES_PREFERENCES_SET } from '../constants/cookiesUtils'
 
 interface CookiesPolicy {
   essential: boolean
@@ -18,8 +19,8 @@ const saveCookies = (cookieAccepted: string | undefined, res: Response) => {
       essential: cookieAccepted === 'accepted',
     }
 
-    res.cookie('cookies_preferences_set', cookieAccepted, { signed: true })
-    res.cookie('cookies_policy', JSON.stringify(policy), { signed: true })
+    res.cookie(COOKIES_PREFERENCES_SET, cookieAccepted, { signed: true })
+    res.cookie(COOKIES_POLICY, JSON.stringify(policy), { signed: true })
 
     return true
   }

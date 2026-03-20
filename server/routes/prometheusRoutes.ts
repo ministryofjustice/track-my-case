@@ -9,6 +9,7 @@ export default function prometheusRoutes(app: express.Express): void {
       res.set('Content-Type', register.contentType)
       const metrics = await register.metrics()
       res.end(metrics)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {
       res.status(500).end('Error calling /prometheus')
     }
