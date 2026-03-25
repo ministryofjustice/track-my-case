@@ -5,6 +5,7 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% set mainClasses = "app-container govuk-body" %}
+{% set passwordError = (errorList or []) | selectattr("href", "equalto", "#password") | first %}
 
 {% block content %}
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
@@ -19,23 +20,26 @@
       <form method="post" action="{{ privateBetaSignInApi }}" novalidate>
         <input type="hidden" name="_csrf" value="{{ csrfToken }}">
 
-        <h1 class="govuk-heading-l">Sign in to {{ applicationName }}</h1>
-        <p class="govuk-body">{{ applicationName }} is currently in a “private beta” phase, which means access must be restricted while ... You can find your password in the sign up email.</p>
+     <div class="govuk-form-group {{ 'govuk-form-group--error' if passwordError }}">
+       <h1 class="govuk-label-wrapper">
+         <label class="govuk-label govuk-label--l" for="password">
+           Enter your {{ applicationName }} password
+         </label>
+       </h1>
 
-        <div class="govuk-form-group">
-          {{ govukPasswordInput({
-            label: {
-              text: "Enter your password",
-              classes: "govuk-label govuk-label--m"
-            },
-            classes: "govuk-input--width-20",
-            id: "password",
-            name: "password",
-            type: "password",
-            autocomplete: "current-password",
-            errorMessage: errorList and (errorList | selectattr("href", "equalto", "#password") | first)
-          }) }}
-        </div>
+       <p class="govuk-hint">
+         You can find this on your sign-up confirmation email
+       </p>
+
+       {{ govukPasswordInput({
+         classes: "govuk-input--width-20",
+         id: "password",
+         name: "password",
+         type: "password",
+         autocomplete: "current-password",
+         errorMessage: passwordError
+       }) }}
+     </div>
 
         {{ govukButton({
           text: "Sign in"

@@ -27,7 +27,7 @@ const privateBetaSignInController = async (req: Request, res: Response, next: Ne
 }
 
 const WRONG_PASSWORD_ERROR: FormError = {
-  text: 'The password you entered is not correct',
+  text: 'Enter your password',
   href: '#password',
 }
 
@@ -36,7 +36,7 @@ const validationRules = (password?: string): FormError[] => {
   const value = password ?? ''
 
   if (!value.trim().length) {
-    errors.push({ text: 'Enter a password', href: '#password' })
+    errors.push({ text: 'Enter your password', href: '#password' })
   }
 
   return errors

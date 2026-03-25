@@ -53,7 +53,7 @@ describe('privateBetaSignInController (GET)', () => {
     const { req, res, next } = createReqRes({
       formState: {
         privateBetaSignIn: {
-          errors: [{ text: 'Enter a password', href: '#password' }],
+          errors: [{ text: 'Enter your password', href: '#password' }],
           formData: { password: '' },
         },
       },
@@ -61,7 +61,7 @@ describe('privateBetaSignInController (GET)', () => {
 
     await privateBetaSignInController(req, res, next)
 
-    expect(res.locals.errorList).toEqual([{ text: 'Enter a password', href: '#password' }])
+    expect(res.locals.errorList).toEqual([{ text: 'Enter your password', href: '#password' }])
     expect(req.session.formState?.privateBetaSignIn).toBeUndefined()
   })
 
@@ -104,7 +104,9 @@ describe('postPrivateBetaSignInController', () => {
 
     await postPrivateBetaSignInController(req, res, next)
 
-    expect(req.session.formState?.privateBetaSignIn?.errors).toEqual([{ text: 'Enter a password', href: '#password' }])
+    expect(req.session.formState?.privateBetaSignIn?.errors).toEqual([
+      { text: 'Enter your password', href: '#password' },
+    ])
     expect(res.redirect).toHaveBeenCalledWith(paths.PRIVATE_BETA_SIGN_IN)
     expect(res.cookie).not.toHaveBeenCalled()
   })
@@ -146,7 +148,7 @@ describe('postPrivateBetaSignInController', () => {
     expect(res.cookie).not.toHaveBeenCalled()
     expect(res.clearCookie).toHaveBeenCalledWith(PASSWORD_CORRECT)
     expect(req.session.formState?.privateBetaSignIn?.errors).toEqual([
-      { text: 'The password you entered is not correct', href: '#password' },
+      { text: 'Enter your password', href: '#password' },
     ])
     expect(res.redirect).toHaveBeenCalledWith(paths.PRIVATE_BETA_SIGN_IN)
   })
