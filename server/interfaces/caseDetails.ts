@@ -58,6 +58,7 @@ export const courtScheduleSchema = z.object({
 
 export const caseDetailsSchema = z.object({
   caseUrn: z.string(),
+  caseStatus: z.string(),
   courtSchedule: z.array(courtScheduleSchema),
 })
 
