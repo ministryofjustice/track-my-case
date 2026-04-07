@@ -1,0 +1,16 @@
+{% extends "layout/citizen-authenticated.njk" %}
+
+{% set mainClasses = "app-container govuk-body" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l" title="{{ message }}">There are no further court dates for this case</h1>
+
+      <p class="govuk-body">You can contact the police officer in charge of your case or the police witness care unit for any updates on the case.</p>
+      <p class="govuk-body">Find their contact details on any letter they have sent you, or <a href="https://www.police.uk/pu/find-a-police-force/" class="govuk-link" target="_blank">find your local police force (opens in new tab)</a>.</p>
+    </div>
+  </div>
+
+{% endblock %}
