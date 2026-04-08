@@ -22,7 +22,7 @@
     "int-test": "cypress run --config video=false",
     "int-test-ui": "cypress open --e2e --browser chrome",
     "clean": "rm -rf dist node_modules",
-    "rebuild": "npm run clean && npm i && npm run build",
+    "rebuild": "npm run clean && npm update && npm run build",
     "check": "npx npm-check-updates",
     "check:update": "npx npm-check-updates -u && npm i"
   },
