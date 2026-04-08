@@ -7,6 +7,7 @@ import {
   StrategyVerifyCallbackUserInfo,
   TokenSet,
   UserinfoResponse,
+  custom,
 } from 'openid-client'
 
 import { NextFunction, Request, Response } from 'express'
@@ -40,6 +41,9 @@ const authenticationMiddleware = async (req: Request, res: Response, next: NextF
 }
 
 async function init(): Promise<Client> {
+  // openid-client defaults to 3500ms; slow networks/VPNs can fail issuer discovery locally.
+  custom.setHttpOptionsDefaults({ timeout: config.apis.govukOneLogin.timeout })
+
   const discoveryEndpoint = `${config.apis.govukOneLogin.url}/.well-known/openid-configuration`
 
   const issuer = await Issuer.discover(discoveryEndpoint)
