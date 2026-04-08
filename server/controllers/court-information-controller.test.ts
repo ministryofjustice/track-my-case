@@ -137,6 +137,7 @@ describe('court-information-controller', () => {
     const caseDetailsResponse: CaseDetailsResponse = {
       caseDetails: {
         caseUrn: 'CASEURN3',
+        caseStatus: 'ACTIVE',
         courtSchedule: [
           {
             hearings: [],
@@ -168,10 +169,15 @@ describe('court-information-controller', () => {
 
   it('returns 404 not found view when courtSchedule is empty', async () => {
     const { req, res, next } = createReqRes()
-    mockGetCaseDetailsByUrn.mockResolvedValue({
-      caseDetails: { courtSchedule: [] },
+    const caseDetails: CaseDetailsResponse = {
+      caseDetails: {
+        courtSchedule: [],
+        caseUrn: 'CASEURN4',
+        caseStatus: 'ACTIVE',
+      },
       statusCode: 200,
-    })
+    }
+    mockGetCaseDetailsByUrn.mockResolvedValue(caseDetails)
 
     await courtInformationController(req, res, next)
 

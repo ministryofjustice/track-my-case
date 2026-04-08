@@ -29,7 +29,7 @@ describe('victim-personal-statement-controller', () => {
   it('sets pageTitle and backLink then renders victim-personal-statement', async () => {
     const { req, res, next } = createReqRes()
     await victimPersonalStatementController(req, res, next)
-    expect(res.locals.pageTitle).toBe('Giving a Victim Personal Statement')
+    expect(res.locals.pageTitle).toBe('Making a Victim Personal Statement')
     expect(res.locals.backLink).toBe(paths.CASES.DASHBOARD)
     expect(res.render).toHaveBeenCalledWith('pages/case/victim-personal-statement')
   })

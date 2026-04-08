@@ -28,22 +28,23 @@ const paths = {
   },
 
   CASES: {
-    SEARCH: '/case/search',
     DASHBOARD: '/case/dashboard',
-    CONTACT_DETAILS: '/case/contact-details',
+
+    SEARCH: '/case/search',
     COURT_INFORMATION: '/case/court-information',
+
     VICTIMS_JOURNEY: '/case/victims-journey',
-    VICTIMS_CODE: '/case/victims-code',
-    RETURN_PROPERTY: '/case/return-property',
-    UNDERSTAND_COMPENSATION: '/case/understand-compensation',
+
     KEY_ROLES: '/case/key-roles',
+
     VICTIM_PERSONAL_STATEMENT: '/case/victim-personal-statement',
+    CLAIMING_EXPENSES: '/case/claiming-expenses',
+    UNDERSTAND_COMPENSATION: '/case/understand-compensation',
+    RETURN_PROPERTY: '/case/return-property',
+    VICTIMS_CODE: '/case/victims-code',
+
     VICTIM_SUPPORT_LINKS: '/case/victim-support-links',
     WITNESS_SERVICE: '/case/witness-service',
-  },
-
-  COURT_HOUSE: {
-    DETAIL: '/courthouses/:courtHouseId',
   },
 }
 

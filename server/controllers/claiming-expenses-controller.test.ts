@@ -1,13 +1,13 @@
 import { NextFunction, Request, Response } from 'express'
 import paths from '../constants/paths'
-import keyRolesController from './key-roles-controller'
+import claimingExpensesController from './claiming-expenses-controller'
 
 const mockInitialiseBasicAuthentication = jest.fn().mockResolvedValue(undefined)
 jest.mock('../helpers/initialise-basic-authentication', () => ({
   initialiseBasicAuthentication: (...args: unknown[]) => mockInitialiseBasicAuthentication(...args),
 }))
 
-describe('key-roles-controller', () => {
+describe('claiming-expenses-controller', () => {
   const createReqRes = () => {
     const req = {} as Request
     const res = {
@@ -22,22 +22,22 @@ describe('key-roles-controller', () => {
 
   it('calls initialiseBasicAuthentication', async () => {
     const { req, res, next } = createReqRes()
-    await keyRolesController(req, res, next)
+    await claimingExpensesController(req, res, next)
     expect(mockInitialiseBasicAuthentication).toHaveBeenCalledWith(req, res, next)
   })
 
-  it('sets pageTitle and backLink then renders key-roles', async () => {
+  it('sets pageTitle and backLink then renders claiming-expenses', async () => {
     const { req, res, next } = createReqRes()
-    await keyRolesController(req, res, next)
-    expect(res.locals.pageTitle).toBe('People in the criminal justice system')
+    await claimingExpensesController(req, res, next)
+    expect(res.locals.pageTitle).toBe('Claiming expenses')
     expect(res.locals.backLink).toBe(paths.CASES.DASHBOARD)
-    expect(res.render).toHaveBeenCalledWith('pages/case/key-roles')
+    expect(res.render).toHaveBeenCalledWith('pages/case/claiming-expenses')
   })
 
   it('calls next(error) when an error is thrown', async () => {
     const { req, res, next } = createReqRes()
     mockInitialiseBasicAuthentication.mockRejectedValue(new Error('Auth failed'))
-    await keyRolesController(req, res, next)
+    await claimingExpensesController(req, res, next)
     expect(next).toHaveBeenCalledWith(expect.any(Error))
   })
 })
