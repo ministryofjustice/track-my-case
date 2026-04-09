@@ -38,12 +38,12 @@ const mapOfReservedServiceErrors: { [key: string]: CaseDetailsResponse } = {
     message: 'Service down',
     caseDetails: undefined,
   },
-  CLOSED: {
+  INACTIVE: {
     statusCode: 200,
     message: 'No further court dates',
     caseDetails: {
-      caseUrn: 'CLOSED',
-      caseStatus: 'CLOSED',
+      caseUrn: 'INACTIVE',
+      caseStatus: 'INACTIVE',
       courtSchedule: [],
     },
   },
@@ -78,10 +78,10 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
       res.locals.caseDetails = caseDetailsResponse.caseDetails as CaseDetails
       const { caseStatus } = res.locals.caseDetails
 
-      if (caseStatus === 'CLOSED') {
+      if (caseStatus === 'INACTIVE') {
         res.locals.pageTitle = 'Court information - No further court dates'
         res.locals.message = `Status ${statusCode}, case status ${caseStatus}, No further court dates`
-        return res.render('pages/case/court-information-closed')
+        return res.render('pages/case/court-information-inactive')
       }
       if (res.locals.caseDetails?.courtSchedule?.length > 0) {
         const courtSchedule = res.locals.caseDetails?.courtSchedule[0]
