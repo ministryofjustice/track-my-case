@@ -128,7 +128,7 @@ jobs:
             -t working_image:$NEW_TAG_V
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v5
+        uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: ${{ secrets.TEST_ECR_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.TEST_ECR_REGION }}
@@ -178,7 +178,7 @@ jobs:
 
       - name: Configure AWS credentials
         if: ${{ github.event.inputs.deploy_monitoring_only != 'true' }}
-        uses: aws-actions/configure-aws-credentials@v5
+        uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: ${{ secrets.TEST_ECR_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.TEST_ECR_REGION }}
