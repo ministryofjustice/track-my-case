@@ -10,7 +10,7 @@ concurrency:
 
 jobs:
   backup-vars-dev:
-    name: Backup variables
+    name: Backup variables dev
     runs-on: ubuntu-latest
     environment: dev
     steps:
@@ -54,7 +54,7 @@ jobs:
           rm -f github-variables github-secrets
 
   backup-vars-test:
-    name: Backup variables
+    name: Backup variables test
     runs-on: ubuntu-latest
     environment: test
     steps:
@@ -98,7 +98,7 @@ jobs:
           rm -f github-variables github-secrets
 
   backup-vars-sit:
-    name: Backup variables
+    name: Backup variables sit
     runs-on: ubuntu-latest
     environment: sit
     steps:
@@ -142,7 +142,7 @@ jobs:
           rm -f github-variables github-secrets
 
   backup-vars-preprod:
-    name: Backup variables
+    name: Backup variables preprod
     runs-on: ubuntu-latest
     environment: preprod
     steps:
@@ -186,7 +186,7 @@ jobs:
           rm -f github-variables github-secrets
 
   backup-vars-prod:
-    name: Backup variables
+    name: Backup variables prod
     runs-on: ubuntu-latest
     environment: prod
     steps:
