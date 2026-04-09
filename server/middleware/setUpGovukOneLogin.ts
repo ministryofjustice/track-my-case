@@ -118,7 +118,7 @@ export const setUpGovukOneLogin = (): Router => {
       try {
         return passport.authenticate(config.apis.govukOneLogin.strategyName, {
           nonce: generators.nonce(),
-          successRedirect: config.serviceUrl + paths.CASES.DASHBOARD,
+          successRedirect: config.serviceUrl + paths.CASES.SEARCH,
           failureRedirect: config.serviceUrl + paths.ONE_LOGIN.AUTH_ERROR,
           failureFlash: true,
         })(req, res, (err: Error) => {

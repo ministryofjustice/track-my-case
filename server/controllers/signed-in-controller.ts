@@ -10,7 +10,8 @@ const signedInController = async (req: Request, res: Response, next: NextFunctio
 
     // res.render('pages/signed-in.njk')
 
-    return res.redirect(paths.CASES.DASHBOARD)
+    const path = req.originalUrl === paths.CASES.DASHBOARD ? paths.CASES.SEARCH : paths.CASES.DASHBOARD
+    return res.redirect(path)
   } catch (error) {
     return next(error)
   }

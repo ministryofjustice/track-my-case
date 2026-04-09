@@ -1,5 +1,7 @@
-import { Request } from 'express'
+import { Request, Response } from 'express'
 import crypto from 'crypto'
+import { PASSWORD_CORRECT } from '../constants/cookiesUtils'
+import paths from '../constants/paths'
 
 const properCase = (word: string): string =>
   word.length >= 1 ? word[0].toUpperCase() + word.toLowerCase().slice(1) : word
@@ -25,7 +27,19 @@ export const initialiseName = (fullName?: string): string | null => {
   return `${array[0][0]}. ${array.reverse()[0]}`
 }
 
+export const clearPasswordCookie = (res: Response) => {
+  res.clearCookie(PASSWORD_CORRECT)
+}
+
 export const isAuthenticatedRequest = (req: Request) => req.isAuthenticated && req.isAuthenticated()
+
+export const hasCorrectPasswordAndNotExpired = (req: Request) => {
+  // PASSWORD_CORRECT uses cookie maxAge for expiry (no separate expiration value in the client).
+  if (req.signedCookies?.[PASSWORD_CORRECT]) {
+    return true
+  }
+  return false
+}
 
 export const toBoolean = (value: string | boolean | number | undefined | null): boolean => {
   const falseValues = [undefined, 'undefined', null, 'null', '', 0, '0', false, 'false']
@@ -67,3 +81,38 @@ export const resolvePath = (template: string, params: Record<string, string | nu
     (path, [key, value]) => path.replace(`:${key}`, encodeURIComponent(String(value))),
     template,
   )
+
+const collectStaticPaths = (value: unknown, acc: Set<string>): void => {
+  if (typeof value === 'string' && value.startsWith('/')) {
+    if (!value.includes(':')) {
+      acc.add(value)
+    }
+  } else if (value && typeof value === 'object') {
+    for (const v of Object.values(value as Record<string, unknown>)) {
+      collectStaticPaths(v, acc)
+    }
+  }
+}
+
+const TRUSTED_PATHS: ReadonlySet<string> = (() => {
+  const set = new Set<string>()
+  collectStaticPaths(paths, set)
+  return set
+})()
+
+/**
+ * Returns a safe same-origin path for redirects.
+ * Only allows paths listed in paths
+ * defaultPath param for default redirect
+ */
+export const getSafeReturnPath = (returnTo: string | undefined | null, defaultPath: string): string => {
+  if (!returnTo) {
+    return defaultPath
+  }
+
+  if (TRUSTED_PATHS.has(returnTo)) {
+    return returnTo
+  }
+
+  return defaultPath
+}

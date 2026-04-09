@@ -6,7 +6,7 @@ const keyRolesController = async (req: Request, res: Response, next: NextFunctio
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = "Who's who in the criminal justice system"
+    res.locals.pageTitle = 'People in the criminal justice system'
     res.locals.backLink = paths.CASES.DASHBOARD
 
     res.render('pages/case/key-roles')

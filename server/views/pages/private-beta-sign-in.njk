@@ -1,0 +1,50 @@
+{% extends "layout/citizen-authenticated.njk" %}
+
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/password-input/macro.njk" import govukPasswordInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% set passwordError = (errorList or []) | selectattr("href", "equalto", "#password") | first %}
+
+{% set mainClasses = "app-container govuk-body" %}
+
+{% block content %}
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-two-thirds">
+      {% if errorList %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errorList
+        }) }}
+      {% endif %}
+
+      <form method="post" action="{{ privateBetaSignInApi }}" novalidate>
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+
+          <div class="govuk-form-group {{ 'govuk-form-group--error' if passwordError }}">
+               <h1 class="govuk-label-wrapper">
+                 <label class="govuk-label govuk-label--l" for="password">
+                   Enter your {{ applicationName }} password
+                 </label>
+               </h1>
+
+               <p class="govuk-hint">
+                 You can find this on your sign-up confirmation email
+               </p>
+
+               {{ govukPasswordInput({
+                 classes: "govuk-input--width-20",
+                 id: "password",
+                 name: "password",
+                 type: "password",
+                 autocomplete: "current-password",
+                 errorMessage: passwordError
+               }) }}
+             </div>
+
+        {{ govukButton({
+          text: "Sign in"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

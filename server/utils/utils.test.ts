@@ -1,4 +1,15 @@
-import { convertToTitleCase, initialiseName, resolvePath, toBoolean } from './utils'
+import { Request, Response } from 'express'
+import {
+  convertToTitleCase,
+  getSafeReturnPath,
+  hasCorrectPasswordAndNotExpired,
+  initialiseName,
+  resolvePath,
+  toBoolean,
+  clearPasswordCookie,
+} from './utils'
+import paths from '../constants/paths'
+import { PASSWORD_CORRECT } from '../constants/cookiesUtils'
 
 describe('convert to title case', () => {
   it.each([
@@ -77,5 +88,78 @@ describe('resolvePath', () => {
   it('encodes values safely', () => {
     const result = resolvePath('/search/:query', { query: 'A&B/C' })
     expect(result).toBe('/search/A%26B%2FC')
+  })
+})
+
+describe('getSafeReturnPath', () => {
+  const fallback = paths.CASES.DASHBOARD
+
+  it('returns fallback for undefined, null, empty', () => {
+    expect(getSafeReturnPath(undefined, fallback)).toBe(fallback)
+    expect(getSafeReturnPath(null, fallback)).toBe(fallback)
+    expect(getSafeReturnPath('', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('   ', fallback)).toBe(fallback)
+  })
+
+  it('allows trusted paths from paths constant', () => {
+    expect(getSafeReturnPath(paths.CASES.DASHBOARD, fallback)).toBe(paths.CASES.DASHBOARD)
+    expect(getSafeReturnPath(paths.START, fallback)).toBe(paths.START)
+    expect(getSafeReturnPath(paths.CASES.SEARCH, fallback)).toBe(paths.CASES.SEARCH)
+    expect(getSafeReturnPath(paths.PRIVATE_BETA_SIGN_IN, fallback)).toBe(paths.PRIVATE_BETA_SIGN_IN)
+  })
+
+  it('strips query and hash; path must still be trusted', () => {
+    expect(getSafeReturnPath(`${paths.CASES.DASHBOARD}?x=1`, fallback)).toBe(paths.CASES.DASHBOARD)
+    expect(getSafeReturnPath(`${paths.CASES.DASHBOARD}#frag`, fallback)).toBe(paths.CASES.DASHBOARD)
+  })
+
+  it('do not allows /courthouses/:id pattern', () => {
+    expect(getSafeReturnPath('/courthouses/birmingham-01', fallback)).toBe(paths.CASES.DASHBOARD)
+  })
+
+  it('rejects open redirects and traversal', () => {
+    expect(getSafeReturnPath('//evil.com', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('/\\evil.com', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('https://evil.com', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('//evil.com/path', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('/case/../admin', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('/case/./dashboard', fallback)).toBe(fallback)
+    // eslint-disable-next-line no-script-url
+    expect(getSafeReturnPath('javascript:alert(1)', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('/not-a-real-app-route', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('@evil', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('/user@evil.com', fallback)).toBe(fallback)
+  })
+
+  it('rejects encoded traversal', () => {
+    expect(getSafeReturnPath('/case/%2e%2e%2fetc', fallback)).toBe(fallback)
+  })
+})
+
+describe('hasCorrectPasswordAndNotExpired', () => {
+  it('returns true when signed PASSWORD_CORRECT cookie exists', () => {
+    const req = {
+      signedCookies: { [PASSWORD_CORRECT]: '1' },
+    } as unknown as Request
+    expect(hasCorrectPasswordAndNotExpired(req)).toBe(true)
+  })
+
+  it('returns false when cookie is missing', () => {
+    const req = { signedCookies: {} } as unknown as Request
+    expect(hasCorrectPasswordAndNotExpired(req)).toBe(false)
+  })
+
+  it('returns false when signedCookies is undefined', () => {
+    const req = {} as Request
+    expect(hasCorrectPasswordAndNotExpired(req)).toBe(false)
+  })
+})
+
+describe('clearPasswordCookie', () => {
+  it('clears the PASSWORD_CORRECT cookie', () => {
+    const clearCookie = jest.fn()
+    const res = { clearCookie } as unknown as Response
+    clearPasswordCookie(res)
+    expect(clearCookie).toHaveBeenCalledWith(PASSWORD_CORRECT)
   })
 })

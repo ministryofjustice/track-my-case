@@ -4,7 +4,7 @@ import { toBoolean } from './utils/utils'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-function get<T>(name: string, fallback: T, options = { requireInProduction: false }): T | string {
+function get<T>(name: string, fallback?: T, options = { requireInProduction: false }): T | string {
   if (process.env[name]) {
     return process.env[name]
   }
@@ -131,6 +131,8 @@ const config = {
   },
   settings: {
     maintenanceWindow: get('MAINTENANCE_WINDOW', '5@12:00-6@18:00;6@18:00-0@13:00'),
+    password: get('TMC_PASSWORD') as string,
+    passwordExpirationInMinutes: Number(get('TMC_PASSWORD_EXPIRATION_IN_MINUTES', 24 * 60, requiredInProduction)),
   },
 }
 export default config

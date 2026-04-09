@@ -71,6 +71,124 @@ describe('court-information-controller', () => {
     mockGetCaseDetailsByUrn = jest.fn()
   })
 
+  const responseWithCaseStatus = (status: string): CaseDetailsResponse => {
+    const base = getMockCaseDetailsResponse(caseUrn)
+    return {
+      ...base,
+      caseDetails: {
+        ...base.caseDetails,
+        caseStatus: status,
+      },
+    }
+  }
+
+  describe('case status (ACTIVE, INACTIVE, EJECTED, SJP-REFERRAL, READY_FOR_REVIEW)', () => {
+    it('renders court information when case status is ACTIVE and hearings exist', async () => {
+      const { req, res, next } = createReqRes()
+      const caseDetailsResponse = responseWithCaseStatus('ACTIVE')
+      const hearing = caseDetailsResponse.caseDetails.courtSchedule[0].hearings[0]
+      const hearingSummary: HearingSummary = {
+        hearingOption: 'COURT_SITTINGS',
+        hearingType: HEARING_TYPE.TRIAL,
+        sittingStart: '01 January 2025, 10:00',
+        hearingStartDateMessage: {
+          title: '2 months and 22 days',
+          description: 'some description',
+        },
+        sittingEnd: '',
+        sittingPeriod: '',
+        location: {
+          courtHouseName: 'Southwark Crown Court',
+          courtRoomName: '',
+          addressLines: [],
+          postcode: '',
+          country: '',
+        },
+      }
+
+      mockGetCaseDetailsByUrn.mockResolvedValue(caseDetailsResponse)
+      mockMapCaseDetailsToHearingSummary.mockReturnValue(hearingSummary)
+      mockGetCourtUrl.mockReturnValue('https://example/court')
+
+      await courtInformationController(req, res, next)
+
+      expect(res.render).toHaveBeenCalledWith('pages/case/court-information')
+    })
+
+    it('renders court-information-closed when case status is INACTIVE (reserved URN)', async () => {
+      const { req, res, next } = createReqRes()
+      res.locals.selectedUrn = 'INACTIVE'
+
+      await courtInformationController(req, res, next)
+
+      expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
+      expect(res.locals.pageTitle).toBe('Court information - No further court dates')
+      expect(res.render).toHaveBeenCalledWith('pages/case/court-information-inactive')
+    })
+
+    it('renders court-information-closed when API returns case status INACTIVE', async () => {
+      const { req, res, next } = createReqRes()
+      mockGetCaseDetailsByUrn.mockResolvedValue({
+        statusCode: 200,
+        caseDetails: {
+          caseUrn,
+          caseStatus: 'INACTIVE',
+          courtSchedule: [],
+        },
+      })
+
+      await courtInformationController(req, res, next)
+
+      expect(res.locals.pageTitle).toBe('Court information - No further court dates')
+      expect(res.render).toHaveBeenCalledWith('pages/case/court-information-inactive')
+    })
+
+    it.each(['EJECTED', 'SJP-REFERRAL', 'READY_FOR_REVIEW'] as const)(
+      'returns 404 with no-hearings-allocated when case status is %s and hearings exist (non-ACTIVE)',
+      async caseStatus => {
+        const { req, res, next } = createReqRes()
+        const caseDetailsResponse = responseWithCaseStatus(caseStatus)
+        const hearing = caseDetailsResponse.caseDetails.courtSchedule[0].hearings[0]
+
+        mockGetCaseDetailsByUrn.mockResolvedValue(caseDetailsResponse)
+        mockMapCaseDetailsToHearingSummary.mockReturnValue({
+          location: { courtHouseName: 'Southwark Crown Court' },
+        })
+        mockGetCourtUrl.mockReturnValue('https://example/court')
+
+        await courtInformationController(req, res, next)
+
+        expect(mockMapCaseDetailsToHearingSummary).toHaveBeenCalledWith(hearing)
+        expect(res.status).toHaveBeenCalledWith(404)
+        expect(res.locals.pageTitle).toBe('Court information - No hearings allocated')
+        expect(res.render).toHaveBeenCalledWith('pages/case/court-information-no-hearings-allocated', {
+          error: 'No hearings allocated for this case',
+        })
+      },
+    )
+
+    it.each(['EJECTED', 'SJP-REFERRAL', 'READY_FOR_REVIEW'] as const)(
+      'returns 404 not found when case status is %s and courtSchedule is empty',
+      async caseStatus => {
+        const { req, res, next } = createReqRes()
+        mockGetCaseDetailsByUrn.mockResolvedValue({
+          statusCode: 200,
+          caseDetails: {
+            caseUrn,
+            caseStatus,
+            courtSchedule: [],
+          },
+        })
+
+        await courtInformationController(req, res, next)
+
+        expect(mockMapCaseDetailsToHearingSummary).not.toHaveBeenCalled()
+        expect(res.status).toHaveBeenCalledWith(404)
+        expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found')
+      },
+    )
+  })
+
   it('renders court information when case has hearings and court URL is found', async () => {
     const { req, res, next } = createReqRes()
 
@@ -137,6 +255,7 @@ describe('court-information-controller', () => {
     const caseDetailsResponse: CaseDetailsResponse = {
       caseDetails: {
         caseUrn: 'CASEURN3',
+        caseStatus: 'ACTIVE',
         courtSchedule: [
           {
             hearings: [],
@@ -168,10 +287,15 @@ describe('court-information-controller', () => {
 
   it('returns 404 not found view when courtSchedule is empty', async () => {
     const { req, res, next } = createReqRes()
-    mockGetCaseDetailsByUrn.mockResolvedValue({
-      caseDetails: { courtSchedule: [] },
+    const caseDetails: CaseDetailsResponse = {
+      caseDetails: {
+        courtSchedule: [],
+        caseUrn: 'CASEURN4',
+        caseStatus: 'ACTIVE',
+      },
       statusCode: 200,
-    })
+    }
+    mockGetCaseDetailsByUrn.mockResolvedValue(caseDetails)
 
     await courtInformationController(req, res, next)
 

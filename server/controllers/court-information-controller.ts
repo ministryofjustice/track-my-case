@@ -12,37 +12,47 @@ import { mapCaseDetailsToHearingSummary } from '../mappers/caseDetailsService'
 const trackMyCaseApiClient = new TrackMyCaseApiClient()
 const courtHearingService = new CourtHearingService(trackMyCaseApiClient)
 
-const mapOfReservedServiceErrors: { [key: string]: { statusCode: number; message: string } } = {
+const mapOfReservedServiceErrors: { [key: string]: CaseDetailsResponse } = {
   NOTFOUND: {
     statusCode: 404,
     message: 'Not found',
+    caseDetails: undefined,
   },
   BADREQUEST: {
     statusCode: 400,
     message: 'Bad request',
+    caseDetails: undefined,
   },
   DENIED: {
     statusCode: 403,
     message: 'Access denied',
+    caseDetails: undefined,
   },
   TOOMANY: {
     statusCode: 429,
     message: 'Too many requests',
+    caseDetails: undefined,
   },
   SERVICEDOWN: {
     statusCode: 503,
     message: 'Service down',
+    caseDetails: undefined,
+  },
+  INACTIVE: {
+    statusCode: 200,
+    message: 'No further court dates',
+    caseDetails: {
+      caseUrn: 'INACTIVE',
+      caseStatus: 'INACTIVE',
+      courtSchedule: [],
+    },
   },
 }
 
 const getCaseDetailsResponse = async (caseUrn: string, userEmail: string): Promise<CaseDetailsResponse> => {
-  const serviceError: { statusCode: number; message: string } = mapOfReservedServiceErrors[caseUrn.toUpperCase()]
-  if (serviceError) {
-    return {
-      caseDetails: undefined,
-      statusCode: serviceError.statusCode,
-      message: serviceError.message,
-    }
+  const errorCaseDetailsResponse: CaseDetailsResponse = mapOfReservedServiceErrors[caseUrn.toUpperCase()]
+  if (errorCaseDetailsResponse) {
+    return errorCaseDetailsResponse
   }
   return courtHearingService.getCaseDetailsByUrn(caseUrn, userEmail)
 }
@@ -66,6 +76,13 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
     const { statusCode } = caseDetailsResponse
     if (statusCode === 200) {
       res.locals.caseDetails = caseDetailsResponse.caseDetails as CaseDetails
+      const { caseStatus } = res.locals.caseDetails
+
+      if (caseStatus === 'INACTIVE') {
+        res.locals.pageTitle = 'Court information - No further court dates'
+        res.locals.message = `Status ${statusCode}, case status ${caseStatus}, No further court dates`
+        return res.render('pages/case/court-information-inactive')
+      }
       if (res.locals.caseDetails?.courtSchedule?.length > 0) {
         const courtSchedule = res.locals.caseDetails?.courtSchedule[0]
 
@@ -75,10 +92,12 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
           const courtUrl = courts.getCourtUrl(res.locals.hearingData.location.courtHouseName)
           res.locals.courtUrl = courtUrl ?? 'https://www.find-court-tribunal.service.gov.uk/'
 
-          return res.render('pages/case/court-information')
+          if (caseStatus === 'ACTIVE') {
+            return res.render('pages/case/court-information')
+          }
         }
 
-        res.locals.message = `Status code: ${statusCode}. No hearings allocated`
+        res.locals.message = `Status ${statusCode}, case status ${caseStatus}, No hearings allocated`
         res.locals.pageTitle = 'Court information - No hearings allocated'
         return res.status(404).render('pages/case/court-information-no-hearings-allocated', {
           error: `No hearings allocated for this case`,

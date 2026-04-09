@@ -70,6 +70,7 @@ describe('mapCaseDetailsToHearingSummary', () => {
 
     const caseDetails: CaseDetails = {
       caseUrn: 'CASEURN1',
+      caseStatus: 'ACTIVE',
       courtSchedule: [
         {
           hearings: [
@@ -158,6 +159,7 @@ describe('mapCaseDetailsToHearingSummary', () => {
     const hearing: HearingDetails = caseDetails.courtSchedule[0].hearings[0]
     expect(mapCaseDetailsToHearingSummary(hearing)).toStrictEqual(hearingSummary)
   })
+
   it('weekCommencing response', () => {
     const date = new Date()
     date.setDate(date.getDate() + 20)
@@ -166,6 +168,7 @@ describe('mapCaseDetailsToHearingSummary', () => {
 
     const caseDetails: CaseDetails = {
       caseUrn: 'CASEURN2',
+      caseStatus: 'ACTIVE',
       courtSchedule: [
         {
           hearings: [

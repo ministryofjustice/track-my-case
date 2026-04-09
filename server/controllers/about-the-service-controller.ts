@@ -14,6 +14,8 @@ const aboutTheServiceController = async (req: Request, res: Response, next: Next
       } else {
         res.locals.backLink = paths.CASES.DASHBOARD
       }
+    } else if (res.locals.correctPasswordAndNotExpired) {
+      res.locals.backLink = paths.CASES.DASHBOARD
     } else {
       res.locals.backLink = paths.START
     }

@@ -1,6 +1,6 @@
 {%- from "govuk/components/footer/macro.njk" import govukFooter -%}
 
-{% if authenticated %}
+{% if correctPasswordAndNotExpired %}
   {% include "partials/quick-exit.njk" %}
 {% endif %}
 

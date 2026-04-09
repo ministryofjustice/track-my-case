@@ -9,6 +9,7 @@ export const getMockCaseDetailsResponse = (caseUrn: string): CaseDetailsResponse
 export const getMockCaseDetails = (caseUrn: string): CaseDetails => {
   return {
     caseUrn,
+    caseStatus: 'ACTIVE',
     courtSchedule: [
       {
         hearings: [
