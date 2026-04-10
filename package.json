@@ -152,7 +152,7 @@
     "mocha-junit-reporter": "^2.2.1",
     "nock": "^14.0.12",
     "npm-check-updates": "^20.0.0",
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.2",
     "prettier-plugin-jinja-template": "^2.1.0",
     "supertest": "^7.2.2",
     "ts-jest": "^29.4.9",
