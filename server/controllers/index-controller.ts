@@ -5,7 +5,7 @@ const indexController = async (req: Request, res: Response, next: NextFunction):
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Home'
+    res.locals.pageTitle = req.t('home.pageTitle')
     res.locals.useOneLogin = true
     res.locals.currentTime = new Date().toISOString()
 

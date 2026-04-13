@@ -1,12 +1,13 @@
 /* eslint-disable prettier/prettier */
 import 'applicationinsights'
 
-import app from './server/index'
+import appPromise from './server/index'
 import { logger } from './server/logger'
 
 ;
 
 (async () => {
+  const app = await appPromise
   app.listen(app.get('port'), () => {
     const port = `${app.get('port')}`
     logger.info(`🚀 Server started on port ${port}`)
