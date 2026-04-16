@@ -13,22 +13,18 @@ jest.mock('../helpers/initialise-basic-authentication', () => ({
 }))
 
 jest.mock('../mappers/caseDetailsService', () => {
-  const actual = jest.requireActual<typeof import('../mappers/caseDetailsService')>('../mappers/caseDetailsService')
+  const caseDetailsService = jest.requireActual('../mappers/caseDetailsService')
   return {
     __esModule: true,
-    mapCaseDetailsToHearingSummary: jest.fn((...args: Parameters<typeof actual.mapCaseDetailsToHearingSummary>) =>
-      actual.mapCaseDetailsToHearingSummary(...args),
+    ...caseDetailsService,
+    mapCaseDetailsToHearingSummary: jest.fn(
+      (...args: Parameters<typeof caseDetailsService.mapCaseDetailsToHearingSummary>) =>
+        caseDetailsService.mapCaseDetailsToHearingSummary(...args),
     ),
   }
 })
 
-const caseDetailsServiceActual = jest.requireActual<typeof import('../mappers/caseDetailsService')>(
-  '../mappers/caseDetailsService',
-)
-
-const mockMapCaseDetailsToHearingSummary = mapCaseDetailsToHearingSummary as jest.MockedFunction<
-  typeof caseDetailsServiceActual.mapCaseDetailsToHearingSummary
->
+const mockMapCaseDetailsToHearingSummary = jest.mocked(mapCaseDetailsToHearingSummary)
 
 const mockGetCourtUrl = jest.fn()
 jest.mock('../constants/courts', () => ({
@@ -82,9 +78,6 @@ describe('court-information-controller', () => {
   beforeEach(() => {
     jest.clearAllMocks()
     mockGetCaseDetailsByUrn = jest.fn()
-    mockMapCaseDetailsToHearingSummary.mockImplementation((...args) =>
-      caseDetailsServiceActual.mapCaseDetailsToHearingSummary(...args),
-    )
   })
 
   const responseWithCaseStatus = (status: string): CaseDetailsResponse => {
