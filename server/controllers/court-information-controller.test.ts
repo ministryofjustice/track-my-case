@@ -4,6 +4,7 @@ import { CaseDetailsResponse } from '../interfaces/caseDetails'
 import { getMockCaseDetailsResponse } from '../services/mock/mock-response'
 import courtInformationController from './court-information-controller'
 import { HEARING_TYPE, HearingSummary } from '../interfaces/hearingSummary'
+import { mapCaseDetailsToHearingSummary } from '../mappers/caseDetailsService'
 
 // Mocks that must be set up BEFORE importing the controller under test
 const mockInitialiseBasicAuthentication = jest.fn().mockResolvedValue(undefined)
@@ -11,11 +12,23 @@ jest.mock('../helpers/initialise-basic-authentication', () => ({
   initialiseBasicAuthentication: (...args: unknown[]) => mockInitialiseBasicAuthentication(...args),
 }))
 
-const mockMapCaseDetailsToHearingSummary = jest.fn()
-jest.mock('../mappers/caseDetailsService', () => ({
-  __esModule: true,
-  mapCaseDetailsToHearingSummary: (...args: unknown[]) => mockMapCaseDetailsToHearingSummary(...args),
-}))
+jest.mock('../mappers/caseDetailsService', () => {
+  const actual = jest.requireActual<typeof import('../mappers/caseDetailsService')>('../mappers/caseDetailsService')
+  return {
+    __esModule: true,
+    mapCaseDetailsToHearingSummary: jest.fn((...args: Parameters<typeof actual.mapCaseDetailsToHearingSummary>) =>
+      actual.mapCaseDetailsToHearingSummary(...args),
+    ),
+  }
+})
+
+const caseDetailsServiceActual = jest.requireActual<typeof import('../mappers/caseDetailsService')>(
+  '../mappers/caseDetailsService',
+)
+
+const mockMapCaseDetailsToHearingSummary = mapCaseDetailsToHearingSummary as jest.MockedFunction<
+  typeof caseDetailsServiceActual.mapCaseDetailsToHearingSummary
+>
 
 const mockGetCourtUrl = jest.fn()
 jest.mock('../constants/courts', () => ({
@@ -69,6 +82,9 @@ describe('court-information-controller', () => {
   beforeEach(() => {
     jest.clearAllMocks()
     mockGetCaseDetailsByUrn = jest.fn()
+    mockMapCaseDetailsToHearingSummary.mockImplementation((...args) =>
+      caseDetailsServiceActual.mapCaseDetailsToHearingSummary(...args),
+    )
   })
 
   const responseWithCaseStatus = (status: string): CaseDetailsResponse => {
@@ -82,32 +98,11 @@ describe('court-information-controller', () => {
     }
   }
 
-  describe('case status (ACTIVE, INACTIVE, EJECTED, SJP-REFERRAL, READY_FOR_REVIEW)', () => {
+  describe('case status (ACTIVE, INACTIVE, EJECTED, SJP_REFERRAL, READY_FOR_REVIEW)', () => {
     it('renders court information when case status is ACTIVE and hearings exist', async () => {
       const { req, res, next } = createReqRes()
       const caseDetailsResponse = responseWithCaseStatus('ACTIVE')
-      const hearing = caseDetailsResponse.caseDetails.courtSchedule[0].hearings[0]
-      const hearingSummary: HearingSummary = {
-        hearingOption: 'COURT_SITTINGS',
-        hearingType: HEARING_TYPE.TRIAL,
-        sittingStart: '01 January 2025, 10:00',
-        hearingStartDateMessage: {
-          title: '2 months and 22 days',
-          description: 'some description',
-        },
-        sittingEnd: '',
-        sittingPeriod: '',
-        location: {
-          courtHouseName: 'Southwark Crown Court',
-          courtRoomName: '',
-          addressLines: [],
-          postcode: '',
-          country: '',
-        },
-      }
-
       mockGetCaseDetailsByUrn.mockResolvedValue(caseDetailsResponse)
-      mockMapCaseDetailsToHearingSummary.mockReturnValue(hearingSummary)
       mockGetCourtUrl.mockReturnValue('https://example/court')
 
       await courtInformationController(req, res, next)
@@ -143,7 +138,7 @@ describe('court-information-controller', () => {
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-inactive')
     })
 
-    it.each(['EJECTED', 'SJP-REFERRAL', 'READY_FOR_REVIEW'] as const)(
+    it.each(['EJECTED', 'READY_FOR_REVIEW'] as const)(
       'returns 404 with no-hearings-allocated when case status is %s and hearings exist (non-ACTIVE)',
       async caseStatus => {
         const { req, res, next } = createReqRes()
@@ -151,9 +146,6 @@ describe('court-information-controller', () => {
         const hearing = caseDetailsResponse.caseDetails.courtSchedule[0].hearings[0]
 
         mockGetCaseDetailsByUrn.mockResolvedValue(caseDetailsResponse)
-        mockMapCaseDetailsToHearingSummary.mockReturnValue({
-          location: { courtHouseName: 'Southwark Crown Court' },
-        })
         mockGetCourtUrl.mockReturnValue('https://example/court')
 
         await courtInformationController(req, res, next)
@@ -167,24 +159,47 @@ describe('court-information-controller', () => {
       },
     )
 
-    it.each(['EJECTED', 'SJP-REFERRAL', 'READY_FOR_REVIEW'] as const)(
+    it.each(['EJECTED', 'SJP_REFERRAL', 'READY_FOR_REVIEW', 'ACTIVE'] as const)(
       'returns 404 not found when case status is %s and courtSchedule is empty',
       async caseStatus => {
         const { req, res, next } = createReqRes()
-        mockGetCaseDetailsByUrn.mockResolvedValue({
-          statusCode: 200,
+        const base = getMockCaseDetailsResponse(caseUrn)
+        const mockCaseDetailsResponse: CaseDetailsResponse = {
+          ...base,
           caseDetails: {
-            caseUrn,
+            ...base.caseDetails!,
             caseStatus,
             courtSchedule: [],
           },
-        })
+        }
+        mockGetCaseDetailsByUrn.mockResolvedValue(mockCaseDetailsResponse)
 
         await courtInformationController(req, res, next)
 
         expect(mockMapCaseDetailsToHearingSummary).not.toHaveBeenCalled()
         expect(res.status).toHaveBeenCalledWith(404)
         expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found')
+      },
+    )
+
+    it.each(['SJP_REFERRAL', 'ACTIVE'] as const)(
+      'renders court information when case status is %s and courtSchedule exists',
+      async caseStatus => {
+        const { req, res, next } = createReqRes()
+        const base = getMockCaseDetailsResponse(caseUrn)
+        const mockCaseDetailsResponse: CaseDetailsResponse = {
+          ...base,
+          caseDetails: {
+            ...base.caseDetails!,
+            caseStatus,
+          },
+        }
+        mockGetCaseDetailsByUrn.mockResolvedValue(mockCaseDetailsResponse)
+
+        await courtInformationController(req, res, next)
+
+        expect(mockMapCaseDetailsToHearingSummary).toHaveBeenCalled()
+        expect(res.render).toHaveBeenCalledWith('pages/case/court-information')
       },
     )
   })
@@ -239,7 +254,17 @@ describe('court-information-controller', () => {
 
     mockGetCaseDetailsByUrn.mockResolvedValue(caseDetailsResponse)
     mockMapCaseDetailsToHearingSummary.mockReturnValue({
-      location: { courtHouseName: 'Unknown Court' },
+      location: {
+        courtHouseName: 'Unknown Court',
+        addressLines: [],
+        postcode: '',
+        country: '',
+      },
+      hearingOption: 'COURT_SITTINGS',
+      hearingType: '',
+      sittingStart: '',
+      sittingEnd: '',
+      sittingPeriod: '',
     })
     mockGetCourtUrl.mockReturnValue(null)
 
