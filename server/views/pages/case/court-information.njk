@@ -24,34 +24,40 @@
 
       {% if displayHearing %}
         {{ govukInsetText({
-          html: "<strong>" + (hearingData.hearingStartDateMessage.title) + "</strong>" +
-          '<p class="govuk-hint govuk-!-margin-top-2">' + hearingData.hearingStartDateMessage.description + '</p>'
+          html: '<span class="tmc-data-testid-inset-title"><strong>' + (hearingData.hearingStartDateMessage.title) + "</strong></span>" +
+          '<p class="govuk-hint govuk-!-margin-top-2 tmc-data-testid-inset-description">' + hearingData.hearingStartDateMessage.description + '</p>'
         }) }}
       {% endif %}
 
       {% set rows = [{
         key: { text: "Unique reference number (URN)" },
-        value: { text: selectedUrn}
+        value: {
+          text: selectedUrn,
+          classes: 'tmc-data-testid-urn'
+        }
       }] %}
 
       {% if displayHearing %}
         {% set rows = rows.concat([
           {
             key: { text: "Hearing type" },
-            value: { html: hearingData.hearingType +
-              '<p class="govuk-hint govuk-!-margin-top-3">This service will only show trial or sentencing hearings.</p>'
+            value: { html: '<span class="tmc-data-testid-hearing-type">' + hearingData.hearingType + '</span>' +
+              '<p class="govuk-hint govuk-!-margin-top-3 tmc-data-testid-hearing-type-description">This service will only show trial or sentencing hearings.</p>'
             }
           },
           {
             key: { text: "Expected start date" },
-            value: { html: hearingData.sittingStart }
+            value: {
+              html: hearingData.sittingStart,
+              classes: 'tmc-data-testid-expected-start-date'
+            }
           }
         ]) %}
         {% if hearingData.hearingOption === 'COURT_SITTINGS' %}
           {% set rows = rows.concat([
             {
               key: { text: "Expected to last" },
-              value: { html: '<span title="' + hearingData.sittingPeriodTooltip + '">' + hearingData.sittingPeriod + '</span>' }
+              value: { html: '<span class="tmc-data-testid-expected-to-last" title="' + hearingData.sittingPeriodTooltip + '">' + hearingData.sittingPeriod + '</span>' }
             }
           ]) %}
         {% endif %}
@@ -61,21 +67,24 @@
         {
           key: { text: "Court name" },
           value: {
-            html: hearingData.location.courtHouseName ~
-            '<p class="govuk-hint govuk-!-margin-top-3">The court location can change. Your police witness care unit or officer in charge of the investigation will update you.</p>'
+            html: '<span class="tmc-data-testid-court-name">' + hearingData.location.courtHouseName + '</span>' ~
+            '<p class="govuk-hint govuk-!-margin-top-3 tmc-data-testid-court-name-description">The court location can change. Your police witness care unit or officer in charge of the investigation will update you.</p>',
+            classes: 'tmc-data-testid-court-name'
           }
         },
         {
           key: { text: "Court address" },
           value: {
             html: hearingData.location.addressLines | join(', ') ~
-            ", " ~ hearingData.location.postcode ~ ", " ~ hearingData.location.country
+            ", " ~ hearingData.location.postcode ~ ", " ~ hearingData.location.country,
+            classes: 'tmc-data-testid-court-address'
           }
         },
         {
           key: { text: "Court information" },
           value: {
-            html: '<a href="' + courtUrl + '" target="_blank">Information including directions, parking, and access (opens in new tab)</a>'
+            html: '<a href="' + courtUrl + '" target="_blank">Information including directions, parking, and access (opens in new tab)</a>',
+            classes: 'tmc-data-testid-court-information'
           }
         }
       ]) %}
