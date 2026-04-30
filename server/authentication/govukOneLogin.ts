@@ -2,12 +2,12 @@ import passport from 'passport'
 import {
   Client,
   ClientAuthMethod,
+  custom,
   Issuer,
   Strategy,
   StrategyVerifyCallbackUserInfo,
   TokenSet,
   UserinfoResponse,
-  custom,
 } from 'openid-client'
 
 import { NextFunction, Request, Response } from 'express'
@@ -18,6 +18,8 @@ import { logger } from '../logger'
 import tokenStoreFactory from './tokenStore/tokenStoreFactory'
 import paths from '../constants/paths'
 import { encryptValue, getSafeReturnPath, isAuthenticatedRequest } from '../utils/utils'
+import type { CachedSecrets } from '../awsSecretsLoader'
+import { loadAwsSecrets } from '../awsSecretsLoader'
 
 passport.serializeUser((user: Express.User, done) => {
   // Not used but required for Passport
@@ -49,7 +51,10 @@ async function init(): Promise<Client> {
   const issuer = await Issuer.discover(discoveryEndpoint)
   logger.info(`GOV.UK One Login issuer discovered`)
 
-  const { privateKey } = config.apis.govukOneLogin
+  const awsSecrets: CachedSecrets = await loadAwsSecrets()
+  const clientId: string = awsSecrets.OIDC_CLIENT_ID
+  const privateKey: string = awsSecrets.OIDC_PRIVATE_KEY
+  const sessionSecret: string = awsSecrets.SESSION_SECRET
 
   const privateKeyJwk = createPrivateKey({
     key: Buffer.from(privateKey, 'base64'),
@@ -57,7 +62,6 @@ async function init(): Promise<Client> {
     type: 'pkcs8',
   }).export({ format: 'jwk' })
 
-  const { clientId } = config.apis.govukOneLogin
   const { authorizeRedirectUrl } = config.apis.govukOneLogin
   const { idTokenSigningAlgorithm } = config.apis.govukOneLogin
 
@@ -78,7 +82,7 @@ async function init(): Promise<Client> {
     userInfo: UserinfoResponse,
     done,
   ) => {
-    const encryptedUserSub = encryptValue(userInfo.sub, config.session.secret)
+    const encryptedUserSub = encryptValue(userInfo.sub, sessionSecret)
     logger.info(`GOV.UK One Login user verified: ${encryptedUserSub}`)
 
     const tokenStore = tokenStoreFactory()

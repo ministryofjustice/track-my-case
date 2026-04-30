@@ -4,7 +4,7 @@ import { toBoolean } from './utils/utils'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-function get<T>(name: string, fallback?: T, options = { requireInProduction: false }): T | string {
+const get = <T>(name: string, fallback?: T, options = { requireInProduction: false }): T | string => {
   if (process.env[name]) {
     return process.env[name]
   }
@@ -63,6 +63,11 @@ const config = {
   https: process.env.NO_HTTPS === 'true' ? false : isProduction,
   staticResourceCacheDuration: '1h',
   environmentName: get('ENVIRONMENT_NAME', ''),
+  awsSecretManager: {
+    enabled: toBoolean(get('TMC_AWS_SECRET_MANAGER_ENABLED', true)),
+    awsSecretManagerName: get('TMC_AWS_SECRET_MANAGER_NAME', '', requiredInProduction),
+    awsRegion: get('TMC_AWS_REGION', '', requiredInProduction),
+  },
   redis: {
     enabled: get('REDIS_ENABLED', 'false', requiredInProduction) === 'true',
     // host: get('REDIS_HOST', 'localhost', requiredInProduction),
@@ -130,7 +135,8 @@ const config = {
     displayHearing: toBoolean(get('DISPLAY_HEARING_DATE_TYPE', false, requiredInProduction)),
   },
   settings: {
-    maintenanceWindow: get('MAINTENANCE_WINDOW', '5@12:00-6@18:00;6@18:00-0@13:00'),
+    upcomingMaintenance: get('UPCOMING_MAINTENANCE', '5@12:00-6@18:00;6@18:00-0@13:00'),
+    ongoingMaintenance: get('ONGOING_MAINTENANCE', '5@12:00-6@18:00;6@18:00-0@13:00'),
     password: get('TMC_PASSWORD') as string,
     passwordExpirationInMinutes: Number(get('TMC_PASSWORD_EXPIRATION_IN_MINUTES', 24 * 60, requiredInProduction)),
   },

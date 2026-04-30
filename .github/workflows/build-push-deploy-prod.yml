@@ -53,6 +53,9 @@ jobs:
           NEW_TAG_V: ${{ steps.set-version-tag-output.outputs.new_tag }}
           NODE_ENV: ${{ vars.NODE_ENV }}
           NODE_PORT: ${{ vars.NODE_PORT }}
+          TMC_AWS_SECRET_MANAGER_ENABLED: ${{ vars.TMC_AWS_SECRET_MANAGER_ENABLED }}
+          TMC_AWS_SECRET_MANAGER_NAME: ${{ vars.TMC_AWS_SECRET_MANAGER_NAME }}
+          TMC_AWS_REGION: ${{ vars.PROD_ECR_REGION }}
           SERVICE_URL: ${{ vars.SERVICE_URL }}
           OIDC_CLIENT_ID: ${{ secrets.OIDC_CLIENT_ID }}
           OIDC_PRIVATE_KEY: ${{ secrets.OIDC_PRIVATE_KEY }}
@@ -89,6 +92,9 @@ jobs:
             --build-arg GIT_BRANCH=${{ github.ref_name }} \
             --build-arg NODE_ENV=$NODE_ENV \
             --build-arg NODE_PORT=$NODE_PORT \
+            --build-arg TMC_AWS_SECRET_MANAGER_ENABLED=$TMC_AWS_SECRET_MANAGER_ENABLED \
+            --build-arg TMC_AWS_SECRET_MANAGER_NAME=$TMC_AWS_SECRET_MANAGER_NAME \
+            --build-arg TMC_AWS_REGION=$TMC_AWS_REGION \
             --build-arg SERVICE_URL=$SERVICE_URL \
             --build-arg OIDC_CLIENT_ID=$OIDC_CLIENT_ID \
             --build-arg OIDC_PRIVATE_KEY=$OIDC_PRIVATE_KEY \
