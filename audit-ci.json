@@ -3,10 +3,5 @@
   "package-manager": "auto",
   "registry": "https://registry.npmjs.org",
   "allowlist": [
-    "brace-expansion",
-    "GHSA-2g4f-4pwh-qvx6",
-    "GHSA-3ppc-4f35-3m26",
-    "GHSA-w5hq-g745-h8pq|applicationinsights>@azure/functions>uuid",
-    "GHSA-w5hq-g745-h8pq|cypress>@cypress/request>uuid"
   ]
 }
