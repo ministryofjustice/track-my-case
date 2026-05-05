@@ -22,12 +22,11 @@ import prometheusRoutes from './routes/prometheusRoutes'
 import { setUpGovukOneLogin } from './middleware/setUpGovukOneLogin'
 import { rateLimitSetup } from './utils/rateLimitSetUp'
 import setUpGoogleTagManager from './middleware/setUpGoogleTagManager'
-import config from './config'
 import { initializePrometheusMetrics } from './services/prometheusService'
 import setUpReqUrlParser from './middleware/setUpReqUrlParser'
 import setUpPrometheusMetrics from './middleware/setUpPrometheusMetrics'
 
-export default function createApp(): express.Application {
+export default function createApp(sessionSecret: string): express.Application {
   const app = express()
 
   // const isProduction = process.env.NODE_ENV === 'production'
@@ -38,10 +37,10 @@ export default function createApp(): express.Application {
 
   app.use(setUpWebSecurity())
   app.use(setUpWebRequestParsing())
-  app.use(setUpWebSession())
+  app.use(setUpWebSession(sessionSecret))
   app.use(setUpStaticResources())
   nunjucksSetup(app)
-  app.use(setUpGovukOneLogin())
+  app.use(setUpGovukOneLogin(sessionSecret))
   app.use(setUpCsrf())
 
   // Configure body-parser
@@ -49,8 +48,8 @@ export default function createApp(): express.Application {
   app.use(express.urlencoded({ extended: true }))
 
   // Configure parsing cookies - required for storing nonce in authentication
-  app.use(cookieParser(config.session.secret))
-  app.use(setUpGoogleTagManager())
+  app.use(cookieParser(sessionSecret))
+  app.use(setUpGoogleTagManager(sessionSecret))
 
   // Apply the general rate limiter to all requests to prevent abuse
   rateLimitSetup(app)

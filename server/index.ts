@@ -1,5 +1,5 @@
 import createApp from './app'
 
-const app = createApp()
+const trackMyCaseApp = (sessionSecret: string) => createApp(sessionSecret)
 
-export default app
+export default trackMyCaseApp

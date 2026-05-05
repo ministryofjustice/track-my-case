@@ -79,6 +79,7 @@
     ]
   },
   "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.1039.0",
     "@ministryofjustice/frontend": "^8.0.1",
     "@ministryofjustice/hmpps-auth-clients": "^1.0.2",
     "@ministryofjustice/hmpps-precommit-hooks": "^2.0.2",
@@ -136,7 +137,7 @@
     "audit-ci": "^7.1.0",
     "chokidar": "^3.6.0",
     "concurrently": "^9.2.1",
-    "cypress": "15.0.0",
+    "cypress": "^15.14.2",
     "cypress-multi-reporters": "^2.0.5",
     "esbuild": "^0.28.0",
     "esbuild-plugin-clean": "^1.0.1",
@@ -146,7 +147,7 @@
     "glob": "^13.0.6",
     "jest": "^30.3.0",
     "jest-html-reporter": "^4.4.0",
-    "jest-junit": "^16.0.0",
+    "jest-junit": "^17.0.0",
     "jsonwebtoken": "^9.0.3",
     "lint-staged": "^16.4.0",
     "mocha-junit-reporter": "^2.2.1",
@@ -163,8 +164,7 @@
     "@jgoz/esbuild-plugin-typecheck": {
       "esbuild": "$esbuild"
     },
-    "brace-expansion@^1.1.7": "1.1.12",
-    "brace-expansion@^2.0.1": "2.0.2",
-    "mocha@11.7.5": "12.0.0-beta-5"
+    "mocha@11.7.5": "12.0.0-beta-9.2",
+    "uuid": "^14.0.0"
   }
 }
