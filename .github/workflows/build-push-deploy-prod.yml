@@ -204,6 +204,7 @@ jobs:
       - name: Upgrade the Helm chart
         if: ${{ github.event.inputs.deploy_monitoring_only != 'true' }}
         env:
+          APP_ROLE_ARN: ${{ secrets.APP_ROLE_ARN }}
           ECR_REPO_WEBAPP: ${{ steps.login-ecr.outputs.registry }}/${{ vars.PROD_ECR_REPOSITORY }}
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
           NEW_TAG_V: ${{ needs.build-push-prod.outputs.new_tag }}
@@ -217,6 +218,7 @@ jobs:
           --set securityContext.allowPrivilegeEscalation=false \
           --set securityContext.capabilities.drop=["ALL"] \
           --set securityContext.runAsNonRoot=true \
+          --set ServiceAccount.RoleARN=$APP_ROLE_ARN \
           --set securityContext.seccompProfile.type="RuntimeDefault" \
           --set Ingress.Enabled=true
 
