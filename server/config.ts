@@ -51,6 +51,10 @@ const serviceUrl = replacePort(get('SERVICE_URL', ''), port)
 const oneLoginAccount = get('ONE_LOGIN_ACCOUNT', 'account.gov.uk', requiredInProduction)
 const ivIssuer = `https://oidc.${oneLoginAccount}`
 
+const oidcClientId = get('OIDC_CLIENT_ID', '')
+const oidcPrivateKey = get('OIDC_PRIVATE_KEY', '')
+const sessionSecret = get('SESSION_SECRET', 'track-my-case-session-secret-default')
+
 const config = {
   productId: get('PRODUCT_ID', 'track-my-case', requiredInProduction),
   buildNumber: get('BUILD_NUMBER', '1_0_0', requiredInProduction),
@@ -67,6 +71,15 @@ const config = {
     enabled: toBoolean(get('TMC_AWS_SECRET_MANAGER_ENABLED', true)),
     awsSecretManagerName: get('TMC_AWS_SECRET_MANAGER_NAME', '', requiredInProduction),
     awsRegion: get('TMC_AWS_REGION', '', requiredInProduction),
+    awsSecrets: {
+      govukOneLogin: {
+        clientId: oidcClientId,
+        privateKey: oidcPrivateKey,
+      },
+      session: {
+        secret: sessionSecret,
+      },
+    },
   },
   redis: {
     enabled: get('REDIS_ENABLED', 'false', requiredInProduction) === 'true',
@@ -80,8 +93,8 @@ const config = {
       url: ivIssuer,
       jwksUrl: `${ivIssuer}/.well-known/jwks.json`,
       discoveryUrl: `${ivIssuer}/.well-known/openid-configuration`,
-      clientId: get('OIDC_CLIENT_ID', ''),
-      privateKey: get('OIDC_PRIVATE_KEY', ''),
+      clientId: oidcClientId,
+      privateKey: oidcPrivateKey,
       signInUrl: `https://signin.${oneLoginAccount}/enter-email`,
       createAccountUrl: `https://signin.${oneLoginAccount}/enter-email-create`,
       idTokenSigningAlgorithm: 'ES256',
@@ -116,7 +129,7 @@ const config = {
   },
   session: {
     name: get('SESSION_NAME', 'track-my-case.session'),
-    secret: get('SESSION_SECRET', 'track-my-case-session-secret-default'),
+    secret: sessionSecret,
     expiryMinutes: Number(get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120)),
     inactivityMinutes: Number(get('WEB_SESSION_INACTIVITY_IN_MINUTES', 10)),
     appointmentsCacheMinutes: Number(get('APPOINTMENTS_CACHE_IN_MINUTES', 1)),
