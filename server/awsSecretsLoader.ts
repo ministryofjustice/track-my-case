@@ -55,9 +55,9 @@ export const loadAwsSecrets = async (): Promise<CachedSecrets> => {
     if (!enabled) {
       logger.info(`AWS Secrets Manager: not enabled`)
       cachedSecretsStorage.cachedSecretData = {
-        OIDC_CLIENT_ID: config.apis.govukOneLogin.clientId,
-        OIDC_PRIVATE_KEY: config.apis.govukOneLogin.privateKey,
-        SESSION_SECRET: config.session.secret,
+        OIDC_CLIENT_ID: config.awsSecretManager.awsSecrets.govukOneLogin.clientId,
+        OIDC_PRIVATE_KEY: config.awsSecretManager.awsSecrets.govukOneLogin.privateKey,
+        SESSION_SECRET: config.awsSecretManager.awsSecrets.session.secret,
       }
       return getCachedSecrets()
     }

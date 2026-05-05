@@ -67,18 +67,16 @@ describe('loadAwsSecrets', () => {
           enabled,
           awsSecretManagerName: 'my-secret',
           awsRegion: 'eu-west-2',
-        },
-        ...(!enabled && {
-          apis: {
+          awsSecrets: {
             govukOneLogin: {
-              clientId: 'config-client-id',
-              privateKey: 'config-private-key',
+              clientId: (!enabled && 'config-client-id') ?? undefined,
+              privateKey: (!enabled && 'config-private-key') ?? undefined,
+            },
+            session: {
+              secret: (!enabled && 'config-session-secret') ?? undefined,
             },
           },
-          session: {
-            secret: 'config-session-secret',
-          },
-        }),
+        },
       },
     }))
     // eslint-disable-next-line @typescript-eslint/no-require-imports, global-require
