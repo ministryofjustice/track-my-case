@@ -63,9 +63,20 @@ describe('loadAwsSecrets', () => {
     jest.doMock('./config', () => ({
       __esModule: true,
       default: {
-        awsSecretManager: { enabled, awsSecretManagerName: 'my-secret', awsRegion: 'eu-west-2' },
-        apis: { govukOneLogin: { clientId: 'config-client-id', privateKey: 'config-private-key' } },
-        session: { secret: 'config-session-secret' },
+        awsSecretManager: {
+          enabled,
+          awsSecretManagerName: 'my-secret',
+          awsRegion: 'eu-west-2',
+        },
+        apis: {
+          govukOneLogin: {
+            clientId: 'config-client-id',
+            privateKey: 'config-private-key',
+          },
+        },
+        session: {
+          secret: 'config-session-secret',
+        },
       },
     }))
     // eslint-disable-next-line @typescript-eslint/no-require-imports, global-require
