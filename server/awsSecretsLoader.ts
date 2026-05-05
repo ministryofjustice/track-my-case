@@ -12,12 +12,16 @@ export const previewSecret = (str: string = ''): string => {
   if (!str) {
     return '(none)'
   }
-  const value = String(str)
-  const minCharsToDisplay: number = 4
-  if (value.length <= 2 * minCharsToDisplay) {
-    return `${value.slice(0, Math.min(minCharsToDisplay, value.length))}...`
+  const manyStars = `****`
+  const value: string = String(str)
+  if (value.length <= 3) {
+    return `${manyStars}`
   }
-  return `${value.slice(0, minCharsToDisplay)}****${value.slice(-minCharsToDisplay)}`
+  if (value.length <= 6) {
+    return `${value.slice(0, 2)}${manyStars}`
+  }
+  const minCharsToDisplay: number = 2
+  return `${value.slice(0, minCharsToDisplay)}${manyStars}${value.slice(-minCharsToDisplay)}`
 }
 
 export type CachedSecrets = {
