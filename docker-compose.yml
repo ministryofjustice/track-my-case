@@ -5,6 +5,9 @@ services:
     build:
       context: .
       args:
+        PRODUCT_ID: '${PRODUCT_ID}'
+        REDIS_ENABLED: '${REDIS_ENABLED}'
+        SESSION_SECRET: '${SESSION_SECRET}'
         BUILD_NUMBER: '1.0.0'
         GIT_REF: 'a1b2c3'
         GIT_BRANCH: main
@@ -42,11 +45,6 @@ services:
       # Default HOST_PORT to 9999 for data-analytics platform
       - '${NODE_PORT}:${NODE_PORT}'
     environment:
-      - PRODUCT_ID=UNASSIGNED
-      - REDIS_ENABLED=false
-      - REDIS_HOST=localhost
-      # These will need to match new creds in the seed auth service auth
-      - SESSION_SECRET=somesecretvalue
       - NO_HTTPS=true
 
   track-my-case-api:
