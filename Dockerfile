@@ -59,10 +59,16 @@ ARG DISPLAY_HEARING_DATE_TYPE
 ARG TMC_PASSWORD
 ARG TMC_PASSWORD_EXPIRATION_IN_MINUTES
 
+# These three variables are not required for this check,
+# since they are loaded via awsSecretsLoader.loadAwsSecrets() during application startup:
+# - OIDC_CLIENT_ID
+# - OIDC_PRIVATE_KEY
+# - SESSION_SECRET
+# (DON'T remove them from Dockerfile, as they are used during local development!!!)
+
 RUN required_variables=" \
     PRODUCT_ID  \
     REDIS_ENABLED  \
-    SESSION_SECRET  \
     BUILD_NUMBER  \
     GIT_REF  \
     GIT_BRANCH  \
@@ -72,8 +78,6 @@ RUN required_variables=" \
     TMC_AWS_SECRET_MANAGER_NAME \
     TMC_AWS_REGION \
     SERVICE_URL \
-    OIDC_CLIENT_ID \
-    OIDC_PRIVATE_KEY \
     ONE_LOGIN_ACCOUNT \
     OIDC_TOKEN_AUTH_METHOD \
     OIDC_SCOPES \
