@@ -3,7 +3,7 @@ import express, { Router } from 'express'
 import { randomUUID } from 'crypto'
 import config from '../config'
 
-export default function setUpWebSession(): Router {
+export default function setUpWebSession(sessionSecret: string): Router {
   let store: Store
   if (config.redis.enabled) {
     throw new Error('No Redis implemented yet')
@@ -17,7 +17,7 @@ export default function setUpWebSession(): Router {
     session({
       store,
       name: config.session.name,
-      secret: config.session.secret,
+      secret: sessionSecret,
       cookie: {
         secure: !!config.https,
         signed: !!config.https,

@@ -92,7 +92,7 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
           const courtUrl = courts.getCourtUrl(res.locals.hearingData.location.courtHouseName)
           res.locals.courtUrl = courtUrl ?? 'https://www.find-court-tribunal.service.gov.uk/'
 
-          if (caseStatus === 'ACTIVE') {
+          if (caseStatus === 'ACTIVE' || caseStatus === 'SJP_REFERRAL') {
             return res.render('pages/case/court-information')
           }
         }
