@@ -12,7 +12,9 @@ export default function setUpWebSession(sessionSecret: string): Router {
   }
 
   const router = express.Router()
-  // Set up a session to track whether the user is logged in
+  // CodeQL[js/missing-token-validation]
+  // CSRF protection is applied globally via setUpCsrf() (csrf-sync) in app.ts after this middleware.
+  // CodeQL does not recognise csrf-sync as a known CSRF library, so suppress the false positive.
   router.use(
     session({
       store,
