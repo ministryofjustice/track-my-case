@@ -54,7 +54,6 @@ jobs:
         env:
           PRODUCT_ID: ${{ vars.PRODUCT_ID }}
           REDIS_ENABLED: ${{ vars.REDIS_ENABLED }}
-          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
           NEW_TAG_V: ${{ steps.set-version-tag-output.outputs.new_tag }}
           NODE_ENV: ${{ vars.NODE_ENV }}
           NODE_PORT: ${{ vars.NODE_PORT }}
@@ -62,8 +61,6 @@ jobs:
           TMC_AWS_SECRET_MANAGER_NAME: ${{ vars.TMC_AWS_SECRET_MANAGER_NAME }}
           TMC_AWS_REGION: ${{ vars.DEV_ECR_REGION }}
           SERVICE_URL: ${{ vars.SERVICE_URL }}
-          OIDC_CLIENT_ID: ${{ secrets.OIDC_CLIENT_ID }}
-          OIDC_PRIVATE_KEY: ${{ secrets.OIDC_PRIVATE_KEY }}
           ONE_LOGIN_ACCOUNT: ${{ vars.ONE_LOGIN_ACCOUNT }}
           OIDC_TOKEN_AUTH_METHOD: ${{ vars.OIDC_TOKEN_AUTH_METHOD }}
           OIDC_SCOPES: ${{ vars.OIDC_SCOPES }}
@@ -91,7 +88,6 @@ jobs:
           docker build . \
             --build-arg PRODUCT_ID=$PRODUCT_ID \
             --build-arg REDIS_ENABLED=$REDIS_ENABLED \
-            --build-arg SESSION_SECRET=$SESSION_SECRET \
             --build-arg BUILD_NUMBER=$NEW_TAG_V \
             --build-arg GIT_REF=${{ github.sha }} \
             --build-arg GIT_BRANCH=${{ github.ref_name }} \
@@ -101,8 +97,6 @@ jobs:
             --build-arg TMC_AWS_SECRET_MANAGER_NAME=$TMC_AWS_SECRET_MANAGER_NAME \
             --build-arg TMC_AWS_REGION=$TMC_AWS_REGION \
             --build-arg SERVICE_URL=$SERVICE_URL \
-            --build-arg OIDC_CLIENT_ID=$OIDC_CLIENT_ID \
-            --build-arg OIDC_PRIVATE_KEY=$OIDC_PRIVATE_KEY \
             --build-arg ONE_LOGIN_ACCOUNT=$ONE_LOGIN_ACCOUNT \
             --build-arg OIDC_TOKEN_AUTH_METHOD=$OIDC_TOKEN_AUTH_METHOD \
             --build-arg OIDC_SCOPES="$OIDC_SCOPES" \
@@ -164,11 +158,12 @@ jobs:
         env:
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
           KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
+          KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
         run: |
           echo "${{ secrets.KUBE_CERT }}" > ca.crt
           kubectl config set-cluster ${KUBE_CLUSTER} --certificate-authority=./ca.crt --server=https://${KUBE_CLUSTER}
-          kubectl config set-credentials deploy-user --token=${{ secrets.KUBE_TOKEN }}
-          kubectl config set-context ${KUBE_CLUSTER} --cluster=${KUBE_CLUSTER} --user=deploy-user --namespace=${{ secrets.KUBE_NAMESPACE }}
+          kubectl config set-credentials deploy-user --token=${{ KUBE_TOKEN }}
+          kubectl config set-context ${KUBE_CLUSTER} --cluster=${KUBE_CLUSTER} --user=deploy-user --namespace=${{ KUBE_NAMESPACE }}
           kubectl config use-context ${KUBE_CLUSTER}
 
       - name: Clone Helm chart repo
