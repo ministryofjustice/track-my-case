@@ -4,7 +4,7 @@ import { toBoolean } from './utils/utils'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-function get<T>(name: string, fallback?: T, options = { requireInProduction: false }): T | string {
+const get = <T>(name: string, fallback?: T, options = { requireInProduction: false }): T | string => {
   if (process.env[name]) {
     return process.env[name]
   }
@@ -51,6 +51,10 @@ const serviceUrl = replacePort(get('SERVICE_URL', ''), port)
 const oneLoginAccount = get('ONE_LOGIN_ACCOUNT', 'account.gov.uk', requiredInProduction)
 const ivIssuer = `https://oidc.${oneLoginAccount}`
 
+const oidcClientId = get('OIDC_CLIENT_ID', '')
+const oidcPrivateKey = get('OIDC_PRIVATE_KEY', '')
+const sessionSecret = get('SESSION_SECRET', 'track-my-case-session-secret-default')
+
 const config = {
   productId: get('PRODUCT_ID', 'track-my-case', requiredInProduction),
   buildNumber: get('BUILD_NUMBER', '1_0_0', requiredInProduction),
@@ -63,20 +67,30 @@ const config = {
   https: process.env.NO_HTTPS === 'true' ? false : isProduction,
   staticResourceCacheDuration: '1h',
   environmentName: get('ENVIRONMENT_NAME', ''),
+  awsSecretManager: {
+    enabled: toBoolean(get('TMC_AWS_SECRET_MANAGER_ENABLED', true)),
+    awsSecretManagerName: get('TMC_AWS_SECRET_MANAGER_NAME', '', requiredInProduction),
+    awsRegion: get('TMC_AWS_REGION', '', requiredInProduction),
+    awsSecrets: {
+      govukOneLogin: {
+        clientId: oidcClientId,
+        privateKey: oidcPrivateKey,
+      },
+      session: {
+        secret: sessionSecret,
+      },
+    },
+  },
   redis: {
     enabled: get('REDIS_ENABLED', 'false', requiredInProduction) === 'true',
-    // host: get('REDIS_HOST', 'localhost', requiredInProduction),
-    // port: parseInt(process.env.REDIS_PORT, 10) || 6379,
-    // password: process.env.REDIS_AUTH_TOKEN,
-    // tls_enabled: get('REDIS_TLS_ENABLED', 'false'),
   },
   apis: {
     govukOneLogin: {
       url: ivIssuer,
       jwksUrl: `${ivIssuer}/.well-known/jwks.json`,
       discoveryUrl: `${ivIssuer}/.well-known/openid-configuration`,
-      clientId: get('OIDC_CLIENT_ID', '', requiredInProduction),
-      privateKey: get('OIDC_PRIVATE_KEY', '', requiredInProduction),
+      clientId: oidcClientId,
+      privateKey: oidcPrivateKey,
       signInUrl: `https://signin.${oneLoginAccount}/enter-email`,
       createAccountUrl: `https://signin.${oneLoginAccount}/enter-email-create`,
       idTokenSigningAlgorithm: 'ES256',
@@ -111,7 +125,7 @@ const config = {
   },
   session: {
     name: get('SESSION_NAME', 'track-my-case.session'),
-    secret: get('SESSION_SECRET', 'track-my-case-session-secret-default', requiredInProduction),
+    secret: sessionSecret,
     expiryMinutes: Number(get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120)),
     inactivityMinutes: Number(get('WEB_SESSION_INACTIVITY_IN_MINUTES', 10)),
     appointmentsCacheMinutes: Number(get('APPOINTMENTS_CACHE_IN_MINUTES', 1)),
@@ -130,7 +144,8 @@ const config = {
     displayHearing: toBoolean(get('DISPLAY_HEARING_DATE_TYPE', false, requiredInProduction)),
   },
   settings: {
-    maintenanceWindow: get('MAINTENANCE_WINDOW', '5@12:00-6@18:00;6@18:00-0@13:00'),
+    upcomingMaintenance: get('UPCOMING_MAINTENANCE', '5@12:00-6@18:00;6@18:00-0@13:00'),
+    ongoingMaintenance: get('ONGOING_MAINTENANCE', '5@12:00-6@18:00;6@18:00-0@13:00'),
     password: get('TMC_PASSWORD') as string,
     passwordExpirationInMinutes: Number(get('TMC_PASSWORD_EXPIRATION_IN_MINUTES', 24 * 60, requiredInProduction)),
   },

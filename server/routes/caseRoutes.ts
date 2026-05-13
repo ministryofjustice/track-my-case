@@ -19,6 +19,7 @@ import victimSupportLinksController from '../controllers/victim-support-links-co
 import witnessServiceController from '../controllers/witness-service-controller'
 import keyRolesController from '../controllers/key-roles-controller'
 import claimingExpensesController from '../controllers/claiming-expenses-controller'
+import requestingCourtHearingTranscriptController from '../controllers/requesting-court-hearing-transcript-controller'
 
 export default function caseRoutes(app: express.Express): void {
   // Page: Case dashboard
@@ -82,6 +83,14 @@ export default function caseRoutes(app: express.Express): void {
     PasswordAuthenticated,
     asyncMiddleware((req, res, next) => {
       claimingExpensesController(req, res, next)
+    }),
+  )
+
+  app.get(
+    paths.CASES.REQUESTING_COURT_HEARING_TRANSCRIPT,
+    PasswordAuthenticated,
+    asyncMiddleware((req, res, next) => {
+      requestingCourtHearingTranscriptController(req, res, next)
     }),
   )
 

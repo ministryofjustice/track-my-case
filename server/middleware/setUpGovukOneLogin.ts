@@ -41,8 +41,8 @@ const getSigningKey = (kid: string): Promise<string> => {
   })
 }
 
-export const removeTokenOnLogout = async (sub?: string): Promise<void> => {
-  const encryptedUserSub = encryptValue(sub, config.session.secret)
+export const removeTokenOnLogout = async (sub: string, sessionSecret: string): Promise<void> => {
+  const encryptedUserSub = encryptValue(sub, sessionSecret)
   logger.info(`Logging out user: ${encryptedUserSub}`)
   if (sub !== undefined) {
     const tokenStore = tokenStoreFactory()
@@ -60,7 +60,7 @@ const createUserIfExist = (user: Express.User): Express.User | undefined => {
   return undefined
 }
 
-export const decodeTokenAndClear = async (logoutToken: string): Promise<void> => {
+export const decodeTokenAndClear = async (logoutToken: string, sessionSecret: string): Promise<void> => {
   if (!logoutToken) {
     throw new Error('No logout_token provided')
   }
@@ -75,16 +75,16 @@ export const decodeTokenAndClear = async (logoutToken: string): Promise<void> =>
   try {
     // verify the signature
     const verifiedPayload = verify(logoutToken, oneLoginPublicKey as Secret) as JwtPayload
-    await removeTokenOnLogout(verifiedPayload.sub)
+    await removeTokenOnLogout(verifiedPayload.sub, sessionSecret)
   } catch (error) {
     logger.error(`Error on token verification ${error}`)
-    await removeTokenOnLogout(decodedToken.payload.sub as string)
+    await removeTokenOnLogout(decodedToken.payload.sub as string, sessionSecret)
   }
 
   return Promise.resolve()
 }
 
-export const setUpGovukOneLogin = (): Router => {
+export const setUpGovukOneLogin = (sessionSecret: string): Router => {
   govukOneLogin.init().then((client: BaseClient) => {
     router.use(passport.initialize())
     router.use(passport.session())
@@ -99,7 +99,7 @@ export const setUpGovukOneLogin = (): Router => {
       logger.info(`Back channel logout notification received`)
       try {
         const logoutToken = req.body?.logout_token
-        await decodeTokenAndClear(logoutToken)
+        await decodeTokenAndClear(logoutToken, sessionSecret)
 
         res.status(200).send('Logout processed')
       } catch (error) {
