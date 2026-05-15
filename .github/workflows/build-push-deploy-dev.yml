@@ -209,12 +209,25 @@ jobs:
           KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
           NEW_TAG_V: ${{ needs.build-push-dev.outputs.new_tag }}
           RELEASE_NAME: ${{ github.event.repository.name }}-dev
+          VARS_CONTEXT:  ${{ toJson(vars) }}
         run: |
+
+          combined_json=$VARS_CONTEXT
+
+          kubectl annotate es eks-external-secret-$KUBE_NAMESPACE-secrets force-sync=$(date +%s) --overwrite
+          sleep 10
+          secrets_hash=`kubectl get secrets $KUBE_NAMESPACE-secrets -o json  | jq '.data | map_values(@base64d)' | md5sum | awk '{print $1}'`
+          custom_vars_hash=`echo "$combined_json" | md5sum | awk '{print $1}'`
+          variables_hash="${secrets_hash}-${custom_vars_hash}"
+          echo "variable hash is : $variables_hash"
+
+
           helm upgrade --install --atomic --wait --timeout 5m0s --namespace $KUBE_NAMESPACE $RELEASE_NAME ./track-my-case-cloud-platform/charts/webapp-cp \
           --set Namespace=$KUBE_NAMESPACE \
           --set WebApp.Image.Repository=$ECR_REPO_WEBAPP \
           --set WebApp.Image.Tag=$NEW_TAG_V \
           --set WebApp.Name=$KUBE_NAMESPACE \
+          --set-string WebApp.variables_hash="$variables_hash" \
           --set Ingress.ModSec.Enabled=true \
           --set securityContext.allowPrivilegeEscalation=false \
           --set securityContext.capabilities.drop=["ALL"] \
