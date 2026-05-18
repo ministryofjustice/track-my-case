@@ -127,8 +127,6 @@ const config = {
     name: get('SESSION_NAME', 'track-my-case.session'),
     secret: sessionSecret,
     expiryMinutes: Number(get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120)),
-    inactivityMinutes: Number(get('WEB_SESSION_INACTIVITY_IN_MINUTES', 10)),
-    appointmentsCacheMinutes: Number(get('APPOINTMENTS_CACHE_IN_MINUTES', 1)),
     allowDebug: toBoolean(get('ALLOW_DEBUG', false)),
   },
   rateLimit: {
