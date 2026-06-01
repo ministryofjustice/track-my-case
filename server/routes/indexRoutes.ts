@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { Request, Response } from 'express'
 import asyncMiddleware from '../middleware/asyncMiddleware'
 import indexController from '../controllers/index-controller'
 import paths from '../constants/paths'
@@ -47,4 +47,9 @@ export default function indexRoutes(app: express.Express): void {
   )
 
   app.post(paths.FEEDBACK_DECISION, asyncMiddleware(feedbackDecisionController))
+
+  app.get('/robots.txt', (req: Request, res: Response) => {
+    res.type('text/plain')
+    res.send('User-agent: *\nDisallow: /')
+  })
 }
