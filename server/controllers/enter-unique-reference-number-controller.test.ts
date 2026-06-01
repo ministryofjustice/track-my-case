@@ -308,8 +308,16 @@ describe('postEnterUniqueReferenceNumber', () => {
 
     await postEnterUniqueReferenceNumber(req, res, next)
 
-    expect(req.session.selectedUrn).toBe('a1b2c3d4e56')
+    expect(req.session.selectedUrn).toBe('A1B2C3D4E56')
     expect(res.redirect).toHaveBeenCalledWith(paths.CASES.COURT_INFORMATION)
+  })
+
+  it('stores selectedUrn uppercased in the session', async () => {
+    const { req, res, next } = createReqRes({ selectedUrn: 'abc123' })
+
+    await postEnterUniqueReferenceNumber(req, res, next)
+
+    expect(req.session.selectedUrn).toBe('ABC123')
   })
 
   it('redirects to search and saves form state when selectedUrn is empty', async () => {

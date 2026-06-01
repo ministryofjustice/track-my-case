@@ -147,7 +147,7 @@ const postEnterUniqueReferenceNumber = async (req: Request, res: Response, next:
       return res.redirect(paths.CASES.SEARCH)
     }
 
-    req.session.selectedUrn = selectedUrn
+    req.session.selectedUrn = selectedUrn.toUpperCase()
     delete req.session.formState?.caseSelect
 
     return res.redirect(paths.CASES.COURT_INFORMATION)
