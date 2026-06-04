@@ -178,7 +178,7 @@ jobs:
       - name: Clone Helm chart repo
         run: |
           git clone https://github.com/ministryofjustice/track-my-case-cloud-platform.git
-          git -C track-my-case-cloud-platform checkout feature/VP-699-enable-modsec
+          git -C track-my-case-cloud-platform checkout main
 
       - name: Configure AWS credentials
         if: ${{ github.event.inputs.deploy_monitoring_only != 'true' }}
@@ -237,7 +237,6 @@ jobs:
           --set WebApp.Name=$KUBE_NAMESPACE \
           --set-string WebApp.variables_hash="$variables_hash" \
           --set Ingress.ModSec.Enabled=true \
-          --set Ingress.ModSec.DetectionOnly=true \
           --set securityContext.allowPrivilegeEscalation=false \
           --set securityContext.capabilities.drop=["ALL"] \
           --set securityContext.runAsNonRoot=true \
