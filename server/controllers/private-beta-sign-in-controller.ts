@@ -17,6 +17,8 @@ const privateBetaSignInController = async (req: Request, res: Response, next: Ne
       delete req.session.formState.privateBetaSignIn
     }
 
+    clearPasswordCookie(res)
+
     res.locals.pageTitle = 'Enter service password'
     res.locals.backLink = paths.START
     res.locals.privateBetaSignInApi = paths.PRIVATE_BETA_SIGN_IN

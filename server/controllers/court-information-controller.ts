@@ -49,12 +49,16 @@ const mapOfReservedServiceErrors: { [key: string]: CaseDetailsResponse } = {
   },
 }
 
-const getCaseDetailsResponse = async (caseUrn: string, userEmail: string): Promise<CaseDetailsResponse> => {
+const getCaseDetailsResponse = async (
+  caseUrn: string,
+  userEmail: string,
+  userId: string,
+): Promise<CaseDetailsResponse> => {
   const errorCaseDetailsResponse: CaseDetailsResponse = mapOfReservedServiceErrors[caseUrn.toUpperCase()]
   if (errorCaseDetailsResponse) {
     return errorCaseDetailsResponse
   }
-  return courtHearingService.getCaseDetailsByUrn(caseUrn, userEmail)
+  return courtHearingService.getCaseDetailsByUrn(caseUrn, userEmail, userId)
 }
 
 const courtInformationController = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -72,7 +76,8 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
 
     const caseUrn: string = res.locals.selectedUrn
     const userEmail: string = res.locals.user.email
-    const caseDetailsResponse: CaseDetailsResponse = await getCaseDetailsResponse(caseUrn, userEmail)
+    const userId: string = res.locals.userId || res.locals.sessionId
+    const caseDetailsResponse: CaseDetailsResponse = await getCaseDetailsResponse(caseUrn, userEmail, userId)
     const { statusCode } = caseDetailsResponse
     if (statusCode === 200) {
       res.locals.caseDetails = caseDetailsResponse.caseDetails as CaseDetails

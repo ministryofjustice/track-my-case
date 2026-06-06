@@ -48,8 +48,8 @@ jest.mock('../services/courtHearingService', () => {
 
 describe('court-information-controller', () => {
   const defaultUserEmail = 'user@example.com'
-
   const caseUrn = 'CASE123'
+  const userId = 'some-user-id'
 
   const createReqRes = (overrides?: { req?: Request; res?: Response }) => {
     const req = {
@@ -64,6 +64,7 @@ describe('court-information-controller', () => {
       locals: {
         user: { email: defaultUserEmail },
         selectedUrn: caseUrn,
+        userId,
       },
       redirect: jest.fn(),
       render: jest.fn(),
@@ -228,7 +229,7 @@ describe('court-information-controller', () => {
     await courtInformationController(req, res, next)
 
     expect(mockInitialiseBasicAuthentication).toHaveBeenCalled()
-    expect(mockGetCaseDetailsByUrn).toHaveBeenCalledWith(caseUrn, defaultUserEmail)
+    expect(mockGetCaseDetailsByUrn).toHaveBeenCalledWith(caseUrn, defaultUserEmail, userId)
     expect(mockMapCaseDetailsToHearingSummary).toHaveBeenCalledWith(hearing)
     expect(mockGetCourtUrl).toHaveBeenCalledWith('Southwark Crown Court')
     expect(res.locals.courtUrl).toBe('https://example/court')

@@ -48,6 +48,12 @@ export const calculateSittingPeriod = (sittingStart?: string, sittingEnd?: strin
   return `${diffDays} day${diffDays > 1 ? 's' : ''}`
 }
 
+export const isPartOfTrialHearing = (hearingType: string): boolean =>
+  hearingType && hearingType.toLowerCase().includes(HEARING_TYPE.TRIAL.toLowerCase())
+
+export const isPartOfSentenceHearing = (hearingType: string): boolean =>
+  hearingType && hearingType.toLowerCase().includes(HEARING_TYPE.SENTENCE.toLowerCase())
+
 export const getHearingTypeMessage = (hearingType: string = '') => {
   if (!hearingType) {
     return 'Unknown'
@@ -62,7 +68,7 @@ export const getHearingTypeMessage = (hearingType: string = '') => {
 }
 
 export const getHearingMessageOngoing = (hearingType: string): HearingStartDateMessage => {
-  if (hearingType.startsWith(HEARING_TYPE.TRIAL)) {
+  if (isPartOfTrialHearing(hearingType)) {
     return {
       title: 'The trial is ongoing',
       description:
@@ -71,7 +77,7 @@ export const getHearingMessageOngoing = (hearingType: string): HearingStartDateM
         'Be aware that trials can continue for more days than planned.',
     }
   }
-  if (hearingType.startsWith(HEARING_TYPE.SENTENCE)) {
+  if (isPartOfSentenceHearing(hearingType)) {
     return {
       title: 'The sentence hearing is ongoing',
       description:
@@ -89,7 +95,7 @@ export const getHearingMessageOngoing = (hearingType: string): HearingStartDateM
 }
 
 export const getHearingMessageToday = (hearingType: string): HearingStartDateMessage => {
-  if (hearingType.startsWith(HEARING_TYPE.TRIAL)) {
+  if (isPartOfTrialHearing(hearingType)) {
     return {
       title: 'The trial is due to start today',
       description:
@@ -98,7 +104,7 @@ export const getHearingMessageToday = (hearingType: string): HearingStartDateMes
         'Be aware that trials can continue for more days than planned.',
     }
   }
-  if (hearingType.startsWith(HEARING_TYPE.SENTENCE)) {
+  if (isPartOfSentenceHearing(hearingType)) {
     return {
       title: 'The sentencing hearing is due to start today',
       description:
@@ -113,7 +119,7 @@ export const getHearingMessageToday = (hearingType: string): HearingStartDateMes
 }
 
 export const getHearingMessageTomorrow = (hearingType: string): HearingStartDateMessage => {
-  if (hearingType.startsWith(HEARING_TYPE.TRIAL)) {
+  if (isPartOfTrialHearing(hearingType)) {
     return {
       title: 'The expected trial start date is tomorrow',
       description:
@@ -121,7 +127,7 @@ export const getHearingMessageTomorrow = (hearingType: string): HearingStartDate
         'Remember, if you are waiting for a call from them, their number might not show on your phone.',
     }
   }
-  if (hearingType.startsWith(HEARING_TYPE.SENTENCE)) {
+  if (isPartOfSentenceHearing(hearingType)) {
     return {
       title: 'The expected sentencing hearing date is tomorrow',
       description:
@@ -138,7 +144,7 @@ export const getHearingMessage2daysTo7days = (
   hearingType: string,
   monthsWeeksDays: string,
 ): HearingStartDateMessage => {
-  if (hearingType.startsWith(HEARING_TYPE.TRIAL)) {
+  if (isPartOfTrialHearing(hearingType)) {
     return {
       title: `The expected trial start date is in ${monthsWeeksDays}`,
       description:
@@ -146,7 +152,7 @@ export const getHearingMessage2daysTo7days = (
         'make sure you have arranged time off work and childcare if needed.',
     }
   }
-  if (hearingType.startsWith(HEARING_TYPE.SENTENCE)) {
+  if (isPartOfSentenceHearing(hearingType)) {
     return {
       title: `The expected sentencing hearing is in ${monthsWeeksDays}`,
       description:
@@ -163,7 +169,7 @@ export const getHearingMessage8daysTo1month = (
   hearingType: string,
   monthsWeeksDays: string,
 ): HearingStartDateMessage => {
-  if (hearingType.startsWith(HEARING_TYPE.TRIAL)) {
+  if (isPartOfTrialHearing(hearingType)) {
     return {
       title: `The expected trial start date is in ${monthsWeeksDays}`,
       description:
@@ -171,7 +177,7 @@ export const getHearingMessage8daysTo1month = (
         '<a href="/case/witness-service" target="_blank">Find out about the Witness Service (opens in new tab)</a>.',
     }
   }
-  if (hearingType.startsWith(HEARING_TYPE.SENTENCE)) {
+  if (isPartOfSentenceHearing(hearingType)) {
     return {
       title: `The expected sentencing hearing date is in ${monthsWeeksDays}`,
       description:
@@ -188,7 +194,7 @@ export const getHearingMessage1month1DayTo3months = (
   hearingType: string,
   monthsWeeksDays: string,
 ): HearingStartDateMessage => {
-  if (hearingType.startsWith(HEARING_TYPE.TRIAL)) {
+  if (isPartOfTrialHearing(hearingType)) {
     return {
       title: `The expected trial start date is in ${monthsWeeksDays}`,
       description:
@@ -196,7 +202,7 @@ export const getHearingMessage1month1DayTo3months = (
         'They can make sure you get the right support.',
     }
   }
-  if (hearingType.startsWith(HEARING_TYPE.SENTENCE)) {
+  if (isPartOfSentenceHearing(hearingType)) {
     return {
       title: `The expected sentencing hearing date is in ${monthsWeeksDays}`,
       description:
@@ -214,7 +220,7 @@ export const getHearingMessage3months1dayAndMore = (
   hearingType: string,
   monthsWeeksDays: string,
 ): HearingStartDateMessage => {
-  if (hearingType.startsWith(HEARING_TYPE.TRIAL)) {
+  if (isPartOfTrialHearing(hearingType)) {
     return {
       title: 'If you’re going to court',
       description:
@@ -224,7 +230,7 @@ export const getHearingMessage3months1dayAndMore = (
         'Be aware the number they call from might not show on your phone, for example the number might be withheld.',
     }
   }
-  if (hearingType.startsWith(HEARING_TYPE.SENTENCE)) {
+  if (isPartOfSentenceHearing(hearingType)) {
     return {
       title: `The expected sentencing hearing date is in ${monthsWeeksDays}`,
       description:
