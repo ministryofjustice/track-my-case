@@ -228,6 +228,7 @@ jobs:
           --set Ingress.ModSec.Enabled=true \
           --set Ingress.ModSec.Class="modsec" \
           --set Ingress.ModSec.DetectionOnly=true \
+          --set Ingress.rateLimit.rps=50 \
           --set securityContext.allowPrivilegeEscalation=false \
           --set securityContext.capabilities.drop=["ALL"] \
           --set securityContext.runAsNonRoot=true \
