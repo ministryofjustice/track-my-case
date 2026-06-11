@@ -10,8 +10,7 @@ export default function createErrorHandler(production: boolean) {
     // and redirect back to the form rather than signing out.
     if ((error as { code?: string }).code === 'EBADCSRFTOKEN') {
       logger.warn(`CSRF token invalid for: ${req.method} ${req.originalUrl}`)
-      const redirectTo = req.headers.referer || req.originalUrl || paths.START
-      return res.redirect(redirectTo)
+      return res.redirect(paths.START)
     }
 
     logger.error(`Error handling request for: ${req.originalUrl}`, error)

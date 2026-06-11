@@ -50,24 +50,22 @@ describe('createErrorHandler', () => {
       const { req, res, next } = createReqRes({
         originalUrl: '/private-beta-sign-in',
         method: 'POST',
-        headers: { referer: 'http://localhost:9999/private-beta-sign-in' },
       })
 
       createErrorHandler(false)(csrfError, req, res, next)
 
-      expect(res.redirect).toHaveBeenCalledWith('http://localhost:9999/private-beta-sign-in')
+      expect(res.redirect).toHaveBeenCalledWith('/')
     })
 
     it('redirects to originalUrl when referer is absent', () => {
       const { req, res, next } = createReqRes({
         originalUrl: '/private-beta-sign-in',
         method: 'POST',
-        headers: {},
       })
 
       createErrorHandler(false)(csrfError, req, res, next)
 
-      expect(res.redirect).toHaveBeenCalledWith('/private-beta-sign-in')
+      expect(res.redirect).toHaveBeenCalledWith('/')
     })
 
     it('logs a warning, not an error', () => {
