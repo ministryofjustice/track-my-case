@@ -6,6 +6,14 @@ import paths from './constants/paths'
 
 export default function createErrorHandler(production: boolean) {
   return (error: HTTPError | Error, req: Request, res: Response, next: NextFunction): void => {
+    // CSRF token errors are expected (expired sessions, back-button submits, bots) — warn not error,
+    // and redirect back to the form rather than signing out.
+    if ((error as { code?: string }).code === 'EBADCSRFTOKEN') {
+      logger.warn(`CSRF token invalid for: ${req.method} ${req.originalUrl}`)
+      const redirectTo = req.headers.referer || req.originalUrl || paths.START
+      return res.redirect(redirectTo)
+    }
+
     logger.error(`Error handling request for: ${req.originalUrl}`, error)
 
     // Handle the specific OIDC callback error when session is lost (e.g., after redeployment)
