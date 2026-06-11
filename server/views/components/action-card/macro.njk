@@ -1,6 +1,6 @@
 {% macro actionCard(title, description, href, linkText, variant='default') %}
 
-  {% set cardClasses = "track-a-case-govuk-summary-card govuk-summary-card" %}
+  {% set cardClasses = "govuk-summary-card" %}
   {% if variant == 'emphasised' %}
     {% set cardClasses = cardClasses + " action-card--emphasised" %}
   {% endif %}
