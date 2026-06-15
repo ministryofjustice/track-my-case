@@ -6,7 +6,7 @@ import noCache from 'nocache'
 import config from '../config'
 
 export default function setUpStaticResources(): Router {
-  const router = express.Router()
+  const router: Router = express.Router()
 
   router.use(compression())
 
@@ -21,6 +21,11 @@ export default function setUpStaticResources(): Router {
     '/node_modules/@ministryofjustice/frontend',
   ).forEach(dir => {
     router.use('/assets', express.static(path.join(process.cwd(), dir), staticResourcesConfig))
+  })
+
+  Array.of('favicon.ico', 'favicon.svg').forEach((item: string) => {
+    const paths = `/assets/images/${item}`
+    express.static(path.join(process.cwd(), paths), staticResourcesConfig)
   })
 
   // Don't cache dynamic resources
