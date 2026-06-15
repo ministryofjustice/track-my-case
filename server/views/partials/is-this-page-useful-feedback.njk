@@ -25,14 +25,25 @@
         document.getElementById('feedback-form-is-page-useful-yes-confirmation')?.classList.remove('govuk-!-display-none')
       }
       if (value === 'no') {
-        document.getElementById('feedback-form-is-page-useful-no-confirmation')?.classList.remove('govuk-!-display-none')
+        const noConfirmation = document.getElementById('feedback-form-is-page-useful-no-confirmation')
+        noConfirmation?.classList.remove('govuk-!-display-none')
 
-        const cancelFeedbakcDecisionNoButton = document.getElementById('feedback-form-is-page-useful-no-confirmation-cancel-button')
-        if (!cancelFeedbakcDecisionNoButton?.getAttribute('listener')) {
-          cancelFeedbakcDecisionNoButton.addEventListener('click', async (e) => {
+        // move focus to the revealed heading
+        // so screen readers announce the new panel and swipe order continues correctly
+        const noHeading = noConfirmation?.querySelector('h2')
+        if (noHeading) {
+          noHeading.focus()
+        }
+
+        const cancelFeedbackDecisionNoButton = document.getElementById('feedback-form-is-page-useful-no-confirmation-cancel-button')
+        if (!cancelFeedbackDecisionNoButton?.getAttribute('listener')) {
+          cancelFeedbackDecisionNoButton.addEventListener('click', async (e) => {
             e.preventDefault()
             document.getElementById('feedback-form-is-page-useful-no-confirmation')?.classList.add('govuk-!-display-none')
-            document.getElementById('feedback-form-options')?.classList.remove('govuk-!-display-none')
+            const feedbackOptions = document.getElementById('feedback-form-options')
+            feedbackOptions?.classList.remove('govuk-!-display-none')
+            // restore focus to the options panel so screen reader swipe order picks up the Yes/No buttons again
+            feedbackOptions?.focus()
           })
         }
 
@@ -71,7 +82,7 @@
        data-feedback-module-started="true">
     <div class="gem-c-feedback__prompt" tabindex="-1">
       <div class="gem-c-feedback__prompt-content">
-        <div class="gem-c-feedback__prompt-questions" id="feedback-form-options">
+        <div class="gem-c-feedback__prompt-questions" id="feedback-form-options" tabindex="-1">
           <div class="gem-c-feedback__prompt-question-answer">
             <h2 class="gem-c-feedback__prompt-question">Is this page useful?</h2>
             <ul class="gem-c-feedback__option-list">
@@ -85,7 +96,7 @@
               </li>
               <li class="gem-c-feedback__option-list-item">
                 <button class="govuk-button gem-c-feedback__prompt-link"
-                        aria-controls="page-is-not-useful"
+                        aria-controls="feedback-form-is-page-useful-no-confirmation"
                         data-is-this-page-is-useful="false"
                         id="page-is-useful-no-button"
                         data-ga4-event='{ "event_name": "form_submit", "type": "feedback", "text": "No", "section": "Is this page useful?", "tool_name": "Is this page useful?", "page_location": "{{ pageUrl }}", "page_title": "{{ pageTitle }}" }'>
@@ -102,9 +113,9 @@
           Thank you for your feedback.
         </div>
 
-        <div id="feedback-form-is-page-useful-no-confirmation" class="govuk-!-display-none">
+        <div id="feedback-form-is-page-useful-no-confirmation" class="govuk-!-display-none" role="alert">
           <div class="gem-c-feedback__prompt-failure">
-            <h2 class="gem-c-feedback__form-heading">Help us improve {{ applicationName }}</h2>
+            <h2 class="gem-c-feedback__form-heading" tabindex="-1">Help us improve {{ applicationName }}</h2>
             <p id="feedback_explanation" class="gem-c-feedback__form-paragraph">
               We are sorry you did not find the page useful.<br>
               <a href="{{ "https://www.smartsurvey.co.uk/s/ESARVH/?url=" + pageUrl }}" target="_blank">

@@ -10,7 +10,7 @@
       <h2 class="govuk-summary-card__title">{{ title | safe }}</h2>
     </div>
     <div class="govuk-summary-card__content">
-      <dl class="govuk-summary-list">
+      <div class="govuk-summary-list">
         <div class="govuk-summary-list__row action-card-list__row">
           <p class="govuk-body">{{ description | safe }}</p>
           {% if href %}
@@ -21,7 +21,7 @@
             </p>
           {% endif %}
         </div>
-      </dl>
+      </div>
     </div>
   </div>
 {% endmacro %}
