@@ -15,6 +15,11 @@
   {{ (applicationName + " - " + pageTitle) | default(applicationName) }}
 {% endblock %}
 
+{% block headIcons %}
+  <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="/assets/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+{% endblock %}
+
 {% block skipLink %}
   {{ super() }}
   {% if not cookieAccepted %}

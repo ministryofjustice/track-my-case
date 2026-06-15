@@ -6,8 +6,7 @@ Nunjucks templates live under `server/views/` and follow GOV.UK layout patterns.
 views/
 ├── layout/
 │   ├── public.njk
-│   ├── citizen-authenticated.njk        # place holder for OneLogin style layour
-│   └── staff-authenticated.njk          # proposed - just a placeholder
+│   └── citizen-authenticated.njk        # place holder for OneLogin style layour
 │
 ├── partials/
 │   ├── header.njk
