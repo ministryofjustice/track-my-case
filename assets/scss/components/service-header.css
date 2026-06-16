@@ -378,6 +378,7 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  width: -moz-available;
 }
 
 .one-login-header__logo {
@@ -783,9 +784,11 @@
 }
 .service-header__nav-list-item-link:visited {
   color: #4c2c92;
+  /*purple	#4c2c92	Updated to #54319f*/
 }
 .service-header__nav-list-item-link:hover {
   color: #003078;
+  /* dark-blue	#003078	Blue shade 50% (#0f385c)*/
 }
 .service-header__nav-list-item-link:active {
   color: #0b0c0c;
@@ -801,6 +804,7 @@
 }
 .service-header__nav-list-item-link:hover {
   color: #003078;
+  /* dark-blue	#003078	Blue shade 50% (#0f385c)*/
 }
 .service-header__nav-list-item-link:active {
   color: #0b0c0c;
