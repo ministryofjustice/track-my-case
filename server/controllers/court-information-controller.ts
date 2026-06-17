@@ -66,7 +66,7 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
     await initialiseBasicAuthentication(req, res, next)
 
     res.locals.pageTitle = 'Court information'
-    res.locals.backLink = paths.CASES.DASHBOARD
+    res.locals.backLink = paths.CASES.SEARCH
 
     res.locals.displayHearing = config.featureFlags.displayHearing
 

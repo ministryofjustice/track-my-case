@@ -112,6 +112,7 @@ describe('court-information-controller', () => {
 
       expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
       expect(res.locals.pageTitle).toBe('Court information - No further court dates')
+      expect(res.locals.backLink).toBe(paths.CASES.SEARCH)
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-inactive')
     })
 
@@ -129,6 +130,7 @@ describe('court-information-controller', () => {
       await courtInformationController(req, res, next)
 
       expect(res.locals.pageTitle).toBe('Court information - No further court dates')
+      expect(res.locals.backLink).toBe(paths.CASES.SEARCH)
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-inactive')
     })
 
@@ -147,6 +149,7 @@ describe('court-information-controller', () => {
         expect(mockMapCaseDetailsToHearingSummary).toHaveBeenCalledWith(hearing)
         expect(res.status).toHaveBeenCalledWith(404)
         expect(res.locals.pageTitle).toBe('Court information - No hearings allocated')
+        expect(res.locals.backLink).toBe(paths.CASES.SEARCH)
         expect(res.render).toHaveBeenCalledWith('pages/case/court-information-no-hearings-allocated', {
           error: 'No hearings allocated for this case',
         })
@@ -173,6 +176,7 @@ describe('court-information-controller', () => {
         expect(mockMapCaseDetailsToHearingSummary).not.toHaveBeenCalled()
         expect(res.status).toHaveBeenCalledWith(404)
         expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found')
+        expect(res.locals.backLink).toBe(paths.CASES.SEARCH)
       },
     )
 
@@ -194,6 +198,7 @@ describe('court-information-controller', () => {
 
         expect(mockMapCaseDetailsToHearingSummary).toHaveBeenCalled()
         expect(res.render).toHaveBeenCalledWith('pages/case/court-information')
+        expect(res.locals.backLink).toBe(paths.CASES.SEARCH)
       },
     )
   })
@@ -233,6 +238,7 @@ describe('court-information-controller', () => {
     expect(mockMapCaseDetailsToHearingSummary).toHaveBeenCalledWith(hearing)
     expect(mockGetCourtUrl).toHaveBeenCalledWith('Southwark Crown Court')
     expect(res.locals.courtUrl).toBe('https://example/court')
+    expect(res.locals.backLink).toBe(paths.CASES.SEARCH)
     expect(res.render).toHaveBeenCalledWith('pages/case/court-information')
   })
 
@@ -301,6 +307,7 @@ describe('court-information-controller', () => {
     await courtInformationController(req, res, next)
 
     expect(res.status).toHaveBeenCalledWith(404)
+    expect(res.locals.backLink).toBe(paths.CASES.SEARCH)
     expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found')
   })
 
@@ -350,6 +357,7 @@ describe('court-information-controller', () => {
 
     await courtInformationController(req, res, next)
 
+    expect(res.locals.backLink).toBe(paths.CASES.SEARCH)
     expect(res.redirect).toHaveBeenCalledWith(paths.CASES.SEARCH)
   })
 
