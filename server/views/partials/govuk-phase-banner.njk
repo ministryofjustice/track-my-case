@@ -1,0 +1,10 @@
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+
+{% block phaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. <a href="/about-the-service" class="govuk-link" id="about-the-service">Find out more and help us improve it</a>.'
+  }) }}
+{% endblock %}
