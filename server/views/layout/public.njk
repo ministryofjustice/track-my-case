@@ -1,6 +1,4 @@
 {% extends "govuk/template.njk" %}
-{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 
 {% set assetPath = '/assets/rebrand' %}
 {% set govukRebrand = true %}
@@ -26,34 +24,17 @@
   {% endif %}
 {% endblock %}
 
+{% block bodyStart %}
+  {% include "partials/google-tag-manager-noscript.njk" %}
+{% endblock %}
+
 {% block header %}
   {% include "partials/header.njk" %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "Beta"
-    },
-    html: 'This is a new service. <a href="/about-the-service" class="govuk-link" id="about-the-service">Find out more and help us improve it</a>.'
-  }) }}
-
-  {% if backLink %}
-    <div class="govuk-width-container">
-      {{ govukBackLink({
-        text: "Back",
-        href: backLink
-      }) }}
-    </div>
-  {% endif %}
-
-  {% block mainContent %}
-  {% endblock %}
-
+  {% include "partials/govuk-phase-banner.njk" %}
+  {% include "partials/back-link.njk" %}
 {% endblock %}
 
 {% block content %}
-{% endblock %}
-
-{% block bodyStart %}
-  {% include "partials/google-tag-manager-noscript.njk" %}
 {% endblock %}
 
 {% block bodyEnd %}
