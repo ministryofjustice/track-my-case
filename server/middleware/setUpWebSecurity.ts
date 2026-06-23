@@ -1,6 +1,7 @@
 import crypto from 'crypto'
 import express, { NextFunction, Request, Response, Router } from 'express'
 import helmet from 'helmet'
+import config from '../config'
 
 export default function setUpWebSecurity(): Router {
   const router = express.Router()
@@ -72,6 +73,10 @@ export default function setUpWebSecurity(): Router {
           // For GTM noscript iframe
           frameSrc: ["'self'", 'https://www.googletagmanager.com'],
           formAction: [`'self'`],
+          // upgrade-insecure-requests is included in Helmet's defaults but must be disabled on
+          // HTTP (local dev) — Chrome treats 'self' as the HTTPS origin when this directive is
+          // present, causing form-action 'self' to block same-origin HTTP form submissions.
+          ...(config.https === false ? { upgradeInsecureRequests: null } : {}),
         },
       },
 

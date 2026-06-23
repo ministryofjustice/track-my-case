@@ -30,6 +30,7 @@ describe('privateBetaSignInController (GET)', () => {
     const res = {
       locals: {} as Record<string, unknown>,
       render: jest.fn(),
+      clearCookie: jest.fn(),
     } as unknown as Response
     const next = jest.fn() as NextFunction
     return { req, res, next }

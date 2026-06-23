@@ -5,6 +5,8 @@ import {
   getHearingStartDateMessage,
   getHearingStartDateMessageFromDate,
   getHearingTypeMessage,
+  isPartOfSentenceHearing,
+  isPartOfTrialHearing,
   mapCaseDetailsToHearingSummary,
 } from './caseDetailsService'
 
@@ -2052,5 +2054,54 @@ describe('getHearingTypeMessage', () => {
     expect(getHearingTypeMessage(HEARING_TYPE.SENTENCE)).toBe('Sentencing')
     expect(getHearingTypeMessage('xxx')).toBe('xxx')
     expect(getHearingTypeMessage(null)).toBe('Unknown')
+  })
+})
+
+const trialHearingTypes = [
+  'Trial',
+  'Trial - no witnesses',
+  'Trial (Backer)',
+  'Trial (Floater)',
+  'Trial (First Warning)',
+  'Trial (Part Heard)',
+  'Trial of Preliminary Issue',
+  'Trial (Priority)',
+  'Trial (Previously Warned)',
+  'Trial (Reserve)',
+  'Trial Linked',
+  'Trial (Fixed for this Week)',
+]
+
+const sentenceHearingTypes: string[] = [
+  'Sentence',
+  'Sentence (at another Court)',
+  'Sentence (Officer to Attend)',
+  'Sentence (Prosecution to Attend)',
+  'Sentence (Prosecution and Officer to Attend)',
+  'Sentence (Prosecution Released)',
+  'Committal for Sentence',
+  'Committal for Sentence (Part Heard)',
+  'Deferred Sentence',
+  'Deferred Sentence (Respondent Released)',
+  'Deferred Sentence - Prosecution Released',
+]
+
+describe('isPartOfTrialHearing', () => {
+  it.each(trialHearingTypes)('returns true for "%s"', hearingType => {
+    expect(isPartOfTrialHearing(hearingType)).toBe(true)
+  })
+
+  it.each([...sentenceHearingTypes, 'Unknown', ''])('returns false for "%s"', hearingType => {
+    expect(isPartOfTrialHearing(hearingType)).toBeFalsy()
+  })
+})
+
+describe('isPartOfSentenceHearing', () => {
+  it.each(sentenceHearingTypes)('returns true for "%s"', hearingType => {
+    expect(isPartOfSentenceHearing(hearingType)).toBe(true)
+  })
+
+  it.each([...trialHearingTypes, 'Unknown', ''])('returns false for "%s"', hearingType => {
+    expect(isPartOfSentenceHearing(hearingType)).toBeFalsy()
   })
 })

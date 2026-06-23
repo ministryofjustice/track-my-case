@@ -52,27 +52,21 @@
     <div class="govuk-grid-column-one-third">
       <div class="govuk-summary-card highlight">
         <div class="govuk-summary-card__title-wrapper">
-          <h2 class="govuk-summary-card__title">If you need help now</h2>
+          <h2 class="govuk-summary-card__title text-white">If you need help now</h2>
         </div>
         <div class="govuk-summary-card__content">
-          <dl class="govuk-summary-list">
+          <div class="govuk-summary-list">
             <div class="govuk-summary-list__row">
-              <p>If you're in immediate danger, phone the police: 999</p>
-              <p>
-                Samaritans<br>
-                Phone: 116 123<br>
-                Website: <a href="https://www.samaritans.org" class="govuk-link" target="_blank">www.samaritans.org</a>
+              <p class="govuk-body text-white">If you're in immediate danger, phone the police: 999</p>
+              <p class="govuk-body">
+                <span class="text-white">Samaritans phone: 116 123</span><br>
+                <span class="text-white">Website: </span><a href="https://www.samaritans.org" class="govuk-link govuk-link--inverse" target="_blank">www.samaritans.org (opens in new tab)</a>
               </p>
             </div>
-          </dl>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-  {% if allowDebug and user %}
-    <h2 class="govuk-heading-m">User information</h2>
-    <pre><code>{{ user | dump(2) }}</code></pre>
-  {% endif %}
 
 {% endblock %}
