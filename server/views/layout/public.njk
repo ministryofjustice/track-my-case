@@ -1,8 +1,5 @@
 {% extends "govuk/template.njk" %}
 
-{% set assetPath = '/assets/rebrand' %}
-{% set govukRebrand = true %}
-
 {% block head %}
   <link href="{{ '/assets/css/index.css' | assetMap }}" rel="stylesheet" />
   <meta name="google-site-verification" content="ThvYU2V6sfjD-kyyj2zaZ8lZUxn-8qnsoiQCaFZHccQ" />
@@ -10,11 +7,6 @@
 
 {% block pageTitle %}
   {{ (applicationName + " - " + pageTitle) | default(applicationName) }}
-{% endblock %}
-
-{% block headIcons %}
-  <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="/assets/images/favicon.ico" type="image/x-icon" />
-  <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
 {% endblock %}
 
 {% block skipLink %}
@@ -29,9 +21,18 @@
 {% endblock %}
 
 {% block header %}
-  {% include "partials/header.njk" %}
-  {% include "partials/govuk-phase-banner.njk" %}
-  {% include "partials/back-link.njk" %}
+  {% block headerStart %}{% endblock %}
+
+  {% block govukHeader %}
+    {% include "partials/header.njk" %}
+  {% endblock %}
+
+  {% block govukServiceNavigation %}{% endblock %}
+
+  {% block headerEnd %}
+    {% include "partials/govuk-phase-banner.njk" %}
+    {% include "partials/back-link.njk" %}
+  {% endblock %}
 {% endblock %}
 
 {% block content %}
@@ -42,5 +43,5 @@
 {% endblock %}
 
 {% block footer %}
-{% include "partials/footer.njk" %}
+  {% include "partials/footer.njk" %}
 {% endblock %}

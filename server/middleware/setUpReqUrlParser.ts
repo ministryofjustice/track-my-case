@@ -5,19 +5,17 @@ export default function setUpReqUrlParser(): Router {
   const router = express.Router()
 
   router.use((req: Request, res: Response, next: NextFunction) => {
-    const originalUrl = req.url
-    const [path, query] = originalUrl.split('?', 2)
-    if (path?.startsWith('/assets')) {
-      next()
-    }
-    if (path?.indexOf('//') > -1) {
-      const normalizedPath = path.replace(/\/{2,}/g, '/')
-      const replacedUrl = query ? `${normalizedPath}?${query}` : normalizedPath
-      logger.info('Request URL parsed', originalUrl, replacedUrl)
-      req.url = replacedUrl
+    const originalPath: string = req.originalUrl.split('?')[0]
+    const normalised = originalPath.toLowerCase().replace(/\/{2,}/g, '/')
+
+    if (originalPath !== normalised) {
+      const redirectUrl: string = normalised + req.url.slice(req.path.length)
+      logger.info('Request URL redirected', req.originalUrl, redirectUrl)
+      return res.redirect(301, redirectUrl)
     }
 
-    next()
+    return next()
   })
+
   return router
 }
