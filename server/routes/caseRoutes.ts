@@ -20,6 +20,7 @@ import witnessServiceController from '../controllers/witness-service-controller'
 import keyRolesController from '../controllers/key-roles-controller'
 import claimingExpensesController from '../controllers/claiming-expenses-controller'
 import requestingCourtHearingTranscriptController from '../controllers/requesting-court-hearing-transcript-controller'
+import specialMeasuresController from '../controllers/special-measures-controller'
 
 export default function caseRoutes(app: express.Express): void {
   // Page: Case dashboard
@@ -132,6 +133,14 @@ export default function caseRoutes(app: express.Express): void {
     PasswordAuthenticated,
     asyncMiddleware((req, res, next) => {
       witnessServiceController(req, res, next)
+    }),
+  )
+
+  app.get(
+    paths.CASES.SPECIAL_MEASURES,
+    PasswordAuthenticated,
+    asyncMiddleware((req, res, next) => {
+      specialMeasuresController(req, res, next)
     }),
   )
 }
