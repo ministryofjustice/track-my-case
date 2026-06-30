@@ -16,6 +16,7 @@
     "test:clearCache": "jest --clearCache",
     "test:watch": "jest --watchAll",
     "test:ci": "jest --runInBand",
+    "test:coverage": "jest --coverage",
     "security_audit": "npx audit-ci --config audit-ci.json",
     "audit-fix": "npm audit fix",
     "audit-fix-force": "npm audit fix --force",

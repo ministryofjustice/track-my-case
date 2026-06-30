@@ -183,4 +183,26 @@ describe('setUpReqUrlParser', () => {
       expect(response.body.url).toBe('/?param=value')
     })
   })
+
+  describe('security — open redirect prevention', () => {
+    it('collapses double-slash prefix to a local path, never an external redirect', async () => {
+      const response = await request(server).get('//evil.com/steal')
+      expect(response.status).toBe(301)
+      expect(response.headers.location).toMatch(/^\/[^/]/) // single leading slash only
+      expect(response.headers.location).not.toMatch(/^https?:\/\//)
+      expect(response.headers.location).not.toMatch(/^\/\//)
+    })
+
+    it('redirect location is always a relative path, never an absolute URL', async () => {
+      const response = await request(server).get('/CASE/dashboard')
+      expect(response.status).toBe(301)
+      expect(response.headers.location).toMatch(/^\/[^/]/)
+    })
+
+    it('calls next() without redirecting when URL construction throws due to malformed host', async () => {
+      const response = await request(server).get('/CASE/dashboard').set('Host', '[invalid')
+      expect(response.status).toBe(200)
+      expect(response.body.url).toBe('/CASE/dashboard')
+    })
+  })
 })
