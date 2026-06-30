@@ -39,6 +39,7 @@ const paths = {
 
     VICTIM_PERSONAL_STATEMENT: '/case/victim-personal-statement',
     CLAIMING_EXPENSES: '/case/claiming-expenses',
+    SPECIAL_MEASURES: '/case/special-measures',
     REQUESTING_COURT_HEARING_TRANSCRIPT: '/case/requesting-court-hearing-transcript',
     UNDERSTAND_COMPENSATION: '/case/understand-compensation',
     RETURN_PROPERTY: '/case/return-property',
