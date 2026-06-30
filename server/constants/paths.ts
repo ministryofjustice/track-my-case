@@ -46,6 +46,7 @@ const paths = {
 
     VICTIM_SUPPORT_LINKS: '/case/victim-support-links',
     WITNESS_SERVICE: '/case/witness-service',
+    SPECIAL_MEASURES: '/case/special-measures',
   },
 }
 
