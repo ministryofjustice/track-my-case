@@ -1,10 +1,10 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 
 {% if backLink %}
-  <div class="govuk-width-container">
+  <nav aria-label="Back" class="govuk-width-container">
     {{ govukBackLink({
       text: "Back",
       href: backLink
     }) }}
-  </div>
+  </nav>
 {% endif %}

@@ -94,7 +94,7 @@ describe('resolvePath', () => {
 describe('getSafeReturnPath', () => {
   const fallback = paths.CASES.DASHBOARD
 
-  it('returns fallback for undefined, null, empty', () => {
+  it('returns fallback for undefined, null, empty, and whitespace-only', () => {
     expect(getSafeReturnPath(undefined, fallback)).toBe(fallback)
     expect(getSafeReturnPath(null, fallback)).toBe(fallback)
     expect(getSafeReturnPath('', fallback)).toBe(fallback)
@@ -108,31 +108,30 @@ describe('getSafeReturnPath', () => {
     expect(getSafeReturnPath(paths.PRIVATE_BETA_SIGN_IN, fallback)).toBe(paths.PRIVATE_BETA_SIGN_IN)
   })
 
-  it('strips query and hash; path must still be trusted', () => {
+  it('strips query string and hash before checking trusted paths', () => {
     expect(getSafeReturnPath(`${paths.CASES.DASHBOARD}?x=1`, fallback)).toBe(paths.CASES.DASHBOARD)
     expect(getSafeReturnPath(`${paths.CASES.DASHBOARD}#frag`, fallback)).toBe(paths.CASES.DASHBOARD)
   })
 
-  it('do not allows /courthouses/:id pattern', () => {
-    expect(getSafeReturnPath('/courthouses/birmingham-01', fallback)).toBe(paths.CASES.DASHBOARD)
+  it('does not allow paths not in trusted paths constant', () => {
+    expect(getSafeReturnPath('/courthouses/birmingham-01', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('/not-a-real-app-route', fallback)).toBe(fallback)
   })
 
-  it('rejects open redirects and traversal', () => {
+  it('rejects external hosts via hostname check', () => {
     expect(getSafeReturnPath('//evil.com', fallback)).toBe(fallback)
     expect(getSafeReturnPath('/\\evil.com', fallback)).toBe(fallback)
     expect(getSafeReturnPath('https://evil.com', fallback)).toBe(fallback)
     expect(getSafeReturnPath('//evil.com/path', fallback)).toBe(fallback)
-    expect(getSafeReturnPath('/case/../admin', fallback)).toBe(fallback)
-    expect(getSafeReturnPath('/case/./dashboard', fallback)).toBe(fallback)
     // eslint-disable-next-line no-script-url
     expect(getSafeReturnPath('javascript:alert(1)', fallback)).toBe(fallback)
-    expect(getSafeReturnPath('/not-a-real-app-route', fallback)).toBe(fallback)
-    expect(getSafeReturnPath('@evil', fallback)).toBe(fallback)
-    expect(getSafeReturnPath('/user@evil.com', fallback)).toBe(fallback)
   })
 
-  it('rejects encoded traversal', () => {
+  it('rejects path traversal attacks', () => {
+    expect(getSafeReturnPath('/case/../admin', fallback)).toBe(fallback)
     expect(getSafeReturnPath('/case/%2e%2e%2fetc', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('@evil', fallback)).toBe(fallback)
+    expect(getSafeReturnPath('/user@evil.com', fallback)).toBe(fallback)
   })
 })
 

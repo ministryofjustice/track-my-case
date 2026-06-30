@@ -4,7 +4,6 @@ import { Server } from 'http'
 import setUpReqUrlParser from './setUpReqUrlParser'
 import { logger } from '../logger'
 
-// Mock the logger
 jest.mock('../logger', () => ({
   logger: {
     info: jest.fn(),
@@ -19,7 +18,6 @@ describe('setUpReqUrlParser', () => {
     app = express()
     app.use(setUpReqUrlParser())
 
-    // Add a catch-all route to verify URL normalization
     app.use((req: Request, res: Response) => {
       res.json({ url: req.url })
     })
@@ -35,188 +33,176 @@ describe('setUpReqUrlParser', () => {
     jest.clearAllMocks()
   })
 
-  describe('URL normalization', () => {
-    it('normalizes URLs with multiple consecutive slashes', async () => {
-      const response = await request(server).get('///case///victims-journey')
-
-      expect(response.status).toBe(200)
-      expect(response.body.url).toBe('/case/victims-journey')
+  describe('redirects with 301', () => {
+    it('redirects uppercase path to lowercase', async () => {
+      const response = await request(server).get('/CASE/dashboard')
+      expect(response.status).toBe(301)
+      expect(response.headers.location).toBe('/case/dashboard')
     })
 
-    it('normalizes URLs with many consecutive slashes', async () => {
-      const response = await request(server).get('//////case//////dashboard')
+    it('redirects mixed case path to lowercase', async () => {
+      const response = await request(server).get('/Case/Dashboard')
+      expect(response.status).toBe(301)
+      expect(response.headers.location).toBe('/case/dashboard')
+    })
 
+    it('redirects multiple leading slashes', async () => {
+      const response = await request(server).get('///case/DASHBOARD')
+      expect(response.status).toBe(301)
+      expect(response.headers.location).toBe('/case/dashboard')
+    })
+
+    it('redirects multiple consecutive slashes in path', async () => {
+      const response = await request(server).get('/case////dashboard')
+      expect(response.status).toBe(301)
+      expect(response.headers.location).toBe('/case/dashboard')
+    })
+
+    it('redirects combined uppercase and multiple slashes', async () => {
+      const response = await request(server).get('///CASE////dashboard')
+      expect(response.status).toBe(301)
+      expect(response.headers.location).toBe('/case/dashboard')
+    })
+
+    it('preserves query string on redirect', async () => {
+      const response = await request(server).get('/CASE/dashboard?foo=bar')
+      expect(response.status).toBe(301)
+      expect(response.headers.location).toBe('/case/dashboard?foo=bar')
+    })
+
+    it('preserves multiple query parameters on redirect', async () => {
+      const response = await request(server).get('/CASE/dashboard?param1=value1&param2=value2')
+      expect(response.status).toBe(301)
+      expect(response.headers.location).toBe('/case/dashboard?param1=value1&param2=value2')
+    })
+
+    it('preserves uppercase query param values on redirect', async () => {
+      const response = await request(server).get('/CASE/dashboard?foo=BAR')
+      expect(response.status).toBe(301)
+      expect(response.headers.location).toBe('/case/dashboard?foo=BAR')
+    })
+
+    it('preserves uppercase query param values on redirect, v2', async () => {
+      const response = await request(server).get('/CASE/dashboard/?FOO=BAR')
+      expect(response.status).toBe(301)
+      expect(response.headers.location).toBe('/case/dashboard/?FOO=BAR')
+    })
+
+    it('redirects uppercase /assets path', async () => {
+      const response = await request(server).get('/assets/CSS/style.css')
+      expect(response.status).toBe(301)
+      expect(response.headers.location).toBe('/assets/css/style.css')
+    })
+
+    it('redirects multiple slashes before /assets', async () => {
+      const response = await request(server).get('///assets///css///style.css')
+      expect(response.status).toBe(301)
+      expect(response.headers.location).toBe('/assets/css/style.css')
+    })
+
+    it('redirects multiple slashes before /assets, v2', async () => {
+      const response = await request(server).get('///assets///css///style.css?cache=TRUE')
+      expect(response.status).toBe(301)
+      expect(response.headers.location).toBe('/assets/css/style.css?cache=TRUE')
+    })
+  })
+
+  describe('no redirect for already normalised paths', () => {
+    it('does not redirect a clean lowercase path', async () => {
+      const response = await request(server).get('/case/dashboard')
       expect(response.status).toBe(200)
       expect(response.body.url).toBe('/case/dashboard')
     })
 
-    it('normalizes URLs with multiple slashes in the middle', async () => {
-      const response = await request(server).get('/case//support//roles')
-
+    it('does not redirect root path', async () => {
+      const response = await request(server).get('/')
       expect(response.status).toBe(200)
-      expect(response.body.url).toBe('/case/support/roles')
     })
 
-    it('preserves query strings when normalizing URLs', async () => {
-      const response = await request(server).get('///case///victims-journey?redirect=http://www.example.com/authorise')
-
+    it('does not redirect a clean path with query string', async () => {
+      const response = await request(server).get('/case/dashboard?foo=bar')
       expect(response.status).toBe(200)
-      expect(response.body.url).toBe('/case/victims-journey?redirect=http://www.example.com/authorise')
+      expect(response.body.url).toBe('/case/dashboard?foo=bar')
     })
 
-    it('preserves multiple query parameters', async () => {
-      const response = await request(server).get(
-        '///case///dashboard?param1=value1&param2=value2&redirect=http://www.example.com/authorise',
-      )
-
+    it('does not redirect when only query param values are uppercase', async () => {
+      const response = await request(server).get('/case/dashboard?foo=BAR')
       expect(response.status).toBe(200)
-      expect(response.body.url).toBe(
-        '/case/dashboard?param1=value1&param2=value2&redirect=http://www.example.com/authorise',
-      )
+      expect(response.body.url).toBe('/case/dashboard?foo=BAR')
     })
 
-    it('does not modify URLs without multiple slashes', async () => {
-      const response = await request(server).get('/case/victims-journey')
-
-      expect(response.status).toBe(200)
-      expect(response.body.url).toBe('/case/victims-journey')
-    })
-
-    it('does not modify URLs with query strings when no normalization needed', async () => {
-      const response = await request(server).get('/case/dashboard?redirect=http://www.example.com')
-
-      expect(response.status).toBe(200)
-      expect(response.body.url).toBe('/case/dashboard?redirect=http://www.example.com')
-    })
-  })
-
-  describe('assets path exclusion', () => {
-    it('skips normalization for paths starting with /assets (already normalized)', async () => {
+    it('does not redirect a clean /assets path', async () => {
       const response = await request(server).get('/assets/css/style.css')
-
       expect(response.status).toBe(200)
-      // Should not normalize /assets paths that are already normalized
       expect(response.body.url).toBe('/assets/css/style.css')
     })
 
-    it('normalizes paths starting with multiple slashes before /assets', async () => {
-      const response = await request(server).get('///assets///css///style.css')
-
+    it('does not redirect paths with encoded characters', async () => {
+      const response = await request(server).get('/case/search?q=test%20query')
       expect(response.status).toBe(200)
-      // The middleware normalizes because ///assets doesn't start with /assets
-      expect(response.body.url).toBe('/assets/css/style.css')
-    })
-
-    it('normalizes /assets with query strings when path has multiple slashes', async () => {
-      const response = await request(server).get('///assets///js///app.js?v=1.0.0')
-
-      expect(response.status).toBe(200)
-      expect(response.body.url).toBe('/assets/js/app.js?v=1.0.0')
-    })
-
-    it('skips normalization for /assets with query strings when already normalized', async () => {
-      const response = await request(server).get('/assets/js/app.js?v=1.0.0')
-
-      expect(response.status).toBe(200)
-      expect(response.body.url).toBe('/assets/js/app.js?v=1.0.0')
-    })
-
-    it('normalizes paths that contain /assets but do not start with it', async () => {
-      const response = await request(server).get('/case///assets///info')
-
-      expect(response.status).toBe(200)
-      expect(response.body.url).toBe('/case/assets/info')
+      expect(response.body.url).toBe('/case/search?q=test%20query')
     })
   })
 
   describe('logging', () => {
-    it('logs the original URL', async () => {
-      await request(server).get('///case///victims-journey')
+    it('logs when a redirect occurs', async () => {
+      await request(server).get('///case///dashboard')
+      expect(logger.info).toHaveBeenCalledWith('Request URL redirected', '///case///dashboard', '/case/dashboard')
+    })
 
+    it('logs the redirect with query string preserved', async () => {
+      await request(server).get('///case///dashboard?redirect=http://www.example.com')
       expect(logger.info).toHaveBeenCalledWith(
-        'Request URL parsed',
-        '///case///victims-journey',
-        '/case/victims-journey',
+        'Request URL redirected',
+        '///case///dashboard?redirect=http://www.example.com',
+        '/case/dashboard?redirect=http://www.example.com',
       )
     })
 
-    it('logs URL normalization when multiple slashes are found', async () => {
-      await request(server).get('///case///victims-journey?redirect=http://www.example.com')
-
-      expect(logger.info).toHaveBeenCalledWith(
-        'Request URL parsed',
-        '///case///victims-journey?redirect=http://www.example.com',
-        '/case/victims-journey?redirect=http://www.example.com',
-      )
-    })
-
-    it('does not log normalization when URL does not need normalization', async () => {
-      await request(server).get('/case/victims-journey')
-
-      expect(logger.info).not.toHaveBeenCalledWith('Request URL parsed', expect.any(String), expect.any(String))
-    })
-
-    it('logs normalization for /assets paths with multiple slashes', async () => {
-      await request(server).get('///assets///css///style.css')
-
-      expect(logger.info).toHaveBeenCalledWith(
-        'Request URL parsed',
-        '///assets///css///style.css',
-        '/assets/css/style.css',
-      )
-    })
-
-    it('does not log normalization for /assets paths that are already normalized', async () => {
-      await request(server).get('/assets/css/style.css')
-
-      expect(logger.info).not.toHaveBeenCalledWith('Request URL parsed', expect.any(String), expect.any(String))
+    it('does not log when no redirect is needed', async () => {
+      await request(server).get('/case/dashboard')
+      expect(logger.info).not.toHaveBeenCalled()
     })
   })
 
   describe('edge cases', () => {
-    it('handles root path with empty value', async () => {
-      const response = await request(server).get('')
-
-      expect(response.status).toBe(200)
-      expect(response.body.url).toBe('/')
-    })
-
-    it('handles root path with single slash', async () => {
+    it('handles root path', async () => {
       const response = await request(server).get('/')
-
       expect(response.status).toBe(200)
-      expect(response.body.url).toBe('/')
-    })
-
-    it('handles root path with multiple slashes', async () => {
-      // Use path that does not trigger Invalid URL in the HTTP client (/// can break URL parsing)
-      const response = await request(server).get('/')
-
-      expect(response.status).toBe(200)
-      expect(response.body.url).toBe('/')
     })
 
     it('handles empty query string', async () => {
       const response = await request(server).get('///case///dashboard?')
-
-      expect(response.status).toBe(200)
-      // When query string is empty, it's removed by Express
-      expect(response.body.url).toBe('/case/dashboard')
+      expect(response.status).toBe(301)
+      expect(response.headers.location).toBe('/case/dashboard')
     })
 
-    it('handles URL with only query string', async () => {
-      // Use path that does not trigger Invalid URL in the HTTP client
+    it('handles URL with only query string on clean path', async () => {
       const response = await request(server).get('/?param=value')
-
       expect(response.status).toBe(200)
       expect(response.body.url).toBe('/?param=value')
     })
+  })
 
-    it('handles URLs with encoded characters', async () => {
-      const response = await request(server).get('///case///search?q=test%20query')
+  describe('security — open redirect prevention', () => {
+    it('collapses double-slash prefix to a local path, never an external redirect', async () => {
+      const response = await request(server).get('//evil.com/steal')
+      expect(response.status).toBe(301)
+      expect(response.headers.location).toMatch(/^\/[^/]/) // single leading slash only
+      expect(response.headers.location).not.toMatch(/^https?:\/\//)
+      expect(response.headers.location).not.toMatch(/^\/\//)
+    })
 
+    it('redirect location is always a relative path, never an absolute URL', async () => {
+      const response = await request(server).get('/CASE/dashboard')
+      expect(response.status).toBe(301)
+      expect(response.headers.location).toMatch(/^\/[^/]/)
+    })
+
+    it('calls next() without redirecting when URL construction throws due to malformed host', async () => {
+      const response = await request(server).get('/CASE/dashboard').set('Host', '[invalid')
       expect(response.status).toBe(200)
-      expect(response.body.url).toBe('/case/search?q=test%20query')
+      expect(response.body.url).toBe('/CASE/dashboard')
     })
   })
 })
