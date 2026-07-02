@@ -27,6 +27,10 @@
                  </label>
                </h1>
 
+               <p class="govuk-body">
+                  This service is currently in private beta. To use {{ applicationName }}, you need the password from your sign-up confirmation email.
+               </p>
+
                <p class="govuk-hint">
                  You can find this on your sign-up confirmation email
                </p>
@@ -45,6 +49,14 @@
           text: "Sign in"
         }) }}
       </form>
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">I don't have a sign-up confirmation email</span>
+        </summary>
+        <div class="govuk-details__text">
+          Contact your police witness care officer, who will give you access if it’s appropriate for your individual case.
+        </div>
+      </details>
     </div>
   </div>
 {% endblock %}
