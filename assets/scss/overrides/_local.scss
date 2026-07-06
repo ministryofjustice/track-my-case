@@ -39,6 +39,11 @@
     height: 40px;
     width: auto;
     margin-bottom: 20px;
+    pointer-events: none;
+
+    button {
+        pointer-events: auto;
+    }
 }
 
 .govuk-exit-this-page-pressed {
@@ -50,17 +55,11 @@
     max-width: 110px;
 }
 
-/* Optional: only apply on wide screens */
 @media (min-width: 40.0625em) {
     .govuk-exit-this-page {
         padding-right: 10px;
         float: initial;
         display: block;
-        pointer-events: none;
-
-        button {
-            pointer-events: auto;
-        }
     }
 }
 
