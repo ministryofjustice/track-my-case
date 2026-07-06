@@ -41,6 +41,15 @@
     margin-bottom: 20px;
 }
 
+.govuk-exit-this-page-pressed {
+    bottom: 40px;
+}
+
+.govuk-exit-this-page button {
+    min-width: 110px;
+    max-width: 110px;
+}
+
 /* Optional: only apply on wide screens */
 @media (min-width: 40.0625em) {
     .govuk-exit-this-page {

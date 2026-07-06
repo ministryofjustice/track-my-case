@@ -39,7 +39,7 @@
       document.documentElement.innerHTML = ''
       document.documentElement.style.background = '#fff'
 
-      // Replace current history entry so “Back” won’t return here
+      // Replace current history entry so "Back" won't return here
       // (You can swap about:blank for the BBC URL if you prefer)
       location.replace(currentTabAddress)
     } catch (e) {
@@ -56,9 +56,111 @@
     },
   )
 
+  // Keyboard quick exit: 3 x Shift or 3 x Escape within QUICK_EXIT_WINDOW_MS seconds.
+  // Uses keyup so holding Shift while typing multiple letters counts as one press.
+  // Any non-modifier key pressed between trigger presses resets both counters.
+  // Note: X seconds in between first and last
+  // if last click is outside X seconds, we start reset clicks and timer, counting last as first click
+
+  const keyPresses = {}
+  const QUICK_EXIT_WINDOW_MS = 5 * 1000 //  ToDo: 5
+  const TRIGGER_KEYS = new Set(['Shift', 'Escape'])
+
+  const quickExitBtn = document.getElementById('quick-exit-button')
+  const quickExitWrapper = document.getElementById('quick-exit-panel')
+
+  // Build indicator dots and append inside the button
+  const $indicatorContainer = document.createElement('div')
+  $indicatorContainer.className = 'govuk-exit-this-page__indicator'
+  $indicatorContainer.setAttribute('aria-hidden', 'true')
+  for (let i = 0; i < 3; i++) {
+    const $dot = document.createElement('div')
+    $dot.className = 'govuk-exit-this-page__indicator-light'
+    $indicatorContainer.appendChild($dot)
+  }
+  if (quickExitBtn) {
+    quickExitBtn.appendChild($indicatorContainer)
+  }
+
+  const updateIndicator = () => {
+    const count = keyPresses.count || 0
+    quickExitWrapper?.classList.toggle('govuk-exit-this-page-pressed', count > 0)
+    $indicatorContainer.classList.toggle('govuk-exit-this-page__indicator--visible', count > 0)
+    $indicatorContainer.querySelectorAll('.govuk-exit-this-page__indicator-light').forEach(($dot, index) => {
+      $dot.classList.toggle('govuk-exit-this-page__indicator-light--on', index < count)
+    })
+  }
+
+  const updateBtnText = () => {
+    // Use firstChild.nodeValue to preserve the indicator div inside the button
+    if (quickExitBtn && quickExitBtn.firstChild) {
+      // To display pressed key name and count
+      // quickExitBtn.firstChild.nodeValue = 'Quick exit' + (keyPresses.key ? ` (${keyPresses.key}:${keyPresses.count})` : '')
+    }
+    updateIndicator()
+  }
+
+  let resetTimer = null
+
+  const resetKeyPressed = () => {
+    clearTimeout(resetTimer)
+    resetTimer = null
+
+    keyPresses.key = undefined
+    keyPresses.count = 0
+    keyPresses.last = 0
+
+    updateBtnText()
+  }
+  resetKeyPressed()
+
+  const performQuickExit = () => {
+    // alert('Yess !!! quickExit()')
+    quickExit()
+  }
+
+  document.addEventListener('keydown', (e) => {
+    const key = e.key
+    if (!TRIGGER_KEYS.has(key)) {
+      resetKeyPressed()
+      return
+    }
+    if (e.ctrlKey || e.altKey || e.metaKey) {
+      resetKeyPressed()
+      return
+    }
+    if (key === 'Shift' && e.target.matches('input, textarea, select, [contenteditable]')) {
+      // Another case: any Shift key activity inside input component will be ignored,
+      // no change for Escape key
+      return
+    }
+
+    const now = Date.now()
+    if (keyPresses.key === key && (keyPresses.last === 0 || (now - keyPresses.last) <= QUICK_EXIT_WINDOW_MS)) {
+      keyPresses.count = keyPresses.count + 1
+      updateBtnText()
+    } else {
+      resetKeyPressed()
+
+      keyPresses.key = key
+      keyPresses.count = 1
+      keyPresses.last = now
+
+      updateBtnText()
+
+      resetTimer = setTimeout(resetKeyPressed, QUICK_EXIT_WINDOW_MS)
+    }
+
+    if (keyPresses.key === key && keyPresses.count >= 3) {
+      resetKeyPressed()
+
+      performQuickExit()
+    }
+  })
+
 </script>
 
-<div class="govuk-width-container govuk-exit-this-page">
+<div class="govuk-width-container govuk-exit-this-page" id="quick-exit-panel">
   <div class="govuk-exit-this-page-button-wrapper">
     {{ govukButton({
       text: "Quick exit",
