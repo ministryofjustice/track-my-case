@@ -146,6 +146,7 @@ const config = {
     ongoingMaintenance: get('ONGOING_MAINTENANCE', '5@12:00-6@18:00;6@18:00-0@13:00'),
     password: get('TMC_PASSWORD') as string,
     passwordExpirationInMinutes: Number(get('TMC_PASSWORD_EXPIRATION_IN_MINUTES', 24 * 60, requiredInProduction)),
+    quickExitWindowMs: Number(get('TMC_QUICK_EXIT_WINDOW_SECS', 5)) * 1000,
   },
 }
 export default config
