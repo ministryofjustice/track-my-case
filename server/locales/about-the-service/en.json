@@ -1,0 +1,26 @@
+{
+  "pageTitle": "About the Track a case service",
+  "heading": "About the {{applicationName}} service",
+  "insetStrong": "If you need help with your case",
+  "insetBody": "Contact your police witness care officer if you have any questions about your case.",
+  "earlyVersion": "You are seeing a very early version ('private beta') of the {{applicationName}} service.",
+  "designedFor": "This service is designed for people who have experienced a crime that has gone to court. It aims to help you to:",
+  "aimsItems": [
+    "find all the information you need to go through the justice process",
+    "know what you need to do",
+    "know what your rights are"
+  ],
+  "addingFeatures": "We're still adding new features to the service, and you can help shape it.",
+  "helpShape": "By completing our feedback form or joining our research panel, you can give us your opinions and help us understand how the service can better help you.",
+  "feedbackHeading": "Complete the feedback form",
+  "feedbackText": "Tell us what you think about the service so far.",
+  "feedbackLinkText": "Complete the {{applicationName}} feedback form (opens in new tab)",
+  "feedbackLinkUrl": "https://www.smartsurvey.co.uk/s/TMCVS1/",
+  "researchHeading": "Join the {{applicationName}} research panel",
+  "researchIntro": "When you join our panel, you can be one of the first to try out our new features and help us shape the service.",
+  "researchInvited": "You may also be invited by our researchers to take part in:",
+  "researchItems": ["surveys", "phone calls", "online testing"],
+  "researchOpt": "You can take part as you wish, and opt out any time. You do not need to be good with computers or the internet to take part.",
+  "researchLinkText": "Join the {{applicationName}} research panel (opens in new tab)",
+  "researchLinkUrl": "https://portal.consentkit.com/28f0e99a-6ff0-45c6-910a-23f80ee460e3"
+}

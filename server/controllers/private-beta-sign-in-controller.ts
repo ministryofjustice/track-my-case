@@ -19,7 +19,7 @@ const privateBetaSignInController = async (req: Request, res: Response, next: Ne
 
     clearPasswordCookie(res)
 
-    res.locals.pageTitle = 'Enter service password'
+    res.locals.pageTitle = req.t('private-beta-sign-in:pageTitle')
     res.locals.backLink = paths.START
     res.locals.privateBetaSignInApi = paths.PRIVATE_BETA_SIGN_IN
     return res.render('pages/private-beta-sign-in.njk')

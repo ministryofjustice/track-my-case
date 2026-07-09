@@ -13,7 +13,7 @@
   {{ super() }}
   {% if correctPasswordAndNotExpired %}
     <nav aria-label="Quick exit">
-      <a href="https://www.bbc.co.uk/weather" class="govuk-skip-link" rel="nofollow noreferrer">Quick Exit (press Shift or Escape three times)</a>
+      <a href="{{ t('common:urls.bbcWeather') }}" class="govuk-skip-link" rel="nofollow noreferrer">{{ t('common:skipLink.quickExit') }}</a>
     </nav>
   {% endif %}
   {% if not cookieAccepted %}

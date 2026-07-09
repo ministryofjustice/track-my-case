@@ -1,0 +1,48 @@
+{
+  "pageTitle": "Claiming expenses",
+  "pageHeading": "Understand your rights",
+  "contentsHeading": "Contents",
+  "nav.label": "Pages in this guide",
+  "nav.victimPersonalStatement": "Making a Victim Personal Statement",
+  "nav.claimingExpenses": "Claiming expenses",
+  "nav.specialMeasures": "Special measures",
+  "nav.requestingTranscript": "Requesting a court hearing transcript",
+  "nav.understandCompensation": "When you can claim compensation",
+  "nav.returnProperty": "Getting your property back",
+  "nav.victimsCode": "Victims' Code",
+  "heading": "Claiming expenses",
+  "intro": "When you go to court as a witness or a similar role, you can claim certain expenses from the Crown Prosecution Service (CPS).",
+  "whoCanClaimHeading": "Who can claim",
+  "whoCanClaimLead": "You can claim expenses if you attend a pre-trial meeting or a trial as a:",
+  "whoCanClaimItems": [
+    "witness",
+    "professional witness",
+    "parent or guardian of a witness who's under 18 years old",
+    "carer of an adult witness",
+    "person with permission to claim, for example you are helping a witness attend court"
+  ],
+  "whatYouCanClaimHeading": "What you can claim for",
+  "whatYouCanClaimLead": "Expenses are things that cost you money while attending the trial, for example:",
+  "whatYouCanClaimItems": [
+    "food and drink",
+    "travel",
+    "overnight stays",
+    "loss of earnings, for example because you had to take time off work",
+    "childcare",
+    "adult care"
+  ],
+  "claimLimits": "There are limits to what you can claim.",
+  "receiptsRequired": "You will need receipts and bank statements that show your spendings or loss of earnings.",
+  "howToClaimHeading": "How to claim",
+  "howToClaimIntro": "You can claim as soon as you have finished giving evidence as a witness, even if the trial is still ongoing.",
+  "howToClaimLead": "To claim:",
+  "howToClaimItems": [
+    "look out for posters at the court with a QR code that links to the online service",
+    "apply online using <a href=\"https://claim-witness-expenses.cps.gov.uk/\" class=\"govuk-link\" target=\"_blank\">https://claim-witness-expenses.cps.gov.uk/ (opens in new tab)</a>"
+  ],
+  "findOutMoreHeading": "Find out more and apply",
+  "findOutMoreText": "Find out more about what you can claim, or start an application on the",
+  "findOutMoreLinkText": "Claim witness expenses service (opens in new tab)",
+  "victimSupportText": "You can also get help with applying for expenses from",
+  "victimSupportLinkText": "Victim Support (opens in new tab)"
+}

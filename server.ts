@@ -1,3 +1,4 @@
+/* eslint-disable */
 import 'applicationinsights'
 
 import trackMyCaseApp from './server/index'

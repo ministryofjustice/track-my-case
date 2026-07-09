@@ -1,0 +1,17 @@
+{
+  "pageTitle": "Court information",
+  "heading": "Court information (Welsh version)",
+  "errorSummaryTitle": "There is a problem",
+  "urnLabel": "Unique reference number (URN)",
+  "hearingType": "Hearing type",
+  "hearingTypeHint": "This service will only show trial or sentencing hearings.",
+  "expectedStartDate": "Expected start date",
+  "expectedToLast": "Expected to last",
+  "courtName": "Court name",
+  "courtNameHint": "The court location can change. Your police witness care unit or officer in charge of the investigation will update you.",
+  "courtAddress": "Court address",
+  "courtInfo": "Court information",
+  "courtInfoLink": "Information including directions, parking, and access (opens in new tab)",
+  "findOtherCourts": "Find information about other courts (opens in new tab)",
+  "noCourtInfo": "No court information for this case."
+}

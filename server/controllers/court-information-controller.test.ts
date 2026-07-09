@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+import { createMockT } from '../utils/testUtils'
 import paths from '../constants/paths'
 import { CaseDetailsResponse } from '../interfaces/caseDetails'
 import { getMockCaseDetailsResponse } from '../services/mock/mock-response'
@@ -53,6 +54,8 @@ describe('court-information-controller', () => {
 
   const createReqRes = (overrides?: { req?: Request; res?: Response }) => {
     const req = {
+      t: createMockT(),
+      language: 'en',
       session: {
         selectedUrn: caseUrn,
       },

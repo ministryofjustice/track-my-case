@@ -1,0 +1,23 @@
+{
+  "pageTitle": "Find your court",
+  "errorSummary": {
+    "titleText": "There is a problem"
+  },
+  "banner": {
+    "important": "Important",
+    "upcomingHeading": "Upcoming maintenance (Welsh version)",
+    "upcomingText": "Find your court will be unavailable between 6pm Saturday and 1pm Sunday.",
+    "ongoingHeading": "Ongoing maintenance",
+    "ongoingText": "The service might not be available between 6pm Saturday and 1pm Sunday."
+  },
+  "heading": "Find your court",
+  "intro": "To find the court where the next hearing or trial for your case is, you need your unique reference number (URN). You can find it on any letter or email from the police or Crown Prosecution Service.",
+  "input": {
+    "label": "Enter your unique reference number",
+    "hint": "This is usually 11 digits with a mixture of letters and numbers. For example, 12QQ3456789"
+  },
+  "button": "Find court",
+  "noUrnText": "If you cannot find your unique reference number, ask your police witness care officer. You can also",
+  "noUrnLinkText": "search all courts (opens in new tab)",
+  "maintenanceNotice": "This service is not available from 6pm Saturday to 1pm Sunday each week for regular maintenance."
+}

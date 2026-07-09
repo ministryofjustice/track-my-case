@@ -1,0 +1,35 @@
+{
+  "pageTitle": "Dashboard",
+  "card1": {
+    "title": "Find your court information",
+    "desc": "Look up the court where the next hearing or trial for your case is being held. You need your unique reference number.",
+    "button": "Find your court"
+  },
+  "card2": {
+    "title": "The criminal justice system: step by step",
+    "desc": "See what stage you're at and understand what happens next.",
+    "button": "Find out about the process"
+  },
+  "card3": {
+    "title": "Who does what in the criminal justice system",
+    "desc": "Learn about the people involved, including who will help you when you experience a crime.",
+    "button": "Find out who's who"
+  },
+  "card4": {
+    "title": "Understand your rights",
+    "desc": "Including making a victim personal statement, compensation, and your property.",
+    "button": "Find out about your rights"
+  },
+  "card5": {
+    "title": "Find help and support",
+    "desc": "Find charities and organisations that can give you further support and advice.",
+    "button": "Find support"
+  },
+  "helpNow": {
+    "heading": "If you need help now (Welsh version)",
+    "police": "If you're in immediate danger, phone the police: 999",
+    "samaritansPhone": "Samaritans phone: 116 123",
+    "samaritansWebsite": "www.samaritans.org (opens in new tab)",
+    "website": "Website: "
+  }
+}

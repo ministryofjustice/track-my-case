@@ -1,0 +1,34 @@
+{
+  "pageTitle": "Home",
+  "introLead": "Use this service to:",
+  "introItems": [
+    "find information about your case, including the next court hearing",
+    "get to know your rights and how the criminal justice system works",
+    "get the right support"
+  ],
+  "whoHeading": "Who this service is for",
+  "whoLead": "This service is for people who have been a victim of crime in England and Wales and where:",
+  "whoItems": [
+    "the person or people accused of the crime have been charged by the police or the Crown Prosecution Service",
+    "at least one of the people accused of the crime have been to a court hearing about the case at least once"
+  ],
+  "notConfident": "If you're not confident using computers you may prefer not to use Track a case – contact your police witness care officer or the police officer in charge (OIC) of your case.",
+  "whatYouNeedHeading": "What you need to use this service",
+  "whatYouNeed": "To use this private beta service, you need the password from your sign-up confirmation email. If you are viewing court information, you will also need a One Login account sign-in.",
+  "safetyHeading": "Keeping you safe",
+  "safety1": "If the threat of domestic violence makes you feel unsafe about using {{applicationName}}, you can use the quick exit button or press your shift key 3 times at any time to safely leave the service.",
+  "safety2": "This will close the site and open the BBC Weather site, but won't delete your browsing history.",
+  "safety3": "You'll need to log in again to return to the page you were using, when it's safe for you to do so.",
+  "startButton": "Start now",
+  "relatedHeading": "Related information",
+  "relatedItems": [
+    {
+      "text": "Information and support for victims and witnesses on the Crown Prosecution Service website",
+      "url": "https://www.cps.gov.uk/information-and-support-victims-witnesses"
+    },
+    {
+      "text": "Legal processes, courts and the police",
+      "url": "https://www.gov.uk/browse/justice"
+    }
+  ]
+}

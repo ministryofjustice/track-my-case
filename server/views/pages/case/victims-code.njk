@@ -7,42 +7,42 @@
     <div class="govuk-grid-column-two-thirds">
       <div class="gem-c-heading govuk-!-margin-bottom-8">
         <h1 class="gem-c-heading__text govuk-heading-xl">
-          Understand your rights
+          {{ t('victims-code:heading') }}
         </h1>
       </div>
       <aside class="part-navigation-container" role="complementary">
-        <nav data-module="ga4-link-tracker" aria-label="Pages in this guide" class="gem-c-contents-list govuk-!-margin-bottom-4" data-ga4-link-tracker-module-started="true">
+        <nav data-module="ga4-link-tracker" aria-label="{{ t('victims-code:contents.nav.ariaLabel') }}" class="gem-c-contents-list govuk-!-margin-bottom-4" data-ga4-link-tracker-module-started="true">
           <h2 class="gem-c-contents-list__title">
-            Contents
+            {{ t('victims-code:contents.title') }}
           </h2>
           <ol class="gem-c-contents-list__list">
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victim-personal-statement">Making a Victim Personal Statement</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.victimPersonalStatement') }}">{{ t('victims-code:contents.nav.victimPersonalStatement') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/claiming-expenses">Claiming expenses</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.claimingExpenses') }}">{{ t('victims-code:contents.nav.claimingExpenses') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/special-measures">Special measures</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.specialMeasures') }}">{{ t('victims-code:contents.nav.specialMeasures') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/requesting-court-hearing-transcript">Requesting a court hearing transcript</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.requestingTranscript') }}">{{ t('victims-code:contents.nav.requestingTranscript') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/understand-compensation">When you can claim compensation</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.understandCompensation') }}">{{ t('victims-code:contents.nav.understandCompensation') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/return-property">Getting your property back</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.returnProperty') }}">{{ t('victims-code:contents.nav.returnProperty') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              Victims' Code
+              {{ t('victims-code:contents.nav.victimsCode') }}
             </li>
           </ol>
         </nav>
@@ -51,60 +51,60 @@
   </div>
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
     <div class="govuk-grid-column-two-thirds">
-      <h2 class="govuk-heading-l">Your rights when you experience a crime</h2>
-      <p class="govuk-body">When you experience a crime, you automatically have certain rights as a 'victim' under the law. They include making sure you are informed about the process and the support available to you.</p>
-      <p class="govuk-body">These rights are written in the Code of Practice for Victims of Crime in England and Wales (Victims' Code). This is a summary of the 12 rights.</p>
+      <h2 class="govuk-heading-l">{{ t('victims-code:rightsHeading') }}</h2>
+      <p class="govuk-body">{{ t('victims-code:intro1') }}</p>
+      <p class="govuk-body">{{ t('victims-code:intro2') }}</p>
       <p class="govuk-body"></p>
 
-      <h3 class="govuk-heading-m">The Victims' Code summary of rights</h3>
+      <h3 class="govuk-heading-m">{{ t('victims-code:summaryHeading') }}</h3>
 
-      <h3 class="govuk-heading-s">1. To be able to understand and to be understood</h3>
+      <h3 class="govuk-heading-s">{{ t('victims-code:right1.heading') }}</h3>
       <p class="govuk-body">
-        You have the right to be given information in a way that is easy to understand and to be provided with help to be understood, including, where necessary, access to interpretation and translation services.
+        {{ t('victims-code:right1.para1') }}
       </p>
 
-      <h3 class="govuk-heading-s">2. To have the details of the crime recorded without unjustified delay</h3>
-      <p class="govuk-body">You have the right to have details of the crime recorded by the police as soon as possible after the incident.</p>
-      <p class="govuk-body">If you are required to provide a witness statement or be interviewed, you have the right to be provided with additional support to assist you through this process.</p>
+      <h3 class="govuk-heading-s">{{ t('victims-code:right2.heading') }}</h3>
+      <p class="govuk-body">{{ t('victims-code:right2.para1') }}</p>
+      <p class="govuk-body">{{ t('victims-code:right2.para2') }}</p>
 
-      <h3 class="govuk-heading-s">3. To be provided with information when reporting the crime</h3>
-      <p class="govuk-body">You have the right to receive written confirmation when reporting a crime, to be provided with information about the criminal justice process and to be told about programmes or services for victims.</p>
-      <p class="govuk-body">This might include services where you can meet with the suspect or offender, which is known as restorative justice.</p>
+      <h3 class="govuk-heading-s">{{ t('victims-code:right3.heading') }}</h3>
+      <p class="govuk-body">{{ t('victims-code:right3.para1') }}</p>
+      <p class="govuk-body">{{ t('victims-code:right3.para2') }}</p>
 
-      <h3 class="govuk-heading-s">4. To be referred to services that support victims and have services and support tailored to your needs</h3>
-      <p class="govuk-body">You have the right to be referred to services that support victims, which includes the right to contact them directly, and to have your needs assessed so services and support can be tailored to meet your needs.</p>
-      <p class="govuk-body">If eligible, you have the right to be offered a referral to specialist support services and to be told about additional support available at court, for example special measures.</p>
+      <h3 class="govuk-heading-s">{{ t('victims-code:right4.heading') }}</h3>
+      <p class="govuk-body">{{ t('victims-code:right4.para1') }}</p>
+      <p class="govuk-body">{{ t('victims-code:right4.para2') }}</p>
 
-      <h3 class="govuk-heading-s">5. To be provided with information about compensation</h3>
-      <p class="govuk-body">Where eligible, you have the right to be told about how to claim compensation for any loss, damage or injury caused as a result of crime.</p>
+      <h3 class="govuk-heading-s">{{ t('victims-code:right5.heading') }}</h3>
+      <p class="govuk-body">{{ t('victims-code:right5.para1') }}</p>
 
-      <h3 class="govuk-heading-s">6. To be provided with information about the investigation and prosecution</h3>
-      <p class="govuk-body">You have the right to be provided with updates on your case and to be told when important decisions are taken. You also have the right, at certain stages of the justice process, to ask for decisions to be looked at again by the relevant service provider.</p>
+      <h3 class="govuk-heading-s">{{ t('victims-code:right6.heading') }}</h3>
+      <p class="govuk-body">{{ t('victims-code:right6.para1') }}</p>
 
-      <h3 class="govuk-heading-s">7. To make a Victim Personal Statement</h3>
-      <p class="govuk-body">You have the right to make a Victim Personal Statement, which tells the court how the crime has affected you and is considered when sentencing the offender. You will be given information about the process.</p>
+      <h3 class="govuk-heading-s">{{ t('victims-code:right7.heading') }}</h3>
+      <p class="govuk-body">{{ t('victims-code:right7.para1') }}</p>
 
-      <h3 class="govuk-heading-s">8. To be given information about the trial, trial process and your role as a witness</h3>
-      <p class="govuk-body">If your case goes to court, you have the right to be told the time, date and location of any hearing and the outcome of those hearings in a timely way.</p>
-      <p class="govuk-body">If you are required to give evidence, you have the right to be offered appropriate help before the trial and, where possible, if the court allows, to meet with the prosecutor before giving evidence.</p>
+      <h3 class="govuk-heading-s">{{ t('victims-code:right8.heading') }}</h3>
+      <p class="govuk-body">{{ t('victims-code:right8.para1') }}</p>
+      <p class="govuk-body">{{ t('victims-code:right8.para2') }}</p>
 
-      <h3 class="govuk-heading-s">9. To be given information about the outcome of the case and any appeals</h3>
-      <p class="govuk-body">You have the right to be told the outcome of the case and, if the defendant is convicted, to be given an explanation of the sentence. If the offender appeals against their conviction or sentence, you have the right to be told about the appeal and its outcome.</p>
+      <h3 class="govuk-heading-s">{{ t('victims-code:right9.heading') }}</h3>
+      <p class="govuk-body">{{ t('victims-code:right9.para1') }}</p>
 
-      <h3 class="govuk-heading-s">10. To be paid expenses and have property returned</h3>
-      <p class="govuk-body">If you are required to attend court and give evidence, you have the right to claim certain expenses. If any of your property was taken as evidence, you have the right to get it back as soon as possible.</p>
+      <h3 class="govuk-heading-s">{{ t('victims-code:right10.heading') }}</h3>
+      <p class="govuk-body">{{ t('victims-code:right10.para1') }}</p>
 
-      <h3 class="govuk-heading-s">11. To be given information about the offender following a conviction</h3>
-      <p class="govuk-body">Where eligible, you have the right to be automatically referred to the Victim Contact Scheme, which will provide you with information about the offender and their progress in prison, and if they become eligible for consideration of parole or release.</p>
-      <p class="govuk-body">Where applicable, you also have the right to make a new Victim Personal Statement, in which you can say how the crime continues to affect you.</p>
+      <h3 class="govuk-heading-s">{{ t('victims-code:right11.heading') }}</h3>
+      <p class="govuk-body">{{ t('victims-code:right11.para1') }}</p>
+      <p class="govuk-body">{{ t('victims-code:right11.para2') }}</p>
 
-      <h3 class="govuk-heading-s">12. To make a complaint about your rights not being met</h3>
-      <p class="govuk-body">If you believe that you have not received your rights, you have the right to make a complaint to the relevant service provider. If you remain unhappy, you can contact the Parliamentary and Health Service Ombudsman.</p>
+      <h3 class="govuk-heading-s">{{ t('victims-code:right12.heading') }}</h3>
+      <p class="govuk-body">{{ t('victims-code:right12.para1') }}</p>
 
       <p class="govuk-body">
-        Read the full
-        <a href="https://www.gov.uk/government/publications/the-code-of-practice-for-victims-of-crime" target="_blank" rel="noopener noreferrer">
-          Code of Practice for Victims of Crime in England and Wales (Victims' Code) (opens in new tab).
+        {{ t('victims-code:fullCodeLink.before') }}
+        <a href="{{ t('common:urls.victimsCode') }}" target="_blank" rel="noopener noreferrer">
+          {{ t('victims-code:fullCodeLink.linkText') }}
         </a>
       </p>
 

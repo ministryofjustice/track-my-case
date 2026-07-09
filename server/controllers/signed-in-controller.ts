@@ -6,7 +6,7 @@ const signedInController = async (req: Request, res: Response, next: NextFunctio
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Signed in'
+    res.locals.pageTitle = req.t('signed-in:pageTitle')
 
     // res.render('pages/signed-in.njk')
 

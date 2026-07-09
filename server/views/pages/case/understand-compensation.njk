@@ -7,42 +7,42 @@
     <div class="govuk-grid-column-two-thirds">
       <div class="gem-c-heading govuk-!-margin-bottom-8">
         <h1 class="gem-c-heading__text govuk-heading-xl">
-          Understand your rights
+          {{ t('understand-compensation:heading.main') }}
         </h1>
       </div>
       <aside class="part-navigation-container" role="complementary">
-        <nav data-module="ga4-link-tracker" aria-label="Pages in this guide" class="gem-c-contents-list govuk-!-margin-bottom-4" data-ga4-link-tracker-module-started="true">
+        <nav data-module="ga4-link-tracker" aria-label="{{ t('understand-compensation:contents.nav.ariaLabel') }}" class="gem-c-contents-list govuk-!-margin-bottom-4" data-ga4-link-tracker-module-started="true">
           <h2 class="gem-c-contents-list__title">
-            Contents
+            {{ t('understand-compensation:contents.title') }}
           </h2>
           <ol class="gem-c-contents-list__list">
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victim-personal-statement">Making a Victim Personal Statement</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.victimPersonalStatement') }}">{{ t('understand-compensation:contents.nav.victimPersonalStatement') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/claiming-expenses">Claiming expenses</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.claimingExpenses') }}">{{ t('understand-compensation:contents.nav.claimingExpenses') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/special-measures">Special measures</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.specialMeasures') }}">{{ t('understand-compensation:contents.nav.specialMeasures') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/requesting-court-hearing-transcript">Requesting a court hearing transcript</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.requestingTranscript') }}">{{ t('understand-compensation:contents.nav.requestingTranscript') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              When you can claim compensation
+              {{ t('understand-compensation:contents.nav.claimCompensation') }}
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/return-property">Getting your property back</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.returnProperty') }}">{{ t('understand-compensation:contents.nav.returnProperty') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victims-code">Victims' Code</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.victimsCode') }}">{{ t('understand-compensation:contents.nav.victimsCode') }}</a>
             </li>
           </ol>
         </nav>
@@ -51,67 +51,61 @@
   </div>
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
     <div class="govuk-grid-column-two-thirds">
-      <h2 class="govuk-heading-l">When you can claim compensation</h2>
-      <p class="govuk-body">Compensation is money paid to make up for loss, damage or injury caused by a crime. It’s a court-ordered payment.</p>
-      <p class="govuk-body">You may be able to claim compensation or apply for benefit payments if you’ve been affected by a crime.</p>
-      <p class="govuk-body">This includes if you:</p>
+      <h2 class="govuk-heading-l">{{ t('understand-compensation:section.whenYouCan.heading') }}</h2>
+      <p class="govuk-body">{{ t('understand-compensation:section.whenYouCan.p1') }}</p>
+      <p class="govuk-body">{{ t('understand-compensation:section.whenYouCan.p2') }}</p>
+      <p class="govuk-body">{{ t('understand-compensation:section.whenYouCan.p3') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>are a victim of a crime</li>
-        <li>are a close relative of someone who has died because of a crime</li>
-        <li>witnessed a serious crime, were involved or seriously injured</li>
+        {% for item in t('understand-compensation:section.whenYouCan.list', {returnObjects: true}) %}
+          <li>{{ item }}</li>
+        {% endfor %}
       </ul>
 
-      <h2 class="govuk-heading-m">Criminal compensation orders</h2>
-      <p class="govuk-body">If someone is convicted of a crime, the court can order them to pay you compensation. Depending on the circumstances of the case, this could be for:  </p>
+      <h2 class="govuk-heading-m">{{ t('understand-compensation:section.criminalOrders.heading') }}</h2>
+      <p class="govuk-body">{{ t('understand-compensation:section.criminalOrders.p1') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>personal injury</li>
-        <li>losses from theft or damage to property</li>
-        <li>losses from fraud</li>
-        <li>being off work</li>
-        <li>medical expenses</li>
-        <li>travel expenses</li>
-        <li>pain and suffering</li>
-        <li>loss, damage, or injury caused by a stolen vehicle</li>
+        {% for item in t('understand-compensation:section.criminalOrders.list1', {returnObjects: true}) %}
+          <li>{{ item }}</li>
+        {% endfor %}
       </ul>
-      <p class="govuk-body">There’s no limit on the amount of compensation that can be given under a criminal order. The amount will depend on what the court considers appropriate after looking at the case.</p>
-      <p class="govuk-body">They will consider what’s fair, and any evidence and issues raised by:</p>
+      <p class="govuk-body">{{ t('understand-compensation:section.criminalOrders.p2') }}</p>
+      <p class="govuk-body">{{ t('understand-compensation:section.criminalOrders.p3') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>the person convicted of the crime – for example, how much they can afford to pay without getting into unmanageable debt</li>
-        <li>the prosecutor – for example, how much compensation you’re hoping for</li>
+        {% for item in t('understand-compensation:section.criminalOrders.list2', {returnObjects: true}) %}
+          <li>{{ item }}</li>
+        {% endfor %}
       </ul>
 
-      <h2 class="govuk-heading-m">Criminal injuries compensation scheme</h2>
-      <p class="govuk-body">You might be able to claim compensation if you were the victim of a violent crime. This includes if:</p>
+      <h2 class="govuk-heading-m">{{ t('understand-compensation:section.criminalInjuries.heading') }}</h2>
+      <p class="govuk-body">{{ t('understand-compensation:section.criminalInjuries.p1') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>you were physically or mentally injured</li>
-        <li>you were the victim of sexual assault</li>
-        <li>a close relative died</li>
-        <li>you saw the crime happen to a loved one (or were there immediately afterwards)</li>
-        <li>you paid for the funeral of a person who died</li>
+        {% for item in t('understand-compensation:section.criminalInjuries.list', {returnObjects: true}) %}
+          <li>{{ item }}</li>
+        {% endfor %}
       </ul>
-      <p class="govuk-body">You usually have to claim within 2 years of the crime. The crime must be reported to the police before you apply.</p>
-      <p class="govuk-body"><a href="https://www.gov.uk/claim-compensation-criminal-injury" class="govuk-link" target="_blank">Claim compensation if you were the victim of a violent crime (opens in a new tab)</a>.</p>
+      <p class="govuk-body">{{ t('understand-compensation:section.criminalInjuries.p2') }}</p>
+      <p class="govuk-body"><a href="https://www.gov.uk/claim-compensation-criminal-injury" class="govuk-link" target="_blank">{{ t('understand-compensation:section.criminalInjuries.linkText') }}</a>.</p>
 
-      <h2 class="govuk-heading-m">Civil compensation</h2>
-      <p class="govuk-body">You can make a claim through a civil court. A civil court deals with non-criminal, private cases between people or companies.</p>
-      <p class="govuk-body">For example, you could claim compensation for personal injury, assault or damage to property.</p>
-      <p class="govuk-body">You should get legal advice first, as the process can be difficult and expensive.</p>
+      <h2 class="govuk-heading-m">{{ t('understand-compensation:section.civil.heading') }}</h2>
+      <p class="govuk-body">{{ t('understand-compensation:section.civil.p1') }}</p>
+      <p class="govuk-body">{{ t('understand-compensation:section.civil.p2') }}</p>
+      <p class="govuk-body">{{ t('understand-compensation:section.civil.p3') }}</p>
 
-      <h2 class="govuk-heading-m">Claiming benefits</h2>
-      <p class="govuk-body">Depending on your circumstances, there might be benefits you can claim.</p>
-      <p class="govuk-body">You may be entitled to <a href="https://www.gov.uk/browse/benefits/bereavement" class="govuk-link" target="_blank">benefits and financial support when someone dies (opens in new tab)</a>.</p>
-      <p class="govuk-body">If you're refused a benefit and you disagree, you can <a href="https://www.gov.uk/appeal-benefit-decision" class="govuk-link" target="_blank">appeal a benefits decision (opens in new tab)</a>.</p>
+      <h2 class="govuk-heading-m">{{ t('understand-compensation:section.benefits.heading') }}</h2>
+      <p class="govuk-body">{{ t('understand-compensation:section.benefits.p1') }}</p>
+      <p class="govuk-body">{{ t('understand-compensation:section.benefits.p2.before') }} <a href="https://www.gov.uk/browse/benefits/bereavement" class="govuk-link" target="_blank">{{ t('understand-compensation:section.benefits.p2.linkText') }}</a>{{ t('understand-compensation:section.benefits.p2.after') }}</p>
+      <p class="govuk-body">{{ t('understand-compensation:section.benefits.p3.before') }} <a href="https://www.gov.uk/appeal-benefit-decision" class="govuk-link" target="_blank">{{ t('understand-compensation:section.benefits.p3.linkText') }}</a>{{ t('understand-compensation:section.benefits.p3.after') }}</p>
 
-      <h2 class="govuk-heading-m">Insurance for your property</h2>
-      <p class="govuk-body">You can check your home or car insurance policy to see if it covers the crime you experienced, for example theft or vandalism to your property.</p>
-      <p class="govuk-body">If someone committed a crime to your property and you have their details, you might be able to make a claim against their insurance policy.</p>
-      <p class="govuk-body">If an insurance company refuses a claim and you disagree, you can complain to the <a href="https://www.financial-ombudsman.org.uk/consumers/how-to-complain" class="govuk-link" target="_blank">Financial Ombudsman Service (opens in new tab)</a>.</p>
+      <h2 class="govuk-heading-m">{{ t('understand-compensation:section.insurance.heading') }}</h2>
+      <p class="govuk-body">{{ t('understand-compensation:section.insurance.p1') }}</p>
+      <p class="govuk-body">{{ t('understand-compensation:section.insurance.p2') }}</p>
+      <p class="govuk-body">{{ t('understand-compensation:section.insurance.p3.before') }} <a href="https://www.financial-ombudsman.org.uk/consumers/how-to-complain" class="govuk-link" target="_blank">{{ t('understand-compensation:section.insurance.p3.linkText') }}</a>{{ t('understand-compensation:section.insurance.p3.after') }}</p>
 
-      <h2 class="govuk-heading-m">Employment insurance</h2>
-      <p class="govuk-body">If the crime involved an injury or death that happened at your work, you might be able to make an insurance claim against your employer.</p>
-      <p class="govuk-body">Most employers are legally required to have insurance to cover employees for injury, illness, or death that occurs as a result of their work.</p>
-      <p class="govuk-body">You would need to document the incident and instruct a solicitor who sends a "letter of claim" to your employer or their insurer.</p>
-      <p class="govuk-body">You can get more advice on employment issues from <a href="http://www.acas.org.uk/" class="govuk-link" target="_blank">Acas (opens in new tab)</a>.</p>
+      <h2 class="govuk-heading-m">{{ t('understand-compensation:section.employment.heading') }}</h2>
+      <p class="govuk-body">{{ t('understand-compensation:section.employment.p1') }}</p>
+      <p class="govuk-body">{{ t('understand-compensation:section.employment.p2') }}</p>
+      <p class="govuk-body">{{ t('understand-compensation:section.employment.p3') }}</p>
+      <p class="govuk-body">{{ t('understand-compensation:section.employment.p4.before') }} <a href="http://www.acas.org.uk/" class="govuk-link" target="_blank">{{ t('understand-compensation:section.employment.p4.linkText') }}</a>{{ t('understand-compensation:section.employment.p4.after') }}</p>
 
     </div>
   </div>

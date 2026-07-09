@@ -1,0 +1,28 @@
+{
+  "pageTitle": "Cookies",
+  "heading": "Cookies (Welsh version)",
+  "intro1": "Cookies are small files saved on your phone, tablet or computer when you visit a website or use an online service.",
+  "intro2": "We use cookies to store information about how you use the '{{applicationName}}' service, such as the pages you visit.",
+  "analyticsHeading": "Cookies used to improve the service",
+  "analyticsIntro": "We use Google Analytics to measure how you use the service so we can improve it. We do not allow Google to use or share the data about how you use this service.",
+  "analyticsIntro2": "Google Analytics sets cookies that store anonymised information about:",
+  "analyticsItems": [
+    "how you got to the service",
+    "the pages you visit on the service",
+    "how long you spend on each page",
+    "what you click on while you're visiting the service"
+  ],
+  "preferencesHeading": "Your '{{applicationName}}' cookie preferences",
+  "radioHint": "<p>Do you want to accept analytics cookies?</p>",
+  "radioYes": "Yes",
+  "radioNo": "No",
+  "saveButton": "Save cookie preferences",
+  "essentialHeading": "Essential cookies",
+  "essentialText": "These cookies need to be on to allow you to use the '{{applicationName}}' service.",
+  "progressHeading": "Your progress when using the service",
+  "progressText": "When you use the service, we'll set a cookie to remember your progress through this site. This cookie does not store your personal data and is deleted when you close this website.",
+  "cookiePrefHeading": "Your cookie preferences",
+  "cookiePref1": "When you use the service, we'll set a cookie to remember your cookie preferences. This cookie does not store any personal data.",
+  "cookiePref2": "It will be saved on your device for 1 year, or until you delete it.",
+  "errorSummaryTitle": "There is a problem"
+}

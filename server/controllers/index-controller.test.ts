@@ -1,23 +1,29 @@
 import { NextFunction, Request, Response } from 'express'
 import indexController from './index-controller'
 
-import enLocale from '../locales/en.json'
+import homeLocale from '../locales/home/en.json'
+import commonLocale from '../locales/common/en.json'
 
 const mockInitialiseBasicAuthentication = jest.fn().mockResolvedValue(undefined)
 jest.mock('../helpers/initialise-basic-authentication', () => ({
   initialiseBasicAuthentication: (...args: unknown[]) => mockInitialiseBasicAuthentication(...args),
 }))
 
+const namespaces: Record<string, Record<string, unknown>> = {
+  home: homeLocale as Record<string, unknown>,
+  common: commonLocale as Record<string, unknown>,
+}
+
 describe('index-controller', () => {
-  const mockT = jest.fn(
-    (key: string) =>
-      key
-        .split('.')
-        .reduce(
-          (obj: Record<string, unknown>, k) => obj?.[k] as Record<string, unknown>,
-          enLocale,
-        ) as unknown as string,
-  )
+  const mockT = jest.fn((key: string) => {
+    const separatorIndex = key.indexOf(':')
+    const ns = separatorIndex !== -1 ? key.slice(0, separatorIndex) : 'common'
+    const localKey = separatorIndex !== -1 ? key.slice(separatorIndex + 1) : key
+    const nsLocale = namespaces[ns] ?? namespaces.common
+    return localKey
+      .split('.')
+      .reduce((obj: Record<string, unknown>, k) => obj?.[k] as Record<string, unknown>, nsLocale) as unknown as string
+  })
 
   const createReqRes = () => {
     const req = { t: mockT } as unknown as Request

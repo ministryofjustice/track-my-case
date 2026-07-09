@@ -6,94 +6,96 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">People in the criminal justice system</h1>
-      <p class="govuk-body-l">This guidance applies to the criminal justice system in England and Wales.</p>
-      <p class="govuk-body">When a case goes to court, the people you’re likely to have most contact with are your local police force’s:</p>
+      <h1 class="govuk-heading-xl">{{ t('key-roles:heading') }}</h1>
+      <p class="govuk-body-l">{{ t('key-roles:subheading') }}</p>
+      <p class="govuk-body">{{ t('key-roles:intro1') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>police witness care officer (WCO)</li>
-        <li>police officer in charge (OIC)</li>
+        {% for item in t('key-roles:introList1', {returnObjects: true}) %}
+          <li>{{ item }}</li>
+        {% endfor %}
       </ul>
-      <p class="govuk-body">If you’re going to court to give evidence, you will meet and be supported by the:</p>
+      <p class="govuk-body">{{ t('key-roles:intro2') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>volunteer from Witness Service, if you have referred yourself to them</li>
-        <li>court usher</li>
-        <li>Crown Prosecution Service paralegal</li>
+        {% for item in t('key-roles:introList2', {returnObjects: true}) %}
+          <li>{{ item }}</li>
+        {% endfor %}
       </ul>
 
-      <h2 class="govuk-heading-m">Someone who has experienced a crime</h2>
-      <p class="govuk-body">When you experience a crime, you’re often referred to as a ‘victim’.</p>
-      <p class="govuk-body">As a victim, you will usually be a main ‘witness’ in the case. You may be asked to go to the trial as a witness. As a witness, you tell the court what you know about the crime – ‘give evidence’.</p>
+      <h2 class="govuk-heading-m">{{ t('key-roles:experienced.heading') }}</h2>
+      <p class="govuk-body">{{ t('key-roles:experienced.para1') }}</p>
+      <p class="govuk-body">{{ t('key-roles:experienced.para2') }}</p>
 
-      <h2 class="govuk-heading-m">Someone accused or convicted of a crime</h2>
+      <h2 class="govuk-heading-m">{{ t('key-roles:accused.heading') }}</h2>
 
-      <h3 class="govuk-heading-s">Suspect</h3>
-      <p class="govuk-body">A person who is accused of a crime and being investigated by the police is called a suspect.</p>
+      <h3 class="govuk-heading-s">{{ t('key-roles:accused.suspect.heading') }}</h3>
+      <p class="govuk-body">{{ t('key-roles:accused.suspect.para1') }}</p>
 
-      <h3 class="govuk-heading-s">Defendant</h3>
-      <p class="govuk-body">When a case reaches court and until they are convicted, a person accused of a crime is referred to as a defendant.</p>
+      <h3 class="govuk-heading-s">{{ t('key-roles:accused.defendant.heading') }}</h3>
+      <p class="govuk-body">{{ t('key-roles:accused.defendant.para1') }}</p>
 
-      <h3 class="govuk-heading-s">Person convicted of a crime, person in prison or person on probation</h3>
-      <p class="govuk-body">When a person is found guilty and convicted of a crime, they are sentenced at court. They may be given a prison sentence or put on probation.</p>
+      <h3 class="govuk-heading-s">{{ t('key-roles:accused.convicted.heading') }}</h3>
+      <p class="govuk-body">{{ t('key-roles:accused.convicted.para1') }}</p>
 
-      <h2 class="govuk-heading-m">At the police station</h2>
+      <h2 class="govuk-heading-m">{{ t('key-roles:policeStation.heading') }}</h2>
 
-      <h3 class="govuk-heading-s">Police officer</h3>
-      <p class="govuk-body">Police officers investigate crimes, make arrests, and look after public safety.</p>
+      <h3 class="govuk-heading-s">{{ t('key-roles:policeStation.policeOfficer.heading') }}</h3>
+      <p class="govuk-body">{{ t('key-roles:policeStation.policeOfficer.para1') }}</p>
 
-      <h3 class="govuk-heading-s">Police officer in charge</h3>
-      <p class="govuk-body">A police officer in charge (OIC) is responsible for your case. This is who you can contact if you have any questions about your case.</p>
+      <h3 class="govuk-heading-s">{{ t('key-roles:policeStation.officerInCharge.heading') }}</h3>
+      <p class="govuk-body">{{ t('key-roles:policeStation.officerInCharge.para1') }}</p>
 
-      <h3 class="govuk-heading-s">Police witness care officer</h3>
-      <p class="govuk-body">You are normally assigned a police witness care officer (WCO), although you might hear from other members of the police witness care unit (WCU). Some police forces might use different names for this role and unit, such as ‘victim support’.</p>
-      <p class="govuk-body">They keep you updated about the progress of the case, from when somebody is charged with a crime, through to the court outcome.</p>
-      <p class="govuk-body">A police witness care officer is an administration role, and they do not have the same authority as a police officer.</p>
+      <h3 class="govuk-heading-s">{{ t('key-roles:policeStation.witnessCareOfficer.heading') }}</h3>
+      <p class="govuk-body">{{ t('key-roles:policeStation.witnessCareOfficer.para1') }}</p>
+      <p class="govuk-body">{{ t('key-roles:policeStation.witnessCareOfficer.para2') }}</p>
+      <p class="govuk-body">{{ t('key-roles:policeStation.witnessCareOfficer.para3') }}</p>
 
-      <h2 class="govuk-heading-m">At court</h2>
+      <h2 class="govuk-heading-m">{{ t('key-roles:atCourt.heading') }}</h2>
 
-      <h3 class="govuk-heading-s">Court clerk</h3>
-      <p class="govuk-body">The court clerk manages the courtroom and prepare it for a trial.</p>
-      <p class="govuk-body">They read out (‘put’) the formal charges to the defendant and take oaths from the jury if there is one. They also make notes during the trial.</p>
-      <p class="govuk-body">The court clerk sits at the front of the courtroom and wears a black gown.</p>
+      <h3 class="govuk-heading-s">{{ t('key-roles:atCourt.courtClerk.heading') }}</h3>
+      <p class="govuk-body">{{ t('key-roles:atCourt.courtClerk.para1') }}</p>
+      <p class="govuk-body">{{ t('key-roles:atCourt.courtClerk.para2') }}</p>
+      <p class="govuk-body">{{ t('key-roles:atCourt.courtClerk.para3') }}</p>
 
-      <h3 class="govuk-heading-s">Court usher</h3>
-      <p class="govuk-body">The usher is who to look for if you go to court – they will help you and tell you where you need to go. They are usually dressed in a black gown.</p>
-      <p class="govuk-body">The usher prepares the courtroom and makes sure the witnesses, defendants and lawyers are all there ready for the hearing.</p>
+      <h3 class="govuk-heading-s">{{ t('key-roles:atCourt.courtUsher.heading') }}</h3>
+      <p class="govuk-body">{{ t('key-roles:atCourt.courtUsher.para1') }}</p>
+      <p class="govuk-body">{{ t('key-roles:atCourt.courtUsher.para2') }}</p>
 
-      <h3 class="govuk-heading-s">Crown Prosecution Service paralegal officer</h3>
-      <p class="govuk-body">The Crown Prosecution Service (CPS) paralegal officer works on supporting and preparing court casework, from the start of the case to the end of the trial.</p>
-      <p class="govuk-body">In the courtroom they help run what happens, manage evidence, and draft legal applications.</p>
-      <p class="govuk-body">They work together with the Crown Prosecution Service prosecutor.</p>
+      <h3 class="govuk-heading-s">{{ t('key-roles:atCourt.cpsParalegal.heading') }}</h3>
+      <p class="govuk-body">{{ t('key-roles:atCourt.cpsParalegal.para1') }}</p>
+      <p class="govuk-body">{{ t('key-roles:atCourt.cpsParalegal.para2') }}</p>
+      <p class="govuk-body">{{ t('key-roles:atCourt.cpsParalegal.para3') }}</p>
 
-      <h3 class="govuk-heading-s">Crown Prosecution Service prosecutor</h3>
-      <p class="govuk-body">The Crown Prosecution Service (CPS) decides  whether to bring criminal cases to court to ‘prosecute’ the person or  people who committed the crime.</p>
-      <p class="govuk-body">Their representative is called the  prosecutor. They work together with the Crown Prosecution Service paralegal officer.</p>
+      <h3 class="govuk-heading-s">{{ t('key-roles:atCourt.cpsProsecutor.heading') }}</h3>
+      <p class="govuk-body">{{ t('key-roles:atCourt.cpsProsecutor.para1') }}</p>
+      <p class="govuk-body">{{ t('key-roles:atCourt.cpsProsecutor.para2') }}</p>
 
-      <h3 class="govuk-heading-s">Prosecutor or barrister</h3>
-      <p class="govuk-body">It is usually a prosecutor in a magistrates’ court and a barrister in the Crown Court. This is the person who makes the case against the defendant. They also ask witnesses questions to help make their case.</p>
+      <h3 class="govuk-heading-s">{{ t('key-roles:atCourt.prosecutor.heading') }}</h3>
+      <p class="govuk-body">{{ t('key-roles:atCourt.prosecutor.para1') }}</p>
 
-      <h3 class="govuk-heading-s">Witness Service volunteer</h3>
-      <p class="govuk-body">You can get free, confidential support from the Witness Service in every criminal court in England and Wales. Your Witness Service volunteer can help you prepare if you need to go to court and support you throughout the day. Find out more about the service here or refer yourself straight away – <a href="https://witnessservice.org.uk/" class="govuk-link" target="_blank">contact the Witness Service (opens in new tab)</a>.</p>
+      <h3 class="govuk-heading-s">{{ t('key-roles:atCourt.witnessService.heading') }}</h3>
+      <p class="govuk-body">{{ t('key-roles:atCourt.witnessService.para1') }} <a href="https://witnessservice.org.uk/" class="govuk-link" target="_blank">{{ t('key-roles:atCourt.witnessService.linkText') }}</a>.</p>
 
-      <h2 class="govuk-heading-m">After someone is convicted of a crime</h2>
+      <h2 class="govuk-heading-m">{{ t('key-roles:afterConviction.heading') }}</h2>
 
-      <h3 class="govuk-heading-s">Probation officer</h3>
-      <p class="govuk-body">When a person is convicted of a crime, they might be given a ‘non-custodial sentence’. This is often known as ‘on licence’ or ‘on probation’ and is a period of time where the person could:</p>
+      <h3 class="govuk-heading-s">{{ t('key-roles:afterConviction.probationOfficer.heading') }}</h3>
+      <p class="govuk-body">{{ t('key-roles:afterConviction.probationOfficer.para1') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>serve part of a prison sentence and be released, but must follow certain rules</li>
-        <li>be given a ‘non-custodial’ sentence instead of prison, where they must wear an electronic tag, or do community service or unpaid work, for example</li>
+        {% for item in t('key-roles:afterConviction.probationOfficer.list', {returnObjects: true}) %}
+          <li>{{ item }}</li>
+        {% endfor %}
       </ul>
-      <p class="govuk-body">Probation officers are in charge of people on probation. They help them return into society while making sure they keep to the rules of their sentence or release.</p>
+      <p class="govuk-body">{{ t('key-roles:afterConviction.probationOfficer.para2') }}</p>
 
-      <h2 class="govuk-heading-m">Throughout the process</h2>
+      <h2 class="govuk-heading-m">{{ t('key-roles:throughoutProcess.heading') }}</h2>
 
-      <h3 class="govuk-heading-s">Victim caseworker, advocate or support worker</h3>
-      <p class="govuk-body">There are organisations and charities who may be able offer you support at various stages through the criminal justice process.</p>
-      <p class="govuk-body">People who work for those organisations may be called a victim caseworker, advocate or support worker.</p>
-      <p class="govuk-body">Depending on the type of crime, you could also be supported by:</p>
+      <h3 class="govuk-heading-s">{{ t('key-roles:throughoutProcess.victimCaseworker.heading') }}</h3>
+      <p class="govuk-body">{{ t('key-roles:throughoutProcess.victimCaseworker.para1') }}</p>
+      <p class="govuk-body">{{ t('key-roles:throughoutProcess.victimCaseworker.para2') }}</p>
+      <p class="govuk-body">{{ t('key-roles:throughoutProcess.victimCaseworker.para3') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>independent sexual violence advisor (ISVA)</li>
-        <li>independent domestic abuse advisor (IDVA)</li>
-        <li>child independent domestic violence advocate (CHIDVA)</li>
+        {% for item in t('key-roles:throughoutProcess.victimCaseworker.list', {returnObjects: true}) %}
+          <li>{{ item }}</li>
+        {% endfor %}
       </ul>
     </div>
   </div>

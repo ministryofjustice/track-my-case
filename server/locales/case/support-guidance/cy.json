@@ -1,0 +1,79 @@
+{
+  "heading": "Where to get more support and information (Welsh version)",
+  "govuk.heading": "GOV.UK links",
+  "govuk.lead": "Here are some helpful resources from GOV.UK for victims of crime. These links provide information and support on various topics:",
+  "govuk.links": [
+    {
+      "text": "Easy Read Victims' Guides (opens in a new tab)",
+      "url": "https://www.cps.gov.uk/information-and-support-victims-witnesses/easy-read"
+    },
+    {
+      "text": "Support for victims of sexual violence and abuse",
+      "url": "https://www.gov.uk/guidance/support-for-victims-of-sexual-violence-and-abuse"
+    },
+    {
+      "text": "Victim and witness services",
+      "url": "https://www.gov.uk/guidance/victim-and-witness-services"
+    },
+    {
+      "text": "Compensation and victim support",
+      "url": "https://www.gov.uk/browse/justice/compensation-victim-support"
+    },
+    {
+      "text": "Get support as a victim of crime",
+      "url": "https://www.gov.uk/get-support-as-a-victim-of-crime"
+    },
+    {
+      "text": "Domestic abuse: how to get help",
+      "url": "https://www.gov.uk/guidance/domestic-abuse-how-to-get-help"
+    },
+    {
+      "text": "Rape and sexual assault support",
+      "url": "https://www.gov.uk/guidance/rape-and-sexual-assault-support"
+    },
+    {
+      "text": "Honour-based abuse and forced marriage",
+      "url": "https://www.gov.uk/guidance/honour-based-abuse-and-forced-marriage"
+    },
+    {
+      "text": "Modern slavery: how to get help",
+      "url": "https://www.gov.uk/guidance/modern-slavery-how-to-get-help"
+    }
+  ],
+  "charities.heading": "Charity Links",
+  "charities.lead": "Below are links to UK-based charities that offer support and assistance to victims of crime. These organizations provide a range of services to help you through difficult times:",
+  "charities.links": [
+    {
+      "text": "Victim Support",
+      "url": "https://www.victimsupport.org.uk/"
+    },
+    {
+      "text": "True Honour",
+      "url": "https://www.truehonour.org.uk/"
+    },
+    {
+      "text": "Karma Nirvana",
+      "url": "https://karmanirvana.org.uk/"
+    },
+    {
+      "text": "Trauma Breakthrough",
+      "url": "https://www.traumabreakthrough.org/"
+    },
+    {
+      "text": "Refuge",
+      "url": "https://www.refuge.org.uk/"
+    },
+    {
+      "text": "Women's Aid",
+      "url": "https://www.womensaid.org.uk/"
+    },
+    {
+      "text": "Rape Crisis England & Wales",
+      "url": "https://rapecrisis.org.uk/"
+    },
+    {
+      "text": "The Survivors Trust",
+      "url": "https://www.thesurvivorstrust.org/"
+    }
+  ]
+}

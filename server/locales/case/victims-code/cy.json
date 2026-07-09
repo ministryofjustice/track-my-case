@@ -1,0 +1,78 @@
+{
+  "pageTitle": "Victims code",
+  "heading": "Understand your rights (Welsh version)",
+  "contents": {
+    "title": "Contents",
+    "nav": {
+      "ariaLabel": "Pages in this guide",
+      "victimPersonalStatement": "Making a Victim Personal Statement",
+      "claimingExpenses": "Claiming expenses",
+      "specialMeasures": "Special measures",
+      "requestingTranscript": "Requesting a court hearing transcript",
+      "understandCompensation": "When you can claim compensation",
+      "returnProperty": "Getting your property back",
+      "victimsCode": "Victims' Code"
+    }
+  },
+  "rightsHeading": "Your rights when you experience a crime",
+  "intro1": "When you experience a crime, you automatically have certain rights as a 'victim' under the law. They include making sure you are informed about the process and the support available to you.",
+  "intro2": "These rights are written in the Code of Practice for Victims of Crime in England and Wales (Victims' Code). This is a summary of the 12 rights.",
+  "summaryHeading": "The Victims' Code summary of rights",
+  "right1": {
+    "heading": "1. To be able to understand and to be understood",
+    "para1": "You have the right to be given information in a way that is easy to understand and to be provided with help to be understood, including, where necessary, access to interpretation and translation services."
+  },
+  "right2": {
+    "heading": "2. To have the details of the crime recorded without unjustified delay",
+    "para1": "You have the right to have details of the crime recorded by the police as soon as possible after the incident.",
+    "para2": "If you are required to provide a witness statement or be interviewed, you have the right to be provided with additional support to assist you through this process."
+  },
+  "right3": {
+    "heading": "3. To be provided with information when reporting the crime",
+    "para1": "You have the right to receive written confirmation when reporting a crime, to be provided with information about the criminal justice process and to be told about programmes or services for victims.",
+    "para2": "This might include services where you can meet with the suspect or offender, which is known as restorative justice."
+  },
+  "right4": {
+    "heading": "4. To be referred to services that support victims and have services and support tailored to your needs",
+    "para1": "You have the right to be referred to services that support victims, which includes the right to contact them directly, and to have your needs assessed so services and support can be tailored to meet your needs.",
+    "para2": "If eligible, you have the right to be offered a referral to specialist support services and to be told about additional support available at court, for example special measures."
+  },
+  "right5": {
+    "heading": "5. To be provided with information about compensation",
+    "para1": "Where eligible, you have the right to be told about how to claim compensation for any loss, damage or injury caused as a result of crime."
+  },
+  "right6": {
+    "heading": "6. To be provided with information about the investigation and prosecution",
+    "para1": "You have the right to be provided with updates on your case and to be told when important decisions are taken. You also have the right, at certain stages of the justice process, to ask for decisions to be looked at again by the relevant service provider."
+  },
+  "right7": {
+    "heading": "7. To make a Victim Personal Statement",
+    "para1": "You have the right to make a Victim Personal Statement, which tells the court how the crime has affected you and is considered when sentencing the offender. You will be given information about the process."
+  },
+  "right8": {
+    "heading": "8. To be given information about the trial, trial process and your role as a witness",
+    "para1": "If your case goes to court, you have the right to be told the time, date and location of any hearing and the outcome of those hearings in a timely way.",
+    "para2": "If you are required to give evidence, you have the right to be offered appropriate help before the trial and, where possible, if the court allows, to meet with the prosecutor before giving evidence."
+  },
+  "right9": {
+    "heading": "9. To be given information about the outcome of the case and any appeals",
+    "para1": "You have the right to be told the outcome of the case and, if the defendant is convicted, to be given an explanation of the sentence. If the offender appeals against their conviction or sentence, you have the right to be told about the appeal and its outcome."
+  },
+  "right10": {
+    "heading": "10. To be paid expenses and have property returned",
+    "para1": "If you are required to attend court and give evidence, you have the right to claim certain expenses. If any of your property was taken as evidence, you have the right to get it back as soon as possible."
+  },
+  "right11": {
+    "heading": "11. To be given information about the offender following a conviction",
+    "para1": "Where eligible, you have the right to be automatically referred to the Victim Contact Scheme, which will provide you with information about the offender and their progress in prison, and if they become eligible for consideration of parole or release.",
+    "para2": "Where applicable, you also have the right to make a new Victim Personal Statement, in which you can say how the crime continues to affect you."
+  },
+  "right12": {
+    "heading": "12. To make a complaint about your rights not being met",
+    "para1": "If you believe that you have not received your rights, you have the right to make a complaint to the relevant service provider. If you remain unhappy, you can contact the Parliamentary and Health Service Ombudsman."
+  },
+  "fullCodeLink": {
+    "before": "Read the full",
+    "linkText": "Code of Practice for Victims of Crime in England and Wales (Victims' Code) (opens in new tab)."
+  }
+}

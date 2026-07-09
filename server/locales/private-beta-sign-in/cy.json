@@ -1,0 +1,10 @@
+{
+  "pageTitle": "Enter service password",
+  "label": "Enter your {{applicationName}} password",
+  "intro": "This service is currently in private beta. To use {{applicationName}}, you need the password from your sign-up confirmation email.",
+  "hint": "You can find this on your sign-up confirmation email",
+  "signInButton": "Sign in",
+  "detailsSummary": "I don't have a sign-up confirmation email",
+  "detailsText": "Contact your police witness care officer, who will give you access if it's appropriate for your individual case.",
+  "errorSummaryTitle": "There is a problem"
+}

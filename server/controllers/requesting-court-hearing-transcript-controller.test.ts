@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+import { createMockT } from '../utils/testUtils'
 import paths from '../constants/paths'
 import requestingCourtHearingTranscriptController from './requesting-court-hearing-transcript-controller'
 
@@ -9,7 +10,7 @@ jest.mock('../helpers/initialise-basic-authentication', () => ({
 
 describe('requesting-court-hearing-transcript-controller', () => {
   const createReqRes = () => {
-    const req = {} as Request
+    const req = { t: createMockT(), language: 'en' } as unknown as Request
     const res = {
       locals: {} as Record<string, unknown>,
       render: jest.fn(),

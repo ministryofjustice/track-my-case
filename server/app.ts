@@ -2,10 +2,7 @@ import express from 'express'
 import cookieParser from 'cookie-parser'
 
 import createError from 'http-errors'
-
-import middleware from 'i18next-http-middleware'
-import i18next from './i18next'
-import nunjucksSetup from './utils/nunjucksSetup'
+import nunjucksSetup from './middleware/nunjucksSetup'
 import errorHandler from './errorHandler'
 
 import setUpCsrf from './middleware/setUpCsrf'
@@ -28,6 +25,7 @@ import { initializePrometheusMetrics } from './services/prometheusService'
 import setUpReqUrlParser from './middleware/setUpReqUrlParser'
 import setUpPrometheusMetrics from './middleware/setUpPrometheusMetrics'
 import { setUpLaunchpadHeader } from './middleware/setUpLaunchpadHeader'
+import i18nextSetup from './middleware/i18nextSetup'
 
 export default function createApp(sessionSecret: string): express.Application {
   const app = express()
@@ -38,17 +36,7 @@ export default function createApp(sessionSecret: string): express.Application {
   app.set('trust proxy', true)
   app.set('port', process.env.NODE_PORT || 9999)
 
-  // ToDo: come back to this
-  app.use(
-    middleware.handle(i18next, {
-      ignoreRoutes: [],
-      removeLngFromUrl: false,
-    }),
-  )
-  app.use((req, res, next) => {
-    res.locals.applicationName = req.t('applicationName')
-    next()
-  })
+  i18nextSetup(app)
 
   app.use(setUpWebSecurity())
   app.use(setUpWebRequestParsing())

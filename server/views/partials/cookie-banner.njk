@@ -79,29 +79,29 @@
 </script>
 
 <div id="cookie-banner" class="govuk-cookie-banner" data-nosnippet role="region"
-     aria-label="Cookies on {{ applicationName }}" data-module="govuk-cookie-banner">
+     aria-label="{{ t('common:cookieBanner.regionLabel', {applicationName: applicationName}) }}" data-module="govuk-cookie-banner">
 
   {% if not cookieAccepted %}
     <div class="govuk-cookie-banner__message govuk-width-container" id="cookie-banner-options">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
           <h2 class="govuk-cookie-banner__heading govuk-heading-m">
-            Cookies on {{ applicationName }}
+            {{ t('common:cookieBanner.heading', {applicationName: applicationName}) }}
           </h2>
           <div class="govuk-cookie-banner__content">
-            <p class="govuk-body">We use essential small files (known as ‘cookies’) to make this service work. </p>
-            <p class="govuk-body">We would also like to use analytics cookies so we can understand how you use the service and make improvements.</p>
+            <p class="govuk-body">{{ t('common:cookieBanner.essential') }}</p>
+            <p class="govuk-body">{{ t('common:cookieBanner.analytics') }}</p>
           </div>
           <div class="govuk-button-group">
             <button type="button" class="govuk-button" data-module="govuk-button" data-accept-cookies="true"
                     id="accept-cookie-button">
-              Accept analytics cookies
+              {{ t('common:cookieBanner.accept') }}
             </button>
             <button type="button" class="govuk-button" data-module="govuk-button" data-reject-cookies="true"
                     id="reject-cookie-button">
-              Reject analytics cookies
+              {{ t('common:cookieBanner.reject') }}
             </button>
-            <a class="govuk-link" href="/cookies" id="cookies-banner-view-cookies">View cookies</a>
+            <a class="govuk-link" href="{{ t('common:routes.cookies') }}" id="cookies-banner-view-cookies">{{ t('common:cookieBanner.viewCookies') }}</a>
           </div>
         </div>
       </div>
@@ -114,14 +114,13 @@
       <div class="govuk-grid-column-two-thirds">
         <div class="govuk-cookie-banner__content">
           <p class="govuk-body">
-            You've accepted analytics cookies. You can
-            <a class="govuk-link" href="/cookies">change your cookie settings</a> at any time.
+            {{ t('common:cookieBanner.acceptedPre') }} <a class="govuk-link" href="{{ t('common:routes.cookies') }}">{{ t('common:cookieBanner.changeSettings') }}</a> {{ t('common:cookieBanner.atAnyTime') }}
           </p>
         </div>
         <div class="govuk-button-group">
           <button class="govuk-button" data-module="govuk-button" data-hide-cookie-banner="true"
                   id="hide-accepted-cookie-button">
-            Hide cookie message
+            {{ t('common:cookieBanner.hideMessage') }}
           </button>
         </div>
       </div>
@@ -134,14 +133,13 @@
       <div class="govuk-grid-column-two-thirds">
         <div class="govuk-cookie-banner__content">
           <p class="govuk-body">
-            You've rejected analytics cookies. You can
-            <a class="govuk-link" href="/cookies">change your cookie settings</a> at any time.
+            {{ t('common:cookieBanner.rejectedPre') }} <a class="govuk-link" href="{{ t('common:routes.cookies') }}">{{ t('common:cookieBanner.changeSettings') }}</a> {{ t('common:cookieBanner.atAnyTime') }}
           </p>
         </div>
         <div class="govuk-button-group">
           <button class="govuk-button" data-module="govuk-button" data-hide-cookie-banner="true"
                   id="hide-rejected-cookie-button">
-            Hide cookie message
+            {{ t('common:cookieBanner.hideMessage') }}
           </button>
         </div>
       </div>

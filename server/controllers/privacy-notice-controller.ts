@@ -6,7 +6,7 @@ const privacyNoticeController = async (req: Request, res: Response, next: NextFu
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Privacy notice'
+    res.locals.pageTitle = req.t('privacy-notice:pageTitle')
 
     if (res.locals.authenticated) {
       if (req.headers?.referer && new URL(req.headers?.referer)?.pathname === paths.START) {

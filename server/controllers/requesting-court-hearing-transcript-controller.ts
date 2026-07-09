@@ -10,7 +10,7 @@ const requestingCourtHearingTranscriptController = async (
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Requesting a court hearing transcript'
+    res.locals.pageTitle = req.t('requesting-transcript:pageTitle')
     res.locals.backLink = paths.CASES.DASHBOARD
 
     res.render('pages/case/requesting-court-hearing-transcript.njk')

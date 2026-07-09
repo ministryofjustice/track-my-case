@@ -6,7 +6,7 @@ const specialMeasuresController = async (req: Request, res: Response, next: Next
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Special measures'
+    res.locals.pageTitle = req.t('special-measures:pageTitle')
     res.locals.backLink = paths.CASES.DASHBOARD
 
     res.render('pages/case/special-measures.njk')

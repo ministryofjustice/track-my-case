@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+import { createMockT } from '../utils/testUtils'
 import paths from '../constants/paths'
 import { PASSWORD_CORRECT } from '../constants/cookiesUtils'
 import signedOutController from './signed-out-controller'
@@ -10,7 +11,7 @@ jest.mock('../helpers/initialise-basic-authentication', () => ({
 
 describe('signed-out-controller', () => {
   const createReqRes = () => {
-    const req = {} as Request
+    const req = { t: createMockT(), language: 'en' } as unknown as Request
     const res = {
       locals: {} as Record<string, unknown>,
       clearCookie: jest.fn(),

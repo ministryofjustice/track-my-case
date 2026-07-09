@@ -1,0 +1,222 @@
+{
+  "pageTitle": "Victims journey",
+  "intro": {
+    "heading": "The criminal justice system: step by step (Welsh version)",
+    "para1": "When you have experienced a crime and the case goes to court, use our guide to check:",
+    "list1": [
+      "what happens, who is involved and when",
+      "what you might need to do",
+      "your rights throughout the process"
+    ],
+    "para2": "What happens at each stage, and where the case ends, can depend on:",
+    "list2": [
+      "the crime, or crimes if there was more than one",
+      "what evidence the police find",
+      "what the courts decide, based on the evidence available"
+    ],
+    "para3": "You always have certain rights by law under the",
+    "para3LinkText": "Victims' Code"
+  },
+  "details": {
+    "summary": "When you might be entitled to enhanced rights",
+    "para1": "When you report a crime, the police check if you're entitled by law to 'enhanced rights' throughout the process.",
+    "para2": "Enhanced rights automatically apply to children under 18 years old. They can also apply if you are vulnerable or intimidated, are a victim of the most serious crime, or have been persistently targeted.",
+    "para3": "Enhanced rights give you extra support, which may include being referred to a specialist support service, being told more quickly about important decisions, and having 'special measures' during a trial."
+  },
+  "stage1": {
+    "heading": "Stage 1: Reporting the crime",
+    "para1": "When you experience a crime, you have the right to report it to the police.",
+    "para2": "If you do not want to report it to the police, you can still get help from support services at any point.",
+    "para3": "Find support services (opens in new tab).",
+    "subheading1": "What you can tell the police",
+    "para4": "You can give the police a witness statement, where you describe what happened.",
+    "para5": "You might also want to give a victim personal statement, where you describe emotional, physical, and financial effects a crime may have had on you.",
+    "para6": "Find out more about giving a:",
+    "list1": ["witness statement (opens in new tab)", "victim personal statement"],
+    "subheading2": "Getting support for your needs",
+    "para7": "The police will listen to your experience and personal circumstances to understand what you might need. This includes support for disabilities.",
+    "para8": "They will then put you in touch with the right support services for you.",
+    "para9": "They will also record if and how you want to be contacted about the case, for example by phone call or email.",
+    "subheading3": "How your case is recorded",
+    "para10": "The police will give you a crime reference number. They will also send you a victim of crime letter.",
+    "para11": "You have the right to receive this with 5 working days of reporting a crime. The letter will confirm the crime or crimes you have reported and give you information about where you can get other support."
+  },
+  "stage2": {
+    "heading": "Stage 2: The police investigate the crime",
+    "para1": "At this stage, a person who is accused of a crime is referred to as a 'suspect'.",
+    "para2": "The police investigate crimes by looking at evidence and talking to suspects.",
+    "para3": "The police will update you on what's happening with the case. They will check with you:",
+    "list1": ["how often you want to get updates", "how you want to be contacted, for example by phone or email"]
+  },
+  "stage3": {
+    "heading": "Stage 3: The police make a charge or end the case",
+    "para1": "After the police have completed their investigations, they will decide whether to do one of the following:",
+    "list1": [
+      "charge the suspect and refer the case to the Crown Prosecution Service",
+      "give the suspect a caution with certain conditions, for example community service or a medical treatment programme",
+      "not progress the case if there is not enough evidence"
+    ],
+    "para2": "You have the right to hear about the decision from the police within 5 working days of it being made.",
+    "details": {
+      "summary": "If you have enhanced rights",
+      "para1": "You have the right to hear about the decision from the police within 1 working day of it being made."
+    },
+    "subheading1": "If the case is referred to the Crown Prosecution Service",
+    "para3": "When the police refer a case to the Crown Prosecution Service, you will receive a letter from the police witness care unit that:",
+    "list2": [
+      "confirms the crime or crimes being charged",
+      "gives you the unique reference number (URN) for the case – this is useful for when you need an update about the case, for example when you call the  police witness care officer",
+      "introduces you to your police witness care unit, who will look after you during the case"
+    ],
+    "para4": "The Crown Prosecution Service consider the evidence and public interest of the case to decide whether to either:",
+    "list3": ["charge the suspect and take the case to court", "not charge the suspect and end the case"],
+    "para5": "If the Crown Prosecution Service take a crime case to court, you do not need a solicitor as the Crown Prosecution Service are acting on your behalf.",
+    "subheading2": "If the suspect is not charged",
+    "para6": "If the police or the Crown Prosecution Service decide not to charge a suspect, but you believe they should, you have the right to ask for a review of the decision through the Victims' Right to Review Scheme.",
+    "para7": "To do this, tell your police witness care unit or police officer in charge (OIC) and they will tell you how to apply.",
+    "para8": "Find out more about the Victims' Right to Review Scheme (opens in new tab)."
+  },
+  "stage4": {
+    "heading": "Stage 4: The first court hearing",
+    "para1": "When a case goes to court, the suspect is now referred to as a 'defendant'.",
+    "para2": "The defendant will 'state their plea', this means they tell the court whether they believe they are guilty of the crime or not. They can plead one of the following:",
+    "list1": [
+      "guilty to the charge or charges – this means they're saying they did commit the crime or crimes",
+      "guilty to some of the charges, if there are more than one",
+      "not guilty to the charge or all of the charges – this means they're saying they did not commit the crime or crimes"
+    ],
+    "para3": "You do not have to attend the hearing, but you can if you want. Otherwise the police will tell you what a defendant pleads. You can choose how you prefer to be contacted, for example by phone call or text. You have the right to know within 5 working days of the hearing.",
+    "subheading1": "If the defendant pleads guilty",
+    "para4": "The magistrate or judge can sentence them right away, or at a later date if they need more information for the sentencing.",
+    "para5": "If you are not at the sentencing hearing, the police will tell you the sentence. Tell the police how you want to be contacted, for example for phone call or email. You have the right to know within 5 working days of the sentencing or 1 working day if you have enhanced rights.",
+    "para6": "If you give a victim personal statement, it can help the judge to make a more informed decision on sentencing. This is because they will consider the overall effect the crime has had on you.",
+    "para7": "Find out more about making a victim personal statement",
+    "subheading2": "If the defendant pleads not guilty",
+    "para8": "The courts will set a date for another court hearing, called a 'trial'. A trial is where a judge or jury listen to all the evidence in a case and makes a decision.",
+    "para9": "Depending on the case, there may need to be more than one hearing, and the trial could last a day or several months."
+  },
+  "stage5": {
+    "heading": "Stage 5: The court trial",
+    "para1": "A court trial is where evidence and arguments are presented to decide guilt for a crime.",
+    "para2": "The aim is to reach a fair decision based on the law.",
+    "para3": "Depending on the type of crime, a trial is heard by either:",
+    "list1": ["magistrates", "a judge and jury"],
+    "para4": "A trial can include:",
+    "list2": [
+      "statements from the prosecution, defence, victims and witnesses",
+      "witness 'testimony' – where any witnesses stand up and tell the court what happened",
+      "cross-examination of witnesses – where they are asked questions about what they know about the crime",
+      "closing arguments",
+      "final decision – the 'verdict', made by the judge or jury"
+    ],
+    "para5": "Where a defendant is found guilty, there can be a separate 'sentencing hearing'. This is where the magistrates or judge decide on an appropriate sentence for the person found guilty.",
+    "subheading1": "When you must go to court",
+    "para6": "You do not need to go to court unless you have been told by the police that you need to give evidence.",
+    "para7": "You can still watch any hearing or trial if you want to.",
+    "subheading2": "Giving evidence at court",
+    "para8": "As the victim of a crime, you will usually be a main 'witness' in the case. This means you may be required to give evidence at the trial. Giving evidence is telling the court what you know about the crime.",
+    "subheading3": "Getting support",
+    "para9": "In the run up to and during the trial, you can get support from:",
+    "list3": [
+      "your police witness care officer (WCO)",
+      "Witness Service – this charity gives free, independent support for prosecution and defence witnesses in every criminal court in England and Wales"
+    ],
+    "para10": "The Witness Service can offer assistance such as:",
+    "list4": [
+      "help you prepare, for example show you the courtroom before the day of the trial",
+      "help you make practical arrangements for the day, for example how to get to the court",
+      "be with you throughout the trial"
+    ],
+    "details": {
+      "summary": "If you have enhanced rights",
+      "para1": "To help you feel more comfortable about when you give your evidence, you might be able to get extra support called 'special measures'.",
+      "para2": "This might be, for example, giving your evidence on a video recording before the trial, from behind a screen, or by video link from outside the courtroom. You can ask for special measures if you:",
+      "list1": [
+        "are under 18",
+        "have physical, mental or communication needs",
+        "feel very scared or upset in a way that might affect you giving your best evidence",
+        "are a victim of domestic abuse, rape or sexual assault",
+        "are a victim of modern slavery",
+        "have witnessed a crime involving a gun or knife"
+      ],
+      "para3": "The police witness care unit will talk to you about whether special measures might help you. You can ask questions and decide together what support is best for you.",
+      "para4": "The police will then tell the Crown Prosecution Service what you need. They will ask the judge or magistrate if you can have the special measures you want. The judge or magistrate decides if these special measures will help you give your best evidence and will be fair to everyone in the case.",
+      "para5": "Find out more about special measures from the Crown Prosecution Service (opens in new tab)."
+    },
+    "subheading4": "If you do not give evidence when required",
+    "para11": "It can be that if you do not provide evidence at the trial as a witness, there is not enough evidence for the case to be continued.",
+    "para12": "If you are asked to go to court as a witness but do not go to the court on the day of the trial, the case may be discontinued.",
+    "para13": "The Crown Prosecution Service will send you a letter explaining the reason why the case was closed."
+  },
+  "stage6": {
+    "heading": "Stage 6: After the trial",
+    "para1": "It's important to prepare yourself for the outcome of the trial – the 'verdict'. It might not be the outcome you want. It's a good idea to keep talking with your police contact or any support services and charities.",
+    "subheading1": "Your rights for how you find out about the verdict",
+    "para2": "If you have not attended the sentencing hearing, the police can tell you the verdict.",
+    "para3": "You have the right to be told, with a short explanation, within 1 working day of the police receiving the information from the court. The court must send it to the police within 5 working days of the verdict being made.",
+    "para4": "Tell the police if and how you want to be contacted, for example by phone call or email.",
+    "subheading2": "If a defendant is found not guilty",
+    "para5": "If a defendant is found not guilty, the judge will not give them a sentence. This means that the trial ends and they can leave the court.",
+    "para6": "If you want to talk to someone about the verdict, ask the police for support or contact",
+    "para6LinkText": "Victim Support (opens in new tab)",
+    "para6End": ".",
+    "subheading3": "If a defendant is found guilty",
+    "para7": "If a defendant is found guilty, the judge will give them a sentence. A sentence is the punishment for the crime. Some sentences can be:",
+    "list1": [
+      "time in prison",
+      "a sentence in the community – this could include having to do unpaid work, having a curfew to stay in their home between certain hours, not being allowed to go to a particular area, and being electronically tagged",
+      "a fine"
+    ],
+    "para8": "The sentence will depend on:",
+    "list2": ["the type and seriousness of the crime", "the circumstances of the defendant"],
+    "subheading4": "When a defendant might appeal their sentence",
+    "para9": "A defendant found guilty can appeal their sentence if they think it is not fair.",
+    "para10": "In an appeal, a judge reviews the case or there may be another court hearing.",
+    "para11": "Your police contact will tell you the outcome.",
+    "subheading5": "When a sentence might seem too short",
+    "para12": "When deciding on a sentence, judges must:",
+    "list3": [
+      "follow the law, which says how long sentences can be",
+      "consider the reasons for the sentencing under the law, for example the protection of the public and victims",
+      "follow the sentencing guidelines by the Sentencing Council"
+    ],
+    "para13": "Judges will also think about:",
+    "list4": [
+      "the harm that a defendant caused or meant to cause",
+      "how much a defendant can be blamed for the crime",
+      "if a defendant had been found guilty or a similar crime before",
+      "if a defendant has said they are sorry, or there are difficult personal circumstances",
+      "if and when a defendant pleads guilty",
+      "how much time a defendant has already spent in prison – 'on remand'"
+    ],
+    "para14": "Find out more about sentencing from the",
+    "para14LinkText": "Sentencing Council (opens in new tab)",
+    "para14End": ".",
+    "subheading6": "If you think a Crown Court sentence is too low",
+    "para15": "If you think a Crown Court sentence is too low, you can ask for it to be reviewed.",
+    "para16": "Ask for a Crown Court sentence to be reviewed (opens in new tab).",
+    "subheading7": "When you can be referred to the Victim Contact Scheme",
+    "para17": "The Victim Contact Scheme is offered to victims of certain violent and  sexual offences where the sentence is 12 months or more imprisonment, or a hospital order.",
+    "para18": "After sentencing, the police will refer you to the Victim Contact Scheme and you can choose whether to opt in. If you do, you will be put in touch with a Victim Liaison Officer.",
+    "para19": "The Victim Liaison Officer will keep you updated at key stages of the sentence. For example, they can provide information on:",
+    "list5": [
+      "important sentence dates, including release dates",
+      "how to make a Victim Personal Statement for a parole hearing",
+      "submitting an application to observe a parole hearing",
+      "requesting 'licence conditions', such as non-contact and exclusion zones, to prevent the offender from contacting you when they are released",
+      "how to submit a request for a Parole Board decision to be reconsidered"
+    ],
+    "para20": "You can also choose not to be contacted by the Victim Contact Scheme, or to join at a later date.",
+    "para21": "Find out more about the Victim Contact Scheme (opens in new tab).",
+    "subheading8": "When a person convicted of a crime can be released from prison",
+    "para22": "Most people are released from prison on the date their sentence ends.",
+    "para23": "Some can be released from a proportion of their prison sentence after a decision by the Parole Board. This is called being 'released on parole'.",
+    "para24": "They will be released under certain rules and will be supervised in the community for a certain period of time.",
+    "para25": "If you are in the Victim Contact Scheme, you can give a Victim Personal Statement before a parole decision is made.",
+    "para26": "Find out more about:",
+    "list6item1Prefix": "Release on parole, including how the Parole Board makes decisions, and your rights as a victim of crime in the",
+    "list6item1LinkText": "Guide to parole for victims of crime (opens in new tab)",
+    "list6item2Prefix": "Conditional discharge from a hospital order by",
+    "list6item2LinkText": "First-tier Tribunal (Mental Health) (opens in new tab)"
+  }
+}

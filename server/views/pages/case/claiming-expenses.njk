@@ -7,42 +7,42 @@
     <div class="govuk-grid-column-two-thirds">
       <div class="gem-c-heading govuk-!-margin-bottom-8">
         <h1 class="gem-c-heading__text govuk-heading-xl">
-          Understand your rights
+          {{ t('claiming-expenses:pageHeading') }}
         </h1>
       </div>
       <aside class="part-navigation-container" role="complementary">
-        <nav data-module="ga4-link-tracker" aria-label="Pages in this guide" class="gem-c-contents-list govuk-!-margin-bottom-4" data-ga4-link-tracker-module-started="true">
+        <nav data-module="ga4-link-tracker" aria-label="{{ t('claiming-expenses:nav.label') }}" class="gem-c-contents-list govuk-!-margin-bottom-4" data-ga4-link-tracker-module-started="true">
           <h2 class="gem-c-contents-list__title">
-            Contents
+            {{ t('claiming-expenses:contentsHeading') }}
           </h2>
           <ol class="gem-c-contents-list__list">
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victim-personal-statement">Making a Victim Personal Statement</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.victimPersonalStatement') }}">{{ t('claiming-expenses:nav.victimPersonalStatement') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              Claiming expenses
+              {{ t('claiming-expenses:nav.claimingExpenses') }}
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/special-measures">Special measures</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.specialMeasures') }}">{{ t('claiming-expenses:nav.specialMeasures') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/requesting-court-hearing-transcript">Requesting a court hearing transcript</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.requestingTranscript') }}">{{ t('claiming-expenses:nav.requestingTranscript') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/understand-compensation">When you can claim compensation</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.understandCompensation') }}">{{ t('claiming-expenses:nav.understandCompensation') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/return-property">Getting your property back</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.returnProperty') }}">{{ t('claiming-expenses:nav.returnProperty') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victims-code">Victims' Code</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.victimsCode') }}">{{ t('claiming-expenses:nav.victimsCode') }}</a>
             </li>
           </ol>
         </nav>
@@ -51,43 +51,39 @@
   </div>
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
     <div class="govuk-grid-column-two-thirds">
-      <h2 class="govuk-heading-l">Claiming expenses</h2>
-      <p class="govuk-body">When you go to court as a witness or a similar role, you can claim certain expenses from the Crown Prosecution Service (CPS).</p>
+      <h2 class="govuk-heading-l">{{ t('claiming-expenses:heading') }}</h2>
+      <p class="govuk-body">{{ t('claiming-expenses:intro') }}</p>
 
-      <h3 class="govuk-heading-m">Who can claim</h3>
-      <p class="govuk-body">You can claim expenses if you attend a pre-trial meeting or a trial as a:</p>
+      <h3 class="govuk-heading-m">{{ t('claiming-expenses:whoCanClaimHeading') }}</h3>
+      <p class="govuk-body">{{ t('claiming-expenses:whoCanClaimLead') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>witness</li>
-        <li>professional witness</li>
-        <li>parent or guardian of a witness who’s under 18 years old</li>
-        <li>carer of an adult witness</li>
-        <li>person with permission to claim, for example you are helping a witness attend court</li>
+        {% for item in t('claiming-expenses:whoCanClaimItems', {returnObjects: true}) %}
+          <li>{{ item }}</li>
+        {% endfor %}
       </ul>
 
-      <h3 class="govuk-heading-m">What you can claim for</h3>
-      <p class="govuk-body">Expenses are things that cost you money while attending the trial, for example:</p>
+      <h3 class="govuk-heading-m">{{ t('claiming-expenses:whatYouCanClaimHeading') }}</h3>
+      <p class="govuk-body">{{ t('claiming-expenses:whatYouCanClaimLead') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>food and drink</li>
-        <li>travel</li>
-        <li>overnight stays</li>
-        <li>loss of earnings, for example because you had to take time off work</li>
-        <li>childcare</li>
-        <li>adult care</li>
+        {% for item in t('claiming-expenses:whatYouCanClaimItems', {returnObjects: true}) %}
+          <li>{{ item }}</li>
+        {% endfor %}
       </ul>
-      <p class="govuk-body">There are limits to what you can claim.</p>
-      <p class="govuk-body">You will need receipts and bank statements that show your spendings or loss of earnings.</p>
+      <p class="govuk-body">{{ t('claiming-expenses:claimLimits') }}</p>
+      <p class="govuk-body">{{ t('claiming-expenses:receiptsRequired') }}</p>
 
-      <h3 class="govuk-heading-m">How to claim</h3>
-      <p class="govuk-body">You can claim as soon as you have finished giving evidence as a witness, even if the trial is still ongoing.</p>
-      <p class="govuk-body">To claim:</p>
+      <h3 class="govuk-heading-m">{{ t('claiming-expenses:howToClaimHeading') }}</h3>
+      <p class="govuk-body">{{ t('claiming-expenses:howToClaimIntro') }}</p>
+      <p class="govuk-body">{{ t('claiming-expenses:howToClaimLead') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>look out for posters at the court with a QR code that links to the online service</li>
-        <li>apply online using <a href="https://claim-witness-expenses.cps.gov.uk/" class="govuk-link" target="_blank">https://claim-witness-expenses.cps.gov.uk/ (opens in new tab)</a></li>
+        {% for item in t('claiming-expenses:howToClaimItems', {returnObjects: true}) %}
+          <li>{{ item | safe }}</li>
+        {% endfor %}
       </ul>
 
-      <h3 class="govuk-heading-m">Find out more and apply</h3>
-      <p class="govuk-body">Find out more about what you can claim, or start an application on the <a href="https://claim-witness-expenses.cps.gov.uk/" class="govuk-link" target="_blank">Claim witness expenses service (opens in new tab)</a>.</p>
-      <p class="govuk-body">You can also get help with applying for expenses from <a href="https://claim-witness-expenses.cps.gov.uk/" class="govuk-link" target="_blank">Victim Support (opens in new tab)</a>.</p>
+      <h3 class="govuk-heading-m">{{ t('claiming-expenses:findOutMoreHeading') }}</h3>
+      <p class="govuk-body">{{ t('claiming-expenses:findOutMoreText') }} <a href="https://claim-witness-expenses.cps.gov.uk/" class="govuk-link" target="_blank">{{ t('claiming-expenses:findOutMoreLinkText') }}</a>.</p>
+      <p class="govuk-body">{{ t('claiming-expenses:victimSupportText') }} <a href="https://claim-witness-expenses.cps.gov.uk/" class="govuk-link" target="_blank">{{ t('claiming-expenses:victimSupportLinkText') }}</a>.</p>
     </div>
   </div>
 {% endblock %}

@@ -1,0 +1,40 @@
+{
+  "pageTitle": "Where to get more support and information",
+  "pageHeading": "Help and support (Welsh version)",
+  "contents.title": "Contents",
+  "contents.currentItem": "Where to get more support and information",
+  "contents.witnessLink": "Get support if you're going to court as a witness",
+  "supportHeading": "Where to get more support and information",
+  "inset.heading": "If you need help now",
+  "inset.policeText": "If you're in immediate danger, call the police: 999",
+  "inset.samaritans.name": "Samaritans",
+  "inset.samaritans.phone": "Phone: 116 123",
+  "inset.samaritans.websiteLinkText": "www.samaritans.org (opens in new tab)",
+  "inset.victimSupport.name": "Victim Support",
+  "inset.victimSupport.phone": "Phone: 0808 1689 111",
+  "inset.victimSupport.linkText": "Victim Support website and live chat (opens in new tab)",
+  "inset.availability": "These services are available 24 hours a day, 7 days a week.",
+  "crimeSupport.heading": "Support for the crime you experienced",
+  "crimeSupport.lead": "There are many organisations and charities that can offer expert help and support for the crime you have experienced.",
+  "crimeSupport.findLead": "Find:",
+  "crimeSupport.links": [
+    {
+      "text": "victim and witness services (opens in new tab)",
+      "url": "https://www.gov.uk/guidance/victim-and-witness-services"
+    },
+    {
+      "text": "support services in your local area (opens in new tab)",
+      "url": "https://victimandwitnessinformation.org.uk/find-support/locally"
+    }
+  ],
+  "mentalHealth.heading": "Mental health support",
+  "mentalHealth.body": "Find information and support for your mental health through the",
+  "mentalHealth.linkText": "NHS website (opens in new tab)",
+  "disability.heading": "Rights for disabled people when dealing with the police",
+  "disability.body1": "If you're being questioned or interviewed at a police station you have certain rights depending on your disability.",
+  "disability.linkText": "Find out about disability rights when dealing with police (opens in new tab)",
+  "easyRead.heading": "Easy read guides",
+  "easyRead.body1": "Easy read guides use pictures to help people understand information more easily.",
+  "easyRead.body2": "You can download easy read guides about the criminal justice process from the Crown Prosecution Service (CPS).",
+  "easyRead.linkText": "Find easy read guides for victims of crime (opens in new tab)"
+}

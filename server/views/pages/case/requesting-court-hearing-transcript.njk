@@ -7,42 +7,42 @@
     <div class="govuk-grid-column-two-thirds">
       <div class="gem-c-heading govuk-!-margin-bottom-8">
         <h1 class="gem-c-heading__text govuk-heading-xl">
-          Understand your rights
+          {{ t('requesting-transcript:heading') }}
         </h1>
       </div>
       <aside class="part-navigation-container" role="complementary">
-        <nav data-module="ga4-link-tracker" aria-label="Pages in this guide" class="gem-c-contents-list govuk-!-margin-bottom-4" data-ga4-link-tracker-module-started="true">
+        <nav data-module="ga4-link-tracker" aria-label="{{ t('requesting-transcript:nav.ariaLabel') }}" class="gem-c-contents-list govuk-!-margin-bottom-4" data-ga4-link-tracker-module-started="true">
           <h2 class="gem-c-contents-list__title">
-            Contents
+            {{ t('requesting-transcript:nav.contentsHeading') }}
           </h2>
           <ol class="gem-c-contents-list__list">
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victim-personal-statement">Making a Victim Personal Statement</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.victimPersonalStatement') }}">{{ t('requesting-transcript:nav.victimPersonalStatement') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/claiming-expenses">Claiming expenses</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.claimingExpenses') }}">{{ t('requesting-transcript:nav.claimingExpenses') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/special-measures">Special measures</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.specialMeasures') }}">{{ t('requesting-transcript:nav.specialMeasures') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              Requesting a court hearing transcript
+              {{ t('requesting-transcript:nav.requestingTranscript') }}
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/understand-compensation">When you can claim compensation</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.understandCompensation') }}">{{ t('requesting-transcript:nav.understandCompensation') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/return-property">Getting your property back</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.returnProperty') }}">{{ t('requesting-transcript:nav.returnProperty') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victims-code">Victims' Code</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.victimsCode') }}">{{ t('requesting-transcript:nav.victimsCode') }}</a>
             </li>
           </ol>
         </nav>
@@ -51,37 +51,38 @@
   </div>
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
     <div class="govuk-grid-column-two-thirds">
-      <h2 class="govuk-heading-l govuk-!-margin-top-6">Requesting a court hearing transcript</h2>
-      <p class="govuk-body">You can apply for a transcript of a court or tribunal hearing if the hearing was recorded.</p>
-      <p class="govuk-body">The court can refuse to provide part or all of a transcript (for example, if details of the hearing are confidential).</p>
-      <p class="govuk-body">There are different ways to apply depending on which part of the transcript you want and whether you are eligible for a free copy.</p>
-      <p class="govuk-body">Hearings at magistrates’ courts are never recorded.</p>
+      <h2 class="govuk-heading-l govuk-!-margin-top-6">{{ t('requesting-transcript:section.heading') }}</h2>
+      <p class="govuk-body">{{ t('requesting-transcript:section.intro1') }}</p>
+      <p class="govuk-body">{{ t('requesting-transcript:section.intro2') }}</p>
+      <p class="govuk-body">{{ t('requesting-transcript:section.intro3') }}</p>
+      <p class="govuk-body">{{ t('requesting-transcript:section.intro4') }}</p>
 
-      <h3 class="govuk-heading-m">Get a transcript of the sentencing remarks only</h3>
-      <p class="govuk-body">If someone pleads guilty or is found guilty in a Crown Court, then the judge will decide what punishment they get. The judge will make sentencing remarks to explain their decision.</p>
-      <p class="govuk-body">You might be able to find a transcript of the judgment or sentencing remarks for free online <a href="https://caselaw.nationalarchives.gov.uk/" class="govuk-link" target="_blank">at The National Archives</a> or <a href="https://www.judiciary.uk/judgments/" class="govuk-link" target="_blank">on the Courts and Tribunals Judiciary website</a>.</p>
-      <p class="govuk-body">You can also apply for a transcript of the sentencing remarks for free if you’re involved in a case because you’re either:</p>
+      <h3 class="govuk-heading-m">{{ t('requesting-transcript:sentencing.heading') }}</h3>
+      <p class="govuk-body">{{ t('requesting-transcript:sentencing.para1') }}</p>
+      <p class="govuk-body">{{ t('requesting-transcript:sentencing.para2.before') }} <a href="https://caselaw.nationalarchives.gov.uk/" class="govuk-link" target="_blank">{{ t('requesting-transcript:sentencing.para2.link1Text') }}</a> {{ t('requesting-transcript:sentencing.para2.between') }} <a href="https://www.judiciary.uk/judgments/" class="govuk-link" target="_blank">{{ t('requesting-transcript:sentencing.para2.link2Text') }}</a>.</p>
+      <p class="govuk-body">{{ t('requesting-transcript:sentencing.para3') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>a family member of a victim of murder, manslaughter or an offence that caused death on the road</li>
-        <li>a victim of rape or sexual offences, or you’re applying on their behalf</li>
+        {% for item in t('requesting-transcript:sentencing.eligibleItems', {returnObjects: true}) %}
+          <li>{{ item }}</li>
+        {% endfor %}
       </ul>
-      <p class="govuk-body">You can either:</p>
+      <p class="govuk-body">{{ t('requesting-transcript:sentencing.applyLead') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li><a href="https://transcripts-of-judges-sentencing-remarks.form.service.justice.gov.uk/" class="govuk-link" target="_blank">use the online service to apply</a></li>
-        <li><a href="https://www.gov.uk/government/publications/apply-for-a-transcript-of-a-judges-sentencing-remarks" class="govuk-link" target="_blank">download and fill in the paper form to apply</a></li>
+        <li><a href="https://transcripts-of-judges-sentencing-remarks.form.service.justice.gov.uk/" class="govuk-link" target="_blank">{{ t('requesting-transcript:sentencing.applyOnlineLinkText') }}</a></li>
+        <li><a href="https://www.gov.uk/government/publications/apply-for-a-transcript-of-a-judges-sentencing-remarks" class="govuk-link" target="_blank">{{ t('requesting-transcript:sentencing.applyFormLinkText') }}</a></li>
       </ul>
-      <p class="govuk-body">The court will decide whether you can get a free transcript after you apply. You’ll get a response within 20 working days of applying.</p>
-      <p class="govuk-body">If you’re not eligible for a free transcript of the sentencing remarks, you can apply for a transcript of all or part of the hearing.</p>
+      <p class="govuk-body">{{ t('requesting-transcript:sentencing.para4') }}</p>
+      <p class="govuk-body">{{ t('requesting-transcript:sentencing.para5') }}</p>
 
-      <h3 class="govuk-heading-m">Get a transcript of all or part of the hearing</h3>
-      <p class="govuk-body">Download and fill in <a href="https://www.gov.uk/government/publications/order-a-transcript-of-court-or-tribunal-proceedings-form-ex107" class="govuk-link" target="_blank">form EX107</a> and read the accompanying guidance notes.</p>
-      <p class="govuk-body">The guidance notes will explain the final fee, which will vary depending on the transcript’s size, whether it’s a new transcript or a copy, and other factors.</p>
-      <p class="govuk-body">Return the form by email or post to:</p>
+      <h3 class="govuk-heading-m">{{ t('requesting-transcript:fullHearing.heading') }}</h3>
+      <p class="govuk-body">{{ t('requesting-transcript:fullHearing.para1.before') }} <a href="https://www.gov.uk/government/publications/order-a-transcript-of-court-or-tribunal-proceedings-form-ex107" class="govuk-link" target="_blank">{{ t('requesting-transcript:fullHearing.para1.linkText') }}</a> {{ t('requesting-transcript:fullHearing.para1.after') }}</p>
+      <p class="govuk-body">{{ t('requesting-transcript:fullHearing.para2') }}</p>
+      <p class="govuk-body">{{ t('requesting-transcript:fullHearing.para3') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>the <a href="https://www.gov.uk/find-court-tribunal" class="govuk-link" target="_blank">court or tribunal</a> where the hearing took place</li>
-        <li>the contact details in section 2d of the guidance notes, if you  want a transcript of a judgment from the Court of Appeal Criminal  Division or the Administrative Court</li>
+        <li>{{ t('requesting-transcript:fullHearing.returnItem1.before') }} <a href="https://www.gov.uk/find-court-tribunal" class="govuk-link" target="_blank">{{ t('requesting-transcript:fullHearing.returnItem1.linkText') }}</a> {{ t('requesting-transcript:fullHearing.returnItem1.after') }}</li>
+        <li>{{ t('requesting-transcript:fullHearing.returnItem2') }}</li>
       </ul>
-      <p class="govuk-body">You can choose how soon you would like the transcript to arrive from the options on the form.</p>
+      <p class="govuk-body">{{ t('requesting-transcript:fullHearing.para4') }}</p>
     </div>
   </div>
 {% endblock %}

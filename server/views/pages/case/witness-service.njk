@@ -7,22 +7,22 @@
     <div class="govuk-grid-column-two-thirds">
       <div class="gem-c-heading govuk-!-margin-bottom-8">
         <h1 class="gem-c-heading__text govuk-heading-xl">
-          Help and support
+          {{ t('witness-service:heading.main') }}
         </h1>
       </div>
       <aside class="part-navigation-container" role="complementary">
         <nav data-module="ga4-link-tracker" aria-label="Pages in this guide" class="gem-c-contents-list govuk-!-margin-bottom-4" data-ga4-link-tracker-module-started="true">
           <h2 class="gem-c-contents-list__title">
-            Contents
+            {{ t('witness-service:contents.title') }}
           </h2>
           <ol class="gem-c-contents-list__list">
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victim-support-links">Where to get more support and information</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="{{ t('common:routes.victimSupportLinks') }}">{{ t('witness-service:contents.victimSupportLink') }}</a>
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              Get support if you're going to court as a witness
+              {{ t('witness-service:contents.currentItem') }}
             </li>
           </ol>
         </nav>
@@ -31,29 +31,27 @@
   </div>
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
     <div class="govuk-grid-column-two-thirds">
-      <h2 class="govuk-heading-l">Get support giving evidence as a witness</h2>
-      <p class="govuk-body">If you’re going to court to give evidence, the charity Victim Support can help you prepare, and support you during the court process.</p>
+      <h2 class="govuk-heading-l">{{ t('witness-service:section.heading') }}</h2>
+      <p class="govuk-body">{{ t('witness-service:section.intro') }}</p>
 
-      <h3 class="govuk-heading-m">What they can do to help you</h3>
-      <p>Victim Support will put you in touch with a trained volunteer. They can give you practical information about the court process, for example:</p>
+      <h3 class="govuk-heading-m">{{ t('witness-service:whatTheyCanDo.heading') }}</h3>
+      <p>{{ t('witness-service:whatTheyCanDo.intro') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>show you the courtroom before the trial</li>
-        <li>help you with claiming expenses you might be entitled to</li>
-        <li>refer you to other organisations that could support you</li>
+        {% for item in t('witness-service:whatTheyCanDo.practicalItems', {returnObjects: true}) %}
+          <li>{{ item }}</li>
+        {% endfor %}
       </ul>
-      <p>They can also give you emotional support, for example:</p>
+      <p>{{ t('witness-service:whatTheyCanDo.emotionalIntro') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>help you feel more confident when giving evidence</li>
-        <li>be there to talk to in confidence</li>
-        <li>come to court with you when you give your evidence</li>
-        <li>be with you on the day of the trial</li>
-        <li>help you with any extra support needs at home&nbsp;</li>
+        {% for item in t('witness-service:whatTheyCanDo.emotionalItems', {returnObjects: true}) %}
+          <li>{{ item }}</li>
+        {% endfor %}
       </ul>
-      <p class="govuk-body">The volunteers remain impartial to the court case – they do not take sides.</p>
+      <p class="govuk-body">{{ t('witness-service:whatTheyCanDo.impartial') }}</p>
 
-      <h3 class="govuk-heading-m">Find out more or refer yourself to the service</h3>
+      <h3 class="govuk-heading-m">{{ t('witness-service:findOutMore.heading') }}</h3>
 
-        <a href="https://witnessservice.org.uk/about/getting-help-from-the-witness-service/"
-           class="govuk-link" target="_blank">Contact the Witness Service (opens in new tab).</a></p>
+        <a href="{{ t('common:urls.witnessServiceHelp') }}"
+           class="govuk-link" target="_blank">{{ t('witness-service:findOutMore.linkText') }}</a></p>
   </div>
 {% endblock %}
