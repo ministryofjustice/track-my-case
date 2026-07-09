@@ -5,11 +5,7 @@
   "insetBody": "Contact your police witness care officer if you have any questions about your case.",
   "earlyVersion": "You are seeing a very early version ('private beta') of the {{applicationName}} service.",
   "designedFor": "This service is designed for people who have experienced a crime that has gone to court. It aims to help you to:",
-  "aimsItems": [
-    "find all the information you need to go through the justice process",
-    "know what you need to do",
-    "know what your rights are"
-  ],
+  "aimsItems": ["find all the information you need to go through the justice process", "know what you need to do", "know what your rights are"],
   "addingFeatures": "We're still adding new features to the service, and you can help shape it.",
   "helpShape": "By completing our feedback form or joining our research panel, you can give us your opinions and help us understand how the service can better help you.",
   "feedbackHeading": "Complete the feedback form",

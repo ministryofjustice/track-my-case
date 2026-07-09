@@ -2,10 +2,7 @@
   "goingToCourtHeading": "If you're going to court (Welsh version)",
   "goingToCourtP1": "You usually only need to go to a court hearing or trial if you are giving evidence as a witness. Your police witness care unit (WCU) or officer in charge of the investigation (OIC) will tell you.",
   "goingToCourtP2": "If you're going to court to give evidence, find out:",
-  "goingToCourtLinks": [
-    "how to prepare (opens in new tab)",
-    "what to expect, including what to bring and what to wear (opens in new tab)"
-  ],
+  "goingToCourtLinks": ["how to prepare (opens in new tab)", "what to expect, including what to bring and what to wear (opens in new tab)"],
   "supportHeading": "Get support through the court process",
   "supportP1": "If you are going to court to give evidence, the Witness Service can help you prepare, and support you throughout the trial.",
   "supportP2Before": "Get help with the court process by using",

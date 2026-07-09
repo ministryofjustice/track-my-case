@@ -5,11 +5,7 @@
   "intro1": "When a case goes to court, the people you're likely to have most contact with are your local police force's:",
   "introList1": ["police witness care officer (WCO)", "police officer in charge (OIC)"],
   "intro2": "If you're going to court to give evidence, you will meet and be supported by the:",
-  "introList2": [
-    "volunteer from Witness Service, if you have referred yourself to them",
-    "court usher",
-    "Crown Prosecution Service paralegal"
-  ],
+  "introList2": ["volunteer from Witness Service, if you have referred yourself to them", "court usher", "Crown Prosecution Service paralegal"],
   "experienced": {
     "heading": "Someone who has experienced a crime",
     "para1": "When you experience a crime, you're often referred to as a 'victim'.",
