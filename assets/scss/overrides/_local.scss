@@ -13,8 +13,8 @@
 }
 
 .govuk-input:invalid {
-    border-color: #d4351c;
-    outline-color: #f499be;
+    border-color: #ca3535;
+    outline-color: #e59abe;
 }
 
 .govuk-prototype-kit-common-templates-related-items {
@@ -39,19 +39,27 @@
     height: 40px;
     width: auto;
     margin-bottom: 20px;
+    pointer-events: none;
+
+    button {
+        pointer-events: auto;
+    }
 }
 
-/* Optional: only apply on wide screens */
+.govuk-exit-this-page-pressed {
+    bottom: 40px;
+}
+
+.govuk-exit-this-page button {
+    min-width: 110px;
+    max-width: 110px;
+}
+
 @media (min-width: 40.0625em) {
     .govuk-exit-this-page {
         padding-right: 10px;
         float: initial;
         display: block;
-        pointer-events: none;
-
-        button {
-            pointer-events: auto;
-        }
     }
 }
 

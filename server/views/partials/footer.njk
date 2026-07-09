@@ -1,27 +1,31 @@
 {%- from "govuk/components/footer/macro.njk" import govukFooter -%}
 
-{% if correctPasswordAndNotExpired %}
-  {% include "partials/quick-exit.njk" %}
-{% endif %}
+{% block footerStart %}
+  {% if correctPasswordAndNotExpired %}
+    {% include "partials/quick-exit.njk" %}
+  {% endif %}
+  {% include "partials/is-this-page-useful-feedback.njk" %}
+{% endblock %}
 
-{% include "partials/is-this-page-useful-feedback.njk" %}
-
-{{ govukFooter({
-  rebrand: true,
-  meta: {
-    items: [
-      {
-        href: "/privacy-notice",
-        text: "Privacy"
-      },
-      {
-        href: "/cookies",
-        text: "Cookies"
-      },
-      {
-        href: "/about-the-service",
-        text: "Take part in research"
+<nav aria-label="Service links">
+  {% block govukFooter %}
+    {{ govukFooter({
+      meta: {
+        items: [
+          {
+            href: "/privacy-notice",
+            text: "Privacy"
+          },
+          {
+            href: "/cookies",
+            text: "Cookies"
+          },
+          {
+            href: "/about-the-service",
+            text: "Take part in research"
+          }
+        ]
       }
-    ]
-  }
-}) }}
+    }) }}
+  {% endblock %}
+</nav>

@@ -9,17 +9,17 @@
 }
 
 .action-card {
-  border: 1px solid #b1b4b6;
+  border: 1px solid #cecece;
   background: #ffffff;
   display: flex;
   flex-direction: column;
   min-height: 240px; // Ensures total card height is consistent
 
   &__header {
-    background: #f3f2f1;
+    background: #f3f3f3;
     padding: 1rem 1.5rem 1rem;
-    border-bottom: 1px solid #b1b4b6;
-    min-height: 30px; 
+    border-bottom: 1px solid #cecece;
+    min-height: 30px;
     display: flex;
     align-items: center;
   }
@@ -33,8 +33,8 @@
     min-height: 150px; // ✅ Ensures uniformity even if body content is short
   }
 
-  
-  
+
+
   &--emphasised {
     background-color: #1d70b8;
     color: #ffffff;
@@ -77,4 +77,3 @@
     vertical-align: middle;
   }
 }
-

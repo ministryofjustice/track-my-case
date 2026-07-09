@@ -7,8 +7,8 @@ pre {
 }
 
 .account-navigation {
-  background-color: #f3f2f1;
-  border-bottom: 1px solid #b1b4b6;
+  background-color: #f3f3f3;
+  border-bottom: 1px solid #cecece;
   position: relative;
 }
 
@@ -80,7 +80,7 @@ pre {
 }
 
 .account-navigation__link:visited:hover {
-  color: #003078;
+  color: #0f385c;
 }
 
 .account-navigation__link:visited:focus {
@@ -98,7 +98,7 @@ pre {
 }
 
 .account-navigation__list-item--active .account-navigation__link:hover {
-  border-color: #003078;
+  border-color: #0f385c;
 }
 
 .your-services__heading {
@@ -110,7 +110,7 @@ pre {
 }
 
 .your-services__card {
-  border: 1px solid #b1b4b6;
+  border: 1px solid #cecece;
 }
 
 .govuk-list > .your-services__card {
@@ -123,7 +123,7 @@ pre {
 
 .your-services__card__heading {
   padding: 15px 15px 20px 15px;
-  background-color: #f3f2f1;
+  background-color: #f3f3f3;
   margin: 0;
 }
 
@@ -140,7 +140,7 @@ pre {
 }
 
 .your-services__card__last-used {
-  color: #505a5f;
+  color: #484949;
 }
 
 .your-services__list {

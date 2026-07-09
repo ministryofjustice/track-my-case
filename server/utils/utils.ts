@@ -106,12 +106,20 @@ const TRUSTED_PATHS: ReadonlySet<string> = (() => {
  * defaultPath param for default redirect
  */
 export const getSafeReturnPath = (returnTo: string | undefined | null, defaultPath: string): string => {
-  if (!returnTo) {
+  if (!returnTo?.trim()) {
     return defaultPath
   }
 
-  if (TRUSTED_PATHS.has(returnTo)) {
-    return returnTo
+  try {
+    const parsed = new URL(returnTo, 'http://localhost')
+    if (parsed.hostname !== 'localhost') {
+      return defaultPath
+    }
+    if (TRUSTED_PATHS.has(parsed.pathname)) {
+      return parsed.pathname
+    }
+  } catch {
+    return defaultPath
   }
 
   return defaultPath

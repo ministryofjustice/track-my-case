@@ -50,6 +50,6 @@ export default function indexRoutes(app: express.Express): void {
 
   app.get('/robots.txt', (req: Request, res: Response) => {
     res.type('text/plain')
-    res.send('User-agent: *\nDisallow: /')
+    res.send('User-agent: *\nDisallow: /case/')
   })
 }

@@ -24,7 +24,7 @@ const initialiseBasicAuthentication = async (req: Request, res: Response, next: 
   res.locals.oneLoginLink = config.apis.govukOneLogin.oneLoginLink
   res.locals.signOutLink = config.serviceUrl + paths.PASSPORT.SIGN_OUT
   res.locals.serviceUrl = config.serviceUrl
-  res.locals.homepageLink = config.serviceUrl
+  res.locals.homepageUrl = config.serviceUrl
   res.locals.allowDebug = config.session.allowDebug && Boolean(req.query?.debug === 'true')
   res.locals.pageUrl = req.url
 
