@@ -34,7 +34,7 @@ describe('privacy-notice-controller', () => {
     const { req, res, next } = createReqRes()
     await privacyNoticeController(req, res, next)
     expect(res.locals.pageTitle).toBe('Privacy notice')
-    expect(res.render).toHaveBeenCalledWith('pages/privacy-notice')
+    expect(res.render).toHaveBeenCalledWith('pages/privacy-notice.njk')
   })
 
   it('sets backLink to START when not authenticated', async () => {

@@ -31,7 +31,7 @@ describe('victim-personal-statement-controller', () => {
     await victimPersonalStatementController(req, res, next)
     expect(res.locals.pageTitle).toBe('Making a Victim Personal Statement')
     expect(res.locals.backLink).toBe(paths.CASES.DASHBOARD)
-    expect(res.render).toHaveBeenCalledWith('pages/case/victim-personal-statement')
+    expect(res.render).toHaveBeenCalledWith('pages/case/victim-personal-statement.njk')
   })
 
   it('calls next(error) when an error is thrown', async () => {

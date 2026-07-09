@@ -31,7 +31,7 @@ describe('victims-code-controller', () => {
     await victimsCodeController(req, res, next)
     expect(res.locals.pageTitle).toBe('Victims code')
     expect(res.locals.backLink).toBe(paths.CASES.DASHBOARD)
-    expect(res.render).toHaveBeenCalledWith('pages/case/victims-code')
+    expect(res.render).toHaveBeenCalledWith('pages/case/victims-code.njk')
   })
 
   it('calls next(error) when an error is thrown', async () => {

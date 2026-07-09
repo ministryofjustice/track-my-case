@@ -31,7 +31,7 @@ describe('requesting-court-hearing-transcript-controller', () => {
     await requestingCourtHearingTranscriptController(req, res, next)
     expect(res.locals.pageTitle).toBe('Requesting a court hearing transcript')
     expect(res.locals.backLink).toBe(paths.CASES.DASHBOARD)
-    expect(res.render).toHaveBeenCalledWith('pages/case/requesting-court-hearing-transcript')
+    expect(res.render).toHaveBeenCalledWith('pages/case/requesting-court-hearing-transcript.njk')
   })
 
   it('calls next(error) when an error is thrown', async () => {

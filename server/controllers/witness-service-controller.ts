@@ -9,7 +9,7 @@ const witnessServiceController = async (req: Request, res: Response, next: NextF
     res.locals.pageTitle = 'Get support giving evidence as a witness'
     res.locals.backLink = paths.CASES.DASHBOARD
 
-    res.render('pages/case/witness-service')
+    res.render('pages/case/witness-service.njk')
   } catch (error) {
     next(error)
   }

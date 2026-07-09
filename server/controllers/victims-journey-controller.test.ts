@@ -31,7 +31,7 @@ describe('victims-journey-controller', () => {
     await victimsJourneyController(req, res, next)
     expect(res.locals.pageTitle).toBe('Victims journey')
     expect(res.locals.backLink).toBe(paths.CASES.DASHBOARD)
-    expect(res.render).toHaveBeenCalledWith('pages/case/victims-journey')
+    expect(res.render).toHaveBeenCalledWith('pages/case/victims-journey.njk')
   })
 
   it('calls next(error) when an error is thrown', async () => {

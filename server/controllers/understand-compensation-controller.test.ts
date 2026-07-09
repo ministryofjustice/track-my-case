@@ -31,7 +31,7 @@ describe('understand-compensation-controller', () => {
     await understandCompensationController(req, res, next)
     expect(res.locals.pageTitle).toBe('When you can claim compensation')
     expect(res.locals.backLink).toBe(paths.CASES.DASHBOARD)
-    expect(res.render).toHaveBeenCalledWith('pages/case/understand-compensation')
+    expect(res.render).toHaveBeenCalledWith('pages/case/understand-compensation.njk')
   })
 
   it('calls next(error) when an error is thrown', async () => {

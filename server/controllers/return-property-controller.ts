@@ -9,7 +9,7 @@ const returnPropertyController = async (req: Request, res: Response, next: NextF
     res.locals.pageTitle = 'Getting your property back'
     res.locals.backLink = paths.CASES.DASHBOARD
 
-    res.render('pages/case/return-property')
+    res.render('pages/case/return-property.njk')
   } catch (error) {
     next(error)
   }

@@ -20,7 +20,7 @@ const aboutTheServiceController = async (req: Request, res: Response, next: Next
       res.locals.backLink = paths.START
     }
 
-    res.render('pages/about-the-service')
+    res.render('pages/about-the-service.njk')
   } catch (error) {
     next(error)
   }

@@ -9,7 +9,7 @@ const victimPersonalStatementController = async (req: Request, res: Response, ne
     res.locals.pageTitle = 'Making a Victim Personal Statement'
     res.locals.backLink = paths.CASES.DASHBOARD
 
-    res.render('pages/case/victim-personal-statement')
+    res.render('pages/case/victim-personal-statement.njk')
   } catch (error) {
     next(error)
   }

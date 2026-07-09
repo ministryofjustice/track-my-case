@@ -40,6 +40,6 @@ export default function createErrorHandler(production: boolean) {
 
     res.status(httpError.status || 500)
 
-    return res.render('pages/error')
+    return res.render('pages/error.njk')
   }
 }

@@ -31,7 +31,7 @@ describe('victim-support-links-controller', () => {
     await victimSupportLinksController(req, res, next)
     expect(res.locals.pageTitle).toBe('Where to get more support and information')
     expect(res.locals.backLink).toBe(paths.CASES.DASHBOARD)
-    expect(res.render).toHaveBeenCalledWith('pages/case/victim-support-links')
+    expect(res.render).toHaveBeenCalledWith('pages/case/victim-support-links.njk')
   })
 
   it('calls next(error) when an error is thrown', async () => {

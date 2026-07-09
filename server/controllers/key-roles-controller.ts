@@ -9,7 +9,7 @@ const keyRolesController = async (req: Request, res: Response, next: NextFunctio
     res.locals.pageTitle = 'People in the criminal justice system'
     res.locals.backLink = paths.CASES.DASHBOARD
 
-    res.render('pages/case/key-roles')
+    res.render('pages/case/key-roles.njk')
   } catch (error) {
     next(error)
   }

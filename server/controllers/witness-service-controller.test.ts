@@ -31,7 +31,7 @@ describe('witness-service-controller', () => {
     await witnessServiceController(req, res, next)
     expect(res.locals.pageTitle).toBe('Get support giving evidence as a witness')
     expect(res.locals.backLink).toBe(paths.CASES.DASHBOARD)
-    expect(res.render).toHaveBeenCalledWith('pages/case/witness-service')
+    expect(res.render).toHaveBeenCalledWith('pages/case/witness-service.njk')
   })
 
   it('calls next(error) when an error is thrown', async () => {

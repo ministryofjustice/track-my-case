@@ -31,7 +31,7 @@ describe('key-roles-controller', () => {
     await keyRolesController(req, res, next)
     expect(res.locals.pageTitle).toBe('People in the criminal justice system')
     expect(res.locals.backLink).toBe(paths.CASES.DASHBOARD)
-    expect(res.render).toHaveBeenCalledWith('pages/case/key-roles')
+    expect(res.render).toHaveBeenCalledWith('pages/case/key-roles.njk')
   })
 
   it('calls next(error) when an error is thrown', async () => {

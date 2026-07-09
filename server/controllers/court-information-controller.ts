@@ -87,7 +87,7 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
       if (caseStatus === 'INACTIVE') {
         res.locals.pageTitle = `No further court dates - ${pageTitle}`
         res.locals.message = `Status ${statusCode}, case status ${caseStatus}, No further court dates`
-        return res.render('pages/case/court-information-inactive')
+        return res.render('pages/case/court-information-inactive.njk')
       }
       if (res.locals.caseDetails?.courtSchedule?.length > 0) {
         const courtSchedule = res.locals.caseDetails?.courtSchedule[0]
@@ -99,7 +99,7 @@ const courtInformationController = async (req: Request, res: Response, next: Nex
           res.locals.courtUrl = courtUrl ?? 'https://www.find-court-tribunal.service.gov.uk/'
 
           if (caseStatus === 'ACTIVE' || caseStatus === 'SJP_REFERRAL') {
-            return res.render('pages/case/court-information')
+            return res.render('pages/case/court-information.njk')
           }
         }
 

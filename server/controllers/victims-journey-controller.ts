@@ -9,7 +9,7 @@ const victimsJourneyController = async (req: Request, res: Response, next: NextF
     res.locals.pageTitle = 'Victims journey'
     res.locals.backLink = paths.CASES.DASHBOARD
 
-    res.render('pages/case/victims-journey')
+    res.render('pages/case/victims-journey.njk')
   } catch (error) {
     next(error)
   }

@@ -31,7 +31,7 @@ describe('claiming-expenses-controller', () => {
     await claimingExpensesController(req, res, next)
     expect(res.locals.pageTitle).toBe('Claiming expenses')
     expect(res.locals.backLink).toBe(paths.CASES.DASHBOARD)
-    expect(res.render).toHaveBeenCalledWith('pages/case/claiming-expenses')
+    expect(res.render).toHaveBeenCalledWith('pages/case/claiming-expenses.njk')
   })
 
   it('calls next(error) when an error is thrown', async () => {

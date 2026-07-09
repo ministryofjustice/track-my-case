@@ -9,7 +9,7 @@ const claimingExpensesController = async (req: Request, res: Response, next: Nex
     res.locals.pageTitle = 'Claiming expenses'
     res.locals.backLink = paths.CASES.DASHBOARD
 
-    res.render('pages/case/claiming-expenses')
+    res.render('pages/case/claiming-expenses.njk')
   } catch (error) {
     next(error)
   }

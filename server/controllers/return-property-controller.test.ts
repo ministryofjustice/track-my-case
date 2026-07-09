@@ -31,7 +31,7 @@ describe('return-property-controller', () => {
     await returnPropertyController(req, res, next)
     expect(res.locals.pageTitle).toBe('Getting your property back')
     expect(res.locals.backLink).toBe(paths.CASES.DASHBOARD)
-    expect(res.render).toHaveBeenCalledWith('pages/case/return-property')
+    expect(res.render).toHaveBeenCalledWith('pages/case/return-property.njk')
   })
 
   it('calls next(error) when an error is thrown', async () => {

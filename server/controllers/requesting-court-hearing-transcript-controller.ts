@@ -13,7 +13,7 @@ const requestingCourtHearingTranscriptController = async (
     res.locals.pageTitle = 'Requesting a court hearing transcript'
     res.locals.backLink = paths.CASES.DASHBOARD
 
-    res.render('pages/case/requesting-court-hearing-transcript')
+    res.render('pages/case/requesting-court-hearing-transcript.njk')
   } catch (error) {
     next(error)
   }

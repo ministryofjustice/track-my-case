@@ -18,7 +18,7 @@ const privacyNoticeController = async (req: Request, res: Response, next: NextFu
       res.locals.backLink = paths.START
     }
 
-    res.render('pages/privacy-notice')
+    res.render('pages/privacy-notice.njk')
   } catch (error) {
     next(error)
   }

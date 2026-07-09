@@ -34,7 +34,7 @@ describe('about-the-service-controller', () => {
     const { req, res, next } = createReqRes()
     await aboutTheServiceController(req, res, next)
     expect(res.locals.pageTitle).toBe('About the Track a case service')
-    expect(res.render).toHaveBeenCalledWith('pages/about-the-service')
+    expect(res.render).toHaveBeenCalledWith('pages/about-the-service.njk')
   })
 
   it('sets backLink to START when not authenticated', async () => {

@@ -9,7 +9,7 @@ const understandCompensationController = async (req: Request, res: Response, nex
     res.locals.pageTitle = 'When you can claim compensation'
     res.locals.backLink = paths.CASES.DASHBOARD
 
-    res.render('pages/case/understand-compensation')
+    res.render('pages/case/understand-compensation.njk')
   } catch (error) {
     next(error)
   }
