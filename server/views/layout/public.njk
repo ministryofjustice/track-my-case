@@ -6,11 +6,16 @@
 {% endblock %}
 
 {% block pageTitle %}
-  {{ (applicationName + " - " + pageTitle) | default(applicationName) }}
+  {{ (pageTitle + " – " + applicationName + " - GOV.UK") }}
 {% endblock %}
 
 {% block skipLink %}
   {{ super() }}
+  {% if correctPasswordAndNotExpired %}
+    <nav aria-label="Quick exit">
+      <a href="https://www.bbc.co.uk/weather" class="govuk-skip-link" rel="nofollow noreferrer">Quick Exit (press Shift or Escape three times)</a>
+    </nav>
+  {% endif %}
   {% if not cookieAccepted %}
     {% include "partials/cookie-banner.njk" %}
   {% endif %}

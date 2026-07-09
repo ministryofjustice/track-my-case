@@ -111,7 +111,7 @@ describe('court-information-controller', () => {
       await courtInformationController(req, res, next)
 
       expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
-      expect(res.locals.pageTitle).toBe('Court information - No further court dates')
+      expect(res.locals.pageTitle).toBe('No further court dates - Court information')
       expect(res.locals.backLink).toBe(paths.CASES.SEARCH)
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-inactive')
     })
@@ -129,7 +129,7 @@ describe('court-information-controller', () => {
 
       await courtInformationController(req, res, next)
 
-      expect(res.locals.pageTitle).toBe('Court information - No further court dates')
+      expect(res.locals.pageTitle).toBe('No further court dates - Court information')
       expect(res.locals.backLink).toBe(paths.CASES.SEARCH)
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-inactive')
     })
@@ -148,7 +148,7 @@ describe('court-information-controller', () => {
 
         expect(mockMapCaseDetailsToHearingSummary).toHaveBeenCalledWith(hearing)
         expect(res.status).toHaveBeenCalledWith(404)
-        expect(res.locals.pageTitle).toBe('Court information - No hearings allocated')
+        expect(res.locals.pageTitle).toBe('No hearings allocated - Court information')
         expect(res.locals.backLink).toBe(paths.CASES.SEARCH)
         expect(res.render).toHaveBeenCalledWith('pages/case/court-information-no-hearings-allocated', {
           error: 'No hearings allocated for this case',
@@ -370,7 +370,7 @@ describe('court-information-controller', () => {
 
       expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
       expect(res.status).toHaveBeenCalledWith(404)
-      expect(res.locals.pageTitle).toBe('Court information - Not found')
+      expect(res.locals.pageTitle).toBe('Not found - Court information')
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found')
     })
 
@@ -382,7 +382,7 @@ describe('court-information-controller', () => {
 
       expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
       expect(res.status).toHaveBeenCalledWith(404)
-      expect(res.locals.pageTitle).toBe('Court information - Bad request')
+      expect(res.locals.pageTitle).toBe('Bad request - Court information')
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found')
     })
 
@@ -394,7 +394,7 @@ describe('court-information-controller', () => {
 
       expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
       expect(res.status).toHaveBeenCalledWith(404)
-      expect(res.locals.pageTitle).toBe('Court information - Access denied')
+      expect(res.locals.pageTitle).toBe('Access denied - Court information')
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-access-denied')
     })
 
@@ -406,7 +406,7 @@ describe('court-information-controller', () => {
 
       expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
       expect(res.status).toHaveBeenCalledWith(404)
-      expect(res.locals.pageTitle).toBe('Court information - Too many requests')
+      expect(res.locals.pageTitle).toBe('Too many requests - Court information')
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-common-platform-unavailable')
     })
 
@@ -418,7 +418,7 @@ describe('court-information-controller', () => {
 
       expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
       expect(res.status).toHaveBeenCalledWith(404)
-      expect(res.locals.pageTitle).toBe('Court information - Common platform unavailable')
+      expect(res.locals.pageTitle).toBe('Common platform unavailable - Court information')
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-common-platform-unavailable')
     })
 
@@ -445,7 +445,7 @@ describe('court-information-controller', () => {
       await courtInformationController(req, res, next)
 
       expect(res.status).toHaveBeenCalledWith(404)
-      expect(res.locals.pageTitle).toBe('Court information - Access denied')
+      expect(res.locals.pageTitle).toBe('Access denied - Court information')
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-access-denied')
     })
 
@@ -459,7 +459,7 @@ describe('court-information-controller', () => {
       await courtInformationController(req, res, next)
 
       expect(res.status).toHaveBeenCalledWith(404)
-      expect(res.locals.pageTitle).toBe('Court information - Too many requests')
+      expect(res.locals.pageTitle).toBe('Too many requests - Court information')
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-common-platform-unavailable')
     })
 
@@ -473,7 +473,7 @@ describe('court-information-controller', () => {
       await courtInformationController(req, res, next)
 
       expect(res.status).toHaveBeenCalledWith(404)
-      expect(res.locals.pageTitle).toBe('Court information - Common platform unavailable')
+      expect(res.locals.pageTitle).toBe('Common platform unavailable - Court information')
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-common-platform-unavailable')
     })
 
@@ -487,7 +487,7 @@ describe('court-information-controller', () => {
       await courtInformationController(req, res, next)
 
       expect(res.status).toHaveBeenCalledWith(404)
-      expect(res.locals.pageTitle).toBe('Court information - Bad request')
+      expect(res.locals.pageTitle).toBe('Bad request - Court information')
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found')
     })
 
@@ -501,7 +501,7 @@ describe('court-information-controller', () => {
       await courtInformationController(req, res, next)
 
       expect(res.status).toHaveBeenCalledWith(404)
-      expect(res.locals.pageTitle).toBe('Court information - Not found')
+      expect(res.locals.pageTitle).toBe('Not found - Court information')
       expect(res.locals.message).toContain('unexpected status code')
       expect(res.render).toHaveBeenCalledWith('pages/case/court-information-not-found')
     })
