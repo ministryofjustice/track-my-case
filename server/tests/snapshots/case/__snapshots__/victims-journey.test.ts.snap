@@ -1,0 +1,1114 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`matches snapshot 1`] = `
+"<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8">
+    <title>
+  The criminal justice system: step by step – Track a case - GOV.UK
+</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#1d70b8">
+
+    
+  <link href="/assets/css/index.css" rel="stylesheet" />
+  <meta name="google-site-verification" content="ThvYU2V6sfjD-kyyj2zaZ8lZUxn-8qnsoiQCaFZHccQ" />
+
+
+    
+      <link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
+      <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
+      <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#1d70b8">
+      <link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
+      <link rel="manifest" href="/assets/manifest.json">
+    
+    
+  </head>
+  <body class="govuk-template__body">
+    <script nonce="test-nonce">document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    
+  
+
+
+
+
+
+    
+  
+        <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+      
+  
+    <nav aria-label="Quick exit">
+      <a href="https://www.bbc.co.uk/weather" class="govuk-skip-link" rel="nofollow noreferrer">Quick Exit (press Shift or Escape three times)</a>
+    </nav>
+  
+  
+
+
+    
+    
+
+    
+  
+
+  
+    
+
+
+  <header class="cross-service-header" role="banner" data-module="one-login-header">
+  <div class="one-login-header" data-one-login-header-nav>
+    <div class="one-login-header__container govuk-width-container">
+      <div class="one-login-header__logo">
+        <a href="https://www.gov.uk/" class="one-login-header__link one-login-header__link--homepage">
+          <span class="one-login-header__logotype">
+            <!--[if gt IE 8]><!-->
+              <svg focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 324 60" height="30" width="162" fill="currentcolor" class="govuk-header__logotype" aria-label="GOV.UK"><title>GOV.UK</title>    <g>
+                <circle cx="20" cy="17.6" r="3.7"></circle>
+                <circle cx="10.2" cy="23.5" r="3.7"></circle>
+                <circle cx="3.7" cy="33.2" r="3.7"></circle>
+                <circle cx="31.7" cy="30.6" r="3.7"></circle>
+                <circle cx="43.3" cy="17.6" r="3.7"></circle>
+                <circle cx="53.2" cy="23.5" r="3.7"></circle>
+                <circle cx="59.7" cy="33.2" r="3.7"></circle>
+                <circle cx="31.7" cy="30.6" r="3.7"></circle>
+                <path d="M33.1,9.8c.2-.1.3-.3.5-.5l4.6,2.4v-6.8l-4.6,1.5c-.1-.2-.3-.3-.5-.5l1.9-5.9h-6.7l1.9,5.9c-.2.1-.3.3-.5.5l-4.6-1.5v6.8l4.6-2.4c.1.2.3.3.5.5l-2.6,8c-.9,2.8,1.2,5.7,4.1,5.7h0c3,0,5.1-2.9,4.1-5.7l-2.6-8ZM37,37.9s-3.4,3.8-4.1,6.1c2.2,0,4.2-.5,6.4-2.8l-.7,8.5c-2-2.8-4.4-4.1-5.7-3.8.1,3.1.5,6.7,5.8,7.2,3.7.3,6.7-1.5,7-3.8.4-2.6-2-4.3-3.7-1.6-1.4-4.5,2.4-6.1,4.9-3.2-1.9-4.5-1.8-7.7,2.4-10.9,3,4,2.6,7.3-1.2,11.1,2.4-1.3,6.2,0,4,4.6-1.2-2.8-3.7-2.2-4.2.2-.3,1.7.7,3.7,3,4.2,1.9.3,4.7-.9,7-5.9-1.3,0-2.4.7-3.9,1.7l2.4-8c.6,2.3,1.4,3.7,2.2,4.5.6-1.6.5-2.8,0-5.3l5,1.8c-2.6,3.6-5.2,8.7-7.3,17.5-7.4-1.1-15.7-1.7-24.5-1.7h0c-8.8,0-17.1.6-24.5,1.7-2.1-8.9-4.7-13.9-7.3-17.5l5-1.8c-.5,2.5-.6,3.7,0,5.3.8-.8,1.6-2.3,2.2-4.5l2.4,8c-1.5-1-2.6-1.7-3.9-1.7,2.3,5,5.2,6.2,7,5.9,2.3-.4,3.3-2.4,3-4.2-.5-2.4-3-3.1-4.2-.2-2.2-4.6,1.6-6,4-4.6-3.7-3.7-4.2-7.1-1.2-11.1,4.2,3.2,4.3,6.4,2.4,10.9,2.5-2.8,6.3-1.3,4.9,3.2-1.8-2.7-4.1-1-3.7,1.6.3,2.3,3.3,4.1,7,3.8,5.4-.5,5.7-4.2,5.8-7.2-1.3-.2-3.7,1-5.7,3.8l-.7-8.5c2.2,2.3,4.2,2.7,6.4,2.8-.7-2.3-4.1-6.1-4.1-6.1h10.6,0Z"></path>
+              </g>
+                <circle class="govuk-logo-dot" cx="226" cy="36" r="7.3"></circle>
+                <path d="M93.94 41.25c.4 1.81 1.2 3.21 2.21 4.62 1 1.4 2.21 2.41 3.61 3.21s3.21 1.2 5.22 1.2 3.61-.4 4.82-1c1.4-.6 2.41-1.4 3.21-2.41.8-1 1.4-2.01 1.61-3.01s.4-2.01.4-3.01v.14h-10.86v-7.02h20.07v24.08h-8.03v-5.56c-.6.8-1.38 1.61-2.19 2.41-.8.8-1.81 1.2-2.81 1.81-1 .4-2.21.8-3.41 1.2s-2.41.4-3.81.4a18.56 18.56 0 0 1-14.65-6.63c-1.6-2.01-3.01-4.41-3.81-7.02s-1.4-5.62-1.4-8.83.4-6.02 1.4-8.83a20.45 20.45 0 0 1 19.46-13.65c3.21 0 4.01.2 5.82.8 1.81.4 3.61 1.2 5.02 2.01 1.61.8 2.81 2.01 4.01 3.21s2.21 2.61 2.81 4.21l-7.63 4.41c-.4-1-1-1.81-1.61-2.61-.6-.8-1.4-1.4-2.21-2.01-.8-.6-1.81-1-2.81-1.4-1-.4-2.21-.4-3.61-.4-2.01 0-3.81.4-5.22 1.2-1.4.8-2.61 1.81-3.61 3.21s-1.61 2.81-2.21 4.62c-.4 1.81-.6 3.71-.6 5.42s.8 5.22.8 5.22Zm57.8-27.9c3.21 0 6.22.6 8.63 1.81 2.41 1.2 4.82 2.81 6.62 4.82S170.2 24.39 171 27s1.4 5.62 1.4 8.83-.4 6.02-1.4 8.83-2.41 5.02-4.01 7.02-4.01 3.61-6.62 4.82-5.42 1.81-8.63 1.81-6.22-.6-8.63-1.81-4.82-2.81-6.42-4.82-3.21-4.41-4.01-7.02-1.4-5.62-1.4-8.83.4-6.02 1.4-8.83 2.41-5.02 4.01-7.02 4.01-3.61 6.42-4.82 5.42-1.81 8.63-1.81Zm0 36.73c1.81 0 3.61-.4 5.02-1s2.61-1.81 3.61-3.01 1.81-2.81 2.21-4.41c.4-1.81.8-3.61.8-5.62 0-2.21-.2-4.21-.8-6.02s-1.2-3.21-2.21-4.62c-1-1.2-2.21-2.21-3.61-3.01s-3.21-1-5.02-1-3.61.4-5.02 1c-1.4.8-2.61 1.81-3.61 3.01s-1.81 2.81-2.21 4.62c-.4 1.81-.8 3.61-.8 5.62 0 2.41.2 4.21.8 6.02.4 1.81 1.2 3.21 2.21 4.41s2.21 2.21 3.61 3.01c1.4.8 3.21 1 5.02 1Zm36.32 7.96-12.24-44.15h9.83l8.43 32.77h.4l8.23-32.77h9.83L200.3 58.04h-12.24Zm74.14-7.96c2.18 0 3.51-.6 3.51-.6 1.2-.6 2.01-1 2.81-1.81s1.4-1.81 1.81-2.81a13 13 0 0 0 .8-4.01V13.9h8.63v28.15c0 2.41-.4 4.62-1.4 6.62-.8 2.01-2.21 3.61-3.61 5.02s-3.41 2.41-5.62 3.21-4.62 1.2-7.02 1.2-5.02-.4-7.02-1.2c-2.21-.8-4.01-1.81-5.62-3.21s-2.81-3.01-3.61-5.02-1.4-4.21-1.4-6.62V13.9h8.63v26.95c0 1.61.2 3.01.8 4.01.4 1.2 1.2 2.21 2.01 2.81.8.8 1.81 1.4 2.81 1.81 0 0 1.34.6 3.51.6Zm34.22-36.18v18.92l15.65-18.92h10.82l-15.03 17.32 16.03 26.83h-10.21l-11.44-20.21-5.62 6.22v13.99h-8.83V13.9"></path>
+              </svg>
+            <!--<![endif]-->
+          </span>
+        </a>
+      </div>
+      <button type="button"
+        aria-controls="one-login-header__nav"
+        aria-label="Show GOV.UK One Login menu"
+        data-open-class="cross-service-header__button--open"
+        data-label-for-show="Show GOV.UK One Login menu"
+        data-label-for-hide="Hide GOV.UK One Login menu"
+        aria-expanded="false"
+        class="cross-service-header__button cross-service-header__button--one-login js-x-header-toggle">
+        <span class="cross-service-header__button-content">One Login</span>
+          
+  <!--[if gt IE 8]><!-->
+    <span class="cross-service-header__button-icon cross-service-header__button-icon--default">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+        <circle cx="11" cy="11" r="11" fill="white"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.29297 18.8487C4.23255 15.4753 7.32741 13 11.0004 13C14.6731 13 17.7678 15.4749 18.7076 18.848C17.8058 19.7338 16.752 20.4654 15.5889 21H11.0004H6.41097C5.24819 20.4655 4.19463 19.7342 3.29297 18.8487Z" fill="#1D70B8"/>
+        <circle cx="11" cy="7.75" r="3.75" fill="#1D70B8"/>
+        <circle cx="11" cy="11" r="10" stroke="white" stroke-width="2"/>
+      </svg>
+    </span>
+  <!--<![endif]-->
+          
+  <!--[if gt IE 8]><!-->
+    <span class="cross-service-header__button-icon cross-service-header__button-icon--focus">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+        <circle cx="11" cy="11" r="11" fill="black"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.29297 18.8487C4.23255 15.4753 7.32741 13 11.0004 13C14.6731 13 17.7678 15.4749 18.7076 18.848C17.8058 19.7338 16.752 20.4654 15.5889 21H11.0004H6.41097C5.24819 20.4655 4.19463 19.7342 3.29297 18.8487Z" fill="white"/>
+        <circle cx="11" cy="7.75" r="3.75" fill="white"/>
+        <circle cx="11" cy="11" r="10" stroke="black" stroke-width="2"/>
+      </svg>
+    </span>
+  <!--<![endif]-->
+      </button>
+      
+        <nav aria-label="GOV.UK One Login menu" class="one-login-header__nav" data-open-class="one-login-header__nav--open" id="one-login-header__nav">
+          <ul class="one-login-header__nav__list">
+            <li class="one-login-header__nav__list-item">
+              <a class="one-login-header__nav__link one-login-header__nav__link--one-login" href="https://home.account.gov.uk/" target="_blank">
+                <span class="one-login-header__nav__link-content">
+                  GOV.UK One Login
+                </span>
+                <span>
+                  
+  <!--[if gt IE 8]><!-->
+    <span class="cross-service-header__button-icon cross-service-header__button-icon--default">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+        <circle cx="11" cy="11" r="11" fill="white"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.29297 18.8487C4.23255 15.4753 7.32741 13 11.0004 13C14.6731 13 17.7678 15.4749 18.7076 18.848C17.8058 19.7338 16.752 20.4654 15.5889 21H11.0004H6.41097C5.24819 20.4655 4.19463 19.7342 3.29297 18.8487Z" fill="#1D70B8"/>
+        <circle cx="11" cy="7.75" r="3.75" fill="#1D70B8"/>
+        <circle cx="11" cy="11" r="10" stroke="white" stroke-width="2"/>
+      </svg>
+    </span>
+  <!--<![endif]-->
+                  
+  <!--[if gt IE 8]><!-->
+    <span class="cross-service-header__button-icon cross-service-header__button-icon--focus">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+        <circle cx="11" cy="11" r="11" fill="black"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.29297 18.8487C4.23255 15.4753 7.32741 13 11.0004 13C14.6731 13 17.7678 15.4749 18.7076 18.848C17.8058 19.7338 16.752 20.4654 15.5889 21H11.0004H6.41097C5.24819 20.4655 4.19463 19.7342 3.29297 18.8487Z" fill="white"/>
+        <circle cx="11" cy="7.75" r="3.75" fill="white"/>
+        <circle cx="11" cy="11" r="10" stroke="black" stroke-width="2"/>
+      </svg>
+    </span>
+  <!--<![endif]-->
+                </span>
+              </a>
+            </li>
+            <li class="one-login-header__nav__list-item">
+              <a class="govuk-link one-login-header__nav__link" id="sign-out-button" href="https://home.account.gov.uk/sign-out">
+                Sign out
+              </a>
+            </li>
+          </ul>
+        </nav>
+      
+    </div>
+  </div>
+  
+  <!-- Start of service navigation -->
+  <div class="service-header" data-one-login-header-nav>
+    <div class="govuk-width-container">
+      <div class="service-header__container">
+        <!-- The name of your service goes here -->
+        <h2 class="service-header__heading">Track a case</h2>
+        <div>
+          <!-- Label the toggle button appropriately (you might want to use the name of your service) to provide support for screen reader users -->
+          <button type="button"
+            aria-controls="service-header__nav"
+            data-open-class="cross-service-header__button--open"
+            aria-label="Show service navigation menu"
+            data-label-for-show="Show service navigation menu"
+            data-label-for-hide="Hide service navigation menu"
+            data-text-for-show="Menu"
+            data-text-for-hide="Close"
+            aria-expanded="false"
+            class="cross-service-header__button cross-service-header__button--service-header js-x-header-toggle">
+            <span class="service-header__button-content">Menu</span>
+          </button>
+          <!-- Important! Label your navigation appropriately! When there are multiple navigation landmarks on a page, additional labelling is required to provide support for screen reader users -->
+          <nav aria-label="Track a case menu">
+            <ul class="service-header__nav-list service-header__nav" id="service-header__nav" data-open-class="service-header__nav--open">
+              <!-- Use the "service-header__nav-list-item--active" modifier class on the li to visually highlight the page the user is currently viewing -->
+              <li class="service-header__nav-list-item ">
+                <!-- Use the aria-current="page" attribute on the anchor tag -->
+                <a class="service-header__nav-list-item-link"
+                  href="/case/dashboard">
+                  Home
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- End of service navigation -->
+  
+</header>
+
+
+
+  
+
+  
+
+  
+    
+
+<nav aria-label="Phase banner">
+  
+    
+<div class="govuk-phase-banner govuk-width-container">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service. <a href="/about-the-service" class="govuk-link" id="about-the-service">Find out more and help us improve it</a>.
+    </span>
+  </p>
+</div>
+
+  
+</nav>
+
+    
+
+
+  <nav aria-label="Back" class="govuk-width-container">
+    <a href="/case/dashboard" class="govuk-back-link">Back</a>
+
+  </nav>
+
+
+  
+
+
+    
+      <div class="govuk-width-container">
+        
+        
+        <main class="govuk-main-wrapper app-container govuk-body" id="main-content">
+          
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        The criminal justice system: step by step
+      </h1>
+
+      <p class="govuk-body">When you have experienced a crime and the case goes to court, use our guide to check:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>what happens, who is involved and when</li>
+        <li>what you might need to do</li>
+        <li>your rights throughout the process</li>
+      </ul>
+
+      <p class="govuk-body">What happens at each stage, and where the case ends, can depend on:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>the crime, or crimes if there was more than one</li>
+        <li>what evidence the police find</li>
+        <li>what the courts decide, based on the evidence available</li>
+      </ul>
+
+      <p class="govuk-body">You always have certain rights by law under the <a href="/case/victims-code" class="govuk-link">Victims' Code</a>.</p>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            When you might be entitled to enhanced rights
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>When you report a crime, the police check if you’re entitled by law to ‘enhanced rights’ throughout the process.</p>
+          <p>Enhanced rights automatically apply to children under 18 years old. They can also apply if you are vulnerable or intimidated, are a victim of the most serious crime, or have been persistently targeted.</p>
+          <p>Enhanced rights give you extra support, which may include being referred to a specialist support service, being told more quickly about important decisions, and having ‘special measures’ during a trial.</p>
+        </div>
+      </details>
+
+      <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-with-summary-sections">
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-1">
+              Stage 1: Reporting the crime
+            </span>
+            </h2>
+          </div>
+          <div id="accordion-with-summary-sections-content-1" class="govuk-accordion__section-content">
+            <p class="govuk-body">When you experience a crime, you have the right to report it to the police.</p>
+            <p class="govuk-body">If you do not want to report it to the police, you can still get help from support services at any point.</p>
+            <p class="govuk-body"><a href="https://victimandwitnessinformation.org.uk/find-support" class="govuk-link" target="_blank">Find support services (opens in new tab)</a>.</p>
+
+            <h3 class="govuk-heading-s">What you can tell the police</h3>
+            <p class="govuk-body">You can give the police a witness statement, where you describe what happened.</p>
+            <p class="govuk-body">You might also want to give a victim personal statement, where you describe emotional, physical, and financial effects a crime may have had on you.</p>
+            <p class="govuk-body">Find out more about giving a:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li><a href="https://www.police.uk/advice/advice-and-information/victim-support/giving-witness-victim-statement/" class="govuk-link" target="_blank">witness statement (opens in new tab)</a></li>
+              <li><a href="/case/victim-personal-statement" class="govuk-link">victim personal statement</a></li>
+            </ul>
+
+            <h3 class="govuk-heading-s">Getting support for your needs</h3>
+            <p class="govuk-body">The police will listen to your experience and personal circumstances to understand what you might need. This includes support for disabilities.</p>
+            <p class="govuk-body">They will then put you in touch with the right support services for you.</p>
+            <p class="govuk-body">They will also record if and how you want to be contacted about the case, for example by phone call or email.</p>
+
+            <h3 class="govuk-heading-s">How your case is recorded</h3>
+            <p class="govuk-body">The police will give you a crime reference number. They will also send you a victim of crime letter.
+            <p class="govuk-body">You have the right to receive this with 5 working days of reporting a crime. The letter will confirm the crime or crimes you have reported and give you information about where you can get other support.</p>
+
+          </div>
+        </div>
+
+        <!-- ### END STAGE 1 ### -->
+
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-2">
+              Stage 2: The police investigate the crime
+            </span>
+            </h2>
+          </div>
+          <div id="accordion-with-summary-sections-content-2" class="govuk-accordion__section-content">
+            <p class="govuk-body">At this stage, a person who is accused of a crime is referred to as a ‘suspect’.</p>
+            <p class="govuk-body">The police investigate crimes by looking at evidence and talking to suspects.</p>
+            <p class="govuk-body">The police will update you on what’s happening with the case. They will check with you:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>how often you want to get updates</li>
+              <li>how you want to be contacted, for example by phone or email</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ### END STAGE 2 ### -->
+
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-3">
+              Stage 3: The police make a charge or end the case
+            </span>
+            </h2>
+          </div>
+          <div id="accordion-with-summary-sections-content-3" class="govuk-accordion__section-content">
+            <p>After the police have completed their investigations, they will decide whether to do one of the following:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>charge the suspect and refer the case to the Crown Prosecution Service</li>
+              <li>give the suspect a caution with certain conditions, for example community service or a medical treatment programme</li>
+              <li>not progress the case if there is not enough evidence</li>
+            </ul>
+            <p class="govuk-body">You have the right to hear about the decision from the police within 5 working days of it being made.</p>
+
+            <details class="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  If you have enhanced rights
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                <p>You have the right to hear about the decision from the police within 1 working day of it being made.</p>
+              </div>
+            </details>
+
+            <h3 class="govuk-heading-s">If the case is referred to the Crown Prosecution Service</h3>
+            <p>When the police refer a case to the Crown Prosecution Service, you will receive a letter from the police witness care unit that:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>confirms the crime or crimes being charged</li>
+              <li>gives you the unique reference number (URN) for the case – this is useful for when you need an update about the case, for example when you call the  police witness care officer</li>
+              <li>introduces you to your police witness care unit, who will look after you during the case</li>
+            </ul>
+
+            <p>The Crown Prosecution Service consider the evidence and public interest of the case to decide whether to either:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>charge the suspect and take the case to court</li>
+              <li>not charge the suspect and end the case</li>
+            </ul>
+            <p class="govuk-body">If the Crown Prosecution Service take a crime case to court, you do not need a solicitor as the Crown Prosecution Service are acting on your behalf.</p>
+
+            <h3 class="govuk-heading-s">If the suspect is not charged</h3>
+            <p class="govuk-body">If the police or the Crown Prosecution Service decide not to charge a suspect, but you believe they should, you have the right to ask for a review of the decision through the Victims' Right to Review Scheme.</p>
+            <p class="govuk-body">To do this, tell your police witness care unit or police officer in charge (OIC) and they will tell you how to apply.</p>
+            <p class="govuk-body">Find out more about the <a href="https://www.police.uk/advice/advice-and-information/victim-support/victims-right-review-scheme/" class="govuk-link" target="_blank">Victims’ Right to Review Scheme (opens in new tab)</a>.</p>
+          </div>
+        </div>
+
+        <!-- ### END STAGE 3 ### -->
+
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-4">
+              Stage 4: The first court hearing
+            </span>
+            </h2>
+          </div>
+          <div id="accordion-with-summary-sections-content-4" class="govuk-accordion__section-content">
+            <p class="govuk-body">When a case goes to court, the suspect is now referred to as a ‘defendant’.</p>
+            <p class="govuk-body">The defendant will ‘state their plea’, this means they tell the court whether they believe they are guilty of the crime or not. They can plead one of the following:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>guilty to the charge or charges – this means they’re saying they did commit the crime or crimes</li>
+              <li>guilty to some of the charges, if there are more than one</li>
+              <li>not guilty to the charge or all of the charges – this means they’re saying they did not commit the crime or crimes</li>
+            </ul>
+            <p class="govuk-body">You do not have to attend the hearing, but you can if you want. Otherwise the police will tell you what a defendant pleads. You can choose how you prefer to be contacted, for example by phone call or text. You have the right to know within 5 working days of the hearing.</p>
+
+            <h3 class="govuk-heading-s">If the defendant pleads guilty</h3>
+            <p class="govuk-body">The magistrate or judge can sentence them right away, or at a later date if they need more information for the sentencing.</p>
+            <p class="govuk-body">If you are not at the sentencing hearing, the police will tell you the sentence. Tell the police how you want to be contacted, for example for phone call or email. You have the right to know within 5 working days of the sentencing or 1 working day if you have enhanced rights.</p>
+            <p class="govuk-body">If you give a victim personal statement, it can help the judge to make a more informed decision on sentencing. This is because they will consider the overall effect the crime has had on you.</p>
+            <p class="govuk-body"><a href="https://victims-pathfinder-main.apps.live.cloud-platform.service.justice.gov.uk/v6/victim-personal-statement" class="govuk-link" target="_blank">Find out more about making a victim personal statement</a>.</p>
+
+            <h3 class="govuk-heading-s">If the defendant pleads not guilty</h3>
+            <p class="govuk-body">The courts will set a date for another court hearing, called a ‘trial’. A trial is where a judge or jury listen to all the evidence in a case and makes a decision.</p>
+            <p class="govuk-body">Depending on the case, there may need to be more than one hearing, and the trial could last a day or several months.</p>
+          </div>
+        </div>
+
+        <!-- ### END STAGE 4 ### -->
+
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-5">
+              Stage 5: The court trial
+            </span>
+            </h2>
+          </div>
+          <div id="accordion-with-summary-sections-content-5" class="govuk-accordion__section-content">
+            <p class="govuk-body">A court trial is where evidence and arguments are presented to decide guilt for a crime.</p>
+            <p class="govuk-body">The aim is to reach a fair decision based on the law.</p>
+            <p class="govuk-body">Depending on the type of crime, a trial is heard by either:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>magistrates</li>
+              <li>a judge and jury</li>
+            </ul>
+
+            <p class="govuk-body">A trial can include:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>statements from the prosecution, defence, victims and witnesses</li>
+              <li>witness ‘testimony’ – where any witnesses stand up and tell the court what happened</li>
+              <li>cross-examination of witnesses – where they are asked questions about what they know about the crime</li>
+              <li>closing arguments</li>
+              <li>final decision – the ‘verdict’, made by the judge or jury</li>
+            </ul>
+            <p class="govuk-body">Where a defendant is found guilty, there can be a separate ‘sentencing hearing’. This is where the magistrates or judge decide on an appropriate sentence for the person found guilty.</p>
+
+            <h3 class="govuk-heading-s">When you must go to court</h3>
+            <p class="govuk-body">You do not need to go to court unless you have been told by the police that you need to give evidence.</p>
+            <p class="govuk-body">You can still watch any hearing or trial if you want to.</p>
+
+            <h3 class="govuk-heading-s">Giving evidence at court</h3>
+            <p class="govuk-body">As the victim of a crime, you will usually be a main ‘witness’ in the case. This means you may be required to give evidence at the trial. Giving evidence is telling the court what you know about the crime.</p>
+
+            <h3 class="govuk-heading-s">Getting support</h3>
+            <p class="govuk-body">In the run up to and during the trial, you can get support from:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>your police witness care officer (WCO)</li>
+              <li>Witness Service – this charity gives free, independent support for prosecution and defence witnesses in every criminal court in England and Wales</li>
+            </ul>
+
+            <p>The Witness Service can offer assistance such as:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>help you prepare, for example show you the courtroom before the day of the trial</li>
+              <li>help you make practical arrangements for the day, for example how to get to the court</li>
+              <li>be with you throughout the trial</li>
+            </ul>
+
+            <details class="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  If you have enhanced rights
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                <p>To help you feel more comfortable about when you give your evidence, you might be able to get extra support called 'special measures'.</p>
+                <p>This might be, for example, giving your evidence on a video recording before the trial, from behind a screen, or by video link from outside the courtroom. You can ask for special measures if you:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>are under 18</li>
+                  <li>have physical, mental or communication needs</li>
+                  <li>feel very scared or upset in a way that might affect you giving your best evidence</li>
+                  <li>are a victim of domestic abuse, rape or sexual assault</li>
+                  <li>are a victim of modern slavery</li>
+                  <li>have witnessed a crime involving a gun or knife</li>
+                </ul>
+                <p>The police witness care unit will talk to you about whether special measures might help you. You can ask questions and decide together what support is best for you.</p>
+                <p>The police will then tell the Crown Prosecution Service what you need. They will ask the judge or magistrate if you can have the special measures you want. The judge or magistrate decides if these special measures will help you give your best evidence and will be fair to everyone in the case.</p>
+                <p><a href="https://www.cps.gov.uk/victims-guide/victims-guide-support-give-your-evidence-special-measures" class="govuk-link" target="_blank">Find out more about special measures from the Crown Prosecution Service (opens in new tab)</a>.</p>
+              </div>
+            </details>
+
+            <h3 class="govuk-heading-s">If you do not give evidence when required</h3>
+            <p class="govuk-body">It can be that if you do not provide evidence at the trial as a witness, there is not enough evidence for the case to be continued.</p>
+            <p class="govuk-body">If you are asked to go to court as a witness but do not go to the court on the day of the trial, the case may be discontinued.</p>
+            <p class="govuk-body">The Crown Prosecution Service will send you a letter explaining the reason why the case was closed.</p>
+          </div>
+        </div>
+
+        <!-- ### END STAGE 5 ### -->
+
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-6">
+              Stage 6: After the trial
+            </span>
+            </h2>
+          </div>
+          <div id="accordion-with-summary-sections-content-6" class="govuk-accordion__section-content">
+            <p class="govuk-body">It’s important to prepare yourself for the outcome of the trial – the ‘verdict’. It might not be the outcome you want. It’s a good idea to keep talking with your police contact or any support services and charities.</p>
+
+            <h3 class="govuk-heading-s">Your rights for how you find out about the verdict</h3>
+            <p class="govuk-body">If you have not attended the sentencing hearing, the police can tell you the verdict.</p>
+            <p class="govuk-body">You have the right to be told, with a short explanation, within 1 working day of the police receiving the information from the court. The court must send it to the police within 5 working days of the verdict being made.</p>
+            <p class="govuk-body">Tell the police if and how you want to be contacted, for example by phone call or email.</p>
+
+            <h3 class="govuk-heading-s">If a defendant is found not guilty</h3>
+            <p class="govuk-body">If a defendant is found not guilty, the judge will not give them a sentence. This means that the trial ends and they can leave the court.</p>
+            <p class="govuk-body">If you want to talk to someone about the verdict, ask the police for support or contact
+            <a href="https://www.victimsupport.org.uk/" class="govuk-link" target="_blank">Victim Support (opens in new tab)</a>.</p>
+
+            <h3 class="govuk-heading-s">If a defendant is found guilty</h3>
+            <p class="govuk-body">If a defendant is found guilty, the judge will give them a sentence. A sentence is the punishment for the crime. Some sentences can be:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>time in prison</li>
+              <li>a sentence in the community – this could include having to do unpaid work, having a curfew to stay in their home between certain hours, not being allowed to go to a particular area, and being electronically tagged</li>
+              <li>a fine</li>
+            </ul>
+            <p class="govuk-body">The sentence will depend on:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>the type and seriousness of the crime</li>
+              <li>the circumstances of the defendant</li>
+            </ul>
+
+            <h3 class="govuk-heading-s">When a defendant might appeal their sentence</h3>
+            <p class="govuk-body">A defendant found guilty can appeal their sentence if they think it is not fair.</p>
+            <p class="govuk-body">In an appeal, a judge reviews the case or there may be another court hearing.</p>
+            <p class="govuk-body">Your police contact will tell you the outcome.</p>
+
+            <h3 class="govuk-heading-s">When a sentence might seem too short</h3>
+            <p class="govuk-body">When deciding on a sentence, judges must:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>follow the law, which says how long sentences can be</li>
+              <li>consider the reasons for the sentencing under the law, for example the protection of the public and victims</li>
+              <li>follow the sentencing guidelines by the Sentencing Council</li>
+            </ul>
+            <p class="govuk-body">Judges will also think about:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>the harm that a defendant caused or meant to cause</li>
+              <li>how much a defendant can be blamed for the crime</li>
+              <li>if a defendant had been found guilty or a similar crime before</li>
+              <li>if a defendant has said they are sorry, or there are difficult personal circumstances</li>
+              <li>if and when a defendant pleads guilty</li>
+              <li>how much time a defendant has already spent in prison – ‘on remand’</li>
+            </ul>
+            <p class="govuk-body">Find out more about sentencing from the <a href="https://sentencingcouncil.org.uk/about-sentencing/how-sentencing-works/" class="govuk-link" target="_blank">Sentencing Council (opens in new tab)</a>.</p>
+
+            <h3 class="govuk-heading-s">If you think a Crown Court sentence is too low</h3>
+            <p class="govuk-body">If you think a Crown Court sentence is too low, you can ask for it to be reviewed.</p>
+            <p class="govuk-body"><a href="https://www.gov.uk/ask-crown-court-sentence-review" class="govuk-link" target="_blank">Ask for a Crown Court sentence to be reviewed (opens in new tab)</a>.</p>
+
+            <h3 class="govuk-heading-s">When you can be referred to the Victim Contact Scheme</h3>
+            <p class="govuk-body">The Victim Contact Scheme is offered to victims of certain violent and  sexual offences where the sentence is 12 months or more imprisonment, or a hospital order.</p>
+            <p class="govuk-body">After sentencing, the police will refer you to the Victim Contact Scheme and you can choose whether to opt in. If you do, you will be put in touch with a Victim Liaison Officer.</p>
+            <p class="govuk-body">The Victim Liaison Officer will keep you updated at key stages of the sentence. For example, they can provide information on:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>important sentence dates, including release dates</li>
+              <li>how to make a Victim Personal Statement for a parole hearing</li>
+              <li>submitting an application to observe a parole hearing</li>
+              <li>requesting ‘licence conditions’, such as non-contact and exclusion zones, to prevent the offender from contacting you when they are released</li>
+              <li>how to submit a request for a Parole Board decision to be reconsidered</li>
+            </ul>
+            <p class="govuk-body">You can also choose not to be contacted by the Victim Contact Scheme, or to join at a later date.</p>
+            <p class="govuk-body"><a href="https://www.gov.uk/government/publications/get-support-as-a-victim-of-crime/information-about-the-victim-contact-scheme" class="govuk-link" target="_blank">Find out more about the Victim Contact Scheme (opens in new tab)</a>.</p>
+
+            <h3 class="govuk-heading-s">When a person convicted of a crime can be released from prison</h3>
+            <p class="govuk-body">Most people are released from prison on the date their sentence ends.</p>
+            <p class="govuk-body">Some can be released from a proportion of their prison sentence after a decision by the Parole Board. This is called being ‘released on parole’.</p>
+            <p class="govuk-body">They will be released under certain rules and will be supervised in the community for a certain period of time.</p>
+            <p class="govuk-body">If you are in the Victim Contact Scheme, you can give a Victim Personal Statement before a parole decision is made.</p>
+            <p class="govuk-body">Find out more about:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Release on parole, including how the Parole Board makes decisions, and your rights as a victim of crime in the <a href="https://www.gov.uk/guidance/guide-to-parole-for-victims-of-crime" class="govuk-link" target="_blank">Guide to parole for victims of crime (opens in new tab)</a></li>
+              <li>Conditional discharge from a hospital order by <a href="https://www.gov.uk/guidance/guide-to-parole-for-victims-of-crime" class="govuk-link" target="_blank">First-tier Tribunal (Mental Health) (opens in new tab)</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+        </main>
+        
+        
+      </div>
+    
+
+    
+    
+
+    
+  
+  
+    
+
+<script nonce="test-nonce" type="module">
+
+  async function quickExit() {
+    const currentTabAddress = 'https://www.bbc.co.uk/'
+    const newTab = 'https://www.bbc.co.uk/weather'
+
+    // ToDo: we should push custom event to dataLayer when quick-exit button was pressed
+
+    // Open safe/neutral site in a new tab
+    let newWin = null
+    try {
+      newWin = window.open(newTab, '_blank', 'noopener,noreferrer')
+      // Belt & braces
+      if (newWin) {
+        try {
+          newWin.opener = null
+        } catch (e) {
+          // not required
+        }
+      }
+    } catch (e) {
+      // not required
+    }
+
+    // Try to close this tab (only certain contexts allow this)
+    try {
+      // Safari helper: open self first
+      window.open('', '_self')
+      window.close()
+    } catch (e) {
+      // not required
+    }
+
+    // If closing fails, blank fast and replace history entry
+    try {
+      // Hide content immediately
+      document.documentElement.innerHTML = ''
+      document.documentElement.style.background = '#fff'
+
+      // Replace current history entry so "Back" won't return here
+      // (You can swap about:blank for the BBC URL if you prefer)
+      location.replace(currentTabAddress)
+    } catch (e) {
+      // Fallback: standard navigation (adds an entry, but still leaves)
+      location.href = currentTabAddress
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+      const el2 = document.getElementById('quick-exit-button')
+      if (el2) {
+        el2.addEventListener('click', quickExit)
+      }
+    },
+  )
+
+  // Keyboard quick exit: 3 x Shift or 3 x Escape within QUICK_EXIT_WINDOW_MS seconds.
+  // Uses keyup so holding Shift while typing multiple letters counts as one press.
+  // Any non-modifier key pressed between trigger presses resets both counters.
+  // Note: X seconds in between first and last
+  // if last click is outside X seconds, we start reset clicks and timer, counting last as first click
+
+  const keyPresses = {}
+  const QUICK_EXIT_WINDOW_MS = 5000
+  const TRIGGER_KEYS = new Set(['Shift', 'Escape'])
+
+  const quickExitBtn = document.getElementById('quick-exit-button')
+  const quickExitWrapper = document.getElementById('quick-exit-panel')
+
+  // Build indicator dots and append inside the button
+  const $indicatorContainer = document.createElement('div')
+  $indicatorContainer.className = 'govuk-exit-this-page__indicator'
+  $indicatorContainer.setAttribute('aria-hidden', 'true')
+  for (let i = 0; i < 3; i++) {
+    const $dot = document.createElement('div')
+    $dot.className = 'govuk-exit-this-page__indicator-light'
+    $indicatorContainer.appendChild($dot)
+  }
+  if (quickExitBtn) {
+    quickExitBtn.appendChild($indicatorContainer)
+  }
+
+  const updateIndicator = () => {
+    const count = keyPresses.count || 0
+    quickExitWrapper?.classList.toggle('govuk-exit-this-page-pressed', count > 0)
+    $indicatorContainer.classList.toggle('govuk-exit-this-page__indicator--visible', count > 0)
+    $indicatorContainer.querySelectorAll('.govuk-exit-this-page__indicator-light').forEach(($dot, index) => {
+      $dot.classList.toggle('govuk-exit-this-page__indicator-light--on', index < count)
+    })
+  }
+
+  const updateBtnText = () => {
+    // Use firstChild.nodeValue to preserve the indicator div inside the button
+    if (quickExitBtn && quickExitBtn.firstChild) {
+      // To display pressed key name and count
+      // quickExitBtn.firstChild.nodeValue = 'Quick exit' + (keyPresses.key ? \` (\${keyPresses.key}:\${keyPresses.count})\` : '')
+    }
+    updateIndicator()
+  }
+
+  let resetTimer = null
+
+  const resetKeyPressed = () => {
+    clearTimeout(resetTimer)
+    resetTimer = null
+
+    keyPresses.key = undefined
+    keyPresses.count = 0
+    keyPresses.last = 0
+
+    updateBtnText()
+  }
+  resetKeyPressed()
+
+  const performQuickExit = () => {
+    // alert('Yess !!! quickExit()')
+    quickExit()
+  }
+
+  document.addEventListener('keydown', (e) => {
+    const key = e.key
+    if (!TRIGGER_KEYS.has(key)) {
+      resetKeyPressed()
+      return
+    }
+    if (e.ctrlKey || e.altKey || e.metaKey) {
+      resetKeyPressed()
+      return
+    }
+    if (key === 'Shift' && e.target.matches('input, textarea, select, [contenteditable]')) {
+      // Another case: any Shift key activity inside input component will be ignored,
+      // no change for Escape key
+      return
+    }
+
+    const now = Date.now()
+    if (keyPresses.key === key && (keyPresses.last === 0 || (now - keyPresses.last) <= QUICK_EXIT_WINDOW_MS)) {
+      keyPresses.count = keyPresses.count + 1
+      updateBtnText()
+    } else {
+      resetKeyPressed()
+
+      keyPresses.key = key
+      keyPresses.count = 1
+      keyPresses.last = now
+
+      updateBtnText()
+
+      resetTimer = setTimeout(resetKeyPressed, QUICK_EXIT_WINDOW_MS)
+    }
+
+    if (keyPresses.key === key && keyPresses.count >= 3) {
+      resetKeyPressed()
+
+      performQuickExit()
+    }
+  })
+
+</script>
+
+<div class="govuk-width-container govuk-exit-this-page" id="quick-exit-panel" role="region" aria-label="Quick exit">
+  <div class="govuk-exit-this-page-button-wrapper">
+    
+  
+
+<button type="button" class="govuk-button govuk-button--warning" data-module="govuk-button"
+    
+        
+        
+      
+        
+      
+    
+   id="quick-exit-button">
+  Quick exit
+</button>
+
+  </div>
+</div>
+
+  
+  <section aria-label="Page feedback">
+
+<script nonce="test-nonce" type="module">
+  async function submitPageIsUseful(value) {
+    const csrf = document.querySelector('input[name="_csrf"]').value
+    const pageUrl = document.querySelector('input[name="_pageUrl"]').value
+    const pageTitle = document.querySelector('input[name="_pageTitle"]').value
+    const payload = {
+      pageUseful: value,
+      pageUrl: pageUrl,
+      pageTitle: pageTitle,
+      _csrf: csrf,
+    }
+    const response = await fetch('/feedback/decision', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-csrf-token': csrf,
+      },
+      body: JSON.stringify(payload),
+      credentials: 'same-origin',
+    })
+    if (response.ok) {
+      document.getElementById('feedback-form-options')?.classList.add('govuk-!-display-none')
+      if (value === 'yes') {
+        document.getElementById('feedback-form-is-page-useful-yes-confirmation')?.classList.remove('govuk-!-display-none')
+      }
+      if (value === 'no') {
+        const noConfirmation = document.getElementById('feedback-form-is-page-useful-no-confirmation')
+        noConfirmation?.classList.remove('govuk-!-display-none')
+
+        // move focus to the revealed heading
+        // so screen readers announce the new panel and swipe order continues correctly
+        const noHeading = noConfirmation?.querySelector('h2')
+        if (noHeading) {
+          noHeading.focus()
+        }
+
+        const cancelFeedbackDecisionNoButton = document.getElementById('feedback-form-is-page-useful-no-confirmation-cancel-button')
+        if (!cancelFeedbackDecisionNoButton?.getAttribute('listener')) {
+          cancelFeedbackDecisionNoButton.addEventListener('click', async (e) => {
+            e.preventDefault()
+            document.getElementById('feedback-form-is-page-useful-no-confirmation')?.classList.add('govuk-!-display-none')
+            const feedbackOptions = document.getElementById('feedback-form-options')
+            feedbackOptions?.classList.remove('govuk-!-display-none')
+            // restore focus to the options panel so screen reader swipe order picks up the Yes/No buttons again
+            feedbackOptions?.focus()
+          })
+        }
+
+      }
+    } else {
+      console.warn('Feedback decision failed', response.status)
+    }
+  }
+
+  async function initFeedbackForm() {
+    const yesButton = document.getElementById('page-is-useful-yes-button')
+    if (!yesButton?.getAttribute('listener')) {
+      yesButton?.addEventListener('click', async (e) => {
+        e.preventDefault()
+        await submitPageIsUseful('yes')
+      })
+    }
+    const noButton = document.getElementById('page-is-useful-no-button')
+    if (!noButton?.getAttribute('listener')) {
+      noButton?.addEventListener('click', async (e) => {
+        e.preventDefault()
+        await submitPageIsUseful('no')
+      })
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const feedbackForm = document.getElementById('feedback-form')
+    await initFeedbackForm(feedbackForm)
+  })
+</script>
+
+<div class="govuk-width-container">
+  <div id="feedback-form" data-module="feedback ga4-event-tracker"
+       class="gem-c-feedback govuk-!-display-none-print"
+       data-feedback-module-started="true">
+    <div class="gem-c-feedback__prompt" tabindex="-1">
+      <div class="gem-c-feedback__prompt-content">
+        <div class="gem-c-feedback__prompt-questions" id="feedback-form-options" tabindex="-1">
+          <div class="gem-c-feedback__prompt-question-answer">
+            <h2 class="gem-c-feedback__prompt-question">Is this page useful?</h2>
+            <ul class="gem-c-feedback__option-list">
+              <li class="gem-c-feedback__option-list-item">
+                <button class="govuk-button gem-c-feedback__prompt-link"
+                        data-is-this-page-is-useful="true"
+                        id="page-is-useful-yes-button"
+                        data-ga4-event='{ "event_name": "form_submit", "type": "feedback", "text": "Yes", "section": "Is this page useful?", "tool_name": "Is this page useful?", "page_location": "", "page_title": "The criminal justice system: step by step" }'>
+                  Yes <span class="govuk-visually-hidden">this page is useful</span>
+                </button>
+              </li>
+              <li class="gem-c-feedback__option-list-item">
+                <button class="govuk-button gem-c-feedback__prompt-link"
+                        aria-controls="feedback-form-is-page-useful-no-confirmation"
+                        data-is-this-page-is-useful="false"
+                        id="page-is-useful-no-button"
+                        data-ga4-event='{ "event_name": "form_submit", "type": "feedback", "text": "No", "section": "Is this page useful?", "tool_name": "Is this page useful?", "page_location": "", "page_title": "The criminal justice system: step by step" }'>
+                  No <span class="govuk-visually-hidden">this page is not useful</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="feedback-form-is-page-useful-yes-confirmation"
+            class="govuk-!-display-none gem-c-feedback__prompt-questions gem-c-feedback__prompt-success"
+             role="alert">
+          Thank you for your feedback.
+        </div>
+
+        <div id="feedback-form-is-page-useful-no-confirmation" class="govuk-!-display-none" role="alert">
+          <div class="gem-c-feedback__prompt-failure">
+            <h2 class="gem-c-feedback__form-heading" tabindex="-1">Help us improve Track a case</h2>
+            <p id="feedback_explanation" class="gem-c-feedback__form-paragraph">
+              We are sorry you did not find the page useful.<br>
+              <a href="https://www.smartsurvey.co.uk/s/ESARVH/?url=undefined" target="_blank">
+                Tell us what you think (opens in a new tab).
+              </a>
+            </p>
+            <ul class="gem-c-feedback__option-list">
+              <li class="gem-c-feedback__option-list-item govuk-!-margin-left-0">
+                <button class="govuk-button gem-c-feedback__prompt-link gem-c-feedback__close"
+                        data-is-this-page-is-useful="true"
+                        id="feedback-form-is-page-useful-no-confirmation-cancel-button">
+                  Cancel
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<input type="hidden" name="_csrf" value="test-csrf">
+<input type="hidden" name="_pageUrl" value="">
+<input type="hidden" name="_pageTitle" value="The criminal justice system: step by step">
+
+</section>
+
+
+
+<nav aria-label="Service links">
+  
+    <div class="govuk-footer">
+  <div class="govuk-width-container">
+  <svg
+    focusable="false"
+    role="presentation"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 64 60"
+    height="30"
+    width="32"
+    fill="currentcolor" class="govuk-footer__crown"
+  >
+    <g>
+        <circle cx="20" cy="17.6" r="3.7"/>
+        <circle cx="10.2" cy="23.5" r="3.7"/>
+        <circle cx="3.7" cy="33.2" r="3.7"/>
+        <circle cx="31.7" cy="30.6" r="3.7"/>
+        <circle cx="43.3" cy="17.6" r="3.7"/>
+        <circle cx="53.2" cy="23.5" r="3.7"/>
+        <circle cx="59.7" cy="33.2" r="3.7"/>
+        <circle cx="31.7" cy="30.6" r="3.7"/>
+        <path d="M33.1,9.8c.2-.1.3-.3.5-.5l4.6,2.4v-6.8l-4.6,1.5c-.1-.2-.3-.3-.5-.5l1.9-5.9h-6.7l1.9,5.9c-.2.1-.3.3-.5.5l-4.6-1.5v6.8l4.6-2.4c.1.2.3.3.5.5l-2.6,8c-.9,2.8,1.2,5.7,4.1,5.7h0c3,0,5.1-2.9,4.1-5.7l-2.6-8ZM37,37.9s-3.4,3.8-4.1,6.1c2.2,0,4.2-.5,6.4-2.8l-.7,8.5c-2-2.8-4.4-4.1-5.7-3.8.1,3.1.5,6.7,5.8,7.2,3.7.3,6.7-1.5,7-3.8.4-2.6-2-4.3-3.7-1.6-1.4-4.5,2.4-6.1,4.9-3.2-1.9-4.5-1.8-7.7,2.4-10.9,3,4,2.6,7.3-1.2,11.1,2.4-1.3,6.2,0,4,4.6-1.2-2.8-3.7-2.2-4.2.2-.3,1.7.7,3.7,3,4.2,1.9.3,4.7-.9,7-5.9-1.3,0-2.4.7-3.9,1.7l2.4-8c.6,2.3,1.4,3.7,2.2,4.5.6-1.6.5-2.8,0-5.3l5,1.8c-2.6,3.6-5.2,8.7-7.3,17.5-7.4-1.1-15.7-1.7-24.5-1.7h0c-8.8,0-17.1.6-24.5,1.7-2.1-8.9-4.7-13.9-7.3-17.5l5-1.8c-.5,2.5-.6,3.7,0,5.3.8-.8,1.6-2.3,2.2-4.5l2.4,8c-1.5-1-2.6-1.7-3.9-1.7,2.3,5,5.2,6.2,7,5.9,2.3-.4,3.3-2.4,3-4.2-.5-2.4-3-3.1-4.2-.2-2.2-4.6,1.6-6,4-4.6-3.7-3.7-4.2-7.1-1.2-11.1,4.2,3.2,4.3,6.4,2.4,10.9,2.5-2.8,6.3-1.3,4.9,3.2-1.8-2.7-4.1-1-3.7,1.6.3,2.3,3.3,4.1,7,3.8,5.4-.5,5.7-4.2,5.8-7.2-1.3-.2-3.7,1-5.7,3.8l-.7-8.5c2.2,2.3,4.2,2.7,6.4,2.8-.7-2.3-4.1-6.1-4.1-6.1h10.6,0Z"/>
+      </g>
+    
+  </svg>
+
+    
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        
+        <h2 class="govuk-visually-hidden">Support links</h2>
+        
+        <ul class="govuk-footer__inline-list">
+        
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="/privacy-notice">
+              Privacy
+            </a>
+          </li>
+        
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="/cookies">
+              Cookies
+            </a>
+          </li>
+        
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="/about-the-service">
+              Take part in research
+            </a>
+          </li>
+        
+        </ul>
+        
+        
+        
+        
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            class="govuk-footer__licence-logo"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 483.2 195.7"
+            height="17"
+            width="41"
+          >
+            <path
+              fill="currentColor"
+              d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145"
+            />
+          </svg>
+          <span class="govuk-footer__licence-description">
+          
+            All content is available under the
+            <a
+              class="govuk-footer__link"
+              href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+              rel="license"
+            >Open Government Licence v3.0</a>, except where otherwise stated
+          
+          </span>
+        
+      </div>
+      <div class="govuk-footer__meta-item">
+        <a
+          class="govuk-footer__link govuk-footer__copyright-logo"
+          href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
+        >
+        
+          © Crown copyright
+        
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+</nav>
+
+
+
+    
+  <script type="module" src="/assets/js/index.js" nonce="test-nonce"></script>
+
+  </body>
+</html>
+"
+`;
