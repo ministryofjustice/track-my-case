@@ -84,8 +84,8 @@ exports[`matches snapshot 1`] = `
         <main class="govuk-main-wrapper app-container govuk-body" id="main-content">
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">Privacy notice</h1>
-      <p class="govuk-body">The 'Victim pathfinder: Track a case' service is provided by the Ministry of Justice (MOJ). The Ministry of Justice is committed to the protection and security of your personal information.</p>
+      <h1 class="govuk-heading-l">Privacy</h1>
+      <p class="govuk-body">The Track a case service is provided by the Ministry of Justice. The Ministry of Justice is committed to the protection and security of your personal information.</p>
       <p class="govuk-body">It is important that you read this privacy notice so that you are aware of how and why we are using such information.</p>
       <h3 class="govuk-heading-m">What data we collect</h3>
       <p class="govuk-body">We collect and use the following information:</p>
@@ -125,7 +125,7 @@ exports[`matches snapshot 1`] = `
         Disclosure Team<br>Post point 10.38<br>102 Petty France<br>London<br>SW1H 9AJ<br><br>
         Email: <a class="govuk-link" target="_blank" href="mailto:data.access@justice.gov.uk">data.access@justice.gov.uk</a>
       </p>
-      <p class="govuk-body">If you have any concerns about our use of your personal data, you can contact the Ministry of Justice data protection officer.</p>
+      <p class="govuk-body">If you have any concerns about our use of your personal data, you can contact the MoJ Ministry of Justice data protection officer.</p>
       <p class="govuk-body">
         Data Protection Officer<br>Ministry of Justice<br>5th Floor, Post Point 5.18<br>102 Petty France<br>London<br>SW1H 9AJ<br><br>
         Email: <a class="govuk-link" target="_blank" href="mailto:dpo@justice.gov.uk">dpo@justice.gov.uk</a>
@@ -134,12 +134,12 @@ exports[`matches snapshot 1`] = `
       <p class="govuk-body">
         Information Commissioner's Office<br>Wycliffe House<br>Water Lane<br>Wilmslow<br>Cheshire<br>SK9 5AF<br><br>
         Telephone: 0303 123 1113<br>
-        ICO website: <a class="govuk-link" href="https://www.ico.org.uk" target="_blank">https://www.ico.org.uk</a>
+        ICO website: <a class="govuk-link" href="https://www.ico.org.uk" target="_blank">https://www.ico.org.uk (opens in new tab)</a>
       </p>
       <h3 class="govuk-heading-m">Changes to this policy</h3>
       <p class="govuk-body">We may change this privacy notice. In that case, the 'last updated' date at the bottom of this page will also change. Any changes to this privacy notice will apply to you and your data immediately.</p>
       <h4 class="govuk-heading-s">Date of last update</h4>
-      <p class="govuk-body">18 December 2025</p>
+      <p class="govuk-body">13 July 2026</p>
     </div>
   </div>
         </main>
