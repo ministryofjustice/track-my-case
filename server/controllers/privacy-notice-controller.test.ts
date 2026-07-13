@@ -36,7 +36,7 @@ describe('privacy-notice-controller', () => {
   it('sets pageTitle and renders privacy-notice', async () => {
     const { req, res, next } = createReqRes()
     await privacyNoticeController(req, res, next)
-    expect(res.locals.pageTitle).toBe('Privacy notice')
+    expect(res.locals.pageTitle).toBe('Privacy')
     expect(res.render).toHaveBeenCalledWith('pages/privacy-notice.njk')
   })
 

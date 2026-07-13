@@ -36,5 +36,9 @@
   "easyRead.heading": "Easy read guides",
   "easyRead.body1": "Easy read guides use pictures to help people understand information more easily.",
   "easyRead.body2": "You can download easy read guides about the criminal justice process from the Crown Prosecution Service (CPS).",
-  "easyRead.linkText": "Find easy read guides for victims of crime (opens in new tab)"
+  "easyRead.linkText": "Find easy read guides for victims of crime (opens in new tab)",
+  "urls": {
+    "nhsMentalHealth": "https://www.nhs.uk/mental-health/",
+    "disabilityRights": "https://www.gov.uk/rights-disabled-person/police"
+  }
 }

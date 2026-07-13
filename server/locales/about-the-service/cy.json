@@ -1,6 +1,6 @@
 {
   "pageTitle": "About the Track a case service",
-  "heading": "About the {{applicationName}} service (Welsh version)",
+  "heading": "About the {{applicationName}} service",
   "insetStrong": "If you need help with your case",
   "insetBody": "Contact your police witness care officer if you have any questions about your case.",
   "earlyVersion": "You are seeing a very early version ('private beta') of the {{applicationName}} service.",

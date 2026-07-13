@@ -1,6 +1,6 @@
 {
   "pageTitle": "Requesting a court hearing transcript",
-  "heading": "Understand your rights (Welsh version)",
+  "heading": "Understand your rights",
   "nav.ariaLabel": "Pages in this guide",
   "nav.contentsHeading": "Contents",
   "nav.victimPersonalStatement": "Making a Victim Personal Statement",
@@ -41,5 +41,13 @@
   "fullHearing.returnItem1.linkText": "court or tribunal",
   "fullHearing.returnItem1.after": "where the hearing took place",
   "fullHearing.returnItem2": "the contact details in section 2d of the guidance notes, if you  want a transcript of a judgment from the Court of Appeal Criminal  Division or the Administrative Court",
-  "fullHearing.para4": "You can choose how soon you would like the transcript to arrive from the options on the form."
+  "fullHearing.para4": "You can choose how soon you would like the transcript to arrive from the options on the form.",
+  "urls": {
+    "nationalArchives": "https://caselaw.nationalarchives.gov.uk/",
+    "judiciaryJudgments": "https://www.judiciary.uk/judgments/",
+    "transcriptService": "https://transcripts-of-judges-sentencing-remarks.form.service.justice.gov.uk/",
+    "applyTranscript": "https://www.gov.uk/government/publications/apply-for-a-transcript-of-a-judges-sentencing-remarks",
+    "orderTranscriptForm": "https://www.gov.uk/government/publications/order-a-transcript-of-court-or-tribunal-proceedings-form-ex107",
+    "findCourtTribunal": "https://www.gov.uk/find-court-tribunal"
+  }
 }

@@ -1,7 +1,7 @@
 {
-  "pageTitle": "Privacy notice",
-  "heading": "Privacy notice",
-  "intro1": "The 'Victim pathfinder: {{applicationName}}' service is provided by the Ministry of Justice (MOJ). The Ministry of Justice is committed to the protection and security of your personal information.",
+  "pageTitle": "Privacy",
+  "heading": "Privacy",
+  "intro1": "The {{applicationName}} service is provided by the Ministry of Justice. The Ministry of Justice is committed to the protection and security of your personal information.",
   "intro2": "It is important that you read this privacy notice so that you are aware of how and why we are using such information.",
   "heading.whatDataWeCollect": "What data we collect",
   "whatDataWeCollect.intro": "We collect and use the following information:",
@@ -18,7 +18,10 @@
   "heading.whatWeDoWithYourData": "What we do with your data",
   "whatWeDoWithYourData.para1": "No information that you provide will be shared outside the Ministry of Justice, other than with Ministry of Justice IT providers that provide services supporting the running of this service.",
   "whatWeDoWithYourData.para2": "We will not:",
-  "whatWeDoWithYourData.willNotItems": ["sell or rent data to third parties", "share data with third parties for marketing purposes"],
+  "whatWeDoWithYourData.willNotItems": [
+    "sell or rent data to third parties",
+    "share data with third parties for marketing purposes"
+  ],
   "whatWeDoWithYourData.para3": "Most of the personal information we use to:",
   "whatWeDoWithYourData.useItems": [
     "allowing your access to the service for private beta",
@@ -30,7 +33,10 @@
   "whatWeDoWithYourData.para4Post": " cookies to collect information about how you use {{applicationName}}. This includes your Internet Protocol (IP) addresses.",
   "heading.contactUs": "Contact us or make a complaint",
   "contactUs.intro": "Contact us if you:",
-  "contactUs.items": ["have a question about anything in this privacy notice", "think that your personal data has been misused or mishandled"],
+  "contactUs.items": [
+    "have a question about anything in this privacy notice",
+    "think that your personal data has been misused or mishandled"
+  ],
   "heading.peopleInPrison": "People in prison or on probation",
   "prisonAddress": "Branston Registry<br>Building 16, S & T Store<br>Burton Road<br>Branston<br>Burton-on-Trent<br>Staffordshire<br>DE14 3EG",
   "prisonEmail.pre": "Email: ",
@@ -39,7 +45,7 @@
   "allOthersAddress": "Disclosure Team<br>Post point 10.38<br>102 Petty France<br>London<br>SW1H 9AJ",
   "allOthersEmail.pre": "Email: ",
   "allOthersEmail.link": "data.access@justice.gov.uk",
-  "allOthers.para": "If you have any concerns about our use of your personal data, you can contact the Ministry of Justice data protection officer.",
+  "allOthers.para": "If you have any concerns about our use of your personal data, you can contact the MoJ Ministry of Justice data protection officer.",
   "dpoAddress": "Data Protection Officer<br>Ministry of Justice<br>5th Floor, Post Point 5.18<br>102 Petty France<br>London<br>SW1H 9AJ",
   "dpoEmail.pre": "Email: ",
   "dpoEmail.link": "dpo@justice.gov.uk",
@@ -47,9 +53,14 @@
   "icoAddress": "Information Commissioner's Office<br>Wycliffe House<br>Water Lane<br>Wilmslow<br>Cheshire<br>SK9 5AF",
   "ico.telephone": "Telephone: 0303 123 1113",
   "ico.websitePre": "ICO website: ",
-  "ico.websiteLink": "https://www.ico.org.uk",
+  "ico.websiteLink": "https://www.ico.org.uk (opens in new tab)",
   "heading.changesToPolicy": "Changes to this policy",
   "changesToPolicy.para": "We may change this privacy notice. In that case, the 'last updated' date at the bottom of this page will also change. Any changes to this privacy notice will apply to you and your data immediately.",
   "heading.dateOfLastUpdate": "Date of last update",
-  "lastUpdated": "18 December 2025"
+  "lastUpdated": "13 July 2026",
+  "urls": {
+    "browsers": "https://www.gov.uk/help/browsers",
+    "googleAnalytics": "https://support.google.com/analytics/topic/2919631",
+    "ico": "https://www.ico.org.uk"
+  }
 }

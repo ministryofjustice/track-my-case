@@ -1,17 +1,25 @@
 {
-  "goingToCourtHeading": "If you're going to court (Welsh version)",
+  "goingToCourtHeading": "If you're going to court",
   "goingToCourtP1": "You usually only need to go to a court hearing or trial if you are giving evidence as a witness. Your police witness care unit (WCU) or officer in charge of the investigation (OIC) will tell you.",
   "goingToCourtP2": "If you're going to court to give evidence, find out:",
-  "goingToCourtLinks": ["how to prepare (opens in new tab)", "what to expect, including what to bring and what to wear (opens in new tab)"],
+  "goingToCourtLinks": [
+    "how to prepare (opens in new tab)",
+    "what to expect, including what to bring and what to wear (opens in new tab)"
+  ],
   "supportHeading": "Get support through the court process",
   "supportP1": "If you are going to court to give evidence, the Witness Service can help you prepare, and support you throughout the trial.",
   "supportP2Before": "Get help with the court process by using",
   "supportP2Link": "the Witness Service (opens in new tab)",
-  "supportP2After": ".",
   "contactHeading": "Who you can contact",
   "contactP1": "If you have any questions, you can contact your police:",
-  "contactItems": ["witness care unit (WCU)", "officer in charge of the investigation (OIC)"],
+  "contactItems": [
+    "witness care unit (WCU)",
+    "officer in charge of the investigation (OIC)"
+  ],
   "contactP2Before": "Find their contact details on any letter they have sent you, or",
   "contactP2Link": "find your local police force (opens in new tab)",
-  "contactP2After": "."
+  "urls": {
+    "goingToCourt": "https://www.gov.uk/going-to-court-victim-witness",
+    "whatToExpect": "https://www.gov.uk/guidance/what-to-expect-coming-to-a-court-or-tribunal"
+  }
 }

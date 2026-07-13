@@ -56,21 +56,24 @@
   "section.benefits.p1": "Depending on your circumstances, there might be benefits you can claim.",
   "section.benefits.p2.before": "You may be entitled to",
   "section.benefits.p2.linkText": "benefits and financial support when someone dies (opens in new tab)",
-  "section.benefits.p2.after": ".",
   "section.benefits.p3.before": "If you're refused a benefit and you disagree, you can",
   "section.benefits.p3.linkText": "appeal a benefits decision (opens in new tab)",
-  "section.benefits.p3.after": ".",
   "section.insurance.heading": "Insurance for your property",
   "section.insurance.p1": "You can check your home or car insurance policy to see if it covers the crime you experienced, for example theft or vandalism to your property.",
   "section.insurance.p2": "If someone committed a crime to your property and you have their details, you might be able to make a claim against their insurance policy.",
   "section.insurance.p3.before": "If an insurance company refuses a claim and you disagree, you can complain to the",
   "section.insurance.p3.linkText": "Financial Ombudsman Service (opens in new tab)",
-  "section.insurance.p3.after": ".",
   "section.employment.heading": "Employment insurance",
   "section.employment.p1": "If the crime involved an injury or death that happened at your work, you might be able to make an insurance claim against your employer.",
   "section.employment.p2": "Most employers are legally required to have insurance to cover employees for injury, illness, or death that occurs as a result of their work.",
   "section.employment.p3": "You would need to document the incident and instruct a solicitor who sends a \"letter of claim\" to your employer or their insurer.",
   "section.employment.p4.before": "You can get more advice on employment issues from",
   "section.employment.p4.linkText": "Acas (opens in new tab)",
-  "section.employment.p4.after": "."
+  "urls": {
+    "claimCompensation": "https://www.gov.uk/claim-compensation-criminal-injury",
+    "bereavementBenefits": "https://www.gov.uk/browse/benefits/bereavement",
+    "appealBenefit": "https://www.gov.uk/appeal-benefit-decision",
+    "financialOmbudsman": "https://www.financial-ombudsman.org.uk/consumers/how-to-complain",
+    "acas": "http://www.acas.org.uk/"
+  }
 }

@@ -1,6 +1,6 @@
 {
   "pageTitle": "Getting your property back",
-  "heading.main": "Understand your rights (Welsh version)",
+  "heading.main": "Understand your rights",
   "nav.label": "Pages in this guide",
   "nav.title": "Contents",
   "nav.victimPersonalStatement": "Making a Victim Personal Statement",
@@ -19,5 +19,8 @@
   "heading.contactOfficer": "Contact the police officer in charge",
   "body.noContactDetails": "If you do not have the contact details of your police officer in charge or local police force, contact the police by phone or online.",
   "body.telephone": "Telephone: 101",
-  "link.contactPoliceOnline": "Contact the police online (opens in new tab)"
+  "link.contactPoliceOnline": "Contact the police online (opens in new tab)",
+  "urls": {
+    "policeContact": "https://www.police.uk/pu/contact-us/updates/"
+  }
 }

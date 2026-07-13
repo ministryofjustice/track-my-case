@@ -1,5 +1,5 @@
 {
-  "applicationName": "Track a case (Welsh version)",
+  "applicationName": "Track a case",
   "back": "Back",
   "nav": {
     "home": "Home"
@@ -22,7 +22,7 @@
   },
   "cookieBanner": {
     "regionLabel": "Cookies on {{applicationName}}",
-    "heading": "Cookies on {{applicationName}} (Welsh version)",
+    "heading": "Cookies on {{applicationName}}",
     "essential": "We use essential small files (known as 'cookies') to make this service work.",
     "analytics": "We would also like to use analytics cookies so we can understand how you use the service and make improvements.",
     "accept": "Accept analytics cookies",

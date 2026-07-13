@@ -1,6 +1,6 @@
 {
   "pageTitle": "Claiming expenses",
-  "pageHeading": "Understand your rights (Welsh version)",
+  "pageHeading": "Understand your rights",
   "contentsHeading": "Contents",
   "nav.label": "Pages in this guide",
   "nav.victimPersonalStatement": "Making a Victim Personal Statement",
@@ -44,5 +44,8 @@
   "findOutMoreText": "Find out more about what you can claim, or start an application on the",
   "findOutMoreLinkText": "Claim witness expenses service (opens in new tab)",
   "victimSupportText": "You can also get help with applying for expenses from",
-  "victimSupportLinkText": "Victim Support (opens in new tab)"
+  "victimSupportLinkText": "Victim Support (opens in new tab)",
+  "urls": {
+    "claimWitnessExpenses": "https://claim-witness-expenses.cps.gov.uk/"
+  }
 }
