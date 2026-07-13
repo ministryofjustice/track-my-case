@@ -273,7 +273,7 @@ describe('court-information-controller', () => {
 
     await courtInformationController(req, res, next)
 
-    expect(res.locals.courtUrl).toEqual('https://www.find-court-tribunal.service.gov.uk/')
+    expect(res.locals.courtUrl).toEqual('https://www.find-court-tribunal.service.gov.uk')
     expect(res.render).toHaveBeenCalledWith('pages/case/court-information.njk')
   })
 
