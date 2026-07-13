@@ -3,11 +3,7 @@
   "intro": {
     "heading": "The criminal justice system: step by step",
     "para1": "When you have experienced a crime and the case goes to court, use our guide to check:",
-    "list1": [
-      "what happens, who is involved and when",
-      "what you might need to do",
-      "your rights throughout the process"
-    ],
+    "list1": ["what happens, who is involved and when", "what you might need to do", "your rights throughout the process"],
     "para2": "What happens at each stage, and where the case ends, can depend on:",
     "list2": [
       "the crime, or crimes if there was more than one",
@@ -32,10 +28,7 @@
     "para4": "You can give the police a witness statement, where you describe what happened.",
     "para5": "You might also want to give a victim personal statement, where you describe emotional, physical, and financial effects a crime may have had on you.",
     "para6": "Find out more about giving a:",
-    "list1": [
-      "witness statement (opens in new tab)",
-      "victim personal statement"
-    ],
+    "list1": ["witness statement (opens in new tab)", "victim personal statement"],
     "subheading2": "Getting support for your needs",
     "para7": "The police will listen to your experience and personal circumstances to understand what you might need. This includes support for disabilities.",
     "para8": "They will then put you in touch with the right support services for you.",
@@ -49,10 +42,7 @@
     "para1": "At this stage, a person who is accused of a crime is referred to as a 'suspect'.",
     "para2": "The police investigate crimes by looking at evidence and talking to suspects.",
     "para3": "The police will update you on what's happening with the case. They will check with you:",
-    "list1": [
-      "how often you want to get updates",
-      "how you want to be contacted, for example by phone or email"
-    ]
+    "list1": ["how often you want to get updates", "how you want to be contacted, for example by phone or email"]
   },
   "stage3": {
     "heading": "Stage 3: The police make a charge or end the case",
@@ -75,10 +65,7 @@
       "introduces you to your police witness care unit, who will look after you during the case"
     ],
     "para4": "The Crown Prosecution Service consider the evidence and public interest of the case to decide whether to either:",
-    "list3": [
-      "charge the suspect and take the case to court",
-      "not charge the suspect and end the case"
-    ],
+    "list3": ["charge the suspect and take the case to court", "not charge the suspect and end the case"],
     "para5": "If the Crown Prosecution Service take a crime case to court, you do not need a solicitor as the Crown Prosecution Service are acting on your behalf.",
     "subheading2": "If the suspect is not charged",
     "para6": "If the police or the Crown Prosecution Service decide not to charge a suspect, but you believe they should, you have the right to ask for a review of the decision through the Victims' Right to Review Scheme.",
@@ -109,10 +96,7 @@
     "para1": "A court trial is where evidence and arguments are presented to decide guilt for a crime.",
     "para2": "The aim is to reach a fair decision based on the law.",
     "para3": "Depending on the type of crime, a trial is heard by either:",
-    "list1": [
-      "magistrates",
-      "a judge and jury"
-    ],
+    "list1": ["magistrates", "a judge and jury"],
     "para4": "A trial can include:",
     "list2": [
       "statements from the prosecution, defence, victims and witnesses",
@@ -179,10 +163,7 @@
       "a fine"
     ],
     "para8": "The sentence will depend on:",
-    "list2": [
-      "the type and seriousness of the crime",
-      "the circumstances of the defendant"
-    ],
+    "list2": ["the type and seriousness of the crime", "the circumstances of the defendant"],
     "subheading4": "When a defendant might appeal their sentence",
     "para9": "A defendant found guilty can appeal their sentence if they think it is not fair.",
     "para10": "In an appeal, a judge reviews the case or there may be another court hearing.",

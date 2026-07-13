@@ -23,11 +23,7 @@
   "section.how.p2": "If a defendant is found guilty, the court will take your Victim Personal Statement into account, along with all the other evidence, when deciding on an appropriate sentence.",
   "section.write.heading": "How to write a Victim Personal Statement",
   "section.write.p1": "You can consider writing in your own words about how the crime has affected different parts of your life, such as your:",
-  "section.write.lifeAreas": [
-    "mental health",
-    "physical health",
-    "money"
-  ],
+  "section.write.lifeAreas": ["mental health", "physical health", "money"],
   "section.write.examplesIntro": "For example, you might write about:",
   "section.write.examples": [
     "an injury and its effects on your life",
