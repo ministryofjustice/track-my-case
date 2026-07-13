@@ -1,9 +1,9 @@
-import { createNunjucksEnv, baseContext } from '../../../utils/nunjucksTestHelper'
+import { createNunjucksEnv, baseContext, renderPage } from '../../../utils/nunjucksTestHelper'
 
 const env = createNunjucksEnv()
 
 it('matches snapshot', () => {
-  const html = env.render('pages/case/victim-personal-statement.njk', {
+  const html = renderPage(env, 'pages/case/victim-personal-statement.njk', {
     ...baseContext,
     pageTitle: 'Making a Victim Personal Statement',
     ...{ correctPasswordAndNotExpired: true, authenticated: true, backLink: '/case/dashboard' },

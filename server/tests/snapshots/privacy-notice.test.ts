@@ -1,9 +1,9 @@
-import { createNunjucksEnv, baseContext } from '../../utils/nunjucksTestHelper'
+import { createNunjucksEnv, baseContext, renderPage } from '../../utils/nunjucksTestHelper'
 
 const env = createNunjucksEnv()
 
 it('matches snapshot', () => {
-  const html = env.render('pages/privacy-notice.njk', {
+  const html = renderPage(env, 'pages/privacy-notice.njk', {
     ...baseContext,
     pageTitle: 'Privacy notice',
     ...{},
