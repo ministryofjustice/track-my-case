@@ -3,13 +3,13 @@
 <p class="govuk-body">{{ t('court-info-generic:goingToCourtP1') }}</p>
 <p class="govuk-body">{{ t('court-info-generic:goingToCourtP2') }}</p>
 <ul class="govuk-list govuk-list--bullet">
-  <li><a href="https://www.gov.uk/going-to-court-victim-witness" class="govuk-link" target="_blank">{{ t('court-info-generic:goingToCourtLinks.0') }}</a></li>
-  <li><a href="https://www.gov.uk/guidance/what-to-expect-coming-to-a-court-or-tribunal" class="govuk-link" target="_blank">{{ t('court-info-generic:goingToCourtLinks.1') }}</a></li>
+  <li><a href="{{ t('court-info-generic:urls.goingToCourt') }}" class="govuk-link" target="_blank">{{ t('court-info-generic:goingToCourtLinks.0') }}</a></li>
+  <li><a href="{{ t('court-info-generic:urls.whatToExpect') }}" class="govuk-link" target="_blank">{{ t('court-info-generic:goingToCourtLinks.1') }}</a></li>
 </ul>
 
 <h2 class="govuk-heading-m">{{ t('court-info-generic:supportHeading') }}</h2>
 <p class="govuk-body">{{ t('court-info-generic:supportP1') }}</p>
-<p class="govuk-body">{{ t('court-info-generic:supportP2Before') }} <a href="https://witnessservice.org.uk/" class="govuk-link" target="_blank">{{ t('court-info-generic:supportP2Link') }}</a>{{ t('court-info-generic:supportP2After') }}</p>
+<p class="govuk-body">{{ t('court-info-generic:supportP2Before') }} <a href="{{ t('common:urls.witnessService') }}" class="govuk-link" target="_blank">{{ t('court-info-generic:supportP2Link') }}</a>.</p>
 
 <h2 class="govuk-heading-m">{{ t('court-info-generic:contactHeading') }}</h2>
 <p class="govuk-body">{{ t('court-info-generic:contactP1') }}</p>
@@ -18,4 +18,4 @@
     <li>{{ item }}</li>
   {% endfor %}
 </ul>
-<p class="govuk-body">{{ t('court-info-generic:contactP2Before') }} <a href="{{ t('common:urls.policeForce') }}" class="govuk-link" target="_blank">{{ t('court-info-generic:contactP2Link') }}</a>{{ t('court-info-generic:contactP2After') }}</p>
+<p class="govuk-body">{{ t('court-info-generic:contactP2Before') }} <a href="{{ t('common:urls.policeForce') }}" class="govuk-link" target="_blank">{{ t('court-info-generic:contactP2Link') }}</a>.</p>

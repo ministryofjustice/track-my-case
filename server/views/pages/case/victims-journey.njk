@@ -51,15 +51,15 @@
           <div id="accordion-with-summary-sections-content-1" class="govuk-accordion__section-content">
             <p class="govuk-body">{{ t('victims-journey:stage1.para1') }}</p>
             <p class="govuk-body">{{ t('victims-journey:stage1.para2') }}</p>
-            <p class="govuk-body"><a href="https://victimandwitnessinformation.org.uk/find-support" class="govuk-link" target="_blank">{{ t('victims-journey:stage1.para3') }}</a></p>
+            <p class="govuk-body"><a href="{{ t('victims-journey:urls.victimWitnessInfo') }}" class="govuk-link" target="_blank">{{ t('victims-journey:stage1.para3') }}</a></p>
 
             <h3 class="govuk-heading-s">{{ t('victims-journey:stage1.subheading1') }}</h3>
             <p class="govuk-body">{{ t('victims-journey:stage1.para4') }}</p>
             <p class="govuk-body">{{ t('victims-journey:stage1.para5') }}</p>
             <p class="govuk-body">{{ t('victims-journey:stage1.para6') }}</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li><a href="https://www.police.uk/advice/advice-and-information/victim-support/giving-witness-victim-statement/" class="govuk-link" target="_blank">{{ t('victims-journey:stage1.list1[0]') }}</a></li>
-              <li><a href="{{ t('common:routes.victimPersonalStatement') }}" class="govuk-link">{{ t('victims-journey:stage1.list1[1]') }}</a></li>
+              <li><a href="{{ t('victims-journey:urls.witnessStatement') }}" class="govuk-link" target="_blank">{{ t('victims-journey:stage1.list1.0') }}</a></li>
+              <li><a href="{{ t('common:routes.victimPersonalStatement') }}" class="govuk-link">{{ t('victims-journey:stage1.list1.1') }}</a></li>
             </ul>
 
             <h3 class="govuk-heading-s">{{ t('victims-journey:stage1.subheading2') }}</h3>
@@ -145,7 +145,7 @@
             <h3 class="govuk-heading-s">{{ t('victims-journey:stage3.subheading2') }}</h3>
             <p class="govuk-body">{{ t('victims-journey:stage3.para6') }}</p>
             <p class="govuk-body">{{ t('victims-journey:stage3.para7') }}</p>
-            <p class="govuk-body"><a href="https://www.police.uk/advice/advice-and-information/victim-support/victims-right-review-scheme/" class="govuk-link" target="_blank">{{ t('victims-journey:stage3.para8') }}</a></p>
+            <p class="govuk-body"><a href="{{ t('victims-journey:urls.victimsRightReview') }}" class="govuk-link" target="_blank">{{ t('victims-journey:stage3.para8') }}</a></p>
           </div>
         </div>
 
@@ -173,7 +173,7 @@
             <p class="govuk-body">{{ t('victims-journey:stage4.para4') }}</p>
             <p class="govuk-body">{{ t('victims-journey:stage4.para5') }}</p>
             <p class="govuk-body">{{ t('victims-journey:stage4.para6') }}</p>
-            <p class="govuk-body"><a href="https://victims-pathfinder-main.apps.live.cloud-platform.service.justice.gov.uk/v6/victim-personal-statement" class="govuk-link" target="_blank">{{ t('victims-journey:stage4.para7') }}</a>.</p>
+            <p class="govuk-body"><a href="{{ t('victims-journey:urls.victimPathfinder') }}" class="govuk-link" target="_blank">{{ t('victims-journey:stage4.para7') }}</a>.</p>
 
             <h3 class="govuk-heading-s">{{ t('victims-journey:stage4.subheading2') }}</h3>
             <p class="govuk-body">{{ t('victims-journey:stage4.para8') }}</p>
@@ -247,7 +247,7 @@
                 </ul>
                 <p>{{ t('victims-journey:stage5.details.para3') }}</p>
                 <p>{{ t('victims-journey:stage5.details.para4') }}</p>
-                <p><a href="{{ t('special-measures:urls.cpsSpecialMeasures') }}" class="govuk-link" target="_blank">{{ t('victims-journey:stage5.details.para5') }}</a></p>
+                <p><a href="{{ t('common:urls.cpsSpecialMeasures') }}" class="govuk-link" target="_blank">{{ t('victims-journey:stage5.details.para5') }}</a></p>
               </div>
             </details>
 
@@ -279,7 +279,7 @@
             <h3 class="govuk-heading-s">{{ t('victims-journey:stage6.subheading2') }}</h3>
             <p class="govuk-body">{{ t('victims-journey:stage6.para5') }}</p>
             <p class="govuk-body">{{ t('victims-journey:stage6.para6') }}
-            <a href="{{ t('common:urls.victimSupport') }}" class="govuk-link" target="_blank">{{ t('victims-journey:stage6.para6LinkText') }}</a>{{ t('victims-journey:stage6.para6End') }}</p>
+            <a href="{{ t('common:urls.victimSupport') }}" class="govuk-link" target="_blank">{{ t('victims-journey:stage6.para6LinkText') }}</a>.</p>
 
             <h3 class="govuk-heading-s">{{ t('victims-journey:stage6.subheading3') }}</h3>
             <p class="govuk-body">{{ t('victims-journey:stage6.para7') }}</p>
@@ -313,11 +313,11 @@
                 <li>{{ item }}</li>
               {% endfor %}
             </ul>
-            <p class="govuk-body">{{ t('victims-journey:stage6.para14') }} <a href="https://sentencingcouncil.org.uk/about-sentencing/how-sentencing-works/" class="govuk-link" target="_blank">{{ t('victims-journey:stage6.para14LinkText') }}</a>{{ t('victims-journey:stage6.para14End') }}</p>
+            <p class="govuk-body">{{ t('victims-journey:stage6.para14') }} <a href="{{ t('victims-journey:urls.sentencingCouncil') }}" class="govuk-link" target="_blank">{{ t('victims-journey:stage6.para14LinkText') }}</a>.</p>
 
             <h3 class="govuk-heading-s">{{ t('victims-journey:stage6.subheading6') }}</h3>
             <p class="govuk-body">{{ t('victims-journey:stage6.para15') }}</p>
-            <p class="govuk-body"><a href="https://www.gov.uk/ask-crown-court-sentence-review" class="govuk-link" target="_blank">{{ t('victims-journey:stage6.para16') }}</a></p>
+            <p class="govuk-body"><a href="{{ t('victims-journey:urls.crownCourtSentenceReview') }}" class="govuk-link" target="_blank">{{ t('victims-journey:stage6.para16') }}</a></p>
 
             <h3 class="govuk-heading-s">{{ t('victims-journey:stage6.subheading7') }}</h3>
             <p class="govuk-body">{{ t('victims-journey:stage6.para17') }}</p>
@@ -329,7 +329,7 @@
               {% endfor %}
             </ul>
             <p class="govuk-body">{{ t('victims-journey:stage6.para20') }}</p>
-            <p class="govuk-body"><a href="https://www.gov.uk/government/publications/get-support-as-a-victim-of-crime/information-about-the-victim-contact-scheme" class="govuk-link" target="_blank">{{ t('victims-journey:stage6.para21') }}</a></p>
+            <p class="govuk-body"><a href="{{ t('victims-journey:urls.victimContactScheme') }}" class="govuk-link" target="_blank">{{ t('victims-journey:stage6.para21') }}</a></p>
 
             <h3 class="govuk-heading-s">{{ t('victims-journey:stage6.subheading8') }}</h3>
             <p class="govuk-body">{{ t('victims-journey:stage6.para22') }}</p>
@@ -338,8 +338,8 @@
             <p class="govuk-body">{{ t('victims-journey:stage6.para25') }}</p>
             <p class="govuk-body">{{ t('victims-journey:stage6.para26') }}</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>{{ t('victims-journey:stage6.list6item1Prefix') }} <a href="https://www.gov.uk/guidance/guide-to-parole-for-victims-of-crime" class="govuk-link" target="_blank">{{ t('victims-journey:stage6.list6item1LinkText') }}</a></li>
-              <li>{{ t('victims-journey:stage6.list6item2Prefix') }} <a href="https://www.gov.uk/guidance/guide-to-parole-for-victims-of-crime" class="govuk-link" target="_blank">{{ t('victims-journey:stage6.list6item2LinkText') }}</a></li>
+              <li>{{ t('victims-journey:stage6.list6item1Prefix') }} <a href="{{ t('victims-journey:urls.paroleGuide') }}" class="govuk-link" target="_blank">{{ t('victims-journey:stage6.list6item1LinkText') }}</a></li>
+              <li>{{ t('victims-journey:stage6.list6item2Prefix') }} <a href="{{ t('victims-journey:urls.paroleGuide') }}" class="govuk-link" target="_blank">{{ t('victims-journey:stage6.list6item2LinkText') }}</a></li>
             </ul>
           </div>
         </div>
@@ -347,67 +347,5 @@
 
     </div>
 
-{#    <div class="govuk-grid-column-two-thirds">#}
-{#      <h1 class="govuk-heading-xl">A victim's journey through the criminal justice system</h1>#}
-{#      <p class="govuk-body">Going through the criminal justice system can feel daunting and overwhelming. This overview explains a victim's journey through every stage to help you understand what the process looks like and how the different steps relate to each other.</p>#}
-{#      <p class="govuk-body">Each victim's journey depends on the crime, the outcome of the investigation, and access to support services, but the rights victims can expect to receive are set out in the <a class="govuk-link" href="{{ t('common:urls.victimsCodeFull') }}" target="_blank">Victims' Code (opens in new tab)</a>.</p>#}
-
-{#      <h2 class="govuk-heading-m">Stage 1: Reporting the crime</h2>#}
-{#      <p class="govuk-body">A crime happens to you.</p>#}
-{#      <p class="govuk-body">You have the right to report the crime to the police.</p>#}
-{#      <p class="govuk-body">If you decide not to report the crime, you can still get help from support services at any point.</p>#}
-
-{#      <h2 class="govuk-heading-m">Stage 2: The police investigation</h2>#}
-{#      <p class="govuk-body">You will receive a crime reference number and a victims of crime letter.</p>#}
-{#      <p class="govuk-body">You will give a witness statement, and have the opportunity to give a Victim Personal Statement.</p>#}
-{#      <p class="govuk-body">The police will assess your needs and refer you to support services.</p>#}
-
-{#      <h2 class="govuk-heading-m">Stage 3: Charging the suspect</h2>#}
-{#      <p class="govuk-body">You will receive updates on the police investigation.</p>#}
-{#      <p class="govuk-body">The police will decide whether to:</p>#}
-{#      <ul class="govuk-list govuk-list--bullet">#}
-{#        <li>Charge the suspect and may refer the case to the Crown Prosecution Service.</li>#}
-{#        <li>Give the offender a caution with certain conditions.</li>#}
-{#        <li>Not progress the case if there isn't enough evidence.</li>#}
-{#      </ul>#}
-{#      <p class="govuk-body">If the case is referred to the Crown Prosecution Service, they will decide whether to:</p>#}
-{#      <ul class="govuk-list govuk-list--bullet">#}
-{#        <li>Charge the suspect and take the case to court.</li>#}
-{#        <li>Not to take the case to court.</li>#}
-{#      </ul>#}
-{#      <p class="govuk-body">If the Crown Prosecution Service decide not to take the case to court, you can ask for a review of the decision through the Victims' Right to Review Scheme.</p>#}
-
-{#      <h2 class="govuk-heading-m">Stage 4: The first court hearing</h2>#}
-{#      <p class="govuk-body">The defendant will state their plea, and you will be told the outcome.</p>#}
-{#      <p class="govuk-body">The defendant might:</p>#}
-{#      <ul class="govuk-list govuk-list--bullet">#}
-{#        <li>Plead guilty to all the charges. Plead guilty means they say they did the crimes.</li>#}
-{#        <li>Plead guilty to some of the charges.</li>#}
-{#        <li>Plead not guilty to all of the charges.</li>#}
-{#      </ul>#}
-{#      <p class="govuk-body">If the defendant pleads guilty, the case will proceed to sentencing.</p>#}
-{#      <p class="govuk-body">The Witness Care Unit will tell you the sentence.</p>#}
-{#      <p class="govuk-body">You will be referred to the Victim Contact Scheme if the offender is sentenced to over 12 months or to a hospital order for a violent or sexual crime.</p>#}
-{#      <p class="govuk-body">If the defendant pleads not guilty, a trial date will be set.</p>#}
-
-{#      <h2 class="govuk-heading-m">Stage 5: The court trial</h2>#}
-{#      <p class="govuk-body">The Witness Care Unit will assess your needs and support you before the trial. They may refer you to the Witness Service.</p>#}
-{#      <p class="govuk-body">On the day of the trial you may have to go to court to give evidence.</p>#}
-{#      <p class="govuk-body">You can get extra support called Special Measures if you need help you give evidence.</p>#}
-{#      <p class="govuk-body">The Witness Care Unit will tell you the verdict once it has been reached.</p>#}
-{#      <p class="govuk-body">The outcome could be:</p>#}
-{#      <ul class="govuk-list govuk-list--bullet">#}
-{#        <li>The defendant is found guilty and the case proceeds to sentencing. If the offender appeals their sentence you will be told.</li>#}
-{#        <li>The defendant is found not guilty and you may be referred to support services.</li>#}
-{#      </ul>#}
-
-{#      <h2 class="govuk-heading-m">Stage 6: After the trial</h2>#}
-{#      <p class="govuk-body">You can join the Victim Contact Scheme if the offender is sentenced to over 12 months or to a hospital order for a violent or sexual crime.</p>#}
-{#      <p class="govuk-body">You will receive updates throughout the offender's sentence from the Victim Contact Scheme.</p>#}
-{#      <p class="govuk-body">You will be told when the offender is released.</p>#}
-{#      <p class="govuk-body">The offender might be considered for parole (early release).</p>#}
-{#      <p class="govuk-body">You can give your views on parole conditions and write a Victim Personal Statement for the Parole Board.</p>#}
-{#      <p class="govuk-body">You will be told the Parole Board's decision.</p>#}
-{#    </div>#}
   </div>
 {% endblock %}

@@ -59,7 +59,7 @@
 
       <h3 class="govuk-heading-m">{{ t('requesting-transcript:sentencing.heading') }}</h3>
       <p class="govuk-body">{{ t('requesting-transcript:sentencing.para1') }}</p>
-      <p class="govuk-body">{{ t('requesting-transcript:sentencing.para2.before') }} <a href="https://caselaw.nationalarchives.gov.uk/" class="govuk-link" target="_blank">{{ t('requesting-transcript:sentencing.para2.link1Text') }}</a> {{ t('requesting-transcript:sentencing.para2.between') }} <a href="https://www.judiciary.uk/judgments/" class="govuk-link" target="_blank">{{ t('requesting-transcript:sentencing.para2.link2Text') }}</a>.</p>
+      <p class="govuk-body">{{ t('requesting-transcript:sentencing.para2.before') }} <a href="{{ t('requesting-transcript:urls.nationalArchives') }}" class="govuk-link" target="_blank">{{ t('requesting-transcript:sentencing.para2.link1Text') }}</a> {{ t('requesting-transcript:sentencing.para2.between') }} <a href="{{ t('requesting-transcript:urls.judiciaryJudgments') }}" class="govuk-link" target="_blank">{{ t('requesting-transcript:sentencing.para2.link2Text') }}</a>.</p>
       <p class="govuk-body">{{ t('requesting-transcript:sentencing.para3') }}</p>
       <ul class="govuk-list govuk-list--bullet">
         {% for item in t('requesting-transcript:sentencing.eligibleItems', {returnObjects: true}) %}
@@ -68,18 +68,18 @@
       </ul>
       <p class="govuk-body">{{ t('requesting-transcript:sentencing.applyLead') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li><a href="https://transcripts-of-judges-sentencing-remarks.form.service.justice.gov.uk/" class="govuk-link" target="_blank">{{ t('requesting-transcript:sentencing.applyOnlineLinkText') }}</a></li>
-        <li><a href="https://www.gov.uk/government/publications/apply-for-a-transcript-of-a-judges-sentencing-remarks" class="govuk-link" target="_blank">{{ t('requesting-transcript:sentencing.applyFormLinkText') }}</a></li>
+        <li><a href="{{ t('requesting-transcript:urls.transcriptService') }}" class="govuk-link" target="_blank">{{ t('requesting-transcript:sentencing.applyOnlineLinkText') }}</a></li>
+        <li><a href="{{ t('requesting-transcript:urls.applyTranscript') }}" class="govuk-link" target="_blank">{{ t('requesting-transcript:sentencing.applyFormLinkText') }}</a></li>
       </ul>
       <p class="govuk-body">{{ t('requesting-transcript:sentencing.para4') }}</p>
       <p class="govuk-body">{{ t('requesting-transcript:sentencing.para5') }}</p>
 
       <h3 class="govuk-heading-m">{{ t('requesting-transcript:fullHearing.heading') }}</h3>
-      <p class="govuk-body">{{ t('requesting-transcript:fullHearing.para1.before') }} <a href="https://www.gov.uk/government/publications/order-a-transcript-of-court-or-tribunal-proceedings-form-ex107" class="govuk-link" target="_blank">{{ t('requesting-transcript:fullHearing.para1.linkText') }}</a> {{ t('requesting-transcript:fullHearing.para1.after') }}</p>
+      <p class="govuk-body">{{ t('requesting-transcript:fullHearing.para1.before') }} <a href="{{ t('requesting-transcript:urls.orderTranscriptForm') }}" class="govuk-link" target="_blank">{{ t('requesting-transcript:fullHearing.para1.linkText') }}</a> {{ t('requesting-transcript:fullHearing.para1.after') }}</p>
       <p class="govuk-body">{{ t('requesting-transcript:fullHearing.para2') }}</p>
       <p class="govuk-body">{{ t('requesting-transcript:fullHearing.para3') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>{{ t('requesting-transcript:fullHearing.returnItem1.before') }} <a href="https://www.gov.uk/find-court-tribunal" class="govuk-link" target="_blank">{{ t('requesting-transcript:fullHearing.returnItem1.linkText') }}</a> {{ t('requesting-transcript:fullHearing.returnItem1.after') }}</li>
+        <li>{{ t('requesting-transcript:fullHearing.returnItem1.before') }} <a href="{{ t('requesting-transcript:urls.findCourtTribunal') }}" class="govuk-link" target="_blank">{{ t('requesting-transcript:fullHearing.returnItem1.linkText') }}</a> {{ t('requesting-transcript:fullHearing.returnItem1.after') }}</li>
         <li>{{ t('requesting-transcript:fullHearing.returnItem2') }}</li>
       </ul>
       <p class="govuk-body">{{ t('requesting-transcript:fullHearing.para4') }}</p>

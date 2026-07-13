@@ -84,7 +84,7 @@
         {% endfor %}
       </ul>
       <p class="govuk-body">{{ t('understand-compensation:section.criminalInjuries.p2') }}</p>
-      <p class="govuk-body"><a href="https://www.gov.uk/claim-compensation-criminal-injury" class="govuk-link" target="_blank">{{ t('understand-compensation:section.criminalInjuries.linkText') }}</a>.</p>
+      <p class="govuk-body"><a href="{{ t('understand-compensation:urls.claimCompensation') }}" class="govuk-link" target="_blank">{{ t('understand-compensation:section.criminalInjuries.linkText') }}</a>.</p>
 
       <h2 class="govuk-heading-m">{{ t('understand-compensation:section.civil.heading') }}</h2>
       <p class="govuk-body">{{ t('understand-compensation:section.civil.p1') }}</p>
@@ -93,19 +93,19 @@
 
       <h2 class="govuk-heading-m">{{ t('understand-compensation:section.benefits.heading') }}</h2>
       <p class="govuk-body">{{ t('understand-compensation:section.benefits.p1') }}</p>
-      <p class="govuk-body">{{ t('understand-compensation:section.benefits.p2.before') }} <a href="https://www.gov.uk/browse/benefits/bereavement" class="govuk-link" target="_blank">{{ t('understand-compensation:section.benefits.p2.linkText') }}</a>{{ t('understand-compensation:section.benefits.p2.after') }}</p>
-      <p class="govuk-body">{{ t('understand-compensation:section.benefits.p3.before') }} <a href="https://www.gov.uk/appeal-benefit-decision" class="govuk-link" target="_blank">{{ t('understand-compensation:section.benefits.p3.linkText') }}</a>{{ t('understand-compensation:section.benefits.p3.after') }}</p>
+      <p class="govuk-body">{{ t('understand-compensation:section.benefits.p2.before') }} <a href="{{ t('understand-compensation:urls.bereavementBenefits') }}" class="govuk-link" target="_blank">{{ t('understand-compensation:section.benefits.p2.linkText') }}</a>.</p>
+      <p class="govuk-body">{{ t('understand-compensation:section.benefits.p3.before') }} <a href="{{ t('understand-compensation:urls.appealBenefit') }}" class="govuk-link" target="_blank">{{ t('understand-compensation:section.benefits.p3.linkText') }}</a>.</p>
 
       <h2 class="govuk-heading-m">{{ t('understand-compensation:section.insurance.heading') }}</h2>
       <p class="govuk-body">{{ t('understand-compensation:section.insurance.p1') }}</p>
       <p class="govuk-body">{{ t('understand-compensation:section.insurance.p2') }}</p>
-      <p class="govuk-body">{{ t('understand-compensation:section.insurance.p3.before') }} <a href="https://www.financial-ombudsman.org.uk/consumers/how-to-complain" class="govuk-link" target="_blank">{{ t('understand-compensation:section.insurance.p3.linkText') }}</a>{{ t('understand-compensation:section.insurance.p3.after') }}</p>
+      <p class="govuk-body">{{ t('understand-compensation:section.insurance.p3.before') }} <a href="{{ t('understand-compensation:urls.financialOmbudsman') }}" class="govuk-link" target="_blank">{{ t('understand-compensation:section.insurance.p3.linkText') }}</a>.</p>
 
       <h2 class="govuk-heading-m">{{ t('understand-compensation:section.employment.heading') }}</h2>
       <p class="govuk-body">{{ t('understand-compensation:section.employment.p1') }}</p>
       <p class="govuk-body">{{ t('understand-compensation:section.employment.p2') }}</p>
       <p class="govuk-body">{{ t('understand-compensation:section.employment.p3') }}</p>
-      <p class="govuk-body">{{ t('understand-compensation:section.employment.p4.before') }} <a href="http://www.acas.org.uk/" class="govuk-link" target="_blank">{{ t('understand-compensation:section.employment.p4.linkText') }}</a>{{ t('understand-compensation:section.employment.p4.after') }}</p>
+      <p class="govuk-body">{{ t('understand-compensation:section.employment.p4.before') }} <a href="{{ t('understand-compensation:urls.acas') }}" class="govuk-link" target="_blank">{{ t('understand-compensation:section.employment.p4.linkText') }}</a>.</p>
 
     </div>
   </div>

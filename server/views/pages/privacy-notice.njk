@@ -17,7 +17,7 @@
         {% for item in t('privacy-notice:whatDataWeCollect.items', {returnObjects: true}) %}
           <li>{{ item }}</li>
         {% endfor %}
-        <li>{{ t('privacy-notice:whatDataWeCollect.item.ipPre') }}<a class="govuk-link" target="_blank" href="https://www.gov.uk/help/browsers">{{ t('privacy-notice:whatDataWeCollect.item.ipLink') }}</a>{{ t('privacy-notice:whatDataWeCollect.item.ipPost') }}</li>
+        <li>{{ t('privacy-notice:whatDataWeCollect.item.ipPre') }}<a class="govuk-link" target="_blank" href="{{ t('privacy-notice:urls.browsers') }}">{{ t('privacy-notice:whatDataWeCollect.item.ipLink') }}</a>{{ t('privacy-notice:whatDataWeCollect.item.ipPost') }}</li>
         <li>{{ t('privacy-notice:whatDataWeCollect.item.cookiesPre') }}<a class="govuk-link" href="{{ t('common:routes.cookies') }}">{{ t('privacy-notice:whatDataWeCollect.item.cookiesLink') }}</a>{{ t('privacy-notice:whatDataWeCollect.item.cookiesPost') }}</li>
       </ul>
 
@@ -35,7 +35,7 @@
           <li>{{ item }}</li>
         {% endfor %}
       </ul>
-      <p class="govuk-body">{{ t('privacy-notice:whatWeDoWithYourData.para4Pre') }}<a class="govuk-link" target="_blank" href="https://support.google.com/analytics/topic/2919631">{{ t('privacy-notice:whatWeDoWithYourData.para4Link') }}</a>{{ t('privacy-notice:whatWeDoWithYourData.para4Post', {applicationName: applicationName}) }}</p>
+      <p class="govuk-body">{{ t('privacy-notice:whatWeDoWithYourData.para4Pre') }}<a class="govuk-link" target="_blank" href="{{ t('privacy-notice:urls.googleAnalytics') }}">{{ t('privacy-notice:whatWeDoWithYourData.para4Link') }}</a>{{ t('privacy-notice:whatWeDoWithYourData.para4Post', {applicationName: applicationName}) }}</p>
 
       <h3 class="govuk-heading-m">{{ t('privacy-notice:heading.contactUs') }}</h3>
       <p class="govuk-body">{{ t('privacy-notice:contactUs.intro') }}</p>
@@ -67,7 +67,7 @@
       <p class="govuk-body">
         {{ t('privacy-notice:icoAddress') | safe }}<br><br>
         {{ t('privacy-notice:ico.telephone') }}<br>
-        {{ t('privacy-notice:ico.websitePre') }}<a class="govuk-link" href="https://www.ico.org.uk" target="_blank">{{ t('privacy-notice:ico.websiteLink') }}</a>
+        {{ t('privacy-notice:ico.websitePre') }}<a class="govuk-link" href="{{ t('privacy-notice:urls.ico') }}" target="_blank">{{ t('privacy-notice:ico.websiteLink') }}</a>
       </p>
 
       <h3 class="govuk-heading-m">{{ t('privacy-notice:heading.changesToPolicy') }}</h3>
