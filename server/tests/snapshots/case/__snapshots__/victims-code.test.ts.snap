@@ -173,6 +173,22 @@ exports[`matches snapshot 1`] = `
   <nav aria-label="Back" class="govuk-width-container">
     <a href="/case/dashboard" class="govuk-back-link">Back</a>
   </nav>
+    <div class="govuk-width-container">
+      <nav class="hmrc-language-select" aria-label="Language switcher">
+        <ul class="hmrc-language-select__list">
+            <li class="hmrc-language-select__list-item">
+                <span class="govuk-visually-hidden">Change the language to English</span>
+                <span aria-current="true">English</span>
+            </li>
+            <li class="hmrc-language-select__list-item">
+                <a href="/?lng=cy" hreflang="cy" lang="cy" rel="alternate" class="govuk-link">
+                  <span class="govuk-visually-hidden">Newid yr iaith i'r Gymraeg</span>
+                  <span aria-hidden="true">Gymraeg</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
       <div class="govuk-width-container">
         <main class="govuk-main-wrapper app-container govuk-body" id="main-content">
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
@@ -271,7 +287,7 @@ exports[`matches snapshot 1`] = `
       </div>
 <script nonce="test-nonce" type="module">
   async function quickExit() {
-    const currentTabAddress = 'https://www.bbc.co.uk/'
+    const currentTabAddress = 'https://www.bbc.co.uk'
     const newTab = 'https://www.bbc.co.uk/weather'
     // ToDo: we should push custom event to dataLayer when quick-exit button was pressed
     // Open safe/neutral site in a new tab

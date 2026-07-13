@@ -173,6 +173,22 @@ exports[`matches snapshot 1`] = `
   <nav aria-label="Back" class="govuk-width-container">
     <a href="/case/dashboard" class="govuk-back-link">Back</a>
   </nav>
+    <div class="govuk-width-container">
+      <nav class="hmrc-language-select" aria-label="Language switcher">
+        <ul class="hmrc-language-select__list">
+            <li class="hmrc-language-select__list-item">
+                <span class="govuk-visually-hidden">Change the language to English</span>
+                <span aria-current="true">English</span>
+            </li>
+            <li class="hmrc-language-select__list-item">
+                <a href="/?lng=cy" hreflang="cy" lang="cy" rel="alternate" class="govuk-link">
+                  <span class="govuk-visually-hidden">Newid yr iaith i'r Gymraeg</span>
+                  <span aria-hidden="true">Gymraeg</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
       <div class="govuk-width-container">
         <main class="govuk-main-wrapper app-container govuk-body" id="main-content">
   <h1 class="govuk-heading-l">Where to get more support and information</h1>
@@ -181,66 +197,45 @@ exports[`matches snapshot 1`] = `
       <h2 class="govuk-heading-m" id="gov">GOV.UK links</h2>
       <p class="govuk-body">Here are some helpful resources from GOV.UK for victims of crime. These links provide information and support on various topics:</p>
       <ul class="govuk-list">
-        <li>
-          <a href="https://www.cps.gov.uk/information-and-support-victims-witnesses/easy-read" target="_blank">
-            Easy Read Victims’ Guides (opens in a new tab)
-          </a>
-        </li>
-        <li>
-          <a href="https://www.gov.uk/guidance/support-for-victims-of-sexual-violence-and-abuse" target="_blank" title="Support for victims of sexual violence and abuse">
-            Support for victims of sexual violence and abuse
-          </a>
-        </li>
-        <li>
-          <a href="https://www.gov.uk/guidance/victim-and-witness-services" target="_blank" title="Victim and witness services">
-            Victim and witness services
-          </a>
-        </li>
-        <li>
-          <a href="https://www.gov.uk/browse/justice/compensation-victim-support" target="_blank" title="Compensation and victim support">
-            Compensation and victim support
-          </a>
-        </li>
-        <li>
-          <a href="https://www.gov.uk/get-support-as-a-victim-of-crime" target="_blank" title="Get support as a victim of crime">
-            Get support as a victim of crime
-          </a>
-        </li>
-        <li>
-          <a href="https://www.gov.uk/guidance/domestic-abuse-how-to-get-help" target="_blank" title="Domestic abuse: how to get help">
-            Domestic abuse: how to get help
-          </a>
-        </li>
-        <li>
-          <a href="https://www.gov.uk/guidance/rape-and-sexual-assault-support" target="_blank" title="Rape and sexual assault support">
-            Rape and sexual assault support
-          </a>
-        </li>
-        <li>
-          <a href="https://www.gov.uk/guidance/honour-based-abuse-and-forced-marriage" target="_blank" title="Honour-based abuse and forced marriage">
-            Honour-based abuse and forced marriage
-          </a>
-        </li>
-        <li>
-          <a href="https://www.gov.uk/guidance/modern-slavery-how-to-get-help" target="_blank" title="Modern slavery: how to get help">
-            Modern slavery: how to get help
-          </a>
-        </li>
+          <li>
+            <a href="https://www.cps.gov.uk/information-and-support-victims-witnesses/easy-read" target="_blank" title="Easy Read Victims' Guides (opens in a new tab)">Easy Read Victims' Guides (opens in a new tab)</a>
+          </li>
+          <li>
+            <a href="https://www.gov.uk/guidance/support-for-victims-of-sexual-violence-and-abuse" target="_blank" title="Support for victims of sexual violence and abuse">Support for victims of sexual violence and abuse</a>
+          </li>
+          <li>
+            <a href="https://www.gov.uk/guidance/victim-and-witness-services" target="_blank" title="Victim and witness services">Victim and witness services</a>
+          </li>
+          <li>
+            <a href="https://www.gov.uk/browse/justice/compensation-victim-support" target="_blank" title="Compensation and victim support">Compensation and victim support</a>
+          </li>
+          <li>
+            <a href="https://www.gov.uk/get-support-as-a-victim-of-crime" target="_blank" title="Get support as a victim of crime">Get support as a victim of crime</a>
+          </li>
+          <li>
+            <a href="https://www.gov.uk/guidance/domestic-abuse-how-to-get-help" target="_blank" title="Domestic abuse: how to get help">Domestic abuse: how to get help</a>
+          </li>
+          <li>
+            <a href="https://www.gov.uk/guidance/rape-and-sexual-assault-support" target="_blank" title="Rape and sexual assault support">Rape and sexual assault support</a>
+          </li>
+          <li>
+            <a href="https://www.gov.uk/guidance/honour-based-abuse-and-forced-marriage" target="_blank" title="Honour-based abuse and forced marriage">Honour-based abuse and forced marriage</a>
+          </li>
+          <li>
+            <a href="https://www.gov.uk/guidance/modern-slavery-how-to-get-help" target="_blank" title="Modern slavery: how to get help">Modern slavery: how to get help</a>
+          </li>
       </ul>
       <h2 class="govuk-heading-m" id="charities">Charity Links</h2>
-      <p class="govuk-body">
-        Below are links to UK-based charities that offer support and assistance to victims of crime.
-        These organizations provide a range of services to help you through difficult times:
-      </p>
+      <p class="govuk-body">Below are links to UK-based charities that offer support and assistance to victims of crime. These organizations provide a range of services to help you through difficult times:</p>
       <ul class="govuk-list">
-        <li><a href="https://www.victimsupport.org.uk/" target="_blank" title="Victim Support">Victim Support</a></li>
-        <li><a href="https://www.truehonour.org.uk/" target="_blank" title="True Honour">True Honour</a></li>
-        <li><a href="https://karmanirvana.org.uk/" target="_blank" title="Karma Nirvana">Karma Nirvana</a></li>
-        <li><a href="https://www.traumabreakthrough.org/" target="_blank" title="Trauma Breakthrough">Trauma Breakthrough</a></li>
-        <li><a href="https://www.refuge.org.uk/" target="_blank" title="Refuge">Refuge</a></li>
-        <li><a href="https://www.womensaid.org.uk/" target="_blank" title="Women's Aid">Women's Aid</a></li>
-        <li><a href="https://rapecrisis.org.uk/" target="_blank" title="Rape Crisis England & Wales">Rape Crisis England & Wales</a></li>
-        <li><a href="https://www.thesurvivorstrust.org/" target="_blank" title="The Survivors Trust">The Survivors Trust</a></li>
+          <li><a href="https://www.victimsupport.org.uk/" target="_blank" title="Victim Support">Victim Support</a></li>
+          <li><a href="https://www.truehonour.org.uk/" target="_blank" title="True Honour">True Honour</a></li>
+          <li><a href="https://karmanirvana.org.uk/" target="_blank" title="Karma Nirvana">Karma Nirvana</a></li>
+          <li><a href="https://www.traumabreakthrough.org/" target="_blank" title="Trauma Breakthrough">Trauma Breakthrough</a></li>
+          <li><a href="https://www.refuge.org.uk/" target="_blank" title="Refuge">Refuge</a></li>
+          <li><a href="https://www.womensaid.org.uk/" target="_blank" title="Women's Aid">Women's Aid</a></li>
+          <li><a href="https://rapecrisis.org.uk/" target="_blank" title="Rape Crisis England & Wales">Rape Crisis England & Wales</a></li>
+          <li><a href="https://www.thesurvivorstrust.org/" target="_blank" title="The Survivors Trust">The Survivors Trust</a></li>
       </ul>
     </div>
   </div>
@@ -248,7 +243,7 @@ exports[`matches snapshot 1`] = `
       </div>
 <script nonce="test-nonce" type="module">
   async function quickExit() {
-    const currentTabAddress = 'https://www.bbc.co.uk/'
+    const currentTabAddress = 'https://www.bbc.co.uk'
     const newTab = 'https://www.bbc.co.uk/weather'
     // ToDo: we should push custom event to dataLayer when quick-exit button was pressed
     // Open safe/neutral site in a new tab
