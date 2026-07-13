@@ -1,9 +1,9 @@
-import { createNunjucksEnv, baseContext } from '../../utils/nunjucksTestHelper'
+import { createNunjucksEnv, baseContext, renderPage } from '../../utils/nunjucksTestHelper'
 
 const env = createNunjucksEnv()
 
 it('matches snapshot', () => {
-  const html = env.render('pages/signed-out.njk', {
+  const html = renderPage(env, 'pages/signed-out.njk', {
     ...baseContext,
     pageTitle: 'Signed out',
     ...{ correctPasswordAndNotExpired: true, authenticated: true },
