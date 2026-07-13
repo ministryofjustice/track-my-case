@@ -43,25 +43,6 @@
     "tooManyRequests": "Too many requests",
     "commonPlatformUnavailable": "Common platform unavailable"
   },
-  "routes": {
-    "home": "/",
-    "cookies": "/cookies",
-    "privacyNotice": "/privacy-notice",
-    "aboutService": "/about-the-service",
-    "dashboard": "/case/dashboard",
-    "search": "/case/search",
-    "claimingExpenses": "/case/claiming-expenses",
-    "specialMeasures": "/case/special-measures",
-    "victimPersonalStatement": "/case/victim-personal-statement",
-    "requestingTranscript": "/case/requesting-court-hearing-transcript",
-    "understandCompensation": "/case/understand-compensation",
-    "returnProperty": "/case/return-property",
-    "victimsCode": "/case/victims-code",
-    "victimSupportLinks": "/case/victim-support-links",
-    "witnessService": "/case/witness-service",
-    "victimsJourney": "/case/victims-journey",
-    "keyRoles": "/case/key-roles"
-  },
   "urls": {
     "findCourtTribunal": "https://www.find-court-tribunal.service.gov.uk",
     "policeForce": "https://www.police.uk/pu/find-a-police-force",
