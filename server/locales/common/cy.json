@@ -63,16 +63,16 @@
     "keyRoles": "/case/key-roles"
   },
   "urls": {
-    "findCourtTribunal": "https://www.find-court-tribunal.service.gov.uk/",
-    "policeForce": "https://www.police.uk/pu/find-a-police-force/",
+    "findCourtTribunal": "https://www.find-court-tribunal.service.gov.uk",
+    "policeForce": "https://www.police.uk/pu/find-a-police-force",
     "witnessService": "https://witnessservice.org.uk/",
     "witnessServiceHelp": "https://witnessservice.org.uk/about/getting-help-from-the-witness-service/",
-    "samaritans": "https://www.samaritans.org/",
-    "victimSupport": "https://www.victimsupport.org.uk/",
+    "samaritans": "https://www.samaritans.org",
+    "victimSupport": "https://www.victimsupport.org.uk",
     "victimSupportHelp": "https://www.victimsupport.org.uk/help-and-support/get-help/",
-    "cpsEasyRead": "https://www.cps.gov.uk/information-and-support-victims-witnesses/easy-read",
+    "cpsEasyRead": "https://www.cps.gov.uk/information-and-support-victims/easy-read",
     "bbcWeather": "https://www.bbc.co.uk/weather",
-    "bbcHome": "https://www.bbc.co.uk/",
+    "bbcHome": "https://www.bbc.co.uk",
     "cpsSpecialMeasures": "https://www.cps.gov.uk/victims-guide/victims-guide-support-give-your-evidence-special-measures",
     "victimsCode": "https://www.gov.uk/government/publications/the-code-of-practice-for-victims-of-crime",
     "victimsCodeFull": "https://www.gov.uk/government/publications/the-code-of-practice-for-victims-of-crime/code-of-practice-for-victims-of-crime-in-england-and-wales-victims-code"
