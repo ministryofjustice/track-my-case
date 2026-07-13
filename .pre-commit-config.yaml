@@ -39,7 +39,9 @@ repos:
   - repo: builtin
     hooks:
       - id: end-of-file-fixer
+        exclude: '^.*\.snap$'
       - id: trailing-whitespace
+        exclude: '^.*\.snap$'
       - id: check-json
       - id: check-yaml
       - id: check-merge-conflict
