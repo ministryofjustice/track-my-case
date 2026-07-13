@@ -10,53 +10,20 @@ exports[`matches snapshot 1`] = `
 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#1d70b8">
-
-    
   <link href="/assets/css/index.css" rel="stylesheet" />
   <meta name="google-site-verification" content="ThvYU2V6sfjD-kyyj2zaZ8lZUxn-8qnsoiQCaFZHccQ" />
-
-
-    
       <link rel="icon" sizes="48x48" href="/assets/images/favicon.ico">
       <link rel="icon" sizes="any" href="/assets/images/favicon.svg" type="image/svg+xml">
       <link rel="mask-icon" href="/assets/images/govuk-icon-mask.svg" color="#1d70b8">
       <link rel="apple-touch-icon" href="/assets/images/govuk-icon-180.png">
       <link rel="manifest" href="/assets/manifest.json">
-    
-    
   </head>
   <body class="govuk-template__body">
     <script nonce="test-nonce">document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
-    
-  
-
-
-
-
-
-    
-  
         <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
-
-      
-  
     <nav aria-label="Quick exit">
       <a href="https://www.bbc.co.uk/weather" class="govuk-skip-link" rel="nofollow noreferrer">Quick Exit (press Shift or Escape three times)</a>
     </nav>
-  
-  
-
-
-    
-    
-
-    
-  
-
-  
-    
-
-
   <header class="cross-service-header" role="banner" data-module="one-login-header">
   <div class="one-login-header" data-one-login-header-nav>
     <div class="one-login-header__container govuk-width-container">
@@ -91,7 +58,6 @@ exports[`matches snapshot 1`] = `
         aria-expanded="false"
         class="cross-service-header__button cross-service-header__button--one-login js-x-header-toggle">
         <span class="cross-service-header__button-content">One Login</span>
-          
   <!--[if gt IE 8]><!-->
     <span class="cross-service-header__button-icon cross-service-header__button-icon--default">
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
@@ -102,7 +68,6 @@ exports[`matches snapshot 1`] = `
       </svg>
     </span>
   <!--<![endif]-->
-          
   <!--[if gt IE 8]><!-->
     <span class="cross-service-header__button-icon cross-service-header__button-icon--focus">
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
@@ -114,7 +79,6 @@ exports[`matches snapshot 1`] = `
     </span>
   <!--<![endif]-->
       </button>
-      
         <nav aria-label="GOV.UK One Login menu" class="one-login-header__nav" data-open-class="one-login-header__nav--open" id="one-login-header__nav">
           <ul class="one-login-header__nav__list">
             <li class="one-login-header__nav__list-item">
@@ -123,7 +87,6 @@ exports[`matches snapshot 1`] = `
                   GOV.UK One Login
                 </span>
                 <span>
-                  
   <!--[if gt IE 8]><!-->
     <span class="cross-service-header__button-icon cross-service-header__button-icon--default">
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
@@ -134,7 +97,6 @@ exports[`matches snapshot 1`] = `
       </svg>
     </span>
   <!--<![endif]-->
-                  
   <!--[if gt IE 8]><!-->
     <span class="cross-service-header__button-icon cross-service-header__button-icon--focus">
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
@@ -155,10 +117,8 @@ exports[`matches snapshot 1`] = `
             </li>
           </ul>
         </nav>
-      
     </div>
   </div>
-  
   <!-- Start of service navigation -->
   <div class="service-header" data-one-login-header-nav>
     <div class="govuk-width-container">
@@ -193,26 +153,12 @@ exports[`matches snapshot 1`] = `
             </ul>
           </nav>
         </div>
-        
       </div>
     </div>
   </div>
   <!-- End of service navigation -->
-  
 </header>
-
-
-
-  
-
-  
-
-  
-    
-
 <nav aria-label="Phase banner">
-  
-    
 <div class="govuk-phase-banner govuk-width-container">
   <p class="govuk-phase-banner__content">
     <strong class="govuk-tag govuk-phase-banner__content__tag">
@@ -223,28 +169,12 @@ exports[`matches snapshot 1`] = `
     </span>
   </p>
 </div>
-
-  
 </nav>
-
-    
-
-
   <nav aria-label="Back" class="govuk-width-container">
     <a href="/case/dashboard" class="govuk-back-link">Back</a>
-
   </nav>
-
-
-  
-
-
-    
       <div class="govuk-width-container">
-        
-        
         <main class="govuk-main-wrapper app-container govuk-body" id="main-content">
-          
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
     <div class="govuk-grid-column-two-thirds">
       <div class="gem-c-heading govuk-!-margin-bottom-8">
@@ -295,60 +225,38 @@ exports[`matches snapshot 1`] = `
     <div class="govuk-grid-column-two-thirds">
       <h2 class="govuk-heading-l">Special measures</h2>
       <p class="govuk-body">If you are giving evidence as a victim, you have the right to request special measures to ensure you give your best evidence during your court hearing.</p>
-
       <h3 class="govuk-heading-m">Who might get special measures</h3>
       <p class="govuk-body">Special measures are not for everybody but there are certain circumstances where you might qualify for the extra help this offers.</p>
       <p class="govuk-body">For example, if the court considers you vulnerable, such as a person under 18, or you have mental or physical needs in court.</p>
       <p class="govuk-body">If the court considers you are at risk of being intimidated while in court, this may also be good reason to get special measures.</p>
       <p class="govuk-body">This could include victims of sexual abuse or domestic violence, a crime involving a knife or a gun or victims of modern slavery.</p>
-
       <h3 class="govuk-heading-m">What help could be available</h3>
       <p class="govuk-body">Depending on the circumstances, victims could get a range of help while in court.</p>
       <p class="govuk-body">This could include giving evidence behind a screen, or by remote link from another court building or police station.</p>
       <p class="govuk-body">Pre-recording a witness statement could also be a special measure to be considered.</p>
       <p class="govuk-body">For those who are worried about attending court, pre-trial visits can also be offered – these allow witnesses to tour a court room and understand how a trial will be held.</p>
       <p class="govuk-body">Intermediaries – a person who attends court with you throughout as support - are also an option.</p>
-
       <h3 class="govuk-heading-m">How to request special measures</h3>
       <p class="govuk-body">When a crime is reported, the police will do a victim needs assessment for the investigation to see if you need any support – this may include getting an interpreter to help give a statement.</p>
       <p class="govuk-body">A police witness care officer will carry out a second assessment to ensure a victim is prepared to give evidence in court.</p>
       <p class="govuk-body">If you are legally vulnerable or intimidated, the police, or someone from the police witness care unit, will explain what special measures are and how they work, answering your questions. Together, you will decide what you want to ask for or if you want any special measures at all.</p>
       <p class="govuk-body">A judge or magistrate will consider your case and whether your circumstances mean you will get any special measures.</p>
-
       <h3 class="govuk-heading-m">Read more</h3>
       <p class="govuk-body">
         For more details about special measures, visit
         <a href="https://www.cps.gov.uk/victims-guide/victims-guide-support-give-your-evidence-special-measures"
            class="govuk-link" target="_blank">https://www.cps.gov.uk/victims-guide/victims-guide-support-give-your-evidence-special-measures (opens in new tab)</a>
       </p>
-
       <h3 class="govuk-heading-m">If you can’t get special measures</h3>
       <p class="govuk-body">If you can’t get special measures, there is other support on offer ahead of your hearing – speak to your police witness care officer or
          <a href="/case/witness-service" class="govuk-link">the Witness Service</a> for more information.</p>
-
-
         </main>
-        
-        
       </div>
-    
-
-    
-    
-
-    
-  
-  
-    
-
 <script nonce="test-nonce" type="module">
-
   async function quickExit() {
     const currentTabAddress = 'https://www.bbc.co.uk/'
     const newTab = 'https://www.bbc.co.uk/weather'
-
     // ToDo: we should push custom event to dataLayer when quick-exit button was pressed
-
     // Open safe/neutral site in a new tab
     let newWin = null
     try {
@@ -364,7 +272,6 @@ exports[`matches snapshot 1`] = `
     } catch (e) {
       // not required
     }
-
     // Try to close this tab (only certain contexts allow this)
     try {
       // Safari helper: open self first
@@ -373,13 +280,11 @@ exports[`matches snapshot 1`] = `
     } catch (e) {
       // not required
     }
-
     // If closing fails, blank fast and replace history entry
     try {
       // Hide content immediately
       document.documentElement.innerHTML = ''
       document.documentElement.style.background = '#fff'
-
       // Replace current history entry so "Back" won't return here
       // (You can swap about:blank for the BBC URL if you prefer)
       location.replace(currentTabAddress)
@@ -388,7 +293,6 @@ exports[`matches snapshot 1`] = `
       location.href = currentTabAddress
     }
   }
-
   document.addEventListener('DOMContentLoaded', () => {
       const el2 = document.getElementById('quick-exit-button')
       if (el2) {
@@ -396,20 +300,16 @@ exports[`matches snapshot 1`] = `
       }
     },
   )
-
   // Keyboard quick exit: 3 x Shift or 3 x Escape within QUICK_EXIT_WINDOW_MS seconds.
   // Uses keyup so holding Shift while typing multiple letters counts as one press.
   // Any non-modifier key pressed between trigger presses resets both counters.
   // Note: X seconds in between first and last
   // if last click is outside X seconds, we start reset clicks and timer, counting last as first click
-
   const keyPresses = {}
   const QUICK_EXIT_WINDOW_MS = 5000
   const TRIGGER_KEYS = new Set(['Shift', 'Escape'])
-
   const quickExitBtn = document.getElementById('quick-exit-button')
   const quickExitWrapper = document.getElementById('quick-exit-panel')
-
   // Build indicator dots and append inside the button
   const $indicatorContainer = document.createElement('div')
   $indicatorContainer.className = 'govuk-exit-this-page__indicator'
@@ -422,7 +322,6 @@ exports[`matches snapshot 1`] = `
   if (quickExitBtn) {
     quickExitBtn.appendChild($indicatorContainer)
   }
-
   const updateIndicator = () => {
     const count = keyPresses.count || 0
     quickExitWrapper?.classList.toggle('govuk-exit-this-page-pressed', count > 0)
@@ -431,7 +330,6 @@ exports[`matches snapshot 1`] = `
       $dot.classList.toggle('govuk-exit-this-page__indicator-light--on', index < count)
     })
   }
-
   const updateBtnText = () => {
     // Use firstChild.nodeValue to preserve the indicator div inside the button
     if (quickExitBtn && quickExitBtn.firstChild) {
@@ -440,26 +338,20 @@ exports[`matches snapshot 1`] = `
     }
     updateIndicator()
   }
-
   let resetTimer = null
-
   const resetKeyPressed = () => {
     clearTimeout(resetTimer)
     resetTimer = null
-
     keyPresses.key = undefined
     keyPresses.count = 0
     keyPresses.last = 0
-
     updateBtnText()
   }
   resetKeyPressed()
-
   const performQuickExit = () => {
     // alert('Yess !!! quickExit()')
     quickExit()
   }
-
   document.addEventListener('keydown', (e) => {
     const key = e.key
     if (!TRIGGER_KEYS.has(key)) {
@@ -475,55 +367,33 @@ exports[`matches snapshot 1`] = `
       // no change for Escape key
       return
     }
-
     const now = Date.now()
     if (keyPresses.key === key && (keyPresses.last === 0 || (now - keyPresses.last) <= QUICK_EXIT_WINDOW_MS)) {
       keyPresses.count = keyPresses.count + 1
       updateBtnText()
     } else {
       resetKeyPressed()
-
       keyPresses.key = key
       keyPresses.count = 1
       keyPresses.last = now
-
       updateBtnText()
-
       resetTimer = setTimeout(resetKeyPressed, QUICK_EXIT_WINDOW_MS)
     }
-
     if (keyPresses.key === key && keyPresses.count >= 3) {
       resetKeyPressed()
-
       performQuickExit()
     }
   })
-
 </script>
-
 <div class="govuk-width-container govuk-exit-this-page" id="quick-exit-panel" role="region" aria-label="Quick exit">
   <div class="govuk-exit-this-page-button-wrapper">
-    
-  
-
 <button type="button" class="govuk-button govuk-button--warning" data-module="govuk-button"
-    
-        
-        
-      
-        
-      
-    
    id="quick-exit-button">
   Quick exit
 </button>
-
   </div>
 </div>
-
-  
   <section aria-label="Page feedback">
-
 <script nonce="test-nonce" type="module">
   async function submitPageIsUseful(value) {
     const csrf = document.querySelector('input[name="_csrf"]').value
@@ -552,14 +422,12 @@ exports[`matches snapshot 1`] = `
       if (value === 'no') {
         const noConfirmation = document.getElementById('feedback-form-is-page-useful-no-confirmation')
         noConfirmation?.classList.remove('govuk-!-display-none')
-
         // move focus to the revealed heading
         // so screen readers announce the new panel and swipe order continues correctly
         const noHeading = noConfirmation?.querySelector('h2')
         if (noHeading) {
           noHeading.focus()
         }
-
         const cancelFeedbackDecisionNoButton = document.getElementById('feedback-form-is-page-useful-no-confirmation-cancel-button')
         if (!cancelFeedbackDecisionNoButton?.getAttribute('listener')) {
           cancelFeedbackDecisionNoButton.addEventListener('click', async (e) => {
@@ -571,13 +439,11 @@ exports[`matches snapshot 1`] = `
             feedbackOptions?.focus()
           })
         }
-
       }
     } else {
       console.warn('Feedback decision failed', response.status)
     }
   }
-
   async function initFeedbackForm() {
     const yesButton = document.getElementById('page-is-useful-yes-button')
     if (!yesButton?.getAttribute('listener')) {
@@ -594,13 +460,11 @@ exports[`matches snapshot 1`] = `
       })
     }
   }
-
   document.addEventListener('DOMContentLoaded', async () => {
     const feedbackForm = document.getElementById('feedback-form')
     await initFeedbackForm(feedbackForm)
   })
 </script>
-
 <div class="govuk-width-container">
   <div id="feedback-form" data-module="feedback ga4-event-tracker"
        class="gem-c-feedback govuk-!-display-none-print"
@@ -631,13 +495,11 @@ exports[`matches snapshot 1`] = `
             </ul>
           </div>
         </div>
-
         <div id="feedback-form-is-page-useful-yes-confirmation"
             class="govuk-!-display-none gem-c-feedback__prompt-questions gem-c-feedback__prompt-success"
              role="alert">
           Thank you for your feedback.
         </div>
-
         <div id="feedback-form-is-page-useful-no-confirmation" class="govuk-!-display-none" role="alert">
           <div class="gem-c-feedback__prompt-failure">
             <h2 class="gem-c-feedback__form-heading" tabindex="-1">Help us improve Track a case</h2>
@@ -662,17 +524,11 @@ exports[`matches snapshot 1`] = `
     </div>
   </div>
 </div>
-
 <input type="hidden" name="_csrf" value="test-csrf">
 <input type="hidden" name="_pageUrl" value="">
 <input type="hidden" name="_pageTitle" value="Special measures">
-
 </section>
-
-
-
 <nav aria-label="Service links">
-  
     <div class="govuk-footer">
   <div class="govuk-width-container">
   <svg
@@ -695,40 +551,27 @@ exports[`matches snapshot 1`] = `
         <circle cx="31.7" cy="30.6" r="3.7"/>
         <path d="M33.1,9.8c.2-.1.3-.3.5-.5l4.6,2.4v-6.8l-4.6,1.5c-.1-.2-.3-.3-.5-.5l1.9-5.9h-6.7l1.9,5.9c-.2.1-.3.3-.5.5l-4.6-1.5v6.8l4.6-2.4c.1.2.3.3.5.5l-2.6,8c-.9,2.8,1.2,5.7,4.1,5.7h0c3,0,5.1-2.9,4.1-5.7l-2.6-8ZM37,37.9s-3.4,3.8-4.1,6.1c2.2,0,4.2-.5,6.4-2.8l-.7,8.5c-2-2.8-4.4-4.1-5.7-3.8.1,3.1.5,6.7,5.8,7.2,3.7.3,6.7-1.5,7-3.8.4-2.6-2-4.3-3.7-1.6-1.4-4.5,2.4-6.1,4.9-3.2-1.9-4.5-1.8-7.7,2.4-10.9,3,4,2.6,7.3-1.2,11.1,2.4-1.3,6.2,0,4,4.6-1.2-2.8-3.7-2.2-4.2.2-.3,1.7.7,3.7,3,4.2,1.9.3,4.7-.9,7-5.9-1.3,0-2.4.7-3.9,1.7l2.4-8c.6,2.3,1.4,3.7,2.2,4.5.6-1.6.5-2.8,0-5.3l5,1.8c-2.6,3.6-5.2,8.7-7.3,17.5-7.4-1.1-15.7-1.7-24.5-1.7h0c-8.8,0-17.1.6-24.5,1.7-2.1-8.9-4.7-13.9-7.3-17.5l5-1.8c-.5,2.5-.6,3.7,0,5.3.8-.8,1.6-2.3,2.2-4.5l2.4,8c-1.5-1-2.6-1.7-3.9-1.7,2.3,5,5.2,6.2,7,5.9,2.3-.4,3.3-2.4,3-4.2-.5-2.4-3-3.1-4.2-.2-2.2-4.6,1.6-6,4-4.6-3.7-3.7-4.2-7.1-1.2-11.1,4.2,3.2,4.3,6.4,2.4,10.9,2.5-2.8,6.3-1.3,4.9,3.2-1.8-2.7-4.1-1-3.7,1.6.3,2.3,3.3,4.1,7,3.8,5.4-.5,5.7-4.2,5.8-7.2-1.3-.2-3.7,1-5.7,3.8l-.7-8.5c2.2,2.3,4.2,2.7,6.4,2.8-.7-2.3-4.1-6.1-4.1-6.1h10.6,0Z"/>
       </g>
-    
   </svg>
-
-    
     <div class="govuk-footer__meta">
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
-        
         <h2 class="govuk-visually-hidden">Support links</h2>
-        
         <ul class="govuk-footer__inline-list">
-        
           <li class="govuk-footer__inline-list-item">
             <a class="govuk-footer__link" href="/privacy-notice">
               Privacy
             </a>
           </li>
-        
           <li class="govuk-footer__inline-list-item">
             <a class="govuk-footer__link" href="/cookies">
               Cookies
             </a>
           </li>
-        
           <li class="govuk-footer__inline-list-item">
             <a class="govuk-footer__link" href="/about-the-service">
               Take part in research
             </a>
           </li>
-        
         </ul>
-        
-        
-        
-        
           <svg
             aria-hidden="true"
             focusable="false"
@@ -744,39 +587,27 @@ exports[`matches snapshot 1`] = `
             />
           </svg>
           <span class="govuk-footer__licence-description">
-          
             All content is available under the
             <a
               class="govuk-footer__link"
               href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
               rel="license"
             >Open Government Licence v3.0</a>, except where otherwise stated
-          
           </span>
-        
       </div>
       <div class="govuk-footer__meta-item">
         <a
           class="govuk-footer__link govuk-footer__copyright-logo"
           href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
         >
-        
           © Crown copyright
-        
         </a>
       </div>
     </div>
   </div>
 </div>
-
-  
 </nav>
-
-
-
-    
   <script type="module" src="/assets/js/index.js" nonce="test-nonce"></script>
-
   </body>
 </html>
 "

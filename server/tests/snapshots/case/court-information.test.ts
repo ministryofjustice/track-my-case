@@ -1,11 +1,11 @@
-import { createNunjucksEnv, baseContext } from '../../../utils/nunjucksTestHelper'
+import { createNunjucksEnv, baseContext, renderPage } from '../../../utils/nunjucksTestHelper'
 
 const env = createNunjucksEnv()
 const ctx = { ...baseContext, correctPasswordAndNotExpired: true, authenticated: true, backLink: '/case/dashboard' }
 
 it('court-information (active)', () => {
   expect(
-    env.render('pages/case/court-information.njk', {
+    renderPage(env, 'pages/case/court-information.njk', {
       ...ctx,
       pageTitle: 'Court information',
       selectedUrn: 'ABC123',
@@ -18,7 +18,7 @@ it('court-information (active)', () => {
 
 it('court-information-not-found', () => {
   expect(
-    env.render('pages/case/court-information-not-found.njk', {
+    renderPage(env, 'pages/case/court-information-not-found.njk', {
       ...ctx,
       pageTitle: 'Not found - Court information',
       selectedUrn: 'ABC123',
@@ -29,7 +29,7 @@ it('court-information-not-found', () => {
 
 it('court-information-access-denied', () => {
   expect(
-    env.render('pages/case/court-information-access-denied.njk', {
+    renderPage(env, 'pages/case/court-information-access-denied.njk', {
       ...ctx,
       pageTitle: 'Access denied - Court information',
       message: 'Access denied',
@@ -39,7 +39,7 @@ it('court-information-access-denied', () => {
 
 it('court-information-common-platform-unavailable', () => {
   expect(
-    env.render('pages/case/court-information-common-platform-unavailable.njk', {
+    renderPage(env, 'pages/case/court-information-common-platform-unavailable.njk', {
       ...ctx,
       pageTitle: 'Common platform unavailable - Court information',
       message: 'Service down',
@@ -49,7 +49,7 @@ it('court-information-common-platform-unavailable', () => {
 
 it('court-information-inactive', () => {
   expect(
-    env.render('pages/case/court-information-inactive.njk', {
+    renderPage(env, 'pages/case/court-information-inactive.njk', {
       ...ctx,
       pageTitle: 'No further court dates - Court information',
       message: 'Inactive',
@@ -59,7 +59,7 @@ it('court-information-inactive', () => {
 
 it('court-information-no-hearings-allocated', () => {
   expect(
-    env.render('pages/case/court-information-no-hearings-allocated.njk', {
+    renderPage(env, 'pages/case/court-information-no-hearings-allocated.njk', {
       ...ctx,
       pageTitle: 'No hearings allocated - Court information',
       message: 'No hearings',
