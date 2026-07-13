@@ -1278,7 +1278,7 @@ exports[`court-information-common-platform-unavailable 1`] = `
         <div class="govuk-notification-banner__content">
           <h3 class="govuk-notification-banner__heading">Sorry, there is a problem with the court information service</h3>
           <p class="govuk-body">Try again later.</p>
-          <p class="govuk-body">If you need information about a court, use the <a href="https://www.find-court-tribunal.service.gov.uk/" class="govuk-link" target="_blank">Find a court or tribunal service (opens in new tab)</a>.</p>
+          <p class="govuk-body">If you need information about a court, use the <a href="https://www.find-court-tribunal.service.gov.uk" class="govuk-link" target="_blank">Find a court or tribunal service (opens in new tab)</a>.</p>
           <p class="govuk-body">If you need an update on your case, you can contact the police. Find their contact details on any letter they have sent you, or <a href="https://www.police.uk/pu/find-a-police-force/" class="govuk-link" target="_blank">find your local police force (opens in new tab)</a>.</p>
         </div>
       </div>
