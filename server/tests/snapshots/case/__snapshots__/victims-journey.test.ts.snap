@@ -173,6 +173,22 @@ exports[`matches snapshot 1`] = `
   <nav aria-label="Back" class="govuk-width-container">
     <a href="/case/dashboard" class="govuk-back-link">Back</a>
   </nav>
+    <div class="govuk-width-container">
+      <nav class="hmrc-language-select" aria-label="Language switcher">
+        <ul class="hmrc-language-select__list">
+            <li class="hmrc-language-select__list-item">
+                <span class="govuk-visually-hidden">Change the language to English</span>
+                <span aria-current="true">English</span>
+            </li>
+            <li class="hmrc-language-select__list-item">
+                <a href="/?lng=cy" hreflang="cy" lang="cy" rel="alternate" class="govuk-link">
+                  <span class="govuk-visually-hidden">Newid yr iaith i'r Gymraeg</span>
+                  <span aria-hidden="true">Gymraeg</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
       <div class="govuk-width-container">
         <main class="govuk-main-wrapper app-container govuk-body" id="main-content">
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
@@ -182,15 +198,15 @@ exports[`matches snapshot 1`] = `
       </h1>
       <p class="govuk-body">When you have experienced a crime and the case goes to court, use our guide to check:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>what happens, who is involved and when</li>
-        <li>what you might need to do</li>
-        <li>your rights throughout the process</li>
+          <li>what happens, who is involved and when</li>
+          <li>what you might need to do</li>
+          <li>your rights throughout the process</li>
       </ul>
       <p class="govuk-body">What happens at each stage, and where the case ends, can depend on:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>the crime, or crimes if there was more than one</li>
-        <li>what evidence the police find</li>
-        <li>what the courts decide, based on the evidence available</li>
+          <li>the crime, or crimes if there was more than one</li>
+          <li>what evidence the police find</li>
+          <li>what the courts decide, based on the evidence available</li>
       </ul>
       <p class="govuk-body">You always have certain rights by law under the <a href="/case/victims-code" class="govuk-link">Victims' Code</a>.</p>
       <details class="govuk-details">
@@ -200,9 +216,9 @@ exports[`matches snapshot 1`] = `
           </span>
         </summary>
         <div class="govuk-details__text">
-          <p>When you report a crime, the police check if you’re entitled by law to ‘enhanced rights’ throughout the process.</p>
+          <p>When you report a crime, the police check if you're entitled by law to 'enhanced rights' throughout the process.</p>
           <p>Enhanced rights automatically apply to children under 18 years old. They can also apply if you are vulnerable or intimidated, are a victim of the most serious crime, or have been persistently targeted.</p>
-          <p>Enhanced rights give you extra support, which may include being referred to a specialist support service, being told more quickly about important decisions, and having ‘special measures’ during a trial.</p>
+          <p>Enhanced rights give you extra support, which may include being referred to a specialist support service, being told more quickly about important decisions, and having 'special measures' during a trial.</p>
         </div>
       </details>
       <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-with-summary-sections">
@@ -217,7 +233,7 @@ exports[`matches snapshot 1`] = `
           <div id="accordion-with-summary-sections-content-1" class="govuk-accordion__section-content">
             <p class="govuk-body">When you experience a crime, you have the right to report it to the police.</p>
             <p class="govuk-body">If you do not want to report it to the police, you can still get help from support services at any point.</p>
-            <p class="govuk-body"><a href="https://victimandwitnessinformation.org.uk/find-support" class="govuk-link" target="_blank">Find support services (opens in new tab)</a>.</p>
+            <p class="govuk-body"><a href="https://victimandwitnessinformation.org.uk/find-support" class="govuk-link" target="_blank">Find support services (opens in new tab).</a></p>
             <h3 class="govuk-heading-s">What you can tell the police</h3>
             <p class="govuk-body">You can give the police a witness statement, where you describe what happened.</p>
             <p class="govuk-body">You might also want to give a victim personal statement, where you describe emotional, physical, and financial effects a crime may have had on you.</p>
@@ -245,12 +261,12 @@ exports[`matches snapshot 1`] = `
             </h2>
           </div>
           <div id="accordion-with-summary-sections-content-2" class="govuk-accordion__section-content">
-            <p class="govuk-body">At this stage, a person who is accused of a crime is referred to as a ‘suspect’.</p>
+            <p class="govuk-body">At this stage, a person who is accused of a crime is referred to as a 'suspect'.</p>
             <p class="govuk-body">The police investigate crimes by looking at evidence and talking to suspects.</p>
-            <p class="govuk-body">The police will update you on what’s happening with the case. They will check with you:</p>
+            <p class="govuk-body">The police will update you on what's happening with the case. They will check with you:</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>how often you want to get updates</li>
-              <li>how you want to be contacted, for example by phone or email</li>
+                <li>how often you want to get updates</li>
+                <li>how you want to be contacted, for example by phone or email</li>
             </ul>
           </div>
         </div>
@@ -266,9 +282,9 @@ exports[`matches snapshot 1`] = `
           <div id="accordion-with-summary-sections-content-3" class="govuk-accordion__section-content">
             <p>After the police have completed their investigations, they will decide whether to do one of the following:</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>charge the suspect and refer the case to the Crown Prosecution Service</li>
-              <li>give the suspect a caution with certain conditions, for example community service or a medical treatment programme</li>
-              <li>not progress the case if there is not enough evidence</li>
+                <li>charge the suspect and refer the case to the Crown Prosecution Service</li>
+                <li>give the suspect a caution with certain conditions, for example community service or a medical treatment programme</li>
+                <li>not progress the case if there is not enough evidence</li>
             </ul>
             <p class="govuk-body">You have the right to hear about the decision from the police within 5 working days of it being made.</p>
             <details class="govuk-details">
@@ -284,20 +300,20 @@ exports[`matches snapshot 1`] = `
             <h3 class="govuk-heading-s">If the case is referred to the Crown Prosecution Service</h3>
             <p>When the police refer a case to the Crown Prosecution Service, you will receive a letter from the police witness care unit that:</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>confirms the crime or crimes being charged</li>
-              <li>gives you the unique reference number (URN) for the case – this is useful for when you need an update about the case, for example when you call the  police witness care officer</li>
-              <li>introduces you to your police witness care unit, who will look after you during the case</li>
+                <li>confirms the crime or crimes being charged</li>
+                <li>gives you the unique reference number (URN) for the case – this is useful for when you need an update about the case, for example when you call the  police witness care officer</li>
+                <li>introduces you to your police witness care unit, who will look after you during the case</li>
             </ul>
             <p>The Crown Prosecution Service consider the evidence and public interest of the case to decide whether to either:</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>charge the suspect and take the case to court</li>
-              <li>not charge the suspect and end the case</li>
+                <li>charge the suspect and take the case to court</li>
+                <li>not charge the suspect and end the case</li>
             </ul>
             <p class="govuk-body">If the Crown Prosecution Service take a crime case to court, you do not need a solicitor as the Crown Prosecution Service are acting on your behalf.</p>
             <h3 class="govuk-heading-s">If the suspect is not charged</h3>
             <p class="govuk-body">If the police or the Crown Prosecution Service decide not to charge a suspect, but you believe they should, you have the right to ask for a review of the decision through the Victims' Right to Review Scheme.</p>
             <p class="govuk-body">To do this, tell your police witness care unit or police officer in charge (OIC) and they will tell you how to apply.</p>
-            <p class="govuk-body">Find out more about the <a href="https://www.police.uk/advice/advice-and-information/victim-support/victims-right-review-scheme/" class="govuk-link" target="_blank">Victims’ Right to Review Scheme (opens in new tab)</a>.</p>
+            <p class="govuk-body"><a href="https://www.police.uk/advice/advice-and-information/victim-support/victims-right-review-scheme/" class="govuk-link" target="_blank">Find out more about the Victims' Right to Review Scheme (opens in new tab).</a></p>
           </div>
         </div>
         <!-- ### END STAGE 3 ### -->
@@ -310,21 +326,21 @@ exports[`matches snapshot 1`] = `
             </h2>
           </div>
           <div id="accordion-with-summary-sections-content-4" class="govuk-accordion__section-content">
-            <p class="govuk-body">When a case goes to court, the suspect is now referred to as a ‘defendant’.</p>
-            <p class="govuk-body">The defendant will ‘state their plea’, this means they tell the court whether they believe they are guilty of the crime or not. They can plead one of the following:</p>
+            <p class="govuk-body">When a case goes to court, the suspect is now referred to as a 'defendant'.</p>
+            <p class="govuk-body">The defendant will 'state their plea', this means they tell the court whether they believe they are guilty of the crime or not. They can plead one of the following:</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>guilty to the charge or charges – this means they’re saying they did commit the crime or crimes</li>
-              <li>guilty to some of the charges, if there are more than one</li>
-              <li>not guilty to the charge or all of the charges – this means they’re saying they did not commit the crime or crimes</li>
+                <li>guilty to the charge or charges – this means they're saying they did commit the crime or crimes</li>
+                <li>guilty to some of the charges, if there are more than one</li>
+                <li>not guilty to the charge or all of the charges – this means they're saying they did not commit the crime or crimes</li>
             </ul>
             <p class="govuk-body">You do not have to attend the hearing, but you can if you want. Otherwise the police will tell you what a defendant pleads. You can choose how you prefer to be contacted, for example by phone call or text. You have the right to know within 5 working days of the hearing.</p>
             <h3 class="govuk-heading-s">If the defendant pleads guilty</h3>
             <p class="govuk-body">The magistrate or judge can sentence them right away, or at a later date if they need more information for the sentencing.</p>
             <p class="govuk-body">If you are not at the sentencing hearing, the police will tell you the sentence. Tell the police how you want to be contacted, for example for phone call or email. You have the right to know within 5 working days of the sentencing or 1 working day if you have enhanced rights.</p>
             <p class="govuk-body">If you give a victim personal statement, it can help the judge to make a more informed decision on sentencing. This is because they will consider the overall effect the crime has had on you.</p>
-            <p class="govuk-body"><a href="https://victims-pathfinder-main.apps.live.cloud-platform.service.justice.gov.uk/v6/victim-personal-statement" class="govuk-link" target="_blank">Find out more about making a victim personal statement</a>.</p>
+            <p class="govuk-body"><a href="/case/victim-personal-statement" class="govuk-link">Find out more about making a victim personal statement</a>.</p>
             <h3 class="govuk-heading-s">If the defendant pleads not guilty</h3>
-            <p class="govuk-body">The courts will set a date for another court hearing, called a ‘trial’. A trial is where a judge or jury listen to all the evidence in a case and makes a decision.</p>
+            <p class="govuk-body">The courts will set a date for another court hearing, called a 'trial'. A trial is where a judge or jury listen to all the evidence in a case and makes a decision.</p>
             <p class="govuk-body">Depending on the case, there may need to be more than one hearing, and the trial could last a day or several months.</p>
           </div>
         </div>
@@ -342,34 +358,34 @@ exports[`matches snapshot 1`] = `
             <p class="govuk-body">The aim is to reach a fair decision based on the law.</p>
             <p class="govuk-body">Depending on the type of crime, a trial is heard by either:</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>magistrates</li>
-              <li>a judge and jury</li>
+                <li>magistrates</li>
+                <li>a judge and jury</li>
             </ul>
             <p class="govuk-body">A trial can include:</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>statements from the prosecution, defence, victims and witnesses</li>
-              <li>witness ‘testimony’ – where any witnesses stand up and tell the court what happened</li>
-              <li>cross-examination of witnesses – where they are asked questions about what they know about the crime</li>
-              <li>closing arguments</li>
-              <li>final decision – the ‘verdict’, made by the judge or jury</li>
+                <li>statements from the prosecution, defence, victims and witnesses</li>
+                <li>witness 'testimony' – where any witnesses stand up and tell the court what happened</li>
+                <li>cross-examination of witnesses – where they are asked questions about what they know about the crime</li>
+                <li>closing arguments</li>
+                <li>final decision – the 'verdict', made by the judge or jury</li>
             </ul>
-            <p class="govuk-body">Where a defendant is found guilty, there can be a separate ‘sentencing hearing’. This is where the magistrates or judge decide on an appropriate sentence for the person found guilty.</p>
+            <p class="govuk-body">Where a defendant is found guilty, there can be a separate 'sentencing hearing'. This is where the magistrates or judge decide on an appropriate sentence for the person found guilty.</p>
             <h3 class="govuk-heading-s">When you must go to court</h3>
             <p class="govuk-body">You do not need to go to court unless you have been told by the police that you need to give evidence.</p>
             <p class="govuk-body">You can still watch any hearing or trial if you want to.</p>
             <h3 class="govuk-heading-s">Giving evidence at court</h3>
-            <p class="govuk-body">As the victim of a crime, you will usually be a main ‘witness’ in the case. This means you may be required to give evidence at the trial. Giving evidence is telling the court what you know about the crime.</p>
+            <p class="govuk-body">As the victim of a crime, you will usually be a main 'witness' in the case. This means you may be required to give evidence at the trial. Giving evidence is telling the court what you know about the crime.</p>
             <h3 class="govuk-heading-s">Getting support</h3>
             <p class="govuk-body">In the run up to and during the trial, you can get support from:</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>your police witness care officer (WCO)</li>
-              <li>Witness Service – this charity gives free, independent support for prosecution and defence witnesses in every criminal court in England and Wales</li>
+                <li>your police witness care officer (WCO)</li>
+                <li>Witness Service – this charity gives free, independent support for prosecution and defence witnesses in every criminal court in England and Wales</li>
             </ul>
             <p>The Witness Service can offer assistance such as:</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>help you prepare, for example show you the courtroom before the day of the trial</li>
-              <li>help you make practical arrangements for the day, for example how to get to the court</li>
-              <li>be with you throughout the trial</li>
+                <li>help you prepare, for example show you the courtroom before the day of the trial</li>
+                <li>help you make practical arrangements for the day, for example how to get to the court</li>
+                <li>be with you throughout the trial</li>
             </ul>
             <details class="govuk-details">
               <summary class="govuk-details__summary">
@@ -381,16 +397,16 @@ exports[`matches snapshot 1`] = `
                 <p>To help you feel more comfortable about when you give your evidence, you might be able to get extra support called 'special measures'.</p>
                 <p>This might be, for example, giving your evidence on a video recording before the trial, from behind a screen, or by video link from outside the courtroom. You can ask for special measures if you:</p>
                 <ul class="govuk-list govuk-list--bullet">
-                  <li>are under 18</li>
-                  <li>have physical, mental or communication needs</li>
-                  <li>feel very scared or upset in a way that might affect you giving your best evidence</li>
-                  <li>are a victim of domestic abuse, rape or sexual assault</li>
-                  <li>are a victim of modern slavery</li>
-                  <li>have witnessed a crime involving a gun or knife</li>
+                    <li>are under 18</li>
+                    <li>have physical, mental or communication needs</li>
+                    <li>feel very scared or upset in a way that might affect you giving your best evidence</li>
+                    <li>are a victim of domestic abuse, rape or sexual assault</li>
+                    <li>are a victim of modern slavery</li>
+                    <li>have witnessed a crime involving a gun or knife</li>
                 </ul>
                 <p>The police witness care unit will talk to you about whether special measures might help you. You can ask questions and decide together what support is best for you.</p>
                 <p>The police will then tell the Crown Prosecution Service what you need. They will ask the judge or magistrate if you can have the special measures you want. The judge or magistrate decides if these special measures will help you give your best evidence and will be fair to everyone in the case.</p>
-                <p><a href="https://www.cps.gov.uk/victims-guide/victims-guide-support-give-your-evidence-special-measures" class="govuk-link" target="_blank">Find out more about special measures from the Crown Prosecution Service (opens in new tab)</a>.</p>
+                <p><a href="https://www.cps.gov.uk/victims-guide/victims-guide-support-give-your-evidence-special-measures" class="govuk-link" target="_blank">Find out more about special measures from the Crown Prosecution Service (opens in new tab).</a></p>
               </div>
             </details>
             <h3 class="govuk-heading-s">If you do not give evidence when required</h3>
@@ -409,7 +425,7 @@ exports[`matches snapshot 1`] = `
             </h2>
           </div>
           <div id="accordion-with-summary-sections-content-6" class="govuk-accordion__section-content">
-            <p class="govuk-body">It’s important to prepare yourself for the outcome of the trial – the ‘verdict’. It might not be the outcome you want. It’s a good idea to keep talking with your police contact or any support services and charities.</p>
+            <p class="govuk-body">It's important to prepare yourself for the outcome of the trial – the 'verdict'. It might not be the outcome you want. It's a good idea to keep talking with your police contact or any support services and charities.</p>
             <h3 class="govuk-heading-s">Your rights for how you find out about the verdict</h3>
             <p class="govuk-body">If you have not attended the sentencing hearing, the police can tell you the verdict.</p>
             <p class="govuk-body">You have the right to be told, with a short explanation, within 1 working day of the police receiving the information from the court. The court must send it to the police within 5 working days of the verdict being made.</p>
@@ -417,18 +433,18 @@ exports[`matches snapshot 1`] = `
             <h3 class="govuk-heading-s">If a defendant is found not guilty</h3>
             <p class="govuk-body">If a defendant is found not guilty, the judge will not give them a sentence. This means that the trial ends and they can leave the court.</p>
             <p class="govuk-body">If you want to talk to someone about the verdict, ask the police for support or contact
-            <a href="https://www.victimsupport.org.uk/" class="govuk-link" target="_blank">Victim Support (opens in new tab)</a>.</p>
+            <a href="https://www.victimsupport.org.uk" class="govuk-link" target="_blank">Victim Support (opens in new tab)</a>.</p>
             <h3 class="govuk-heading-s">If a defendant is found guilty</h3>
             <p class="govuk-body">If a defendant is found guilty, the judge will give them a sentence. A sentence is the punishment for the crime. Some sentences can be:</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>time in prison</li>
-              <li>a sentence in the community – this could include having to do unpaid work, having a curfew to stay in their home between certain hours, not being allowed to go to a particular area, and being electronically tagged</li>
-              <li>a fine</li>
+                <li>time in prison</li>
+                <li>a sentence in the community – this could include having to do unpaid work, having a curfew to stay in their home between certain hours, not being allowed to go to a particular area, and being electronically tagged</li>
+                <li>a fine</li>
             </ul>
             <p class="govuk-body">The sentence will depend on:</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>the type and seriousness of the crime</li>
-              <li>the circumstances of the defendant</li>
+                <li>the type and seriousness of the crime</li>
+                <li>the circumstances of the defendant</li>
             </ul>
             <h3 class="govuk-heading-s">When a defendant might appeal their sentence</h3>
             <p class="govuk-body">A defendant found guilty can appeal their sentence if they think it is not fair.</p>
@@ -437,39 +453,39 @@ exports[`matches snapshot 1`] = `
             <h3 class="govuk-heading-s">When a sentence might seem too short</h3>
             <p class="govuk-body">When deciding on a sentence, judges must:</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>follow the law, which says how long sentences can be</li>
-              <li>consider the reasons for the sentencing under the law, for example the protection of the public and victims</li>
-              <li>follow the sentencing guidelines by the Sentencing Council</li>
+                <li>follow the law, which says how long sentences can be</li>
+                <li>consider the reasons for the sentencing under the law, for example the protection of the public and victims</li>
+                <li>follow the sentencing guidelines by the Sentencing Council</li>
             </ul>
             <p class="govuk-body">Judges will also think about:</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>the harm that a defendant caused or meant to cause</li>
-              <li>how much a defendant can be blamed for the crime</li>
-              <li>if a defendant had been found guilty or a similar crime before</li>
-              <li>if a defendant has said they are sorry, or there are difficult personal circumstances</li>
-              <li>if and when a defendant pleads guilty</li>
-              <li>how much time a defendant has already spent in prison – ‘on remand’</li>
+                <li>the harm that a defendant caused or meant to cause</li>
+                <li>how much a defendant can be blamed for the crime</li>
+                <li>if a defendant had been found guilty or a similar crime before</li>
+                <li>if a defendant has said they are sorry, or there are difficult personal circumstances</li>
+                <li>if and when a defendant pleads guilty</li>
+                <li>how much time a defendant has already spent in prison – 'on remand'</li>
             </ul>
             <p class="govuk-body">Find out more about sentencing from the <a href="https://sentencingcouncil.org.uk/about-sentencing/how-sentencing-works/" class="govuk-link" target="_blank">Sentencing Council (opens in new tab)</a>.</p>
             <h3 class="govuk-heading-s">If you think a Crown Court sentence is too low</h3>
             <p class="govuk-body">If you think a Crown Court sentence is too low, you can ask for it to be reviewed.</p>
-            <p class="govuk-body"><a href="https://www.gov.uk/ask-crown-court-sentence-review" class="govuk-link" target="_blank">Ask for a Crown Court sentence to be reviewed (opens in new tab)</a>.</p>
+            <p class="govuk-body"><a href="https://www.gov.uk/ask-crown-court-sentence-review" class="govuk-link" target="_blank">Ask for a Crown Court sentence to be reviewed (opens in new tab).</a></p>
             <h3 class="govuk-heading-s">When you can be referred to the Victim Contact Scheme</h3>
             <p class="govuk-body">The Victim Contact Scheme is offered to victims of certain violent and  sexual offences where the sentence is 12 months or more imprisonment, or a hospital order.</p>
             <p class="govuk-body">After sentencing, the police will refer you to the Victim Contact Scheme and you can choose whether to opt in. If you do, you will be put in touch with a Victim Liaison Officer.</p>
             <p class="govuk-body">The Victim Liaison Officer will keep you updated at key stages of the sentence. For example, they can provide information on:</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>important sentence dates, including release dates</li>
-              <li>how to make a Victim Personal Statement for a parole hearing</li>
-              <li>submitting an application to observe a parole hearing</li>
-              <li>requesting ‘licence conditions’, such as non-contact and exclusion zones, to prevent the offender from contacting you when they are released</li>
-              <li>how to submit a request for a Parole Board decision to be reconsidered</li>
+                <li>important sentence dates, including release dates</li>
+                <li>how to make a Victim Personal Statement for a parole hearing</li>
+                <li>submitting an application to observe a parole hearing</li>
+                <li>requesting 'licence conditions', such as non-contact and exclusion zones, to prevent the offender from contacting you when they are released</li>
+                <li>how to submit a request for a Parole Board decision to be reconsidered</li>
             </ul>
             <p class="govuk-body">You can also choose not to be contacted by the Victim Contact Scheme, or to join at a later date.</p>
-            <p class="govuk-body"><a href="https://www.gov.uk/government/publications/get-support-as-a-victim-of-crime/information-about-the-victim-contact-scheme" class="govuk-link" target="_blank">Find out more about the Victim Contact Scheme (opens in new tab)</a>.</p>
+            <p class="govuk-body"><a href="https://www.gov.uk/government/publications/get-support-as-a-victim-of-crime/information-about-the-victim-contact-scheme" class="govuk-link" target="_blank">Find out more about the Victim Contact Scheme (opens in new tab).</a></p>
             <h3 class="govuk-heading-s">When a person convicted of a crime can be released from prison</h3>
             <p class="govuk-body">Most people are released from prison on the date their sentence ends.</p>
-            <p class="govuk-body">Some can be released from a proportion of their prison sentence after a decision by the Parole Board. This is called being ‘released on parole’.</p>
+            <p class="govuk-body">Some can be released from a proportion of their prison sentence after a decision by the Parole Board. This is called being 'released on parole'.</p>
             <p class="govuk-body">They will be released under certain rules and will be supervised in the community for a certain period of time.</p>
             <p class="govuk-body">If you are in the Victim Contact Scheme, you can give a Victim Personal Statement before a parole decision is made.</p>
             <p class="govuk-body">Find out more about:</p>
@@ -486,7 +502,7 @@ exports[`matches snapshot 1`] = `
       </div>
 <script nonce="test-nonce" type="module">
   async function quickExit() {
-    const currentTabAddress = 'https://www.bbc.co.uk/'
+    const currentTabAddress = 'https://www.bbc.co.uk'
     const newTab = 'https://www.bbc.co.uk/weather'
     // ToDo: we should push custom event to dataLayer when quick-exit button was pressed
     // Open safe/neutral site in a new tab
