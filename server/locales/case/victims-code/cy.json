@@ -1,78 +1,78 @@
 {
-  "pageTitle": "Victims code",
-  "heading": "Understand your rights",
+  "pageTitle": "Cod Dioddefwyr",
+  "heading": "Deall eich hawliau",
   "contents": {
-    "title": "Contents",
+    "title": "Cynnwys",
     "nav": {
-      "ariaLabel": "Pages in this guide",
-      "victimPersonalStatement": "Making a Victim Personal Statement",
-      "claimingExpenses": "Claiming expenses",
-      "specialMeasures": "Special measures",
-      "requestingTranscript": "Requesting a court hearing transcript",
-      "understandCompensation": "When you can claim compensation",
-      "returnProperty": "Getting your property back",
-      "victimsCode": "Victims' Code"
+      "ariaLabel": "Tudalennau yn y canllaw hwn",
+      "victimPersonalStatement": "Gwneud Datganiad Personol Dioddefwr",
+      "claimingExpenses": "Hawlio treuliau",
+      "specialMeasures": "Mesurau arbennig",
+      "requestingTranscript": "Gofyn am drawsgrifiad gwrandawiad llys",
+      "understandCompensation": "Pryd y gallwch hawlio iawndal",
+      "returnProperty": "Cael eich eiddo yn ôl",
+      "victimsCode": "Cod Dioddefwyr"
     }
   },
-  "rightsHeading": "Your rights when you experience a crime",
-  "intro1": "When you experience a crime, you automatically have certain rights as a 'victim' under the law. They include making sure you are informed about the process and the support available to you.",
-  "intro2": "These rights are written in the Code of Practice for Victims of Crime in England and Wales (Victims' Code). This is a summary of the 12 rights.",
-  "summaryHeading": "The Victims' Code summary of rights",
+  "rightsHeading": "Eich hawliau pan fyddwch yn profi trosedd",
+  "intro1": "Pan fyddwch yn profi trosedd, mae gennych rai hawliau yn awtomatig fel 'dioddefwr' o dan y gyfraith.   Maent yn cynnwys sicrhau eich bod yn cael eich hysbysu am y broses a'r gefnogaeth sydd ar gael i chi.",
+  "intro2": "Mae'r hawliau hyn wedi eu hysgrifennu yn y Cod Ymarfer Dioddefwyr Trosedd yng Nghymru a Lloegr (Cod Dioddefwyr). Dyma grynodeb o'r 12 hawl.",
+  "summaryHeading": "Crynodeb o hawliau Cod Dioddefwyr",
   "right1": {
-    "heading": "1. To be able to understand and to be understood",
-    "para1": "You have the right to be given information in a way that is easy to understand and to be provided with help to be understood, including, where necessary, access to interpretation and translation services."
+    "heading": "1. Gallu deall a chael eich deall",
+    "para1": "Mae gennych hawl i gael gwybodaeth mewn ffordd sy'n hawdd i'w deall a derbyn cymorth i gael eich deall, gan gynnwys, ble bo'r angen, mynediad i wasanaeth cyfieithu."
   },
   "right2": {
-    "heading": "2. To have the details of the crime recorded without unjustified delay",
-    "para1": "You have the right to have details of the crime recorded by the police as soon as possible after the incident.",
-    "para2": "If you are required to provide a witness statement or be interviewed, you have the right to be provided with additional support to assist you through this process."
+    "heading": "2. I gael cofnodi manylion y drosedd heb oedi sydd heb ei gyfiawnhau",
+    "para1": "Mae gennych yr hawl i gael cofnodi manylion y drosedd gan yr heddlu gynted â phosibl ar ôl y digwyddiad.",
+    "para2": "Os ydych angen rhoi datganiad tyst neu gael cyfweliad, mae gennych yr hawl i gael cefnogaeth ychwanegol i'ch cynorthwyo drwy'r broses hon."
   },
   "right3": {
-    "heading": "3. To be provided with information when reporting the crime",
-    "para1": "You have the right to receive written confirmation when reporting a crime, to be provided with information about the criminal justice process and to be told about programmes or services for victims.",
-    "para2": "This might include services where you can meet with the suspect or offender, which is known as restorative justice."
+    "heading": "3. I gael gwybodaeth pan fyddwch yn rhoi gwybod am y drosedd",
+    "para1": "Mae gennych yr hawl i dderbyn cadarnhad ysgrifenedig pan fyddwch yn rhoi gwybod am drosedd, i gael gwybodaeth am y broses cyfiawnder troseddol a chael gwybod am raglenni neu wasanaethau i ddioddefwyr.",
+    "para2": "Gall hyn gynnwys gwasanaethau ble gallwch gwrdd â'r unigolyn a ddrwgdybir, a elwir yn gyfiawnder adferol."
   },
   "right4": {
-    "heading": "4. To be referred to services that support victims and have services and support tailored to your needs",
-    "para1": "You have the right to be referred to services that support victims, which includes the right to contact them directly, and to have your needs assessed so services and support can be tailored to meet your needs.",
-    "para2": "If eligible, you have the right to be offered a referral to specialist support services and to be told about additional support available at court, for example special measures."
+    "heading": "4. I gael eich cyfeirio i'r gwasanaethau sy'n cefnogi dioddefwyr a chael gwasanaethau a chefnogaeth wedi eu teilwra ar gyfer eich anghenion",
+    "para1": "Mae gennych hawl i gael eich cyfeirio i wasanaethau sy'n cefnogi dioddefwyr, gan gynnwys yr hawl i gysylltu â nhw yn uniongyrchol ac i gael asesu eich anghenion fel y gellir teilwra gwasanaethau a chefnogaeth i fodloni eich anghenion.",
+    "para2": "Os ydych yn gymwys, mae gennych hawl cael cynnig atgyfeiriad i wasanaethau cymorth arbenigol a chael gwybod am gefnogaeth ychwanegol ar gael yn y llys, er enghraifft mesurau arbennig."
   },
   "right5": {
-    "heading": "5. To be provided with information about compensation",
-    "para1": "Where eligible, you have the right to be told about how to claim compensation for any loss, damage or injury caused as a result of crime."
+    "heading": "5. I gael gwybodaeth am iawndal",
+    "para1": "Ble bo'n gymwys, mae gennych hawl cael gwybod am sut i hawlio iawndal ar gyfer unrhyw golled, difrod neu anaf a achoswyd o ganlyniad i drosedd."
   },
   "right6": {
-    "heading": "6. To be provided with information about the investigation and prosecution",
-    "para1": "You have the right to be provided with updates on your case and to be told when important decisions are taken. You also have the right, at certain stages of the justice process, to ask for decisions to be looked at again by the relevant service provider."
+    "heading": "6. I gael gwybodaeth am yr ymchwiliad ac erlyniad",
+    "para1": "Mae gennych hawl cael diweddariad ar eich achos a chael gwybod pan fydd penderfyniadau pwysig yn cael eu gwneud.  Mae gennych hefyd yr hawl, ar unrhyw gam o'r broses gyfiawnder, i ofyn i benderfyniadau gael eu hystyried eto gan y darparwr gwasanaeth perthnasol."
   },
   "right7": {
-    "heading": "7. To make a Victim Personal Statement",
-    "para1": "You have the right to make a Victim Personal Statement, which tells the court how the crime has affected you and is considered when sentencing the offender. You will be given information about the process."
+    "heading": "7. Gwneud Datganiad Personol Dioddefwr",
+    "para1": "Mae gennych yr hawl i wneud Datganiad Personol Dioddefwr, sy'n dweud wrth y llys sut mae'r drosedd wedi effeithio arnoch chi ac ystyrir wrth ddedfrydu'r troseddwr. Byddwch yn derbyn gwybodaeth am y broses."
   },
   "right8": {
-    "heading": "8. To be given information about the trial, trial process and your role as a witness",
-    "para1": "If your case goes to court, you have the right to be told the time, date and location of any hearing and the outcome of those hearings in a timely way.",
-    "para2": "If you are required to give evidence, you have the right to be offered appropriate help before the trial and, where possible, if the court allows, to meet with the prosecutor before giving evidence."
+    "heading": "8. I gael gwybodaeth am y treial, proses y treial a'ch rôl fel tyst",
+    "para1": "Os bydd eich achos yn mynd i'r llys, mae gennych hawl i gael gwybod yr amser, dyddiad a lleoliad unrhyw wrandawiad a chanlyniad y gwrandawiadau hynny mewn modd amserol.",
+    "para2": "Os ydych angen rhoi tystiolaeth, mae gennych yr hawl i gael cynnig cymorth priodol cyn y treial, a ble bo'n bosibl, os yw'r llys yn caniatau, i gwrdd â'r erlynydd cyn rhoi tystiolaeth."
   },
   "right9": {
-    "heading": "9. To be given information about the outcome of the case and any appeals",
-    "para1": "You have the right to be told the outcome of the case and, if the defendant is convicted, to be given an explanation of the sentence. If the offender appeals against their conviction or sentence, you have the right to be told about the appeal and its outcome."
+    "heading": "9. I gael gwybodaeth am ganlyniad yr achos ac unrhyw apeliadau",
+    "para1": "Mae gennych hawl i gael gwybod canlyniad yr achos, ac os bydd y diffynnydd yn ei gael yn euog, i gael eglurhad o'r ddedfryd.  Os bydd y troseddwr yn apelio yn erbyn eu heuogfarn neu ddedfryd, mae gennych yr hawl i gael gwybod am yr apêl a'r canlyniad."
   },
   "right10": {
-    "heading": "10. To be paid expenses and have property returned",
-    "para1": "If you are required to attend court and give evidence, you have the right to claim certain expenses. If any of your property was taken as evidence, you have the right to get it back as soon as possible."
+    "heading": "10. I gael costau a dychwelyd eiddo",
+    "para1": "Os ydych angen mynd i'r llys a rhoi tystiolaeth, mae gennych yr hawl i hawlio rhai costau.  Os cymerwyd unrhyw eiddo gennych fel tystiolaeth, mae gennych hawl i'w gael yn ôl gynted â phosibl."
   },
   "right11": {
-    "heading": "11. To be given information about the offender following a conviction",
-    "para1": "Where eligible, you have the right to be automatically referred to the Victim Contact Scheme, which will provide you with information about the offender and their progress in prison, and if they become eligible for consideration of parole or release.",
-    "para2": "Where applicable, you also have the right to make a new Victim Personal Statement, in which you can say how the crime continues to affect you."
+    "heading": "11. I gael gwybodaeth am y troseddwr yn dilyn euogfarn",
+    "para1": "Ble bo'n gymwys, mae gennych hawl i gael eich cyfeirio'n awtomatig i'r Cynllun Cyswllt Troseddwr, a fydd yn rhoi gwybodaeth i chi am y troseddwr a'u cynnydd yn y carchar, ac os ydynt yn gymwys i'w hystyried ar gyfer parôl neu eu rhyddhau.",
+    "para2": "Ble bo'n briodol, mae gennych hefyd yr hawl i wneud Datganiad Personol Dioddefwr newydd, ble gallwch ddweud sut mae'r drosedd yn parhau i effeithio arnoch chi."
   },
   "right12": {
-    "heading": "12. To make a complaint about your rights not being met",
-    "para1": "If you believe that you have not received your rights, you have the right to make a complaint to the relevant service provider. If you remain unhappy, you can contact the Parliamentary and Health Service Ombudsman."
+    "heading": "12. Gwneud cwyn am eich hawliau ddim yn cael eu bodloni",
+    "para1": "Os ydych yn credu nad ydych wedi derbyn eich hawliau, mae gennych hawl i wneud cwyn i'r darparwr gwasanaeth perthnasol.  Os ydych yn parhau'n anhapus, gallwch gysylltu gyda'r Ombwdsmon Seneddol a Gwasanaeth Iechyd."
   },
   "fullCodeLink": {
-    "before": "Read the full",
-    "linkText": "Code of Practice for Victims of Crime in England and Wales (Victims' Code) (opens in new tab)."
+    "before": "Darllenwch y",
+    "linkText": "Cod Ymarfer i Ddioddefwyr Trosedd yng Nghymru a Lloegr (Cod Dioddefwyr) (yn agor mewn tab newydd) yn llawn."
   }
 }

@@ -1,217 +1,236 @@
 {
-  "pageTitle": "Victims journey",
+  "pageTitle": "Y system cyfiawnder troseddol: cam wrth gam",
   "intro": {
-    "heading": "The criminal justice system: step by step",
-    "para1": "When you have experienced a crime and the case goes to court, use our guide to check:",
-    "list1": ["what happens, who is involved and when", "what you might need to do", "your rights throughout the process"],
-    "para2": "What happens at each stage, and where the case ends, can depend on:",
-    "list2": [
-      "the crime, or crimes if there was more than one",
-      "what evidence the police find",
-      "what the courts decide, based on the evidence available"
+    "heading": "Y system cyfiawnder troseddol: cam wrth gam",
+    "para1": "Pan fyddwch wedi profi trosedd a bod yr achos yn mynd i'r llys, defnyddiwch ein canllaw i wirio:",
+    "list1": [
+      "beth sy'n digwydd, pwy sy'n rhan o'r drosedd a phryd",
+      "beth ydych chi angen ei wneud",
+      "eich hawliau drwy gydol y broses"
     ],
-    "para3": "You always have certain rights by law under the",
-    "para3LinkText": "Victims' Code"
+    "para2": "Mae beth sy'n digwydd ym mhob cam, a beth yw canlyniad yr achos yn gallu dibynnu ar:",
+    "list2": [
+      "y drosedd, neu droseddau os oes yna fwy nag un",
+      "pa dystiolaeth a ganfyddir gan yr heddlu",
+      "beth mae'r llysoedd yn ei benderfynu, yn seiliedig ar y dystiolaeth sydd ar gael"
+    ],
+    "para3": "Mae gennych bob amser hawliau penodol yn ôl y gyfraith o dan y",
+    "para3LinkText": "Cod Dioddefwyr"
   },
   "details": {
-    "summary": "When you might be entitled to enhanced rights",
-    "para1": "When you report a crime, the police check if you're entitled by law to 'enhanced rights' throughout the process.",
-    "para2": "Enhanced rights automatically apply to children under 18 years old. They can also apply if you are vulnerable or intimidated, are a victim of the most serious crime, or have been persistently targeted.",
-    "para3": "Enhanced rights give you extra support, which may include being referred to a specialist support service, being told more quickly about important decisions, and having 'special measures' during a trial."
+    "summary": "Pryd mae gennych hawl i hawliau estynedig",
+    "para1": "Pan fyddwch yn rhoi gwybod am drosedd, mae'r heddlu'n gwirio os oes gennych hawl yn ôl y gyfraith i 'hawliau estynedig' trwy gydol y broses",
+    "para2": "Mae hawliau estynedig yn berthnasol yn awtomatig i blant o dan 18 oed. Gallwch hefyd wneud cais os ydych yn fregus neu dan fygythiad, yn ddioddefwr y drosedd mwyaf difrifol neu wedi eich targedu'n gyson.",
+    "para3": "Mae hawliau estynedig yn rhoi cefnogaeth ychwanegol i chi, a all gynnwys cael eich cyfeirio at wasanaeth cymorth arbenigol, cael gwybod yn gynt am benderfyniadau pwysig a chael 'mesurau arbennig' yn ystod treial."
   },
   "stage1": {
-    "heading": "Stage 1: Reporting the crime",
-    "para1": "When you experience a crime, you have the right to report it to the police.",
-    "para2": "If you do not want to report it to the police, you can still get help from support services at any point.",
-    "para3": "Find support services (opens in new tab).",
-    "subheading1": "What you can tell the police",
-    "para4": "You can give the police a witness statement, where you describe what happened.",
-    "para5": "You might also want to give a victim personal statement, where you describe emotional, physical, and financial effects a crime may have had on you.",
-    "para6": "Find out more about giving a:",
-    "list1": ["witness statement (opens in new tab)", "victim personal statement"],
-    "subheading2": "Getting support for your needs",
-    "para7": "The police will listen to your experience and personal circumstances to understand what you might need. This includes support for disabilities.",
-    "para8": "They will then put you in touch with the right support services for you.",
-    "para9": "They will also record if and how you want to be contacted about the case, for example by phone call or email.",
-    "subheading3": "How your case is recorded",
-    "para10": "The police will give you a crime reference number. They will also send you a victim of crime letter.",
-    "para11": "You have the right to receive this with 5 working days of reporting a crime. The letter will confirm the crime or crimes you have reported and give you information about where you can get other support."
+    "heading": "Cam 1: Rhoi gwybod am y drosedd",
+    "para1": "Pan fyddwch yn profi trosedd, mae gennych yr hawl i roi gwybod i'r heddlu.",
+    "para2": "Os nad ydych yn dymuno rhoi gwybod i'r heddlu, gallwch barhau i gael help gan wasanaethau cymorth ar unrhyw adeg.",
+    "para3": "Dod o hyd i wasanaethau cymorth (agor mewn tab newydd).",
+    "subheading1": "Beth gallwch ei ddweud wrth yr heddlu",
+    "para4": "Gallwch roi datganiad tyst i'r heddlu, ble byddwch yn disgrifio'r hyn sydd wedi digwydd.",
+    "para5": "Mae'n bosibl y byddwch yn dymuno rhoi datganiad personol dioddefwr hefyd, ble byddwch yn disgrifio effeithiau emosiynol, corfforol ac ariannol a gafodd trosedd arnoch chi.",
+    "para6": "Rhagor o wybodaeth am:",
+    "list1": [
+      "datganiad tyst (yn agor mewn tab newydd)",
+      "datganiad personol dioddefwyr"
+    ],
+    "subheading2": "Cael cefnogaeth ar gyfer eich anghenion",
+    "para7": "Bydd yr heddlu yn gwrando ar eich profiad a'ch amgylchiadau personol i ddeall beth ydych ei angen.  Mae hyn yn cynnwys cefnogaeth ar gyfer anableddau.",
+    "para8": "Yna, byddant yn eich rhoi mewn cysylltiad gyda'r gwasanaethau cymorth cywir i chi.",
+    "para9": "Byddant hefyd yn cofnodi os a sut y dymunwch iddynt gysylltu â chi am yr achos, er enghraifft dros y ffôn neu drwy e-bost.",
+    "subheading3": "Sut y cofnodir eich achos",
+    "para10": "Bydd yr heddlu yn rhoi cyfeirnod trosedd i chi. Byddant hefyd yn anfon llythyr dioddefwr trosedd atoch.",
+    "para11": "Mae gennych hawl i dderbyn hwn o fewn 5 diwrnod gwaith o roi gwybod am drosedd.  Bydd y llythyr yn cadarnhau'r drosedd neu'r troseddau a adroddwyd gennych ac yn rhoi gwybodaeth am lle gallwch gael cefnogaeth arall."
   },
   "stage2": {
-    "heading": "Stage 2: The police investigate the crime",
-    "para1": "At this stage, a person who is accused of a crime is referred to as a 'suspect'.",
-    "para2": "The police investigate crimes by looking at evidence and talking to suspects.",
-    "para3": "The police will update you on what's happening with the case. They will check with you:",
-    "list1": ["how often you want to get updates", "how you want to be contacted, for example by phone or email"]
+    "heading": "Cam 2: Yr heddlu yn ymchwilio i'r drosedd",
+    "para1": "Ar y pwynt hwn, cyfeirir at unigolyn y cyhuddir o drosedd fel 'rhywun a ddrwgdybir'",
+    "para2": "Mae'r heddlu yn ymchwilio i droseddau drwy edrych ar dystiolaeth a siarad gydag 'unigolion a ddrwgdybir'",
+    "para3": "Byddd yr heddlu yn rhoi diweddariad i chi ar yr hyn sy'n digwydd gyda'r achos.   Byddant yn gwirio gyda chi:",
+    "list1": [
+      "pa mor aml ydych chi eisiau cael diweddariadau",
+      "sut ydych yn dymuno iddynt gysylltu â chi, er enghraifft dros y ffôn neu drwy e-bost"
+    ]
   },
   "stage3": {
-    "heading": "Stage 3: The police make a charge or end the case",
-    "para1": "After the police have completed their investigations, they will decide whether to do one of the following:",
+    "heading": "Cam 3: Yr heddlu yn cyhuddo neu'n dod â'r achos i ben",
+    "para1": "Ar ôl i'r heddlu gwblhau eu hymchwiliadau, byddant yn penderfynu pan un ai i wneud un o'r canlynol:",
     "list1": [
-      "charge the suspect and refer the case to the Crown Prosecution Service",
-      "give the suspect a caution with certain conditions, for example community service or a medical treatment programme",
-      "not progress the case if there is not enough evidence"
+      "cyhuddo'r unigolyn a ddrwgdybir a chyfeirio'r achos i Wasanaeth Erlyn y Goron",
+      "rhoi rhybudd i'r unigolyn a ddrwgdybir gydag amodau penodol, er enghraifft gwasanaeth cymunedol neu raglen triniaeth feddygol",
+      "peidio symud yr achos ymlaen os nad oes yna ddigon o dystiolaeth"
     ],
-    "para2": "You have the right to hear about the decision from the police within 5 working days of it being made.",
+    "para2": "Mae gennych yr hawl i glywed am y penderfyniad gan yr heddlu o fewn 5 diwrnod gwaith o'r penderfyniad yn cael ei wneud.",
     "details": {
-      "summary": "If you have enhanced rights",
-      "para1": "You have the right to hear about the decision from the police within 1 working day of it being made."
+      "summary": "Os oes gennych hawliau estynedig",
+      "para1": "Mae gennych yr hawl i glywed am y penderfyniad gan yr heddlu o fewn 1 diwrnod gwaith o'r penderfyniad yn cael ei wneud."
     },
-    "subheading1": "If the case is referred to the Crown Prosecution Service",
-    "para3": "When the police refer a case to the Crown Prosecution Service, you will receive a letter from the police witness care unit that:",
+    "subheading1": "Os caiff yr achos ei gyfeirio i Wasanaeth Erlyn y Goron",
+    "para3": "Pan mae'r heddlu yn cyfeirio achos i Wasanaeth Erlyn y Goron, byddwch yn derbyn llythyr gan uned gofal tyst yr heddlu sy'n:",
     "list2": [
-      "confirms the crime or crimes being charged",
-      "gives you the unique reference number (URN) for the case – this is useful for when you need an update about the case, for example when you call the  police witness care officer",
-      "introduces you to your police witness care unit, who will look after you during the case"
+      "cadarnhau'r drosedd neu'r troseddau a gyhuddir",
+      "rhoi'r cyfeirnod unigryw (URN) i chi ar gyfer yr achos - mae hwn yn ddefnyddiol pan fyddwch angen diweddariad am yr achos, er enghraifft pan fyddwch yn ffonio swyddog gofal tyst yr heddlu",
+      "eich cyflwyno i uned gofal tyst yr heddlu, fydd yn gofalu amdanoch yn ystod yr achos"
     ],
-    "para4": "The Crown Prosecution Service consider the evidence and public interest of the case to decide whether to either:",
-    "list3": ["charge the suspect and take the case to court", "not charge the suspect and end the case"],
-    "para5": "If the Crown Prosecution Service take a crime case to court, you do not need a solicitor as the Crown Prosecution Service are acting on your behalf.",
-    "subheading2": "If the suspect is not charged",
-    "para6": "If the police or the Crown Prosecution Service decide not to charge a suspect, but you believe they should, you have the right to ask for a review of the decision through the Victims' Right to Review Scheme.",
-    "para7": "To do this, tell your police witness care unit or police officer in charge (OIC) and they will tell you how to apply.",
-    "para8": "Find out more about the Victims' Right to Review Scheme (opens in new tab)."
+    "para4": "Mae Gwasanaeth Erlyn y Goron yn ystyried y dystiolaeth a lles y cyhoedd o'r achos i benderfynu pa un ai i:",
+    "list3": [
+      "gyhuddo'r unigolyn a ddrwgdybir a mynd â'r achos i'r llys",
+      "peidio cyhuddo'r unigolyn a ddrwgdybir a dod â'r achos i ben"
+    ],
+    "para5": "Os bydd Gwasanaeth Erlyn y Goron yn mynd ag achos troseddol i'r llys, nid ydych angen cyfreithiwr oherwydd bod Gwasanaeth Erlyn y Goron yn gweithredu ar eich rhan.",
+    "subheading2": "Os na fydd yr unigolyn a ddrwgdybir yn cael ei gosbi",
+    "para6": "Os bydd yr heddlu neu Wasanaeth Erlyn y Goron yn penderfynu peidio cosbi unigolyn a ddrwgdybir, ond eich bod chi'n credu y dylent, mae gennych hawl gofyn am adolygiad o'r penderfyniad drwy'r Cynllun Hawl Dioddefwr i Adolygiad.",
+    "para7": "I wneud hyn, dywedwch wrth uned gofal tyst yr heddlu neu swyddog heddlu sy'n gyfrifol (OIC) a byddant yn dweud wrthych sut i wneud cais.",
+    "para8": "Gwybodaeth bellach am Cynllun Hawl Dioddefwr i Adolygiad (agor mewn tab newydd)."
   },
   "stage4": {
-    "heading": "Stage 4: The first court hearing",
-    "para1": "When a case goes to court, the suspect is now referred to as a 'defendant'.",
-    "para2": "The defendant will 'state their plea', this means they tell the court whether they believe they are guilty of the crime or not. They can plead one of the following:",
+    "heading": "Cam 4: Y gwrandawiad llys cyntaf",
+    "para1": "Pan fydd achos yn mynd i'r llys, cyfeirir at yr unigolyn a ddrwgdybir fel 'diffynnydd'.",
+    "para2": "Bydd y diffynnydd yn 'nodi eu ple', mae hyn yn golygu eu bod yn dweud wrth y llys pa un a ydynt yn credu eu bod yn euog o'r drosedd ai peidio.  Gallant bledio un o'r canlynol:",
     "list1": [
-      "guilty to the charge or charges – this means they're saying they did commit the crime or crimes",
-      "guilty to some of the charges, if there are more than one",
-      "not guilty to the charge or all of the charges – this means they're saying they did not commit the crime or crimes"
+      "euog i'r cyhuddiad neu'r cyhuddiadau - mae hyn yn golygu eu bod yn dweud na wnaethant gyflawni'r drosedd neu'r troseddau",
+      "euog i rai o'r cyhuddiadau, os oes yna fwy nag un",
+      "ddim yn euog i'r cyhuddiad neu bob un o'r cyhuddiadau - mae hyn yn golygu eu bod yn dweud na wnaethant gyflawni'r drosedd neu'r troseddau"
     ],
-    "para3": "You do not have to attend the hearing, but you can if you want. Otherwise the police will tell you what a defendant pleads. You can choose how you prefer to be contacted, for example by phone call or text. You have the right to know within 5 working days of the hearing.",
-    "subheading1": "If the defendant pleads guilty",
-    "para4": "The magistrate or judge can sentence them right away, or at a later date if they need more information for the sentencing.",
-    "para5": "If you are not at the sentencing hearing, the police will tell you the sentence. Tell the police how you want to be contacted, for example for phone call or email. You have the right to know within 5 working days of the sentencing or 1 working day if you have enhanced rights.",
-    "para6": "If you give a victim personal statement, it can help the judge to make a more informed decision on sentencing. This is because they will consider the overall effect the crime has had on you.",
-    "para7": "Find out more about making a victim personal statement",
-    "subheading2": "If the defendant pleads not guilty",
-    "para8": "The courts will set a date for another court hearing, called a 'trial'. A trial is where a judge or jury listen to all the evidence in a case and makes a decision.",
-    "para9": "Depending on the case, there may need to be more than one hearing, and the trial could last a day or several months."
+    "para3": "Does dim rhaid i chi fynychu'r gwrandawiad, ond fe gewch wneud os ydych chi eisiau. Fel arall, bydd yr heddlu'n dweud wrthych beth ma diffynnydd yn ei bledio. Gallwch ddewis sut ydych yn dymuno iddynt gysylltu â chi, er enghraifft dros y ffôn neu drwy e-bost Mae gennych hawl i wybod o fewn 5 diwrnod gwaith o'r gwrandawiad.",
+    "subheading1": "Os yw'r 'r diffynnydd yn pledio'n euog",
+    "para4": "Gall yr ynad neu'r barnwr eu dedfrydu ar unwaith, neu ar ddyddiad arall os ydynt angen mwy o wybodaeth ar gyfer dedfrydu.",
+    "para5": "Os nad ydych yn y gwrandawiad dedfrydu, bydd yr heddlu yn dweud wrthych am y ddedfryd. Dywedwch wrth yr heddlu sut ydych yn dymuno iddynt gysylltu â chi, er enghraifft dros y ffôn neu drwy e-bost. Mae gennych hawl gwybod o fewn 5 diwrnod gwaith o'r dedfrydu neu 1 diwrnod gwaith os oes gennych hawliau estynedig.",
+    "para6": "Os byddwch yn rhoi datganiad personol dioddefwr, gall helpu'r barnwr i wneud penderfyniad mwy hysbys ar ddedfrydu.  Mae hyn oherwydd y byddant yn ystyried effaith gyffredinol a gafodd y drosedd arnoch chi.",
+    "para7": "Canfod mwy am wneud datganiad personol dioddefwr .",
+    "subheading2": "Os yw'r diffynnydd yn pledio'n ddieuog",
+    "para8": "Bydd y llys yn pennu dyddiad ar gyfer gwrandawiad llys arall, a elwir yn 'dreial'. Treial yw ble mae barnwr neu reithgor yn gwrando ar yr holl dystiolaeth mewn achos ac yn gwneud penderfyniad.",
+    "para9": "Yn dibynnu ar yr achos, efallai y bydd angen mwy nag un gwrandawiad, a gall y treial bara diwrnod neu sawl mis."
   },
   "stage5": {
-    "heading": "Stage 5: The court trial",
-    "para1": "A court trial is where evidence and arguments are presented to decide guilt for a crime.",
-    "para2": "The aim is to reach a fair decision based on the law.",
-    "para3": "Depending on the type of crime, a trial is heard by either:",
-    "list1": ["magistrates", "a judge and jury"],
-    "para4": "A trial can include:",
+    "heading": "Cam 5: Treial y llys",
+    "para1": "Treial llys yw pan gyflwynir tystiolaeth a dadleuon i benderfynu ar euogrwydd am drosedd.",
+    "para2": "Y nod yw cyrraedd penderfyniad teg yn seiliedig ar y gyfraith.",
+    "para3": "Yn dibynnu ar y math o drosedd, gwrandewir ar dreial gan naill ai:",
+    "list1": [
+      "ynadon",
+      "barnwr a rheithgor"
+    ],
+    "para4": "Gall treial gynnwys:",
     "list2": [
-      "statements from the prosecution, defence, victims and witnesses",
-      "witness 'testimony' – where any witnesses stand up and tell the court what happened",
-      "cross-examination of witnesses – where they are asked questions about what they know about the crime",
-      "closing arguments",
-      "final decision – the 'verdict', made by the judge or jury"
+      "datganiadau gan yr erlyniad, amddiffyniad, dioddefwyr a thystion",
+      "'tystiolaeth' tyst - ble mae unrhyw dyst yn sefyll ar eu traed ac yn dweud wrth y llys beth ddigwyddodd",
+      "croesholi tyst - ble gofynnir cwestiynau iddynt am yr hyn maent yn ei wybod am y trosedd",
+      "cau'r dadleuon",
+      "penderfyniad terfynol - y 'dyfarniad', a wneir gan y barnwr neu'r rheithgor"
     ],
-    "para5": "Where a defendant is found guilty, there can be a separate 'sentencing hearing'. This is where the magistrates or judge decide on an appropriate sentence for the person found guilty.",
-    "subheading1": "When you must go to court",
-    "para6": "You do not need to go to court unless you have been told by the police that you need to give evidence.",
-    "para7": "You can still watch any hearing or trial if you want to.",
-    "subheading2": "Giving evidence at court",
-    "para8": "As the victim of a crime, you will usually be a main 'witness' in the case. This means you may be required to give evidence at the trial. Giving evidence is telling the court what you know about the crime.",
-    "subheading3": "Getting support",
-    "para9": "In the run up to and during the trial, you can get support from:",
+    "para5": "Ble mae diffynnydd yn cael ei ganfod yn euog, gellir cynnal 'gwrandawiad dedfrydu' ar wahân. Dyma ble mae'r ynadon neu'r barnwr yn penderfynu ar ddedfryd briodol i'r unigolyn a gafwyd yn euog.",
+    "subheading1": "Pryd fyddwch yn gorfod mynd i'r llys",
+    "para6": "Nid ydych angen mynd i'r llys oni bai y dywedwyd wrthych gan yr heddlu eich bod angen rhoi tystiolaeth.",
+    "para7": "Gallwch barhau i wylio unrhyw wrandawiad neu dreial os dymunwch.",
+    "subheading2": "Rhoi tystiolaeth yn y llys",
+    "para8": "Fel y dioddefwr trosedd, byddwch fel arfer yn brif 'dyst' yn yr achos.   Mae hyn yn golygu efallai y byddwch angen rhoi tystiolaeth yn y treial.  Mae rhoi tystiolaeth yn golygu dweud wrth y llys yr hyn rydych yn ei wybod am y trosedd.",
+    "subheading3": "Cael cymorth",
+    "para9": "Yn y cyfnod cyn ac yn ystod y treial, gallwch gael cefnogaeth gan:",
     "list3": [
-      "your police witness care officer (WCO)",
-      "Witness Service – this charity gives free, independent support for prosecution and defence witnesses in every criminal court in England and Wales"
+      "swyddog gofal tyst yr heddlu (WCO)",
+      "Gwasanaeth Tyst - mae'r elusen hon yn rhoi cefnogaeth annibynnol, am ddim i dystion erlyniad ac amddiffyn ym mhob llys troseddol yng Nghymru a Lloegr"
     ],
-    "para10": "The Witness Service can offer assistance such as:",
+    "para10": "Gall y Gwasanaeth Tyst gynnig cymorth fel:",
     "list4": [
-      "help you prepare, for example show you the courtroom before the day of the trial",
-      "help you make practical arrangements for the day, for example how to get to the court",
-      "be with you throughout the trial"
+      "eich helpu i baratoi, er enghraifft dangos y llys i chi cyn diwrnod y treial",
+      "eich helpu i wneud trefniadau ymarferol ar gyfer y diwrnod, er enghraifft sut i gyrraedd y llys",
+      "bod gyda chi drwy gydol y treial"
     ],
     "details": {
-      "summary": "If you have enhanced rights",
-      "para1": "To help you feel more comfortable about when you give your evidence, you might be able to get extra support called 'special measures'.",
-      "para2": "This might be, for example, giving your evidence on a video recording before the trial, from behind a screen, or by video link from outside the courtroom. You can ask for special measures if you:",
+      "summary": "Os oes gennych hawliau estynedig",
+      "para1": "I'ch helpu i deimlo'n fwy cyfforddus am pan fyddwch yn rhoi eich tystiolaeth, efallai y gallwch gael cefnogaeth ychwanegol a elwir yn 'fesurau arbennig'.",
+      "para2": "Gall hyn fod, er enghraifft, rhoi eich tystiolaeth ar recordiad fideo cyn y treial, y tu ôl i sgrin, neu drwy ddolen fideo y tu allan i'r llys. Gallwch ofyn am fesurau arbennig os ydych:",
       "list1": [
-        "are under 18",
-        "have physical, mental or communication needs",
-        "feel very scared or upset in a way that might affect you giving your best evidence",
-        "are a victim of domestic abuse, rape or sexual assault",
-        "are a victim of modern slavery",
-        "have witnessed a crime involving a gun or knife"
+        "o dan 18 oed",
+        "ag anghenion corfforol, meddyliol neu gyfathrebu",
+        "yn teimlo'n ofnus neu'n ofidus iawn mewn ffordd a all effeithio arnoch yn rhoi eich tystiolaeth orau",
+        "yn ddioddefwr cam-drin domestig, trais neu ymosodiad rhywiol",
+        "yn ddioddefwr caethwasiaeth fodern",
+        "wedi bod yn dyst trosedd yn cynnwys gwn neu gyllell."
       ],
-      "para3": "The police witness care unit will talk to you about whether special measures might help you. You can ask questions and decide together what support is best for you.",
-      "para4": "The police will then tell the Crown Prosecution Service what you need. They will ask the judge or magistrate if you can have the special measures you want. The judge or magistrate decides if these special measures will help you give your best evidence and will be fair to everyone in the case.",
-      "para5": "Find out more about special measures from the Crown Prosecution Service (opens in new tab)."
+      "para3": "Bydd uned gofal tyst yr heddlu yn siarad gyda chi ynglŷn â pha un a allai mesurau arbennig eich helpu. Gallwch ofyn cwestiynau a phenderfynu gyda'r gilydd pa gefnogaeth sydd orau i chi.",
+      "para4": "Yna, bydd yr heddlu yn dweud wrth Wasanaeth Erlyn y Goron beth ydych ei angen. Byddant yn gofyn i'r barnwr neu'r ynad os gallwch gael y mesurau arbennig rydych eisiau. Bydd y barnwr neu'r ynad yn penderfynu a fydd y mesurau arbennig hyn yn eich helpu i roi eich tystiolaeth orau a bydd yn deg gyda phawb yn yr achos.",
+      "para5": "Canfod mwy am fesurau arbennig gan Wasanaeth Erlyn y Goron (yn agor mewn tab newydd)."
     },
-    "subheading4": "If you do not give evidence when required",
-    "para11": "It can be that if you do not provide evidence at the trial as a witness, there is not enough evidence for the case to be continued.",
-    "para12": "If you are asked to go to court as a witness but do not go to the court on the day of the trial, the case may be discontinued.",
-    "para13": "The Crown Prosecution Service will send you a letter explaining the reason why the case was closed."
+    "subheading4": "Os na fyddwch yn rhoi tystiolaeth pan fydd angen",
+    "para11": "Gall fod os nad ydych yn rhoi tystiolaeth yn y treial fel tyst, nid oes digon o dystiolaeth i'r achos barhau.",
+    "para12": "Os gofynnir i chi fynd i'r llys fel tyst, ond nad ydych yn mynd i'r llys ar ddiwrnod y treial, mae'n bosibl y bydd yr achos yn dirwyn i ben.",
+    "para13": "Bydd Gwasanaeth Erlyn y Goron yn anfon llythyr atoch yn egluro'r rheswm pan bod yr achos wedi cau."
   },
   "stage6": {
-    "heading": "Stage 6: After the trial",
-    "para1": "It's important to prepare yourself for the outcome of the trial – the 'verdict'. It might not be the outcome you want. It's a good idea to keep talking with your police contact or any support services and charities.",
-    "subheading1": "Your rights for how you find out about the verdict",
-    "para2": "If you have not attended the sentencing hearing, the police can tell you the verdict.",
-    "para3": "You have the right to be told, with a short explanation, within 1 working day of the police receiving the information from the court. The court must send it to the police within 5 working days of the verdict being made.",
-    "para4": "Tell the police if and how you want to be contacted, for example by phone call or email.",
-    "subheading2": "If a defendant is found not guilty",
-    "para5": "If a defendant is found not guilty, the judge will not give them a sentence. This means that the trial ends and they can leave the court.",
-    "para6": "If you want to talk to someone about the verdict, ask the police for support or contact",
-    "para6LinkText": "Victim Support (opens in new tab)",
-    "subheading3": "If a defendant is found guilty",
-    "para7": "If a defendant is found guilty, the judge will give them a sentence. A sentence is the punishment for the crime. Some sentences can be:",
+    "heading": "Cam 6: Ar ôl y treial",
+    "para1": "Mae'n bwysig paratoi eich hun ar gyfer canlyniad y treial - y 'dyfarniad'  Mae'n bosibl na fydd y canlyniad yr un ydych eisiau. Mae'n syniad da parhau i siarad gyda'ch cyswllt yn yr heddlu neu unrhyw wasanaethau cymorth ac elusennau.",
+    "subheading1": "Eich hawliau am sut rydych yn clywed am y dyfarniad",
+    "para2": "Os nad ydych wedi mynychu'r gwrandawiad dedfrydu, gall yr heddlu ddweud wrthych am y ddedfryd.",
+    "para3": "Mae gennych hawl cael gwybod, gydag eglurhad byr, o fewn 1 diwrnod gwaith o'r heddlu yn derbyn y wybodaeth gan y llys. Mae'n rhaid i'r llys ei anfon at yr heddlu o fewn 5 diwrnod gwaith o'r dyfarniad yn cael ei wneud.",
+    "para4": "Dywedwch wrth yr heddlu os a sut rydych yn dymuno iddynt gysylltu â chi, er enghraifft dros y ffôn neu drwy e-bost.",
+    "subheading2": "Os bydd diffynnydd yn cael ei ganfod yn ddieuog",
+    "para5": "Os bydd diffynnydd yn cael ei ganfod yn ddieuog, ni fydd y barnwr yn eu dedfrydu.  Mae hyn yn golygu bod y treial yn dod i ben a gallant adael y llys.",
+    "para6": "Os ydych eisiau siarad gyda rhywun am y ddedfryd, gofynnwch i'r heddlu am gefnogaeth neu cysylltwch gyda",
+    "para6LinkText": "Chymorth i Ddioddefwyr (yn agor mewn tab newydd)",
+    "subheading3": "Os bydd diffynnydd yn cael ei ganfod yn euog",
+    "para7": "Os bydd diffynnydd yn cael ei ganfod yn euog, bydd y barnwr yn eu dedfrydu. Dedfryd yw'r gosb am y trosedd. Gall rhai dedfrydau fod yn:",
     "list1": [
-      "time in prison",
-      "a sentence in the community – this could include having to do unpaid work, having a curfew to stay in their home between certain hours, not being allowed to go to a particular area, and being electronically tagged",
-      "a fine"
+      "amser yn y carchar",
+      "dedfryd yn y gymuned - gall hyn gynnwys gorfod gwneud gwaith di-dâl, cyrffyw i aros yn eu cartref rhwng oriau penodol, peidio cael mynd i ardal benodol a chael tag electronig.",
+      "dirwy"
     ],
-    "para8": "The sentence will depend on:",
-    "list2": ["the type and seriousness of the crime", "the circumstances of the defendant"],
-    "subheading4": "When a defendant might appeal their sentence",
-    "para9": "A defendant found guilty can appeal their sentence if they think it is not fair.",
-    "para10": "In an appeal, a judge reviews the case or there may be another court hearing.",
-    "para11": "Your police contact will tell you the outcome.",
-    "subheading5": "When a sentence might seem too short",
-    "para12": "When deciding on a sentence, judges must:",
+    "para8": "Bydd y ddedfryd yn dibynnu ar:",
+    "list2": [
+      "y math a difrifoldeb y trosedd",
+      "amgylchiadau'r diffynnydd"
+    ],
+    "subheading4": "Pryd y gall diffynnydd apelio yn erbyn eu dedfryd",
+    "para9": "Gall diffynnydd a gafwyd yn euog apelio yn erbyn eu dedfryd os ydynt yn meddwl ei fod yn annheg.",
+    "para10": "Mewn apêl, mae barnwr yn adolygu'r achos neu efallai y bydd yna wrandawiad llys arall.",
+    "para11": "Bydd eich cyswllt yn yr heddlu yn rhoi gwybod y canlyniad i chi.",
+    "subheading5": "Pan fydd dedfryd yn ymddangos yn rhy fyr",
+    "para12": "Wrth benderfynu ar ddedfryd, mae'n rhaid i farnwyr:",
     "list3": [
-      "follow the law, which says how long sentences can be",
-      "consider the reasons for the sentencing under the law, for example the protection of the public and victims",
-      "follow the sentencing guidelines by the Sentencing Council"
+      "ddilyn y gyfraith, sy'n dweud pa mor faith gall dedfrydau fod",
+      "ystyried y rhesymau dros ddedfrydu o dan y gyfraith, er enghraifft i amddiffyn y cyhoedd a dioddefwyr",
+      "ddilyn y canllawiau dedfrydu gan y Cyngor Dedfrydu"
     ],
-    "para13": "Judges will also think about:",
+    "para13": "Bydd barnwyr hefyd yn meddwl am:",
     "list4": [
-      "the harm that a defendant caused or meant to cause",
-      "how much a defendant can be blamed for the crime",
-      "if a defendant had been found guilty or a similar crime before",
-      "if a defendant has said they are sorry, or there are difficult personal circumstances",
-      "if and when a defendant pleads guilty",
-      "how much time a defendant has already spent in prison – 'on remand'"
+      "y niwed a achoswyd neu a fwriadwyd ei achosi gan ddiffynnydd",
+      "faint y gellir beio diffynnydd am y trosedd",
+      "os cafwyd diffynnydd yn euog neu am droseddu tebyg o'r blaen",
+      "os yw diffynnydd wedi dweud ei bod yn ddrwg ganddynt, neu bod yna amgylchiadau personol anodd",
+      "os a phryd y bydd diffynnydd yn pledio'n euog",
+      "faint o amser mae diffynnydd eisoes wedi'i dreulio yn y carchar - 'ar remand'"
     ],
-    "para14": "Find out more about sentencing from the",
-    "para14LinkText": "Sentencing Council (opens in new tab)",
-    "subheading6": "If you think a Crown Court sentence is too low",
-    "para15": "If you think a Crown Court sentence is too low, you can ask for it to be reviewed.",
-    "para16": "Ask for a Crown Court sentence to be reviewed (opens in new tab).",
-    "subheading7": "When you can be referred to the Victim Contact Scheme",
-    "para17": "The Victim Contact Scheme is offered to victims of certain violent and  sexual offences where the sentence is 12 months or more imprisonment, or a hospital order.",
-    "para18": "After sentencing, the police will refer you to the Victim Contact Scheme and you can choose whether to opt in. If you do, you will be put in touch with a Victim Liaison Officer.",
-    "para19": "The Victim Liaison Officer will keep you updated at key stages of the sentence. For example, they can provide information on:",
+    "para14": "Gallwch wybod mwy am ddedfrydu gan y",
+    "para14LinkText": "Cyngor Dedfrydu (yn agor mewn tab newydd)",
+    "subheading6": "Os ydych yn meddwl bod dedfryd Llys y Goron yn rhy isel",
+    "para15": "Os byddwch yn meddwl bod dedfryd Llys y Goron yn rhy isel, gallwch ofyn am adolygiad.",
+    "para16": "Gofyn am adolygiad o ddedfryd Llys y Goron (yn agor mewn tab newydd).",
+    "subheading7": "Pryd gallwch gael eich cyfeirio i'r Cynllun Cyswllt Dioddefwr",
+    "para17": "Caiff y Cynllun Cyswllt Dioddefwr ei gynnig i ddioddefwyr rhai troseddau treisiol a rhywiol pan mae'r ddedfryd yn 12 mis neu fwy o garchar, neu orchymyn ysbyty.",
+    "para18": "Ar ôl dedfrydu, bydd yr heddlu yn eich cyfeirio i'r Cynllun Cyswllt Dioddefwr a gallwch ddewis pa un ai i optio i mewn. Os byddwch, yna cewch eich rhoi mewn cysylltiad â Swyddog Cyswllt Dioddefwr.",
+    "para19": "Bydd y Swyddog Cyswllt Dioddefwr yn rhoi diweddariad i chi ar gamau allweddol o'r ddedfryd.  Er enghraifft, gallant ddarparu gwybodaeth ar:",
     "list5": [
-      "important sentence dates, including release dates",
-      "how to make a Victim Personal Statement for a parole hearing",
-      "submitting an application to observe a parole hearing",
-      "requesting 'licence conditions', such as non-contact and exclusion zones, to prevent the offender from contacting you when they are released",
-      "how to submit a request for a Parole Board decision to be reconsidered"
+      "ddyddiadau dedfryd pwysig, gan gynnwys dyddiadau rhyddhau",
+      "sut i wneud Datganiad Personol Dioddefwr ar gyfer gwrandawiad parôl",
+      "gwneud cais i arsylwi gwrandawiad parôl",
+      "gofyn am 'amodau trwydded', fel dim cyswllt a pharthau cadw allan, i atal y troseddwr rhag cysylltu â chi pan fyddant yn cael eu rhyddhau",
+      "sut i gyflwyno cais i benderfyniad Bwrdd Parôl gael ei ailystyried"
     ],
-    "para20": "You can also choose not to be contacted by the Victim Contact Scheme, or to join at a later date.",
-    "para21": "Find out more about the Victim Contact Scheme (opens in new tab).",
-    "subheading8": "When a person convicted of a crime can be released from prison",
-    "para22": "Most people are released from prison on the date their sentence ends.",
-    "para23": "Some can be released from a proportion of their prison sentence after a decision by the Parole Board. This is called being 'released on parole'.",
-    "para24": "They will be released under certain rules and will be supervised in the community for a certain period of time.",
-    "para25": "If you are in the Victim Contact Scheme, you can give a Victim Personal Statement before a parole decision is made.",
-    "para26": "Find out more about:",
-    "list6item1Prefix": "Release on parole, including how the Parole Board makes decisions, and your rights as a victim of crime in the",
-    "list6item1LinkText": "Guide to parole for victims of crime (opens in new tab)",
-    "list6item2Prefix": "Conditional discharge from a hospital order by",
-    "list6item2LinkText": "First-tier Tribunal (Mental Health) (opens in new tab)"
+    "para20": "Gallwch hefyd ddewis i'r cynllun Cyswllt Dioddefwr beidio cysylltu â chi, neu i ymuno'n ddiweddarach.",
+    "para21": "Gwybodaeth am y Cynllun Cyswllt Dioddefwr (yn agor mewn tab newydd).",
+    "subheading8": "Pryd gall unigolyn euog o drosedd gael ei ryddhau o'r carchar",
+    "para22": "Mae'r rhan fwyaf o bobl yn cael eu rhyddhau o'r carchar ar y dyddiad y daw eu dedfryd i ben.",
+    "para23": "Gall rhai gael eu rhyddhau o gyfran o'u dedfryd carchar yn dilyn penderfyniad gan y Bwrdd Parôl. Gelwir hyn yn 'rhyddhau ar barôl'.",
+    "para24": "Byddant yn cael eu rhyddhau o dan reolau penodol ac yn cael eu goruchwylio yn y gymuned am gyfnod penodol o amser.",
+    "para25": "Os ydych yn y Cynllun Cyswllt Troseddwr, gallwch roi Datganiad Personol Dioddefwr cyn i benderfyniad parôl gael ei wneud.",
+    "para26": "Mwy o wybodaeth am:",
+    "list6item1Prefix": "Rhyddhau ar parôl, gan gynnwys sut mae'r Bwrdd Parôl yn gwneud penderfyniadau a'ch hawliau fel dioddefwr trosedd yn y",
+    "list6item1LinkText": "Canllaw parôl ar gyfer dioddefwyr trosedd (yn agor mewn tab newydd)",
+    "list6item2Prefix": "Rhyddhau amodol o orchymyn ysbyty",
+    "list6item2LinkText": "Tribiwnlys Haen Gyntaf (Iechyd Meddwl) (yn agor mewn tab newydd)"
   },
   "urls": {
     "witnessStatement": "https://www.police.uk/advice/advice-and-information/victim-support/giving-witness-victim-statement/",

@@ -1,27 +1,27 @@
 {
-  "pageTitle": "Get support giving evidence as a witness",
-  "heading.main": "Help and support",
-  "contents.title": "Contents",
-  "contents.victimSupportLink": "Where to get more support and information",
-  "contents.currentItem": "Get support if you're going to court as a witness",
-  "section.heading": "Get support giving evidence as a witness",
-  "section.intro": "If you're going to court to give evidence, the charity Victim Support can help you prepare, and support you during the court process.",
-  "whatTheyCanDo.heading": "What they can do to help you",
-  "whatTheyCanDo.intro": "Victim Support will put you in touch with a trained volunteer. They can give you practical information about the court process, for example:",
+  "pageTitle": "Cael cefnogaeth yn rhoi tystiolaeth fel tyst",
+  "heading.main": "Cymorth a chefnogaeth",
+  "contents.title": "Cynnwys",
+  "contents.victimSupportLink": "Ble i gael mwy o gefnogaeth a gwybodaeth",
+  "contents.currentItem": "Cael cefnogaeth os ydych yn mynd i'r llys fel tyst",
+  "section.heading": "Cael cefnogaeth yn rhoi tystiolaeth fel tyst",
+  "section.intro": "Os ydych yn mynd i'r llys i roi tystiolaeth, gall yr elusen Cymorth i Ddioddefwyr eich helpu i baratoi a'ch cefnogi yn ystod proses y llys.",
+  "whatTheyCanDo.heading": "Beth gallant ei wneud i'ch helpu",
+  "whatTheyCanDo.intro": "Bydd Cymorth i Ddioddefwyr yn eich rhoi mewn cysylltiad gyda gwirfoddolwr hyfforddedig. Gallant roi gwybodaeth ymarferol am y broses llys, er enghraifft:",
   "whatTheyCanDo.practicalItems": [
-    "show you the courtroom before the trial",
-    "help you with claiming expenses you might be entitled to",
-    "refer you to other organisations that could support you"
+    "dangos y llys i chi cyn y treial",
+    "eich helpu i hawlio treuliau y gallwch eu hawlio",
+    "eich cyfeirio i sefydliadau eraill a allai eich cefnogi"
   ],
-  "whatTheyCanDo.emotionalIntro": "They can also give you emotional support, for example:",
+  "whatTheyCanDo.emotionalIntro": "Gallant hefyd roi cefnogaeth emosiynol i chi, er enghraifft:",
   "whatTheyCanDo.emotionalItems": [
-    "help you feel more confident when giving evidence",
-    "be there to talk to in confidence",
-    "come to court with you when you give your evidence",
-    "be with you on the day of the trial",
-    "help you with any extra support needs at home"
+    "eich helpu i deimlo'n fwy hyderus wrth roi tystiolaeth",
+    "bod yno ichi allu ymddiried ynddynt",
+    "dod i'r llys gyda chi pan fyddwch yn rhoi eich tystiolaeth",
+    "bod gyda chi ar ddiwrnod y treial",
+    "eich helpu gydag unrhyw anghenion cefnogaeth ychwanegol yn y cartref"
   ],
-  "whatTheyCanDo.impartial": "The volunteers remain impartial to the court case – they do not take sides.",
-  "findOutMore.heading": "Find out more or refer yourself to the service",
-  "findOutMore.linkText": "Contact the Witness Service (opens in new tab)."
+  "whatTheyCanDo.impartial": "Mae'r gwirfoddolwyr yn parhau'n ddiduedd i'r achos llys - nid ydynt yn cymryd ochrau.",
+  "findOutMore.heading": "Canfod mwy neu cyfeirio eich hun i'r gwasanaeth",
+  "findOutMore.linkText": "Cysylltu gyda'r Gwasanaeth Tyst (yn agor mewn tab newydd)."
 }

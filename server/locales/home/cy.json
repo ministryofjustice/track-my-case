@@ -1,25 +1,25 @@
 {
   "pageTitle": "Home",
-  "introLead": "Use this service to:",
+  "introLead": "Defnyddiwch y gwasanaeth hwn i:",
   "introItems": [
-    "find information about your case, including the next court hearing",
-    "get to know your rights and how the criminal justice system works",
-    "get the right support"
+    "ddod o hyd i wybodaeth am eich achos, gan gynnwys y gwrandawiad llys nesaf",
+    "ddod i wybod eich hawliau a sut mae'r system cyfiawnder troseddol yn gweithio",
+    "gael y gefnogaeth gywir"
   ],
-  "whoHeading": "Who this service is for",
-  "whoLead": "This service is for people who have been a victim of crime in England and Wales and where:",
+  "whoHeading": "Ar gyfer pwy y mae'r gwasanaeth hwn?",
+  "whoLead": "Mae'r gwasanaeth hwn i bobl sydd wedi dioddef trosedd yng Nghymru a Lloegr a ble:",
   "whoItems": [
-    "the person or people accused of the crime have been charged by the police or the Crown Prosecution Service",
-    "at least one of the people accused of the crime have been to a court hearing about the case at least once"
+    "mae'r unigolyn neu'r bobl gafodd eu cyhuddo o'r drosedd wedi eu cyhuddo gan yr heddlu neu Wasanaeth Erlyn y Goron",
+    "mae o leiaf un o'r bobl gafodd eu cyhuddo o'r drosedd wedi bod mewn gwrandawiad llys am yr achos o leiaf unwaith"
   ],
   "notConfident": "If you're not confident using computers you may prefer not to use Track a case – contact your police witness care officer or the police officer in charge (OIC) of your case.",
-  "whatYouNeedHeading": "What you need to use this service",
-  "whatYouNeed": "To use this private beta service, you need the password from your sign-up confirmation email. If you are viewing court information, you will also need a One Login account sign-in.",
-  "safetyHeading": "Keeping you safe",
-  "safety1": "If the threat of domestic violence makes you feel unsafe about using {{applicationName}}, you can use the quick exit button or press your shift key 3 times at any time to safely leave the service.",
-  "safety2": "This will close the site and open the BBC Weather site, but won't delete your browsing history.",
-  "safety3": "You'll need to log in again to return to the page you were using, when it's safe for you to do so.",
-  "startButton": "Start now",
+  "whatYouNeedHeading": "Beth ydych ei angen i ddefnyddio'r gwasanaeth hwn",
+  "whatYouNeed": "I ddefnyddio'r gwasanaeth beta preifat hwn, rydych angen y cyfrinair o'ch e-bost cadarnhad cofrestru.  Os ydych yn edrych ar wybodaeth llys, byddwch hefyd angen mewngofnodi i gyfrif One Login.",
+  "safetyHeading": "Eich cadw'n ddiogel",
+  "safety1": "Mae yna fotwm gadael sydyn ar bob tudalen o'r gwasanaeth hwn.   Os ydych angen cau'r wefan yn sydyn, cliciwch ar y botwm gadael yn gyflym neu gwasgwch yr allwedd shift 3 gwaith.",
+  "safety2": "Bydd y safle'n cau a bydd y safle BBC Weather yn agor yn ei le.  Ni fydd yn bosibl clicio yn ôl i'r dudalen yr oeddech arni yn y gwasanaeth hwn.",
+  "safety3": "Byddwch angen mewngofnodi i'r gwasanaeth eto i ddychwelyd i'r dudalen yr oeddech arni, pan mae'n ddiogel i chi wneud hynny.",
+  "startButton": "Dechrau nawr",
   "relatedHeading": "Related information",
   "relatedItems": [
     {

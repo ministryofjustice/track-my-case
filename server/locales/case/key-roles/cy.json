@@ -1,105 +1,105 @@
 {
-  "pageTitle": "People in the criminal justice system",
-  "heading": "People in the criminal justice system",
-  "subheading": "This guidance applies to the criminal justice system in England and Wales.",
-  "intro1": "When a case goes to court, the people you're likely to have most contact with are your local police force's:",
-  "introList1": ["police witness care officer (WCO)", "police officer in charge (OIC)"],
-  "intro2": "If you're going to court to give evidence, you will meet and be supported by the:",
-  "introList2": ["volunteer from Witness Service, if you have referred yourself to them", "court usher", "Crown Prosecution Service paralegal"],
+  "pageTitle": "Pobl yn y system cyfiawnder troseddol",
+  "heading": "Pobl yn y system cyfiawnder troseddol",
+  "subheading": "Mae'r canllawiau hyn yn berthnasol i'r system cyfiawnder troseddol yng Nghymru a Lloegr.",
+  "intro1": "Pan fydd achos yn mynd i'r llys, y bobl rydych yn debyg o gael y cyswllt mwyaf gyda nhw yw'r canlynol o'r heddlu lleol:",
+  "introList1": ["swyddog gofal tyst yr heddlu (WCO)", "swyddog heddlu sy'n gyfrifol (OIC)"],
+  "intro2": "Os ydych yn mynd i'r llys i roi tystiolaeth, byddwch yn cwrdd ac yn derbyn cefnogaeth gan y:",
+  "introList2": ["gwirfoddolwr o'r Gwasanaeth Tyst, os ydych wedi cyfeirio eich hun atynt", "tywysydd llys", "Swyddog Paragyfreithiol Gwasanaeth Erlyn y Goron"],
   "experienced": {
-    "heading": "Someone who has experienced a crime",
-    "para1": "When you experience a crime, you're often referred to as a 'victim'.",
-    "para2": "As a victim, you will usually be a main 'witness' in the case. You may be asked to go to the trial as a witness. As a witness, you tell the court what you know about the crime – 'give evidence'."
+    "heading": "Rhywun sydd wedi profi trosedd",
+    "para1": "Pan fyddwch yn profi trosedd, cyfeirir yn aml atoch fel 'dioddefwr'.",
+    "para2": "Fel dioddefwr, byddwch fel arfer yn brif 'dyst' yn yr achos. Mae'n bosibl y gofynnir i chi fynd i'r treial fel tyst.  Fel tyst, byddwch yn dweud wrth y llys yr hyn rydych yn ei wybod am y trosedd - rhoi tystiolaeth."
   },
   "accused": {
-    "heading": "Someone accused or convicted of a crime",
+    "heading": "Rhywun a gyhuddir neu a gafwyd yn euog o drosedd",
     "suspect": {
-      "heading": "Suspect",
-      "para1": "A person who is accused of a crime and being investigated by the police is called a suspect."
+      "heading": "Unigolyn a ddrwgdybir",
+      "para1": "Gelwir unigolyn a gyhuddir o drosedd ac sy'n cael ei archwilio gan yr heddlu yn unigolyn a ddrwgdybir."
     },
     "defendant": {
-      "heading": "Defendant",
-      "para1": "When a case reaches court and until they are convicted, a person accused of a crime is referred to as a defendant."
+      "heading": "Diffynnydd",
+      "para1": "Pan fydd achos yn cyrraedd y llys ac nes iddynt eu cael yn euog, cyfeirir at unigolyn a gyhuddir o drosedd yn ddiffynnydd."
     },
     "convicted": {
-      "heading": "Person convicted of a crime, person in prison or person on probation",
-      "para1": "When a person is found guilty and convicted of a crime, they are sentenced at court. They may be given a prison sentence or put on probation."
+      "heading": "Unigolyn a gafwyd yn euog o drosedd, unigolyn yn y carchar neu unigolyn ar brawf",
+      "para1": "Pan ganfyddir unigolyn yn euog o drosedd, maent yn cael eu dedfrydu yn y llys. Mae'n bosibl y byddant yn cael dedfryd o garchar neu'n cael eu rhoi ar brawf."
     }
   },
   "policeStation": {
-    "heading": "At the police station",
+    "heading": "Yng ngorsaf yr heddlu",
     "policeOfficer": {
-      "heading": "Police officer",
-      "para1": "Police officers investigate crimes, make arrests, and look after public safety."
+      "heading": "Swyddog Heddlu",
+      "para1": "Mae swyddogion yr heddlu yn ymchwilio i droseddau, arestio a gwarchod diogelwch y cyhoedd."
     },
     "officerInCharge": {
-      "heading": "Police officer in charge",
-      "para1": "A police officer in charge (OIC) is responsible for your case. This is who you can contact if you have any questions about your case."
+      "heading": "Swyddog heddlu sy'n gyfrifol",
+      "para1": "Mae swyddog sy'n gyfrifol (OIC) yn gyfrifol am eich achos.  Dyma pwy y gallwch gysylltu â nhw os oes gennych unrhyw gwestiynau am eich achos."
     },
     "witnessCareOfficer": {
-      "heading": "Police witness care officer",
-      "para1": "You are normally assigned a police witness care officer (WCO), although you might hear from other members of the police witness care unit (WCU). Some police forces might use different names for this role and unit, such as 'victim support'.",
-      "para2": "They keep you updated about the progress of the case, from when somebody is charged with a crime, through to the court outcome.",
-      "para3": "A police witness care officer is an administration role, and they do not have the same authority as a police officer."
+      "heading": "Swyddog gofal tyst yr heddlu",
+      "para1": "Bydd swyddog gofal tyst yr heddlu fel arfer yn cael ei neilltuo i chi, er ei bod yn bosibl y gallwch glywed gan aelodau eraill o uned gofal tyst yr heddlu (WCU). Efallai y bydd rhai heddluoedd yn defnyddio enwau gwahanol ar gyfer y rôl a'r uned hon, fel 'cymorth i ddioddefwyr'.",
+      "para2": "Byddant yn rhoi diweddariad i chi am gynnydd yr achos, o pan fydd rhywun yn cael ei gyhuddo o drosedd, i'r canlyniad yn y llys.",
+      "para3": "Mae swyddog gofal tyst yr heddlu yn rôl weinyddol, ac nid oes ganddynt yr un awdurdod â swyddog yr heddlu."
     }
   },
   "atCourt": {
-    "heading": "At court",
+    "heading": "Yn y llys",
     "courtClerk": {
-      "heading": "Court clerk",
-      "para1": "The court clerk manages the courtroom and prepare it for a trial.",
-      "para2": "They read out ('put') the formal charges to the defendant and take oaths from the jury if there is one. They also make notes during the trial.",
-      "para3": "The court clerk sits at the front of the courtroom and wears a black gown."
+      "heading": "Clerc y llys",
+      "para1": "Mae clerc y llys yn rheoli'r llys ac yn ei baratoi ar gyfer treial.",
+      "para2": "Maent yn darllen ('rhoi'r) cyhuddiadau ffurfiol i'r diffynnydd ac yn cymryd llw gan y rheithgor os oes yna un. Maent hefyd yn gwneud nodiadau yn ystod y treial.",
+      "para3": "Mae clerc y llys yn eistedd yn nhu blaen y llys ac yn gwisgo gŵn du."
     },
     "courtUsher": {
-      "heading": "Court usher",
-      "para1": "The usher is who to look for if you go to court – they will help you and tell you where you need to go. They are usually dressed in a black gown.",
-      "para2": "The usher prepares the courtroom and makes sure the witnesses, defendants and lawyers are all there ready for the hearing."
+      "heading": "Tywysydd llys",
+      "para1": "Dylech edrych am y tywysydd os ydych yn mynd i'r llys - byddant yn eich helpu ac yn dweud wrthych lle i fynd.   Maent fel arfer yn gwisgo gŵn du.",
+      "para2": "Mae'r tywysydd yn paratoi'r llys ac yn sicrhau bod y tystion, diffynyddion a chyfreithwyr i gyd yno'n barod ar gyfer y gwrandawiad."
     },
     "cpsParalegal": {
-      "heading": "Crown Prosecution Service paralegal officer",
-      "para1": "The Crown Prosecution Service (CPS) paralegal officer works on supporting and preparing court casework, from the start of the case to the end of the trial.",
-      "para2": "In the courtroom they help run what happens, manage evidence, and draft legal applications.",
-      "para3": "They work together with the Crown Prosecution Service prosecutor."
+      "heading": "Swyddog Paragyfreithiol Gwasanaeth Erlyn y Goron",
+      "para1": "Mae swyddog paragyfreithiol Gwasanaeth Erlyn y Goron (CPS) yn gweithio ar gefnogi a pharatoi gwaith achos y llys, o ddechrau'r achos i ddiwedd y treial.",
+      "para2": "Yn y llys maent yn helpu i gynnal yr hyn sy'n digwydd, rheoli tystiolaeth a drafftio ceisiadau cyfreithiol.",
+      "para3": "Maent yn cydweithio gydag erlynydd Gwasanaeth Erlyn y Goron."
     },
     "cpsProsecutor": {
-      "heading": "Crown Prosecution Service prosecutor",
-      "para1": "The Crown Prosecution Service (CPS) decides  whether to bring criminal cases to court to 'prosecute' the person or  people who committed the crime.",
-      "para2": "Their representative is called the  prosecutor. They work together with the Crown Prosecution Service paralegal officer."
+      "heading": "Erlynydd Gwasanaeth Erlyn y Goron",
+      "para1": "Mae Gwasanaeth Erlyn y Goron (CPS) yn penderfynu pa un ai i ddod ag achosion troseddol i'r llys i 'erlyn' yr unigolyn neu'r bobl wnaeth gyflawni'r drosedd.",
+      "para2": "Gelwir eu cynrychiolydd yn erlynydd. Maent yn cydweithio gyda swyddog paragyfreithiol Gwasanaeth Erlyn y Goron."
     },
     "prosecutor": {
-      "heading": "Prosecutor or barrister",
-      "para1": "It is usually a prosecutor in a magistrates' court and a barrister in the Crown Court. This is the person who makes the case against the defendant. They also ask witnesses questions to help make their case."
+      "heading": "Erlynydd neu fargyfreithiwr",
+      "para1": "Fel arfer erlynydd sydd mewn llys ynadon a bargyfreithiwr yn Llys y Goron.  Dyma'r unigolyn sy'n gwneud yr achos yn erbyn y diffynnydd.  Maent hefyd yn gofyn cwestiynau i dystion i'w helpu i gyflwyno eu hachos."
     },
     "witnessService": {
-      "heading": "Witness Service volunteer",
-      "para1": "You can get free, confidential support from the Witness Service in every criminal court in England and Wales. Your Witness Service volunteer can help you prepare if you need to go to court and support you throughout the day. Find out more about the service here or refer yourself straight away –",
-      "linkText": "contact the Witness Service (opens in new tab)"
+      "heading": "Gwirfoddolwr Gwasanaeth Tyst",
+      "para1": "Gallwch gael cefnogaeth am ddim, cyfrinachol gan y Gwasanaeth Tyst ym mhob llys troseddol yng Nghymru a Lloegr.  Gall eich gwirfoddolwr Gwasanaeth Tyst eich helpu i baratoi os ydych angen mynd i'r llys a'ch cefnogi drwy'r dydd.  Mae mwy o wybodaeth ar gael yma am y gwasanaeth neu cyfeiriwch eich hun yn uniongyrchol –",
+      "linkText": "cysylltwch â'r Gwasanaeth Tyst (yn agor mewn tab newydd)"
     }
   },
   "afterConviction": {
-    "heading": "After someone is convicted of a crime",
+    "heading": "Ar ôl i rywun gael ei gyhuddo o drosedd",
     "probationOfficer": {
-      "heading": "Probation officer",
-      "para1": "When a person is convicted of a crime, they might be given a 'non-custodial sentence'. This is often known as 'on licence' or 'on probation' and is a period of time where the person could:",
+      "heading": "Swyddog Prawf",
+      "para1": "Pan fydd unigolyn yn cael ei ganfod yn euog o drosedd, efallai y byddant yn derbyn 'dedfryd heb garcharu'. Gelwir hyn yn aml yn 'drwydded' neu 'ar brawf' ac mae'n gyfnod o amser ble gall yr unigolyn:",
       "list": [
-        "serve part of a prison sentence and be released, but must follow certain rules",
-        "be given a 'non-custodial' sentence instead of prison, where they must wear an electronic tag, or do community service or unpaid work, for example"
+        "fwrw rhan o'u dedfryd carchar a chael eu rhyddhau, ond rhaid dilyn rheolau penodol",
+        "derbyn dedfryd 'heb garcharu' yn hytrach na charchar, ble mae'n rhaid iddynt wisgo tag electronig neu wneud gwaith di-dâl neu wasanaeth cymunedol, er enghraifft"
       ],
-      "para2": "Probation officers are in charge of people on probation. They help them return into society while making sure they keep to the rules of their sentence or release."
+      "para2": "Mae swyddogion prawf yn gyfrifol am bobl ar brawf.  Maent yn eu helpu i ddychwelyd i'r gymdeithas tra'n sicrhau eu bod yn cadw at reolau eu dedfryd neu ryddhau."
     }
   },
   "throughoutProcess": {
-    "heading": "Throughout the process",
+    "heading": "Trwy gydol y broses",
     "victimCaseworker": {
-      "heading": "Victim caseworker, advocate or support worker",
-      "para1": "There are organisations and charities who may be able offer you support at various stages through the criminal justice process.",
-      "para2": "People who work for those organisations may be called a victim caseworker, advocate or support worker.",
-      "para3": "Depending on the type of crime, you could also be supported by:",
+      "heading": "Gweithiwr achos dioddefwr, eiriolydd neu weithiwr cymorth",
+      "para1": "Mae yna sefydliadau ac elusennau a all gynnig cefnogaeth i chi yn ystod amrywiol gamau drwy'r broses cyfiawnder troseddol.",
+      "para2": "Mae'n bosibl y bydd pobl sy'n gweithio i'r sefydliadau hynny yn cael eu galw'n weithiwr achos dioddefwyr, eiriolydd neu weithiwr cymorth.",
+      "para3": "Yn dibynnu ar y math o drosedd, gallech gael cymorth gan:",
       "list": [
-        "independent sexual violence advisor (ISVA)",
-        "independent domestic abuse advisor (IDVA)",
-        "child independent domestic violence advocate (CHIDVA)"
+        "ymgynghorydd trais rhywiol annibynnol (ISVA)",
+        "ymgynghorydd trais domestig annibynnol (IDVA)",
+        "eiriolydd trais domestig annibynnol plant (CHIDVA)"
       ]
     }
   }

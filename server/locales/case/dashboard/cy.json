@@ -1,35 +1,35 @@
 {
   "pageTitle": "Dashboard",
   "card1": {
-    "title": "Find your court information",
-    "desc": "Look up the court where the next hearing or trial for your case is being held. You need your unique reference number.",
-    "button": "Find your court"
+    "title": "Dod o hyd i wybodaeth eich llys",
+    "desc": "Chwilio am y llys ble mae'r treial neu'r gwrandawiad nesaf yn cael ei gynnal. Rydych angen eich cyfeirnod unigryw (URN).",
+    "button": "Dod o hyd i'ch llys"
   },
   "card2": {
-    "title": "The criminal justice system: step by step",
-    "desc": "See what stage you're at and understand what happens next.",
-    "button": "Find out about the process"
+    "title": "Y system cyfiawnder troseddol: cam wrth gam",
+    "desc": "Gweld pa gam yr ydych wedi'i gyrraedd a deall beth sy'n digwydd nesaf",
+    "button": "Canfod am y broses"
   },
   "card3": {
-    "title": "Who does what in the criminal justice system",
-    "desc": "Learn about the people involved, including who will help you when you experience a crime.",
-    "button": "Find out who's who"
+    "title": "Pwy sy'n gwneud beth yn y system cyfiawnder troseddol",
+    "desc": "Dysgu am y bobl sy'n cyfrannu, gan gynnwys pwy fydd yn eich helpu pan fyddwch yn cael profiad o drosedd",
+    "button": "Gwybod pwy yw pwy"
   },
   "card4": {
-    "title": "Understand your rights",
-    "desc": "Including making a victim personal statement, compensation, and your property.",
-    "button": "Find out about your rights"
+    "title": "Deall eich hawliau",
+    "desc": "Gan gynnwys gwneud datganiad personol dioddefwr, iawndal a'ch eiddo.",
+    "button": "Gwybodaeth am eich hawliau"
   },
   "card5": {
-    "title": "Find help and support",
-    "desc": "Find charities and organisations that can give you further support and advice.",
-    "button": "Find support"
+    "title": "Dod o hyd i gymorth a chefnogaeth",
+    "desc": "Dod o hyd i elusennau a sefydliadau sy'n gallu rhoi cyngor a chefnogaeth i chi.",
+    "button": "Dod o hyd i gefnogaeth"
   },
   "helpNow": {
-    "heading": "If you need help now",
-    "police": "If you're in immediate danger, phone the police: 999",
-    "samaritansPhone": "Samaritans phone: 116 123",
-    "samaritansWebsite": "www.samaritans.org (opens in new tab)",
-    "website": "Website: "
+    "heading": "Os oes arnoch angen cymorth nawr",
+    "police": "Os ydych mewn perygl uniongyrchol, ffoniwch yr heddlu: 999",
+    "samaritansPhone": "Y Samariaid: 116 123",
+    "samaritansWebsite": "www.samaritans.org (yn agor mewn tab newydd)",
+    "website": "Gwefan: "
   }
 }
