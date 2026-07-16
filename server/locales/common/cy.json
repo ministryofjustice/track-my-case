@@ -1,50 +1,50 @@
 {
   "applicationName": "Track a case",
-  "back": "Back",
+  "back": "Yn ôl",
   "nav": {
-    "home": "Home"
+    "home": "Hafan"
   },
   "footer": {
-    "privacy": "Privacy",
-    "cookies": "Cookies",
-    "research": "Take part in research"
+    "privacy": "Preifatrwydd",
+    "cookies": "Cwcis",
+    "research": "Cymryd rhan mewn ymchwil"
   },
   "phase": {
     "tag": "Beta",
-    "text": "This is a new service.",
-    "linkText": "Find out more and help us improve it"
+    "text": "Mae hwn yn wasanaeth newydd.",
+    "linkText": "Darganfyddwch fwy a helpwch ni i'w wella"
   },
   "skipLink": {
-    "quickExit": "Quick Exit (press Shift or Escape three times)"
+    "quickExit": "Gadael yn Gyflym (gwasgwch Shift neu Escape dair gwaith)"
   },
   "quickExit": {
     "button": "Gadael yn gyflym"
   },
   "cookieBanner": {
-    "regionLabel": "Cookies on {{applicationName}}",
-    "heading": "Cookies on {{applicationName}}",
-    "essential": "We use essential small files (known as 'cookies') to make this service work.",
-    "analytics": "We would also like to use analytics cookies so we can understand how you use the service and make improvements.",
-    "accept": "Accept analytics cookies",
-    "reject": "Reject analytics cookies",
-    "viewCookies": "View cookies",
-    "acceptedPre": "You've accepted analytics cookies. You can",
-    "rejectedPre": "You've rejected analytics cookies. You can",
-    "changeSettings": "change your cookie settings",
-    "atAnyTime": "at any time.",
-    "hideMessage": "Hide cookie message"
+    "regionLabel": "Cwcis ar {{applicationName}}",
+    "heading": "Cwcis ar {{applicationName}}",
+    "essential": "Rydym yn defnyddio ffeiliau bach hanfodol (a elwir yn 'gwcis') i wneud i'r gwasanaeth hwn weithio.",
+    "analytics": "Byddem hefyd yn hoffi defnyddio cwcis dadansoddeg fel y gallwn ddeall sut rydych yn defnyddio'r gwasanaeth a gwneud gwelliannau.",
+    "accept": "Derbyn cwcis dadansoddeg",
+    "reject": "Gwrthod cwcis dadansoddeg",
+    "viewCookies": "Gweld cwcis",
+    "acceptedPre": "Rydych wedi derbyn cwcis dadansoddeg. Gallwch",
+    "rejectedPre": "Rydych wedi gwrthod cwcis dadansoddeg. Gallwch",
+    "changeSettings": "newid eich gosodiadau cwci",
+    "atAnyTime": "ar unrhyw adeg.",
+    "hideMessage": "Cuddio neges cwci"
   },
   "pageTitlePrefix": {
-    "noFurtherCourtDates": "No further court dates",
-    "noHearingsAllocated": "No hearings allocated",
-    "notFound": "Not found",
-    "badRequest": "Bad request",
-    "accessDenied": "Access denied",
-    "tooManyRequests": "Too many requests",
-    "commonPlatformUnavailable": "Common platform unavailable"
+    "noFurtherCourtDates": "Dim dyddiadau llys pellach",
+    "noHearingsAllocated": "Dim gwrandawiadau wedi'u dyrannu",
+    "notFound": "Heb ei ddarganfod",
+    "badRequest": "Cais gwael",
+    "accessDenied": "Mynediad wedi'i wrthod",
+    "tooManyRequests": "Gormod o geisiadau",
+    "commonPlatformUnavailable": "Platfform cyffredin ddim ar gael"
   },
   "urls": {
-    "findCourtTribunal": "https://www.find-court-tribunal.service.gov.uk",
+    "findCourtTribunal": "https://www.find-court-tribunal.service.gov.uk/?lng=cy",
     "policeForce": "https://www.police.uk/pu/find-a-police-force",
     "witnessService": "https://witnessservice.org.uk/",
     "witnessServiceHelp": "https://witnessservice.org.uk/about/getting-help-from-the-witness-service/",
@@ -59,15 +59,15 @@
     "victimsCodeFull": "https://www.gov.uk/government/publications/the-code-of-practice-for-victims-of-crime/code-of-practice-for-victims-of-crime-in-england-and-wales-victims-code"
   },
   "feedback": {
-    "question": "Is this page useful?",
-    "yes": "Yes",
-    "yesHidden": "this page is useful",
-    "no": "No",
-    "noHidden": "this page is not useful",
-    "thanks": "Thank you for your feedback.",
-    "helpHeading": "Help us improve {{applicationName}}",
-    "sorry": "We are sorry you did not find the page useful.",
-    "tellUs": "Tell us what you think (opens in a new tab).",
-    "cancel": "Cancel"
+    "question": "A yw'r dudalen hon yn ddefnyddiol?",
+    "yes": "Ydw",
+    "yesHidden": "mae'r dudalen hon yn ddefnyddiol",
+    "no": "Nac ydw",
+    "noHidden": "nid yw'r dudalen hon yn ddefnyddiol",
+    "thanks": "Diolch am eich adborth.",
+    "helpHeading": "Helpwch ni i wella {{applicationName}}",
+    "sorry": "Mae'n ddrwg gennym na wnaethoch chi ddod o hyd i'r dudalen yn ddefnyddiol.",
+    "tellUs": "Dywedwch wrthym beth yw eich barn (yn agor mewn tab newydd).",
+    "cancel": "Canslo"
   }
 }

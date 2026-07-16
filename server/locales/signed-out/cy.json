@@ -1,5 +1,5 @@
 {
-  "pageTitle": "Signed out",
-  "heading": "You are logged out from the {{applicationName}}",
-  "button": "Back to service Home page"
+  "pageTitle": "Wedi allgofnodi",
+  "heading": "Rydych wedi allgofnodi o {{applicationName}}",
+  "button": "Yn ôl i Hafan y gwasanaeth"
 }

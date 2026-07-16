@@ -1,50 +1,50 @@
 {
-  "heading": "Where to get more support and information",
-  "govuk.heading": "GOV.UK links",
-  "govuk.lead": "Here are some helpful resources from GOV.UK for victims of crime. These links provide information and support on various topics:",
+  "heading": "Ble i gael mwy o gefnogaeth a gwybodaeth",
+  "govuk.heading": "Dolenni GOV.UK",
+  "govuk.lead": "Dyma rai adnoddau defnyddiol o GOV.UK ar gyfer dioddefwyr trosedd. Mae'r dolenni hyn yn darparu gwybodaeth a chefnogaeth ar wahanol bynciau:",
   "govuk.links": [
     {
-      "text": "Easy Read Victims' Guides (opens in a new tab)",
+      "text": "Canllawiau Hawdd eu Darllen i Ddioddefwyr (yn agor mewn tab newydd)",
       "url": "https://www.cps.gov.uk/information-and-support-victims-witnesses/easy-read"
     },
     {
-      "text": "Support for victims of sexual violence and abuse",
+      "text": "Cefnogaeth i ddioddefwyr trais a cham-drin rhywiol",
       "url": "https://www.gov.uk/guidance/support-for-victims-of-sexual-violence-and-abuse"
     },
     {
-      "text": "Victim and witness services",
+      "text": "Gwasanaethau dioddefwr a thyst",
       "url": "https://www.gov.uk/guidance/victim-and-witness-services"
     },
     {
-      "text": "Compensation and victim support",
+      "text": "Iawndal a chymorth i ddioddefwyr",
       "url": "https://www.gov.uk/browse/justice/compensation-victim-support"
     },
     {
-      "text": "Get support as a victim of crime",
+      "text": "Cael cefnogaeth fel dioddefwr trosedd",
       "url": "https://www.gov.uk/get-support-as-a-victim-of-crime"
     },
     {
-      "text": "Domestic abuse: how to get help",
+      "text": "Cam-drin domestig: sut i gael help",
       "url": "https://www.gov.uk/guidance/domestic-abuse-how-to-get-help"
     },
     {
-      "text": "Rape and sexual assault support",
+      "text": "Cefnogaeth trais a cham-drin rhywiol",
       "url": "https://www.gov.uk/guidance/rape-and-sexual-assault-support"
     },
     {
-      "text": "Honour-based abuse and forced marriage",
+      "text": "Cam-drin seiliedig ar anrhydedd a phriodas orfodol",
       "url": "https://www.gov.uk/guidance/honour-based-abuse-and-forced-marriage"
     },
     {
-      "text": "Modern slavery: how to get help",
+      "text": "Caethwasiaeth fodern: sut i gael help",
       "url": "https://www.gov.uk/guidance/modern-slavery-how-to-get-help"
     }
   ],
-  "charities.heading": "Charity Links",
-  "charities.lead": "Below are links to UK-based charities that offer support and assistance to victims of crime. These organizations provide a range of services to help you through difficult times:",
+  "charities.heading": "Dolenni Elusennau",
+  "charities.lead": "Isod mae dolenni i elusennau yn y DU sy'n cynnig cefnogaeth a chymorth i ddioddefwyr trosedd. Mae'r sefydliadau hyn yn darparu amrywiaeth o wasanaethau i'ch helpu drwy gyfnodau anodd:",
   "charities.links": [
     {
-      "text": "Victim Support",
+      "text": "Cymorth i Ddioddefwyr",
       "url": "https://www.victimsupport.org.uk/"
     },
     {

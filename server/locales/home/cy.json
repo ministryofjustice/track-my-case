@@ -12,7 +12,7 @@
     "mae'r unigolyn neu'r bobl gafodd eu cyhuddo o'r drosedd wedi eu cyhuddo gan yr heddlu neu Wasanaeth Erlyn y Goron",
     "mae o leiaf un o'r bobl gafodd eu cyhuddo o'r drosedd wedi bod mewn gwrandawiad llys am yr achos o leiaf unwaith"
   ],
-  "notConfident": "If you're not confident using computers you may prefer not to use Track a case – contact your police witness care officer or the police officer in charge (OIC) of your case.",
+  "notConfident": "Os nad ydych yn hyderus yn defnyddio cyfrifiaduron, efallai y byddai'n well gennych beidio â defnyddio Olrhain Achos - cysylltwch â'ch swyddog gofal tyst yr heddlu neu'r swyddog heddlu sy'n gyfrifol (OIC) am eich achos.",
   "whatYouNeedHeading": "Beth ydych ei angen i ddefnyddio'r gwasanaeth hwn",
   "whatYouNeed": "I ddefnyddio'r gwasanaeth beta preifat hwn, rydych angen y cyfrinair o'ch e-bost cadarnhad cofrestru.  Os ydych yn edrych ar wybodaeth llys, byddwch hefyd angen mewngofnodi i gyfrif One Login.",
   "safetyHeading": "Eich cadw'n ddiogel",
@@ -20,14 +20,14 @@
   "safety2": "Bydd y safle'n cau a bydd y safle BBC Weather yn agor yn ei le.  Ni fydd yn bosibl clicio yn ôl i'r dudalen yr oeddech arni yn y gwasanaeth hwn.",
   "safety3": "Byddwch angen mewngofnodi i'r gwasanaeth eto i ddychwelyd i'r dudalen yr oeddech arni, pan mae'n ddiogel i chi wneud hynny.",
   "startButton": "Dechrau nawr",
-  "relatedHeading": "Related information",
+  "relatedHeading": "Gwybodaeth gysylltiedig",
   "relatedItems": [
     {
-      "text": "Information and support for victims and witnesses on the Crown Prosecution Service website",
+      "text": "Gwybodaeth a chefnogaeth i ddioddefwyr a thystion ar wefan Gwasanaeth Erlyn y Goron",
       "url": "https://www.cps.gov.uk/information-and-support-victims-witnesses"
     },
     {
-      "text": "Legal processes, courts and the police",
+      "text": "Prosesau cyfreithiol, llysoedd a'r heddlu",
       "url": "https://www.gov.uk/browse/justice"
     }
   ]

@@ -1,8 +1,8 @@
 {
-  "heading": "Case could not be found",
-  "urnLabel": "Unique reference number (URN):",
-  "checkUrn": "Check you are using the correct unique reference number (URN). You can find it on any letter or email from the police or Crown Prosecution Service.",
-  "cantFindUrn": "If you cannot find your URN, ask your police witness care officer. You can also",
-  "searchAllCourts": "search all courts (opens in new tab)",
-  "searchAgain": "Search again"
+  "heading": "Ni ellid dod o hyd i'r achos",
+  "urnLabel": "Cyfeirnod unigryw (URN):",
+  "checkUrn": "Gwiriwch eich bod yn defnyddio'r cyfeirnod unigryw cywir (URN). Gallwch ddod o hyd iddo ar unrhyw lythyr neu e-bost gan yr heddlu neu Wasanaeth Erlyn y Goron.",
+  "cantFindUrn": "Os na allwch ddod o hyd i'ch URN, gofynnwch i'ch swyddog gofal tyst yr heddlu. Gallwch hefyd",
+  "searchAllCourts": "chwilio pob llys (yn agor mewn tab newydd)",
+  "searchAgain": "Chwilio eto"
 }

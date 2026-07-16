@@ -1,10 +1,10 @@
 {
-  "heading": "Court information",
-  "banner.title": "Important",
-  "banner.heading": "Sorry, there is a problem with the court information service",
-  "banner.tryAgain": "Try again later.",
-  "banner.findCourt": "If you need information about a court, use the",
-  "banner.findCourtLink": "Find a court or tribunal service (opens in new tab)",
-  "banner.contactPolice": "If you need an update on your case, you can contact the police. Find their contact details on any letter they have sent you, or",
-  "banner.findPoliceLink": "find your local police force (opens in new tab)"
+  "heading": "Gwybodaeth llys",
+  "banner.title": "Pwysig",
+  "banner.heading": "Mae'n ddrwg gennym, mae problem gyda gwasanaeth gwybodaeth y llys",
+  "banner.tryAgain": "Ceisiwch eto yn nes ymlaen.",
+  "banner.findCourt": "Os oes angen gwybodaeth arnoch am lys, defnyddiwch y",
+  "banner.findCourtLink": "Gwasanaeth Dod o hyd i lys neu dribiwnlys (yn agor mewn tab newydd)",
+  "banner.contactPolice": "Os oes angen diweddariad arnoch am eich achos, gallwch gysylltu â'r heddlu. Dewch o hyd i'w manylion cyswllt ar unrhyw lythyr a anfonwyd atoch ganddynt, neu",
+  "banner.findPoliceLink": "dewch o hyd i'ch heddlu lleol (yn agor mewn tab newydd)"
 }

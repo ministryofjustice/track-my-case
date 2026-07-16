@@ -28,17 +28,12 @@ const privateBetaSignInController = async (req: Request, res: Response, next: Ne
   }
 }
 
-const WRONG_PASSWORD_ERROR: FormError = {
-  text: 'Enter your password',
-  href: '#password',
-}
-
-const validationRules = (password?: string): FormError[] => {
+const validationRules = (password: string | undefined, emptyPasswordText: string): FormError[] => {
   const errors: FormError[] = []
   const value = password ?? ''
 
   if (!value.trim().length) {
-    errors.push({ text: 'Enter your password', href: '#password' })
+    errors.push({ text: emptyPasswordText, href: '#password' })
   }
 
   return errors
@@ -48,7 +43,7 @@ const postPrivateBetaSignInController = async (req: Request, res: Response, next
   try {
     const { password } = req.body as PrivateBetaSignInFormData
 
-    const formErrors = validationRules(password)
+    const formErrors = validationRules(password, req.t('private-beta-sign-in:errors.emptyPassword'))
 
     if (formErrors.length > 0) {
       const formState: FormState<PrivateBetaSignInFormData> = {
@@ -85,7 +80,7 @@ const postPrivateBetaSignInController = async (req: Request, res: Response, next
     clearPasswordCookie(res)
 
     const formState: FormState<PrivateBetaSignInFormData> = {
-      errors: [WRONG_PASSWORD_ERROR],
+      errors: [{ text: req.t('private-beta-sign-in:errors.wrongPassword'), href: '#password' }],
       formData: { password: '' },
     }
 

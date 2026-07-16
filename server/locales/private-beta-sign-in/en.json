@@ -6,5 +6,9 @@
   "signInButton": "Sign in",
   "detailsSummary": "I don't have a sign-up confirmation email",
   "detailsText": "Contact your police witness care officer, who will give you access if it's appropriate for your individual case.",
-  "errorSummaryTitle": "There is a problem"
+  "errorSummaryTitle": "There is a problem",
+  "errors": {
+    "emptyPassword": "Enter your password",
+    "wrongPassword": "Enter your password"
+  }
 }

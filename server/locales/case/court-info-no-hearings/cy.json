@@ -1,10 +1,10 @@
 {
-  "heading": "Court information",
-  "banner.title": "Important",
-  "banner.heading": "There is no court information",
-  "banner.para1": "There is no court information because the next trial or sentencing hearing has not been set.",
-  "banner.para2": "This service only shows trial and sentencing hearing details.",
-  "banner.para3": "The police will tell you if there are any updates.",
-  "banner.findPolice": "Find their contact details on any letter they have sent you, or",
-  "banner.findPoliceLink": "find your local police force (opens in new tab)"
+  "heading": "Gwybodaeth llys",
+  "banner.title": "Pwysig",
+  "banner.heading": "Nid oes gwybodaeth llys",
+  "banner.para1": "Nid oes gwybodaeth llys oherwydd nid yw'r treial neu'r gwrandawiad dedfrydu nesaf wedi'i bennu.",
+  "banner.para2": "Mae'r gwasanaeth hwn yn dangos manylion treial a gwrandawiad dedfrydu yn unig.",
+  "banner.para3": "Bydd yr heddlu'n dweud wrthych os oes unrhyw ddiweddariadau.",
+  "banner.findPolice": "Dewch o hyd i'w manylion cyswllt ar unrhyw lythyr a anfonwyd atoch ganddynt, neu",
+  "banner.findPoliceLink": "dewch o hyd i'ch heddlu lleol (yn agor mewn tab newydd)"
 }

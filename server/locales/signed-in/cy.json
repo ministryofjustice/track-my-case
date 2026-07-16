@@ -1,5 +1,5 @@
 {
-  "pageTitle": "Signed in",
-  "heading": "You are logged in to the {{applicationName}} service",
-  "button": "Continue to Dashboard"
+  "pageTitle": "Wedi mewngofnodi",
+  "heading": "Rydych wedi mewngofnodi i wasanaeth {{applicationName}}",
+  "button": "Parhau i'r Dangosfwrdd"
 }
