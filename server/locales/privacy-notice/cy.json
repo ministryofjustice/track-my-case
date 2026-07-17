@@ -18,10 +18,7 @@
   "heading.whatWeDoWithYourData": "Beth rydym yn ei wneud gyda'ch data",
   "whatWeDoWithYourData.para1": "Ni fydd unrhyw wybodaeth a rowch yn cael ei rhannu y tu allan i'r Weinyddiaeth Gyfiawnder, ac eithrio gyda darparwyr TG Weinyddiaeth Gyfiawnder sy'n darparu gwasanaethau i gynnal y gwasanaeth hwn.",
   "whatWeDoWithYourData.para2": "Ni fyddwn yn:",
-  "whatWeDoWithYourData.willNotItems": [
-    "gwerthu na rhentu data i drydydd partïon",
-    "rhannu data gyda thrydydd partïon at ddibenion marchnata"
-  ],
+  "whatWeDoWithYourData.willNotItems": ["gwerthu na rhentu data i drydydd partïon", "rhannu data gyda thrydydd partïon at ddibenion marchnata"],
   "whatWeDoWithYourData.para3": "Mae'r rhan fwyaf o'r wybodaeth bersonol a ddefnyddiwn i:",
   "whatWeDoWithYourData.useItems": [
     "caniatáu eich mynediad i'r gwasanaeth ar gyfer beta preifat",

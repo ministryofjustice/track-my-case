@@ -5,7 +5,11 @@
   "intro1": "Pan fydd achos yn mynd i'r llys, y bobl rydych yn debyg o gael y cyswllt mwyaf gyda nhw yw'r canlynol o'r heddlu lleol:",
   "introList1": ["swyddog gofal tyst yr heddlu (WCO)", "swyddog heddlu sy'n gyfrifol (OIC)"],
   "intro2": "Os ydych yn mynd i'r llys i roi tystiolaeth, byddwch yn cwrdd ac yn derbyn cefnogaeth gan y:",
-  "introList2": ["gwirfoddolwr o'r Gwasanaeth Tyst, os ydych wedi cyfeirio eich hun atynt", "tywysydd llys", "Swyddog Paragyfreithiol Gwasanaeth Erlyn y Goron"],
+  "introList2": [
+    "gwirfoddolwr o'r Gwasanaeth Tyst, os ydych wedi cyfeirio eich hun atynt",
+    "tywysydd llys",
+    "Swyddog Paragyfreithiol Gwasanaeth Erlyn y Goron"
+  ],
   "experienced": {
     "heading": "Rhywun sydd wedi profi trosedd",
     "para1": "Pan fyddwch yn profi trosedd, cyfeirir yn aml atoch fel 'dioddefwr'.",

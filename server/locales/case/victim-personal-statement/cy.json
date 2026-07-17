@@ -23,11 +23,7 @@
   "section.how.p2": "Os bydd diffynnydd yn cael ei ganfod yn euog, bydd y llys yn cymryd eich Datganiad Personol Dioddefwr i ystyriaeth, ynghyd â'r holl dystiolaeth arall, wrth benderfynu ar ddedfryd briodol.",
   "section.write.heading": "Sut i ysgrifennu Datganiad Personol Dioddefwr",
   "section.write.p1": "Gallwch ystyried ysgrifennu yn eich geiriau eich hun am sut mae'r trosedd wedi effeithio ar wahanol rannau o'ch bywyd, fel:",
-  "section.write.lifeAreas": [
-    "iechyd meddwl",
-    "iechyd corfforol",
-    "arian"
-  ],
+  "section.write.lifeAreas": ["iechyd meddwl", "iechyd corfforol", "arian"],
   "section.write.examplesIntro": "Er enghraifft, efallai y byddwch yn ysgrifennu am:",
   "section.write.examples": [
     "anaf a'i effeithiau ar eich bywyd",

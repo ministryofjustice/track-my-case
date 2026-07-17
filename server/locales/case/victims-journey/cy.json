@@ -3,11 +3,7 @@
   "intro": {
     "heading": "Y system cyfiawnder troseddol: cam wrth gam",
     "para1": "Pan fyddwch wedi profi trosedd a bod yr achos yn mynd i'r llys, defnyddiwch ein canllaw i wirio:",
-    "list1": [
-      "beth sy'n digwydd, pwy sy'n rhan o'r drosedd a phryd",
-      "beth ydych chi angen ei wneud",
-      "eich hawliau drwy gydol y broses"
-    ],
+    "list1": ["beth sy'n digwydd, pwy sy'n rhan o'r drosedd a phryd", "beth ydych chi angen ei wneud", "eich hawliau drwy gydol y broses"],
     "para2": "Mae beth sy'n digwydd ym mhob cam, a beth yw canlyniad yr achos yn gallu dibynnu ar:",
     "list2": [
       "y drosedd, neu droseddau os oes yna fwy nag un",
@@ -32,10 +28,7 @@
     "para4": "Gallwch roi datganiad tyst i'r heddlu, ble byddwch yn disgrifio'r hyn sydd wedi digwydd.",
     "para5": "Mae'n bosibl y byddwch yn dymuno rhoi datganiad personol dioddefwr hefyd, ble byddwch yn disgrifio effeithiau emosiynol, corfforol ac ariannol a gafodd trosedd arnoch chi.",
     "para6": "Rhagor o wybodaeth am:",
-    "list1": [
-      "datganiad tyst (yn agor mewn tab newydd)",
-      "datganiad personol dioddefwyr"
-    ],
+    "list1": ["datganiad tyst (yn agor mewn tab newydd)", "datganiad personol dioddefwyr"],
     "subheading2": "Cael cefnogaeth ar gyfer eich anghenion",
     "para7": "Bydd yr heddlu yn gwrando ar eich profiad a'ch amgylchiadau personol i ddeall beth ydych ei angen.  Mae hyn yn cynnwys cefnogaeth ar gyfer anableddau.",
     "para8": "Yna, byddant yn eich rhoi mewn cysylltiad gyda'r gwasanaethau cymorth cywir i chi.",
@@ -75,10 +68,7 @@
       "eich cyflwyno i uned gofal tyst yr heddlu, fydd yn gofalu amdanoch yn ystod yr achos"
     ],
     "para4": "Mae Gwasanaeth Erlyn y Goron yn ystyried y dystiolaeth a lles y cyhoedd o'r achos i benderfynu pa un ai i:",
-    "list3": [
-      "gyhuddo'r unigolyn a ddrwgdybir a mynd â'r achos i'r llys",
-      "peidio cyhuddo'r unigolyn a ddrwgdybir a dod â'r achos i ben"
-    ],
+    "list3": ["gyhuddo'r unigolyn a ddrwgdybir a mynd â'r achos i'r llys", "peidio cyhuddo'r unigolyn a ddrwgdybir a dod â'r achos i ben"],
     "para5": "Os bydd Gwasanaeth Erlyn y Goron yn mynd ag achos troseddol i'r llys, nid ydych angen cyfreithiwr oherwydd bod Gwasanaeth Erlyn y Goron yn gweithredu ar eich rhan.",
     "subheading2": "Os na fydd yr unigolyn a ddrwgdybir yn cael ei gosbi",
     "para6": "Os bydd yr heddlu neu Wasanaeth Erlyn y Goron yn penderfynu peidio cosbi unigolyn a ddrwgdybir, ond eich bod chi'n credu y dylent, mae gennych hawl gofyn am adolygiad o'r penderfyniad drwy'r Cynllun Hawl Dioddefwr i Adolygiad.",
@@ -109,10 +99,7 @@
     "para1": "Treial llys yw pan gyflwynir tystiolaeth a dadleuon i benderfynu ar euogrwydd am drosedd.",
     "para2": "Y nod yw cyrraedd penderfyniad teg yn seiliedig ar y gyfraith.",
     "para3": "Yn dibynnu ar y math o drosedd, gwrandewir ar dreial gan naill ai:",
-    "list1": [
-      "ynadon",
-      "barnwr a rheithgor"
-    ],
+    "list1": ["ynadon", "barnwr a rheithgor"],
     "para4": "Gall treial gynnwys:",
     "list2": [
       "datganiadau gan yr erlyniad, amddiffyniad, dioddefwyr a thystion",
@@ -179,10 +166,7 @@
       "dirwy"
     ],
     "para8": "Bydd y ddedfryd yn dibynnu ar:",
-    "list2": [
-      "y math a difrifoldeb y trosedd",
-      "amgylchiadau'r diffynnydd"
-    ],
+    "list2": ["y math a difrifoldeb y trosedd", "amgylchiadau'r diffynnydd"],
     "subheading4": "Pryd y gall diffynnydd apelio yn erbyn eu dedfryd",
     "para9": "Gall diffynnydd a gafwyd yn euog apelio yn erbyn eu dedfryd os ydynt yn meddwl ei fod yn annheg.",
     "para10": "Mewn apêl, mae barnwr yn adolygu'r achos neu efallai y bydd yna wrandawiad llys arall.",
