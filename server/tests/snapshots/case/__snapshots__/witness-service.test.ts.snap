@@ -189,6 +189,22 @@ exports[`matches snapshot 1`] = `
     </div>
   </div>
 </nav>
+    <div class="govuk-width-container">
+      <nav class="hmrc-language-select" aria-label="Language switcher">
+        <ul class="hmrc-language-select__list">
+            <li class="hmrc-language-select__list-item">
+                <span class="govuk-visually-hidden">Change the language to English</span>
+                <span aria-current="true">English</span>
+            </li>
+            <li class="hmrc-language-select__list-item">
+                <a href="/?lng=cy" hreflang="cy" lang="cy" rel="alternate" class="govuk-link">
+                  <span class="govuk-visually-hidden">Newid yr iaith i'r Gymraeg</span>
+                  <span aria-hidden="true">Gymraeg</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
       <div class="govuk-width-container">
         <main class="govuk-main-wrapper app-container govuk-body" id="main-content">
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
@@ -220,21 +236,21 @@ exports[`matches snapshot 1`] = `
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
     <div class="govuk-grid-column-two-thirds">
       <h2 class="govuk-heading-l">Get support giving evidence as a witness</h2>
-      <p class="govuk-body">If you’re going to court to give evidence, the charity Victim Support can help you prepare, and support you during the court process.</p>
+      <p class="govuk-body">If you're going to court to give evidence, the charity Victim Support can help you prepare, and support you during the court process.</p>
       <h3 class="govuk-heading-m">What they can do to help you</h3>
       <p>Victim Support will put you in touch with a trained volunteer. They can give you practical information about the court process, for example:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>show you the courtroom before the trial</li>
-        <li>help you with claiming expenses you might be entitled to</li>
-        <li>refer you to other organisations that could support you</li>
+          <li>show you the courtroom before the trial</li>
+          <li>help you with claiming expenses you might be entitled to</li>
+          <li>refer you to other organisations that could support you</li>
       </ul>
       <p>They can also give you emotional support, for example:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>help you feel more confident when giving evidence</li>
-        <li>be there to talk to in confidence</li>
-        <li>come to court with you when you give your evidence</li>
-        <li>be with you on the day of the trial</li>
-        <li>help you with any extra support needs at home&nbsp;</li>
+          <li>help you feel more confident when giving evidence</li>
+          <li>be there to talk to in confidence</li>
+          <li>come to court with you when you give your evidence</li>
+          <li>be with you on the day of the trial</li>
+          <li>help you with any extra support needs at home</li>
       </ul>
       <p class="govuk-body">The volunteers remain impartial to the court case – they do not take sides.</p>
       <h3 class="govuk-heading-m">Find out more or refer yourself to the service</h3>
@@ -245,7 +261,7 @@ exports[`matches snapshot 1`] = `
       </div>
 <script nonce="test-nonce" type="module">
   async function quickExit() {
-    const currentTabAddress = 'https://www.bbc.co.uk/'
+    const currentTabAddress = 'https://www.bbc.co.uk'
     const newTab = 'https://www.bbc.co.uk/weather'
     // ToDo: we should push custom event to dataLayer when quick-exit button was pressed
     // Open safe/neutral site in a new tab
