@@ -64,6 +64,22 @@ exports[`matches snapshot 1`] = `
   </p>
 </div>
 </nav>
+    <nav aria-label="Service shut down banner" class="govuk-width-container govuk-!-margin-top-6">
+  <div class="govuk-notification-banner notification-banner--shutdown" role="alert" aria-labelledby="govuk-notification-banner-title"
+       data-module="govuk-notification-banner">
+    <div class="govuk-notification-banner__header">
+      <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+        Important
+      </h2>
+    </div>
+    <div class="govuk-notification-banner__content">
+      <h3 class="govuk-notification-banner__heading">
+        This service will be shut down on 1st August 2026
+      </h3>
+      <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+    </div>
+  </div>
+</nav>
       <div class="govuk-width-container">
         <main class="govuk-main-wrapper app-container govuk-body" id="main-content">
   <script nonce="test-nonce" type="module">

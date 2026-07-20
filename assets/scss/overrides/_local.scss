@@ -26,6 +26,14 @@
     outline-width: 0;
 }
 
+.notification-banner--shutdown {
+    border-color: #ca3535;
+
+    .govuk-notification-banner__header {
+        background-color: #ca3535;
+    }
+}
+
 // Quick exit button, START
 
 .govuk-exit-this-page-button-wrapper {
