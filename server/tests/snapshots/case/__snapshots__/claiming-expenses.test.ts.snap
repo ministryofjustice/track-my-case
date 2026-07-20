@@ -173,22 +173,22 @@ exports[`matches snapshot 1`] = `
   <nav aria-label="Back" class="govuk-width-container">
     <a href="/case/dashboard" class="govuk-back-link">Back</a>
   </nav>
-    <div class="govuk-width-container">
-      <nav class="hmrc-language-select" aria-label="Language switcher">
-        <ul class="hmrc-language-select__list">
-            <li class="hmrc-language-select__list-item">
-                <span class="govuk-visually-hidden">Change the language to English</span>
-                <span aria-current="true">English</span>
-            </li>
-            <li class="hmrc-language-select__list-item">
-                <a href="/?lng=cy" hreflang="cy" lang="cy" rel="alternate" class="govuk-link">
-                  <span class="govuk-visually-hidden">Newid yr iaith i'r Gymraeg</span>
-                  <span aria-hidden="true">Gymraeg</span>
-                </a>
-            </li>
-        </ul>
-      </nav>
+    <nav aria-label="Service shut down banner" class="govuk-width-container govuk-!-margin-top-6">
+  <div class="govuk-notification-banner notification-banner--shutdown" role="alert" aria-labelledby="govuk-notification-banner-title"
+       data-module="govuk-notification-banner">
+    <div class="govuk-notification-banner__header">
+      <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+        Important
+      </h2>
     </div>
+    <div class="govuk-notification-banner__content">
+      <h3 class="govuk-notification-banner__heading">
+        This service will be shut down on 1st August 2026
+      </h3>
+      <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+    </div>
+  </div>
+</nav>
       <div class="govuk-width-container">
         <main class="govuk-main-wrapper app-container govuk-body" id="main-content">
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
@@ -244,21 +244,21 @@ exports[`matches snapshot 1`] = `
       <h3 class="govuk-heading-m">Who can claim</h3>
       <p class="govuk-body">You can claim expenses if you attend a pre-trial meeting or a trial as a:</p>
       <ul class="govuk-list govuk-list--bullet">
-          <li>witness</li>
-          <li>professional witness</li>
-          <li>parent or guardian of a witness who's under 18 years old</li>
-          <li>carer of an adult witness</li>
-          <li>person with permission to claim, for example you are helping a witness attend court</li>
+        <li>witness</li>
+        <li>professional witness</li>
+        <li>parent or guardian of a witness who’s under 18 years old</li>
+        <li>carer of an adult witness</li>
+        <li>person with permission to claim, for example you are helping a witness attend court</li>
       </ul>
       <h3 class="govuk-heading-m">What you can claim for</h3>
       <p class="govuk-body">Expenses are things that cost you money while attending the trial, for example:</p>
       <ul class="govuk-list govuk-list--bullet">
-          <li>food and drink</li>
-          <li>travel</li>
-          <li>overnight stays</li>
-          <li>loss of earnings, for example because you had to take time off work</li>
-          <li>childcare</li>
-          <li>adult care</li>
+        <li>food and drink</li>
+        <li>travel</li>
+        <li>overnight stays</li>
+        <li>loss of earnings, for example because you had to take time off work</li>
+        <li>childcare</li>
+        <li>adult care</li>
       </ul>
       <p class="govuk-body">There are limits to what you can claim.</p>
       <p class="govuk-body">You will need receipts and bank statements that show your spendings or loss of earnings.</p>
@@ -266,8 +266,8 @@ exports[`matches snapshot 1`] = `
       <p class="govuk-body">You can claim as soon as you have finished giving evidence as a witness, even if the trial is still ongoing.</p>
       <p class="govuk-body">To claim:</p>
       <ul class="govuk-list govuk-list--bullet">
-          <li>look out for posters at the court with a QR code that links to the online service</li>
-          <li>apply online using <a href="https://claim-witness-expenses.cps.gov.uk/" class="govuk-link" target="_blank">https://claim-witness-expenses.cps.gov.uk/ (opens in new tab)</a></li>
+        <li>look out for posters at the court with a QR code that links to the online service</li>
+        <li>apply online using <a href="https://claim-witness-expenses.cps.gov.uk/" class="govuk-link" target="_blank">https://claim-witness-expenses.cps.gov.uk/ (opens in new tab)</a></li>
       </ul>
       <h3 class="govuk-heading-m">Find out more and apply</h3>
       <p class="govuk-body">Find out more about what you can claim, or start an application on the <a href="https://claim-witness-expenses.cps.gov.uk/" class="govuk-link" target="_blank">Claim witness expenses service (opens in new tab)</a>.</p>
@@ -278,7 +278,7 @@ exports[`matches snapshot 1`] = `
       </div>
 <script nonce="test-nonce" type="module">
   async function quickExit() {
-    const currentTabAddress = 'https://www.bbc.co.uk'
+    const currentTabAddress = 'https://www.bbc.co.uk/'
     const newTab = 'https://www.bbc.co.uk/weather'
     // ToDo: we should push custom event to dataLayer when quick-exit button was pressed
     // Open safe/neutral site in a new tab

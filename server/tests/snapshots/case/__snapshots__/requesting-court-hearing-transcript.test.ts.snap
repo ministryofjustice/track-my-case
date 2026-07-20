@@ -173,22 +173,22 @@ exports[`matches snapshot 1`] = `
   <nav aria-label="Back" class="govuk-width-container">
     <a href="/case/dashboard" class="govuk-back-link">Back</a>
   </nav>
-    <div class="govuk-width-container">
-      <nav class="hmrc-language-select" aria-label="Language switcher">
-        <ul class="hmrc-language-select__list">
-            <li class="hmrc-language-select__list-item">
-                <span class="govuk-visually-hidden">Change the language to English</span>
-                <span aria-current="true">English</span>
-            </li>
-            <li class="hmrc-language-select__list-item">
-                <a href="/?lng=cy" hreflang="cy" lang="cy" rel="alternate" class="govuk-link">
-                  <span class="govuk-visually-hidden">Newid yr iaith i'r Gymraeg</span>
-                  <span aria-hidden="true">Gymraeg</span>
-                </a>
-            </li>
-        </ul>
-      </nav>
+    <nav aria-label="Service shut down banner" class="govuk-width-container govuk-!-margin-top-6">
+  <div class="govuk-notification-banner notification-banner--shutdown" role="alert" aria-labelledby="govuk-notification-banner-title"
+       data-module="govuk-notification-banner">
+    <div class="govuk-notification-banner__header">
+      <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+        Important
+      </h2>
     </div>
+    <div class="govuk-notification-banner__content">
+      <h3 class="govuk-notification-banner__heading">
+        This service will be shut down on 1st August 2026
+      </h3>
+      <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+    </div>
+  </div>
+</nav>
       <div class="govuk-width-container">
         <main class="govuk-main-wrapper app-container govuk-body" id="main-content">
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
@@ -243,25 +243,25 @@ exports[`matches snapshot 1`] = `
       <p class="govuk-body">You can apply for a transcript of a court or tribunal hearing if the hearing was recorded.</p>
       <p class="govuk-body">The court can refuse to provide part or all of a transcript (for example, if details of the hearing are confidential).</p>
       <p class="govuk-body">There are different ways to apply depending on which part of the transcript you want and whether you are eligible for a free copy.</p>
-      <p class="govuk-body">Hearings at magistrates' courts are never recorded.</p>
+      <p class="govuk-body">Hearings at magistrates’ courts are never recorded.</p>
       <h3 class="govuk-heading-m">Get a transcript of the sentencing remarks only</h3>
       <p class="govuk-body">If someone pleads guilty or is found guilty in a Crown Court, then the judge will decide what punishment they get. The judge will make sentencing remarks to explain their decision.</p>
       <p class="govuk-body">You might be able to find a transcript of the judgment or sentencing remarks for free online <a href="https://caselaw.nationalarchives.gov.uk/" class="govuk-link" target="_blank">at The National Archives</a> or <a href="https://www.judiciary.uk/judgments/" class="govuk-link" target="_blank">on the Courts and Tribunals Judiciary website</a>.</p>
-      <p class="govuk-body">You can also apply for a transcript of the sentencing remarks for free if you're involved in a case because you're either:</p>
+      <p class="govuk-body">You can also apply for a transcript of the sentencing remarks for free if you’re involved in a case because you’re either:</p>
       <ul class="govuk-list govuk-list--bullet">
-          <li>a family member of a victim of murder, manslaughter or an offence that caused death on the road</li>
-          <li>a victim of rape or sexual offences, or you're applying on their behalf</li>
+        <li>a family member of a victim of murder, manslaughter or an offence that caused death on the road</li>
+        <li>a victim of rape or sexual offences, or you’re applying on their behalf</li>
       </ul>
       <p class="govuk-body">You can either:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li><a href="https://transcripts-of-judges-sentencing-remarks.form.service.justice.gov.uk/" class="govuk-link" target="_blank">use the online service to apply</a></li>
         <li><a href="https://www.gov.uk/government/publications/apply-for-a-transcript-of-a-judges-sentencing-remarks" class="govuk-link" target="_blank">download and fill in the paper form to apply</a></li>
       </ul>
-      <p class="govuk-body">The court will decide whether you can get a free transcript after you apply. You'll get a response within 20 working days of applying.</p>
-      <p class="govuk-body">If you're not eligible for a free transcript of the sentencing remarks, you can apply for a transcript of all or part of the hearing.</p>
+      <p class="govuk-body">The court will decide whether you can get a free transcript after you apply. You’ll get a response within 20 working days of applying.</p>
+      <p class="govuk-body">If you’re not eligible for a free transcript of the sentencing remarks, you can apply for a transcript of all or part of the hearing.</p>
       <h3 class="govuk-heading-m">Get a transcript of all or part of the hearing</h3>
       <p class="govuk-body">Download and fill in <a href="https://www.gov.uk/government/publications/order-a-transcript-of-court-or-tribunal-proceedings-form-ex107" class="govuk-link" target="_blank">form EX107</a> and read the accompanying guidance notes.</p>
-      <p class="govuk-body">The guidance notes will explain the final fee, which will vary depending on the transcript's size, whether it's a new transcript or a copy, and other factors.</p>
+      <p class="govuk-body">The guidance notes will explain the final fee, which will vary depending on the transcript’s size, whether it’s a new transcript or a copy, and other factors.</p>
       <p class="govuk-body">Return the form by email or post to:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>the <a href="https://www.gov.uk/find-court-tribunal" class="govuk-link" target="_blank">court or tribunal</a> where the hearing took place</li>
@@ -274,7 +274,7 @@ exports[`matches snapshot 1`] = `
       </div>
 <script nonce="test-nonce" type="module">
   async function quickExit() {
-    const currentTabAddress = 'https://www.bbc.co.uk'
+    const currentTabAddress = 'https://www.bbc.co.uk/'
     const newTab = 'https://www.bbc.co.uk/weather'
     // ToDo: we should push custom event to dataLayer when quick-exit button was pressed
     // Open safe/neutral site in a new tab

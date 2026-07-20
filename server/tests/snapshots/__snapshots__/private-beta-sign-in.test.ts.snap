@@ -64,22 +64,22 @@ exports[`matches snapshot 1`] = `
   </p>
 </div>
 </nav>
-    <div class="govuk-width-container">
-      <nav class="hmrc-language-select" aria-label="Language switcher">
-        <ul class="hmrc-language-select__list">
-            <li class="hmrc-language-select__list-item">
-                <span class="govuk-visually-hidden">Change the language to English</span>
-                <span aria-current="true">English</span>
-            </li>
-            <li class="hmrc-language-select__list-item">
-                <a href="/?lng=cy" hreflang="cy" lang="cy" rel="alternate" class="govuk-link">
-                  <span class="govuk-visually-hidden">Newid yr iaith i'r Gymraeg</span>
-                  <span aria-hidden="true">Gymraeg</span>
-                </a>
-            </li>
-        </ul>
-      </nav>
+    <nav aria-label="Service shut down banner" class="govuk-width-container govuk-!-margin-top-6">
+  <div class="govuk-notification-banner notification-banner--shutdown" role="alert" aria-labelledby="govuk-notification-banner-title"
+       data-module="govuk-notification-banner">
+    <div class="govuk-notification-banner__header">
+      <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+        Important
+      </h2>
     </div>
+    <div class="govuk-notification-banner__content">
+      <h3 class="govuk-notification-banner__heading">
+        This service will be shut down on 1st August 2026
+      </h3>
+      <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+    </div>
+  </div>
+</nav>
       <div class="govuk-width-container">
         <main class="govuk-main-wrapper app-container govuk-body" id="main-content">
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
@@ -118,7 +118,7 @@ exports[`matches snapshot 1`] = `
           <span class="govuk-details__summary-text">I don't have a sign-up confirmation email</span>
         </summary>
         <div class="govuk-details__text">
-          Contact your police witness care officer, who will give you access if it's appropriate for your individual case.
+          Contact your police witness care officer, who will give you access if it’s appropriate for your individual case.
         </div>
       </details>
     </div>
