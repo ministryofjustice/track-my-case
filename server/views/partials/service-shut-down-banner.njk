@@ -1,16 +1,16 @@
-<nav aria-label="Service shut down banner" class="govuk-width-container govuk-!-margin-top-6">
+<nav aria-label="{{ t('shutdownBanner.ariaLabel') }}" class="govuk-width-container govuk-!-margin-top-6">
   <div class="govuk-notification-banner notification-banner--shutdown" role="alert" aria-labelledby="govuk-notification-banner-title"
        data-module="govuk-notification-banner">
     <div class="govuk-notification-banner__header">
       <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-        Important
+        {{ t('shutdownBanner.title') }}
       </h2>
     </div>
     <div class="govuk-notification-banner__content">
       <h3 class="govuk-notification-banner__heading">
-        This service will be shut down on 1st August 2026
+        {{ t('shutdownBanner.heading') }}
       </h3>
-      <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+      <p class="govuk-body">{{ t('shutdownBanner.body') }}</p>
     </div>
   </div>
 </nav>

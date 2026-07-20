@@ -58,6 +58,12 @@
     "victimsCode": "https://www.gov.uk/government/publications/the-code-of-practice-for-victims-of-crime",
     "victimsCodeFull": "https://www.gov.uk/government/publications/the-code-of-practice-for-victims-of-crime/code-of-practice-for-victims-of-crime-in-england-and-wales-victims-code"
   },
+  "shutdownBanner": {
+    "ariaLabel": "Service shut down banner",
+    "title": "Important",
+    "heading": "This service will be shut down on 1st August 2026",
+    "body": "Contact your police witness care officer if you need to find out any details about your case."
+  },
   "feedback": {
     "question": "Is this page useful?",
     "yes": "Yes",
