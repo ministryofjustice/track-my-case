@@ -114,7 +114,7 @@ exports[`matches snapshot 1`] = `
                <p class="govuk-hint">
                  You can find this on your sign-up confirmation email
                </p>
-               <div class="govuk-form-group govuk-password-input" data-module="govuk-password-input">
+               <div class="govuk-form-group govuk-password-input" data-module="govuk-password-input" data-i18n.show-password="Show" data-i18n.hide-password="Hide">
   <div class="govuk-input__wrapper govuk-password-input__wrapper">
     <input
    class="govuk-input govuk-password-input__input govuk-js-password-input-input govuk-input--width-20" id="password" name="password" type="password" spellcheck="false" autocomplete="current-password" autocapitalize="none">

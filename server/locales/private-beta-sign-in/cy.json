@@ -7,8 +7,9 @@
   "detailsSummary": "Nid oes gennyf e-bost cadarnhad cofrestru",
   "detailsText": "Cysylltwch â'ch swyddog gofal tyst yr heddlu, a fydd yn rhoi mynediad i chi os yw'n briodol ar gyfer eich achos unigol.",
   "errorSummaryTitle": "Mae problem",
+  "showPasswordText": "Dangos",
+  "hidePasswordText": "Cuddio",
   "errors": {
-    "emptyPassword": "Rhowch eich cyfrinair",
     "wrongPassword": "Rhowch eich cyfrinair"
   }
 }
