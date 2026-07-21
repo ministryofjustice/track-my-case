@@ -32,6 +32,10 @@
     .govuk-notification-banner__header {
         background-color: #ca3535;
     }
+
+    .govuk-notification-banner__content > * {
+        max-width: none;
+    }
 }
 
 // Quick exit button, START

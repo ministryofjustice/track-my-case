@@ -61,8 +61,9 @@
   "shutdownBanner": {
     "ariaLabel": "Service shut down banner",
     "title": "Important",
-    "heading": "This service will be shut down on 1st August 2026",
-    "body": "Contact your police witness care officer if you need to find out any details about your case."
+    "heading": "Track a case is closing",
+    "body": "This pilot service will close on 1st August 2026. This does <strong>not</strong> affect your case.",
+    "body2": "Contact your police witness care officer if you need to find out any details about your case."
   },
   "feedback": {
     "question": "Is this page useful?",

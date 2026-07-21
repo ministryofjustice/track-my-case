@@ -10,7 +10,8 @@
       <h3 class="govuk-notification-banner__heading">
         {{ t('shutdownBanner.heading') }}
       </h3>
-      <p class="govuk-body">{{ t('shutdownBanner.body') }}</p>
+      <p class="govuk-body">{{ t('shutdownBanner.body') | safe }}</p>
+      <p class="govuk-body">{{ t('shutdownBanner.body2') }}</p>
     </div>
   </div>
 </nav>

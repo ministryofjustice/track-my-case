@@ -61,8 +61,9 @@
   "shutdownBanner": {
     "ariaLabel": "Baner cau'r gwasanaeth",
     "title": "Pwysig",
-    "heading": "Bydd y gwasanaeth hwn yn cael ei gau ar 1af Awst 2026",
-    "body": "Cysylltwch â'ch swyddog gofal tyst yr heddlu os oes angen i chi ddarganfod unrhyw fanylion am eich achos."
+    "heading": "Mae Track a case yn cau",
+    "body": "Bydd y gwasanaeth peilot hwn yn cau ar 1 Awst 2026. <strong>Nid</strong> yw hyn yn effeithio ar eich achos.",
+    "body2": "Cysylltwch â'ch swyddog gofal tyst yr heddlu os oes angen i chi gael gwybod am unrhyw fanylion am eich achos."
   },
   "feedback": {
     "question": "A yw'r dudalen hon yn ddefnyddiol?",
