@@ -180,8 +180,9 @@ exports[`matches snapshot 1`] = `
     </div>
     <div class="govuk-notification-banner__content">
       <h3 class="govuk-notification-banner__heading">
-        This service will be shut down on 1st August 2026
+        Track a case is closing
       </h3>
+      <p class="govuk-body">This pilot service will close on 1st August 2026. This does <strong>not</strong> affect your case.</p>
       <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
     </div>
   </div>
