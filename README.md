@@ -12,6 +12,7 @@ Citizen-facing frontend for the **Track a Case** service (HMCTS / Ministry of Ju
 
 - [Quick Start](#quick-start)
 - [Commands](#commands)
+- [Snapshot Tests](#snapshot-tests)
 - [Architecture](#architecture)
 - [Features](#features)
   - [GOV.UK One Login](#govuk-one-login)
@@ -71,6 +72,51 @@ Run a single Jest test file:
 
 ```bash
 npx jest server/path/to/file.test.ts
+```
+
+---
+
+## Snapshot Tests
+
+**Files:** [`server/tests/snapshots/`](server/tests/snapshots/) · **Helper:** [`server/utils/nunjucksTestHelper.ts`](server/utils/nunjucksTestHelper.ts)
+
+Each Nunjucks page template has a corresponding snapshot test that renders the template in isolation (no running server) and compares the output against a stored `.snap` file. This catches accidental HTML regressions in templates.
+
+**How it works:**
+
+- `createNunjucksEnv()` sets up a real Nunjucks environment pointing at the same view paths as production
+- `renderPage()` renders the template with a fixed `baseContext` (stable nonce, CSRF token, translations, etc.) to keep snapshots deterministic
+- `t()` is a lightweight stub that resolves translation keys directly from the English locale JSON files — no i18next runtime required
+
+**Run all snapshot tests:**
+
+```bash
+npm test
+```
+
+**Update snapshots** after intentional template changes:
+
+```bash
+npm test -u
+npx jest --updateSnapshot
+# or for a single file:
+npx jest server/tests/snapshots/index.test.ts --updateSnapshot
+```
+
+Stored snapshots live in `__snapshots__/` directories alongside the test files:
+
+```
+server/tests/snapshots/
+  __snapshots__/                    ← .snap files for top-level pages
+  index.test.ts
+  cookies.test.ts
+  private-beta-sign-in.test.ts
+  ...
+  case/
+    __snapshots__/                  ← .snap files for case pages
+    court-information.test.ts
+    dashboard.test.ts
+    ...
 ```
 
 ---
