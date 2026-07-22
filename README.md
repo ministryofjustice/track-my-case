@@ -56,17 +56,17 @@ docker compose up --build   # alternative: run in Docker
 
 ## Commands
 
-| Command | Description |
-|---|---|
-| `npm run start:dev` | esbuild watch + Node dev server |
-| `npm run build` | Production build → `dist/` |
-| `npm run lint` | ESLint (zero warnings enforced) |
-| `npm run lint-fix` | ESLint fix + Prettier format |
-| `npm run typecheck` | TypeScript type check (no emit) |
-| `npm test` | Jest unit tests |
-| `npm run test:ci` | Jest sequential (single worker, for CI) |
-| `npm run int-test` | Cypress E2E headless |
-| `npm run int-test-ui` | Cypress E2E interactive |
+| Command               | Description                             |
+| --------------------- | --------------------------------------- |
+| `npm run start:dev`   | esbuild watch + Node dev server         |
+| `npm run build`       | Production build → `dist/`              |
+| `npm run lint`        | ESLint (zero warnings enforced)         |
+| `npm run lint-fix`    | ESLint fix + Prettier format            |
+| `npm run typecheck`   | TypeScript type check (no emit)         |
+| `npm test`            | Jest unit tests                         |
+| `npm run test:ci`     | Jest sequential (single worker, for CI) |
+| `npm run int-test`    | Cypress E2E headless                    |
+| `npm run int-test-ui` | Cypress E2E interactive                 |
 
 Run a single Jest test file:
 
@@ -159,12 +159,12 @@ See [`server/app.ts`](server/app.ts) for the full chain.
 
 OpenID Connect authentication via GOV.UK One Login, implemented with Passport.js.
 
-| Route | Description |
-|---|---|
-| `GET /sign-in` | Initiates OIDC flow |
+| Route                                   | Description                                      |
+| --------------------------------------- | ------------------------------------------------ |
+| `GET /sign-in`                          | Initiates OIDC flow                              |
 | `GET /oidc/authorization-code/callback` | Handles OAuth callback; success → `/case/search` |
-| `POST /back-channel-logout-uri` | Receives back-channel logout from GOV.UK |
-| `GET /signed-out` | Post-logout confirmation page |
+| `POST /back-channel-logout-uri`         | Receives back-channel logout from GOV.UK         |
+| `GET /signed-out`                       | Post-logout confirmation page                    |
 
 **Token handling:** JWKS public key fetched from GOV.UK, JWT verified with `kid` validation. Tokens stored via `tokenStoreFactory`.
 
@@ -172,14 +172,14 @@ OpenID Connect authentication via GOV.UK One Login, implemented with Passport.js
 
 **Key config:**
 
-| Variable | Description |
-|---|---|
-| `OIDC_CLIENT_ID` | GOV.UK One Login client ID |
-| `OIDC_PRIVATE_KEY` | Private key for `private_key_jwt` auth |
-| `OIDC_AUTHORIZE_REDIRECT_URL` | Callback URL registered with GOV.UK |
-| `OIDC_POST_LOGOUT_REDIRECT_URL` | Post-logout redirect |
-| `AUTH_VECTOR_OF_TRUST` | e.g. `Cl.Cm` |
-| `UI_LOCALES` | e.g. `en` |
+| Variable                        | Description                            |
+| ------------------------------- | -------------------------------------- |
+| `OIDC_CLIENT_ID`                | GOV.UK One Login client ID             |
+| `OIDC_PRIVATE_KEY`              | Private key for `private_key_jwt` auth |
+| `OIDC_AUTHORIZE_REDIRECT_URL`   | Callback URL registered with GOV.UK    |
+| `OIDC_POST_LOGOUT_REDIRECT_URL` | Post-logout redirect                   |
+| `AUTH_VECTOR_OF_TRUST`          | e.g. `Cl.Cm`                           |
+| `UI_LOCALES`                    | e.g. `en`                              |
 
 ---
 
@@ -189,10 +189,10 @@ OpenID Connect authentication via GOV.UK One Login, implemented with Passport.js
 
 Two middleware guards applied to protected routes:
 
-| Guard | Checks | Used on |
-|---|---|---|
-| `AuthenticatedUser` | Valid One Login OIDC session (via Passport) | `/case/search`, `/case/court-information` |
-| `PasswordAuthenticated` | `req.session.passwordCorrect` + not expired | All case routes |
+| Guard                   | Checks                                      | Used on                                   |
+| ----------------------- | ------------------------------------------- | ----------------------------------------- |
+| `AuthenticatedUser`     | Valid One Login OIDC session (via Passport) | `/case/search`, `/case/court-information` |
+| `PasswordAuthenticated` | `req.session.passwordCorrect` + not expired | All case routes                           |
 
 Both are applied in combination on most case routes: `PasswordAuthenticated` first, then `AuthenticatedUser`.
 
@@ -206,9 +206,9 @@ If `PasswordAuthenticated` fails, the user is redirected to `/private-beta-sign-
 
 A service-level password gate used before One Login, as the service is in private beta. The password is stored in config and may be a semicolon-separated list to support rotation.
 
-| Variable | Description |
-|---|---|
-| `TMC_PASSWORD` | Service password (semicolon-separated for multiple) |
+| Variable                             | Description                                           |
+| ------------------------------------ | ----------------------------------------------------- |
+| `TMC_PASSWORD`                       | Service password (semicolon-separated for multiple)   |
 | `TMC_PASSWORD_EXPIRATION_IN_MINUTES` | Session validity after sign-in (default: 1440 = 24 h) |
 
 On success, a signed HTTP-only cookie is set with a `maxAge` derived from the expiration config. On failure, the same error message is shown regardless of whether the field was empty or the password was wrong (to avoid enumeration).
@@ -255,16 +255,17 @@ server/locales/
 
 **Layout files:**
 
-| File | Used for |
-|---|---|
-| [`server/views/layout/public.njk`](server/views/layout/public.njk) | Unauthenticated pages (start, cookies, privacy, etc.) |
-| [`server/views/layout/citizen-authenticated.njk`](server/views/layout/citizen-authenticated.njk) | Authenticated case pages |
+| File                                                                                             | Used for                                              |
+| ------------------------------------------------------------------------------------------------ | ----------------------------------------------------- |
+| [`server/views/layout/public.njk`](server/views/layout/public.njk)                               | Unauthenticated pages (start, cookies, privacy, etc.) |
+| [`server/views/layout/citizen-authenticated.njk`](server/views/layout/citizen-authenticated.njk) | Authenticated case pages                              |
 
 Both layouts include: phase banner, back link, service shutdown banner, cookie banner, language switcher, quick exit, page feedback, and GOV.UK footer.
 
 **Nunjucks setup:** [`server/middleware/nunjucksSetup.ts`](server/middleware/nunjucksSetup.ts)
 
 View paths resolved (in order):
+
 - `server/views/`
 - `node_modules/govuk-frontend/dist/`
 - `node_modules/@ministryofjustice/frontend/`
@@ -279,11 +280,11 @@ Asset cache-busting uses a manifest file generated at build time (`dist/assets/m
 
 Gzip compression enabled. Paths served with a **1-hour cache** (`Cache-Control: public, max-age=3600`):
 
-| URL path | Source |
-|---|---|
-| `/dist/assets` | Built app assets (CSS, JS, images) |
-| `/assets` (GOV.UK) | `node_modules/govuk-frontend/dist/govuk/assets` |
-| `/assets` (MOJ) | `node_modules/@ministryofjustice/frontend/moj/assets` |
+| URL path           | Source                                                |
+| ------------------ | ----------------------------------------------------- |
+| `/dist/assets`     | Built app assets (CSS, JS, images)                    |
+| `/assets` (GOV.UK) | `node_modules/govuk-frontend/dist/govuk/assets`       |
+| `/assets` (MOJ)    | `node_modules/@ministryofjustice/frontend/moj/assets` |
 
 All dynamic responses get `no-cache` headers via `nocache` middleware.
 
@@ -295,17 +296,17 @@ All dynamic responses get `no-cache` headers via `nocache` middleware.
 
 Helmet with a strict Content Security Policy. A fresh **nonce** (`crypto.randomBytes(16)`) is generated per request and injected into `<script>` and `<style>` tags.
 
-| Directive | Allowed sources |
-|---|---|
-| `default-src` | `'self'` |
-| `script-src` | `'self'`, `'strict-dynamic'`, nonce, googletagmanager.com |
-| `style-src` | `'self'`, nonce, fonts.googleapis.com |
-| `img-src` | `'self'`, data:, Google Analytics, GTM, DoubleClick |
-| `connect-src` | `'self'`, GTM, Google Analytics, Azure Monitor |
-| `font-src` | `'self'`, data:, fonts.gstatic.com |
-| `frame-ancestors` | `'none'` |
-| `form-action` | `'self'` |
-| `object-src` | `'none'` |
+| Directive         | Allowed sources                                           |
+| ----------------- | --------------------------------------------------------- |
+| `default-src`     | `'self'`                                                  |
+| `script-src`      | `'self'`, `'strict-dynamic'`, nonce, googletagmanager.com |
+| `style-src`       | `'self'`, nonce, fonts.googleapis.com                     |
+| `img-src`         | `'self'`, data:, Google Analytics, GTM, DoubleClick       |
+| `connect-src`     | `'self'`, GTM, Google Analytics, Azure Monitor            |
+| `font-src`        | `'self'`, data:, fonts.gstatic.com                        |
+| `frame-ancestors` | `'none'`                                                  |
+| `form-action`     | `'self'`                                                  |
+| `object-src`      | `'none'`                                                  |
 
 **Other headers:** HSTS (1 year, includeSubDomains, preload), Referrer-Policy `strict-origin-when-cross-origin`, X-Frame-Options `DENY`. Cross-Origin Embedder Policy is **disabled** to support third-party iframes.
 
@@ -317,24 +318,24 @@ Helmet with a strict Content Security Policy. A fresh **nonce** (`crypto.randomB
 
 Express session with optional Redis store.
 
-| Setting | Value |
-|---|---|
-| Session name | `track-my-case.session` |
-| Default timeout | 120 minutes (`WEB_SESSION_TIMEOUT_IN_MINUTES`) |
-| Cookie | HttpOnly, SameSite: lax, Secure when HTTPS |
-| Rolling | `true` — expiry resets on every request |
-| Store | MemoryStore (default) · Redis when `REDIS_ENABLED=true` |
+| Setting         | Value                                                   |
+| --------------- | ------------------------------------------------------- |
+| Session name    | `track-my-case.session`                                 |
+| Default timeout | 120 minutes (`WEB_SESSION_TIMEOUT_IN_MINUTES`)          |
+| Cookie          | HttpOnly, SameSite: lax, Secure when HTTPS              |
+| Rolling         | `true` — expiry resets on every request                 |
+| Store           | MemoryStore (default) · Redis when `REDIS_ENABLED=true` |
 
 Each request also receives an `X-Request-Id` header (UUID, passed through if already present), stored on `req.id`.
 
 **Key config:**
 
-| Variable | Description |
-|---|---|
-| `SESSION_SECRET` | Encryption key |
-| `SESSION_NAME` | Cookie name |
+| Variable                         | Description                 |
+| -------------------------------- | --------------------------- |
+| `SESSION_SECRET`                 | Encryption key              |
+| `SESSION_NAME`                   | Cookie name                 |
 | `WEB_SESSION_TIMEOUT_IN_MINUTES` | Idle timeout (default: 120) |
-| `REDIS_ENABLED` | Enable Redis session store |
+| `REDIS_ENABLED`                  | Enable Redis session store  |
 
 ---
 
@@ -354,11 +355,11 @@ Disabled when `NODE_ENV === 'test'`.
 
 IP-based rate limiting applied globally via `express-rate-limit`.
 
-| Setting | Default | Config variable |
-|---|---|---|
-| Max requests | 300 | `RATE_LIMIT_MAX_REQUESTS` |
-| Window | 300 s (5 min) | `RATE_LIMIT_WINDOW_SECS` |
-| Response | 429 + "Too many requests, please try again later." | — |
+| Setting      | Default                                            | Config variable           |
+| ------------ | -------------------------------------------------- | ------------------------- |
+| Max requests | 300                                                | `RATE_LIMIT_MAX_REQUESTS` |
+| Window       | 300 s (5 min)                                      | `RATE_LIMIT_WINDOW_SECS`  |
+| Response     | 429 + "Too many requests, please try again later." | —                         |
 
 Standard `RateLimit-*` headers are enabled; legacy `X-RateLimit-*` headers are disabled.
 
@@ -387,10 +388,10 @@ Analytics are **only active** when the user has accepted cookies (`cookiePrefere
 
 User and session IDs are encrypted before being passed to the data layer.
 
-| Variable | Value |
-|---|---|
+| Variable                | Value             |
+| ----------------------- | ----------------- |
 | `GOOGLE_TAG_MANAGER_ID` | `GTM-xxxxxxxxxxx` |
-| `GOOGLE_ANALYTICS_ID` | `G-xxxxxxxxxxxx` |
+| `GOOGLE_ANALYTICS_ID`   | `G-xxxxxxxxxxxx`  |
 
 ---
 
@@ -398,10 +399,10 @@ User and session IDs are encrypted before being passed to the data layer.
 
 **Files:** [`server/routes/cookiesRoutes.ts`](server/routes/cookiesRoutes.ts) · [`server/views/pages/cookies.njk`](server/views/pages/cookies.njk) · [`server/views/partials/cookie-banner.njk`](server/views/partials/cookie-banner.njk)
 
-| Route | Description |
-|---|---|
-| `GET /cookies` | Cookie policy page |
-| `POST /cookies` | Save cookie preferences |
+| Route                    | Description                             |
+| ------------------------ | --------------------------------------- |
+| `GET /cookies`           | Cookie policy page                      |
+| `POST /cookies`          | Save cookie preferences                 |
 | `POST /cookies/decision` | Accept or reject from the banner (AJAX) |
 
 The cookie banner is shown on every page until a decision is made. It stores the preference in a signed cookie `cookiePreferencesSet`. Analytics are activated or deactivated immediately based on the choice without a page reload.
@@ -416,13 +417,13 @@ The cookie banner is shown on every page until a decision is made. It stores the
 
 Metrics collected:
 
-| Metric | Type | Labels | Description |
-|---|---|---|---|
-| `tmc_ui_application_availability` | Gauge | `status` | 1 = available, 0 = unavailable |
-| `tmc_ui_health_check_status` | Gauge | `status`, `reason` | 1 = UP, 0 = DOWN |
-| `tmc_ui_http_requests_total` | Counter | `method`, `route`, `status_code` | All HTTP requests |
+| Metric                                 | Type      | Labels                           | Description                                            |
+| -------------------------------------- | --------- | -------------------------------- | ------------------------------------------------------ |
+| `tmc_ui_application_availability`      | Gauge     | `status`                         | 1 = available, 0 = unavailable                         |
+| `tmc_ui_health_check_status`           | Gauge     | `status`, `reason`               | 1 = UP, 0 = DOWN                                       |
+| `tmc_ui_http_requests_total`           | Counter   | `method`, `route`, `status_code` | All HTTP requests                                      |
 | `tmc_ui_http_request_duration_seconds` | Histogram | `method`, `route`, `status_code` | Response times (buckets: 0.1 · 0.5 · 1 · 2 · 5 · 10 s) |
-| `tmc_ui_page_feedback_total` | Counter | `page`, `useful` | "Is this page useful?" responses |
+| `tmc_ui_page_feedback_total`           | Counter   | `page`, `useful`                 | "Is this page useful?" responses                       |
 
 Node.js default metrics (CPU, memory, event loop) are also collected via `prom-client`.
 
@@ -452,8 +453,8 @@ Available to authenticated users (when `correctPasswordAndNotExpired === true`).
 - Three indicator dots show progress as keys are pressed
 - On trigger: opens BBC Weather in a new tab, blanks the current tab, and removes it from browser history
 
-| Variable | Description |
-|---|---|
+| Variable                     | Description                                 |
+| ---------------------------- | ------------------------------------------- |
 | `TMC_QUICK_EXIT_WINDOW_SECS` | Time window for key sequence (default: 5 s) |
 
 ---
@@ -480,11 +481,11 @@ At startup, optionally fetches the following secrets from AWS Secrets Manager:
 
 Secrets are cached in memory after the first load. If disabled, values fall back to environment variables.
 
-| Variable | Description |
-|---|---|
+| Variable                         | Description                        |
+| -------------------------------- | ---------------------------------- |
 | `TMC_AWS_SECRET_MANAGER_ENABLED` | `true` to enable (default: `true`) |
-| `TMC_AWS_SECRET_MANAGER_NAME` | Secret name in AWS |
-| `TMC_AWS_REGION` | AWS region |
+| `TMC_AWS_SECRET_MANAGER_NAME`    | Secret name in AWS                 |
+| `TMC_AWS_REGION`                 | AWS region                         |
 
 Secret values are masked in logs (first 2 + `****` + last 2 characters).
 
@@ -500,36 +501,36 @@ Secret values are masked in logs (first 2 + `****` + last 2 characters).
 
 ## Environment Variables
 
-| Variable | Required | Default | Description |
-|---|---|---|---|
-| `NODE_PORT` | | `9999` | Server port |
-| `NODE_ENV` | prod | `development` | Environment name |
-| `TRACK_MY_CASE_API_URL` | prod | `http://localhost:4550` | Downstream case API |
-| `SESSION_SECRET` | prod | (insecure default) | Session encryption key |
-| `SESSION_NAME` | | `track-my-case.session` | Session cookie name |
-| `WEB_SESSION_TIMEOUT_IN_MINUTES` | | `120` | Session idle timeout |
-| `OIDC_CLIENT_ID` | prod | | GOV.UK One Login client ID |
-| `OIDC_PRIVATE_KEY` | prod | | Private key for OIDC |
-| `OIDC_AUTHORIZE_REDIRECT_URL` | prod | | OIDC callback URL |
-| `OIDC_POST_LOGOUT_REDIRECT_URL` | prod | | Post-logout URL |
-| `AUTH_VECTOR_OF_TRUST` | prod | `Cl.Cm` | OIDC vtr parameter |
-| `UI_LOCALES` | prod | `en` | OIDC ui_locales |
-| `TMC_PASSWORD` | prod | | Service-level beta password |
-| `TMC_PASSWORD_EXPIRATION_IN_MINUTES` | prod | `1440` | Password session lifetime |
-| `TMC_QUICK_EXIT_WINDOW_SECS` | | `5` | Quick exit key window |
-| `GOOGLE_TAG_MANAGER_ID` | prod | `GTM-xxxxxxxxxxx` | GTM container ID |
-| `GOOGLE_ANALYTICS_ID` | prod | `G-xxxxxxxxxxxx` | GA4 measurement ID |
-| `RATE_LIMIT_MAX_REQUESTS` | | `300` | Requests per window |
-| `RATE_LIMIT_WINDOW_SECS` | | `300` | Rate limit window (seconds) |
-| `TMC_AWS_SECRET_MANAGER_ENABLED` | | `true` | Enable AWS Secrets Manager |
-| `TMC_AWS_SECRET_MANAGER_NAME` | prod | | AWS secret name |
-| `TMC_AWS_REGION` | prod | | AWS region |
-| `REDIS_ENABLED` | | `false` | Enable Redis session store |
-| `NO_HTTPS` | | | Set to `true` to disable HTTPS redirect |
-| `UPCOMING_MAINTENANCE` | | | Maintenance window schedule string |
-| `ONGOING_MAINTENANCE` | | | Ongoing maintenance schedule string |
-| `DISPLAY_HEARING_DATE_TYPE` | prod | `false` | Feature flag: hearing date display |
-| `ENVIRONMENT_NAME` | | | Banner label (e.g. `PRE-PRODUCTION`) |
+| Variable                             | Required | Default                 | Description                             |
+| ------------------------------------ | -------- | ----------------------- | --------------------------------------- |
+| `NODE_PORT`                          |          | `9999`                  | Server port                             |
+| `NODE_ENV`                           | prod     | `development`           | Environment name                        |
+| `TRACK_MY_CASE_API_URL`              | prod     | `http://localhost:4550` | Downstream case API                     |
+| `SESSION_SECRET`                     | prod     | (insecure default)      | Session encryption key                  |
+| `SESSION_NAME`                       |          | `track-my-case.session` | Session cookie name                     |
+| `WEB_SESSION_TIMEOUT_IN_MINUTES`     |          | `120`                   | Session idle timeout                    |
+| `OIDC_CLIENT_ID`                     | prod     |                         | GOV.UK One Login client ID              |
+| `OIDC_PRIVATE_KEY`                   | prod     |                         | Private key for OIDC                    |
+| `OIDC_AUTHORIZE_REDIRECT_URL`        | prod     |                         | OIDC callback URL                       |
+| `OIDC_POST_LOGOUT_REDIRECT_URL`      | prod     |                         | Post-logout URL                         |
+| `AUTH_VECTOR_OF_TRUST`               | prod     | `Cl.Cm`                 | OIDC vtr parameter                      |
+| `UI_LOCALES`                         | prod     | `en`                    | OIDC ui_locales                         |
+| `TMC_PASSWORD`                       | prod     |                         | Service-level beta password             |
+| `TMC_PASSWORD_EXPIRATION_IN_MINUTES` | prod     | `1440`                  | Password session lifetime               |
+| `TMC_QUICK_EXIT_WINDOW_SECS`         |          | `5`                     | Quick exit key window                   |
+| `GOOGLE_TAG_MANAGER_ID`              | prod     | `GTM-xxxxxxxxxxx`       | GTM container ID                        |
+| `GOOGLE_ANALYTICS_ID`                | prod     | `G-xxxxxxxxxxxx`        | GA4 measurement ID                      |
+| `RATE_LIMIT_MAX_REQUESTS`            |          | `300`                   | Requests per window                     |
+| `RATE_LIMIT_WINDOW_SECS`             |          | `300`                   | Rate limit window (seconds)             |
+| `TMC_AWS_SECRET_MANAGER_ENABLED`     |          | `true`                  | Enable AWS Secrets Manager              |
+| `TMC_AWS_SECRET_MANAGER_NAME`        | prod     |                         | AWS secret name                         |
+| `TMC_AWS_REGION`                     | prod     |                         | AWS region                              |
+| `REDIS_ENABLED`                      |          | `false`                 | Enable Redis session store              |
+| `NO_HTTPS`                           |          |                         | Set to `true` to disable HTTPS redirect |
+| `UPCOMING_MAINTENANCE`               |          |                         | Maintenance window schedule string      |
+| `ONGOING_MAINTENANCE`                |          |                         | Ongoing maintenance schedule string     |
+| `DISPLAY_HEARING_DATE_TYPE`          | prod     | `false`                 | Feature flag: hearing date display      |
+| `ENVIRONMENT_NAME`                   |          |                         | Banner label (e.g. `PRE-PRODUCTION`)    |
 
 ---
 
