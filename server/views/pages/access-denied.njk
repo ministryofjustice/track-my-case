@@ -5,14 +5,14 @@
 {% block content %}
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-l">Access denied</h2>
+    <h2 class="govuk-heading-l">{{ t('access-denied:heading') }}</h2>
     <p class="govuk-body">
-      If you need an update on your case, you can contact your police witness care officer or police officer in charge.
+      {{ t('access-denied:para1') }}
     </p>
     <p class="govuk-body">
-      If you need information about a court, use the
-      <a class="govuk-link" href="https://www.find-court-tribunal.service.gov.uk"
-         target="_blank">Find a court or tribunal service (opens in new tab)</a>.
+      {{ t('access-denied:para2') }}
+      <a class="govuk-link" href="{{ t('common:urls.findCourtTribunal') }}"
+         target="_blank">{{ t('access-denied:findCourtLink') }}</a>.
     </p>
   </div>
 </div>

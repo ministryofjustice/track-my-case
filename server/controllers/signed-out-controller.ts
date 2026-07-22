@@ -7,7 +7,7 @@ const signedOutController = async (req: Request, res: Response, next: NextFuncti
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Signed out'
+    res.locals.pageTitle = req.t('signed-out:pageTitle')
 
     clearPasswordCookie(res)
 

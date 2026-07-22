@@ -96,7 +96,6 @@ async function init(): Promise<Client> {
       params: {
         scope: config.apis.govukOneLogin.scopes,
         vtr: `["${config.apis.govukOneLogin.authenticationVtr}"]`,
-        ui_locales: config.apis.govukOneLogin.uiLocales,
       },
       usePKCE: false,
       extras: {

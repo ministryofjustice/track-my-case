@@ -9,58 +9,58 @@
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
     <div class="govuk-grid-column-one-third">
       {{ actionCard(
-        "Find your court information",
-        "Look up the court where the next hearing or trial for your case is being held. You need your unique reference number.",
+        t('dashboard:card1.title'),
+        t('dashboard:card1.desc'),
         "/case/search",
-        "Find your court"
+        t('dashboard:card1.button')
       ) }}
     </div>
     <div class="govuk-grid-column-one-third">
       {{ actionCard(
-        "The criminal justice system: step by step",
-        "See what stage you’re at and understand what happens next.",
+        t('dashboard:card2.title'),
+        t('dashboard:card2.desc'),
         "/case/victims-journey",
-        "Find out about the process"
+        t('dashboard:card2.button')
       ) }}
     </div>
     <div class="govuk-grid-column-one-third">
       {{ actionCard(
-        "Who does what in the criminal justice system",
-        "Learn about the people involved, including who will help you when you experience a crime.",
+        t('dashboard:card3.title'),
+        t('dashboard:card3.desc'),
         "/case/key-roles",
-        "Find out who's who"
+        t('dashboard:card3.button')
       ) }}
     </div>
   </div>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-third">
       {{ actionCard(
-        "Understand your rights",
-        "Including making a victim personal statement, compensation, and your property.",
+        t('dashboard:card4.title'),
+        t('dashboard:card4.desc'),
         "/case/victim-personal-statement",
-        "Find out about your rights"
+        t('dashboard:card4.button')
       ) }}
     </div>
     <div class="govuk-grid-column-one-third">
       {{ actionCard(
-        "Find help and support",
-        "Find charities and organisations that can give you further support and advice.",
+        t('dashboard:card5.title'),
+        t('dashboard:card5.desc'),
         "/case/victim-support-links",
-        "Find support"
+        t('dashboard:card5.button')
       ) }}
     </div>
     <div class="govuk-grid-column-one-third">
       <div class="govuk-summary-card highlight">
         <div class="govuk-summary-card__title-wrapper">
-          <h2 class="govuk-summary-card__title text-white">If you need help now</h2>
+          <h2 class="govuk-summary-card__title text-white">{{ t('dashboard:helpNow.heading') }}</h2>
         </div>
         <div class="govuk-summary-card__content">
           <div class="govuk-summary-list">
             <div class="govuk-summary-list__row">
-              <p class="govuk-body text-white">If you're in immediate danger, phone the police: 999</p>
+              <p class="govuk-body text-white">{{ t('dashboard:helpNow.police') }}</p>
               <p class="govuk-body">
-                <span class="text-white">Samaritans phone: 116 123</span><br>
-                <span class="text-white">Website: </span><a href="https://www.samaritans.org" class="govuk-link govuk-link--inverse" target="_blank">www.samaritans.org (opens in new tab)</a>
+                <span class="text-white">{{ t('dashboard:helpNow.samaritansPhone') }}</span><br>
+                <span class="text-white">{{ t('dashboard:helpNow.website') }}</span><a href="{{ t('common:urls.samaritans') }}" class="govuk-link govuk-link--inverse" target="_blank">{{ t('dashboard:helpNow.samaritansWebsite') }}</a>
               </p>
             </div>
           </div>

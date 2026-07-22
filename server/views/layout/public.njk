@@ -13,7 +13,7 @@
   {{ super() }}
   {% if correctPasswordAndNotExpired %}
     <nav aria-label="Quick exit">
-      <a href="https://www.bbc.co.uk/weather" class="govuk-skip-link" rel="nofollow noreferrer">Quick Exit (press Shift or Escape three times)</a>
+      <a href="{{ t('common:urls.bbcWeather') }}" class="govuk-skip-link" rel="nofollow noreferrer">{{ t('common:skipLink.quickExit') }}</a>
     </nav>
   {% endif %}
   {% if not cookieAccepted %}
@@ -38,6 +38,25 @@
     {% include "partials/govuk-phase-banner.njk" %}
     {% include "partials/back-link.njk" %}
     {% include "partials/service-shut-down-banner.njk" %}
+    <div class="govuk-width-container">
+      <nav class="hmrc-language-select" aria-label="Language switcher">
+        <ul class="hmrc-language-select__list">
+          {% for language in translations.options %}
+            <li class="hmrc-language-select__list-item">
+              {% if language.code === translations.currentLanguageCode %}
+                <span class="govuk-visually-hidden">{{ language.changeLanguageText }}</span>
+                <span aria-current="true">{{ language.label }}</span>
+              {% else %}
+                <a href="{{ language.href }}" hreflang="{{ language.code }}" lang="{{ language.code }}" rel="alternate" class="govuk-link">
+                  <span class="govuk-visually-hidden">{{ language.changeLanguageText }}</span>
+                  <span aria-hidden="true">{{ language.label }}</span>
+                </a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
   {% endblock %}
 {% endblock %}
 

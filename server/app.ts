@@ -2,8 +2,7 @@ import express from 'express'
 import cookieParser from 'cookie-parser'
 
 import createError from 'http-errors'
-
-import nunjucksSetup from './utils/nunjucksSetup'
+import nunjucksSetup from './middleware/nunjucksSetup'
 import errorHandler from './errorHandler'
 
 import setUpCsrf from './middleware/setUpCsrf'
@@ -25,6 +24,8 @@ import setUpGoogleTagManager from './middleware/setUpGoogleTagManager'
 import { initializePrometheusMetrics } from './services/prometheusService'
 import setUpReqUrlParser from './middleware/setUpReqUrlParser'
 import setUpPrometheusMetrics from './middleware/setUpPrometheusMetrics'
+import { setUpLaunchpadHeader } from './middleware/setUpLaunchpadHeader'
+import i18nextSetup from './middleware/i18nextSetup'
 
 export default function createApp(sessionSecret: string): express.Application {
   const app = express()
@@ -35,6 +36,8 @@ export default function createApp(sessionSecret: string): express.Application {
   app.set('trust proxy', true)
   app.set('port', process.env.NODE_PORT || 9999)
 
+  i18nextSetup(app)
+
   app.use(setUpWebSecurity())
   app.use(setUpWebRequestParsing())
   app.use(setUpWebSession(sessionSecret))
@@ -42,6 +45,7 @@ export default function createApp(sessionSecret: string): express.Application {
   nunjucksSetup(app)
   app.use(setUpGovukOneLogin(sessionSecret))
   app.use(setUpCsrf())
+  app.use(setUpLaunchpadHeader)
 
   // Configure body-parser
   app.use(express.json())

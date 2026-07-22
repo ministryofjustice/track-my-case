@@ -1,0 +1,26 @@
+{
+  "pageTitle": "Cael eich eiddo yn ôl",
+  "heading.main": "Deall eich hawliau",
+  "nav.label": "Tudalennau yn y canllaw hwn",
+  "nav.title": "Cynnwys",
+  "nav.victimPersonalStatement": "Gwneud Datganiad Personol Dioddefwr",
+  "nav.claimingExpenses": "Hawlio treuliau",
+  "nav.specialMeasures": "Mesurau arbennig",
+  "nav.requestingTranscript": "Gofyn am drawsgrifiad gwrandawiad llys",
+  "nav.understandCompensation": "Pryd y gallwch hawlio iawndal",
+  "nav.returnProperty": "Cael eich eiddo yn ôl",
+  "nav.victimsCode": "Cod Dioddefwyr",
+  "heading.returnProperty": "Cael eich eiddo yn ôl",
+  "body.policeEvidence": "Pan fyddwch yn profi trosedd, mae'n bosibl y bydd yr heddlu yn gorfod mynd â phethau sy'n perthyn i chi i'w helpu gyda'r ymchwiliad.  Gall rhai pethau hefyd gael eu defnyddio fel tystiolaeth yn nhreial y llys.",
+  "body.propertyBack": "Fel arfer rydych yn gallu cael eich eiddo yn ôl pan ddaw'r achos i ben ac nad oes yna apêl. Nid oes rhaid i chi ei gymryd yn ôl.",
+  "heading.howToGet": "Sut i gael eich eiddo yn ôl",
+  "body.askOfficer": "Pan ddaw'r achos i ben, gallwch ofyn i swyddog yr heddlu sy'n gyfrifol am eich achos am eich eiddo yn ôl.",
+  "body.collectProperty": "Byddant yn gofyn i chi ddod i'ch gorsaf heddlu leol i gasglu eich eiddo.  Byddwch angen dod ag ID personol, er enghraifft eich trwydded yrru neu basport.",
+  "heading.contactOfficer": "Cysylltwch â'r swyddog heddlu sy'n gyfrifol",
+  "body.noContactDetails": "Os nad oes gennych fanylion cyswllt eich swyddog heddlu sy'n gyfrifol neu heddlu lleol, cysylltwch â'r heddlu dros y ffôn neu ar-lein.",
+  "body.telephone": "Rhif ffôn: 101",
+  "link.contactPoliceOnline": "Cysylltu â'r heddlu ar-lein (yn agor mewn tab newydd).",
+  "urls": {
+    "policeContact": "https://www.police.uk/pu/contact-us/updates/"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "pageTitle": "Cwcis",
+  "heading": "Cwcis",
+  "intro1": "Ffeiliau bach yw cwcis a gedwir ar eich ffôn, tabled neu gyfrifiadur pan fyddwch yn ymweld â gwefan neu'n defnyddio gwasanaeth ar-lein.",
+  "intro2": "Rydym yn defnyddio cwcis i storio gwybodaeth am sut rydych yn defnyddio gwasanaeth '{{applicationName}}', megis y tudalennau rydych yn ymweld â nhw.",
+  "analyticsHeading": "Cwcis a ddefnyddir i wella'r gwasanaeth",
+  "analyticsIntro": "Rydym yn defnyddio Google Analytics i fesur sut rydych yn defnyddio'r gwasanaeth fel y gallwn ei wella. Nid ydym yn caniatáu i Google ddefnyddio neu rannu data am sut rydych yn defnyddio'r gwasanaeth hwn.",
+  "analyticsIntro2": "Mae Google Analytics yn gosod cwcis sy'n storio gwybodaeth ddienw am:",
+  "analyticsItems": [
+    "sut wnaethoch gyrraedd y gwasanaeth",
+    "y tudalennau rydych yn ymweld â nhw ar y gwasanaeth",
+    "faint o amser rydych yn ei dreulio ar bob tudalen",
+    "beth rydych yn clicio arno tra'ch bod yn ymweld â'r gwasanaeth"
+  ],
+  "preferencesHeading": "Eich dewisiadau cwci '{{applicationName}}'",
+  "radioHint": "<p>Ydych chi am dderbyn cwcis dadansoddeg?</p>",
+  "radioYes": "Ydw",
+  "radioNo": "Nac ydw",
+  "saveButton": "Cadw dewisiadau cwci",
+  "essentialHeading": "Cwcis hanfodol",
+  "essentialText": "Mae angen i'r cwcis hyn fod ymlaen er mwyn caniatáu i chi ddefnyddio gwasanaeth '{{applicationName}}'.",
+  "progressHeading": "Eich cynnydd wrth ddefnyddio'r gwasanaeth",
+  "progressText": "Pan fyddwch yn defnyddio'r gwasanaeth, byddwn yn gosod cwci i gofio eich cynnydd drwy'r safle hwn. Nid yw'r cwci hwn yn storio eich data personol ac fe'i dilëir pan fyddwch yn cau'r wefan hon.",
+  "cookiePrefHeading": "Eich dewisiadau cwci",
+  "cookiePref1": "Pan fyddwch yn defnyddio'r gwasanaeth, byddwn yn gosod cwci i gofio eich dewisiadau cwci. Nid yw'r cwci hwn yn storio unrhyw ddata personol.",
+  "cookiePref2": "Bydd yn cael ei gadw ar eich dyfais am 1 flwyddyn, neu tan i chi ei ddileu.",
+  "errorSummaryTitle": "Mae problem"
+}

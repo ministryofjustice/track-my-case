@@ -6,10 +6,10 @@ const witnessServiceController = async (req: Request, res: Response, next: NextF
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Get support giving evidence as a witness'
+    res.locals.pageTitle = req.t('witness-service:pageTitle')
     res.locals.backLink = paths.CASES.DASHBOARD
 
-    res.render('pages/case/witness-service')
+    res.render('pages/case/witness-service.njk')
   } catch (error) {
     next(error)
   }

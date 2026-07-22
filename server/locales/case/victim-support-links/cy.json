@@ -1,0 +1,44 @@
+{
+  "pageTitle": "Cymorth a chefnogaeth",
+  "pageHeading": "Cymorth a chefnogaeth",
+  "contents.title": "Cynnwys",
+  "contents.currentItem": "Ble i gael mwy o gefnogaeth a gwybodaeth",
+  "contents.witnessLink": "Cael cefnogaeth os ydych yn mynd i'r llys fel tyst",
+  "supportHeading": "Ble i gael mwy o gefnogaeth a gwybodaeth",
+  "inset.heading": "Os oes arnoch angen cymorth nawr",
+  "inset.policeText": "Os ydych mewn perygl uniongyrchol, ffoniwch yr heddlu: 999",
+  "inset.samaritans.name": "Y Samariaid",
+  "inset.samaritans.phone": "Rhif ffôn: 116 123",
+  "inset.samaritans.websiteLinkText": "www.samaritans.org (yn agor mewn tab newydd)",
+  "inset.victimSupport.name": "Cymorth i Ddioddefwyr",
+  "inset.victimSupport.phone": "Rhif ffôn: 0808 1689 111",
+  "inset.victimSupport.linkText": "Gwefan a sgwrs fyw Cymorth i Ddioddefwyr (yn agor mewn tab newydd)",
+  "inset.availability": "Mae'r gwasanaethau hyn ar gael 24 awr y dydd, 7 diwrnod yr wythnos.",
+  "crimeSupport.heading": "Cymorth ar gyfer y trosedd a brofwyd gennych",
+  "crimeSupport.lead": "Mae yna nifer o sefydliadau ac elusennau sy'n gallu cynnig cymorth a chefnogaeth arbenigol ar gyfer y trosedd a brofwyd gennych.",
+  "crimeSupport.findLead": "Gallwch ganfod:",
+  "crimeSupport.links": [
+    {
+      "text": "gwasanaethau dioddefwr a thyst (yn agor mewn tab newydd)",
+      "url": "https://www.gov.uk/guidance/victim-and-witness-services"
+    },
+    {
+      "text": "gwasanaethau cefnogi yn eich ardal leol (yn agor mewn tab newydd)",
+      "url": "https://victimandwitnessinformation.org.uk/find-support/locally"
+    }
+  ],
+  "mentalHealth.heading": "Cymorth Iechyd Meddwl",
+  "mentalHealth.body": "Gwybodaeth a chefnogaeth ar gyfer eich iechyd meddwl drwy",
+  "mentalHealth.linkText": "Wefan y GIG (yn agor mewn tab newydd).",
+  "disability.heading": "Hawliau i bobl anabl wrth ddelio gyda'r heddlu",
+  "disability.body1": "Os ydych yn cael eich holi neu eich cyfweld mewn gorsaf heddlu mae gennych hawliau penodol yn dibynnu ar eich anabledd.",
+  "disability.linkText": "Gwybodaeth am hawliau anabledd pan fyddwch yn delio gyda'r heddlu (yn agor mewn tab newydd).",
+  "easyRead.heading": "Canllawiau hawdd eu deall",
+  "easyRead.body1": "Mae canllawiau hawdd eu deall yn defnyddio lluniau i helpu pobl ddeall gwybodaeth yn haws.",
+  "easyRead.body2": "Gallwch lawrlwytho canllawiau hawdd eu deall am y broses cyfiawnder troseddol gan Wasanaeth Erlyn y Goron (CPS).",
+  "easyRead.linkText": "Dod o hyd i ganllawiau hawdd eu deall i ddioddefwyr trosedd (yn agor mewn tab newydd).",
+  "urls": {
+    "nhsMentalHealth": "https://www.nhs.uk/mental-health/",
+    "disabilityRights": "https://www.gov.uk/rights-disabled-person/police"
+  }
+}

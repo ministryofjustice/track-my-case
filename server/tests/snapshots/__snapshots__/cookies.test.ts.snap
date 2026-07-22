@@ -25,7 +25,7 @@ exports[`matches snapshot 1`] = `
   <div class="govuk-header__container govuk-width-container">
     <div class="govuk-header__logo">
       <a href="//gov.uk" class="govuk-header__homepage-link">
-  <svg
+          <svg
             focusable="false"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
@@ -74,12 +74,30 @@ exports[`matches snapshot 1`] = `
     </div>
     <div class="govuk-notification-banner__content">
       <h3 class="govuk-notification-banner__heading">
-        This service will be shut down on 1st August 2026
+        Track a case is closing
       </h3>
+      <p class="govuk-body">This pilot service will close on 1st August 2026. This does <strong>not</strong> affect your case.</p>
       <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+      <p class="govuk-body">All existing users will be emailed with guidance about available support.</p>
     </div>
   </div>
 </nav>
+    <div class="govuk-width-container">
+      <nav class="hmrc-language-select" aria-label="Language switcher">
+        <ul class="hmrc-language-select__list">
+            <li class="hmrc-language-select__list-item">
+                <span class="govuk-visually-hidden">Change the language to English</span>
+                <span aria-current="true">English</span>
+            </li>
+            <li class="hmrc-language-select__list-item">
+                <a href="/?lng=cy" hreflang="cy" lang="cy" rel="alternate" class="govuk-link">
+                  <span class="govuk-visually-hidden">Newid yr iaith i'r Gymraeg</span>
+                  <span aria-hidden="true">Gymraeg</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
       <div class="govuk-width-container">
         <main class="govuk-main-wrapper app-container govuk-body" id="main-content">
   <div class="govuk-grid-row">
@@ -99,10 +117,10 @@ exports[`matches snapshot 1`] = `
             <p class="govuk-body">We use Google Analytics to measure how you use the service so we can improve it. We do not allow Google to use or share the data about how you use this service.</p>
             <p class="govuk-body">Google Analytics sets cookies that store anonymised information about:</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>how you got to the service</li>
-              <li>the pages you visit on the service</li>
-              <li>how long you spend on each page</li>
-              <li>what you click on while you're visiting the service</li>
+                <li>how you got to the service</li>
+                <li>the pages you visit on the service</li>
+                <li>how long you spend on each page</li>
+                <li>what you click on while you're visiting the service</li>
             </ul>
             <h3 class="govuk-heading-m govuk-!-margin-top-5">Your 'Track a case' cookie preferences</h3>
 <div class="govuk-form-group">

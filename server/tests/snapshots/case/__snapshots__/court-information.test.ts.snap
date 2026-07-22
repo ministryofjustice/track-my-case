@@ -183,12 +183,30 @@ exports[`court-information (active) 1`] = `
     </div>
     <div class="govuk-notification-banner__content">
       <h3 class="govuk-notification-banner__heading">
-        This service will be shut down on 1st August 2026
+        Track a case is closing
       </h3>
+      <p class="govuk-body">This pilot service will close on 1st August 2026. This does <strong>not</strong> affect your case.</p>
       <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+      <p class="govuk-body">All existing users will be emailed with guidance about available support.</p>
     </div>
   </div>
 </nav>
+    <div class="govuk-width-container">
+      <nav class="hmrc-language-select" aria-label="Language switcher">
+        <ul class="hmrc-language-select__list">
+            <li class="hmrc-language-select__list-item">
+                <span class="govuk-visually-hidden">Change the language to English</span>
+                <span aria-current="true">English</span>
+            </li>
+            <li class="hmrc-language-select__list-item">
+                <a href="/?lng=cy" hreflang="cy" lang="cy" rel="alternate" class="govuk-link">
+                  <span class="govuk-visually-hidden">Newid yr iaith i'r Gymraeg</span>
+                  <span aria-hidden="true">Gymraeg</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
       <div class="govuk-width-container">
         <main class="govuk-main-wrapper app-container govuk-body" id="main-content">
   <div class="govuk-grid-row">
@@ -201,7 +219,7 @@ exports[`court-information (active) 1`] = `
       </div>
 <script nonce="test-nonce" type="module">
   async function quickExit() {
-    const currentTabAddress = 'https://www.bbc.co.uk/'
+    const currentTabAddress = 'https://www.bbc.co.uk'
     const newTab = 'https://www.bbc.co.uk/weather'
     // ToDo: we should push custom event to dataLayer when quick-exit button was pressed
     // Open safe/neutral site in a new tab
@@ -743,17 +761,35 @@ exports[`court-information-access-denied 1`] = `
     </div>
     <div class="govuk-notification-banner__content">
       <h3 class="govuk-notification-banner__heading">
-        This service will be shut down on 1st August 2026
+        Track a case is closing
       </h3>
+      <p class="govuk-body">This pilot service will close on 1st August 2026. This does <strong>not</strong> affect your case.</p>
       <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+      <p class="govuk-body">All existing users will be emailed with guidance about available support.</p>
     </div>
   </div>
 </nav>
+    <div class="govuk-width-container">
+      <nav class="hmrc-language-select" aria-label="Language switcher">
+        <ul class="hmrc-language-select__list">
+            <li class="hmrc-language-select__list-item">
+                <span class="govuk-visually-hidden">Change the language to English</span>
+                <span aria-current="true">English</span>
+            </li>
+            <li class="hmrc-language-select__list-item">
+                <a href="/?lng=cy" hreflang="cy" lang="cy" rel="alternate" class="govuk-link">
+                  <span class="govuk-visually-hidden">Newid yr iaith i'r Gymraeg</span>
+                  <span aria-hidden="true">Gymraeg</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
       <div class="govuk-width-container">
         <main class="govuk-main-wrapper app-container govuk-body" id="main-content">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h2 class="govuk-heading-l" title="Access denied">You are not authorized to access</h2>
+      <h1 class="govuk-heading-l" title="Access denied">You are not authorized to access</h1>
       <p class="govuk-body">
         If you need an update on your case, you can contact your police witness care officer or police officer in charge.
       </p>
@@ -766,7 +802,7 @@ exports[`court-information-access-denied 1`] = `
       </div>
 <script nonce="test-nonce" type="module">
   async function quickExit() {
-    const currentTabAddress = 'https://www.bbc.co.uk/'
+    const currentTabAddress = 'https://www.bbc.co.uk'
     const newTab = 'https://www.bbc.co.uk/weather'
     // ToDo: we should push custom event to dataLayer when quick-exit button was pressed
     // Open safe/neutral site in a new tab
@@ -1308,12 +1344,30 @@ exports[`court-information-common-platform-unavailable 1`] = `
     </div>
     <div class="govuk-notification-banner__content">
       <h3 class="govuk-notification-banner__heading">
-        This service will be shut down on 1st August 2026
+        Track a case is closing
       </h3>
+      <p class="govuk-body">This pilot service will close on 1st August 2026. This does <strong>not</strong> affect your case.</p>
       <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+      <p class="govuk-body">All existing users will be emailed with guidance about available support.</p>
     </div>
   </div>
 </nav>
+    <div class="govuk-width-container">
+      <nav class="hmrc-language-select" aria-label="Language switcher">
+        <ul class="hmrc-language-select__list">
+            <li class="hmrc-language-select__list-item">
+                <span class="govuk-visually-hidden">Change the language to English</span>
+                <span aria-current="true">English</span>
+            </li>
+            <li class="hmrc-language-select__list-item">
+                <a href="/?lng=cy" hreflang="cy" lang="cy" rel="alternate" class="govuk-link">
+                  <span class="govuk-visually-hidden">Newid yr iaith i'r Gymraeg</span>
+                  <span aria-hidden="true">Gymraeg</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
       <div class="govuk-width-container">
         <main class="govuk-main-wrapper app-container govuk-body" id="main-content">
   <div class="govuk-grid-row">
@@ -1326,8 +1380,8 @@ exports[`court-information-common-platform-unavailable 1`] = `
         <div class="govuk-notification-banner__content">
           <h3 class="govuk-notification-banner__heading">Sorry, there is a problem with the court information service</h3>
           <p class="govuk-body">Try again later.</p>
-          <p class="govuk-body">If you need information about a court, use the <a href="https://www.find-court-tribunal.service.gov.uk/" class="govuk-link" target="_blank">Find a court or tribunal service (opens in new tab)</a>.</p>
-          <p class="govuk-body">If you need an update on your case, you can contact the police. Find their contact details on any letter they have sent you, or <a href="https://www.police.uk/pu/find-a-police-force/" class="govuk-link" target="_blank">find your local police force (opens in new tab)</a>.</p>
+          <p class="govuk-body">If you need information about a court, use the <a href="https://www.find-court-tribunal.service.gov.uk" class="govuk-link" target="_blank">Find a court or tribunal service (opens in new tab)</a>.</p>
+          <p class="govuk-body">If you need an update on your case, you can contact the police. Find their contact details on any letter they have sent you, or <a href="https://www.police.uk/pu/find-a-police-force" class="govuk-link" target="_blank">find your local police force (opens in new tab)</a>.</p>
         </div>
       </div>
 <h2 class="govuk-heading-m">If you're going to court</h2>
@@ -1343,17 +1397,17 @@ exports[`court-information-common-platform-unavailable 1`] = `
 <h2 class="govuk-heading-m">Who you can contact</h2>
 <p class="govuk-body">If you have any questions, you can contact your police:</p>
 <ul class="govuk-list govuk-list--bullet">
-  <li>witness care unit (WCU)</li>
-  <li>officer in charge of the investigation (OIC)</li>
+    <li>witness care unit (WCU)</li>
+    <li>officer in charge of the investigation (OIC)</li>
 </ul>
-<p class="govuk-body">Find their contact details on any letter they have sent you, or <a href="https://www.police.uk/pu/find-a-police-force/" class="govuk-link" target="_blank">find your local police force (opens in new tab)</a>.</p>
+<p class="govuk-body">Find their contact details on any letter they have sent you, or <a href="https://www.police.uk/pu/find-a-police-force" class="govuk-link" target="_blank">find your local police force (opens in new tab)</a>.</p>
     </div>
   </div>
         </main>
       </div>
 <script nonce="test-nonce" type="module">
   async function quickExit() {
-    const currentTabAddress = 'https://www.bbc.co.uk/'
+    const currentTabAddress = 'https://www.bbc.co.uk'
     const newTab = 'https://www.bbc.co.uk/weather'
     // ToDo: we should push custom event to dataLayer when quick-exit button was pressed
     // Open safe/neutral site in a new tab
@@ -1895,26 +1949,44 @@ exports[`court-information-inactive 1`] = `
     </div>
     <div class="govuk-notification-banner__content">
       <h3 class="govuk-notification-banner__heading">
-        This service will be shut down on 1st August 2026
+        Track a case is closing
       </h3>
+      <p class="govuk-body">This pilot service will close on 1st August 2026. This does <strong>not</strong> affect your case.</p>
       <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+      <p class="govuk-body">All existing users will be emailed with guidance about available support.</p>
     </div>
   </div>
 </nav>
+    <div class="govuk-width-container">
+      <nav class="hmrc-language-select" aria-label="Language switcher">
+        <ul class="hmrc-language-select__list">
+            <li class="hmrc-language-select__list-item">
+                <span class="govuk-visually-hidden">Change the language to English</span>
+                <span aria-current="true">English</span>
+            </li>
+            <li class="hmrc-language-select__list-item">
+                <a href="/?lng=cy" hreflang="cy" lang="cy" rel="alternate" class="govuk-link">
+                  <span class="govuk-visually-hidden">Newid yr iaith i'r Gymraeg</span>
+                  <span aria-hidden="true">Gymraeg</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
       <div class="govuk-width-container">
         <main class="govuk-main-wrapper app-container govuk-body" id="main-content">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l" title="Inactive">There are no further court dates for this case</h1>
       <p class="govuk-body">You can contact the police officer in charge of your case or the police witness care unit for any updates on the case.</p>
-      <p class="govuk-body">Find their contact details on any letter they have sent you, or <a href="https://www.police.uk/pu/find-a-police-force/" class="govuk-link" target="_blank">find your local police force (opens in new tab)</a>.</p>
+      <p class="govuk-body">Find their contact details on any letter they have sent you, or <a href="https://www.police.uk/pu/find-a-police-force" class="govuk-link" target="_blank">find your local police force (opens in new tab)</a>.</p>
     </div>
   </div>
         </main>
       </div>
 <script nonce="test-nonce" type="module">
   async function quickExit() {
-    const currentTabAddress = 'https://www.bbc.co.uk/'
+    const currentTabAddress = 'https://www.bbc.co.uk'
     const newTab = 'https://www.bbc.co.uk/weather'
     // ToDo: we should push custom event to dataLayer when quick-exit button was pressed
     // Open safe/neutral site in a new tab
@@ -2456,12 +2528,30 @@ exports[`court-information-no-hearings-allocated 1`] = `
     </div>
     <div class="govuk-notification-banner__content">
       <h3 class="govuk-notification-banner__heading">
-        This service will be shut down on 1st August 2026
+        Track a case is closing
       </h3>
+      <p class="govuk-body">This pilot service will close on 1st August 2026. This does <strong>not</strong> affect your case.</p>
       <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+      <p class="govuk-body">All existing users will be emailed with guidance about available support.</p>
     </div>
   </div>
 </nav>
+    <div class="govuk-width-container">
+      <nav class="hmrc-language-select" aria-label="Language switcher">
+        <ul class="hmrc-language-select__list">
+            <li class="hmrc-language-select__list-item">
+                <span class="govuk-visually-hidden">Change the language to English</span>
+                <span aria-current="true">English</span>
+            </li>
+            <li class="hmrc-language-select__list-item">
+                <a href="/?lng=cy" hreflang="cy" lang="cy" rel="alternate" class="govuk-link">
+                  <span class="govuk-visually-hidden">Newid yr iaith i'r Gymraeg</span>
+                  <span aria-hidden="true">Gymraeg</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
       <div class="govuk-width-container">
         <main class="govuk-main-wrapper app-container govuk-body" id="main-content">
   <div class="govuk-grid-row">
@@ -2476,7 +2566,7 @@ exports[`court-information-no-hearings-allocated 1`] = `
           <p class="govuk-body">There is no court information because the next trial or sentencing hearing has not been set.</p>
           <p class="govuk-body">This service only shows trial and sentencing hearing details.</p>
           <p class="govuk-body">The police will tell you if there are any updates.</p>
-          <p class="govuk-body">Find their contact details on any letter they have sent you, or <a href="https://www.police.uk/pu/find-a-police-force/" class="govuk-link" target="_blank">find your local police force (opens in new tab)</a>.</p>
+          <p class="govuk-body">Find their contact details on any letter they have sent you, or <a href="https://www.police.uk/pu/find-a-police-force" class="govuk-link" target="_blank">find your local police force (opens in new tab)</a>.</p>
         </div>
       </div>
 <h2 class="govuk-heading-m">If you're going to court</h2>
@@ -2492,17 +2582,17 @@ exports[`court-information-no-hearings-allocated 1`] = `
 <h2 class="govuk-heading-m">Who you can contact</h2>
 <p class="govuk-body">If you have any questions, you can contact your police:</p>
 <ul class="govuk-list govuk-list--bullet">
-  <li>witness care unit (WCU)</li>
-  <li>officer in charge of the investigation (OIC)</li>
+    <li>witness care unit (WCU)</li>
+    <li>officer in charge of the investigation (OIC)</li>
 </ul>
-<p class="govuk-body">Find their contact details on any letter they have sent you, or <a href="https://www.police.uk/pu/find-a-police-force/" class="govuk-link" target="_blank">find your local police force (opens in new tab)</a>.</p>
+<p class="govuk-body">Find their contact details on any letter they have sent you, or <a href="https://www.police.uk/pu/find-a-police-force" class="govuk-link" target="_blank">find your local police force (opens in new tab)</a>.</p>
     </div>
   </div>
         </main>
       </div>
 <script nonce="test-nonce" type="module">
   async function quickExit() {
-    const currentTabAddress = 'https://www.bbc.co.uk/'
+    const currentTabAddress = 'https://www.bbc.co.uk'
     const newTab = 'https://www.bbc.co.uk/weather'
     // ToDo: we should push custom event to dataLayer when quick-exit button was pressed
     // Open safe/neutral site in a new tab
@@ -3044,12 +3134,30 @@ exports[`court-information-not-found 1`] = `
     </div>
     <div class="govuk-notification-banner__content">
       <h3 class="govuk-notification-banner__heading">
-        This service will be shut down on 1st August 2026
+        Track a case is closing
       </h3>
+      <p class="govuk-body">This pilot service will close on 1st August 2026. This does <strong>not</strong> affect your case.</p>
       <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+      <p class="govuk-body">All existing users will be emailed with guidance about available support.</p>
     </div>
   </div>
 </nav>
+    <div class="govuk-width-container">
+      <nav class="hmrc-language-select" aria-label="Language switcher">
+        <ul class="hmrc-language-select__list">
+            <li class="hmrc-language-select__list-item">
+                <span class="govuk-visually-hidden">Change the language to English</span>
+                <span aria-current="true">English</span>
+            </li>
+            <li class="hmrc-language-select__list-item">
+                <a href="/?lng=cy" hreflang="cy" lang="cy" rel="alternate" class="govuk-link">
+                  <span class="govuk-visually-hidden">Newid yr iaith i'r Gymraeg</span>
+                  <span aria-hidden="true">Gymraeg</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
       <div class="govuk-width-container">
         <main class="govuk-main-wrapper app-container govuk-body" id="main-content">
   <div class="govuk-grid-row">
@@ -3065,7 +3173,7 @@ exports[`court-information-not-found 1`] = `
       </div>
 <script nonce="test-nonce" type="module">
   async function quickExit() {
-    const currentTabAddress = 'https://www.bbc.co.uk/'
+    const currentTabAddress = 'https://www.bbc.co.uk'
     const newTab = 'https://www.bbc.co.uk/weather'
     // ToDo: we should push custom event to dataLayer when quick-exit button was pressed
     // Open safe/neutral site in a new tab

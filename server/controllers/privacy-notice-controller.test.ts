@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+import { createMockT } from '../utils/testUtils'
 import paths from '../constants/paths'
 import privacyNoticeController from './privacy-notice-controller'
 
@@ -10,8 +11,10 @@ jest.mock('../helpers/initialise-basic-authentication', () => ({
 describe('privacy-notice-controller', () => {
   const createReqRes = (overrides?: { authenticated?: boolean; referer?: string }) => {
     const req = {
+      t: createMockT(),
+      language: 'en',
       headers: { referer: overrides?.referer },
-    } as Request
+    } as unknown as Request
     const res = {
       locals: { authenticated: overrides?.authenticated ?? false } as Record<string, unknown>,
       render: jest.fn(),
@@ -33,8 +36,8 @@ describe('privacy-notice-controller', () => {
   it('sets pageTitle and renders privacy-notice', async () => {
     const { req, res, next } = createReqRes()
     await privacyNoticeController(req, res, next)
-    expect(res.locals.pageTitle).toBe('Privacy notice')
-    expect(res.render).toHaveBeenCalledWith('pages/privacy-notice')
+    expect(res.locals.pageTitle).toBe('Privacy')
+    expect(res.render).toHaveBeenCalledWith('pages/privacy-notice.njk')
   })
 
   it('sets backLink to START when not authenticated', async () => {

@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+import { createMockT } from '../utils/testUtils'
 import paths from '../constants/paths'
 import witnessServiceController from './witness-service-controller'
 
@@ -8,12 +9,17 @@ jest.mock('../helpers/initialise-basic-authentication', () => ({
 }))
 
 describe('witness-service-controller', () => {
-  const createReqRes = () => {
-    const req = {} as Request
+  const createReqRes = (overrides?: { req?: Request; res?: Response }) => {
+    const req = {
+      t: createMockT(),
+      language: 'en',
+      ...overrides?.req,
+    } as Request
     const res = {
       locals: {} as Record<string, unknown>,
       render: jest.fn(),
-    } as unknown as Response
+      ...overrides?.res,
+    } as Response
     const next = jest.fn() as NextFunction
     return { req, res, next }
   }
@@ -31,7 +37,7 @@ describe('witness-service-controller', () => {
     await witnessServiceController(req, res, next)
     expect(res.locals.pageTitle).toBe('Get support giving evidence as a witness')
     expect(res.locals.backLink).toBe(paths.CASES.DASHBOARD)
-    expect(res.render).toHaveBeenCalledWith('pages/case/witness-service')
+    expect(res.render).toHaveBeenCalledWith('pages/case/witness-service.njk')
   })
 
   it('calls next(error) when an error is thrown', async () => {

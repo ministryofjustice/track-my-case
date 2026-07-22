@@ -1,0 +1,34 @@
+{
+  "pageTitle": "Home",
+  "introLead": "Defnyddiwch y gwasanaeth hwn i:",
+  "introItems": [
+    "ddod o hyd i wybodaeth am eich achos, gan gynnwys y gwrandawiad llys nesaf",
+    "ddod i wybod eich hawliau a sut mae'r system cyfiawnder troseddol yn gweithio",
+    "gael y gefnogaeth gywir"
+  ],
+  "whoHeading": "Ar gyfer pwy y mae'r gwasanaeth hwn?",
+  "whoLead": "Mae'r gwasanaeth hwn i bobl sydd wedi dioddef trosedd yng Nghymru a Lloegr a ble:",
+  "whoItems": [
+    "mae'r unigolyn neu'r bobl gafodd eu cyhuddo o'r drosedd wedi eu cyhuddo gan yr heddlu neu Wasanaeth Erlyn y Goron",
+    "mae o leiaf un o'r bobl gafodd eu cyhuddo o'r drosedd wedi bod mewn gwrandawiad llys am yr achos o leiaf unwaith"
+  ],
+  "notConfident": "Os nad ydych yn hyderus yn defnyddio cyfrifiaduron, efallai y byddai'n well gennych beidio â defnyddio Olrhain Achos - cysylltwch â'ch swyddog gofal tyst yr heddlu neu'r swyddog heddlu sy'n gyfrifol (OIC) am eich achos.",
+  "whatYouNeedHeading": "Beth ydych ei angen i ddefnyddio'r gwasanaeth hwn",
+  "whatYouNeed": "I ddefnyddio'r gwasanaeth beta preifat hwn, rydych angen y cyfrinair o'ch e-bost cadarnhad cofrestru.  Os ydych yn edrych ar wybodaeth llys, byddwch hefyd angen mewngofnodi i gyfrif One Login.",
+  "safetyHeading": "Eich cadw'n ddiogel",
+  "safety1": "Mae yna fotwm gadael sydyn ar bob tudalen o'r gwasanaeth hwn.   Os ydych angen cau'r wefan yn sydyn, cliciwch ar y botwm gadael yn gyflym neu gwasgwch yr allwedd shift 3 gwaith.",
+  "safety2": "Bydd y safle'n cau a bydd y safle BBC Weather yn agor yn ei le.  Ni fydd yn bosibl clicio yn ôl i'r dudalen yr oeddech arni yn y gwasanaeth hwn.",
+  "safety3": "Byddwch angen mewngofnodi i'r gwasanaeth eto i ddychwelyd i'r dudalen yr oeddech arni, pan mae'n ddiogel i chi wneud hynny.",
+  "startButton": "Dechrau nawr",
+  "relatedHeading": "Gwybodaeth gysylltiedig",
+  "relatedItems": [
+    {
+      "text": "Gwybodaeth a chefnogaeth i ddioddefwyr a thystion ar wefan Gwasanaeth Erlyn y Goron",
+      "url": "https://www.cps.gov.uk/information-and-support-victims-witnesses"
+    },
+    {
+      "text": "Prosesau cyfreithiol, llysoedd a'r heddlu",
+      "url": "https://www.gov.uk/browse/justice"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+import { createMockT } from '../utils/testUtils'
 import paths from '../constants/paths'
 import aboutTheServiceController from './about-the-service-controller'
 
@@ -10,8 +11,10 @@ jest.mock('../helpers/initialise-basic-authentication', () => ({
 describe('about-the-service-controller', () => {
   const createReqRes = (overrides?: { authenticated?: boolean; referer?: string }) => {
     const req = {
+      t: createMockT(),
+      language: 'en',
       headers: { referer: overrides?.referer },
-    } as Request
+    } as unknown as Request
     const res = {
       locals: { authenticated: overrides?.authenticated ?? false } as Record<string, unknown>,
       render: jest.fn(),
@@ -34,7 +37,7 @@ describe('about-the-service-controller', () => {
     const { req, res, next } = createReqRes()
     await aboutTheServiceController(req, res, next)
     expect(res.locals.pageTitle).toBe('About the Track a case service')
-    expect(res.render).toHaveBeenCalledWith('pages/about-the-service')
+    expect(res.render).toHaveBeenCalledWith('pages/about-the-service.njk')
   })
 
   it('sets backLink to START when not authenticated', async () => {

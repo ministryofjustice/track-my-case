@@ -1,20 +1,21 @@
 
-<h2 class="govuk-heading-m">If you're going to court</h2>
-<p class="govuk-body">You usually only need to go to a court hearing or trial if you are giving evidence as a witness. Your police witness care unit (WCU) or officer in charge of the investigation (OIC) will tell you.</p>
-<p class="govuk-body">If you're going to court to give evidence, find out:</p>
+<h2 class="govuk-heading-m">{{ t('court-info-generic:goingToCourtHeading') }}</h2>
+<p class="govuk-body">{{ t('court-info-generic:goingToCourtP1') }}</p>
+<p class="govuk-body">{{ t('court-info-generic:goingToCourtP2') }}</p>
 <ul class="govuk-list govuk-list--bullet">
-  <li><a href="https://www.gov.uk/going-to-court-victim-witness" class="govuk-link" target="_blank">how to prepare (opens in new tab)</a></li>
-  <li><a href="https://www.gov.uk/guidance/what-to-expect-coming-to-a-court-or-tribunal" class="govuk-link" target="_blank">what to expect, including what to bring and what to wear (opens in new tab)</a></li>
+  <li><a href="{{ t('court-info-generic:urls.goingToCourt') }}" class="govuk-link" target="_blank">{{ t('court-info-generic:goingToCourtLinks.0') }}</a></li>
+  <li><a href="{{ t('court-info-generic:urls.whatToExpect') }}" class="govuk-link" target="_blank">{{ t('court-info-generic:goingToCourtLinks.1') }}</a></li>
 </ul>
 
-<h2 class="govuk-heading-m">Get support through the court process</h2>
-<p class="govuk-body">If you are going to court to give evidence, the Witness Service can help you prepare, and support you throughout the trial.</p>
-<p class="govuk-body">Get help with the court process by using <a href="https://witnessservice.org.uk/" class="govuk-link" target="_blank">the Witness Service (opens in new tab)</a>.</p>
+<h2 class="govuk-heading-m">{{ t('court-info-generic:supportHeading') }}</h2>
+<p class="govuk-body">{{ t('court-info-generic:supportP1') }}</p>
+<p class="govuk-body">{{ t('court-info-generic:supportP2Before') }} <a href="{{ t('common:urls.witnessService') }}" class="govuk-link" target="_blank">{{ t('court-info-generic:supportP2Link') }}</a>.</p>
 
-<h2 class="govuk-heading-m">Who you can contact</h2>
-<p class="govuk-body">If you have any questions, you can contact your police:</p>
+<h2 class="govuk-heading-m">{{ t('court-info-generic:contactHeading') }}</h2>
+<p class="govuk-body">{{ t('court-info-generic:contactP1') }}</p>
 <ul class="govuk-list govuk-list--bullet">
-  <li>witness care unit (WCU)</li>
-  <li>officer in charge of the investigation (OIC)</li>
+  {% for item in t('court-info-generic:contactItems', {returnObjects: true}) %}
+    <li>{{ item }}</li>
+  {% endfor %}
 </ul>
-<p class="govuk-body">Find their contact details on any letter they have sent you, or <a href="https://www.police.uk/pu/find-a-police-force/" class="govuk-link" target="_blank">find your local police force (opens in new tab)</a>.</p>
+<p class="govuk-body">{{ t('court-info-generic:contactP2Before') }} <a href="{{ t('common:urls.policeForce') }}" class="govuk-link" target="_blank">{{ t('court-info-generic:contactP2Link') }}</a>.</p>

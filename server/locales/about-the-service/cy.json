@@ -1,0 +1,26 @@
+{
+  "pageTitle": "Am y gwasanaeth Olrhain Achos",
+  "heading": "Am wasanaeth {{applicationName}}",
+  "insetStrong": "Os oes angen help arnoch gyda'ch achos",
+  "insetBody": "Cysylltwch â'ch swyddog gofal tyst yr heddlu os oes gennych unrhyw gwestiynau am eich achos.",
+  "earlyVersion": "Rydych yn gweld fersiwn cynnar iawn ('beta preifat') o wasanaeth {{applicationName}}.",
+  "designedFor": "Mae'r gwasanaeth hwn wedi'i gynllunio ar gyfer pobl sydd wedi profi trosedd sydd wedi mynd i'r llys. Mae'n anelu i'ch helpu i:",
+  "aimsItems": [
+    "dod o hyd i'r holl wybodaeth sydd ei angen arnoch i fynd drwy'r broses cyfiawnder",
+    "gwybod beth mae angen i chi ei wneud",
+    "gwybod beth yw eich hawliau"
+  ],
+  "addingFeatures": "Rydym yn dal i ychwanegu nodweddion newydd i'r gwasanaeth, a gallwch helpu i'w lunio.",
+  "helpShape": "Drwy lenwi ein ffurflen adborth neu ymuno â'n panel ymchwil, gallwch roi eich barn i ni a'n helpu i ddeall sut y gall y gwasanaeth eich helpu'n well.",
+  "feedbackHeading": "Llenwi'r ffurflen adborth",
+  "feedbackText": "Dywedwch wrthym beth yw eich barn am y gwasanaeth hyd yn hyn.",
+  "feedbackLinkText": "Llenwi ffurflen adborth {{applicationName}} (yn agor mewn tab newydd)",
+  "feedbackLinkUrl": "https://www.smartsurvey.co.uk/s/TMCVS1/",
+  "researchHeading": "Ymuno â phanel ymchwil {{applicationName}}",
+  "researchIntro": "Pan fyddwch yn ymuno â'n panel, gallwch fod yn un o'r cyntaf i roi cynnig ar ein nodweddion newydd a'n helpu i lunio'r gwasanaeth.",
+  "researchInvited": "Efallai y byddwch hefyd yn cael gwahoddiad gan ein hymchwilwyr i gymryd rhan mewn:",
+  "researchItems": ["arolygon", "galwadau ffôn", "profi ar-lein"],
+  "researchOpt": "Gallwch gymryd rhan fel y dymunwch, a gallwch optio allan unrhyw bryd. Nid oes angen i chi fod yn dda gyda chyfrifiaduron na'r rhyngrwyd i gymryd rhan.",
+  "researchLinkText": "Ymuno â phanel ymchwil {{applicationName}} (yn agor mewn tab newydd)",
+  "researchLinkUrl": "https://portal.consentkit.com/28f0e99a-6ff0-45c6-910a-23f80ee460e3"
+}

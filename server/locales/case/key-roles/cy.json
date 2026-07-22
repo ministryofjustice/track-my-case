@@ -1,0 +1,110 @@
+{
+  "pageTitle": "Pobl yn y system cyfiawnder troseddol",
+  "heading": "Pobl yn y system cyfiawnder troseddol",
+  "subheading": "Mae'r canllawiau hyn yn berthnasol i'r system cyfiawnder troseddol yng Nghymru a Lloegr.",
+  "intro1": "Pan fydd achos yn mynd i'r llys, y bobl rydych yn debyg o gael y cyswllt mwyaf gyda nhw yw'r canlynol o'r heddlu lleol:",
+  "introList1": ["swyddog gofal tyst yr heddlu (WCO)", "swyddog heddlu sy'n gyfrifol (OIC)"],
+  "intro2": "Os ydych yn mynd i'r llys i roi tystiolaeth, byddwch yn cwrdd ac yn derbyn cefnogaeth gan y:",
+  "introList2": [
+    "gwirfoddolwr o'r Gwasanaeth Tyst, os ydych wedi cyfeirio eich hun atynt",
+    "tywysydd llys",
+    "Swyddog Paragyfreithiol Gwasanaeth Erlyn y Goron"
+  ],
+  "experienced": {
+    "heading": "Rhywun sydd wedi profi trosedd",
+    "para1": "Pan fyddwch yn profi trosedd, cyfeirir yn aml atoch fel 'dioddefwr'.",
+    "para2": "Fel dioddefwr, byddwch fel arfer yn brif 'dyst' yn yr achos. Mae'n bosibl y gofynnir i chi fynd i'r treial fel tyst.  Fel tyst, byddwch yn dweud wrth y llys yr hyn rydych yn ei wybod am y trosedd - rhoi tystiolaeth."
+  },
+  "accused": {
+    "heading": "Rhywun a gyhuddir neu a gafwyd yn euog o drosedd",
+    "suspect": {
+      "heading": "Unigolyn a ddrwgdybir",
+      "para1": "Gelwir unigolyn a gyhuddir o drosedd ac sy'n cael ei archwilio gan yr heddlu yn unigolyn a ddrwgdybir."
+    },
+    "defendant": {
+      "heading": "Diffynnydd",
+      "para1": "Pan fydd achos yn cyrraedd y llys ac nes iddynt eu cael yn euog, cyfeirir at unigolyn a gyhuddir o drosedd yn ddiffynnydd."
+    },
+    "convicted": {
+      "heading": "Unigolyn a gafwyd yn euog o drosedd, unigolyn yn y carchar neu unigolyn ar brawf",
+      "para1": "Pan ganfyddir unigolyn yn euog o drosedd, maent yn cael eu dedfrydu yn y llys. Mae'n bosibl y byddant yn cael dedfryd o garchar neu'n cael eu rhoi ar brawf."
+    }
+  },
+  "policeStation": {
+    "heading": "Yng ngorsaf yr heddlu",
+    "policeOfficer": {
+      "heading": "Swyddog Heddlu",
+      "para1": "Mae swyddogion yr heddlu yn ymchwilio i droseddau, arestio a gwarchod diogelwch y cyhoedd."
+    },
+    "officerInCharge": {
+      "heading": "Swyddog heddlu sy'n gyfrifol",
+      "para1": "Mae swyddog sy'n gyfrifol (OIC) yn gyfrifol am eich achos.  Dyma pwy y gallwch gysylltu â nhw os oes gennych unrhyw gwestiynau am eich achos."
+    },
+    "witnessCareOfficer": {
+      "heading": "Swyddog gofal tyst yr heddlu",
+      "para1": "Bydd swyddog gofal tyst yr heddlu fel arfer yn cael ei neilltuo i chi, er ei bod yn bosibl y gallwch glywed gan aelodau eraill o uned gofal tyst yr heddlu (WCU). Efallai y bydd rhai heddluoedd yn defnyddio enwau gwahanol ar gyfer y rôl a'r uned hon, fel 'cymorth i ddioddefwyr'.",
+      "para2": "Byddant yn rhoi diweddariad i chi am gynnydd yr achos, o pan fydd rhywun yn cael ei gyhuddo o drosedd, i'r canlyniad yn y llys.",
+      "para3": "Mae swyddog gofal tyst yr heddlu yn rôl weinyddol, ac nid oes ganddynt yr un awdurdod â swyddog yr heddlu."
+    }
+  },
+  "atCourt": {
+    "heading": "Yn y llys",
+    "courtClerk": {
+      "heading": "Clerc y llys",
+      "para1": "Mae clerc y llys yn rheoli'r llys ac yn ei baratoi ar gyfer treial.",
+      "para2": "Maent yn darllen ('rhoi'r) cyhuddiadau ffurfiol i'r diffynnydd ac yn cymryd llw gan y rheithgor os oes yna un. Maent hefyd yn gwneud nodiadau yn ystod y treial.",
+      "para3": "Mae clerc y llys yn eistedd yn nhu blaen y llys ac yn gwisgo gŵn du."
+    },
+    "courtUsher": {
+      "heading": "Tywysydd llys",
+      "para1": "Dylech edrych am y tywysydd os ydych yn mynd i'r llys - byddant yn eich helpu ac yn dweud wrthych lle i fynd.   Maent fel arfer yn gwisgo gŵn du.",
+      "para2": "Mae'r tywysydd yn paratoi'r llys ac yn sicrhau bod y tystion, diffynyddion a chyfreithwyr i gyd yno'n barod ar gyfer y gwrandawiad."
+    },
+    "cpsParalegal": {
+      "heading": "Swyddog Paragyfreithiol Gwasanaeth Erlyn y Goron",
+      "para1": "Mae swyddog paragyfreithiol Gwasanaeth Erlyn y Goron (CPS) yn gweithio ar gefnogi a pharatoi gwaith achos y llys, o ddechrau'r achos i ddiwedd y treial.",
+      "para2": "Yn y llys maent yn helpu i gynnal yr hyn sy'n digwydd, rheoli tystiolaeth a drafftio ceisiadau cyfreithiol.",
+      "para3": "Maent yn cydweithio gydag erlynydd Gwasanaeth Erlyn y Goron."
+    },
+    "cpsProsecutor": {
+      "heading": "Erlynydd Gwasanaeth Erlyn y Goron",
+      "para1": "Mae Gwasanaeth Erlyn y Goron (CPS) yn penderfynu pa un ai i ddod ag achosion troseddol i'r llys i 'erlyn' yr unigolyn neu'r bobl wnaeth gyflawni'r drosedd.",
+      "para2": "Gelwir eu cynrychiolydd yn erlynydd. Maent yn cydweithio gyda swyddog paragyfreithiol Gwasanaeth Erlyn y Goron."
+    },
+    "prosecutor": {
+      "heading": "Erlynydd neu fargyfreithiwr",
+      "para1": "Fel arfer erlynydd sydd mewn llys ynadon a bargyfreithiwr yn Llys y Goron.  Dyma'r unigolyn sy'n gwneud yr achos yn erbyn y diffynnydd.  Maent hefyd yn gofyn cwestiynau i dystion i'w helpu i gyflwyno eu hachos."
+    },
+    "witnessService": {
+      "heading": "Gwirfoddolwr Gwasanaeth Tyst",
+      "para1": "Gallwch gael cefnogaeth am ddim, cyfrinachol gan y Gwasanaeth Tyst ym mhob llys troseddol yng Nghymru a Lloegr.  Gall eich gwirfoddolwr Gwasanaeth Tyst eich helpu i baratoi os ydych angen mynd i'r llys a'ch cefnogi drwy'r dydd.  Mae mwy o wybodaeth ar gael yma am y gwasanaeth neu cyfeiriwch eich hun yn uniongyrchol –",
+      "linkText": "cysylltwch â'r Gwasanaeth Tyst (yn agor mewn tab newydd)"
+    }
+  },
+  "afterConviction": {
+    "heading": "Ar ôl i rywun gael ei gyhuddo o drosedd",
+    "probationOfficer": {
+      "heading": "Swyddog Prawf",
+      "para1": "Pan fydd unigolyn yn cael ei ganfod yn euog o drosedd, efallai y byddant yn derbyn 'dedfryd heb garcharu'. Gelwir hyn yn aml yn 'drwydded' neu 'ar brawf' ac mae'n gyfnod o amser ble gall yr unigolyn:",
+      "list": [
+        "fwrw rhan o'u dedfryd carchar a chael eu rhyddhau, ond rhaid dilyn rheolau penodol",
+        "derbyn dedfryd 'heb garcharu' yn hytrach na charchar, ble mae'n rhaid iddynt wisgo tag electronig neu wneud gwaith di-dâl neu wasanaeth cymunedol, er enghraifft"
+      ],
+      "para2": "Mae swyddogion prawf yn gyfrifol am bobl ar brawf.  Maent yn eu helpu i ddychwelyd i'r gymdeithas tra'n sicrhau eu bod yn cadw at reolau eu dedfryd neu ryddhau."
+    }
+  },
+  "throughoutProcess": {
+    "heading": "Trwy gydol y broses",
+    "victimCaseworker": {
+      "heading": "Gweithiwr achos dioddefwr, eiriolydd neu weithiwr cymorth",
+      "para1": "Mae yna sefydliadau ac elusennau a all gynnig cefnogaeth i chi yn ystod amrywiol gamau drwy'r broses cyfiawnder troseddol.",
+      "para2": "Mae'n bosibl y bydd pobl sy'n gweithio i'r sefydliadau hynny yn cael eu galw'n weithiwr achos dioddefwyr, eiriolydd neu weithiwr cymorth.",
+      "para3": "Yn dibynnu ar y math o drosedd, gallech gael cymorth gan:",
+      "list": [
+        "ymgynghorydd trais rhywiol annibynnol (ISVA)",
+        "ymgynghorydd trais domestig annibynnol (IDVA)",
+        "eiriolydd trais domestig annibynnol plant (CHIDVA)"
+      ]
+    }
+  }
+}

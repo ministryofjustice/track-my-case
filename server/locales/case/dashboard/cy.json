@@ -1,0 +1,35 @@
+{
+  "pageTitle": "Dashboard",
+  "card1": {
+    "title": "Dod o hyd i wybodaeth eich llys",
+    "desc": "Chwilio am y llys ble mae'r treial neu'r gwrandawiad nesaf yn cael ei gynnal. Rydych angen eich cyfeirnod unigryw (URN).",
+    "button": "Dod o hyd i'ch llys"
+  },
+  "card2": {
+    "title": "Y system cyfiawnder troseddol: cam wrth gam",
+    "desc": "Gweld pa gam yr ydych wedi'i gyrraedd a deall beth sy'n digwydd nesaf",
+    "button": "Canfod am y broses"
+  },
+  "card3": {
+    "title": "Pwy sy'n gwneud beth yn y system cyfiawnder troseddol",
+    "desc": "Dysgu am y bobl sy'n cyfrannu, gan gynnwys pwy fydd yn eich helpu pan fyddwch yn cael profiad o drosedd",
+    "button": "Gwybod pwy yw pwy"
+  },
+  "card4": {
+    "title": "Deall eich hawliau",
+    "desc": "Gan gynnwys gwneud datganiad personol dioddefwr, iawndal a'ch eiddo.",
+    "button": "Gwybodaeth am eich hawliau"
+  },
+  "card5": {
+    "title": "Dod o hyd i gymorth a chefnogaeth",
+    "desc": "Dod o hyd i elusennau a sefydliadau sy'n gallu rhoi cyngor a chefnogaeth i chi.",
+    "button": "Dod o hyd i gefnogaeth"
+  },
+  "helpNow": {
+    "heading": "Os oes arnoch angen cymorth nawr",
+    "police": "Os ydych mewn perygl uniongyrchol, ffoniwch yr heddlu: 999",
+    "samaritansPhone": "Y Samariaid: 116 123",
+    "samaritansWebsite": "www.samaritans.org (yn agor mewn tab newydd)",
+    "website": "Gwefan: "
+  }
+}
