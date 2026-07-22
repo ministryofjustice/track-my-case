@@ -187,6 +187,7 @@ exports[`court-information (active) 1`] = `
       </h3>
       <p class="govuk-body">This pilot service will close on 1st August 2026. This does <strong>not</strong> affect your case.</p>
       <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+      <p class="govuk-body">All existing users will be emailed with guidance about available support.</p>
     </div>
   </div>
 </nav>
@@ -764,6 +765,7 @@ exports[`court-information-access-denied 1`] = `
       </h3>
       <p class="govuk-body">This pilot service will close on 1st August 2026. This does <strong>not</strong> affect your case.</p>
       <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+      <p class="govuk-body">All existing users will be emailed with guidance about available support.</p>
     </div>
   </div>
 </nav>
@@ -1346,6 +1348,7 @@ exports[`court-information-common-platform-unavailable 1`] = `
       </h3>
       <p class="govuk-body">This pilot service will close on 1st August 2026. This does <strong>not</strong> affect your case.</p>
       <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+      <p class="govuk-body">All existing users will be emailed with guidance about available support.</p>
     </div>
   </div>
 </nav>
@@ -1950,6 +1953,7 @@ exports[`court-information-inactive 1`] = `
       </h3>
       <p class="govuk-body">This pilot service will close on 1st August 2026. This does <strong>not</strong> affect your case.</p>
       <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+      <p class="govuk-body">All existing users will be emailed with guidance about available support.</p>
     </div>
   </div>
 </nav>
@@ -2528,6 +2532,7 @@ exports[`court-information-no-hearings-allocated 1`] = `
       </h3>
       <p class="govuk-body">This pilot service will close on 1st August 2026. This does <strong>not</strong> affect your case.</p>
       <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+      <p class="govuk-body">All existing users will be emailed with guidance about available support.</p>
     </div>
   </div>
 </nav>
@@ -3133,6 +3138,7 @@ exports[`court-information-not-found 1`] = `
       </h3>
       <p class="govuk-body">This pilot service will close on 1st August 2026. This does <strong>not</strong> affect your case.</p>
       <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+      <p class="govuk-body">All existing users will be emailed with guidance about available support.</p>
     </div>
   </div>
 </nav>

@@ -187,6 +187,7 @@ exports[`matches snapshot 1`] = `
       </h3>
       <p class="govuk-body">This pilot service will close on 1st August 2026. This does <strong>not</strong> affect your case.</p>
       <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+      <p class="govuk-body">All existing users will be emailed with guidance about available support.</p>
     </div>
   </div>
 </nav>
