@@ -183,8 +183,9 @@ exports[`matches snapshot 1`] = `
         Track a case is closing
       </h3>
       <p class="govuk-body">This pilot service will close on 1st August 2026. This does <strong>not</strong> affect your case.</p>
-      <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
       <p class="govuk-body">All existing users will be emailed with guidance about available support.</p>
+      <p class="govuk-body">Contact your police witness care officer if you need to find out any details about your case.</p>
+      <p class="govuk-body">For more help, visit <a href="https://www.victimsupport.org.uk" class="govuk-link" target="_blank">https://www.victimsupport.org.uk</a>.</p>
     </div>
   </div>
 </nav>
