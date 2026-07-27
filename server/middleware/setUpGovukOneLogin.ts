@@ -19,6 +19,7 @@ import { convertToTitleCase, encryptValue } from '../utils/utils'
 declare module 'passport' {
   interface AuthenticateOptions {
     nonce?: string
+    ui_locales?: string
   }
 }
 
@@ -111,6 +112,7 @@ export const setUpGovukOneLogin = (sessionSecret: string): Router => {
     router.get(paths.PASSPORT.SIGN_IN, (req, res, next) => {
       passport.authenticate(config.apis.govukOneLogin.strategyName, {
         nonce: generators.nonce(),
+        ui_locales: req.language || config.apis.govukOneLogin.uiLocales,
       })(req, res, next)
     })
 

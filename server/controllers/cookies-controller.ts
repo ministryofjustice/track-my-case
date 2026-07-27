@@ -48,7 +48,7 @@ export const getCookiesController = async (req: Request, res: Response, next: Ne
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Cookies'
+    res.locals.pageTitle = req.t('cookies:pageTitle')
 
     if (res.locals.authenticated) {
       if (req.headers?.referer && new URL(req.headers?.referer)?.pathname === paths.START) {

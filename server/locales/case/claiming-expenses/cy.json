@@ -1,0 +1,51 @@
+{
+  "pageTitle": "Hawlio treuliau",
+  "pageHeading": "Deall eich hawliau",
+  "contentsHeading": "Cynnwys",
+  "nav.label": "Tudalennau yn y canllaw hwn",
+  "nav.victimPersonalStatement": "Gwneud Datganiad Personol Dioddefwr",
+  "nav.claimingExpenses": "Hawlio treuliau",
+  "nav.specialMeasures": "Mesurau arbennig",
+  "nav.requestingTranscript": "Gofyn am drawsgrifiad gwrandawiad llys",
+  "nav.understandCompensation": "Pryd y gallwch hawlio iawndal",
+  "nav.returnProperty": "Cael eich eiddo yn ôl",
+  "nav.victimsCode": "Cod Dioddefwyr",
+  "heading": "Hawlio treuliau",
+  "intro": "Pan fyddwch yn mynd i'r llys fel tyst neu rôl debyg, gallwch hawlio rhai treuliau gan Wasanaeth Erlyn y Goron (CPS).",
+  "whoCanClaimHeading": "Pwy all hawlio",
+  "whoCanClaimLead": "Gallwch hawlio treuliau os ydych yn mynychu cyfarfod cyn-treial neu dreial fel:",
+  "whoCanClaimItems": [
+    "tyst",
+    "tyst proffesiynol",
+    "rhiant neu warcheidwad tyst sydd o dan 18 mlwydd oed",
+    "gofalwr neu dyst sy'n oedolyn",
+    "unigolyn gyda chaniatâd i hawlio, er enghraifft rydych yn helpu tyst i fynd i'r llys"
+  ],
+  "whatYouCanClaimHeading": "Beth allwch chi ei hawlio",
+  "whatYouCanClaimLead": "Mae treuliau yn bethau sy'n costio arian i chi tra'n mynychu treial, er enghraifft:",
+  "whatYouCanClaimItems": [
+    "bwyd a diod",
+    "teithio",
+    "aros dros nos",
+    "colli enillion, er enghraifft oherwydd eich bod wedi gorfod cymryd amser i ffwrdd",
+    "gofal plant",
+    "gofal oedolyn"
+  ],
+  "claimLimits": "Mae yna derfynau i'r hyn y gallwch ei hawlio.",
+  "receiptsRequired": "Byddwch angen derbynebau a datganiadau banc sy'n dangos eich gwariant neu golli enillion.",
+  "howToClaimHeading": "Sut i hawlio",
+  "howToClaimIntro": "Gallwch hawlio gynted ag y byddwch wedi rhoi'r gorau i roi tystiolaeth fel tyst, hyd yn oed os yw'r treial yn parhau.",
+  "howToClaimLead": "I hawlio:",
+  "howToClaimItems": [
+    "Edrychwch allan am bosteri yn y llys gyda chod QR sy'n cysylltu i'r gwasanaeth ar-lein",
+    "gwneud cais ar-lein yn defnyddio <a href=\"https://claim-witness-expenses.cps.gov.uk/\" class=\"govuk-link\" target=\"_blank\">https://claim-witness-expenses.cps.gov.uk/ (opens in new tab)</a>"
+  ],
+  "findOutMoreHeading": "Gwybod mwy a gwneud cais",
+  "findOutMoreText": "Gwybodaeth am beth y gallwch ei hawlio, neu ddechrau cais ar y",
+  "findOutMoreLinkText": "Gwasanaeth hawlio costau tyst (yn agor mewn tab newydd)",
+  "victimSupportText": "Gallwch hefyd gael cymorth gyda gwneud cais am dreuliau gan",
+  "victimSupportLinkText": "Cymorth i Ddioddefwyr (yn agor mewn tab newydd)",
+  "urls": {
+    "claimWitnessExpenses": "https://claim-witness-expenses.cps.gov.uk/"
+  }
+}

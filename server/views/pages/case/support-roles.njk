@@ -7,22 +7,22 @@
     <div class="govuk-grid-column-two-thirds">
       <div class="gem-c-heading govuk-!-margin-bottom-8">
         <h1 class="gem-c-heading__text govuk-heading-xl">
-          Understand the process
+          {{ t('support-roles:heading.main') }}
         </h1>
       </div>
       <aside class="part-navigation-container" role="complementary">
         <nav data-module="ga4-link-tracker" aria-label="Pages in this guide" class="gem-c-contents-list govuk-!-margin-bottom-4" data-ga4-link-tracker-module-started="true">
           <h2 class="gem-c-contents-list__title">
-            Contents
+            {{ t('support-roles:contents.title') }}
           </h2>
           <ol class="gem-c-contents-list__list">
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              Key roles in the criminal justice system
+              {{ t('support-roles:contents.keyRoles') }}
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victims-journey">Victims’ journey</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/victims-journey">{{ t('support-roles:contents.victimsJourney') }}</a>
             </li>
           </ol>
         </nav>
@@ -31,41 +31,41 @@
   </div>
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
     <div class="govuk-grid-column-two-thirds">
-      <h2 class="govuk-heading-l">Key roles in the criminal justice system</h2>
+      <h2 class="govuk-heading-l">{{ t('support-roles:section.keyRoles.heading') }}</h2>
       <div class="promo-panel__image govuk-!-margin-bottom-6">
         <img src="/assets/images/cjc-banner.jpg" alt="" class="promo-panel__image-content" />
       </div>
-      <p class="govuk-body">To better support you, we've provided information on the various roles and responsibilities within the criminal justice system.</p>
+      <p class="govuk-body">{{ t('support-roles:section.keyRoles.intro') }}</p>
 
-      <h2 class="govuk-heading-m" id="police-officers">Court Ushers</h2>
-      <p class="govuk-body">They prepare the court room and ensure that witnesses, defendants, and lawyers are present.</p>
+      <h2 class="govuk-heading-m" id="police-officers">{{ t('support-roles:role.courtUshers.heading') }}</h2>
+      <p class="govuk-body">{{ t('support-roles:role.courtUshers.body') }}</p>
 
-      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">Crown Prosecution Service (CPS) Prosecutors</h2>
-      <p class="govuk-body">They decide whether to bring cases to court and prosecute criminal cases on behalf of the state.</p>
+      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">{{ t('support-roles:role.cpsprosecutors.heading') }}</h2>
+      <p class="govuk-body">{{ t('support-roles:role.cpsprosecutors.body') }}</p>
 
-      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">Defence Solicitors and Barristers</h2>
-      <p class="govuk-body">They represent the accused, ensuring their legal rights are protected and providing a defence in court.</p>
+      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">{{ t('support-roles:role.defenceSolicitors.heading') }}</h2>
+      <p class="govuk-body">{{ t('support-roles:role.defenceSolicitors.body') }}</p>
 
-      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">Judges and Magistrates</h2>
-      <p class="govuk-body">They oversee court proceedings, make rulings on legal matters, and ensure trials are conducted fairly.</p>
+      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">{{ t('support-roles:role.judgesMagistrates.heading') }}</h2>
+      <p class="govuk-body">{{ t('support-roles:role.judgesMagistrates.body') }}</p>
 
-      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">Legal Advisers</h2>
-      <p class="govuk-body">A lawyer who advises magistrates and guides proceedings.</p>
+      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">{{ t('support-roles:role.legalAdvisers.heading') }}</h2>
+      <p class="govuk-body">{{ t('support-roles:role.legalAdvisers.body') }}</p>
 
-      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">Police Officers</h2>
-      <p class="govuk-body">They investigate crimes, make arrests, and ensure public safety. The officer in charge is responsible for overseeing the case.</p>
+      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">{{ t('support-roles:role.policeOfficers.heading') }}</h2>
+      <p class="govuk-body">{{ t('support-roles:role.policeOfficers.body') }}</p>
 
-      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">Police Witness Care Officers</h2>
-      <p class="govuk-body">They provide key updates about the progress of the case after somebody is charged through to a court outcome.</p>
+      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">{{ t('support-roles:role.policeWitnessCareofficers.heading') }}</h2>
+      <p class="govuk-body">{{ t('support-roles:role.policeWitnessCareofficers.body') }}</p>
 
-      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">Probation Officers</h2>
-      <p class="govuk-body">They supervise offenders in the community, helping them reintegrate into society while ensuring they comply with the terms of their release.</p>
+      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">{{ t('support-roles:role.probationOfficers.heading') }}</h2>
+      <p class="govuk-body">{{ t('support-roles:role.probationOfficers.body') }}</p>
 
-      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">Victim Caseworkers, Advocates, and Support Workers</h2>
-      <p class="govuk-body">These professionals provide support and assistance to victims of crime, helping them navigate the criminal justice process.</p>
+      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">{{ t('support-roles:role.victimCaseworkers.heading') }}</h2>
+      <p class="govuk-body">{{ t('support-roles:role.victimCaseworkers.body') }}</p>
 
-      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">Witness Service Volunteers</h2>
-      <p class="govuk-body">They give practical help to someone when going to court to give evidence.</p>
+      <h2 class="govuk-heading-m" id="crown-prosecution-service-prosecutors">{{ t('support-roles:role.witnessServiceVolunteers.heading') }}</h2>
+      <p class="govuk-body">{{ t('support-roles:role.witnessServiceVolunteers.body') }}</p>
     </div>
   </div>
 {% endblock %}

@@ -1,0 +1,19 @@
+<nav aria-label="{{ t('shutdownBanner.ariaLabel') }}" class="govuk-width-container govuk-!-margin-top-6">
+  <div class="govuk-notification-banner notification-banner--shutdown" role="alert" aria-labelledby="govuk-notification-banner-title"
+       data-module="govuk-notification-banner">
+    <div class="govuk-notification-banner__header">
+      <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+        {{ t('shutdownBanner.title') }}
+      </h2>
+    </div>
+    <div class="govuk-notification-banner__content">
+      <h3 class="govuk-notification-banner__heading">
+        {{ t('shutdownBanner.heading') }}
+      </h3>
+      <p class="govuk-body">{{ t('shutdownBanner.body') | safe }}</p>
+      <p class="govuk-body">{{ t('shutdownBanner.body2') }}</p>
+      <p class="govuk-body">{{ t('shutdownBanner.body3') }}</p>
+      <p class="govuk-body">{{ t('shutdownBanner.body4') }} <a href="{{ t('common:urls.victimSupport') }}" class="govuk-link" target="_blank">{{ t('common:urls.victimSupport') }}</a>.</p>
+    </div>
+  </div>
+</nav>

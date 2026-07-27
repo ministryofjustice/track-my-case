@@ -3,8 +3,8 @@
 <script nonce="{{ cspNonce }}" type="module">
 
   async function quickExit() {
-    const currentTabAddress = 'https://www.bbc.co.uk/'
-    const newTab = 'https://www.bbc.co.uk/weather'
+    const currentTabAddress = '{{ t("common:urls.bbcHome") }}'
+    const newTab = '{{ t("common:urls.bbcWeather") }}'
 
     // ToDo: we should push custom event to dataLayer when quick-exit button was pressed
 
@@ -163,7 +163,7 @@
 <div class="govuk-width-container govuk-exit-this-page" id="quick-exit-panel" role="region" aria-label="Quick exit">
   <div class="govuk-exit-this-page-button-wrapper">
     {{ govukButton({
-      text: "Quick exit",
+      text: t('common:quickExit.button'),
       type: "button",
       classes: "govuk-button--warning",
       attributes: {

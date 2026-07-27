@@ -1,0 +1,17 @@
+{
+  "pageTitle": "Gwybodaeth llys",
+  "heading": "Gwybodaeth llys",
+  "errorSummaryTitle": "Mae problem",
+  "urnLabel": "Cyfeirnod unigryw (URN)",
+  "hearingType": "Math o wrandawiad",
+  "hearingTypeHint": "Bydd y gwasanaeth hwn yn dangos treialon neu wrandawiadau dedfrydu yn unig.",
+  "expectedStartDate": "Dyddiad dechrau disgwyliedig",
+  "expectedToLast": "Disgwylir para",
+  "courtName": "Enw'r llys",
+  "courtNameHint": "Gall lleoliad y llys newid. Bydd eich uned gofal tyst yr heddlu neu'r swyddog sy'n gyfrifol am yr ymchwiliad yn eich diweddaru.",
+  "courtAddress": "Cyfeiriad y llys",
+  "courtInfo": "Gwybodaeth llys",
+  "courtInfoLink": "Gwybodaeth gan gynnwys cyfarwyddiadau, parcio a mynediad (yn agor mewn tab newydd)",
+  "findOtherCourts": "Dod o hyd i wybodaeth am lysoedd eraill (yn agor mewn tab newydd)",
+  "noCourtInfo": "Dim gwybodaeth llys ar gyfer yr achos hwn."
+}

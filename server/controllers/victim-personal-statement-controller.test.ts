@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+import { createMockT } from '../utils/testUtils'
 import paths from '../constants/paths'
 import victimPersonalStatementController from './victim-personal-statement-controller'
 
@@ -9,7 +10,7 @@ jest.mock('../helpers/initialise-basic-authentication', () => ({
 
 describe('victim-personal-statement-controller', () => {
   const createReqRes = () => {
-    const req = {} as Request
+    const req = { t: createMockT(), language: 'en' } as unknown as Request
     const res = {
       locals: {} as Record<string, unknown>,
       render: jest.fn(),
@@ -31,7 +32,7 @@ describe('victim-personal-statement-controller', () => {
     await victimPersonalStatementController(req, res, next)
     expect(res.locals.pageTitle).toBe('Making a Victim Personal Statement')
     expect(res.locals.backLink).toBe(paths.CASES.DASHBOARD)
-    expect(res.render).toHaveBeenCalledWith('pages/case/victim-personal-statement')
+    expect(res.render).toHaveBeenCalledWith('pages/case/victim-personal-statement.njk')
   })
 
   it('calls next(error) when an error is thrown', async () => {

@@ -1,0 +1,82 @@
+{
+  "applicationName": "Track a case",
+  "back": "Back",
+  "nav": {
+    "home": "Home"
+  },
+  "footer": {
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "research": "Take part in research"
+  },
+  "phase": {
+    "tag": "Beta",
+    "text": "This is a new service.",
+    "linkText": "Find out more and help us improve it"
+  },
+  "skipLink": {
+    "quickExit": "Quick Exit (press Shift or Escape three times)"
+  },
+  "quickExit": {
+    "button": "Quick exit"
+  },
+  "cookieBanner": {
+    "regionLabel": "Cookies on {{applicationName}}",
+    "heading": "Cookies on {{applicationName}}",
+    "essential": "We use essential small files (known as 'cookies') to make this service work.",
+    "analytics": "We would also like to use analytics cookies so we can understand how you use the service and make improvements.",
+    "accept": "Accept analytics cookies",
+    "reject": "Reject analytics cookies",
+    "viewCookies": "View cookies",
+    "acceptedPre": "You've accepted analytics cookies. You can",
+    "rejectedPre": "You've rejected analytics cookies. You can",
+    "changeSettings": "change your cookie settings",
+    "atAnyTime": "at any time.",
+    "hideMessage": "Hide cookie message"
+  },
+  "pageTitlePrefix": {
+    "noFurtherCourtDates": "No further court dates",
+    "noHearingsAllocated": "No hearings allocated",
+    "notFound": "Not found",
+    "badRequest": "Bad request",
+    "accessDenied": "Access denied",
+    "tooManyRequests": "Too many requests",
+    "commonPlatformUnavailable": "Common platform unavailable"
+  },
+  "urls": {
+    "findCourtTribunal": "https://www.find-court-tribunal.service.gov.uk",
+    "policeForce": "https://www.police.uk/pu/find-a-police-force",
+    "witnessService": "https://witnessservice.org.uk/",
+    "witnessServiceHelp": "https://witnessservice.org.uk/about/getting-help-from-the-witness-service/",
+    "samaritans": "https://www.samaritans.org",
+    "victimSupport": "https://www.victimsupport.org.uk",
+    "victimSupportHelp": "https://www.victimsupport.org.uk/help-and-support/get-help/",
+    "cpsEasyRead": "https://www.cps.gov.uk/information-and-support-victims/easy-read",
+    "bbcWeather": "https://www.bbc.co.uk/weather",
+    "bbcHome": "https://www.bbc.co.uk",
+    "cpsSpecialMeasures": "https://www.cps.gov.uk/victims-guide/victims-guide-support-give-your-evidence-special-measures",
+    "victimsCode": "https://www.gov.uk/government/publications/the-code-of-practice-for-victims-of-crime",
+    "victimsCodeFull": "https://www.gov.uk/government/publications/the-code-of-practice-for-victims-of-crime/code-of-practice-for-victims-of-crime-in-england-and-wales-victims-code"
+  },
+  "shutdownBanner": {
+    "ariaLabel": "Service shut down banner",
+    "title": "Important",
+    "heading": "Track a case is closing",
+    "body": "This pilot service will close on 1st August 2026. This does <strong>not</strong> affect your case.",
+    "body2": "All existing users will be emailed with guidance about available support.",
+    "body3": "Contact your police witness care officer if you need to find out any details about your case.",
+    "body4": "For more help, visit"
+  },
+  "feedback": {
+    "question": "Is this page useful?",
+    "yes": "Yes",
+    "yesHidden": "this page is useful",
+    "no": "No",
+    "noHidden": "this page is not useful",
+    "thanks": "Thank you for your feedback.",
+    "helpHeading": "Help us improve {{applicationName}}",
+    "sorry": "We are sorry you did not find the page useful.",
+    "tellUs": "Tell us what you think (opens in a new tab).",
+    "cancel": "Cancel"
+  }
+}

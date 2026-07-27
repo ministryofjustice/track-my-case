@@ -1,0 +1,78 @@
+{
+  "pageTitle": "Cod Dioddefwyr",
+  "heading": "Deall eich hawliau",
+  "contents": {
+    "title": "Cynnwys",
+    "nav": {
+      "ariaLabel": "Tudalennau yn y canllaw hwn",
+      "victimPersonalStatement": "Gwneud Datganiad Personol Dioddefwr",
+      "claimingExpenses": "Hawlio treuliau",
+      "specialMeasures": "Mesurau arbennig",
+      "requestingTranscript": "Gofyn am drawsgrifiad gwrandawiad llys",
+      "understandCompensation": "Pryd y gallwch hawlio iawndal",
+      "returnProperty": "Cael eich eiddo yn ôl",
+      "victimsCode": "Cod Dioddefwyr"
+    }
+  },
+  "rightsHeading": "Eich hawliau pan fyddwch yn profi trosedd",
+  "intro1": "Pan fyddwch yn profi trosedd, mae gennych rai hawliau yn awtomatig fel 'dioddefwr' o dan y gyfraith.   Maent yn cynnwys sicrhau eich bod yn cael eich hysbysu am y broses a'r gefnogaeth sydd ar gael i chi.",
+  "intro2": "Mae'r hawliau hyn wedi eu hysgrifennu yn y Cod Ymarfer Dioddefwyr Trosedd yng Nghymru a Lloegr (Cod Dioddefwyr). Dyma grynodeb o'r 12 hawl.",
+  "summaryHeading": "Crynodeb o hawliau Cod Dioddefwyr",
+  "right1": {
+    "heading": "1. Gallu deall a chael eich deall",
+    "para1": "Mae gennych hawl i gael gwybodaeth mewn ffordd sy'n hawdd i'w deall a derbyn cymorth i gael eich deall, gan gynnwys, ble bo'r angen, mynediad i wasanaeth cyfieithu."
+  },
+  "right2": {
+    "heading": "2. I gael cofnodi manylion y drosedd heb oedi sydd heb ei gyfiawnhau",
+    "para1": "Mae gennych yr hawl i gael cofnodi manylion y drosedd gan yr heddlu gynted â phosibl ar ôl y digwyddiad.",
+    "para2": "Os ydych angen rhoi datganiad tyst neu gael cyfweliad, mae gennych yr hawl i gael cefnogaeth ychwanegol i'ch cynorthwyo drwy'r broses hon."
+  },
+  "right3": {
+    "heading": "3. I gael gwybodaeth pan fyddwch yn rhoi gwybod am y drosedd",
+    "para1": "Mae gennych yr hawl i dderbyn cadarnhad ysgrifenedig pan fyddwch yn rhoi gwybod am drosedd, i gael gwybodaeth am y broses cyfiawnder troseddol a chael gwybod am raglenni neu wasanaethau i ddioddefwyr.",
+    "para2": "Gall hyn gynnwys gwasanaethau ble gallwch gwrdd â'r unigolyn a ddrwgdybir, a elwir yn gyfiawnder adferol."
+  },
+  "right4": {
+    "heading": "4. I gael eich cyfeirio i'r gwasanaethau sy'n cefnogi dioddefwyr a chael gwasanaethau a chefnogaeth wedi eu teilwra ar gyfer eich anghenion",
+    "para1": "Mae gennych hawl i gael eich cyfeirio i wasanaethau sy'n cefnogi dioddefwyr, gan gynnwys yr hawl i gysylltu â nhw yn uniongyrchol ac i gael asesu eich anghenion fel y gellir teilwra gwasanaethau a chefnogaeth i fodloni eich anghenion.",
+    "para2": "Os ydych yn gymwys, mae gennych hawl cael cynnig atgyfeiriad i wasanaethau cymorth arbenigol a chael gwybod am gefnogaeth ychwanegol ar gael yn y llys, er enghraifft mesurau arbennig."
+  },
+  "right5": {
+    "heading": "5. I gael gwybodaeth am iawndal",
+    "para1": "Ble bo'n gymwys, mae gennych hawl cael gwybod am sut i hawlio iawndal ar gyfer unrhyw golled, difrod neu anaf a achoswyd o ganlyniad i drosedd."
+  },
+  "right6": {
+    "heading": "6. I gael gwybodaeth am yr ymchwiliad ac erlyniad",
+    "para1": "Mae gennych hawl cael diweddariad ar eich achos a chael gwybod pan fydd penderfyniadau pwysig yn cael eu gwneud.  Mae gennych hefyd yr hawl, ar unrhyw gam o'r broses gyfiawnder, i ofyn i benderfyniadau gael eu hystyried eto gan y darparwr gwasanaeth perthnasol."
+  },
+  "right7": {
+    "heading": "7. Gwneud Datganiad Personol Dioddefwr",
+    "para1": "Mae gennych yr hawl i wneud Datganiad Personol Dioddefwr, sy'n dweud wrth y llys sut mae'r drosedd wedi effeithio arnoch chi ac ystyrir wrth ddedfrydu'r troseddwr. Byddwch yn derbyn gwybodaeth am y broses."
+  },
+  "right8": {
+    "heading": "8. I gael gwybodaeth am y treial, proses y treial a'ch rôl fel tyst",
+    "para1": "Os bydd eich achos yn mynd i'r llys, mae gennych hawl i gael gwybod yr amser, dyddiad a lleoliad unrhyw wrandawiad a chanlyniad y gwrandawiadau hynny mewn modd amserol.",
+    "para2": "Os ydych angen rhoi tystiolaeth, mae gennych yr hawl i gael cynnig cymorth priodol cyn y treial, a ble bo'n bosibl, os yw'r llys yn caniatau, i gwrdd â'r erlynydd cyn rhoi tystiolaeth."
+  },
+  "right9": {
+    "heading": "9. I gael gwybodaeth am ganlyniad yr achos ac unrhyw apeliadau",
+    "para1": "Mae gennych hawl i gael gwybod canlyniad yr achos, ac os bydd y diffynnydd yn ei gael yn euog, i gael eglurhad o'r ddedfryd.  Os bydd y troseddwr yn apelio yn erbyn eu heuogfarn neu ddedfryd, mae gennych yr hawl i gael gwybod am yr apêl a'r canlyniad."
+  },
+  "right10": {
+    "heading": "10. I gael costau a dychwelyd eiddo",
+    "para1": "Os ydych angen mynd i'r llys a rhoi tystiolaeth, mae gennych yr hawl i hawlio rhai costau.  Os cymerwyd unrhyw eiddo gennych fel tystiolaeth, mae gennych hawl i'w gael yn ôl gynted â phosibl."
+  },
+  "right11": {
+    "heading": "11. I gael gwybodaeth am y troseddwr yn dilyn euogfarn",
+    "para1": "Ble bo'n gymwys, mae gennych hawl i gael eich cyfeirio'n awtomatig i'r Cynllun Cyswllt Troseddwr, a fydd yn rhoi gwybodaeth i chi am y troseddwr a'u cynnydd yn y carchar, ac os ydynt yn gymwys i'w hystyried ar gyfer parôl neu eu rhyddhau.",
+    "para2": "Ble bo'n briodol, mae gennych hefyd yr hawl i wneud Datganiad Personol Dioddefwr newydd, ble gallwch ddweud sut mae'r drosedd yn parhau i effeithio arnoch chi."
+  },
+  "right12": {
+    "heading": "12. Gwneud cwyn am eich hawliau ddim yn cael eu bodloni",
+    "para1": "Os ydych yn credu nad ydych wedi derbyn eich hawliau, mae gennych hawl i wneud cwyn i'r darparwr gwasanaeth perthnasol.  Os ydych yn parhau'n anhapus, gallwch gysylltu gyda'r Ombwdsmon Seneddol a Gwasanaeth Iechyd."
+  },
+  "fullCodeLink": {
+    "before": "Darllenwch y",
+    "linkText": "Cod Ymarfer i Ddioddefwyr Trosedd yng Nghymru a Lloegr (Cod Dioddefwyr) (yn agor mewn tab newydd) yn llawn."
+  }
+}

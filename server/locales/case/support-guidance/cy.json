@@ -1,0 +1,79 @@
+{
+  "heading": "Ble i gael mwy o gefnogaeth a gwybodaeth",
+  "govuk.heading": "Dolenni GOV.UK",
+  "govuk.lead": "Dyma rai adnoddau defnyddiol o GOV.UK ar gyfer dioddefwyr trosedd. Mae'r dolenni hyn yn darparu gwybodaeth a chefnogaeth ar wahanol bynciau:",
+  "govuk.links": [
+    {
+      "text": "Canllawiau Hawdd eu Darllen i Ddioddefwyr (yn agor mewn tab newydd)",
+      "url": "https://www.cps.gov.uk/information-and-support-victims-witnesses/easy-read"
+    },
+    {
+      "text": "Cefnogaeth i ddioddefwyr trais a cham-drin rhywiol",
+      "url": "https://www.gov.uk/guidance/support-for-victims-of-sexual-violence-and-abuse"
+    },
+    {
+      "text": "Gwasanaethau dioddefwr a thyst",
+      "url": "https://www.gov.uk/guidance/victim-and-witness-services"
+    },
+    {
+      "text": "Iawndal a chymorth i ddioddefwyr",
+      "url": "https://www.gov.uk/browse/justice/compensation-victim-support"
+    },
+    {
+      "text": "Cael cefnogaeth fel dioddefwr trosedd",
+      "url": "https://www.gov.uk/get-support-as-a-victim-of-crime"
+    },
+    {
+      "text": "Cam-drin domestig: sut i gael help",
+      "url": "https://www.gov.uk/guidance/domestic-abuse-how-to-get-help"
+    },
+    {
+      "text": "Cefnogaeth trais a cham-drin rhywiol",
+      "url": "https://www.gov.uk/guidance/rape-and-sexual-assault-support"
+    },
+    {
+      "text": "Cam-drin seiliedig ar anrhydedd a phriodas orfodol",
+      "url": "https://www.gov.uk/guidance/honour-based-abuse-and-forced-marriage"
+    },
+    {
+      "text": "Caethwasiaeth fodern: sut i gael help",
+      "url": "https://www.gov.uk/guidance/modern-slavery-how-to-get-help"
+    }
+  ],
+  "charities.heading": "Dolenni Elusennau",
+  "charities.lead": "Isod mae dolenni i elusennau yn y DU sy'n cynnig cefnogaeth a chymorth i ddioddefwyr trosedd. Mae'r sefydliadau hyn yn darparu amrywiaeth o wasanaethau i'ch helpu drwy gyfnodau anodd:",
+  "charities.links": [
+    {
+      "text": "Cymorth i Ddioddefwyr",
+      "url": "https://www.victimsupport.org.uk/"
+    },
+    {
+      "text": "True Honour",
+      "url": "https://www.truehonour.org.uk/"
+    },
+    {
+      "text": "Karma Nirvana",
+      "url": "https://karmanirvana.org.uk/"
+    },
+    {
+      "text": "Trauma Breakthrough",
+      "url": "https://www.traumabreakthrough.org/"
+    },
+    {
+      "text": "Refuge",
+      "url": "https://www.refuge.org.uk/"
+    },
+    {
+      "text": "Women's Aid",
+      "url": "https://www.womensaid.org.uk/"
+    },
+    {
+      "text": "Rape Crisis England & Wales",
+      "url": "https://rapecrisis.org.uk/"
+    },
+    {
+      "text": "The Survivors Trust",
+      "url": "https://www.thesurvivorstrust.org/"
+    }
+  ]
+}

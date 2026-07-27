@@ -11,14 +11,14 @@
 
       {% if error %}
         <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
-          <h2 class="govuk-error-summary__title" id="error-summary-title">There is a problem</h2>
+          <h2 class="govuk-error-summary__title" id="error-summary-title">{{ t('court-information:errorSummaryTitle') }}</h2>
           <div class="govuk-error-summary__body">
             {{ error }}
           </div>
         </div>
       {% endif %}
 
-      <h1 class="govuk-heading-l govuk-!-margin-bottom-2" title="{{ selectedUrn }}">Court information</h1>
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-2" title="{{ selectedUrn }}">{{ t('court-information:heading') }}</h1>
 
     {% if hearingData %}
 
@@ -30,7 +30,7 @@
       {% endif %}
 
       {% set rows = [{
-        key: { text: "Unique reference number (URN)" },
+        key: { text: t('court-information:urnLabel') },
         value: {
           text: selectedUrn,
           classes: 'tmc-data-testid-urn'
@@ -40,13 +40,13 @@
       {% if displayHearing %}
         {% set rows = rows.concat([
           {
-            key: { text: "Hearing type" },
+            key: { text: t('court-information:hearingType') },
             value: { html: '<span class="tmc-data-testid-hearing-type">' + hearingData.hearingType + '</span>' +
-              '<p class="govuk-hint govuk-!-margin-top-3 tmc-data-testid-hearing-type-description">This service will only show trial or sentencing hearings.</p>'
+              '<p class="govuk-hint govuk-!-margin-top-3 tmc-data-testid-hearing-type-description">' + t('court-information:hearingTypeHint') + '</p>'
             }
           },
           {
-            key: { text: "Expected start date" },
+            key: { text: t('court-information:expectedStartDate') },
             value: {
               html: hearingData.sittingStart,
               classes: 'tmc-data-testid-expected-start-date'
@@ -56,7 +56,7 @@
         {% if hearingData.hearingOption === 'COURT_SITTINGS' %}
           {% set rows = rows.concat([
             {
-              key: { text: "Expected to last" },
+              key: { text: t('court-information:expectedToLast') },
               value: { html: '<span class="tmc-data-testid-expected-to-last" title="' + hearingData.sittingPeriodTooltip + '">' + hearingData.sittingPeriod + '</span>' }
             }
           ]) %}
@@ -65,14 +65,14 @@
 
       {% set rows = rows.concat([
         {
-          key: { text: "Court name" },
+          key: { text: t('court-information:courtName') },
           value: {
             html: '<span class="tmc-data-testid-court-name">' + hearingData.location.courtHouseName + '</span>' ~
-            '<p class="govuk-hint govuk-!-margin-top-3 tmc-data-testid-court-name-description">The court location can change. Your police witness care unit or officer in charge of the investigation will update you.</p>'
+            '<p class="govuk-hint govuk-!-margin-top-3 tmc-data-testid-court-name-description">' + t('court-information:courtNameHint') + '</p>'
           }
         },
         {
-          key: { text: "Court address" },
+          key: { text: t('court-information:courtAddress') },
           value: {
             html: hearingData.location.addressLines | join(', ') ~
             ", " ~ hearingData.location.postcode ~ ", " ~ hearingData.location.country,
@@ -80,9 +80,9 @@
           }
         },
         {
-          key: { text: "Court information" },
+          key: { text: t('court-information:courtInfo') },
           value: {
-            html: '<a href="' + courtUrl + '" target="_blank">Information including directions, parking, and access (opens in new tab)</a>',
+            html: '<a href="' + courtUrl + '" target="_blank">' + t('court-information:courtInfoLink') + '</a>',
             classes: 'tmc-data-testid-court-information'
           }
         }
@@ -95,13 +95,13 @@
       </div>
 
       <p class="govuk-body">
-        <a href="https://www.find-court-tribunal.service.gov.uk" target="_blank">Find information about other courts (opens in new tab)</a>
+        <a href="{{ t('common:urls.findCourtTribunal') }}" target="_blank">{{ t('court-information:findOtherCourts') }}</a>
       </p>
 
       {% include "pages/case/court-information-generic-summary.njk" %}
 
     {% else %}
-      <p>No court information for this case.</p>
+      <p>{{ t('court-information:noCourtInfo') }}</p>
     {% endif %}
 
     </div>

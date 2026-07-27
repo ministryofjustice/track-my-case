@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+import { createMockT } from '../utils/testUtils'
 import paths from '../constants/paths'
 import { UP } from '../constants/healthStatus'
 import {
@@ -176,10 +177,11 @@ describe('isWithinOngoingMaintenanceWindow', () => {
 describe('getEnterUniqueReferenceNumber', () => {
   const createReqRes = (overrides?: { session?: Request['session']; query?: Request['query'] }) => {
     const req = {
-      session: {},
-      query: {},
-      ...overrides,
-    } as Request
+      t: createMockT(),
+      language: 'en',
+      session: overrides?.session ?? {},
+      query: overrides?.query ?? {},
+    } as unknown as Request
     const res = {
       locals: {} as Record<string, unknown>,
       render: jest.fn(),
@@ -227,7 +229,7 @@ describe('getEnterUniqueReferenceNumber', () => {
             formData: { selectedUrn: 'CASE123' },
           },
         },
-      } as unknown as Request['session'],
+      } as Request['session'],
     })
     mockGetServiceHealth.mockResolvedValue({ status: UP })
 
@@ -247,7 +249,7 @@ describe('getEnterUniqueReferenceNumber', () => {
             formData: { selectedUrn: '' },
           },
         },
-      } as unknown as Request['session'],
+      } as Request['session'],
     })
     res.locals.selectedUrn = 'existing'
     mockGetServiceHealth.mockResolvedValue({ status: UP })
@@ -281,14 +283,18 @@ describe('getEnterUniqueReferenceNumber', () => {
 })
 
 describe('postEnterUniqueReferenceNumber', () => {
-  const createReqRes = (body: { selectedUrn?: string }) => {
+  const createReqRes = (body: { selectedUrn?: string }, overrides?: { req?: Request; res?: Response }) => {
     const req = {
+      t: createMockT(),
+      language: 'en',
       body,
       session: {} as Request['session'],
+      ...overrides?.req,
     } as Request
     const res = {
       redirect: jest.fn(),
-    } as unknown as Response
+      ...overrides?.res,
+    } as Response
     const next = jest.fn() as NextFunction
     return { req, res, next }
   }
@@ -366,7 +372,7 @@ describe('postEnterUniqueReferenceNumber', () => {
   })
 
   it('calls next(error) when an exception is thrown', async () => {
-    const { req, res, next } = createReqRes({ selectedUrn: 'ABC123' })
+    const { req, res, next } = createReqRes({ selectedUrn: 'ABC123' }, {})
     req.session = null as unknown as Request['session']
 
     await postEnterUniqueReferenceNumber(req, res, next)

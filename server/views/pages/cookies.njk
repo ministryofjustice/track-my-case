@@ -7,17 +7,17 @@
 {% block content %}
   {% if errorList %}
     {{ govukErrorSummary({
-      titleText: "There is a problem",
+      titleText: t('cookies:errorSummaryTitle'),
       errorList: errorList
     }) }}
   {% endif %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">Cookies</h1>
+      <h1 class="govuk-heading-xl">{{ t('cookies:heading') }}</h1>
 
-      <p class="govuk-body">Cookies are small files saved on your phone, tablet or computer when you visit a website or use an online service.</p>
-      <p class="govuk-body">We use cookies to store information about how you use the '{{ applicationName }}' service, such as the pages you visit.</p>
+      <p class="govuk-body">{{ t('cookies:intro1') }}</p>
+      <p class="govuk-body">{{ t('cookies:intro2', {applicationName: applicationName}) }}</p>
 
       <form id="cookie-preferences" method="post">
         <input type="hidden" name="_csrf" value="{{ csrfToken }}">
@@ -26,39 +26,38 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h2 class="govuk-fieldset__heading govuk-heading-l govuk-!-margin-top-5">
-                Cookies used to improve the service
+                {{ t('cookies:analyticsHeading') }}
               </h2>
             </legend>
 
-            <p class="govuk-body">We use Google Analytics to measure how you use the service so we can improve it. We do not allow Google to use or share the data about how you use this service.</p>
-            <p class="govuk-body">Google Analytics sets cookies that store anonymised information about:</p>
+            <p class="govuk-body">{{ t('cookies:analyticsIntro') }}</p>
+            <p class="govuk-body">{{ t('cookies:analyticsIntro2') }}</p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>how you got to the service</li>
-              <li>the pages you visit on the service</li>
-              <li>how long you spend on each page</li>
-              <li>what you click on while you're visiting the service</li>
+              {% for item in t('cookies:analyticsItems', {returnObjects: true}) %}
+                <li>{{ item }}</li>
+              {% endfor %}
             </ul>
 
-            <h3 class="govuk-heading-m govuk-!-margin-top-5">Your '{{ applicationName }}' cookie preferences</h3>
+            <h3 class="govuk-heading-m govuk-!-margin-top-5">{{ t('cookies:preferencesHeading', {applicationName: applicationName}) }}</h3>
 
             {{ govukRadios({
               idPrefix: "cookiePreferenceAnalytics",
               name: "cookiePreferenceAnalytics",
               hint: {
-                html: "<p>Do you want to accept analytics cookies?</p>"
+                html: t('cookies:radioHint')
               },
               items: [
                 {
                   value: 'accepted',
                   checked: cookieAccepted === 'accepted',
-                  text: "Yes",
+                  text: t('cookies:radioYes'),
                   attributes: {
                     'data-cookie-preference': 'analytics'
                   }
                 },
                 {
                   value: 'rejected',
-                  text: "No",
+                  text: t('cookies:radioNo'),
                   checked: cookieAccepted === 'rejected',
                   attributes: {
                     'data-cookie-preference': 'analytics'
@@ -70,18 +69,18 @@
             }) }}
           </fieldset>
         </div>
-        <input type="submit" class="govuk-button" id="save-preferences" value="Save cookie preferences" />
+        <input type="submit" class="govuk-button" id="save-preferences" value="{{ t('cookies:saveButton') }}" />
       </form>
 
-      <h3 class="govuk-heading-m">Essential cookies</h3>
-      <p class="govuk-body">These cookies need to be on to allow you to use the '{{ applicationName }}' service.</p>
+      <h3 class="govuk-heading-m">{{ t('cookies:essentialHeading') }}</h3>
+      <p class="govuk-body">{{ t('cookies:essentialText', {applicationName: applicationName}) }}</p>
 
-      <h3 class="govuk-heading-m">Your progress when using the service</h3>
-      <p class="govuk-body">When you use the service, we'll set a cookie to remember your progress through this site. This cookie does not store your personal data and is deleted when you close this website.</p>
+      <h3 class="govuk-heading-m">{{ t('cookies:progressHeading') }}</h3>
+      <p class="govuk-body">{{ t('cookies:progressText') }}</p>
 
-      <h3 class="govuk-heading-m">Your cookie preferences</h3>
-      <p class="govuk-body">When you use the service, we'll set a cookie to remember your cookie preferences. This cookie does not store any personal data.</p>
-      <p class="govuk-body">It will be saved on your device for 1 year, or until you delete it.</p>
+      <h3 class="govuk-heading-m">{{ t('cookies:cookiePrefHeading') }}</h3>
+      <p class="govuk-body">{{ t('cookies:cookiePref1') }}</p>
+      <p class="govuk-body">{{ t('cookies:cookiePref2') }}</p>
     </div>
   </div>
 

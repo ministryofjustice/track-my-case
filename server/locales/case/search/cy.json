@@ -1,0 +1,23 @@
+{
+  "pageTitle": "Dod o hyd i'ch llys",
+  "errorSummary": {
+    "titleText": "Mae problem"
+  },
+  "banner": {
+    "important": "Pwysig",
+    "upcomingHeading": "Cynnal a chadw sydd ar ddod",
+    "upcomingText": "Bydd Dod o hyd i'ch llys yn anhygyrch rhwng 6pm Dydd Sadwrn a 1pm Dydd Sul.",
+    "ongoingHeading": "Cynnal a chadw parhaus",
+    "ongoingText": "Efallai na fydd y gwasanaeth ar gael rhwng 6pm Dydd Sadwrn a 1pm Dydd Sul."
+  },
+  "heading": "Dod o hyd i'ch llys",
+  "intro": "I ddod o hyd i'r llys ble mae'r gwrandawiad neu'r treial nesaf ar gyfer eich achos, mae angen eich cyfeirnod unigryw (URN) arnoch. Gallwch ddod o hyd iddo ar unrhyw lythyr neu e-bost gan yr heddlu neu Wasanaeth Erlyn y Goron.",
+  "input": {
+    "label": "Rhowch eich cyfeirnod unigryw",
+    "hint": "Fel arfer mae hwn yn 11 digid gyda chymysgedd o lythrennau a rhifau. Er enghraifft, 12QQ3456789"
+  },
+  "button": "Dod o hyd i lys",
+  "noUrnText": "Os na allwch ddod o hyd i'ch cyfeirnod unigryw, gofynnwch i'ch swyddog gofal tyst yr heddlu. Gallwch hefyd",
+  "noUrnLinkText": "chwilio pob llys (yn agor mewn tab newydd)",
+  "maintenanceNotice": "Nid yw'r gwasanaeth hwn ar gael o 6pm Dydd Sadwrn i 1pm Dydd Sul bob wythnos ar gyfer cynnal a chadw rheolaidd."
+}

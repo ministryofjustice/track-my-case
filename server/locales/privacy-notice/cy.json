@@ -1,0 +1,63 @@
+{
+  "pageTitle": "Preifatrwydd",
+  "heading": "Preifatrwydd",
+  "intro1": "Mae gwasanaeth {{applicationName}} yn cael ei ddarparu gan y Weinyddiaeth Gyfiawnder. Mae'r Weinyddiaeth Gyfiawnder wedi ymrwymo i ddiogelu a chadw eich gwybodaeth bersonol yn ddiogel.",
+  "intro2": "Mae'n bwysig eich bod yn darllen yr hysbysiad preifatrwydd hwn fel eich bod yn ymwybodol o sut a pham rydym yn defnyddio'r wybodaeth hon.",
+  "heading.whatDataWeCollect": "Pa ddata rydym yn ei gasglu",
+  "whatDataWeCollect.intro": "Rydym yn casglu ac yn defnyddio'r wybodaeth ganlynol:",
+  "whatDataWeCollect.items": [
+    "eich cyfeiriad e-bost",
+    "cwestiynau, ymholiadau neu adborth rydych yn eu nodi ac yn eu cadw, gan gynnwys eich cyfeiriad e-bost os byddwch yn penderfynu gadael adborth neu wirfoddoli i gymryd rhan mewn sesiynau ymchwil defnydd ôl-beta"
+  ],
+  "whatDataWeCollect.item.ipPre": "eich cyfeiriad Protocol Rhyngrwyd (IP), a manylion pa ",
+  "whatDataWeCollect.item.ipLink": "borwr gwe (yn agor mewn tab newydd)",
+  "whatDataWeCollect.item.ipPost": " a ddefnyddioch",
+  "whatDataWeCollect.item.cookiesPre": "gwybodaeth ar sut rydych yn defnyddio'r safle, ",
+  "whatDataWeCollect.item.cookiesLink": "gan ddefnyddio cwcis",
+  "whatDataWeCollect.item.cookiesPost": " a thechnegau tagio tudalennau",
+  "heading.whatWeDoWithYourData": "Beth rydym yn ei wneud gyda'ch data",
+  "whatWeDoWithYourData.para1": "Ni fydd unrhyw wybodaeth a rowch yn cael ei rhannu y tu allan i'r Weinyddiaeth Gyfiawnder, ac eithrio gyda darparwyr TG Weinyddiaeth Gyfiawnder sy'n darparu gwasanaethau i gynnal y gwasanaeth hwn.",
+  "whatWeDoWithYourData.para2": "Ni fyddwn yn:",
+  "whatWeDoWithYourData.willNotItems": ["gwerthu na rhentu data i drydydd partïon", "rhannu data gyda thrydydd partïon at ddibenion marchnata"],
+  "whatWeDoWithYourData.para3": "Mae'r rhan fwyaf o'r wybodaeth bersonol a ddefnyddiwn i:",
+  "whatWeDoWithYourData.useItems": [
+    "caniatáu eich mynediad i'r gwasanaeth ar gyfer beta preifat",
+    "cysylltu â chi os byddwch yn cofrestru i gymryd rhan mewn ymchwil defnyddwyr",
+    "deall perfformiad y gwasanaeth"
+  ],
+  "whatWeDoWithYourData.para4Pre": "Lle rydych yn rhoi eich caniatâd, rydym yn defnyddio ",
+  "whatWeDoWithYourData.para4Link": "Google Analytics (yn agor mewn tab newydd)",
+  "whatWeDoWithYourData.para4Post": " cwcis i gasglu gwybodaeth am sut rydych yn defnyddio {{applicationName}}. Mae hyn yn cynnwys eich cyfeiriadau Protocol Rhyngrwyd (IP).",
+  "heading.contactUs": "Cysylltwch â ni neu wneud cwyn",
+  "contactUs.intro": "Cysylltwch â ni os ydych:",
+  "contactUs.items": [
+    "â chwestiwn am unrhyw beth yn yr hysbysiad preifatrwydd hwn",
+    "yn credu bod eich data personol wedi'i gamddefnyddio neu ei gamreoli"
+  ],
+  "heading.peopleInPrison": "Pobl yn y carchar neu ar brawf",
+  "prisonAddress": "Branston Registry<br>Building 16, S & T Store<br>Burton Road<br>Branston<br>Burton-on-Trent<br>Staffordshire<br>DE14 3EG",
+  "prisonEmail.pre": "E-bost: ",
+  "prisonEmail.link": "data.access1@justice.gov.uk",
+  "heading.allOthers": "Pawb arall",
+  "allOthersAddress": "Disclosure Team<br>Post point 10.38<br>102 Petty France<br>London<br>SW1H 9AJ",
+  "allOthersEmail.pre": "E-bost: ",
+  "allOthersEmail.link": "data.access@justice.gov.uk",
+  "allOthers.para": "Os oes gennych unrhyw bryderon am ein defnydd o'ch data personol, gallwch gysylltu â swyddog diogelu data Weinyddiaeth Gyfiawnder y WG.",
+  "dpoAddress": "Data Protection Officer<br>Ministry of Justice<br>5th Floor, Post Point 5.18<br>102 Petty France<br>London<br>SW1H 9AJ",
+  "dpoEmail.pre": "E-bost: ",
+  "dpoEmail.link": "dpo@justice.gov.uk",
+  "ico.para": "Pan fyddwn yn gofyn am wybodaeth i chi, byddwn yn cydymffurfio â'r gyfraith. Os ydych yn ystyried bod eich gwybodaeth wedi'i thrin yn anghywir, gallwch gysylltu â Swyddfa'r Comisiynydd Gwybodaeth am gyngor annibynnol ar ddiogelu data.",
+  "icoAddress": "Information Commissioner's Office<br>Wycliffe House<br>Water Lane<br>Wilmslow<br>Cheshire<br>SK9 5AF",
+  "ico.telephone": "Rhif ffôn: 0303 123 1113",
+  "ico.websitePre": "Gwefan ICO: ",
+  "ico.websiteLink": "https://www.ico.org.uk (opens in new tab)",
+  "heading.changesToPolicy": "Newidiadau i'r polisi hwn",
+  "changesToPolicy.para": "Gallwn newid yr hysbysiad preifatrwydd hwn. Os felly, bydd y dyddiad 'diweddarwyd ddiwethaf' ar waelod y dudalen hon hefyd yn newid. Bydd unrhyw newidiadau i'r hysbysiad preifatrwydd hwn yn berthnasol i chi a'ch data ar unwaith.",
+  "heading.dateOfLastUpdate": "Dyddiad y diweddariad diwethaf",
+  "lastUpdated": "13 Gorffennaf 2026",
+  "urls": {
+    "browsers": "https://www.gov.uk/help/browsers",
+    "googleAnalytics": "https://support.google.com/analytics/topic/2919631",
+    "ico": "https://www.ico.org.uk"
+  }
+}

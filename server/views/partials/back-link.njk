@@ -1,9 +1,9 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 
 {% if backLink %}
-  <nav aria-label="Back" class="govuk-width-container">
+  <nav aria-label="{{ t('common:back') }}" class="govuk-width-container">
     {{ govukBackLink({
-      text: "Back",
+      text: t('common:back'),
       href: backLink
     }) }}
   </nav>

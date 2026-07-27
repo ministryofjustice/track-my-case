@@ -85,14 +85,14 @@
       <div class="gem-c-feedback__prompt-content">
         <div class="gem-c-feedback__prompt-questions" id="feedback-form-options" tabindex="-1">
           <div class="gem-c-feedback__prompt-question-answer">
-            <h2 class="gem-c-feedback__prompt-question">Is this page useful?</h2>
+            <h2 class="gem-c-feedback__prompt-question">{{ t('common:feedback.question') }}</h2>
             <ul class="gem-c-feedback__option-list">
               <li class="gem-c-feedback__option-list-item">
                 <button class="govuk-button gem-c-feedback__prompt-link"
                         data-is-this-page-is-useful="true"
                         id="page-is-useful-yes-button"
                         data-ga4-event='{ "event_name": "form_submit", "type": "feedback", "text": "Yes", "section": "Is this page useful?", "tool_name": "Is this page useful?", "page_location": "{{ pageUrl }}", "page_title": "{{ pageTitle }}" }'>
-                  Yes <span class="govuk-visually-hidden">this page is useful</span>
+                  {{ t('common:feedback.yes') }} <span class="govuk-visually-hidden">{{ t('common:feedback.yesHidden') }}</span>
                 </button>
               </li>
               <li class="gem-c-feedback__option-list-item">
@@ -101,7 +101,7 @@
                         data-is-this-page-is-useful="false"
                         id="page-is-useful-no-button"
                         data-ga4-event='{ "event_name": "form_submit", "type": "feedback", "text": "No", "section": "Is this page useful?", "tool_name": "Is this page useful?", "page_location": "{{ pageUrl }}", "page_title": "{{ pageTitle }}" }'>
-                  No <span class="govuk-visually-hidden">this page is not useful</span>
+                  {{ t('common:feedback.no') }} <span class="govuk-visually-hidden">{{ t('common:feedback.noHidden') }}</span>
                 </button>
               </li>
             </ul>
@@ -111,16 +111,16 @@
         <div id="feedback-form-is-page-useful-yes-confirmation"
             class="govuk-!-display-none gem-c-feedback__prompt-questions gem-c-feedback__prompt-success"
              role="alert">
-          Thank you for your feedback.
+          {{ t('common:feedback.thanks') }}
         </div>
 
         <div id="feedback-form-is-page-useful-no-confirmation" class="govuk-!-display-none" role="alert">
           <div class="gem-c-feedback__prompt-failure">
-            <h2 class="gem-c-feedback__form-heading" tabindex="-1">Help us improve {{ applicationName }}</h2>
+            <h2 class="gem-c-feedback__form-heading" tabindex="-1">{{ t('common:feedback.helpHeading', {applicationName: applicationName}) }}</h2>
             <p id="feedback_explanation" class="gem-c-feedback__form-paragraph">
-              We are sorry you did not find the page useful.<br>
+              {{ t('common:feedback.sorry') }}<br>
               <a href="{{ "https://www.smartsurvey.co.uk/s/ESARVH/?url=" + pageUrl }}" target="_blank">
-                Tell us what you think (opens in a new tab).
+                {{ t('common:feedback.tellUs') }}
               </a>
             </p>
             <ul class="gem-c-feedback__option-list">
@@ -128,7 +128,7 @@
                 <button class="govuk-button gem-c-feedback__prompt-link gem-c-feedback__close"
                         data-is-this-page-is-useful="true"
                         id="feedback-form-is-page-useful-no-confirmation-cancel-button">
-                  Cancel
+                  {{ t('common:feedback.cancel') }}
                 </button>
               </li>
             </ul>

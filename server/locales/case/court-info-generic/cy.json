@@ -1,0 +1,22 @@
+{
+  "goingToCourtHeading": "Os ydych yn mynd i'r llys",
+  "goingToCourtP1": "Fel arfer dim ond os ydych yn rhoi tystiolaeth fel tyst y bydd angen i chi fynd i wrandawiad llys neu dreial. Bydd eich uned gofal tyst yr heddlu (WCU) neu'r swyddog sy'n gyfrifol am yr ymchwiliad (OIC) yn dweud wrthych.",
+  "goingToCourtP2": "Os ydych yn mynd i'r llys i roi tystiolaeth, darganfyddwch:",
+  "goingToCourtLinks": [
+    "sut i baratoi (yn agor mewn tab newydd)",
+    "beth i'w ddisgwyl, gan gynnwys beth i'w ddod a beth i'w wisgo (yn agor mewn tab newydd)"
+  ],
+  "supportHeading": "Cael cefnogaeth drwy'r broses lys",
+  "supportP1": "Os ydych yn mynd i'r llys i roi tystiolaeth, gall y Gwasanaeth Tyst eich helpu i baratoi a'ch cefnogi drwy gydol y treial.",
+  "supportP2Before": "Cewch help gyda'r broses lys drwy ddefnyddio",
+  "supportP2Link": "y Gwasanaeth Tyst (yn agor mewn tab newydd)",
+  "contactHeading": "Gyda phwy gallwch gysylltu",
+  "contactP1": "Os oes gennych unrhyw gwestiynau, gallwch gysylltu â'ch heddlu:",
+  "contactItems": ["uned gofal tyst (WCU)", "swyddog sy'n gyfrifol am yr ymchwiliad (OIC)"],
+  "contactP2Before": "Dewch o hyd i'w manylion cyswllt ar unrhyw lythyr a anfonwyd atoch ganddynt, neu",
+  "contactP2Link": "dewch o hyd i'ch heddlu lleol (yn agor mewn tab newydd)",
+  "urls": {
+    "goingToCourt": "https://www.gov.uk/going-to-court-victim-witness",
+    "whatToExpect": "https://www.gov.uk/guidance/what-to-expect-coming-to-a-court-or-tribunal"
+  }
+}

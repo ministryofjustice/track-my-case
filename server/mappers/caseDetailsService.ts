@@ -2,7 +2,9 @@ import { CourtSitting, HearingDetails } from '../interfaces/caseDetails'
 import { HEARING_TYPE, HearingStartDateMessage, HearingSummary } from '../interfaces/hearingSummary'
 
 export const formatDate = (input?: string): string => {
-  if (!input) return ''
+  if (!input) {
+    return ''
+  }
   const date = new Date(input)
   return date.toLocaleString('en-GB', {
     day: 'numeric',
@@ -13,7 +15,9 @@ export const formatDate = (input?: string): string => {
 }
 
 export const formatDateTime = (input?: string): string => {
-  if (!input) return ''
+  if (!input) {
+    return ''
+  }
   const date = new Date(input)
   return date.toLocaleString('en-GB', {
     day: 'numeric',

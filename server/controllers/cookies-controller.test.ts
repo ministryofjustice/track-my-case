@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+import { createMockT } from '../utils/testUtils'
 import paths from '../constants/paths'
 import { FormError } from '../interfaces/formState'
 import { cookiesAcceptRejectController, getCookiesController, postCookiesController } from './cookies-controller'
@@ -89,9 +90,11 @@ describe('cookies-controller', () => {
       session?: Request['session']
     }) => {
       const req = {
+        t: createMockT(),
+        language: 'en',
         headers: { referer: overrides?.referer },
         session: overrides?.session ?? {},
-      } as Request
+      } as unknown as Request
       const res = {
         locals: {
           authenticated: overrides?.authenticated ?? false,
@@ -162,9 +165,11 @@ describe('cookies-controller', () => {
   describe('postCookiesController', () => {
     const createReqRes = (body: { cookiePreferenceAnalytics?: string }) => {
       const req = {
+        t: createMockT(),
+        language: 'en',
         body,
         session: {} as Request['session'],
-      } as Request
+      } as unknown as Request
       const res = {
         locals: {} as Record<string, unknown>,
         cookie: jest.fn(),
