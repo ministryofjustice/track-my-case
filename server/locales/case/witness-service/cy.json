@@ -1,0 +1,27 @@
+{
+  "pageTitle": "Cael cefnogaeth yn rhoi tystiolaeth fel tyst",
+  "heading.main": "Cymorth a chefnogaeth",
+  "contents.title": "Cynnwys",
+  "contents.victimSupportLink": "Ble i gael mwy o gefnogaeth a gwybodaeth",
+  "contents.currentItem": "Cael cefnogaeth os ydych yn mynd i'r llys fel tyst",
+  "section.heading": "Cael cefnogaeth yn rhoi tystiolaeth fel tyst",
+  "section.intro": "Os ydych yn mynd i'r llys i roi tystiolaeth, gall yr elusen Cymorth i Ddioddefwyr eich helpu i baratoi a'ch cefnogi yn ystod proses y llys.",
+  "whatTheyCanDo.heading": "Beth gallant ei wneud i'ch helpu",
+  "whatTheyCanDo.intro": "Bydd Cymorth i Ddioddefwyr yn eich rhoi mewn cysylltiad gyda gwirfoddolwr hyfforddedig. Gallant roi gwybodaeth ymarferol am y broses llys, er enghraifft:",
+  "whatTheyCanDo.practicalItems": [
+    "dangos y llys i chi cyn y treial",
+    "eich helpu i hawlio treuliau y gallwch eu hawlio",
+    "eich cyfeirio i sefydliadau eraill a allai eich cefnogi"
+  ],
+  "whatTheyCanDo.emotionalIntro": "Gallant hefyd roi cefnogaeth emosiynol i chi, er enghraifft:",
+  "whatTheyCanDo.emotionalItems": [
+    "eich helpu i deimlo'n fwy hyderus wrth roi tystiolaeth",
+    "bod yno ichi allu ymddiried ynddynt",
+    "dod i'r llys gyda chi pan fyddwch yn rhoi eich tystiolaeth",
+    "bod gyda chi ar ddiwrnod y treial",
+    "eich helpu gydag unrhyw anghenion cefnogaeth ychwanegol yn y cartref"
+  ],
+  "whatTheyCanDo.impartial": "Mae'r gwirfoddolwyr yn parhau'n ddiduedd i'r achos llys - nid ydynt yn cymryd ochrau.",
+  "findOutMore.heading": "Canfod mwy neu cyfeirio eich hun i'r gwasanaeth",
+  "findOutMore.linkText": "Cysylltu gyda'r Gwasanaeth Tyst (yn agor mewn tab newydd)."
+}

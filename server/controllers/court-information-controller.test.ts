@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+import { createMockT } from '../utils/testUtils'
 import paths from '../constants/paths'
 import { CaseDetailsResponse } from '../interfaces/caseDetails'
 import { getMockCaseDetailsResponse } from '../services/mock/mock-response'
@@ -53,6 +54,8 @@ describe('court-information-controller', () => {
 
   const createReqRes = (overrides?: { req?: Request; res?: Response }) => {
     const req = {
+      t: createMockT(),
+      language: 'en',
       session: {
         selectedUrn: caseUrn,
       },
@@ -101,7 +104,7 @@ describe('court-information-controller', () => {
 
       await courtInformationController(req, res, next)
 
-      expect(res.render).toHaveBeenCalledWith('pages/case/court-information')
+      expect(res.render).toHaveBeenCalledWith('pages/case/court-information.njk')
     })
 
     it('renders court-information-closed when case status is INACTIVE (reserved URN)', async () => {
@@ -113,7 +116,7 @@ describe('court-information-controller', () => {
       expect(mockGetCaseDetailsByUrn).not.toHaveBeenCalled()
       expect(res.locals.pageTitle).toBe('No further court dates - Court information')
       expect(res.locals.backLink).toBe(paths.CASES.SEARCH)
-      expect(res.render).toHaveBeenCalledWith('pages/case/court-information-inactive')
+      expect(res.render).toHaveBeenCalledWith('pages/case/court-information-inactive.njk')
     })
 
     it('renders court-information-closed when API returns case status INACTIVE', async () => {
@@ -131,7 +134,7 @@ describe('court-information-controller', () => {
 
       expect(res.locals.pageTitle).toBe('No further court dates - Court information')
       expect(res.locals.backLink).toBe(paths.CASES.SEARCH)
-      expect(res.render).toHaveBeenCalledWith('pages/case/court-information-inactive')
+      expect(res.render).toHaveBeenCalledWith('pages/case/court-information-inactive.njk')
     })
 
     it.each(['EJECTED', 'READY_FOR_REVIEW'] as const)(
@@ -197,7 +200,7 @@ describe('court-information-controller', () => {
         await courtInformationController(req, res, next)
 
         expect(mockMapCaseDetailsToHearingSummary).toHaveBeenCalled()
-        expect(res.render).toHaveBeenCalledWith('pages/case/court-information')
+        expect(res.render).toHaveBeenCalledWith('pages/case/court-information.njk')
         expect(res.locals.backLink).toBe(paths.CASES.SEARCH)
       },
     )
@@ -239,7 +242,7 @@ describe('court-information-controller', () => {
     expect(mockGetCourtUrl).toHaveBeenCalledWith('Southwark Crown Court')
     expect(res.locals.courtUrl).toBe('https://example/court')
     expect(res.locals.backLink).toBe(paths.CASES.SEARCH)
-    expect(res.render).toHaveBeenCalledWith('pages/case/court-information')
+    expect(res.render).toHaveBeenCalledWith('pages/case/court-information.njk')
   })
 
   it('falls back to default court finder URL when court is not found', async () => {
@@ -270,8 +273,8 @@ describe('court-information-controller', () => {
 
     await courtInformationController(req, res, next)
 
-    expect(res.locals.courtUrl).toEqual('https://www.find-court-tribunal.service.gov.uk/')
-    expect(res.render).toHaveBeenCalledWith('pages/case/court-information')
+    expect(res.locals.courtUrl).toEqual('https://www.find-court-tribunal.service.gov.uk')
+    expect(res.render).toHaveBeenCalledWith('pages/case/court-information.njk')
   })
 
   it('returns 404 with specific view when there are no hearings allocated', async () => {

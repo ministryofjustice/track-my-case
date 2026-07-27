@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+import { createMockT } from '../utils/testUtils'
 import paths from '../constants/paths'
 import keyRolesController from './key-roles-controller'
 
@@ -9,7 +10,7 @@ jest.mock('../helpers/initialise-basic-authentication', () => ({
 
 describe('key-roles-controller', () => {
   const createReqRes = () => {
-    const req = {} as Request
+    const req = { t: createMockT(), language: 'en' } as unknown as Request
     const res = {
       locals: {} as Record<string, unknown>,
       render: jest.fn(),
@@ -31,7 +32,7 @@ describe('key-roles-controller', () => {
     await keyRolesController(req, res, next)
     expect(res.locals.pageTitle).toBe('People in the criminal justice system')
     expect(res.locals.backLink).toBe(paths.CASES.DASHBOARD)
-    expect(res.render).toHaveBeenCalledWith('pages/case/key-roles')
+    expect(res.render).toHaveBeenCalledWith('pages/case/key-roles.njk')
   })
 
   it('calls next(error) when an error is thrown', async () => {

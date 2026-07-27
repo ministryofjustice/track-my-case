@@ -7,22 +7,22 @@
     <div class="govuk-grid-column-two-thirds">
       <div class="gem-c-heading govuk-!-margin-bottom-8">
         <h1 class="gem-c-heading__text govuk-heading-xl">
-          Help and support
+          {{ t('victim-support-links:pageHeading') }}
         </h1>
       </div>
       <aside class="part-navigation-container" role="complementary">
         <nav data-module="ga4-link-tracker" aria-label="Pages in this guide" class="gem-c-contents-list govuk-!-margin-bottom-4" data-ga4-link-tracker-module-started="true">
           <h2 class="gem-c-contents-list__title">
-            Contents
+            {{ t('victim-support-links:contents.title') }}
           </h2>
           <ol class="gem-c-contents-list__list">
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              Where to get more support and information
+              {{ t('victim-support-links:contents.currentItem') }}
             </li>
             <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
               <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
-              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/witness-service">Get support if you're going to court as a witness</a>
+              <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="/case/witness-service">{{ t('victim-support-links:contents.witnessLink') }}</a>
             </li>
           </ol>
         </nav>
@@ -31,42 +31,43 @@
   </div>
   <div class="govuk-grid-row govuk-!-margin-bottom-6">
     <div class="govuk-grid-column-two-thirds">
-      <h2 class="govuk-heading-l">Where to get more support and information</h2>
+      <h2 class="govuk-heading-l">{{ t('victim-support-links:supportHeading') }}</h2>
 
       <div class="govuk-inset-text">
-        <h3 class="govuk-heading-m">If you need help now</h3>
-        If you’re in immediate danger, call the police: 999<br><br>
+        <h3 class="govuk-heading-m">{{ t('victim-support-links:inset.heading') }}</h3>
+        {{ t('victim-support-links:inset.policeText') }}<br><br>
 
-        Samaritans<br>
-        Phone: 116 123<br>
-        Website: <a href="https://www.samaritans.org/" class="govuk-link" target="_blank">www.samaritans.org (opens in new tab)</a><br><br>
+        {{ t('victim-support-links:inset.samaritans.name') }}<br>
+        {{ t('victim-support-links:inset.samaritans.phone') }}<br>
+        Website: <a href="{{ t('common:urls.samaritans') }}" class="govuk-link" target="_blank">{{ t('victim-support-links:inset.samaritans.websiteLinkText') }}</a><br><br>
 
-        Victim Support<br>
-        Phone: 0808 1689 111<br>
-        <a href="https://www.victimsupport.org.uk/help-and-support/get-help/" class="govuk-link" target="_blank">Victim Support website and live chat (opens in new tab)</a><br><br>
+        {{ t('victim-support-links:inset.victimSupport.name') }}<br>
+        {{ t('victim-support-links:inset.victimSupport.phone') }}<br>
+        <a href="{{ t('common:urls.victimSupportHelp') }}" class="govuk-link" target="_blank">{{ t('victim-support-links:inset.victimSupport.linkText') }}</a><br><br>
 
-        These services are available 24 hours a day, 7 days a week.
+        {{ t('victim-support-links:inset.availability') }}
       </div>
 
-      <h3 class="govuk-heading-m">Support for the crime you experienced</h3>
-      <p class="govuk-body">There are many organisations and charities that can offer expert help and support for the crime you have experienced.</p>
-      <p class="govuk-body">Find:</p>
+      <h3 class="govuk-heading-m">{{ t('victim-support-links:crimeSupport.heading') }}</h3>
+      <p class="govuk-body">{{ t('victim-support-links:crimeSupport.lead') }}</p>
+      <p class="govuk-body">{{ t('victim-support-links:crimeSupport.findLead') }}</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li><a href="https://www.gov.uk/guidance/victim-and-witness-services" class="govuk-link" target="_blank">victim and witness services (opens in new tab)</a></li>
-        <li><a href="https://victimandwitnessinformation.org.uk/find-support/locally" class="govuk-link" target="_blank">support services in your local area (opens in new tab)</a></li>
+        {% for item in t('victim-support-links:crimeSupport.links', {returnObjects: true}) %}
+          <li><a href="{{ item.url }}" class="govuk-link" target="_blank">{{ item.text }}</a></li>
+        {% endfor %}
       </ul>
 
-      <h3 class="govuk-heading-m">Mental health support</h3>
-      <p class="govuk-body">Find information and support for your mental health through the <a href="https://www.nhs.uk/mental-health/" class="govuk-link" target="_blank">NHS website (opens in new tab)</a>.</p>
+      <h3 class="govuk-heading-m">{{ t('victim-support-links:mentalHealth.heading') }}</h3>
+      <p class="govuk-body">{{ t('victim-support-links:mentalHealth.body') }} <a href="{{ t('victim-support-links:urls.nhsMentalHealth') }}" class="govuk-link" target="_blank">{{ t('victim-support-links:mentalHealth.linkText') }}</a>.</p>
 
-      <h3 class="govuk-heading-m">Rights for disabled people when dealing with the police</h3>
-      <p class="govuk-body">If you’re being questioned or interviewed at a police station you have certain rights depending on your disability.</p>
-      <p class="govuk-body"><a href="https://www.gov.uk/rights-disabled-person/police" class="govuk-link" target="_blank">Find out about disability rights when dealing with police (opens in new tab)</a>.</p>
+      <h3 class="govuk-heading-m">{{ t('victim-support-links:disability.heading') }}</h3>
+      <p class="govuk-body">{{ t('victim-support-links:disability.body1') }}</p>
+      <p class="govuk-body"><a href="{{ t('victim-support-links:urls.disabilityRights') }}" class="govuk-link" target="_blank">{{ t('victim-support-links:disability.linkText') }}</a>.</p>
 
-      <h3 class="govuk-heading-m">Easy read guides</h3>
-      <p class="govuk-body">Easy read guides use pictures to help people understand information more easily.</p>
-      <p class="govuk-body">You can download easy read guides about the criminal justice process from the Crown Prosecution Service (CPS).</p>
-      <p class="govuk-body"><a href="https://www.cps.gov.uk/information-and-support-victims-witnesses/easy-read" class="govuk-link" target="_blank">Find easy read guides for victims of crime (opens in new tab)</a>.</p>
+      <h3 class="govuk-heading-m">{{ t('victim-support-links:easyRead.heading') }}</h3>
+      <p class="govuk-body">{{ t('victim-support-links:easyRead.body1') }}</p>
+      <p class="govuk-body">{{ t('victim-support-links:easyRead.body2') }}</p>
+      <p class="govuk-body"><a href="{{ t('common:urls.cpsEasyRead') }}" class="govuk-link" target="_blank">{{ t('victim-support-links:easyRead.linkText') }}</a>.</p>
     </div>
   </div>
 {% endblock %}

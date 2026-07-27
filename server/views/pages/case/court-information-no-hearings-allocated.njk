@@ -6,17 +6,17 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l" title="{{ message }}">Court information</h1>
+      <h1 class="govuk-heading-l" title="{{ message }}">{{ t('court-info-no-hearings:heading') }}</h1>
       <div class="govuk-notification-banner govuk-!-margin-bottom-6" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
         <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">{{ t('court-info-no-hearings:banner.title') }}</h2>
         </div>
         <div class="govuk-notification-banner__content">
-          <h3 class="govuk-notification-banner__heading">There is no court information</h3>
-          <p class="govuk-body">There is no court information because the next trial or sentencing hearing has not been set.</p>
-          <p class="govuk-body">This service only shows trial and sentencing hearing details.</p>
-          <p class="govuk-body">The police will tell you if there are any updates.</p>
-          <p class="govuk-body">Find their contact details on any letter they have sent you, or <a href="https://www.police.uk/pu/find-a-police-force/" class="govuk-link" target="_blank">find your local police force (opens in new tab)</a>.</p>
+          <h3 class="govuk-notification-banner__heading">{{ t('court-info-no-hearings:banner.heading') }}</h3>
+          <p class="govuk-body">{{ t('court-info-no-hearings:banner.para1') }}</p>
+          <p class="govuk-body">{{ t('court-info-no-hearings:banner.para2') }}</p>
+          <p class="govuk-body">{{ t('court-info-no-hearings:banner.para3') }}</p>
+          <p class="govuk-body">{{ t('court-info-no-hearings:banner.findPolice') }} <a href="{{ t('common:urls.policeForce') }}" class="govuk-link" target="_blank">{{ t('court-info-no-hearings:banner.findPoliceLink') }}</a>.</p>
         </div>
       </div>
 

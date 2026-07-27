@@ -1,0 +1,47 @@
+{
+  "pageTitle": "Gwneud Datganiad Personol Dioddefwr",
+  "heading.main": "Deall eich hawliau",
+  "contents.title": "Cynnwys",
+  "contents.nav.active": "Gwneud Datganiad Personol Dioddefwr",
+  "contents.nav.claimingExpenses": "Hawlio treuliau",
+  "contents.nav.specialMeasures": "Mesurau arbennig",
+  "contents.nav.requestingTranscript": "Gofyn am drawsgrifiad gwrandawiad llys",
+  "contents.nav.understandCompensation": "Pryd y gallwch hawlio iawndal",
+  "contents.nav.returnProperty": "Cael eich eiddo yn ôl",
+  "contents.nav.victimsCode": "Cod Dioddefwyr",
+  "section.main.heading": "Gwneud Datganiad Personol Dioddefwr",
+  "section.main.intro": "Mae'r canllawiau hyn ar gyfer pan fyddwch yn profi trosedd yng Nghymru a Lloegr.",
+  "section.main.p1": "Mae gennych yr hawl i wneud Datganiad Personol Dioddefwr, sy'n dweud wrth y llys sut mae'r trosedd wedi effeithio arnoch chi.  Mae'n cael ei gynnwys pan fydd y barnwr neu'r ynadon yn penderfynu ar y ddedfryd ar gyfer diffynnydd.",
+  "section.main.p2": "Mae hyn yn wahnaol i'ch datganiad tyst. Chi sy'n dweud sut mae'r trosedd wedi effeithio arnoch chi, boed yn gorfforol, yn emosiynol, yn ariannol neu mewn unrhyw ffordd arall.",
+  "section.main.p3": "Gall hefyd gael ei alw yn DPD neu 'Datganiad Personol Dioddefwr'",
+  "section.when.heading": "Pan fyddwch yn rhoi'r datganiad",
+  "section.when.p1": "Gallwch ddewis rhoi eich Datganiad Personol Dioddefwr i'r heddlu pan fyddwch yn rhoi gwybod am y trosedd, neu hyd at pan fydd yr achos yn mynd i'r llys.",
+  "section.when.p2": "Gallwch hefyd wneud datganiad wedi'i ddiweddaru nes bydd yr achos yn mynd i'r llys. Mae'n bwysig cofio gan bod Datganiad Personol Dioddefwr yn ddogfen gyfreithiol, hyd yn oed os byddwch yn gwneud un newydd yn ddiweddarach, cedwir unrhyw un blaenorol a wnaed gennych ar gofnod.",
+  "section.when.p3": "Gallwch hefyd ofyn i ddarllen eich Datganiad Personol Dioddefwr yn y llys os dymunwch.",
+  "section.how.heading": "Sut gall y datganiad helpu eich achos",
+  "section.how.p1": "Mae eich Datganiad Personol Dioddefwr yn helpu'r llys, yr heddlu ac erlynwyr i ddeall yr effeithiau emosiynol, corfforol ac ariannol a gafodd y trosedd arnoch chi a'ch bywyd.",
+  "section.how.p2": "Os bydd diffynnydd yn cael ei ganfod yn euog, bydd y llys yn cymryd eich Datganiad Personol Dioddefwr i ystyriaeth, ynghyd â'r holl dystiolaeth arall, wrth benderfynu ar ddedfryd briodol.",
+  "section.write.heading": "Sut i ysgrifennu Datganiad Personol Dioddefwr",
+  "section.write.p1": "Gallwch ystyried ysgrifennu yn eich geiriau eich hun am sut mae'r trosedd wedi effeithio ar wahanol rannau o'ch bywyd, fel:",
+  "section.write.lifeAreas": ["iechyd meddwl", "iechyd corfforol", "arian"],
+  "section.write.examplesIntro": "Er enghraifft, efallai y byddwch yn ysgrifennu am:",
+  "section.write.examples": [
+    "anaf a'i effeithiau ar eich bywyd",
+    "triniaeth feddygol neu therapi rydych wedi'i dderbyn",
+    "teimlo'n fregus, dan fygythiad neu'n anniogel",
+    "effeithiau ar eich teulu",
+    "sut mae ansawdd eich bywyd wedi newid o ddydd i ddydd"
+  ],
+  "section.write.policeAdvice": "Gallwch gael mwy o gyngor a chefnogaeth i'ch helpu i ysgrifennu eich datganiad gan yr heddlu.",
+  "section.write.whoCanWrite": "Mae'n rhaid i ddioddefwr trosedd ysgrifennu eu Datganiad Personol Dioddefwr eu hunain.  Mae'r gyfraith yn caniatau i rywun arall ei ysgrifennu pan fydd y dioddefwr:",
+  "section.write.whoCanWriteList": [
+    "yn methu oherwydd salwch, anaf neu iechyd meddwl - gall cynrychiolydd fel aelod agos o'r teulu ei ysgrifennu",
+    "o dan 18 oed - gall eu rhiant neu ofalwr ei ysgrifennu, os yw'n briodol",
+    "wedi marw - gall aelod o'r teulu ei ysgrifennu"
+  ],
+  "section.write.findOutMore.before": "Rhagor o wybodaeth am wneud",
+  "section.write.findOutMore.linkText": "Datganiad Personol Dioddefwr (yn agor mewn tab newydd).",
+  "urls": {
+    "victimPersonalStatement": "https://www.gov.uk/government/publications/victim-personal-statement"
+  }
+}

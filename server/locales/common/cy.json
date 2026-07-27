@@ -1,0 +1,82 @@
+{
+  "applicationName": "Track a case",
+  "back": "Yn ôl",
+  "nav": {
+    "home": "Hafan"
+  },
+  "footer": {
+    "privacy": "Preifatrwydd",
+    "cookies": "Cwcis",
+    "research": "Cymryd rhan mewn ymchwil"
+  },
+  "phase": {
+    "tag": "Beta",
+    "text": "Mae hwn yn wasanaeth newydd.",
+    "linkText": "Darganfyddwch fwy a helpwch ni i'w wella"
+  },
+  "skipLink": {
+    "quickExit": "Gadael yn Gyflym (gwasgwch Shift neu Escape dair gwaith)"
+  },
+  "quickExit": {
+    "button": "Gadael yn gyflym"
+  },
+  "cookieBanner": {
+    "regionLabel": "Cwcis ar {{applicationName}}",
+    "heading": "Cwcis ar {{applicationName}}",
+    "essential": "Rydym yn defnyddio ffeiliau bach hanfodol (a elwir yn 'gwcis') i wneud i'r gwasanaeth hwn weithio.",
+    "analytics": "Byddem hefyd yn hoffi defnyddio cwcis dadansoddeg fel y gallwn ddeall sut rydych yn defnyddio'r gwasanaeth a gwneud gwelliannau.",
+    "accept": "Derbyn cwcis dadansoddeg",
+    "reject": "Gwrthod cwcis dadansoddeg",
+    "viewCookies": "Gweld cwcis",
+    "acceptedPre": "Rydych wedi derbyn cwcis dadansoddeg. Gallwch",
+    "rejectedPre": "Rydych wedi gwrthod cwcis dadansoddeg. Gallwch",
+    "changeSettings": "newid eich gosodiadau cwci",
+    "atAnyTime": "ar unrhyw adeg.",
+    "hideMessage": "Cuddio neges cwci"
+  },
+  "pageTitlePrefix": {
+    "noFurtherCourtDates": "Dim dyddiadau llys pellach",
+    "noHearingsAllocated": "Dim gwrandawiadau wedi'u dyrannu",
+    "notFound": "Heb ei ddarganfod",
+    "badRequest": "Cais gwael",
+    "accessDenied": "Mynediad wedi'i wrthod",
+    "tooManyRequests": "Gormod o geisiadau",
+    "commonPlatformUnavailable": "Platfform cyffredin ddim ar gael"
+  },
+  "urls": {
+    "findCourtTribunal": "https://www.find-court-tribunal.service.gov.uk/?lng=cy",
+    "policeForce": "https://www.police.uk/pu/find-a-police-force",
+    "witnessService": "https://witnessservice.org.uk/",
+    "witnessServiceHelp": "https://witnessservice.org.uk/about/getting-help-from-the-witness-service/",
+    "samaritans": "https://www.samaritans.org",
+    "victimSupport": "https://www.victimsupport.org.uk",
+    "victimSupportHelp": "https://www.victimsupport.org.uk/help-and-support/get-help/",
+    "cpsEasyRead": "https://www.cps.gov.uk/information-and-support-victims/easy-read",
+    "bbcWeather": "https://www.bbc.co.uk/weather",
+    "bbcHome": "https://www.bbc.co.uk",
+    "cpsSpecialMeasures": "https://www.cps.gov.uk/victims-guide/victims-guide-support-give-your-evidence-special-measures",
+    "victimsCode": "https://www.gov.uk/government/publications/the-code-of-practice-for-victims-of-crime",
+    "victimsCodeFull": "https://www.gov.uk/government/publications/the-code-of-practice-for-victims-of-crime/code-of-practice-for-victims-of-crime-in-england-and-wales-victims-code"
+  },
+  "shutdownBanner": {
+    "ariaLabel": "Baner cau'r gwasanaeth",
+    "title": "Pwysig",
+    "heading": "Mae Track a case yn cau",
+    "body": "Bydd y gwasanaeth peilot hwn yn cau ar 1 Awst 2026. <strong>Nid</strong> yw hyn yn effeithio ar eich achos.",
+    "body2": "Bydd yr holl ddefnyddwyr presennol yn cael e-bost gydag arweiniad am y cymorth sydd ar gael.",
+    "body3": "Cysylltwch â'ch swyddog gofal tyst yr heddlu os oes angen i chi gael gwybod am unrhyw fanylion am eich achos.",
+    "body4": "Am ragor o help, ewch i"
+  },
+  "feedback": {
+    "question": "A yw'r dudalen hon yn ddefnyddiol?",
+    "yes": "Ydw",
+    "yesHidden": "mae'r dudalen hon yn ddefnyddiol",
+    "no": "Nac ydw",
+    "noHidden": "nid yw'r dudalen hon yn ddefnyddiol",
+    "thanks": "Diolch am eich adborth.",
+    "helpHeading": "Helpwch ni i wella {{applicationName}}",
+    "sorry": "Mae'n ddrwg gennym na wnaethoch chi ddod o hyd i'r dudalen yn ddefnyddiol.",
+    "tellUs": "Dywedwch wrthym beth yw eich barn (yn agor mewn tab newydd).",
+    "cancel": "Canslo"
+  }
+}

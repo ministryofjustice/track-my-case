@@ -1,0 +1,15 @@
+{
+  "pageTitle": "Enter service password",
+  "label": "Rhowch eich cyfrinair {{applicationName}}",
+  "intro": "Mae'r gwasanaeth hwn ar hyn o bryd mewn beta preifat. I ddefnyddio {{applicationName}}, mae angen y cyfrinair o'ch e-bost cadarnhad cofrestru arnoch.",
+  "hint": "Gallwch ddod o hyd i hwn yn eich e-bost cadarnhad cofrestru",
+  "signInButton": "Mewngofnodi",
+  "detailsSummary": "Nid oes gennyf e-bost cadarnhad cofrestru",
+  "detailsText": "Cysylltwch â'ch swyddog gofal tyst yr heddlu, a fydd yn rhoi mynediad i chi os yw'n briodol ar gyfer eich achos unigol.",
+  "errorSummaryTitle": "Mae problem",
+  "showPasswordText": "Dangos",
+  "hidePasswordText": "Cuddio",
+  "errors": {
+    "wrongPassword": "Rhowch eich cyfrinair"
+  }
+}

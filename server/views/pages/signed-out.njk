@@ -3,11 +3,11 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block content %}
-<h1 class="govuk-heading-l govuk-!-static-margin-bottom-8">You are logged out from the {{ applicationName }}</h1>
+<h1 class="govuk-heading-l govuk-!-static-margin-bottom-8">{{ t('signed-out:heading', {applicationName: applicationName}) }}</h1>
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-two-thirds">
     {{ govukButton({
-      text: "Back to service Home page",
+      text: t('signed-out:button'),
       href: "/",
       isStartButton: false
     }) }}

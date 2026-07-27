@@ -6,10 +6,10 @@ const returnPropertyController = async (req: Request, res: Response, next: NextF
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Getting your property back'
+    res.locals.pageTitle = req.t('return-property:pageTitle')
     res.locals.backLink = paths.CASES.DASHBOARD
 
-    res.render('pages/case/return-property')
+    res.render('pages/case/return-property.njk')
   } catch (error) {
     next(error)
   }

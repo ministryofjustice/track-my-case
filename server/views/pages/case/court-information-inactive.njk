@@ -6,10 +6,10 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l" title="{{ message }}">There are no further court dates for this case</h1>
+      <h1 class="govuk-heading-l" title="{{ message }}">{{ t('court-info-inactive:heading') }}</h1>
 
-      <p class="govuk-body">You can contact the police officer in charge of your case or the police witness care unit for any updates on the case.</p>
-      <p class="govuk-body">Find their contact details on any letter they have sent you, or <a href="https://www.police.uk/pu/find-a-police-force/" class="govuk-link" target="_blank">find your local police force (opens in new tab)</a>.</p>
+      <p class="govuk-body">{{ t('court-info-inactive:para1') }}</p>
+      <p class="govuk-body">{{ t('court-info-inactive:para2') }} <a href="{{ t('common:urls.policeForce') }}" class="govuk-link" target="_blank">{{ t('court-info-inactive:findPoliceLink') }}</a>.</p>
     </div>
   </div>
 

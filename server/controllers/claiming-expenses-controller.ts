@@ -6,10 +6,10 @@ const claimingExpensesController = async (req: Request, res: Response, next: Nex
   try {
     await initialiseBasicAuthentication(req, res, next)
 
-    res.locals.pageTitle = 'Claiming expenses'
+    res.locals.pageTitle = req.t('claiming-expenses:pageTitle')
     res.locals.backLink = paths.CASES.DASHBOARD
 
-    res.render('pages/case/claiming-expenses')
+    res.render('pages/case/claiming-expenses.njk')
   } catch (error) {
     next(error)
   }

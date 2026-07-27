@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+import { createMockT } from '../utils/testUtils'
 import paths from '../constants/paths'
 import returnPropertyController from './return-property-controller'
 
@@ -9,7 +10,7 @@ jest.mock('../helpers/initialise-basic-authentication', () => ({
 
 describe('return-property-controller', () => {
   const createReqRes = () => {
-    const req = {} as Request
+    const req = { t: createMockT(), language: 'en' } as unknown as Request
     const res = {
       locals: {} as Record<string, unknown>,
       render: jest.fn(),
@@ -31,7 +32,7 @@ describe('return-property-controller', () => {
     await returnPropertyController(req, res, next)
     expect(res.locals.pageTitle).toBe('Getting your property back')
     expect(res.locals.backLink).toBe(paths.CASES.DASHBOARD)
-    expect(res.render).toHaveBeenCalledWith('pages/case/return-property')
+    expect(res.render).toHaveBeenCalledWith('pages/case/return-property.njk')
   })
 
   it('calls next(error) when an error is thrown', async () => {

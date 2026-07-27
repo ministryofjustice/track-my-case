@@ -3,11 +3,11 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block content %}
-<h1 class="govuk-heading-l govuk-!-static-margin-bottom-8">You are logged in to the {{ applicationName }} service</h1>
+<h1 class="govuk-heading-l govuk-!-static-margin-bottom-8">{{ t('signed-in:heading', {applicationName: applicationName}) }}</h1>
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-two-thirds">
     {{ govukButton({
-      text: "Continue to Dashboard",
+      text: t('signed-in:button'),
       href: "/case/dashboard",
       isStartButton: true
     }) }}

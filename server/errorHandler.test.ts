@@ -156,7 +156,7 @@ describe('createErrorHandler', () => {
       expect(res.locals.status).toBe(500)
       expect(res.locals.stack).toBe(error.stack)
       expect(res.status).toHaveBeenCalledWith(500)
-      expect(res.render).toHaveBeenCalledWith('pages/error')
+      expect(res.render).toHaveBeenCalledWith('pages/error.njk')
     })
 
     it('renders error page with generic message in production', () => {
@@ -167,7 +167,7 @@ describe('createErrorHandler', () => {
 
       expect(res.locals.message).toBe('Something went wrong. The error has been logged. Please try again')
       expect(res.locals.stack).toBeNull()
-      expect(res.render).toHaveBeenCalledWith('pages/error')
+      expect(res.render).toHaveBeenCalledWith('pages/error.njk')
     })
 
     it('defaults to 500 status when error has no status', () => {
@@ -177,7 +177,7 @@ describe('createErrorHandler', () => {
       createErrorHandler(false)(error, req, res, next)
 
       expect(res.status).toHaveBeenCalledWith(500)
-      expect(res.render).toHaveBeenCalledWith('pages/error')
+      expect(res.render).toHaveBeenCalledWith('pages/error.njk')
     })
 
     it('logs the error', () => {

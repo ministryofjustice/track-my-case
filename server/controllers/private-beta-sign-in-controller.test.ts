@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+import { createMockT } from '../utils/testUtils'
 import paths from '../constants/paths'
 import { PASSWORD_CORRECT } from '../constants/cookiesUtils'
 import { postPrivateBetaSignInController, privateBetaSignInController } from './private-beta-sign-in-controller'
@@ -22,6 +23,8 @@ jest.mock('../config', () => ({
 describe('privateBetaSignInController (GET)', () => {
   const createReqRes = (session?: Partial<Request['session']>) => {
     const req = {
+      t: createMockT(),
+      language: 'en',
       session: {
         formState: {},
         ...session,
@@ -80,6 +83,8 @@ describe('privateBetaSignInController (GET)', () => {
 describe('postPrivateBetaSignInController', () => {
   const createReqRes = (body: Record<string, unknown>, session?: Record<string, unknown>) => {
     const req = {
+      t: createMockT(),
+      language: 'en',
       body,
       session: {
         formState: {},

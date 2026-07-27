@@ -1,17 +1,16 @@
-/* eslint-disable prettier/prettier */
+/* eslint-disable */
 import 'applicationinsights'
 
 import trackMyCaseApp from './server/index'
 import { logger } from './server/logger'
 import { CachedSecrets, loadAwsSecrets } from './server/awsSecretsLoader'
 
-;
-
-(async () => {
+;(async () => {
   const awsSecrets: CachedSecrets = await loadAwsSecrets()
   const sessionSecret = awsSecrets.SESSION_SECRET
 
-  const app = trackMyCaseApp(sessionSecret)
+  const createApp = await trackMyCaseApp
+  const app = createApp(sessionSecret)
 
   app.listen(app.get('port'), () => {
     const port: string = `${app.get('port')}`
